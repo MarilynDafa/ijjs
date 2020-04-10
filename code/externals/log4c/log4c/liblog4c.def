@@ -1,0 +1,250 @@
+EXPORTS
+    __log4c_category_vlog @1
+    __log4c_fini @2
+    __log4c_init @3
+    __log4c_reread @4
+    __sd_domnode_new @5
+    __sd_domnode_xml__create_buffer @6
+    __sd_domnode_xml__delete_buffer @7
+    __sd_domnode_xml__flush_buffer @8
+    __sd_domnode_xml__init_buffer @9
+    __sd_domnode_xml__load_buffer_state @10
+    __sd_domnode_xml__scan_buffer @11
+    __sd_domnode_xml__scan_bytes @12
+    __sd_domnode_xml__scan_string @13
+    __sd_domnode_xml__switch_to_buffer @14
+    __sd_domnode_xml_alloc @15
+    __sd_domnode_xml_debug @16 DATA
+    __sd_domnode_xml_fread @17
+    __sd_domnode_xml_free @18
+    __sd_domnode_xml_fwrite @19
+    __sd_domnode_xml_get_debug @20
+    __sd_domnode_xml_get_extra @21
+    __sd_domnode_xml_get_in @22
+    __sd_domnode_xml_get_leng @23
+    __sd_domnode_xml_get_lineno @24
+    __sd_domnode_xml_get_lval @25
+    __sd_domnode_xml_get_out @26
+    __sd_domnode_xml_get_text @27
+    __sd_domnode_xml_lex @28
+    __sd_domnode_xml_lex_destroy @29
+    __sd_domnode_xml_lex_init @30
+    __sd_domnode_xml_parse @31
+    __sd_domnode_xml_read @32
+    __sd_domnode_xml_realloc @33
+    __sd_domnode_xml_restart @34
+    __sd_domnode_xml_set_debug @35
+    __sd_domnode_xml_set_extra @36
+    __sd_domnode_xml_set_in @37
+    __sd_domnode_xml_set_lineno @38
+    __sd_domnode_xml_set_lval @39
+    __sd_domnode_xml_set_out @40
+    __sd_domnode_xml_write @41
+    _sp @42 DATA
+    getopt_reset @43
+    log4c_appender_append @44
+    log4c_appender_close @45
+    log4c_appender_delete @46
+    log4c_appender_factory @47 DATA
+    log4c_appender_get @48
+    log4c_appender_get_layout @49
+    log4c_appender_get_name @50
+    log4c_appender_get_type @51
+    log4c_appender_get_udata @52
+    log4c_appender_new @53
+    log4c_appender_open @54
+    log4c_appender_print @55
+    log4c_appender_set_layout @56
+    log4c_appender_set_type @57
+    log4c_appender_set_udata @58
+    log4c_appender_syslog_set_facility @59
+    log4c_appender_type_get @60
+    log4c_appender_type_rollingfile @61 DATA
+    log4c_appender_type_set @62
+    log4c_appender_type_stream @63 DATA
+    log4c_appender_type_stream2 @64 DATA
+    log4c_appender_type_syslog @65 DATA
+    log4c_appender_types_free @66
+    log4c_appender_types_print @67
+    log4c_category_delete @68
+    log4c_category_factory @69 DATA
+    log4c_category_get @70
+    log4c_category_get_additivity @71
+    log4c_category_get_appender @72
+    log4c_category_get_chainedpriority @73
+    log4c_category_get_name @74
+    log4c_category_get_priority @75
+    log4c_category_list @76
+    log4c_category_new @77
+    log4c_category_print @78
+    log4c_category_set_additivity @79
+    log4c_category_set_appender @80
+    log4c_category_set_priority @81
+    log4c_dump_all_instances @82
+    log4c_dump_all_types @83
+    log4c_fini @84
+    log4c_init @85
+    log4c_layout_delete @86
+    log4c_layout_factory @87 DATA
+    log4c_layout_format @88
+    log4c_layout_get @89
+    log4c_layout_get_name @90
+    log4c_layout_get_type @91
+    log4c_layout_get_udata @92
+    log4c_layout_new @93
+    log4c_layout_print @94
+    log4c_layout_set_type @95
+    log4c_layout_set_udata @96
+    log4c_layout_type_basic @97 DATA
+    log4c_layout_type_basic_r @98 DATA
+    log4c_layout_type_dated @99 DATA
+    log4c_layout_type_dated_local @100 DATA
+    log4c_layout_type_dated_local_r @101 DATA
+    log4c_layout_type_dated_r @102 DATA
+    log4c_layout_type_get @103
+    log4c_layout_type_set @104
+    log4c_layout_types_free @105
+    log4c_layout_types_print @106
+    log4c_load @107
+    log4c_logging_event_delete @108
+    log4c_logging_event_new @109
+    log4c_major_version @110 DATA
+    log4c_micro_version @111 DATA
+    log4c_minor_version @112 DATA
+    log4c_priority_to_int @113
+    log4c_priority_to_string @114
+    log4c_rc @115 DATA
+    log4c_rc_load @116
+    log4c_reread @117
+    log4c_rollingpolicy_delete @118
+    log4c_rollingpolicy_factory @119 DATA
+    log4c_rollingpolicy_fini @120
+    log4c_rollingpolicy_get @121
+    log4c_rollingpolicy_get_name @122
+    log4c_rollingpolicy_get_rfudata @123
+    log4c_rollingpolicy_get_udata @124
+    log4c_rollingpolicy_init @125
+    log4c_rollingpolicy_is_initialized @126
+    log4c_rollingpolicy_is_triggering_event @127
+    log4c_rollingpolicy_new @128
+    log4c_rollingpolicy_print @129
+    log4c_rollingpolicy_rollover @130
+    log4c_rollingpolicy_set_type @131
+    log4c_rollingpolicy_set_udata @132
+    log4c_rollingpolicy_type_get @133
+    log4c_rollingpolicy_type_set @134
+    log4c_rollingpolicy_type_sizewin @135 DATA
+    log4c_rollingpolicy_types_free @136
+    log4c_rollingpolicy_types_print @137
+    log4c_stream2_get_flags @138
+    log4c_stream2_get_fp @139
+    log4c_stream2_set_flags @140
+    log4c_stream2_set_fp @141
+    log4c_version @142
+    rollingfile_get_current_file_size @143
+    rollingfile_make_udata @144
+    rollingfile_udata_get_files_prefix @145
+    rollingfile_udata_get_logdir @146
+    rollingfile_udata_set_files_prefix @147
+    rollingfile_udata_set_logdir @148
+    rollingfile_udata_set_policy @149
+    sd_calloc @150
+    sd_debug @151
+    sd_domnode_attrs_get @152
+    sd_domnode_attrs_put @153
+    sd_domnode_attrs_remove @154
+    sd_domnode_delete @155
+    sd_domnode_fread @156
+    sd_domnode_fwrite @157
+    sd_domnode_load @158
+    sd_domnode_new @159
+    sd_domnode_read @160
+    sd_domnode_search @161
+    sd_domnode_store @162
+    sd_domnode_write @163
+    sd_error @164
+    sd_factory_delete @165
+    sd_factory_destroy @166
+    sd_factory_get @167
+    sd_factory_list @168
+    sd_factory_new @169
+    sd_factory_print @170
+    sd_getopt @171
+    sd_gmtime_r @172
+    sd_hash_add @173
+    sd_hash_begin @174
+    sd_hash_clear @175
+    sd_hash_del @176
+    sd_hash_delete @177
+    sd_hash_end @178
+    sd_hash_foreach @179
+    sd_hash_get_nelem @180
+    sd_hash_get_size @181
+    sd_hash_hash_string @182
+    sd_hash_iter_del @183
+    sd_hash_iter_next @184
+    sd_hash_iter_prev @185
+    sd_hash_lookadd @186
+    sd_hash_lookup @187
+    sd_hash_new @188
+    sd_list_add @189
+    sd_list_append @190
+    sd_list_begin @191
+    sd_list_clear @192
+    sd_list_del @193
+    sd_list_delete @194
+    sd_list_end @195
+    sd_list_foreach @196
+    sd_list_get_nelem @197
+    sd_list_iter_del @198
+    sd_list_iter_insert @199
+    sd_list_iter_next @200
+    sd_list_iter_prev @201
+    sd_list_lookadd @202
+    sd_list_lookup @203
+    sd_list_new @204
+    sd_list_prepend @205
+    sd_list_rbegin @206
+    sd_list_rend @207
+    sd_list_rforeach @208
+    sd_list_sortadd @209
+    sd_localtime_r @210
+    sd_malloc @211
+    sd_malloc_set_handler @212
+    sd_optarg @213 DATA
+    sd_opterr @214 DATA
+    sd_optind @215 DATA
+    sd_optopt @216 DATA
+    sd_realloc @217
+    sd_snprintf @218
+    sd_sprintf @219
+    sd_stack_begin @220
+    sd_stack_clear @221
+    sd_stack_delete @222
+    sd_stack_end @223
+    sd_stack_get_nelem @224
+    sd_stack_new @225
+    sd_stack_next @226
+    sd_stack_peek @227
+    sd_stack_pop @228
+    sd_stack_push @229
+    sd_stat_ctime @230
+    sd_strdup @231
+    sd_test_add @232
+    sd_test_delete @233
+    sd_test_err @234
+    sd_test_get_name @235
+    sd_test_get_udata @236
+    sd_test_get_verbose @237
+    sd_test_in @238
+    sd_test_new @239
+    sd_test_out @240
+    sd_test_run @241
+    sd_test_set_udata @242
+    sd_test_set_verbose @243
+    sd_vsnprintf @244
+    sd_vsprintf @245
+    sizewin_make_udata @246
+    sizewin_udata_set_file_maxsize @247
+    sizewin_udata_set_max_num_files @248
+    sizewin_udata_set_rfudata @249

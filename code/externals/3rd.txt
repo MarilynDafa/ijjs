@@ -1,0 +1,8 @@
+jemalloc 5.2.1
+libuv 1.35.0
+quickjs
+fastlz 0.5.0
+kcp 1.6
+mbedtls 2.16.5
+miniz 2.1.0
+log4c final
