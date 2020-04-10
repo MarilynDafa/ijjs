@@ -10,6 +10,7 @@ this project is inspired by nodejs
 - kcp
 - log4c
 - miniz
+- curl
 
 ## Supported platforms
 
