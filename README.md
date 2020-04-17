@@ -6,11 +6,14 @@ this project is inspired by nodejs
 
 - jemalloc
 - libuv
+- wasm3
+- fastlz
 - quickjs
 - kcp
 - log4c
 - miniz
 - curl
+- mbedtls
 
 ## Supported platforms
 
