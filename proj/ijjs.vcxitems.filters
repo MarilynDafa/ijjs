@@ -40,6 +40,21 @@
     <Filter Include="externals\uv">
       <UniqueIdentifier>{9e10e231-931c-4feb-b670-327904dbc974}</UniqueIdentifier>
     </Filter>
+    <Filter Include="externals\curl">
+      <UniqueIdentifier>{f906bb61-1a8e-4acf-ab94-e41330e9e1d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\curl\vauth">
+      <UniqueIdentifier>{f90186b0-cc22-451a-b8c3-a4621e585d49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\curl\vquic">
+      <UniqueIdentifier>{dfd9e08c-3d77-4045-9262-48159d208fea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\curl\vssh">
+      <UniqueIdentifier>{19f36e8c-143e-442c-b285-7a6b35457b6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\curl\vtls">
+      <UniqueIdentifier>{ac666638-3042-4f4c-95e4-2da1b3e26610}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.h">
@@ -276,12 +291,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_tinfl.h">
       <Filter>externals\miniz</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\prerequisites.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\api.h">
-      <Filter>headers</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\config.h">
       <Filter>externals\log4c</Filter>
     </ClInclude>
@@ -323,6 +332,414 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\uv-common.h">
       <Filter>externals\uv</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\cutils.h">
+      <Filter>externals\quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libregexp.h">
+      <Filter>externals\quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libregexp-opcode.h">
+      <Filter>externals\quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libunicode.h">
+      <Filter>externals\quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libunicode-table.h">
+      <Filter>externals\quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\list.h">
+      <Filter>externals\quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs.h">
+      <Filter>externals\quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-atom.h">
+      <Filter>externals\quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-libc.h">
+      <Filter>externals\quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-opcode.h">
+      <Filter>externals\quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\ijjs.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\ver.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\altsvc.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\amigaos.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\arpa_telnet.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\asyn.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-amigaos.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-dos.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-mac.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-os400.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-plan9.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-riscos.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-symbian.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-tpf.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-vxworks.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-win32.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-win32ce.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\conncache.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\connect.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\content_encoding.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\cookie.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_addrinfo.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_base64.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_config.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ctype.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_des.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_endian.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_fnmatch.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_get_line.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_gethostname.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_gssapi.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_hmac.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ldap.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_md4.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_md5.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_memory.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_memrchr.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_multibyte.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ntlm_core.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ntlm_wb.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_path.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_printf.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_range.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_rtmp.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_sasl.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_sec.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_setup.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_setup_once.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_sha256.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_sspi.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_threads.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlx.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dict.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\doh.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dotdot.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\easyif.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\escape.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\file.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\fileinfo.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\formdata.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\ftp.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\ftplistparser.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\getinfo.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\gopher.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hash.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostcheck.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostip.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_chunks.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_digest.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_negotiate.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_ntlm.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_proxy.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http2.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\if2ip.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\imap.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\inet_ntop.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\inet_pton.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\llist.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\memdebug.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\mime.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\multihandle.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\multiif.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\netrc.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\non-ascii.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\nonblock.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\parsedate.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\pingpong.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\pop3.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\progress.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\psl.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\quic.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rand.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rename.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rtsp.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\select.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\sendf.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\setopt.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\setup-os400.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\setup-vms.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\share.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\sigpipe.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\slist.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\smb.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\smtp.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\sockaddr.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socketpair.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socks.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\speedcheck.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\splay.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strcase.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strdup.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strerror.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strtok.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strtoofft.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\system_win32.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\telnet.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\tftp.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\timeval.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\transfer.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\url.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\urlapi-int.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\urldata.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\warnless.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\wildcard.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\x509asn1.h">
+      <Filter>externals\curl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -553,9 +970,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_tinfl.c">
       <Filter>externals\miniz</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\headers\api.c">
-      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode.c">
       <Filter>externals\log4c\sd</Filter>
@@ -800,9 +1214,471 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\version.c">
       <Filter>externals\uv</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\hashsd.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\errortls.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\versiontls.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\bjson.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\cutils.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libregexp.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libunicode.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\versiontls.c">
+      <Filter>externals\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\errortls.c">
+      <Filter>externals\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\hashsd.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ver.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\cli.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijjs.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\altsvc.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\amigaos.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\asyn-ares.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\asyn-thread.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\conncache.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\connect.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\content_encoding.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\cookie.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_addrinfo.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ctype.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_des.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_endian.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_fnmatch.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_get_line.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_gethostname.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_gssapi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_memrchr.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_multibyte.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ntlm_core.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ntlm_wb.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_path.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_range.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_rtmp.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_sasl.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_sspi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_threads.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dict.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\doh.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dotdot.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\easy.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\escape.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\file.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\fileinfo.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\formdata.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\ftp.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\ftplistparser.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\getenv.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\getinfo.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\gopher.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hmac.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostasyn.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostcheck.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostip.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostip4.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostip6.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostsyn.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_chunks.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_digest.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_negotiate.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_ntlm.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_proxy.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http2.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\idn_win32.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\if2ip.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\imap.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\inet_ntop.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\inet_pton.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\krb5.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\ldap.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\llist.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\memdebug.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\mime.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\mprintf.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\multi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\netrc.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\non-ascii.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\nonblock.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\nwlib.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\nwos.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\openldap.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\parsedate.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\pingpong.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\pop3.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\progress.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\psl.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rand.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rename.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rtsp.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\security.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\select.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\sendf.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\setopt.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\share.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\slist.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\smb.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\smtp.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socketpair.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socks.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socks_gssapi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socks_sspi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\speedcheck.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\splay.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strcase.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strdup.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strerror.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strtok.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strtoofft.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\system_win32.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\telnet.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\tftp.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\timeval.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\transfer.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\url.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\urlapi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\warnless.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\wildcard.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\x509asn1.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\ntlm.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\cleartext.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\cram.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\digest.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\digest_sspi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\krb5_gssapi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\krb5_sspi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\ntlm_sspi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\oauth2.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\spnego_gssapi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\spnego_sspi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\vauth.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\bearssl.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\gskit.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\gtls.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mbedtls.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mbedtls_threadlock.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mesalink.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\nss.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\openssl.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\schannel.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\schannel_verify.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\sectransp.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\vtls.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\wolfssl.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vssh\libssh.c">
+      <Filter>externals\curl\vssh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vssh\libssh2.c">
+      <Filter>externals\curl\vssh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vssh\wolfssh.c">
+      <Filter>externals\curl\vssh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vquic\ngtcp2.c">
+      <Filter>externals\curl\vquic</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vquic\quiche.c">
+      <Filter>externals\curl\vquic</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ijjs\proj\..\code\externals\curl\curlhash.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ijjs\proj\..\code\externals\curl\curlbase64.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ijjs\proj\..\code\externals\curl\curlmd4.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ijjs\proj\..\code\externals\curl\curlmd5.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ijjs\proj\..\code\externals\curl\curlsha256.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\ijjs\proj\..\code\externals\curl\curlversion.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)..\code\externals\3rd.txt">

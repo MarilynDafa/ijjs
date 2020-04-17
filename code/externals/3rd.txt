@@ -1,6 +1,7 @@
 jemalloc 5.2.1
 libuv 1.35.0
-quickjs
+curl 7.69.1
+quickjs 20200316
 fastlz 0.5.0
 kcp 1.6
 mbedtls 2.16.5

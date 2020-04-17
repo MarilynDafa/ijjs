@@ -28,26 +28,26 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -112,13 +112,13 @@
       <AdditionalIncludeDirectories>..\code\externals;..\code\headers;..\code\externals\msvc_compat;..\code\externals\curl;..\code\externals\log4c;..\code\externals\sigar\src\os\win32;..\code\externals\sigar\include;..\code\externals\jemalloc\include\msvc_compat;..\code\externals\jemalloc\include;..\code\externals\redis\include;..\code\externals\uv\include;..\code\externals\uv\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <DisableSpecificWarnings>4018;4819;4101;4244;4090;4267;4005</DisableSpecificWarnings>
-      <PreprocessorDefinitions>MK_EXPORT;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>ws2_32.lib;Psapi.lib;iphlpapi.lib;userenv.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;Psapi.lib;wldap32.lib;iphlpapi.lib;userenv.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -133,13 +133,13 @@
       <AdditionalIncludeDirectories>..\code\externals;..\code\headers;..\code\externals\msvc_compat;..\code\externals\curl;..\code\externals\log4c;..\code\externals\sigar\src\os\win32;..\code\externals\sigar\include;..\code\externals\jemalloc\include\msvc_compat;..\code\externals\jemalloc\include;..\code\externals\redis\include;..\code\externals\uv\include;..\code\externals\uv\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <DisableSpecificWarnings>4018;4819;4101;4244;4090;4267;4005</DisableSpecificWarnings>
-      <PreprocessorDefinitions>MK_EXPORT;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>ws2_32.lib;Psapi.lib;iphlpapi.lib;userenv.lib;netapi32.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;Psapi.lib;wldap32.lib;iphlpapi.lib;userenv.lib;netapi32.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,15 +156,15 @@
       <AdditionalIncludeDirectories>..\code\externals;..\code\headers;..\code\externals\msvc_compat;..\code\externals\curl;..\code\externals\log4c;..\code\externals\sigar\src\os\win32;..\code\externals\sigar\include;..\code\externals\jemalloc\include\msvc_compat;..\code\externals\jemalloc\include;..\code\externals\redis\include;..\code\externals\uv\include;..\code\externals\uv\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <DisableSpecificWarnings>4018;4819;4101;4244;4090;4267;4005</DisableSpecificWarnings>
-      <PreprocessorDefinitions>MK_EXPORT;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>ws2_32.lib;Psapi.lib;iphlpapi.lib;userenv.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;Psapi.lib;wldap32.lib;iphlpapi.lib;userenv.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -181,15 +181,15 @@
       <AdditionalIncludeDirectories>..\code\externals;..\code\headers;..\code\externals\msvc_compat;..\code\externals\curl;..\code\externals\log4c;..\code\externals\sigar\src\os\win32;..\code\externals\sigar\include;..\code\externals\jemalloc\include\msvc_compat;..\code\externals\jemalloc\include;..\code\externals\redis\include;..\code\externals\uv\include;..\code\externals\uv\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <DisableSpecificWarnings>4018;4819;4101;4244;4090;4267;4005</DisableSpecificWarnings>
-      <PreprocessorDefinitions>MK_EXPORT;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>ws2_32.lib;Psapi.lib;iphlpapi.lib;userenv.lib;netapi32.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;Psapi.lib;wldap32.lib;iphlpapi.lib;userenv.lib;netapi32.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
