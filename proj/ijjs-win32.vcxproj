@@ -105,14 +105,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>..\code\externals;..\code\headers;..\code\externals\msvc_compat;..\code\externals\curl;..\code\externals\log4c;..\code\externals\sigar\src\os\win32;..\code\externals\sigar\include;..\code\externals\jemalloc\include\msvc_compat;..\code\externals\jemalloc\include;..\code\externals\redis\include;..\code\externals\uv\include;..\code\externals\uv\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <DisableSpecificWarnings>4018;4819;4101;4244;4090;4267;4005</DisableSpecificWarnings>
-      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;d_m3HasWASI;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,14 +125,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>..\code\externals;..\code\headers;..\code\externals\msvc_compat;..\code\externals\curl;..\code\externals\log4c;..\code\externals\sigar\src\os\win32;..\code\externals\sigar\include;..\code\externals\jemalloc\include\msvc_compat;..\code\externals\jemalloc\include;..\code\externals\redis\include;..\code\externals\uv\include;..\code\externals\uv\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <DisableSpecificWarnings>4018;4819;4101;4244;4090;4267;4005</DisableSpecificWarnings>
-      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;d_m3HasWASI;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,14 +147,13 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>..\code\externals;..\code\headers;..\code\externals\msvc_compat;..\code\externals\curl;..\code\externals\log4c;..\code\externals\sigar\src\os\win32;..\code\externals\sigar\include;..\code\externals\jemalloc\include\msvc_compat;..\code\externals\jemalloc\include;..\code\externals\redis\include;..\code\externals\uv\include;..\code\externals\uv\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <DisableSpecificWarnings>4018;4819;4101;4244;4090;4267;4005</DisableSpecificWarnings>
-      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;d_m3HasWASI;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
@@ -177,14 +174,13 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>..\code\externals;..\code\headers;..\code\externals\msvc_compat;..\code\externals\curl;..\code\externals\log4c;..\code\externals\sigar\src\os\win32;..\code\externals\sigar\include;..\code\externals\jemalloc\include\msvc_compat;..\code\externals\jemalloc\include;..\code\externals\redis\include;..\code\externals\uv\include;..\code\externals\uv\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <DisableSpecificWarnings>4018;4819;4101;4244;4090;4267;4005</DisableSpecificWarnings>
-      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MK_EXPORT;CURL_STATICLIB;BUILDING_LIBCURL;d_m3HasWASI;CURL_HIDDEN_SYMBOLS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_CONFIG_H;LOG4C_RCPATH=".";JEMALLOC_NO_PRIVATE_NAMESPACE;_CRT_SECURE_NO_WARNINGS;WIN32;config_opt_safety_checks=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>

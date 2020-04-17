@@ -55,6 +55,9 @@
     <Filter Include="externals\curl\vtls">
       <UniqueIdentifier>{ac666638-3042-4f4c-95e4-2da1b3e26610}</UniqueIdentifier>
     </Filter>
+    <Filter Include="externals\wasm">
+      <UniqueIdentifier>{d58a517e-3535-4cb2-a375-6a4577f33369}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.h">
@@ -740,6 +743,57 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\x509asn1.h">
       <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_defs.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_libc.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_wasi.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_code.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_compile.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_config.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_config_platforms.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_core.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_emit.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_env.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_exception.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_exec.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_exec_defs.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_info.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_math_utils.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\wasm3.h">
+      <Filter>externals\wasm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1667,6 +1721,48 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlmd5.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlsha256.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlversion.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_libc.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_meta_wasi.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_wasi.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_bind.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_code.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_compile.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_core.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_emit.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_env.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_exec.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_info.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_module.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_optimize.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_parse.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)..\code\externals\3rd.txt">
