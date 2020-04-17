@@ -5,3 +5,5 @@
 /proj/.vs/ijjs
 /.vs
 /proj/Debug/win32
+*.user
+*.pdb
