@@ -8,3 +8,14 @@ kcp 1.6
 mbedtls 2.16.5
 miniz 2.1.0
 log4c final
+
+jsÏà¹Ø´úÂë
+ij_modules
+vscode
+sigar
+redis
+PostgreSQL
+express
+three
+http-server
+ijpm

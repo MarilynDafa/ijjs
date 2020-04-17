@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="headers">
+      <UniqueIdentifier>{10fd7752-5484-4609-8605-2dcb3e4591ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{753b92b6-3919-40f1-85ce-d4f1e2a9cf91}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\code\externals\uv\src\unix\atomic-ops.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\unix\internal.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\unix\linux-syscalls.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\unix\os390-syscalls.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\unix\spinlock.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\code\externals\uv\src\unix\aix.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\aix-common.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\android-ifaddrs.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\async.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\bsd-ifaddrs.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\bsd-proctitle.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\core.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\cygwin.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\darwin.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\darwin-proctitle.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\dl.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\freebsd.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\fs.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\fsevents.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\getaddrinfo.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\getnameinfo.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\haiku.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\ibmi.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\kqueue.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\linux-core.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\linux-inotify.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\linux-syscalls.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\loop.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\loop-watcher.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\netbsd.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\no-fsevents.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\no-proctitle.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\openbsd.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\os390.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\os390-syscalls.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\pipe.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\poll.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\posix-hrtime.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\posix-poll.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\process.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\procfs-exepath.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\proctitle.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\pthread-fixes.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\random-devurandom.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\random-getentropy.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\random-getrandom.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\random-sysctl-linux.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\signal.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\stream.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\sunos.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\sysinfo-loadavg.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\sysinfo-memory.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\tcp.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\thread.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\tty.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\udp.c">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

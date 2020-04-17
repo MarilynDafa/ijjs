@@ -1715,12 +1715,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vquic\quiche.c">
       <Filter>externals\curl\vquic</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlbase64.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlhash.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlmd4.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlmd5.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlsha256.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlversion.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_libc.c">
       <Filter>externals\wasm</Filter>
     </ClCompile>
@@ -1762,6 +1756,24 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_parse.c">
       <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlbase64.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlhash.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlmd4.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlmd5.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlsha256.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlversion.c">
+      <Filter>externals\curl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
