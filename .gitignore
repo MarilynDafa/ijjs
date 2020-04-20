@@ -7,3 +7,4 @@
 /proj/Debug/win32
 *.user
 *.pdb
+/modules/sigar/Debug

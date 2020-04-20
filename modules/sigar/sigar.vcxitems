@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -12,5 +12,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)sigar.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sigar_cache.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sigar_fileinfo.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sigar_format.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sigar_getline.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sigar_ptql.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sigar_signal.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)sigar_util.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sigar.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sigar_fileinfo.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sigar_format.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sigar_getline.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sigar_log.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sigar_private.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sigar_ptql.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)sigar_util.h" />
   </ItemGroup>
 </Project>
