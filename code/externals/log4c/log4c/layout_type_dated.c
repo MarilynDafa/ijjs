@@ -13,11 +13,10 @@ static const char version[] = "$Id: layout_type_dated.c,v 1.10 2013/09/29 17:38:
 
 #include <log4c/layout.h>
 #include <log4c/priority.h>
-#include <sd/sprintf.h>
-#include <sd/sd_xplatform.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <sd/sd_xplatform.h>
 
 /*******************************************************************************/
 static const char* dated_format(

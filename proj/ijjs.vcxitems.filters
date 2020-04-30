@@ -1,340 +1,1038 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)..\code\externals\3rd.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <Filter Include="externals">
-      <UniqueIdentifier>{b8d4d0fa-5ca5-433d-aa71-329d1119616d}</UniqueIdentifier>
+      <UniqueIdentifier>{7699ade1-c3bf-4ac2-b64e-537ce70595a9}</UniqueIdentifier>
     </Filter>
     <Filter Include="headers">
-      <UniqueIdentifier>{bd51b07c-4270-4828-a0fb-8ab4c7f7eba6}</UniqueIdentifier>
+      <UniqueIdentifier>{3a149e33-13b0-4e8e-aa11-a64422614ab1}</UniqueIdentifier>
     </Filter>
     <Filter Include="src">
-      <UniqueIdentifier>{dab078c6-9dc5-4b69-9cce-add8a4ae1483}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="externals\fastlz">
-      <UniqueIdentifier>{ba895204-97d6-4f61-90dd-87102ee5bf62}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="externals\mbedtls">
-      <UniqueIdentifier>{76ae99ac-3fae-40dd-a028-7f4c78eeabb7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="externals\miniz">
-      <UniqueIdentifier>{57ea584f-2f5b-42a4-936a-583b57c81c97}</UniqueIdentifier>
+      <UniqueIdentifier>{283e31e3-85cd-484e-93c1-8d4f7481f568}</UniqueIdentifier>
     </Filter>
     <Filter Include="externals\kcp">
-      <UniqueIdentifier>{742b14b7-05d3-4335-b9bc-561122c53903}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="externals\log4c">
-      <UniqueIdentifier>{68fce271-a9cd-40fd-af2d-f6e5135cb6c6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="externals\log4c\4c">
-      <UniqueIdentifier>{a11596a5-38bd-415e-9819-1b1961bd33c8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="externals\log4c\sd">
-      <UniqueIdentifier>{63116716-3e29-4431-9e0c-4635a6d3b729}</UniqueIdentifier>
+      <UniqueIdentifier>{d584d966-5dac-4abf-8d13-668e61f5c6b5}</UniqueIdentifier>
     </Filter>
     <Filter Include="externals\quickjs">
-      <UniqueIdentifier>{9ec8beab-8cf1-413d-95b5-975eee10deb3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="externals\jemalloc">
-      <UniqueIdentifier>{3f868cf0-516d-4c0e-8163-cbed82813dd1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="externals\uv">
-      <UniqueIdentifier>{9e10e231-931c-4feb-b670-327904dbc974}</UniqueIdentifier>
+      <UniqueIdentifier>{b4e18afa-8b74-413f-b3e1-8b63ca542acc}</UniqueIdentifier>
     </Filter>
     <Filter Include="externals\curl">
-      <UniqueIdentifier>{f906bb61-1a8e-4acf-ab94-e41330e9e1d0}</UniqueIdentifier>
+      <UniqueIdentifier>{4a471e70-3e7d-43c1-a8ba-9c3891370cb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\curl\curl">
+      <UniqueIdentifier>{ee74272e-4112-451f-978c-e13d916e21c3}</UniqueIdentifier>
     </Filter>
     <Filter Include="externals\curl\vauth">
-      <UniqueIdentifier>{f90186b0-cc22-451a-b8c3-a4621e585d49}</UniqueIdentifier>
+      <UniqueIdentifier>{9054a62b-363a-4564-b607-f6dcdf6463e5}</UniqueIdentifier>
     </Filter>
     <Filter Include="externals\curl\vquic">
-      <UniqueIdentifier>{dfd9e08c-3d77-4045-9262-48159d208fea}</UniqueIdentifier>
+      <UniqueIdentifier>{0cfaf138-0656-4e1c-baa6-0599eb69967c}</UniqueIdentifier>
     </Filter>
     <Filter Include="externals\curl\vssh">
-      <UniqueIdentifier>{19f36e8c-143e-442c-b285-7a6b35457b6e}</UniqueIdentifier>
+      <UniqueIdentifier>{c9526668-01f4-451d-8fab-a7b65be44747}</UniqueIdentifier>
     </Filter>
     <Filter Include="externals\curl\vtls">
-      <UniqueIdentifier>{ac666638-3042-4f4c-95e4-2da1b3e26610}</UniqueIdentifier>
+      <UniqueIdentifier>{0c45fc2b-b5cb-4a23-a821-d413e562500c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\fastlz">
+      <UniqueIdentifier>{ff630f8b-08fb-4e5f-b090-02d9f40759dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\log4c">
+      <UniqueIdentifier>{9557ea25-79df-416b-9faa-feafbed60f49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\log4c\sd">
+      <UniqueIdentifier>{fc4240f9-4cc1-41ed-8405-dda14745960c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\log4c\4c">
+      <UniqueIdentifier>{6fecaa39-2cb6-45f6-bbab-fe0c620cec9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\mbedtls">
+      <UniqueIdentifier>{d08b3a72-9853-4bbd-abc5-e8c88066bdd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\miniz">
+      <UniqueIdentifier>{b4631ba9-be20-4d37-9adb-078374caf5ad}</UniqueIdentifier>
     </Filter>
     <Filter Include="externals\wasm">
-      <UniqueIdentifier>{d58a517e-3535-4cb2-a375-6a4577f33369}</UniqueIdentifier>
+      <UniqueIdentifier>{33ef1aff-89e6-49d6-9d49-9c5e8f7ddaee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\uv">
+      <UniqueIdentifier>{86e566a4-1d05-45c6-9a10-25482b594ec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\jemalloc">
+      <UniqueIdentifier>{126a0428-6303-40a3-b469-926774434190}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.h">
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\kcp\ikcp.c">
+      <Filter>externals\kcp</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\cutils.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libregexp.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libunicode.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\altsvc.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\amigaos.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\asyn-ares.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\asyn-thread.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\conncache.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\connect.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\content_encoding.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\cookie.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_addrinfo.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ctype.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_des.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_endian.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_fnmatch.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_get_line.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_gethostname.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_gssapi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_memrchr.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_multibyte.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ntlm_core.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ntlm_wb.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_path.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_range.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_rtmp.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_sasl.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_sspi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_threads.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlbase64.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlhash.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlmd4.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlmd5.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlsha256.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlversion.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dict.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\doh.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dotdot.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\easy.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\escape.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\file.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\fileinfo.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\formdata.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\ftp.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\ftplistparser.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\getenv.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\getinfo.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\gopher.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hmac.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostasyn.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostcheck.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostip.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostip4.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostip6.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostsyn.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_chunks.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_digest.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_negotiate.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_ntlm.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_proxy.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http2.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\idn_win32.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\if2ip.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\imap.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\inet_ntop.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\inet_pton.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\krb5.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\ldap.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\llist.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\memdebug.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\mime.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\mprintf.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\multi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\netrc.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\non-ascii.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\nonblock.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\nwlib.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\nwos.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\openldap.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\parsedate.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\pingpong.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\pop3.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\progress.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\psl.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rand.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rename.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rtsp.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\security.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\select.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\sendf.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\setopt.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\share.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\slist.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\smb.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\smtp.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socketpair.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socks.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socks_gssapi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socks_sspi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\speedcheck.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\splay.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strcase.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strdup.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strerror.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strtok.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strtoofft.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\system_win32.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\telnet.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\tftp.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\timeval.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\transfer.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\url.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\urlapi.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\warnless.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\wildcard.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\x509asn1.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\bearssl.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\gskit.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\gtls.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mbedtls.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mbedtls_threadlock.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mesalink.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\nss.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\openssl.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\schannel.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\schannel_verify.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\sectransp.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\vtls.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\wolfssl.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vssh\libssh.c">
+      <Filter>externals\curl\vssh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vssh\libssh2.c">
+      <Filter>externals\curl\vssh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vssh\wolfssh.c">
+      <Filter>externals\curl\vssh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vquic\ngtcp2.c">
+      <Filter>externals\curl\vquic</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vquic\quiche.c">
+      <Filter>externals\curl\vquic</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\cleartext.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\cram.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\digest.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\digest_sspi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\krb5_gssapi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\krb5_sspi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\ntlm.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\ntlm_sspi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\oauth2.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\spnego_gssapi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\spnego_sspi.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\vauth.c">
+      <Filter>externals\curl\vauth</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.c">
       <Filter>externals\fastlz</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aes.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml-parser.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml-scanner.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\error4c.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\factory.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\hashsd.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\list.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\malloc.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sprintf.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sprintf.osf.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\stack.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_rollingfile.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_stream.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_stream2.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\category.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\init.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_basic.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_basic_r.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_local.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_local_r.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_r.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\logging_event.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\priority.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rc.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rollingpolicy.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rollingpolicy_type_sizewin.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\version4c.c">
+      <Filter>externals\log4c\4c</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aes.c">
+      <Filter>externals\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aesni.c">
+      <Filter>externals\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\arc4.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aesni.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aria.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\arc4.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\asn1parse.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aria.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\asn1write.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\asn1.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\base64.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\asn1write.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\bignum.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\base64.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\blowfish.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\bignum.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\camellia.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\blowfish.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ccm.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\bn_mul.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\certs.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\camellia.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\chacha20.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ccm.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\chachapoly.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\certs.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cipher.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\check_config.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cipher_wrap.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cipher.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cmac.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cipher_internal.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ctr_drbg.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cmac.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\debug.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\compat-1.3.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\des.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\config.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\dhm.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ctr_drbg.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecdh.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\debug.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecdsa.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\des.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecjpake.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\dhm.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecp.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecdh.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecp_curves.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecdsa.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\entropy.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecjpake.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\entropy_poll.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecp.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\errortls.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecp_internal.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\gcm.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\entropy.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\havege.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\entropy_poll.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\hkdf.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\error.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\hmac_drbg.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\gcm.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\havege.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md_wrap.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\hmac_drbg.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md2.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md4.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md_internal.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md5.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md2.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\memory_buffer_alloc.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md4.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\net_sockets.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md5.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\nist_kw.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\memory_buffer_alloc.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\oid.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\net.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\padlock.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\net_sockets.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pem.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\oid.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pk.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\padlock.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pk_wrap.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pem.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs5.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pk.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs11.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pk_internal.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs12.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs5.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkparse.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs11.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkwrite.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs12.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\platform.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\platform.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\platform_util.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\platform_time.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\poly1305.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\platform_util.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ripemd160.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ripemd160.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\rsa.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\rsa.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\rsa_internal.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\rsa_internal.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha1.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha1.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha256.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha256.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha512.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha512.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_cache.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_ciphersuites.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_cache.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_cli.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_ciphersuites.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_cookie.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_cookie.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_srv.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_internal.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_ticket.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_ticket.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_tls.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\threading.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\threading.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\timing.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\timing.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\version.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\version_features.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\versiontls.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_crl.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_crt.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_create.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_csr.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_crl.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\xtea.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_crt.c">
       <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_csr.c">
+      <Filter>externals\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509write_crt.c">
+      <Filter>externals\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509write_csr.c">
+      <Filter>externals\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\xtea.c">
+      <Filter>externals\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz.c">
       <Filter>externals\miniz</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_common.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_tdef.c">
       <Filter>externals\miniz</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_tdef.h">
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_tinfl.c">
       <Filter>externals\miniz</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_tinfl.h">
-      <Filter>externals\miniz</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\config.h">
-      <Filter>externals\log4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c.h">
-      <Filter>externals\log4c</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_libc.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_meta_wasi.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_wasi.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_bind.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_code.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_compile.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_core.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_emit.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_env.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_exec.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_info.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_module.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_optimize.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_parse.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sd_xplatform.c">
+      <Filter>externals\log4c\sd</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\fs-poll.c">
+      <Filter>externals\uv</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\idna.c">
+      <Filter>externals\uv</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\inet.c">
+      <Filter>externals\uv</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\random.c">
+      <Filter>externals\uv</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\strscpy.c">
+      <Filter>externals\uv</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\threadpool.c">
+      <Filter>externals\uv</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\timer.c">
+      <Filter>externals\uv</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\uv-common.c">
+      <Filter>externals\uv</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\uv-data-getter-setters.c">
+      <Filter>externals\uv</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\version.c">
+      <Filter>externals\uv</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\witness.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\arena.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\background_thread.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\base.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\bin.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\bitmap.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\ckh.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\ctl.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\div.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\extent.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\extent_dss.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\extent_mmap.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\hash.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\hook.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\jemalloc.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\large.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\log.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\malloc_io.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\mutex.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\mutex_pool.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\nstime.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\pages.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\prng.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\prof.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\rtree.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\safety_check.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\sc.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\stats.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\sz.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\tcache.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\test_hooks.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\ticker.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\tsd.c">
+      <Filter>externals\jemalloc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\kcp\ikcp.h">
       <Filter>externals\kcp</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\chacha20.h">
-      <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\chachapoly.h">
-      <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\hkdf.h">
-      <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\nist_kw.h">
-      <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\poly1305.h">
-      <Filter>externals\mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\private.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\heap-inl.h">
-      <Filter>externals\uv</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\idna.h">
-      <Filter>externals\uv</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\queue.h">
-      <Filter>externals\uv</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\strscpy.h">
-      <Filter>externals\uv</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\uv-common.h">
-      <Filter>externals\uv</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\cutils.h">
       <Filter>externals\quickjs</Filter>
@@ -363,14 +1061,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-libc.h">
       <Filter>externals\quickjs</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-opcode.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\unicode_gen_def.h">
       <Filter>externals\quickjs</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\ijjs.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\ver.h">
-      <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\altsvc.h">
       <Filter>externals\curl</Filter>
@@ -744,6 +1436,453 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\x509asn1.h">
       <Filter>externals\curl</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl\curl.h">
+      <Filter>externals\curl\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl\curlver.h">
+      <Filter>externals\curl\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl\easy.h">
+      <Filter>externals\curl\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl\mprintf.h">
+      <Filter>externals\curl\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl\multi.h">
+      <Filter>externals\curl\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl\stdcheaders.h">
+      <Filter>externals\curl\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl\system.h">
+      <Filter>externals\curl\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl\typecheck-gcc.h">
+      <Filter>externals\curl\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl\urlapi.h">
+      <Filter>externals\curl\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\bearssl.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\gskit.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\gtls.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mbedtls.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mbedtls_threadlock.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mesalink.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\nssg.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\openssl.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\schannel.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\sectransp.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\vtls.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\wolfssl.h">
+      <Filter>externals\curl\vtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vssh\ssh.h">
+      <Filter>externals\curl\vssh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vssh\wolfssh.h">
+      <Filter>externals\curl\vssh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vquic\ngtcp2.h">
+      <Filter>externals\curl\vquic</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vquic\quiche.h">
+      <Filter>externals\curl\vquic</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\digest.h">
+      <Filter>externals\curl\vauth</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\ntlm.h">
+      <Filter>externals\curl\vauth</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\vauth.h">
+      <Filter>externals\curl\vauth</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.h">
+      <Filter>externals\fastlz</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\config.h">
+      <Filter>externals\log4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c.h">
+      <Filter>externals\log4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\defs.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml-parser.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml-scanner.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\error.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\factory.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\hash.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\list.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\malloc.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sprintf.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\stack.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_rollingfile.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_stream.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_stream2.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\buffer.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\category.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\config-win32.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\defs.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\init.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_basic.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_basic_r.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_local.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_local_r.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_r.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\location_info.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\logging_event.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\priority.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rc.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rollingpolicy.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rollingpolicy_type_sizewin.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\version.h">
+      <Filter>externals\log4c\4c</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-opcode.h">
+      <Filter>externals\quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aes.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aesni.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\arc4.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aria.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\asn1.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\asn1write.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\base64.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\bignum.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\blowfish.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\bn_mul.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\camellia.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ccm.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\certs.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\chacha20.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\chachapoly.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\check_config.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cipher.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cipher_internal.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cmac.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\compat-1.3.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\config.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ctr_drbg.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\debug.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\des.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\dhm.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecdh.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecdsa.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecjpake.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecp.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecp_internal.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\entropy.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\entropy_poll.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\error.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\gcm.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\havege.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\hkdf.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\hmac_drbg.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md_internal.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md2.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md4.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md5.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\memory_buffer_alloc.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\net.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\net_sockets.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\nist_kw.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\oid.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\padlock.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pem.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pk.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pk_internal.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs5.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs11.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs12.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\platform.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\platform_time.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\platform_util.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\poly1305.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ripemd160.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\rsa.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\rsa_internal.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha1.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha256.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha512.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_cache.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_ciphersuites.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_cookie.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_internal.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_ticket.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\threading.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\timing.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\version.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_crl.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_crt.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_csr.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\xtea.h">
+      <Filter>externals\mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz.h">
+      <Filter>externals\miniz</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_common.h">
+      <Filter>externals\miniz</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_tdef.h">
+      <Filter>externals\miniz</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_tinfl.h">
+      <Filter>externals\miniz</Filter>
+    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3.h">
       <Filter>externals\wasm</Filter>
     </ClInclude>
@@ -795,998 +1934,31 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\wasm3.h">
       <Filter>externals\wasm</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sd_xplatform.h">
+      <Filter>externals\log4c\sd</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\heap-inl.h">
+      <Filter>externals\uv</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\idna.h">
+      <Filter>externals\uv</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\queue.h">
+      <Filter>externals\uv</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\strscpy.h">
+      <Filter>externals\uv</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\uv-common.h">
+      <Filter>externals\uv</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\include\jemalloc\jemalloc.h">
+      <Filter>externals\jemalloc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.c">
-      <Filter>externals\fastlz</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aes.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aesni.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\arc4.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\aria.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\asn1parse.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\asn1write.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\base64.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\bignum.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\blowfish.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\camellia.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ccm.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\certs.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cipher.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cipher_wrap.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\cmac.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ctr_drbg.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\debug.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\des.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\dhm.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecdh.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecdsa.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecjpake.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecp.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ecp_curves.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\entropy.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\entropy_poll.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\gcm.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\havege.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\hmac_drbg.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md_wrap.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md2.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md4.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\md5.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\memory_buffer_alloc.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\net_sockets.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\oid.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\padlock.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pem.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pk.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pk_wrap.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs5.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs11.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkcs12.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkparse.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\pkwrite.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\platform.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\platform_util.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ripemd160.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\rsa.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\rsa_internal.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha1.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha256.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\sha512.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_cache.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_ciphersuites.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_cli.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_cookie.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_srv.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_ticket.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\ssl_tls.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\threading.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\timing.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\version_features.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_create.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_crl.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_crt.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509_csr.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509write_crt.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\x509write_csr.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\xtea.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz.c">
-      <Filter>externals\miniz</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_tdef.c">
-      <Filter>externals\miniz</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_tinfl.c">
-      <Filter>externals\miniz</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml-parser.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml-scanner.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\factory.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\list.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\malloc.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sd_xplatform.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sprintf.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sprintf.osf.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\stack.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender.c">
+    <None Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\liblog4c.def">
       <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_rollingfile.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_stream.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_stream2.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_syslog.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\category.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\init.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_basic.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_basic_r.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_local.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_local_r.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_r.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\logging_event.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\priority.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rollingpolicy.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rollingpolicy_type_sizewin.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rc.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\error4c.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\version4c.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\kcp\ikcp.c">
-      <Filter>externals\kcp</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\arena.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\background_thread.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\base.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\bin.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\bitmap.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\ckh.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\ctl.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\div.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\extent.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\extent_dss.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\extent_mmap.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\hash.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\hook.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\jemalloc.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\large.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\log.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\malloc_io.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\mutex.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\mutex_pool.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\nstime.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\pages.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\prng.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\prof.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\rtree.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\safety_check.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\sc.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\stats.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\sz.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\tcache.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\test_hooks.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\ticker.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\tsd.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\witness.c">
-      <Filter>externals\jemalloc</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\chacha20.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\chachapoly.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\hkdf.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\nist_kw.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\poly1305.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\fs-poll.c">
-      <Filter>externals\uv</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\idna.c">
-      <Filter>externals\uv</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\inet.c">
-      <Filter>externals\uv</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\random.c">
-      <Filter>externals\uv</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\strscpy.c">
-      <Filter>externals\uv</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\threadpool.c">
-      <Filter>externals\uv</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\timer.c">
-      <Filter>externals\uv</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\uv-common.c">
-      <Filter>externals\uv</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\uv-data-getter-setters.c">
-      <Filter>externals\uv</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\version.c">
-      <Filter>externals\uv</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\bjson.c">
-      <Filter>externals\quickjs</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\cutils.c">
-      <Filter>externals\quickjs</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libregexp.c">
-      <Filter>externals\quickjs</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libunicode.c">
-      <Filter>externals\quickjs</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs.c">
-      <Filter>externals\quickjs</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\versiontls.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\errortls.c">
-      <Filter>externals\mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\hashsd.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ver.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\cli.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijjs.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\altsvc.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\amigaos.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\asyn-ares.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\asyn-thread.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\conncache.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\connect.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\content_encoding.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\cookie.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_addrinfo.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ctype.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_des.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_endian.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_fnmatch.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_get_line.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_gethostname.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_gssapi.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_memrchr.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_multibyte.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ntlm_core.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_ntlm_wb.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_path.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_range.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_rtmp.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_sasl.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_sspi.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curl_threads.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dict.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\doh.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dotdot.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\easy.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\escape.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\file.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\fileinfo.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\formdata.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\ftp.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\ftplistparser.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\getenv.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\getinfo.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\gopher.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hmac.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostasyn.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostcheck.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostip.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostip4.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostip6.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\hostsyn.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_chunks.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_digest.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_negotiate.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_ntlm.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http_proxy.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\http2.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\idn_win32.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\if2ip.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\imap.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\inet_ntop.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\inet_pton.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\krb5.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\ldap.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\llist.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\memdebug.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\mime.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\mprintf.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\multi.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\netrc.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\non-ascii.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\nonblock.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\nwlib.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\nwos.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\openldap.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\parsedate.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\pingpong.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\pop3.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\progress.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\psl.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rand.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rename.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\rtsp.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\security.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\select.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\sendf.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\setopt.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\share.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\slist.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\smb.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\smtp.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socketpair.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socks.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socks_gssapi.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\socks_sspi.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\speedcheck.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\splay.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strcase.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strdup.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strerror.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strtok.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\strtoofft.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\system_win32.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\telnet.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\tftp.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\timeval.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\transfer.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\url.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\urlapi.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\warnless.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\wildcard.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\x509asn1.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\ntlm.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\cleartext.c">
-      <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\cram.c">
-      <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\digest.c">
-      <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\digest_sspi.c">
-      <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\krb5_gssapi.c">
-      <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\krb5_sspi.c">
-      <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\ntlm_sspi.c">
-      <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\oauth2.c">
-      <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\spnego_gssapi.c">
-      <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\spnego_sspi.c">
-      <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\vauth.c">
-      <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\bearssl.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\gskit.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\gtls.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mbedtls.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mbedtls_threadlock.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mesalink.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\nss.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\openssl.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\schannel.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\schannel_verify.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\sectransp.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\vtls.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\wolfssl.c">
-      <Filter>externals\curl\vtls</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vssh\libssh.c">
-      <Filter>externals\curl\vssh</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vssh\libssh2.c">
-      <Filter>externals\curl\vssh</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vssh\wolfssh.c">
-      <Filter>externals\curl\vssh</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vquic\ngtcp2.c">
-      <Filter>externals\curl\vquic</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vquic\quiche.c">
-      <Filter>externals\curl\vquic</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_libc.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_meta_wasi.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_wasi.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_bind.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_code.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_compile.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_core.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_emit.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_env.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_exec.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_info.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_module.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_optimize.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_parse.c">
-      <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlbase64.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlhash.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlmd4.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlmd5.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlsha256.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\curlversion.c">
-      <Filter>externals\curl</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="$(MSBuildThisFileDirectory)..\code\externals\3rd.txt">
-      <Filter>externals</Filter>
-    </Text>
-    <Text Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\CMakeLists.txt">
-      <Filter>externals\mbedtls</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)..\code\externals\mbedtls\Makefile">
-      <Filter>externals\mbedtls</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -38,14 +38,14 @@ extern "C" {
  * glibc defines.
  */
 /* #undef JEMALLOC_USE_CXX_THROW */
-
-#ifdef _MSC_VER
-#  ifdef _WIN64
+#define LG_HUGEPAGE 21
+#  if defined(_WIN64) || defined(__amd64) || defined(__APPLE__)
 #    define LG_SIZEOF_PTR_WIN 3
+#		define LG_VADDR 64
 #  else
 #    define LG_SIZEOF_PTR_WIN 2
+#	define LG_VADDR 32
 #  endif
-#endif
 
 /* sizeof(void *) == 2^LG_SIZEOF_PTR. */
 #define LG_SIZEOF_PTR LG_SIZEOF_PTR_WIN
@@ -83,11 +83,15 @@ extern "C" {
 #include <stdbool.h>
 #include <stdint.h>
 #include <limits.h>
+#ifdef WIN32
+#include <string.h>
+#else
 #include <strings.h>
+#endif
 
-#define JEMALLOC_VERSION "0.0.0-0-g0000000000000000000000000000000000000000"
-#define JEMALLOC_VERSION_MAJOR 0
-#define JEMALLOC_VERSION_MINOR 0
+#define JEMALLOC_VERSION "5.2.1-0-g0000000000000000000000000000000000000000"
+#define JEMALLOC_VERSION_MAJOR 5
+#define JEMALLOC_VERSION_MINOR 2
 #define JEMALLOC_VERSION_BUGFIX 0
 #define JEMALLOC_VERSION_NREV 0
 #define JEMALLOC_VERSION_GID "0000000000000000000000000000000000000000"
@@ -137,7 +141,6 @@ extern "C" {
 #else
 #  define JEMALLOC_CXX_THROW
 #endif
-
 #if defined(_MSC_VER)
 #  define JEMALLOC_ATTR(s)
 #  define JEMALLOC_ALIGNED(s) __declspec(align(s))

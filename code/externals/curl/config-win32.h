@@ -715,7 +715,7 @@ Vista
 
 /* Define to use the Windows crypto library. */
 #if !defined(CURL_WINDOWS_APP)
-#define USE_WIN32_CRYPTO
+//#define USE_WIN32_CRYPTO
 #endif
 
 /* Define to use Unix sockets. */

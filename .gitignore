@@ -8,3 +8,8 @@
 *.user
 *.pdb
 /modules/sigar/Debug
+*.obj
+*.tlog
+*.log
+*.idb
+*.rdb

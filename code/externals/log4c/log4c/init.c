@@ -129,7 +129,7 @@ extern int log4c_init(void)
 	int i;
 	sd_debug("looking for conf files...");
 	snprintf(rcfiles[0].name, sizeof(rcfiles[0].name) - 1, "%s/log4crc", 
-		 getenv("LOG4C_RCPATH") ? getenv("LOG4C_RCPATH") : LOG4C_RCPATH);
+		 getenv("LOG4C_RCPATH") ? getenv("LOG4C_RCPATH") : ".");
 	snprintf(rcfiles[1].name, sizeof(rcfiles[1].name) - 1, "%s/.log4crc",
 		 getenv("HOME") ? getenv("HOME") : "");
     

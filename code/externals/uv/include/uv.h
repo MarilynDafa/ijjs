@@ -610,7 +610,12 @@ enum uv_udp_flags {
    * Indicates that the message was received by recvmmsg, so the buffer provided
    * must not be freed by the recv_cb callback.
    */
-  UV_UDP_MMSG_CHUNK = 8
+  UV_UDP_MMSG_CHUNK = 8,
+
+  /*
+   * Indicates that recvmmsg should be used, if available.
+   */
+  UV_UDP_RECVMMSG = 256
 };
 
 typedef void (*uv_udp_send_cb)(uv_udp_send_t* req, int status);
@@ -1274,7 +1279,8 @@ typedef enum {
   UV_FS_READDIR,
   UV_FS_CLOSEDIR,
   UV_FS_STATFS,
-  UV_FS_MKSTEMP
+  UV_FS_MKSTEMP,
+  UV_FS_LUTIME
 } uv_fs_type;
 
 struct uv_dir_s {
@@ -1444,6 +1450,12 @@ UV_EXTERN int uv_fs_utime(uv_loop_t* loop,
 UV_EXTERN int uv_fs_futime(uv_loop_t* loop,
                            uv_fs_t* req,
                            uv_file file,
+                           double atime,
+                           double mtime,
+                           uv_fs_cb cb);
+UV_EXTERN int uv_fs_lutime(uv_loop_t* loop,
+                           uv_fs_t* req,
+                           const char* path,
                            double atime,
                            double mtime,
                            uv_fs_cb cb);

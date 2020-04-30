@@ -2254,11 +2254,7 @@ void uv_tty_close(uv_tty_t* handle) {
   if (handle->u.fd == -1)
     CloseHandle(handle->handle);
   else
-#ifdef WIN32
-	  _close(handle->u.fd);
-#else
     close(handle->u.fd);
-#endif
 
   handle->u.fd = -1;
   handle->handle = INVALID_HANDLE_VALUE;

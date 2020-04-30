@@ -205,7 +205,7 @@ extent_hooks_get(arena_t *arena) {
 
 extent_hooks_t *
 extent_hooks_set(tsd_t *tsd, arena_t *arena, extent_hooks_t *extent_hooks) {
-	background_thread_info_t *info = 0;
+	background_thread_info_t *info;
 	if (have_background_thread) {
 		info = arena_background_thread_info_get(arena);
 		malloc_mutex_lock(tsd_tsdn(tsd), &info->mtx);

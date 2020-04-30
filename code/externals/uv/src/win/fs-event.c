@@ -108,11 +108,8 @@ static int uv_split_path(const WCHAR* filename, WCHAR** dir,
         return -1;
       }
     }
-#ifdef WIN32
-	* file = _wcsdup(filename);
-#else
+
     *file = wcsdup(filename);
-#endif
   } else {
     if (dir) {
       *dir = (WCHAR*)uv__malloc((i + 2) * sizeof(WCHAR));

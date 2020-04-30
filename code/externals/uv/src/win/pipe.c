@@ -195,11 +195,7 @@ static void close_pipe(uv_pipe_t* pipe) {
   if (pipe->u.fd == -1)
     CloseHandle(pipe->handle);
   else
-#ifdef WIN32
-	  _close(pipe->u.fd);
-#else
     close(pipe->u.fd);
-#endif
 
   pipe->u.fd = -1;
   pipe->handle = INVALID_HANDLE_VALUE;

@@ -7,35 +7,36 @@
 /* #undef CRAY_STACKSEG_END */
 
 /* Define to 1 if using `alloca.c'. */
-/* #undef C_ALLOCA */
+//#define C_ALLOCA 1
 
 /* Define to 1 if you have `alloca', as a function or macro. */
 #define HAVE_ALLOCA 1
 
 /* Define to 1 if you have <alloca.h> and it should be used (not on Ultrix).
    */
-/* #undef HAVE_ALLOCA_H */
+//#define HAVE_ALLOCA_H 1
+#define HAVE_MALLOC_H 1
 
 /* Define to 1 if you have the <alloc.h> header file. */
-/* #undef HAVE_ALLOC_H */
+#define HAVE_ALLOC_H 1
 
 /* Define to 1 if you have the declaration of `gmtime_r', and to 0 if you
    don't. */
-#define HAVE_DECL_GMTIME_R 0
+//#define HAVE_DECL_GMTIME_R 0
 
 /* Define to 1 if you have the declaration of `localtime_r', and to 0 if you
    don't. */
-#define HAVE_DECL_LOCALTIME_R 0
+//#define HAVE_DECL_LOCALTIME_R 1
 
 /* Define to 1 if you have the declaration of `sleep', and to 0 if you don't.
    */
 #define HAVE_DECL_SLEEP 1
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
-/* #undef HAVE_DLFCN_H */
+#define HAVE_DLFCN_H 1
 
 /* Define to 1 if you don't have `vprintf' but do have `_doprnt.' */
-/* #undef HAVE_DOPRNT */
+#define HAVE_DOPRNT 1
 
 /* Define to 1 if you have the <fcntl.h> header file. */
 #define HAVE_FCNTL_H 1
@@ -53,19 +54,19 @@
 #define HAVE_GETTIMEOFDAY 1
 
 /* Define to 1 if you have the `gmtime_r' function. */
-/* #undef HAVE_GMTIME_R */
+//#define HAVE_GMTIME_R 1
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
 
 /* Define to 1 if you have the <langinfo.h> header file. */
-/* #undef HAVE_LANGINFO_H */
+//#define HAVE_LANGINFO_H 1
 
 /* Define to 1 if you have the <limits.h> header file. */
 #define HAVE_LIMITS_H 1
 
 /* Define to 1 if you have the `localtime_r' function. */
-/* #undef HAVE_LOCALTIME_R */
+//#define HAVE_LOCALTIME_R 1
 
 /* Define to 1 if you have the <malloc.h> header file. */
 #define HAVE_MALLOC_H 1
@@ -130,7 +131,7 @@
 #define HAVE_STRSTR 1
 
 /* Define to 1 if you have the <syslog.h> header file. */
-/* #undef HAVE_SYSLOG_H */
+//#define HAVE_SYSLOG_H 1
 
 /* Define to 1 if you have the <sys/param.h> header file. */
 #define HAVE_SYS_PARAM_H 1
@@ -159,7 +160,7 @@
 #define HAVE_UTIME_NULL 1
 
 /* Define to 1 if you have the <varargs.h> header file. */
-/* #undef HAVE_VARARGS_H */
+#define HAVE_VARARGS_H 1
 
 /* Define to 1 if you have the `vprintf' function. */
 #define HAVE_VPRINTF 1
@@ -204,7 +205,7 @@
 #define TIME_WITH_SYS_TIME 1
 
 /* Define to 1 if your <sys/time.h> declares `struct tm'. */
-/* #undef TM_IN_SYS_TIME */
+#define TM_IN_SYS_TIME 1
 
 /* Version number of package */
 #define VERSION "1.2.4"

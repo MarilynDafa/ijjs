@@ -4,8 +4,9 @@
 #include <math.h>
 #ifdef _WIN32
 #  include <windows.h>
-#  include "msvc_compat/windows_extra.h"
-#  ifdef _WIN64
+#include "../jemalloc.h"
+//#  include "msvc_compat/windows_extra.h"
+#  if defined(_WIN64) || defined(__amd64) || defined(__APPLE__)
 #    if LG_VADDR <= 32
 #      error Generate the headers using x64 vcargs
 #    endif

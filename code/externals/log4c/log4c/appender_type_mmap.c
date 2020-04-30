@@ -14,7 +14,7 @@ static const char version[] = "$Id: appender_type_mmap.c,v 1.9 2012/09/30 20:20:
 
 #include <log4c/appender.h>
 #include <sd/malloc.h>
-#include <sys/mman.h>
+//#include <sys/mman.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>

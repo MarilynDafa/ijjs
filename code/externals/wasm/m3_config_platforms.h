@@ -175,7 +175,7 @@
 # if defined(M3_COMPILER_MSVC)
 #  define M3_WEAK
 # else
-#  define M3_WEAK __attribute__((weak))
+#  define M3_WEAK 
 # endif
 
 # ifndef min

@@ -87,14 +87,7 @@ pow2_ceil_u64(uint64_t x) {
 		return x;
 	}
 	size_t msb_on_index;
-#if (defined(__amd64__) || defined(__x86_64__))
-	asm ("bsrq %1, %0"
-			: "=r"(msb_on_index) // Outputs.
-			: "r"(x-1)           // Inputs.
-		);
-#elif (defined(JEMALLOC_HAVE_BUILTIN_CLZ))
 	msb_on_index = (63 ^ __builtin_clzll(x - 1));
-#endif
 	assert(msb_on_index < 63);
 	return 1ULL << (msb_on_index + 1);
 #else
@@ -149,20 +142,7 @@ pow2_ceil_zu(size_t x) {
 #endif
 }
 
-#if (defined(__i386__) || defined(__amd64__) || defined(__x86_64__))
-BIT_UTIL_INLINE unsigned
-lg_floor(size_t x) {
-	size_t ret;
-	assert(x != 0);
-
-	asm ("bsr %1, %0"
-	    : "=r"(ret) // Outputs.
-	    : "r"(x)    // Inputs.
-	    );
-	assert(ret < UINT_MAX);
-	return (unsigned)ret;
-}
-#elif (defined(_MSC_VER))
+#if defined(_WIN32)
 BIT_UTIL_INLINE unsigned
 lg_floor(size_t x) {
 	unsigned long ret;
@@ -176,6 +156,19 @@ lg_floor(size_t x) {
 #else
 #  error "Unsupported type size for lg_floor()"
 #endif
+	assert(ret < UINT_MAX);
+	return (unsigned)ret;
+}
+#elif (defined(__i386__) || defined(__amd64__) || defined(__x86_64__))
+BIT_UTIL_INLINE unsigned
+lg_floor(size_t x) {
+	size_t ret;
+	assert(x != 0);
+
+	asm("bsr %1, %0"
+	    : "=r"(ret) // Outputs.
+	    : "r"(x)    // Inputs.
+	    );
 	assert(ret < UINT_MAX);
 	return (unsigned)ret;
 }

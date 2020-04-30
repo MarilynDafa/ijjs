@@ -115,29 +115,6 @@ __wasi_errno_t errno_to_wasi(int errnum) {
     }
 }
 
-#if defined(_WIN32)
-
-static inline
-int clock_gettime(int clk_id, struct timespec *spec)
-{
-    __int64 wintime; GetSystemTimeAsFileTime((FILETIME*)&wintime);
-    wintime      -= 116444736000000000i64;           //1jan1601 to 1jan1970
-    spec->tv_sec  = wintime / 10000000i64;           //seconds
-    spec->tv_nsec = wintime % 10000000i64 *100;      //nano-seconds
-    return 0;
-}
-
-static inline
-int clock_getres(int clk_id, struct timespec *spec) {
-    return -1; // Defaults to 1000000
-}
-
-static inline
-int convert_clockid(__wasi_clockid_t in) {
-    return 0;
-}
-
-#else // _WIN32
 
 static inline
 int convert_clockid(__wasi_clockid_t in) {
@@ -150,7 +127,6 @@ int convert_clockid(__wasi_clockid_t in) {
     }
 }
 
-#endif // _WIN32
 
 static inline
 __wasi_timestamp_t convert_timespec(const struct timespec *ts) {

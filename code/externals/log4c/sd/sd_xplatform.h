@@ -116,8 +116,8 @@ int sd_vsnprintf(char *str, size_t size, const char *format, va_list ap);
 #if !defined(HAVE_ALLOC_H) && defined(HAVE_MALLOC_H) && !defined(alloca)
 #define alloca _alloca
 #endif
-#define strncasecmp strnicmp
-#define strcasecmp stricmp
+//#define strncasecmp strnicmp
+//#define strcasecmp stricmp
 #define YY_NO_UNISTD_H
 #if !defined(HAVE_SLEEP) || !HAVE_DECL_SLEEP
 #define sleep(x) Sleep(x*1000)
