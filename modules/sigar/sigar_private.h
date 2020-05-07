@@ -24,7 +24,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#ifndef WIN32
+#ifndef MINGWRUNTIME
 #include <unistd.h>
 #include <stddef.h>
 #ifndef DARWIN
@@ -68,8 +68,8 @@
    sigar_cache_t *net_services_tcp; \
    sigar_cache_t *net_services_udp
 
-#if defined(WIN32)
-#   define SIGAR_INLINE __inline
+#if defined(MINGWRUNTIME)
+#   define SIGAR_INLINE inline
 #elif defined(__GNUC__)
 #   define SIGAR_INLINE inline
 #else
@@ -81,7 +81,7 @@
 #define sigar_strdup(s) \
     dmalloc_strndup(__FILE__, __LINE__, (s), -1, 0)
 #else
-#  ifdef WIN32
+#  ifdef MINGWRUNTIME
 #    define sigar_strdup(s) _strdup(s)
 #  else
 #    define sigar_strdup(s) strdup(s)
@@ -108,7 +108,7 @@
 #define strnEQ(s1, s2, n) (strncmp(s1, s2, n) == 0)
 #endif
 
-#ifdef WIN32
+#ifdef MINGWRUNTIME
 #define strcasecmp _stricmp
 #define strncasecmp _strnicmp
 #endif
@@ -332,7 +332,7 @@ int sigar_group_name_get(sigar_t *sigar, int gid, char *buf, int buflen);
 #define SIGAR_FSDEV_ID(sb) \
     (S_ISBLK((sb).st_mode) ? (sb).st_rdev : ((sb).st_ino + (sb).st_dev))
 
-#if defined(WIN32) || defined(NETWARE)
+#if defined(MINGWRUNTIME) || defined(NETWARE)
 int sigar_get_iftype(const char *name, int *type, int *inst);
 #endif
 
@@ -340,7 +340,7 @@ int sigar_get_iftype(const char *name, int *type, int *inst);
 #define SIGAR_NIC_ETHERNET "Ethernet"
 #define SIGAR_NIC_NETROM   "AMPR NET/ROM"
 
-#ifndef WIN32
+#if !defined(MINGWRUNTIME)
 #include <netdb.h>
 #endif
 
@@ -352,7 +352,7 @@ int sigar_get_iftype(const char *name, int *type, int *inst);
 typedef struct {
     char buffer[SIGAR_HOSTENT_LEN];
     int error;
-#ifndef WIN32
+#if !defined(MINGWRUNTIME)
     struct hostent hs;
 #endif
 #ifdef SIGAR_HAS_HOSTENT_DATA

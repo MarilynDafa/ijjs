@@ -547,14 +547,14 @@ int sigar_os_open(sigar_t **sigar_ptr)
 
     get_sysinfo(sigar);
 
-    DLLMOD_COPY(wtsapi);
-    DLLMOD_COPY(iphlpapi);
-    DLLMOD_COPY(advapi);
-    DLLMOD_COPY(ntdll);
-    DLLMOD_COPY(psapi);
-    DLLMOD_COPY(winsta);
-    DLLMOD_COPY(kernel);
-    DLLMOD_COPY(mpr);
+	memcpy(&(sigar->wtsapi), &sigar_wtsapi, sizeof(sigar_wtsapi));
+	memcpy(&(sigar->iphlpapi), &sigar_iphlpapi, sizeof(sigar_iphlpapi));
+	memcpy(&(sigar->advapi), &sigar_advapi, sizeof(sigar_advapi));
+	memcpy(&(sigar->ntdll), &sigar_ntdll, sizeof(sigar_ntdll));
+	memcpy(&(sigar->psapi), &sigar_psapi, sizeof(sigar_psapi));
+	memcpy(&(sigar->winsta), &sigar_winsta, sizeof(sigar_winsta));
+	memcpy(&(sigar->kernel), &sigar_kernel, sizeof(sigar_kernel));
+	memcpy(&(sigar->mpr), &sigar_mpr, sizeof(sigar_mpr));
 
     sigar->log_level = -1; /* else below segfaults */
     /* XXX init early for use by javasigar.c */
@@ -578,21 +578,22 @@ int sigar_os_open(sigar_t **sigar_ptr)
 
 void dllmod_init_ntdll(sigar_t *sigar)
 {
-    DLLMOD_INIT(ntdll, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->ntdll), FALSE);
 }
 
 int sigar_os_close(sigar_t *sigar)
 {
     int retval;
-
-    DLLMOD_FREE(wtsapi);
-    DLLMOD_FREE(iphlpapi);
-    DLLMOD_FREE(advapi);
-    DLLMOD_FREE(ntdll);
-    DLLMOD_FREE(psapi);
-    DLLMOD_FREE(winsta);
-    DLLMOD_FREE(kernel);
-    DLLMOD_FREE(mpr);
+	
+	sigar_dllmod_free((sigar_dll_module_t *)&(sigar->wtsapi));
+	sigar_dllmod_free((sigar_dll_module_t *)&(sigar->iphlpapi));
+	sigar_dllmod_free((sigar_dll_module_t *)&(sigar->advapi));
+	sigar_dllmod_free((sigar_dll_module_t *)&(sigar->ntdll));
+	sigar_dllmod_free((sigar_dll_module_t *)&(sigar->psapi));
+	sigar_dllmod_free((sigar_dll_module_t *)&(sigar->winsta));
+	sigar_dllmod_free((sigar_dll_module_t *)&(sigar->kernel));
+	sigar_dllmod_free((sigar_dll_module_t *)&(sigar->mpr));
+	
 
     if (sigar->perfbuf) {
         free(sigar->perfbuf);
@@ -640,7 +641,7 @@ char *sigar_os_error_string(sigar_t *sigar, int err)
 
 SIGAR_DECLARE(int) sigar_mem_get(sigar_t *sigar, sigar_mem_t *mem)
 {
-    DLLMOD_INIT(kernel, TRUE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->kernel), TRUE);
 
     if (sigar_GlobalMemoryStatusEx) {
         MEMORYSTATUSEX memstat;
@@ -676,7 +677,7 @@ SIGAR_DECLARE(int) sigar_mem_get(sigar_t *sigar, sigar_mem_t *mem)
 SIGAR_DECLARE(int) sigar_swap_get(sigar_t *sigar, sigar_swap_t *swap)
 {
     int status;
-    DLLMOD_INIT(kernel, TRUE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->kernel), TRUE);
 
     if (sigar_GlobalMemoryStatusEx) {
         MEMORYSTATUSEX memstat;
@@ -766,7 +767,7 @@ static int get_idle_cpu(sigar_t *sigar, sigar_cpu_t *cpu,
     }
     else {
         /* windows NT and 2000 do not have an Idle counter */
-        DLLMOD_INIT(ntdll, FALSE);
+	    sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->ntdll), FALSE);
         if (sigar_NtQuerySystemInformation) {
             DWORD retval, num;
             SYSTEM_PROCESSOR_PERFORMANCE_INFORMATION info[SPPI_MAX];
@@ -865,7 +866,7 @@ static int sigar_cpu_ntsys_get(sigar_t *sigar, sigar_cpu_t *cpu)
 
 SIGAR_DECLARE(int) sigar_cpu_get(sigar_t *sigar, sigar_cpu_t *cpu)
 {
-    DLLMOD_INIT(ntdll, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->ntdll), FALSE);
     if (sigar_NtQuerySystemInformation) {
         return sigar_cpu_ntsys_get(sigar, cpu);
     }
@@ -990,7 +991,7 @@ static int sigar_cpu_list_ntsys_get(sigar_t *sigar,
 SIGAR_DECLARE(int) sigar_cpu_list_get(sigar_t *sigar,
                                       sigar_cpu_list_t *cpulist)
 {
-    DLLMOD_INIT(ntdll, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->ntdll), FALSE);
     if (sigar_NtQuerySystemInformation) {
         return sigar_cpu_list_ntsys_get(sigar, cpulist);
     }
@@ -1114,7 +1115,7 @@ static int sigar_proc_list_get_perf(sigar_t *sigar,
 int sigar_os_proc_list_get(sigar_t *sigar,
                            sigar_proc_list_t *proclist)
 {
-    DLLMOD_INIT(psapi, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->psapi), FALSE);
 
     if (sigar_EnumProcesses) {
         DWORD retval, *pids;
@@ -1347,7 +1348,7 @@ SIGAR_DECLARE(int) sigar_proc_state_get(sigar_t *sigar, sigar_pid_t pid,
     return SIGAR_OK;
 }
 
-static int get_proc_info(sigar_t *sigar, sigar_pid_t pid)
+int get_proc_info(sigar_t *sigar, sigar_pid_t pid)
 {
     PERF_OBJECT_TYPE *object;
     PERF_INSTANCE_DEFINITION *inst;
@@ -1506,7 +1507,7 @@ static int sigar_proc_env_parse(UCHAR *ptr, sigar_proc_env_t *procenv,
             break; /*XXX*/
         }
 
-        klen = val - ptr;
+        klen = val - (char*)ptr;
         SIGAR_SSTRCPY(key, ptr);
         key[klen] = '\0';
         ++val;
@@ -1688,7 +1689,7 @@ SIGAR_DECLARE(int) sigar_proc_modules_get(sigar_t *sigar, sigar_pid_t pid,
     DWORD size = 0;
     unsigned int i;
 
-    if (DLLMOD_INIT(psapi, TRUE) != SIGAR_OK) {
+    if (sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->psapi), TRUE) != SIGAR_OK) {
         return SIGAR_ENOTIMPL;
     }
 
@@ -1806,7 +1807,7 @@ SIGAR_DECLARE(int) sigar_file_system_list_get(sigar_t *sigar,
     /* XXX: hmm, Find{First,Next}Volume not available in my sdk */
     DWORD len = GetLogicalDriveStringsA(sizeof(name), name);
 
-    DLLMOD_INIT(mpr, TRUE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->mpr), TRUE);
 
     if (len == 0) {
         return GetLastError();
@@ -2168,7 +2169,8 @@ static sigar_cache_t *sigar_netif_cache_new(sigar_t *sigar)
 {
     DWORD num = 0;
 
-    DLLMOD_INIT(iphlpapi, FALSE);
+	
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->iphlpapi), FALSE);
 
     if (sigar_GetNumberOfInterfaces) {
         DWORD rc = sigar_GetNumberOfInterfaces(&num);
@@ -2198,7 +2200,7 @@ static int sigar_get_adapters_info(sigar_t *sigar,
     ULONG size = sigar->ifconf_len;
     DWORD rc;
 
-    DLLMOD_INIT(iphlpapi, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->iphlpapi), FALSE);
 
     if (!sigar_GetAdaptersInfo) {
         return SIGAR_ENOTIMPL;
@@ -2284,7 +2286,7 @@ static int sigar_get_adapters_addresses(sigar_t *sigar,
     ULONG flags = 
         GAA_FLAG_SKIP_DNS_SERVER|GAA_FLAG_SKIP_MULTICAST;
 
-    DLLMOD_INIT(iphlpapi, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->iphlpapi), FALSE);
 
     if (!sigar_GetAdaptersAddresses) {
         return SIGAR_ENOTIMPL;
@@ -2331,7 +2333,7 @@ static int sigar_get_ipaddr_table(sigar_t *sigar,
     ULONG size = sigar->ifconf_len;
     DWORD rc;
 
-    DLLMOD_INIT(iphlpapi, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->iphlpapi), FALSE);
 
     if (!sigar_GetIpAddrTable) {
         return SIGAR_ENOTIMPL;
@@ -2433,7 +2435,7 @@ SIGAR_DECLARE(int) sigar_net_info_get(sigar_t *sigar,
     IP_ADDR_STRING *ip;
     DWORD rc;
 
-    DLLMOD_INIT(iphlpapi, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->iphlpapi), FALSE);
     
     if (!sigar_GetNetworkParams) {
         return SIGAR_ENOTIMPL;
@@ -2499,7 +2501,7 @@ SIGAR_DECLARE(int) sigar_net_route_list_get(sigar_t *sigar,
     MIB_IPFORWARDTABLE *ipt;
     sigar_net_route_t *route;
 
-    DLLMOD_INIT(iphlpapi, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->iphlpapi), FALSE);
     if (!sigar_GetIpForwardTable) {
         return SIGAR_ENOTIMPL;
     }
@@ -2574,7 +2576,7 @@ static int sigar_get_if_table(sigar_t *sigar, PMIB_IFTABLE *iftable)
     ULONG size = sigar->ifconf_len;
     DWORD rc;
 
-    DLLMOD_INIT(iphlpapi, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->iphlpapi), FALSE);
 
     if (!sigar_GetIfTable) {
         return SIGAR_ENOTIMPL;
@@ -2855,7 +2857,7 @@ static int net_conn_get_tcp(sigar_net_connection_walker_t *walker)
     DWORD rc, size=0;
     PMIB_TCPTABLE tcp;
 
-    DLLMOD_INIT(iphlpapi, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->iphlpapi), FALSE);
 
     if (!sigar_GetTcpTable) {
         return SIGAR_ENOTIMPL;
@@ -2962,7 +2964,7 @@ static int net_conn_get_udp(sigar_net_connection_walker_t *walker)
     DWORD rc, size=0, i;
     PMIB_UDPTABLE udp;
 
-    DLLMOD_INIT(iphlpapi, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->iphlpapi), FALSE);
 
     if (!sigar_GetUdpTable) {
         return SIGAR_ENOTIMPL;
@@ -3043,7 +3045,7 @@ sigar_tcp_get(sigar_t *sigar,
     MIB_TCPSTATS mib;
     int status;
 
-    DLLMOD_INIT(iphlpapi, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->iphlpapi), FALSE);
 
     if (!sigar_GetTcpStatistics) {
         return SIGAR_ENOTIMPL;
@@ -3110,7 +3112,7 @@ SIGAR_DECLARE(int) sigar_proc_port_get(sigar_t *sigar,
 {
     DWORD rc, i;
 
-    DLLMOD_INIT(iphlpapi, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->iphlpapi), FALSE);
 
     if (protocol == SIGAR_NETCONN_TCP) {
         PMIB_TCPEXTABLE tcp;
@@ -3369,14 +3371,15 @@ static int sigar_who_wts(sigar_t *sigar,
 {
     DWORD count=0, i;
     WTS_SESSION_INFO *sessions = NULL;
+	
 
-    if (DLLMOD_INIT(wtsapi, TRUE) != SIGAR_OK) {
+    if (sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->wtsapi), TRUE) != SIGAR_OK) {
         sigar_log(sigar, SIGAR_LOG_DEBUG,
                   "Terminal Services api functions not available");
         return ENOENT;
     }
 
-    DLLMOD_INIT(winsta, FALSE);
+	sigar_dllmod_init(sigar, (sigar_dll_module_t *)&(sigar->winsta), FALSE);
 
     if (!sigar_WTSEnumerateSessions(0, 0, 1, &sessions, &count)) {
         return GetLastError();

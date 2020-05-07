@@ -11,10 +11,22 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libijjs(Win32)", "ijjs-win3
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ijjs", "ijjs.vcxitems", "{3960714B-E3B2-43FB-A358-BA09B9F4148C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{C98F286A-4A30-4FD8-98F5-97E105FC1F0A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sigar", "..\modules\sigar\sigar.vcxitems", "{E5819A51-6A17-4595-AEB8-56049F089F5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Linux", "Linux", "{F3A3232D-912B-4C35-997F-4C97811800D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Win32", "Win32", "{7C646653-6A95-439A-9666-F2A586939561}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sigar-win32", "..\modules\sigar\sigar-win32\sigar-win32.vcxproj", "{84B4F89B-AF34-4B01-AB7D-715704CECE84}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		ijjs.vcxitems*{34991f90-74d6-4235-a9e1-6599b527c0f5}*SharedItemsImports = 4
 		ijjs.vcxitems*{3960714b-e3b2-43fb-a358-ba09b9f4148c}*SharedItemsImports = 9
+		..\modules\sigar\sigar.vcxitems*{84b4f89b-af34-4b01-ab7d-715704cece84}*SharedItemsImports = 4
+		..\modules\sigar\sigar.vcxitems*{e5819a51-6a17-4595-aeb8-56049f089f5a}*SharedItemsImports = 9
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -29,11 +41,21 @@ Global
 		{34991F90-74D6-4235-A9E1-6599B527C0F5}.Release|x64.ActiveCfg = Release|Win32
 		{34991F90-74D6-4235-A9E1-6599B527C0F5}.Release|x86.ActiveCfg = Release|Win32
 		{34991F90-74D6-4235-A9E1-6599B527C0F5}.Release|x86.Build.0 = Release|Win32
+		{84B4F89B-AF34-4B01-AB7D-715704CECE84}.Debug|x64.ActiveCfg = Debug|Win32
+		{84B4F89B-AF34-4B01-AB7D-715704CECE84}.Debug|x86.ActiveCfg = Debug|Win32
+		{84B4F89B-AF34-4B01-AB7D-715704CECE84}.Debug|x86.Build.0 = Debug|Win32
+		{84B4F89B-AF34-4B01-AB7D-715704CECE84}.Release|x64.ActiveCfg = Release|Win32
+		{84B4F89B-AF34-4B01-AB7D-715704CECE84}.Release|x86.ActiveCfg = Release|Win32
+		{84B4F89B-AF34-4B01-AB7D-715704CECE84}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{34991F90-74D6-4235-A9E1-6599B527C0F5} = {B6646D40-6627-448C-8547-E2136BBFCFE2}
+		{E5819A51-6A17-4595-AEB8-56049F089F5A} = {C98F286A-4A30-4FD8-98F5-97E105FC1F0A}
+		{F3A3232D-912B-4C35-997F-4C97811800D4} = {C98F286A-4A30-4FD8-98F5-97E105FC1F0A}
+		{7C646653-6A95-439A-9666-F2A586939561} = {C98F286A-4A30-4FD8-98F5-97E105FC1F0A}
+		{84B4F89B-AF34-4B01-AB7D-715704CECE84} = {7C646653-6A95-439A-9666-F2A586939561}
 	EndGlobalSection
 EndGlobal

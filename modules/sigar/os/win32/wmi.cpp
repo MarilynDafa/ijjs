@@ -17,15 +17,22 @@
 
 #define UNICODE
 #define _UNICODE
+
+#define _WIN32_DCOM
+#include <windows.h>
+#include <wbemidl.h>
+#include "sigar.h"
+
+/*
 #define _WIN32_DCOM
 
 #include <windows.h>
 #include <objbase.h>
-#include <comdef.h>
+//#include <comdef.h>
 #include <wbemidl.h>
 #include "sigar.h"
 
-#pragma comment(lib, "wbemuuid.lib")
+#pragma comment(lib, "wbemuuid.lib")*/
 
 #ifndef SIGAR_CMDLINE_MAX
 #define SIGAR_CMDLINE_MAX 4096
@@ -116,9 +123,9 @@ HRESULT WMI::Open(LPCTSTR machine, LPCTSTR user, LPCTSTR pass)
 
     wsprintf(path, L"\\\\%S\\ROOT\\CIMV2", machine);
 
-    result = locator->ConnectServer(bstr_t(path), //Object path of WMI namespace
-                                    bstr_t(user), //User name. NULL = current user
-                                    bstr_t(pass), //User password. NULL = current
+    result = locator->ConnectServer((WCHAR*)(path), //Object path of WMI namespace
+                                    (WCHAR*)(user), //User name. NULL = current user
+                                    (WCHAR*)(pass), //User password. NULL = current
                                     NULL,         //Locale. NULL indicates current
                                     0,            //Security flags
                                     NULL,         //Authority (e.g. Kerberos)
@@ -143,7 +150,7 @@ BSTR WMI::GetProcQuery(DWORD pid)
 {
     wchar_t query[56];
     wsprintf(query, L"Win32_Process.Handle=%d", pid);
-    return bstr_t(query);
+    return (WCHAR*)(query);
 }
 
 HRESULT WMI::GetProcStringProperty(DWORD pid, TCHAR *name, TCHAR *value, DWORD len)
