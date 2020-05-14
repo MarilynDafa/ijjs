@@ -19,6 +19,7 @@ typedef uint32_t __wasi_size_t;
 #include "extra/wasi_core.h"
 
 #include <sys/types.h>
+#include <sys/time.h>
 #include <sys/stat.h>
 #include <time.h>
 #include <errno.h>

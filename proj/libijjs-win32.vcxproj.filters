@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="cwin">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="cwin\sys">
+      <UniqueIdentifier>{3dcf3c44-f9c2-4a7a-8ce6-07d02e5720f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="uv">
+      <UniqueIdentifier>{985cde33-46f7-40af-a08d-20cff91ec7b5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\code\externals\cwin\pthread.h">
+      <Filter>cwin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\cwin\stdatomic.h">
+      <Filter>cwin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\cwin\sys\time.h">
+      <Filter>cwin\sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\win\atomicops-inl.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\win\fs-fd-hash-inl.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\win\handle-inl.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\win\internal.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\win\req-inl.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\win\stream-inl.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\win\winapi.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\win\winsock.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\code\externals\uv\src\win\async.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\core.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\detect-wakeup.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\dl.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\error.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\fs.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\fs-event.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\getaddrinfo.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\getnameinfo.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\handle.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\loop-watcher.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\pipe.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\poll.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\process.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\process-stdio.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\signal.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\snprintf.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\stream.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\tcp.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\thread.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\tty.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\udp.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\util.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\winapi.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\win\winsock.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\cwin\sys\time.c">
+      <Filter>cwin\sys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\cwin\pthread.c">
+      <Filter>cwin</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

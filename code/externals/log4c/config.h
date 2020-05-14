@@ -87,9 +87,9 @@
 /* #undef HAVE_NL_LANGINFO */
 
 /* Define to 1 if you have the <pthread.h> header file. */
-#ifndef _MSC_VER
+
 #define HAVE_PTHREAD_H 1
-#endif
+
 
 /* Define to 1 if you have the `sbrk' function. */
 /* #undef HAVE_SBRK */
@@ -233,6 +233,11 @@
    calls it, or to nothing if 'inline' is not supported under any name.  */
 #ifndef __cplusplus
 /* #undef inline */
+#endif
+
+#if _MSC_VER
+#define strncasecmp _strnicmp
+#define strcasecmp _stricmp
 #endif
 
 /* Define to `unsigned int' if <sys/types.h> does not define. */

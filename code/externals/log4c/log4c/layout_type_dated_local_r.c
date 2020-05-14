@@ -7,9 +7,7 @@ static const char version[] = "$Id: layout_type_dated_local_r.c,v 1.1 2013/09/29
  *
  * See the COPYING file for the terms of usage and distribution.
  */
-#ifndef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <log4c/layout.h>
 #include <log4c/priority.h>

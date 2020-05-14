@@ -26,7 +26,7 @@
 #include "sigar_util.h"
 #include "sigar_os.h"
 
-#if !defined(MINGWRUNTIME)
+#ifndef WIN32
 
 #include <dirent.h>
 #include <sys/stat.h>
@@ -345,7 +345,7 @@ int sigar_mem_calc_ram(sigar_t *sigar, sigar_mem_t *mem)
     return ram;
 }
 
-#ifndef MINGWRUNTIME
+#ifndef WIN32
 
 sigar_iodev_t *sigar_iodev_get(sigar_t *sigar,
                                const char *dirname)
@@ -489,9 +489,40 @@ typedef struct {
     sigar_uint32_t edx;
 } sigar_cpuid_t;
 
+#if defined(__GNUC__) && !defined(__sun)
 
-	
-#if   defined(__MINGW32__) || defined(__MINGW64__)
+#  if defined(__i386__)
+#  define SIGAR_HAS_CPUID
+static void sigar_cpuid(sigar_uint32_t request, sigar_cpuid_t *id)
+{
+    /* derived from: */
+    /* http://svn.red-bean.com/repos/minor/trunk/gc/barriers-ia-32.c */
+    asm volatile ("mov %%ebx, %%esi\n\t"
+                  "cpuid\n\t"
+                  "xchgl %%ebx, %%esi"
+                  : "=a" (id->eax),
+                    "=S" (id->ebx),
+                    "=c" (id->ecx),
+                    "=d" (id->edx)
+                  : "0" (request)
+                  : "memory");
+}
+#  elif defined(__amd64__)
+#  define SIGAR_HAS_CPUID
+static void sigar_cpuid(sigar_uint32_t request,
+                        sigar_cpuid_t *id)
+{
+    /* http://svn.red-bean.com/repos/minor/trunk/gc/barriers-amd64.c */
+    asm volatile ("cpuid\n\t"
+                  : "=a" (id->eax),
+                    "=b" (id->ebx),
+                    "=c" (id->ecx),
+                    "=d" (id->edx)
+                  : "0" (request)
+                  : "memory");
+}
+#  endif
+#elif defined(WIN32)
 #  ifdef _M_X64
 #  include <intrin.h>
 #  define SIGAR_HAS_CPUID
@@ -503,57 +534,16 @@ static void sigar_cpuid(sigar_uint32_t request,
     memcpy(id, &info[0], sizeof(info));
 }
 #  else
+#  include <intrin.h>
 #  define SIGAR_HAS_CPUID
 static void sigar_cpuid(sigar_uint32_t request,
                         sigar_cpuid_t *id)
 {
-    __asm {
-        mov edi, id
-        mov eax, [edi].eax
-        mov ecx, [edi].ecx
-        cpuid
-        mov [edi].eax, eax
-        mov [edi].ebx, ebx
-        mov [edi].ecx, ecx
-        mov [edi].edx, edx
-    }
+    sigar_uint32_t info[4];
+    __cpuid(info, request); /* as of MSVC 7 */
+    memcpy(id, &info[0], sizeof(info));
 }
 #  endif
-	
-#elif defined(__GNUC__) && !defined(__sun)
-
-#  if defined(__i386__)
-#  define SIGAR_HAS_CPUID
-	static void sigar_cpuid(sigar_uint32_t request, sigar_cpuid_t *id)
-	{
-		/* derived from: */
-		/* http://svn.red-bean.com/repos/minor/trunk/gc/barriers-ia-32.c */
-		asm volatile("mov %%ebx, %%esi\n\t"
-		              "cpuid\n\t"
-		              "xchgl %%ebx, %%esi"
-		              : "=a" (id->eax),
-			"=S" (id->ebx),
-			"=c" (id->ecx),
-			"=d" (id->edx)
-		  : "0" (request)
-		  : "memory");
-	}
-#  elif defined(__amd64__)
-#  define SIGAR_HAS_CPUID
-	static void sigar_cpuid(sigar_uint32_t request,
-		sigar_cpuid_t *id)
-	{
-		/* http://svn.red-bean.com/repos/minor/trunk/gc/barriers-amd64.c */
-		asm volatile("cpuid\n\t"
-		              : "=a" (id->eax),
-			"=b" (id->ebx),
-			"=c" (id->ecx),
-			"=d" (id->edx)
-		  : "0" (request)
-		  : "memory");
-	}
-#  endif
-	
 #endif
 
 #define INTEL_ID 0x756e6547
@@ -741,7 +731,7 @@ int sigar_cpu_mhz_from_model(char *model)
     return mhz;
 }
 
-#if !defined(MINGWRUNTIME) && !defined(NETWARE)
+#if !defined(WIN32) && !defined(NETWARE)
 #include <netdb.h>
 #include <rpc/rpc.h>
 #include <rpc/pmap_prot.h>
@@ -836,7 +826,7 @@ SIGAR_DECLARE(int) sigar_rpc_ping(char *host,
 int sigar_file2str(const char *fname, char *buffer, int buflen)
 {
     int len, status;
-#ifdef MINGWRUNTIME
+#ifdef WIN32
     int fd = _open(fname, O_RDONLY);
 #else
 
@@ -847,7 +837,7 @@ int sigar_file2str(const char *fname, char *buffer, int buflen)
         return ENOENT;
     }
 
-#ifdef MINGWRUNTIME
+#ifdef WIN32
     if ((len = _read(fd, buffer, buflen)) < 0) {
 #else
     if ((len = read(fd, buffer, buflen)) < 0) {
@@ -858,7 +848,7 @@ int sigar_file2str(const char *fname, char *buffer, int buflen)
         status = SIGAR_OK;
         buffer[len] = '\0';
     }
-#ifdef MINGWRUNTIME
+#ifdef WIN32
     _close(fd);
 #else
     close(fd);
@@ -867,11 +857,11 @@ int sigar_file2str(const char *fname, char *buffer, int buflen)
     return status;
 }
 
-#ifdef MINGWRUNTIME
+#ifdef WIN32
 #define vsnprintf _vsnprintf
 #endif
 
-#ifdef MINGWRUNTIME
+#ifdef WIN32
 #   define rindex strrchr
 #endif
 
@@ -1067,7 +1057,7 @@ SIGAR_DECLARE(void) sigar_log_impl_file(sigar_t *sigar, void *data,
     fprintf(fp, "[%s] %s\n", log_levels[level], message);
 }
 
-#ifndef MINGWRUNTIME
+#ifndef WIN32
 sigar_int64_t sigar_time_now_millis(void)
 {
     struct timeval tv;

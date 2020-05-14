@@ -5,9 +5,7 @@ static const char version[] = "$Id: sprintf.c,v 1.6 2012/10/04 22:51:28 valtri E
  *
  * See the COPYING file for the terms of usage and distribution.
  */
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <stdio.h>
 #include <stdlib.h>

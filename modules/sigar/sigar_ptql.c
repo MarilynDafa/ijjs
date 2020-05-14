@@ -29,7 +29,7 @@
 #endif
 
 /* See http://gcc.gnu.org/ml/libstdc++/2002-03/msg00164.html */
-#if defined(MINGWRUNTIME) || (defined(__hpux) && defined(SIGAR_64BIT))
+#if defined(WIN32) || (defined(__hpux) && defined(SIGAR_64BIT))
 #define strtoull strtoul
 #elif (defined(__hpux) && !defined(SIGAR_64BIT))
 #define strtoull __strtoull
@@ -46,7 +46,7 @@ typedef struct ptql_parse_branch_t ptql_parse_branch_t;
 typedef struct ptql_branch_t ptql_branch_t;
 
 /* adhere to calling convention, else risk stack corruption */
-#ifdef MINGWRUNTIME
+#ifdef WIN32
 #define SIGAPI WINAPI
 #else
 #define SIGAPI
@@ -129,7 +129,7 @@ typedef struct {
 #define IS_ICASE(branch) \
     (branch->op_flags & PTQL_OP_FLAG_ICASE)
 
-#ifdef MINGWRUNTIME
+#ifdef WIN32
 #define branch_strcmp(branch, s1, s2) \
     (IS_ICASE(branch) ? strcasecmp(s1, s2) : strcmp(s1, s2))
 
@@ -571,7 +571,7 @@ static int ptql_branch_list_destroy(ptql_branch_list_t *branches)
     return SIGAR_OK;
 }
 
-#ifdef MINGWRUNTIME
+#ifdef WIN32
 #define vsnprintf _vsnprintf
 #endif
 
@@ -711,7 +711,7 @@ enum {
 
 #endif
 
-#ifndef MINGWRUNTIME
+#ifndef WIN32
 #include <sys/stat.h>
 int sigar_sudo_file2str(const char *fname, char *buffer, int buflen)
 {
@@ -759,7 +759,7 @@ static int ptql_branch_init_service(ptql_parse_branch_t *parsed,
                           parsed->name, parsed->attr);
     }
 
-#ifdef MINGWRUNTIME
+#ifdef WIN32
     branch->data.str = sigar_strdup(parsed->value);
     branch->data_size = strlen(parsed->value);
 #endif
@@ -775,7 +775,7 @@ static int ptql_branch_init_pid(ptql_parse_branch_t *parsed,
     if (strEQ(parsed->attr, "Pid")) {
         branch->flags = PTQL_PID_PID;
         if (strEQ(parsed->value, "$$")) {
-#ifdef MINGWRUNTIME
+#ifdef WIN32
             branch->data.pid = _getpid();
 #else
             branch->data.pid = getpid();
@@ -804,7 +804,7 @@ static int ptql_branch_init_pid(ptql_parse_branch_t *parsed,
                       parsed->name, parsed->attr);
 }
 
-#ifdef MINGWRUNTIME
+#ifdef WIN32
 #define QUERY_SC_SIZE 8192
 
 static int ptql_service_query_config(SC_HANDLE scm_handle,
@@ -1000,7 +1000,7 @@ static int ptql_pid_get(sigar_t *sigar,
             status = sigar_file2str(fname, buffer, len);
         }
         else {
-#ifdef MINGWRUNTIME
+#ifdef WIN32
             return SIGAR_ENOTIMPL;
 #else
             status = sigar_sudo_file2str(fname, buffer, len);
@@ -1016,7 +1016,7 @@ static int ptql_pid_get(sigar_t *sigar,
         }
     }
     else if (branch->flags == PTQL_PID_SERVICE_NAME) {
-#ifdef MINGWRUNTIME
+#ifdef WIN32
         int status =
             sigar_service_pid_get(sigar,
                                   branch->data.str, pid);
@@ -1053,7 +1053,7 @@ static int ptql_pid_list_get(sigar_t *sigar,
         if ((branch->flags > PTQL_PID_SERVICE_NAME) ||
             (branch->op_name != PTQL_OP_EQ))
         {
-#ifdef MINGWRUNTIME
+#ifdef WIN32
             return ptql_pid_service_list_get(sigar, branch, proclist);
 #else
             return SIGAR_OK; /* no matches */

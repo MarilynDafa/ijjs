@@ -46,7 +46,7 @@
 #define sigar_tolower(c) \
     (tolower(((unsigned char)(c))))
 
-#ifdef MINGWRUNTIME
+#ifdef WIN32
 #define sigar_fileno _fileno
 #define sigar_isatty _isatty
 #define sigar_write  _write
@@ -75,13 +75,12 @@ int sigar_inet_ntoa(sigar_t *sigar,
 struct hostent *sigar_gethostbyname(const char *name,
                                     sigar_hostent_t *data);
 
-/*
 SIGAR_INLINE char *sigar_skip_line(char *buffer, int buflen);
 
 SIGAR_INLINE char *sigar_skip_token(char *p);
 
 SIGAR_INLINE char *sigar_skip_multiple_token(char *p, int count);
-*/
+
 char *sigar_getword(char **line, char stop);
 
 char *sigar_strcasestr(const char *s1, const char *s2);

@@ -40,7 +40,7 @@ extern "C" {
 # define SIGAR_F_U64 "%Lu"
 #endif
 
-#if defined(MINGWRUNTIME)
+#if defined(WIN32)
 
 typedef unsigned __int32 sigar_uint32_t;
 
@@ -79,7 +79,7 @@ typedef long long sigar_int64_t;
 #define SIGAR_ENOTIMPL       (SIGAR_START_ERROR + 1)
 #define SIGAR_OS_START_ERROR (SIGAR_START_ERROR*2)
 
-#ifdef MINGWRUNTIME
+#ifdef WIN32
 #   define SIGAR_ENOENT ERROR_FILE_NOT_FOUND
 #   define SIGAR_EACCES ERROR_ACCESS_DENIED
 #   define SIGAR_ENXIO  ERROR_BAD_DRIVER_LEVEL
@@ -89,7 +89,7 @@ typedef long long sigar_int64_t;
 #   define SIGAR_ENXIO  ENXIO
 #endif
 
-#ifdef MINGWRUNTIME
+#ifdef WIN32
 #   define SIGAR_DECLARE(type) \
         __declspec(dllexport) type __stdcall
 #else
@@ -104,7 +104,7 @@ typedef long long sigar_int64_t;
 #   define SIGAR_PATH_MAX 4096
 #endif
 
-#if defined(MINGWRUNTIME)
+#ifdef WIN32
 typedef sigar_uint64_t sigar_pid_t;
 typedef unsigned long sigar_uid_t;
 typedef unsigned long sigar_gid_t;

@@ -6,9 +6,7 @@ static const char version[] = "$Id: factory.c,v 1.8 2013/09/29 17:41:40 valtri E
 * Copyright 2001-2003, Meiosys (www.meiosys.com). All rights reserved.
 * See the COPYING file for the terms of usage and distribution.
 */
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <sd/factory.h>
 #include <stdlib.h>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,38 +20,32 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{76C4AACB-2088-4023-9475-FF9C279A0967}</ProjectGuid>
-    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{10F08319-1AA5-46D9-98DB-F20A34B0F63A}</ProjectGuid>
     <RootNamespace>rediswin32</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>redis-win32(Win32)</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>ClangCL</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>ClangCL</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>ClangCL</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>ClangCL</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -74,88 +68,154 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetName>libredis</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetName>libredis</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>libredis</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>libredis</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;REDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0501;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\code\externals\cwin\thread;..\..\code\externals\cwin;..\..\code\externals\jemalloc\include;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>..\..\bin\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;REDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0501;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\code\externals\cwin\thread;..\..\code\externals\cwin;..\..\code\externals\jemalloc\include;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>..\..\bin\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;REDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0501;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\code\externals\cwin\thread;..\..\code\externals\cwin;..\..\code\externals\jemalloc\include;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>..\..\bin\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;REDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0501;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\code\externals\cwin\thread;..\..\code\externals\cwin;..\..\code\externals\jemalloc\include;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>..\..\bin\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="lua\lua.h" />
+    <ClInclude Include="lua\lualib.h" />
+    <ClInclude Include="Win32_Interop\dlfcn.h" />
+    <ClInclude Include="Win32_Interop\EventLog.h" />
+    <ClInclude Include="Win32_Interop\win32fixes.h" />
+    <ClInclude Include="Win32_Interop\Win32_ANSI.h" />
+    <ClInclude Include="Win32_Interop\Win32_APIs.h" />
+    <ClInclude Include="Win32_Interop\Win32_Assert.h" />
+    <ClInclude Include="Win32_Interop\Win32_CommandLine.h" />
+    <ClInclude Include="Win32_Interop\Win32_Common.h" />
+    <ClInclude Include="Win32_Interop\Win32_Error.h" />
+    <ClInclude Include="Win32_Interop\Win32_EventLog.h" />
+    <ClInclude Include="Win32_Interop\Win32_FDAPI.h" />
+    <ClInclude Include="Win32_Interop\Win32_fdapi_crt.h" />
+    <ClInclude Include="Win32_Interop\Win32_Portability.h" />
+    <ClInclude Include="Win32_Interop\Win32_QFork.h" />
+    <ClInclude Include="Win32_Interop\Win32_QFork_impl.h" />
+    <ClInclude Include="Win32_Interop\Win32_RedisLog.h" />
+    <ClInclude Include="Win32_Interop\win32_rfdmap.h" />
+    <ClInclude Include="Win32_Interop\Win32_Service.h" />
+    <ClInclude Include="Win32_Interop\Win32_Signal_Process.h" />
+    <ClInclude Include="Win32_Interop\Win32_SmartHandle.h" />
+    <ClInclude Include="Win32_Interop\Win32_StackTrace.h" />
+    <ClInclude Include="Win32_Interop\Win32_ThreadControl.h" />
+    <ClInclude Include="Win32_Interop\Win32_Time.h" />
+    <ClInclude Include="Win32_Interop\win32_types.h" />
+    <ClInclude Include="Win32_Interop\win32_types_hiredis.h" />
+    <ClInclude Include="Win32_Interop\Win32_variadicFunctor.h" />
+    <ClInclude Include="Win32_Interop\win32_winapifamily.h" />
+    <ClInclude Include="Win32_Interop\win32_wsiocp.h" />
+    <ClInclude Include="Win32_Interop\win32_wsiocp2.h" />
+    <ClInclude Include="Win32_Interop\WS2tcpip.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="change.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\code\externals\cwin\sys\time.c" />
+    <ClCompile Include="lua\lua.c" />
+    <ClCompile Include="Win32_Interop\dlfcn.c" />
+    <ClCompile Include="Win32_Interop\win32fixes.c" />
+    <ClCompile Include="Win32_Interop\Win32_ANSI.c" />
+    <ClCompile Include="Win32_Interop\Win32_APIs.c" />
+    <ClCompile Include="Win32_Interop\Win32_CommandLine.cpp" />
+    <ClCompile Include="Win32_Interop\Win32_Common.cpp" />
+    <ClCompile Include="Win32_Interop\Win32_Error.c" />
+    <ClCompile Include="Win32_Interop\Win32_EventLog.cpp" />
+    <ClCompile Include="Win32_Interop\Win32_FDAPI.cpp" />
+    <ClCompile Include="Win32_Interop\Win32_fdapi_crt.cpp" />
+    <ClCompile Include="Win32_Interop\Win32_QFork.cpp" />
+    <ClCompile Include="Win32_Interop\Win32_QFork_impl.c" />
+    <ClCompile Include="Win32_Interop\Win32_RedisLog.c" />
+    <ClCompile Include="Win32_Interop\win32_rfdmap.cpp" />
+    <ClCompile Include="Win32_Interop\Win32_service.cpp" />
+    <ClCompile Include="Win32_Interop\Win32_Signal_Process.c" />
+    <ClCompile Include="Win32_Interop\Win32_StackTrace.cpp" />
+    <ClCompile Include="Win32_Interop\Win32_ThreadControl.c" />
+    <ClCompile Include="Win32_Interop\Win32_Time.c" />
+    <ClCompile Include="Win32_Interop\Win32_variadicFunctor.cpp" />
+    <ClCompile Include="Win32_Interop\win32_wsiocp.c" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

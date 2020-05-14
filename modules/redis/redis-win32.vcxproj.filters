@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="lua">
+      <UniqueIdentifier>{610f6471-0e57-4c09-bec5-c83344a2268c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Win32_Interop">
+      <UniqueIdentifier>{f8daf274-4a63-4efc-9dcb-473343139ea6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lua\lua.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lualib.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\dlfcn.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\EventLog.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_ANSI.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_APIs.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_Assert.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_CommandLine.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_Common.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_Error.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_EventLog.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_FDAPI.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_fdapi_crt.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_Portability.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_QFork.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_QFork_impl.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_RedisLog.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\win32_rfdmap.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_Service.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_Signal_Process.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_SmartHandle.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_StackTrace.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_ThreadControl.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_Time.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\win32_types.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\win32_types_hiredis.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_variadicFunctor.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\win32_winapifamily.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\win32_wsiocp.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\win32_wsiocp2.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\win32fixes.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\WS2tcpip.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="change.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Win32_Interop\dlfcn.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_ANSI.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_APIs.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_CommandLine.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_Common.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_Error.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_EventLog.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_FDAPI.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_fdapi_crt.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_QFork.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_QFork_impl.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_RedisLog.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\win32_rfdmap.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_service.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_Signal_Process.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_StackTrace.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_ThreadControl.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_Time.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_variadicFunctor.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\win32_wsiocp.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\win32fixes.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\cwin\sys\time.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lua.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

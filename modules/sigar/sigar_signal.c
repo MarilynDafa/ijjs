@@ -18,7 +18,7 @@
 #include "sigar_private.h"
 #include "sigar_util.h"
 
-#ifdef MINGWRUNTIME
+#ifdef WIN32
 #include <windows.h>
 #endif
 
@@ -27,37 +27,36 @@
 
 SIGAR_DECLARE(int) sigar_proc_kill(sigar_pid_t pid, int signum)
 {
-#ifndef MINGWRUNTIME 
-	if (kill(pid, signum) == -1) {
-		return errno;
-	}
-	return SIGAR_OK;
+#ifdef WIN32
+    int status = -1;
+    HANDLE proc =
+        OpenProcess(PROCESS_ALL_ACCESS,
+                    TRUE, (DWORD)pid);
+
+    if (proc) {
+        switch (signum) {
+          case 0:
+            status = SIGAR_OK;
+            break;
+          default:
+            if (TerminateProcess(proc, signum)) {
+                status = SIGAR_OK;
+            }
+            break;
+        }
+
+        CloseHandle(proc);
+
+        if (status == SIGAR_OK) {
+            return SIGAR_OK;
+        }
+    }
+    return GetLastError();
 #else
-	int status = -1;
-	HANDLE proc =
-	    OpenProcess(PROCESS_ALL_ACCESS,
-		TRUE,
-		(DWORD)pid);
-
-	if (proc) {
-		switch (signum) {
-		case 0:
-			status = SIGAR_OK;
-			break;
-		default:
-			if (TerminateProcess(proc, signum)) {
-				status = SIGAR_OK;
-			}
-			break;
-		}
-
-		CloseHandle(proc);
-
-		if (status == SIGAR_OK) {
-			return SIGAR_OK;
-		}
-	}
-	return GetLastError();
+    if (kill(pid, signum) == -1) {
+        return errno;
+    }
+    return SIGAR_OK;
 #endif
 }
 

@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{449EFAEF-2AA2-4A97-AEB5-D812EC64DECC}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libijjswin32</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+    <Import Project="ijjs.vcxitems" Label="Shared" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\bin\win32</OutDir>
+    <TargetName>libijjs</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\bin\win32</OutDir>
+    <TargetName>libijjs</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\bin\win32</OutDir>
+    <TargetName>libijjs</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\bin\win32</OutDir>
+    <TargetName>libijjs</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>d_m3HasWASI;USE_MBEDTLS;USE_PTHREAD_ID;__CLEANUP_SEH;HAVE_CONFIG_H;DLLEXPORT;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;WIN32;_DEBUG;_WINDOWS;_USRDLL;LIBIJJSWIN32_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\log4c;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\cwin\thread;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningVersion>
+      </WarningVersion>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>ws2_32.lib;wldap32.lib;Iphlpapi.lib;Psapi.lib;Userenv.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>d_m3HasWASI;USE_MBEDTLS;USE_PTHREAD_ID;__CLEANUP_SEH;HAVE_CONFIG_H;DLLEXPORT;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;_DEBUG;_WINDOWS;_USRDLL;LIBIJJSWIN32_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\log4c;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\cwin\thread;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningVersion>
+      </WarningVersion>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>ws2_32.lib;wldap32.lib;Iphlpapi.lib;Psapi.lib;Userenv.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>d_m3HasWASI;USE_MBEDTLS;USE_PTHREAD_ID;__CLEANUP_SEH;HAVE_CONFIG_H;DLLEXPORT;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;WIN32;NDEBUG;_WINDOWS;_USRDLL;LIBIJJSWIN32_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\log4c;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\cwin\thread;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningVersion>
+      </WarningVersion>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;wldap32.lib;Iphlpapi.lib;Psapi.lib;Userenv.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>d_m3HasWASI;USE_MBEDTLS;USE_PTHREAD_ID;__CLEANUP_SEH;HAVE_CONFIG_H;DLLEXPORT;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;NDEBUG;_WINDOWS;_USRDLL;LIBIJJSWIN32_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\log4c;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\cwin\thread;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningVersion>
+      </WarningVersion>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;wldap32.lib;Iphlpapi.lib;Psapi.lib;Userenv.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\code\externals\cwin\pthread.h" />
+    <ClInclude Include="..\code\externals\cwin\stdatomic.h" />
+    <ClInclude Include="..\code\externals\cwin\sys\time.h" />
+    <ClInclude Include="..\code\externals\uv\src\win\atomicops-inl.h" />
+    <ClInclude Include="..\code\externals\uv\src\win\fs-fd-hash-inl.h" />
+    <ClInclude Include="..\code\externals\uv\src\win\handle-inl.h" />
+    <ClInclude Include="..\code\externals\uv\src\win\internal.h" />
+    <ClInclude Include="..\code\externals\uv\src\win\req-inl.h" />
+    <ClInclude Include="..\code\externals\uv\src\win\stream-inl.h" />
+    <ClInclude Include="..\code\externals\uv\src\win\winapi.h" />
+    <ClInclude Include="..\code\externals\uv\src\win\winsock.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\code\externals\cwin\pthread.c" />
+    <ClCompile Include="..\code\externals\cwin\sys\time.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\async.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\core.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\detect-wakeup.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\dl.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\error.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\fs-event.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\fs.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\getaddrinfo.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\getnameinfo.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\handle.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\loop-watcher.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\pipe.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\poll.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\process-stdio.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\process.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\signal.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\snprintf.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\stream.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\tcp.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\thread.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\tty.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\udp.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\util.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\winapi.c" />
+    <ClCompile Include="..\code\externals\uv\src\win\winsock.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

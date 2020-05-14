@@ -8,9 +8,7 @@
 #ifndef __sd_xplatform_h
 #define __sd_xplatform_h
 
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #if !defined(_WIN32) || defined(__MINGW32__) || defined(__MINGW64__)
 #include <sys/time.h>

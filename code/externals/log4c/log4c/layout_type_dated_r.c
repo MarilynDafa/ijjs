@@ -7,9 +7,7 @@ static const char version[] = "$Id$";
  *
  * See the COPYING file for the terms of usage and distribution.
  */
-#ifndef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <log4c/layout.h>
 #include <log4c/priority.h>

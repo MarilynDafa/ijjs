@@ -7,9 +7,7 @@ static const char version[] = "$Id: category.c,v 1.13 2013/09/29 17:37:04 valtri
 *
 * See the COPYING file for the terms of usage and distribution.
 */
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <stdlib.h>
 #include <string.h>

@@ -4,9 +4,7 @@ static const char version[] = "$Id: error.c,v 1.7 2006/09/21 12:19:55 legoater E
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <stdio.h>
 #include <string.h>

@@ -7,9 +7,7 @@ static const char version[] = "$Id: logging_event.c,v 1.7 2012/10/04 22:51:28 va
  *
  * See the COPYING file for the terms of usage and distribution.
  */
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <log4c/logging_event.h>
 #include <log4c/category.h>

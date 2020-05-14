@@ -8,9 +8,7 @@ static const char version[] = "$Id: rc.c,v 1.13 2009/05/04 12:30:45 legoater Exp
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <log4c/rc.h>
 #include <log4c/category.h>

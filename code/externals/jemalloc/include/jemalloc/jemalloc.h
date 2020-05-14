@@ -148,9 +148,9 @@ extern "C" {
 #  define JEMALLOC_ALLOC_SIZE2(s1, s2)
 #  ifndef JEMALLOC_EXPORT
 #    ifdef DLLEXPORT
-#      define JEMALLOC_EXPORT
+#      define JEMALLOC_EXPORT __declspec(dllexport)
 #    else
-#      define JEMALLOC_EXPORT
+#      define JEMALLOC_EXPORT __declspec(dllimport)
 #    endif
 #  endif
 #  define JEMALLOC_FORMAT_PRINTF(s, i)

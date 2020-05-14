@@ -13,3 +13,5 @@
 *.log
 *.idb
 *.rdb
+*.dll
+*.lib

@@ -12,10 +12,9 @@ log4c final
 jsฯเนุด๚ย๋
 ij_modules
 vscode
-sigar
-xml
-redis
-PostgreSQL
+sigar ok
+redis ok
+PostgreSQL 
 express
 three
 http-server

@@ -8,9 +8,7 @@ static const char version[] = "$Id: appender.c,v 1.8 2013/04/06 13:04:53 valtri 
 * See the COPYING file for the terms of usage and distribution.
 */
 
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <log4c/appender.h>
 #include <log4c/appender_type_stream.h>

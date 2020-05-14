@@ -6,9 +6,7 @@ static const char version[] = "$Id: domnode-xml.c,v 1.3 2013/09/30 20:32:45 valt
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <string.h>
 

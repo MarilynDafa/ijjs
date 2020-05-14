@@ -7,9 +7,7 @@ static const char version[] = "$Id: init.c,v 1.22 2013/09/29 17:50:09 valtri Exp
  *
  * See the COPYING file for the terms of usage and distribution.
  */
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <log4c/init.h>
 #include <log4c/category.h>

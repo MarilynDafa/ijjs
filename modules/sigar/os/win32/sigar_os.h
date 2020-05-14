@@ -20,7 +20,7 @@
 #define SIGAR_OS_H
 
 #if _MSC_VER <= 1200
-//#define SIGAR_USING_MSC6 /* Visual Studio version 6 */
+#define SIGAR_USING_MSC6 /* Visual Studio version 6 */
 #endif
 
 #define WIN32_LEAN_AND_MEAN
@@ -41,7 +41,7 @@
 
 #include "sigar_util.h"
 
-#define INT64_C(val) val##LL
+#define INT64_C(val) val##i64
 
 /* see apr/include/arch/win32/atime.h */
 #define EPOCH_DELTA INT64_C(11644473600000000)
@@ -141,7 +141,43 @@ typedef struct _WINSTATION_INFO {
 
 /* end wtsapi32.h */
 
+#ifdef SIGAR_USING_MSC6
 
+/* from winbase.h not in vs6.0 */
+typedef struct {
+    DWORD dwLength;
+    DWORD dwMemoryLoad;
+    DWORDLONG ullTotalPhys;
+    DWORDLONG ullAvailPhys;
+    DWORDLONG ullTotalPageFile;
+    DWORDLONG ullAvailPageFile;
+    DWORDLONG ullTotalVirtual;
+    DWORDLONG ullAvailVirtual;
+    DWORDLONG ullAvailExtendedVirtual;
+} MEMORYSTATUSEX;
+
+/* service manager stuff not in vs6.0 */
+typedef struct _SERVICE_STATUS_PROCESS {
+    DWORD dwServiceType;
+    DWORD dwCurrentState;
+    DWORD dwControlsAccepted;
+    DWORD dwWin32ExitCode;
+    DWORD dwServiceSpecificExitCode;
+    DWORD dwCheckPoint;
+    DWORD dwWaitHint;
+    DWORD dwProcessId;
+    DWORD dwServiceFlags;
+} SERVICE_STATUS_PROCESS;
+
+typedef enum {
+    SC_STATUS_PROCESS_INFO = 0
+} SC_STATUS_TYPE;
+
+#ifndef ERROR_DATATYPE_MISMATCH
+#define ERROR_DATATYPE_MISMATCH 1629L
+#endif
+
+#endif /* _MSC_VER */
 
 #include <iprtrmib.h>
 
@@ -425,32 +461,25 @@ typedef BOOL (CALLBACK *mpr_get_net_connection)(LPCTSTR,
          const char *name; \
          ##api##_##name func; \
     } ##name
-	
-	
-typedef BOOL(CALLBACK *wtsapi_enum_sessions)(HANDLE,
-	DWORD,
-	DWORD,
-	PWTS_SESSION_INFO *,
-	DWORD *);
 
 typedef struct {
     sigar_dll_handle_t handle;
 
-	struct {
-		const char *enum_sessions; 
-		wtsapi_enum_sessions func; 
-	}enum_sessions;
-	
-	
-	struct {
-		const char *free_mem; 
-		wtsapi_free_mem func; 
-	}free_mem;
-	
-	struct {
-		const char *query_session; 
-		wtsapi_query_session func; 
-	}query_session;
+    struct {
+        const char* enum_sessions;
+        wtsapi_enum_sessions func;
+    }enum_sessions;
+
+
+    struct {
+        const char* free_mem;
+        wtsapi_free_mem func;
+    }free_mem;
+
+    struct {
+        const char* query_session;
+        wtsapi_query_session func;
+    }query_session;
 
     sigar_dll_func_t end;
 } sigar_wtsapi_t;
@@ -458,78 +487,78 @@ typedef struct {
 typedef struct {
     sigar_dll_handle_t handle;
 
-	
-	struct {
-		const char *get_ipforward_table; 
-		iphlpapi_get_ipforward_table func; 
-	}get_ipforward_table;
-	
-	
-	struct {
-		const char *get_ipaddr_table; 
-		iphlpapi_get_ipaddr_table func; 
-	}get_ipaddr_table;
-	
-	struct {
-		const char *get_if_table; 
-		iphlpapi_get_if_table func; 
-	}get_if_table;
-	
-	
-	struct {
-		const char *get_if_entry; 
-		iphlpapi_get_if_entry func; 
-	}get_if_entry;
-	
-	struct {
-		const char *get_num_if; 
-		iphlpapi_get_num_if func; 
-	}get_num_if;
-	
-	struct {
-		const char *get_tcp_table; 
-		iphlpapi_get_tcp_table func; 
-	}get_tcp_table;
-	
-	
-	struct {
-		const char *get_udp_table; 
-		iphlpapi_get_udp_table func; 
-	}get_udp_table;
-	
-	
-	struct {
-		const char *get_tcpx_table; 
-		iphlpapi_get_tcpx_table func; 
-	}get_tcpx_table;
-	
-	struct {
-		const char *get_udpx_table; 
-		iphlpapi_get_udpx_table func; 
-	}get_udpx_table;
-	
-	struct {
-		const char *get_tcp_stats; 
-		iphlpapi_get_tcp_stats func; 
-	}get_tcp_stats;
-	
-		
-	struct {
-		const char *get_net_params; 
-		iphlpapi_get_net_params func; 
-	}get_net_params;
-	
-	
-	struct {
-		const char *get_adapters_info; 
-		iphlpapi_get_adapters_info func; 
-	}get_adapters_info;
-	
-	struct {
-		const char *get_adapters_addrs; 
-		iphlpapi_get_adapters_addrs func; 
-	}get_adapters_addrs;
-	
+
+    struct {
+        const char* get_ipforward_table;
+        iphlpapi_get_ipforward_table func;
+    }get_ipforward_table;
+
+
+    struct {
+        const char* get_ipaddr_table;
+        iphlpapi_get_ipaddr_table func;
+    }get_ipaddr_table;
+
+    struct {
+        const char* get_if_table;
+        iphlpapi_get_if_table func;
+    }get_if_table;
+
+
+    struct {
+        const char* get_if_entry;
+        iphlpapi_get_if_entry func;
+    }get_if_entry;
+
+    struct {
+        const char* get_num_if;
+        iphlpapi_get_num_if func;
+    }get_num_if;
+
+    struct {
+        const char* get_tcp_table;
+        iphlpapi_get_tcp_table func;
+    }get_tcp_table;
+
+
+    struct {
+        const char* get_udp_table;
+        iphlpapi_get_udp_table func;
+    }get_udp_table;
+
+
+    struct {
+        const char* get_tcpx_table;
+        iphlpapi_get_tcpx_table func;
+    }get_tcpx_table;
+
+    struct {
+        const char* get_udpx_table;
+        iphlpapi_get_udpx_table func;
+    }get_udpx_table;
+
+    struct {
+        const char* get_tcp_stats;
+        iphlpapi_get_tcp_stats func;
+    }get_tcp_stats;
+
+
+    struct {
+        const char* get_net_params;
+        iphlpapi_get_net_params func;
+    }get_net_params;
+
+
+    struct {
+        const char* get_adapters_info;
+        iphlpapi_get_adapters_info func;
+    }get_adapters_info;
+
+    struct {
+        const char* get_adapters_addrs;
+        iphlpapi_get_adapters_addrs func;
+    }get_adapters_addrs;
+
 
     sigar_dll_func_t end;
 } sigar_iphlpapi_t;
@@ -537,32 +566,32 @@ typedef struct {
 typedef struct {
     sigar_dll_handle_t handle;
 
-	struct {
-		const char *convert_string_sid; 
-		advapi_convert_string_sid func; 
-	}convert_string_sid;
-	
-	struct {
-		const char *query_service_status; 
-		advapi_query_service_status func; 
-	}query_service_status;
-	
+    struct {
+        const char* convert_string_sid;
+        advapi_convert_string_sid func;
+    }convert_string_sid;
+
+    struct {
+        const char* query_service_status;
+        advapi_query_service_status func;
+    }query_service_status;
+
     sigar_dll_func_t end;
 } sigar_advapi_t;
 
 typedef struct {
     sigar_dll_handle_t handle;
 
-	
-	struct {
-		const char *query_sys_info; 
-		ntdll_query_sys_info func; 
-	}query_sys_info;
-	
-	struct {
-		const char *query_proc_info; 
-		ntdll_query_proc_info func; 
-	}query_proc_info;
+
+    struct {
+        const char* query_sys_info;
+        ntdll_query_sys_info func;
+    }query_sys_info;
+
+    struct {
+        const char* query_proc_info;
+        ntdll_query_proc_info func;
+    }query_proc_info;
 
     sigar_dll_func_t end;
 } sigar_ntdll_t;
@@ -570,21 +599,21 @@ typedef struct {
 typedef struct {
     sigar_dll_handle_t handle;
 
-	struct {
-		const char *enum_modules; 
-		psapi_enum_modules func; 
-	}enum_modules;
-	
-	struct {
-		const char *enum_processes; 
-		psapi_enum_processes func; 
-	}enum_processes;
-	
-	struct {
-		const char *get_module_name; 
-		psapi_get_module_name func; 
-	}get_module_name;
-	
+    struct {
+        const char* enum_modules;
+        psapi_enum_modules func;
+    }enum_modules;
+
+    struct {
+        const char* enum_processes;
+        psapi_enum_processes func;
+    }enum_processes;
+
+    struct {
+        const char* get_module_name;
+        psapi_get_module_name func;
+    }get_module_name;
+
 
     sigar_dll_func_t end;
 } sigar_psapi_t;
@@ -592,31 +621,31 @@ typedef struct {
 typedef struct {
     sigar_dll_handle_t handle;
 
-	struct {
-		const char *query_info; 
-		winsta_query_info func; 
-	}query_info;
+    struct {
+        const char* query_info;
+        winsta_query_info func;
+    }query_info;
     sigar_dll_func_t end;
 } sigar_winsta_t;
 
 typedef struct {
     sigar_dll_handle_t handle;
 
-	struct {
-		const char *memory_status; 
-		kernel_memory_status func; 
-	}memory_status;
-	
+    struct {
+        const char* memory_status;
+        kernel_memory_status func;
+    }memory_status;
+
     sigar_dll_func_t end;
 } sigar_kernel_t;
 
 typedef struct {
     sigar_dll_handle_t handle;
 
-	struct {
-		const char *get_net_connection; 
-		mpr_get_net_connection func; 
-	}get_net_connection;
+    struct {
+        const char* get_net_connection;
+        mpr_get_net_connection func;
+    }get_net_connection;
 
     sigar_dll_func_t end;
 } sigar_mpr_t;
