@@ -34,8 +34,10 @@ this project is inspired by nodejs
 
 ## Building
 
+```
 Windows/Linux: Visual Studio 2019 + clang
 OSX: XCode
+```
 
 ## Supported platforms
 
