@@ -33,12 +33,9 @@ this project is inspired by nodejs
 - mbedtls
 
 ## Building
-```
-Windows/Linux
-Visual Studio 2019 + clang
-OSX
-XCode
-```
+
+Windows/Linux: Visual Studio 2019 + clang
+OSX: XCode
 
 ## Supported platforms
 
