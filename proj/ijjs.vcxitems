@@ -336,6 +336,26 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_module.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_optimize.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_parse.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijbootstrap.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijdns.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijerror.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijfs.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijhttp.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijkcp.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijmisc.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijmodules.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijprocess.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijsignals.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijstd.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijstreams.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijtimers.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijudp.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijutils.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijversion.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijvm.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijwasm.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijworker.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijxhr.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)..\code\externals\3rd.txt" />
@@ -649,6 +669,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_info.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_math_utils.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\wasm3.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\ijjs.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\liblog4c.def" />

@@ -1,4 +1,4 @@
-int main(int argc, char** argv) 
+IJS32 main(IJS32 argc, IJAnsi** argv) 
 {
 	return 0;
 }

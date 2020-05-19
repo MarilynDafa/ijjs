@@ -1,5 +1,5 @@
 /*
- ijjs runtime environment
+ ijjs javascript runtime engine
  Copyright (C) 2010-2017 Trix
 
  This software is provided 'as-is', without any express or implied
@@ -19,3 +19,11 @@
  3. This notice may not be removed or altered from any source distribution.
  */
 #include "ijjs.h"
+
+
+#define TJS_VERSION_STRING                                                                                             \
+    STRINGIFY(IJJS_VERSION_MAJOR) "." STRINGIFY(IJJS_VERSION_MINOR) "." STRINGIFY(IJJS_VERSION_PATCH) IJJS_VERSION_SUFFIX
+
+const IJAnsi* ijVersion() {
+    return TJS_VERSION_STRING;
+}
