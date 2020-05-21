@@ -93,7 +93,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>d_m3HasWASI;USE_MBEDTLS;USE_PTHREAD_ID;__CLEANUP_SEH;HAVE_CONFIG_H;DLLEXPORT;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;QJS_VERSION_STR="20200412";WIN32;_DEBUG;_WINDOWS;_USRDLL;LIBIJJSWIN32_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>d_m3HasWASI;USE_MBEDTLS;USE_PTHREAD_ID;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;DLLEXPORT;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;QJS_VERSION_STR="20200412";WIN32;_DEBUG;_WINDOWS;_USRDLL;LIBIJJSWIN32_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\code\externals\wasm;..\code\externals\quickjs;..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\log4c;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\cwin\thread;..\code\headers;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningVersion>
       </WarningVersion>
@@ -109,7 +109,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>d_m3HasWASI;USE_MBEDTLS;USE_PTHREAD_ID;__CLEANUP_SEH;HAVE_CONFIG_H;DLLEXPORT;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;QJS_VERSION_STR="20200412";_DEBUG;_WINDOWS;_USRDLL;LIBIJJSWIN32_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>d_m3HasWASI;USE_MBEDTLS;USE_PTHREAD_ID;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;DLLEXPORT;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;QJS_VERSION_STR="20200412";_DEBUG;_WINDOWS;_USRDLL;LIBIJJSWIN32_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\code\externals\wasm;..\code\externals\quickjs;..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\log4c;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\cwin\thread;..\code\headers;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningVersion>
       </WarningVersion>

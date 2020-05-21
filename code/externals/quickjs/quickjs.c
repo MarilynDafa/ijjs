@@ -52329,7 +52329,7 @@ static JSValue js_atomics_wait(JSContext *ctx,
         ret = 0;
     } else {
         /* XXX: use clock monotonic */
-        clock_gettime(CLOCK_REALTIME, &ts);
+        clock_gettime(0, &ts);
         ts.tv_sec += timeout / 1000;
         ts.tv_nsec += (timeout % 1000) * 1000000;
         if (ts.tv_nsec >= 1000000000) {

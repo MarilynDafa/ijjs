@@ -1089,6 +1089,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijxhr.c">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libbf.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\kcp\ikcp.h">
