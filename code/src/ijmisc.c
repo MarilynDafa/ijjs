@@ -293,7 +293,7 @@ IJVoid ijModMiscInit(JSContext* ctx, JSModuleDef* m) {
     JS_SetModuleExport(ctx, m, "version", JS_NewString(ctx, ijVersion()));
     JSValue versions = JS_NewObjectProto(ctx, JS_NULL);
     JS_DefinePropertyValueStr(ctx, versions, "quickjs", JS_NewString(ctx, QJS_VERSION_STR), JS_PROP_C_W_E);
-    JS_DefinePropertyValueStr(ctx, versions, "tjs", JS_NewString(ctx, ijVersion()), JS_PROP_C_W_E);
+    JS_DefinePropertyValueStr(ctx, versions, "ijjs", JS_NewString(ctx, ijVersion()), JS_PROP_C_W_E);
     JS_DefinePropertyValueStr(ctx, versions, "uv", JS_NewString(ctx, uv_version_string()), JS_PROP_C_W_E);
     JS_DefinePropertyValueStr(ctx, versions, "curl", JS_NewString(ctx, curl_version()), JS_PROP_C_W_E);
     JS_SetModuleExport(ctx, m, "versions", versions);

@@ -9,13 +9,18 @@ mbedtls 2.16.5
 miniz 2.1.0
 log4c final
 
-jsœ‡πÿ¥˙¬Î
-ij_modules
+cli
+jemalloc
+kcp
+linux
+osx
+test
 vscode
-sigar ok
-redis ok
-PostgreSQL 
-express
-three
-http-server
+log4c	
+PostgreSQL  js	
+sigar
+redis
+http-server  js
+express  js
+
 ijpm

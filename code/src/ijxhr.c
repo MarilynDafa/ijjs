@@ -284,7 +284,7 @@ static JSValue ijXhrConstructor(JSContext* ctx, JSValueConst new_target, IJS32 a
     x->curlm_h = ijGetCurlm(ctx);
     x->curl_h = curl_easy_init();
     curl_easy_setopt(x->curl_h, CURLOPT_PRIVATE, &x->curl_private);
-    curl_easy_setopt(x->curl_h, CURLOPT_USERAGENT, "tjs/1.0");
+    curl_easy_setopt(x->curl_h, CURLOPT_USERAGENT, "ijjs/1.0");
     curl_easy_setopt(x->curl_h, CURLOPT_FOLLOWLOCATION, 1L);
     curl_easy_setopt(x->curl_h, CURLOPT_NOPROGRESS, 0L);
     curl_easy_setopt(x->curl_h, CURLOPT_NOSIGNAL, 1L);

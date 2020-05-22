@@ -49,7 +49,7 @@ IJS32 ijCurlLoadHttp(DynBuf* dbuf, const IJAnsi* url) {
     curl_easy_setopt(curl_handle, CURLOPT_URL, url);
     curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, ijCurlWriteCb);
     curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (IJVoid *) dbuf);
-     curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "tjs/1.0");
+     curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "ijjs/1.0");
 #if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
     curl_easy_setopt(curl_handle, CURLOPT_CAINFO, "cacert.pem");
 #endif

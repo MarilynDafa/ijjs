@@ -342,6 +342,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijerror.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijfs.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijhttp.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijjs.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijkcp.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijmisc.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijmodules.c" />

@@ -46,6 +46,9 @@
     <ClInclude Include="..\code\externals\uv\src\win\winsock.h">
       <Filter>uv</Filter>
     </ClInclude>
+    <ClInclude Include="..\code\externals\cwin\unistd.h">
+      <Filter>cwin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\code\externals\uv\src\win\async.c">
@@ -127,6 +130,9 @@
       <Filter>cwin\sys</Filter>
     </ClCompile>
     <ClCompile Include="..\code\externals\cwin\pthread.c">
+      <Filter>cwin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\cwin\unistd.c">
       <Filter>cwin</Filter>
     </ClCompile>
   </ItemGroup>

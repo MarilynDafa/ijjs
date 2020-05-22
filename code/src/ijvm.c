@@ -166,7 +166,7 @@ IJJSRuntime* ijNewRuntimeInternal(IJBool is_worker, IJJSRunOptions* options) {
     JS_SetModuleLoaderFunc(qrt->rt, ijModuleNormalizer, ijModuleLoader, qrt);
     JS_SetHostPromiseRejectionTracker(qrt->rt, ijPromiseRejectionTracker, NULL);
     qrt->in_bootstrap = true;
-    ijInitModuleUV(qrt->ctx, "@tjs/core");
+    ijInitModuleUV(qrt->ctx, "@ijjs/core");
     ijBootstrapGlobals(qrt->ctx);
     ijAddBuiltins(qrt->ctx);
     qrt->in_bootstrap = false;

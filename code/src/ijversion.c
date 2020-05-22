@@ -21,9 +21,9 @@
 #include "ijjs.h"
 
 
-#define TJS_VERSION_STRING                                                                                             \
+#define IJJS_VERSION_STRING                                                                                             \
     STRINGIFY(IJJS_VERSION_MAJOR) "." STRINGIFY(IJJS_VERSION_MINOR) "." STRINGIFY(IJJS_VERSION_PATCH) IJJS_VERSION_SUFFIX
 
 const IJAnsi* ijVersion() {
-    return TJS_VERSION_STRING;
+    return IJJS_VERSION_STRING;
 }

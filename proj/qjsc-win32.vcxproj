@@ -95,7 +95,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";PTW32_CONFIG_H;PTW32_STATIC_LIB;CONFIG_BIGNUM;HAVE_CONFIG_H;USE_PTHREAD_ID;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,15 +150,17 @@
   <ItemGroup>
     <ClCompile Include="..\code\externals\cwin\pthread.c" />
     <ClCompile Include="..\code\externals\cwin\sys\time.c" />
+    <ClCompile Include="..\code\externals\cwin\unistd.c" />
     <ClCompile Include="..\code\externals\quickjs\cutils.c" />
     <ClCompile Include="..\code\externals\quickjs\libbf.c" />
     <ClCompile Include="..\code\externals\quickjs\libregexp.c" />
     <ClCompile Include="..\code\externals\quickjs\libunicode.c" />
-    <ClCompile Include="..\code\externals\quickjs\qjsc.c" />
     <ClCompile Include="..\code\externals\quickjs\quickjs.c" />
+    <ClCompile Include="qjsc.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\code\externals\cwin\sys\time.h" />
+    <ClInclude Include="..\code\externals\cwin\unistd.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

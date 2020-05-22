@@ -20,7 +20,7 @@
  */
 #include "ijjs.h"
 
-static JSClassID tjs_wasm_module_class_id;
+static JSClassID ijjs_wasm_module_class_id;
 
 typedef struct {
     IM3Module module;
@@ -31,7 +31,7 @@ typedef struct {
 } IJJSWasmModule;
 
 static IJVoid ijWasmModuleFinalizer(JSRuntime* rt, JSValue val) {
-    IJJSWasmModule* m = JS_GetOpaque(val, tjs_wasm_module_class_id);
+    IJJSWasmModule* m = JS_GetOpaque(val, ijjs_wasm_module_class_id);
     if (m) {
         if (m->module)
             m3_FreeModule(m->module);
@@ -68,7 +68,7 @@ static JSClassDef ijjs_wasm_instance_class = { "Instance", .finalizer = ijWasmIn
 static JSValue ijNewWasmModule(JSContext* ctx) {
     IJJSWasmModule* m;
     JSValue obj;
-    obj = JS_NewObjectClass(ctx, tjs_wasm_module_class_id);
+    obj = JS_NewObjectClass(ctx, ijjs_wasm_module_class_id);
     if (JS_IsException(obj))
         return obj;
     m = js_mallocz(ctx, sizeof(*m));
@@ -81,7 +81,7 @@ static JSValue ijNewWasmModule(JSContext* ctx) {
 }
 
 static IJJSWasmModule* ijWasmModuleGet(JSContext* ctx, JSValueConst obj) {
-    return JS_GetOpaque2(ctx, obj, tjs_wasm_module_class_id);
+    return JS_GetOpaque2(ctx, obj, ijjs_wasm_module_class_id);
 }
 
 static JSValue ijNewWasmInstance(JSContext* ctx) {
@@ -280,9 +280,9 @@ static const JSCFunctionListEntry ijjs_wasm_instance_funcs[] = {
 };
 
 IJVoid ijModWasmInit(JSContext* ctx, JSModuleDef* m) {
-    JS_NewClassID(&tjs_wasm_module_class_id);
-    JS_NewClass(JS_GetRuntime(ctx), tjs_wasm_module_class_id, &ijjs_wasm_module_class);
-    JS_SetClassProto(ctx, tjs_wasm_module_class_id, JS_NULL);
+    JS_NewClassID(&ijjs_wasm_module_class_id);
+    JS_NewClass(JS_GetRuntime(ctx), ijjs_wasm_module_class_id, &ijjs_wasm_module_class);
+    JS_SetClassProto(ctx, ijjs_wasm_module_class_id, JS_NULL);
     JS_NewClassID(&ijjs_wasm_instance_class_id);
     JS_NewClass(JS_GetRuntime(ctx), ijjs_wasm_instance_class_id, &ijjs_wasm_instance_class);
     JSValue proto = JS_NewObject(ctx);
