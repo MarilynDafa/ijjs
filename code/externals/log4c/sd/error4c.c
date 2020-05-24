@@ -19,7 +19,7 @@ static const char version[] = "$Id: error.c,v 1.7 2006/09/21 12:19:55 legoater E
 #endif
 
 #include <sd/error.h>
-#include ".\sd_xplatform.h"
+#include "sd_xplatform.h"
 
 int sd_debug(const char *fmt, ...)
 {

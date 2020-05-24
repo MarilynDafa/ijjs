@@ -43,8 +43,10 @@
 #include <ctype.h>
 #include <limits.h>
 #include <math.h>
-POSIX_ONLY(#include <unistd.h>)
-POSIX_ONLY(#include <sys/time.h>)
+#ifndef _WIN32
+#include <unistd.h>
+#include <sys/time.h>
+#endif
 #include <float.h>
 #include <stdint.h>
 #include <errno.h>

@@ -28,18 +28,18 @@
 #define IJJS_VERSION_SUFFIX ""
 
 #if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
-#   define IJ_PLATFORM_WIN32        0
-#	define IJ_PLATFORM    IJ_PLATFORM_WIN32
+#   define IJJS_PLATFORM_WIN32        0
+#	define IJJS_PLATFORM    IJJS_PLATFORM_WIN32
 #   define S_IFIFO _S_IFIFO
 #   define S_IFBLK 24576
 #   define IJJS_PLATFORM_STR "windows"
 #elif defined(__APPLE_CC__)
-#   define IJ_PLATFORM_OSX          1
-#	define IJ_PLATFORM    IJ_PLATFORM_OSX
+#   define IJJS_PLATFORM_OSX          1
+#	define IJJS_PLATFORM    IJJS_PLATFORM_OSX
 #   define IJJS_PLATFORM_STR "Mac"
 #elif defined(linux) || defined(__linux) || defined(__linux__)
-#   define IJ_PLATFORM_LINUX      2
-#	define IJ_PLATFORM    IJ_PLATFORM_LINUX
+#   define IJJS_PLATFORM_LINUX      2
+#	define IJJS_PLATFORM    IJJS_PLATFORM_LINUX
 #   define IJJS_PLATFORM_STR "Linux"
 #else
 #	error unsupport platform

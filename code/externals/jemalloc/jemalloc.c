@@ -966,7 +966,7 @@ obtain_malloc_conf(unsigned which_source, char buf[PATH_MAX + 1]) {
 		int saved_errno = errno;
 		const char *linkname =
 #  ifdef JEMALLOC_PREFIX
-		    "/etc/"JEMALLOC_PREFIX"malloc.conf"
+		    "/etc/je_malloc.conf"
 #  else
 		    "/etc/malloc.conf"
 #  endif

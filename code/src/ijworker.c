@@ -68,6 +68,7 @@ typedef struct {
 static JSValue ijWorkerEval(JSContext* ctx, IJS32 argc, JSValueConst* argv) {
     const IJAnsi* filename;
     JSValue ret;
+    IJJSRuntime* qrt;
     filename = JS_ToCString(ctx, argv[0]);
     if (!filename) {
         ijDumpError(ctx);
@@ -83,7 +84,7 @@ static JSValue ijWorkerEval(JSContext* ctx, IJS32 argc, JSValueConst* argv) {
     JS_FreeValue(ctx, ret);
     return JS_UNDEFINED;
 error:
-    IJJSRuntime *qrt = ijGetRuntime(ctx);
+    qrt = ijGetRuntime(ctx);
     CHECK_NOT_NULL(qrt);
     ijStop(qrt);
     return JS_UNDEFINED;

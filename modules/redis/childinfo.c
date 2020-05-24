@@ -28,7 +28,9 @@
  */
 
 #include "server.h"
-POSIX_ONLY(#include <unistd.h>)
+#ifndef _WIN32
+#include <unistd.h>
+#endif
 
 /* Open a child-parent channel used in order to move information about the
  * RDB / AOF saving process from the child to the parent (for instance

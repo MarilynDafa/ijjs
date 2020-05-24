@@ -294,7 +294,7 @@ static void compile_file(JSContext* ctx, FILE* fo, const char* filename, int mod
 
 
 void help(void) {
-    printf("QuickJS Compiler version " QJS_VERSION_STR "\n"
+    printf("QuickJS Compiler version 2020-04-12\n"
         "usage: qjsc [options] [files]\n"
         "\n"
         "options are:\n"

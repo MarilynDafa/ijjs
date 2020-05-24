@@ -53,7 +53,9 @@
 #include "fmacros.h"
 #include <string.h>
 #include <stdio.h>
-POSIX_ONLY(#include <unistd.h>)
+#ifndef _WIN32
+#include <unistd.h>
+#endif
 #include "rio.h"
 #include "util.h"
 #include "crc64.h"

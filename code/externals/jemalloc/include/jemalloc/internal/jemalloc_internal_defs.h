@@ -278,7 +278,11 @@
 #define LG_SIZEOF_INT 2
 
 /* sizeof(long) == 2^LG_SIZEOF_LONG. */
+#ifdef WIN32
 #define LG_SIZEOF_LONG 2
+#else
+#define LG_SIZEOF_LONG 3
+#endif
 
 /* sizeof(long long) == 2^LG_SIZEOF_LONG_LONG. */
 #define LG_SIZEOF_LONG_LONG 3

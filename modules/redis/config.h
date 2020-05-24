@@ -195,6 +195,8 @@ void setproctitle(const char *fmt, ...);
 #ifndef BYTE_ORDER
 #define BYTE_ORDER LITTLE_ENDIAN
 #endif
+#else
+#define POSIX_ONLY(x) x
 #endif
 
 #if !defined(BYTE_ORDER) || \

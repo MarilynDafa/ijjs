@@ -50,7 +50,9 @@
 #include <string.h>
 #include <time.h>
 #include <limits.h>
-POSIX_ONLY(#include <unistd.h>)
+#ifndef _WIN32
+#include <unistd.h>
+#endif
 #include <errno.h>
 #ifndef _WIN32
 #include <inttypes.h>

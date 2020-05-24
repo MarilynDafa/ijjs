@@ -33,13 +33,15 @@
 #include "endianconv.h"
 
 #include <sys/types.h>
-POSIX_ONLY(#include <sys/socket.h>)
-POSIX_ONLY(#include <arpa/inet.h>)
+#ifndef _WIN32
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <sys/file.h>
+#endif
 #include <fcntl.h>
-POSIX_ONLY(#include <unistd.h>)
-POSIX_ONLY(#include <sys/socket.h>)
 #include <sys/stat.h>
-POSIX_ONLY(#include <sys/file.h>)
 #include <math.h>
 
 #ifdef _WIN32

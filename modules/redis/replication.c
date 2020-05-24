@@ -40,11 +40,12 @@
 
 #include "server.h"
 #include "cluster.h"
-
-POSIX_ONLY(#include <sys/time.h>)
-POSIX_ONLY(#include <unistd.h>)
+#ifndef _WIN32
+#include <sys/time.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#endif
 #include <fcntl.h>
-POSIX_ONLY(#include <sys/socket.h>)
 #include <sys/stat.h>
 
 void replicationDiscardCachedMaster(void);

@@ -50,8 +50,8 @@
 #endif
 #include <mach-o/dyld.h>
 #define __OPENTRANSPORTPROVIDERS__
-#include <Gestalt.h>
-#include <CFString.h>
+#import <CoreServices/CoreServices.h>
+#include <CoreFoundation/CFString.h>
 #include <CoreFoundation/CoreFoundation.h>
 #include <IOKit/IOBSD.h>
 #include <IOKit/IOKitLib.h>
@@ -3354,7 +3354,26 @@ int sigar_proc_port_get(sigar_t *sigar, int protocol,
 }
 
 #elif defined(DARWIN) && defined(DARWIN_HAS_LIBPROC_H)
+    
+    struct kern {
+        short int version[3];
+    };
 
+    /* return the kernel version */
+    void GetKernelVersion(struct kern *k) {
+       static short int version_[3] = {0};
+       if (!version_[0]) {
+          // just in case it fails someday
+          version_[0] = version_[1] = version_[2] = -1;
+          char str[256] = {0};
+          size_t size = sizeof(str);
+          int ret = sysctlbyname("kern.osrelease", str, &size, NULL, 0);
+          if (ret == 0) sscanf(str, "%hd.%hd.%hd", &version_[0], &version_[1], &version_[2]);
+        }
+        memcpy(k->version, version_, sizeof(version_));
+    }
+    
+    
 int sigar_proc_port_get(sigar_t *sigar, int protocol,
                         unsigned long port, sigar_pid_t *pid)
 {
@@ -3428,6 +3447,9 @@ int sigar_proc_port_get(sigar_t *sigar, int protocol,
 
 #endif
 
+    
+    
+    
 int sigar_os_sys_info_get(sigar_t *sigar,
                           sigar_sys_info_t *sysinfo)
 {
@@ -3438,24 +3460,14 @@ int sigar_os_sys_info_get(sigar_t *sigar,
     SIGAR_SSTRCPY(sysinfo->name, "MacOSX");
     SIGAR_SSTRCPY(sysinfo->vendor_name, "Mac OS X");
     SIGAR_SSTRCPY(sysinfo->vendor, "Apple");
-
-    if (Gestalt(gestaltSystemVersion, &version) == noErr) {
-        if (version >= 0x00001040) {
-            Gestalt('sys1' /*gestaltSystemVersionMajor*/, &version_major);
-            Gestalt('sys2' /*gestaltSystemVersionMinor*/, &version_minor);
-            Gestalt('sys3' /*gestaltSystemVersionBugFix*/, &version_fix);
-        }
-        else {
-            version_fix = version & 0xf;
-            version >>= 4;
-            version_minor = version & 0xf;
-            version >>= 4;
-            version_major = version - (version >> 4) * 6;
-        }
-    }
-    else {
-        return SIGAR_ENOTIMPL;
-    }
+    struct kern kern;
+    GetKernelVersion(&kern);
+    version_major = kern.version[0];
+    version_minor = kern.version[1];
+    version_fix = kern.version[2];
+    version = version_fix + (version_minor << 4) + (version_major << 8);
+    
+    
 
     snprintf(sysinfo->vendor_version,
              sizeof(sysinfo->vendor_version),

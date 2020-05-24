@@ -48,7 +48,9 @@ void zlibc_free(void *ptr) {
 }
 
 #include <string.h>
-POSIX_ONLY(#include <pthread.h>)
+#ifndef _WIN32
+#include <pthread.h>
+#endif
 #include "config.h"
 #include "zmalloc.h"
 #include "atomicvar.h"

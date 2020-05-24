@@ -159,19 +159,6 @@ lg_floor(size_t x) {
 	assert(ret < UINT_MAX);
 	return (unsigned)ret;
 }
-#elif (defined(__i386__) || defined(__amd64__) || defined(__x86_64__))
-BIT_UTIL_INLINE unsigned
-lg_floor(size_t x) {
-	size_t ret;
-	assert(x != 0);
-
-	asm("bsr %1, %0"
-	    : "=r"(ret) // Outputs.
-	    : "r"(x)    // Inputs.
-	    );
-	assert(ret < UINT_MAX);
-	return (unsigned)ret;
-}
 #elif (defined(JEMALLOC_HAVE_BUILTIN_CLZ))
 BIT_UTIL_INLINE unsigned
 lg_floor(size_t x) {

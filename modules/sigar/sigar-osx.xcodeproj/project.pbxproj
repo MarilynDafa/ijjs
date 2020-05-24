@@ -1,0 +1,404 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C7F5D096247ABE95003974A7 /* sigar.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F5D086247ABE94003974A7 /* sigar.c */; };
+		C7F5D097247ABE95003974A7 /* sigar_cache.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F5D087247ABE94003974A7 /* sigar_cache.c */; };
+		C7F5D098247ABE95003974A7 /* sigar_private.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F5D088247ABE94003974A7 /* sigar_private.h */; };
+		C7F5D099247ABE95003974A7 /* sigar_getline.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F5D089247ABE94003974A7 /* sigar_getline.c */; };
+		C7F5D09A247ABE95003974A7 /* sigar_fileinfo.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F5D08A247ABE94003974A7 /* sigar_fileinfo.h */; };
+		C7F5D09B247ABE95003974A7 /* sigar_fileinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F5D08B247ABE94003974A7 /* sigar_fileinfo.c */; };
+		C7F5D09C247ABE95003974A7 /* sigar_util.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F5D08C247ABE94003974A7 /* sigar_util.h */; };
+		C7F5D09D247ABE95003974A7 /* sigar.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F5D08D247ABE94003974A7 /* sigar.h */; };
+		C7F5D09E247ABE95003974A7 /* sigar_util.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F5D08E247ABE95003974A7 /* sigar_util.c */; };
+		C7F5D09F247ABE95003974A7 /* sigar_ptql.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F5D08F247ABE95003974A7 /* sigar_ptql.h */; };
+		C7F5D0A0247ABE95003974A7 /* sigar_format.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F5D090247ABE95003974A7 /* sigar_format.c */; };
+		C7F5D0A1247ABE95003974A7 /* sigar_log.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F5D091247ABE95003974A7 /* sigar_log.h */; };
+		C7F5D0A2247ABE95003974A7 /* sigar_format.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F5D092247ABE95003974A7 /* sigar_format.h */; };
+		C7F5D0A3247ABE95003974A7 /* sigar_ptql.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F5D093247ABE95003974A7 /* sigar_ptql.c */; };
+		C7F5D0A4247ABE95003974A7 /* sigar_signal.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F5D094247ABE95003974A7 /* sigar_signal.c */; };
+		C7F5D0A5247ABE95003974A7 /* sigar_getline.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F5D095247ABE95003974A7 /* sigar_getline.h */; };
+		C7F5D0AA247ABEB6003974A7 /* darwin_sigar.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F5D0A8247ABEB6003974A7 /* darwin_sigar.m */; };
+		C7F5D0AB247ABEB6003974A7 /* sigar_os.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F5D0A9247ABEB6003974A7 /* sigar_os.h */; };
+		C7F5D0AE247ACC95003974A7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F5D0AD247ACC95003974A7 /* IOKit.framework */; };
+		C7F5D0B0247ACCA4003974A7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F5D0AF247ACCA4003974A7 /* CoreFoundation.framework */; };
+		C7F5D0B2247ACDFC003974A7 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F5D0B1247ACDFC003974A7 /* CoreServices.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C77A627A247A16DB00051CDF /* libsigar-osx.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libsigar-osx.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7F5D086247ABE94003974A7 /* sigar.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sigar.c; sourceTree = "<group>"; };
+		C7F5D087247ABE94003974A7 /* sigar_cache.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sigar_cache.c; sourceTree = "<group>"; };
+		C7F5D088247ABE94003974A7 /* sigar_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sigar_private.h; sourceTree = "<group>"; };
+		C7F5D089247ABE94003974A7 /* sigar_getline.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sigar_getline.c; sourceTree = "<group>"; };
+		C7F5D08A247ABE94003974A7 /* sigar_fileinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sigar_fileinfo.h; sourceTree = "<group>"; };
+		C7F5D08B247ABE94003974A7 /* sigar_fileinfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sigar_fileinfo.c; sourceTree = "<group>"; };
+		C7F5D08C247ABE94003974A7 /* sigar_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sigar_util.h; sourceTree = "<group>"; };
+		C7F5D08D247ABE94003974A7 /* sigar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sigar.h; sourceTree = "<group>"; };
+		C7F5D08E247ABE95003974A7 /* sigar_util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sigar_util.c; sourceTree = "<group>"; };
+		C7F5D08F247ABE95003974A7 /* sigar_ptql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sigar_ptql.h; sourceTree = "<group>"; };
+		C7F5D090247ABE95003974A7 /* sigar_format.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sigar_format.c; sourceTree = "<group>"; };
+		C7F5D091247ABE95003974A7 /* sigar_log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sigar_log.h; sourceTree = "<group>"; };
+		C7F5D092247ABE95003974A7 /* sigar_format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sigar_format.h; sourceTree = "<group>"; };
+		C7F5D093247ABE95003974A7 /* sigar_ptql.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sigar_ptql.c; sourceTree = "<group>"; };
+		C7F5D094247ABE95003974A7 /* sigar_signal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sigar_signal.c; sourceTree = "<group>"; };
+		C7F5D095247ABE95003974A7 /* sigar_getline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sigar_getline.h; sourceTree = "<group>"; };
+		C7F5D0A8247ABEB6003974A7 /* darwin_sigar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = darwin_sigar.m; path = os/darwin/darwin_sigar.m; sourceTree = "<group>"; };
+		C7F5D0A9247ABEB6003974A7 /* sigar_os.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sigar_os.h; path = os/darwin/sigar_os.h; sourceTree = "<group>"; };
+		C7F5D0AD247ACC95003974A7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		C7F5D0AF247ACCA4003974A7 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		C7F5D0B1247ACDFC003974A7 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C77A6278247A16DB00051CDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7F5D0B0247ACCA4003974A7 /* CoreFoundation.framework in Frameworks */,
+				C7F5D0B2247ACDFC003974A7 /* CoreServices.framework in Frameworks */,
+				C7F5D0AE247ACC95003974A7 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C77A6271247A16DB00051CDF = {
+			isa = PBXGroup;
+			children = (
+				C7F5D0A7247ABEAB003974A7 /* os */,
+				C7F5D0A6247ABE98003974A7 /* headers */,
+				C7F5D085247ABE7E003974A7 /* src */,
+				C77A627B247A16DB00051CDF /* Products */,
+				C7F5D0AC247ACC95003974A7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C77A627B247A16DB00051CDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C77A627A247A16DB00051CDF /* libsigar-osx.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C7F5D085247ABE7E003974A7 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				C7F5D087247ABE94003974A7 /* sigar_cache.c */,
+				C7F5D08B247ABE94003974A7 /* sigar_fileinfo.c */,
+				C7F5D090247ABE95003974A7 /* sigar_format.c */,
+				C7F5D089247ABE94003974A7 /* sigar_getline.c */,
+				C7F5D093247ABE95003974A7 /* sigar_ptql.c */,
+				C7F5D094247ABE95003974A7 /* sigar_signal.c */,
+				C7F5D08E247ABE95003974A7 /* sigar_util.c */,
+				C7F5D086247ABE94003974A7 /* sigar.c */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		C7F5D0A6247ABE98003974A7 /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				C7F5D08A247ABE94003974A7 /* sigar_fileinfo.h */,
+				C7F5D092247ABE95003974A7 /* sigar_format.h */,
+				C7F5D095247ABE95003974A7 /* sigar_getline.h */,
+				C7F5D091247ABE95003974A7 /* sigar_log.h */,
+				C7F5D088247ABE94003974A7 /* sigar_private.h */,
+				C7F5D08F247ABE95003974A7 /* sigar_ptql.h */,
+				C7F5D08C247ABE94003974A7 /* sigar_util.h */,
+				C7F5D08D247ABE94003974A7 /* sigar.h */,
+			);
+			name = headers;
+			sourceTree = "<group>";
+		};
+		C7F5D0A7247ABEAB003974A7 /* os */ = {
+			isa = PBXGroup;
+			children = (
+				C7F5D0A8247ABEB6003974A7 /* darwin_sigar.m */,
+				C7F5D0A9247ABEB6003974A7 /* sigar_os.h */,
+			);
+			name = os;
+			sourceTree = "<group>";
+		};
+		C7F5D0AC247ACC95003974A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7F5D0B1247ACDFC003974A7 /* CoreServices.framework */,
+				C7F5D0AF247ACCA4003974A7 /* CoreFoundation.framework */,
+				C7F5D0AD247ACC95003974A7 /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C77A6276247A16DB00051CDF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7F5D098247ABE95003974A7 /* sigar_private.h in Headers */,
+				C7F5D09F247ABE95003974A7 /* sigar_ptql.h in Headers */,
+				C7F5D0A5247ABE95003974A7 /* sigar_getline.h in Headers */,
+				C7F5D09C247ABE95003974A7 /* sigar_util.h in Headers */,
+				C7F5D09A247ABE95003974A7 /* sigar_fileinfo.h in Headers */,
+				C7F5D0A1247ABE95003974A7 /* sigar_log.h in Headers */,
+				C7F5D09D247ABE95003974A7 /* sigar.h in Headers */,
+				C7F5D0AB247ABEB6003974A7 /* sigar_os.h in Headers */,
+				C7F5D0A2247ABE95003974A7 /* sigar_format.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C77A6279247A16DB00051CDF /* sigar-osx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C77A627E247A16DB00051CDF /* Build configuration list for PBXNativeTarget "sigar-osx" */;
+			buildPhases = (
+				C77A6276247A16DB00051CDF /* Headers */,
+				C77A6277247A16DB00051CDF /* Sources */,
+				C77A6278247A16DB00051CDF /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "sigar-osx";
+			productName = "sigar-osx";
+			productReference = C77A627A247A16DB00051CDF /* libsigar-osx.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C77A6272247A16DB00051CDF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = trix;
+				TargetAttributes = {
+					C77A6279247A16DB00051CDF = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+				};
+			};
+			buildConfigurationList = C77A6275247A16DB00051CDF /* Build configuration list for PBXProject "sigar-osx" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C77A6271247A16DB00051CDF;
+			productRefGroup = C77A627B247A16DB00051CDF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C77A6279247A16DB00051CDF /* sigar-osx */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C77A6277247A16DB00051CDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7F5D096247ABE95003974A7 /* sigar.c in Sources */,
+				C7F5D0AA247ABEB6003974A7 /* darwin_sigar.m in Sources */,
+				C7F5D0A0247ABE95003974A7 /* sigar_format.c in Sources */,
+				C7F5D0A4247ABE95003974A7 /* sigar_signal.c in Sources */,
+				C7F5D097247ABE95003974A7 /* sigar_cache.c in Sources */,
+				C7F5D09B247ABE95003974A7 /* sigar_fileinfo.c in Sources */,
+				C7F5D0A3247ABE95003974A7 /* sigar_ptql.c in Sources */,
+				C7F5D09E247ABE95003974A7 /* sigar_util.c in Sources */,
+				C7F5D099247ABE95003974A7 /* sigar_getline.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C77A627C247A16DB00051CDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DARWIN_HAS_LIBPROC_H,
+					DARWIN,
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C77A627D247A16DB00051CDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DARWIN_HAS_LIBPROC_H,
+					DARWIN,
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C77A627F247A16DB00051CDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DARWIN_HAS_LIBPROC_H,
+					DARWIN,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C77A6280247A16DB00051CDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DARWIN_HAS_LIBPROC_H,
+					DARWIN,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C77A6275247A16DB00051CDF /* Build configuration list for PBXProject "sigar-osx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C77A627C247A16DB00051CDF /* Debug */,
+				C77A627D247A16DB00051CDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C77A627E247A16DB00051CDF /* Build configuration list for PBXNativeTarget "sigar-osx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C77A627F247A16DB00051CDF /* Debug */,
+				C77A6280247A16DB00051CDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C77A6272247A16DB00051CDF /* Project object */;
+}

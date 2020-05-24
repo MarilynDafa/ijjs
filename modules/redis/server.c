@@ -44,25 +44,27 @@
 
 #include <time.h>
 #include <signal.h>
-POSIX_ONLY(#include <sys/wait.h>)
 #include <errno.h>
 #include <assert.h>
 #include <ctype.h>
 #include <stdarg.h>
-POSIX_ONLY(#include <arpa/inet.h>)
 #include <sys/stat.h>
 #include <fcntl.h>
-POSIX_ONLY(#include <sys/time.h>)
-POSIX_ONLY(#include <sys/resource.h>)
-POSIX_ONLY(#include <sys/uio.h>)
-POSIX_ONLY(#include <sys/un.h>)
 #include <limits.h>
 #include <float.h>
 #include <math.h>
-POSIX_ONLY(#include <sys/resource.h>)
-POSIX_ONLY(#include <sys/utsname.h>)
 #include <locale.h>
-POSIX_ONLY(#include <sys/socket.h>)
+#ifndef _WIN32
+#include <sys/socket.h>
+#include <sys/resource.h>
+#include <sys/utsname.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <arpa/inet.h>
+#include <sys/wait.h>
+#endif
 
 /* Our shared "common" objects */
 
