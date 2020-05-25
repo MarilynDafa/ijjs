@@ -9,10 +9,9 @@ mbedtls 2.16.5
 miniz 2.1.0
 log4c final
 
-jemalloc
-log4c
 linux
 test
+log4c
 vscode	
 kcp
 PostgreSQL  js	

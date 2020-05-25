@@ -240,6 +240,8 @@
 #define strcasecmp _stricmp
 #endif
 
+#include "sd//malloc.h"
+
 /* Define to `unsigned int' if <sys/types.h> does not define. */
 /* #undef size_t */
 

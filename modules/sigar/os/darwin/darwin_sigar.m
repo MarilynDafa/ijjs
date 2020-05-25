@@ -236,7 +236,7 @@ int sigar_os_open(sigar_t **sigar)
         return errno;
     }
 
-    *sigar = malloc(sizeof(**sigar));
+    *sigar = je_malloc(sizeof(**sigar));
 
 #ifdef DARWIN
     (*sigar)->mach_port = mach_host_self();
@@ -281,14 +281,14 @@ int sigar_os_open(sigar_t **sigar)
 int sigar_os_close(sigar_t *sigar)
 {
     if (sigar->pinfo) {
-        free(sigar->pinfo);
+        je_free(sigar->pinfo);
     }
 #ifndef DARWIN
     if (sigar->kmem) {
         kvm_close(sigar->kmem);
     }
 #endif
-    free(sigar);
+    je_free(sigar);
     return SIGAR_OK;
 }
 
@@ -821,7 +821,7 @@ static int sigar_cp_times_get(sigar_t *sigar, sigar_cpu_list_t *cpulist)
     }
 
     size = sizeof(long) * maxcpu * CPUSTATES;
-    times = malloc(size);
+    times = je_malloc(size);
     if (sysctlbyname("kern.cp_times", times, &size, NULL, 0) == -1) {
         status = errno;
     }
@@ -849,7 +849,7 @@ static int sigar_cp_times_get(sigar_t *sigar, sigar_cpu_list_t *cpulist)
         }
     }
 
-    free(times);
+    je_free(times);
     return status;
 }
 #endif
@@ -957,7 +957,7 @@ static int proc_fdinfo_get(sigar_t *sigar, sigar_pid_t pid, int *num)
 
     if (sigar->ifconf_len == 0) {
         sigar->ifconf_len = init_size;
-        sigar->ifconf_buf = malloc(sigar->ifconf_len);
+        sigar->ifconf_buf = je_malloc(sigar->ifconf_len);
     }
 
     while (1) {
@@ -971,7 +971,7 @@ static int proc_fdinfo_get(sigar_t *sigar, sigar_pid_t pid, int *num)
         }
 
         sigar->ifconf_len += init_size;
-        sigar->ifconf_buf = realloc(sigar->ifconf_buf, sigar->ifconf_len);
+        sigar->ifconf_buf = je_realloc(sigar->ifconf_buf, sigar->ifconf_len);
     }
 
     *num = rsize / PROC_PIDLISTFD_SIZE;
@@ -999,10 +999,10 @@ int sigar_os_proc_list_get(sigar_t *sigar,
         return errno;
     }
 
-    proc = malloc(len);
+    proc = je_malloc(len);
 
     if (sysctl(mib, NMIB(mib), proc, &len, NULL, 0) < 0) {
-        free(proc);
+        je_free(proc);
         return errno;
     }
 
@@ -1019,7 +1019,7 @@ int sigar_os_proc_list_get(sigar_t *sigar,
         proclist->data[proclist->number++] = proc[i].KI_PID;
     }
 
-    free(proc);
+    je_free(proc);
 
     return SIGAR_OK;
 #else
@@ -1056,7 +1056,7 @@ static int sigar_get_pinfo(sigar_t *sigar, sigar_pid_t pid)
     mib[3] = pid;
 
     if (sigar->pinfo == NULL) {
-        sigar->pinfo = malloc(len);
+        sigar->pinfo = je_malloc(len);
     }
 
     if (sigar->last_pid == pid) {
@@ -1537,7 +1537,7 @@ typedef struct {
 static void sigar_kern_proc_args_destroy(sigar_kern_proc_args_t *kargs) 
 {
     if (kargs->buf) {
-        free(kargs->buf);
+        je_free(kargs->buf);
         kargs->buf = NULL;
     }
 }
@@ -1555,7 +1555,7 @@ static int sigar_kern_proc_args_get(sigar_t *sigar,
     int mib[3], len;
     size_t size = sigar_argmax_get(sigar);
 
-    kargs->buf = malloc(size);
+    kargs->buf = je_malloc(size);
 
     mib[0] = CTL_KERN;
     mib[1] = KERN_PROCARGS2;
@@ -1654,7 +1654,7 @@ int sigar_os_proc_args_get(sigar_t *sigar, sigar_pid_t pid,
             }
         }
 
-        arg = malloc(slen+1);
+        arg = je_malloc(slen+1);
 
         SIGAR_PROC_ARGS_GROW(procargs);
         memcpy(arg, ptr, slen);
@@ -1691,7 +1691,7 @@ int sigar_os_proc_args_get(sigar_t *sigar, sigar_pid_t pid,
 
     while (len > 0) {
         int alen = strlen(ptr)+1;
-        char *arg = malloc(alen);
+        char *arg = je_malloc(alen);
 
         SIGAR_PROC_ARGS_GROW(procargs);
         memcpy(arg, ptr, alen);
@@ -1722,7 +1722,7 @@ int sigar_os_proc_args_get(sigar_t *sigar, sigar_pid_t pid,
 
     for (; *ptr; ptr++) {
         int alen = strlen(*ptr)+1;
-        char *arg = malloc(alen);
+        char *arg = je_malloc(alen);
 
         SIGAR_PROC_ARGS_GROW(procargs);
         memcpy(arg, *ptr, alen);
@@ -1872,10 +1872,10 @@ int sigar_proc_fd_get(sigar_t *sigar, sigar_pid_t pid,
 #if 0
     nfiles = filed.fd_lastfile+1;
     size = sizeof(*ofiles) * nfiles;
-    ofiles = malloc(size);
+    ofiles = je_malloc(size);
     status = kread(sigar, ofiles, size, (u_long)filed.fd_ofiles);
     if (status != SIGAR_OK) {
-        free(ofiles);
+        je_free(ofiles);
         return status;
     }
 
@@ -1887,7 +1887,7 @@ int sigar_proc_fd_get(sigar_t *sigar, sigar_pid_t pid,
         procfd->total++;
     }
 
-    free(ofiles);
+    je_free(ofiles);
 #else
     /* seems the same as the above */
     procfd->total = filed.fd_lastfile;
@@ -2137,10 +2137,10 @@ int sigar_file_system_list_get(sigar_t *sigar,
     }
 
     len = sizeof(*fs) * num;
-    fs = malloc(len);
+    fs = je_malloc(len);
 
     if ((num = sigar_getfsstat(fs, len, MNT_NOWAIT)) < 0) {
-        free(fs);
+        je_free(fs);
         return errno;
     }
 
@@ -2184,7 +2184,7 @@ int sigar_file_system_list_get(sigar_t *sigar,
         sigar_fs_type_init(fsp);
     }
 
-    free(fs);
+    je_free(fs);
     return SIGAR_OK;
 }
 
@@ -2456,10 +2456,10 @@ int sigar_net_route_list_get(sigar_t *sigar,
         return SIGAR_ENOTIMPL; /*XXX hoping this is an 8.0beta bug*/
     }
 #endif
-    buf = malloc(needed);
+    buf = je_malloc(needed);
 
     if (sysctl(mib, NMIB(mib), buf, &needed, NULL, 0) < 0) {
-        free(buf);
+        je_free(buf);
         return errno;
     }
 
@@ -2518,7 +2518,7 @@ int sigar_net_route_list_get(sigar_t *sigar,
         }
     }
 
-    free(buf);
+    je_free(buf);
 
     return SIGAR_OK;
 }
@@ -2547,7 +2547,7 @@ static int sigar_ifmsg_init(sigar_t *sigar)
     }
 
     if (sigar->ifconf_len < len) {
-        sigar->ifconf_buf = realloc(sigar->ifconf_buf, len);
+        sigar->ifconf_buf = je_realloc(sigar->ifconf_buf, len);
         sigar->ifconf_len = len;
     }
 
@@ -2634,7 +2634,7 @@ static int sigar_ifmsg_iter(sigar_t *sigar, ifmsg_iter_t *iter)
             SIGAR_NET_IFLIST_GROW(iter->data.iflist);
 
             /* sdl_data doesn't include a trailing \0, it is only sdl_nlen long */
-            name = malloc(sdl->sdl_nlen+1);
+            name = je_malloc(sdl->sdl_nlen+1);
             memcpy(name, sdl->sdl_data, sdl->sdl_nlen);
             name[sdl->sdl_nlen] = '\0'; /* add the missing \0 */
 
@@ -2973,11 +2973,11 @@ static int net_connection_get(sigar_net_connection_walker_t *walker, int proto)
     if (sysctlbyname(mibvar, 0, &len, 0, 0) < 0) {
         return errno;
     }
-    if ((buf = malloc(len)) == 0) {
+    if ((buf = je_malloc(len)) == 0) {
         return errno;
     }
     if (sysctlbyname(mibvar, buf, &len, 0, 0) < 0) {
-        free(buf);
+        je_free(buf);
         return errno;
     }
 
@@ -3051,7 +3051,7 @@ static int net_connection_get(sigar_net_connection_walker_t *walker, int proto)
         }
     }
 
-    free(buf);
+    je_free(buf);
 
     return SIGAR_OK;
 }
@@ -3311,14 +3311,14 @@ int sigar_proc_port_get(sigar_t *sigar, int protocol,
             }
 
             osize = pfd.fd_nfiles * sizeof(struct file *);
-            ofiles = malloc(osize); /* XXX reuse */
+            ofiles = je_malloc(osize); /* XXX reuse */
             if (!ofiles) {
                 return errno;
             }
 
             status = kread(sigar, ofiles, osize, (long)pfd.fd_ofiles);
             if (status != SIGAR_OK) {
-                free(ofiles);
+                je_free(ofiles);
                 return status;
             }
 
@@ -3329,7 +3329,7 @@ int sigar_proc_port_get(sigar_t *sigar, int protocol,
 
                 status = kread(sigar, &ofile, sizeof(ofile), (long)ofiles[j]);
                 if (status != SIGAR_OK) {
-                    free(ofiles);
+                    je_free(ofiles);
                     return status;
                 }
 
@@ -3341,12 +3341,12 @@ int sigar_proc_port_get(sigar_t *sigar, int protocol,
                     (struct socket *)ofile.f_data == sockp)
                 {
                     *pid = pinfo[i].KI_PID;
-                    free(ofiles);
+                    je_free(ofiles);
                     return SIGAR_OK;
                 }
             }
 
-            free(ofiles);
+            je_free(ofiles);
         }
     }
 

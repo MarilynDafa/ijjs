@@ -22,6 +22,7 @@
 #include <windows.h>
 #include <wbemidl.h>
 #include "sigar.h"
+#include "jemalloc_cpp.cpp"
 
 /*
 #define _WIN32_DCOM

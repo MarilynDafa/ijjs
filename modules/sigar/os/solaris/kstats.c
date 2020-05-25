@@ -30,9 +30,9 @@ int sigar_get_kstats(sigar_t *sigar)
         if (!sigar->ks.lcpu) {
             /* init */
             sigar->ks.lcpu = ncpu;
-            sigar->ks.cpu = malloc(sizeof(*(sigar->ks.cpu)) * ncpu);
-            sigar->ks.cpu_info = malloc(sizeof(*(sigar->ks.cpu_info)) * ncpu);
-            sigar->ks.cpuid = malloc(sizeof(*(sigar->ks.cpuid)) * ncpu);
+            sigar->ks.cpu = je_malloc(sizeof(*(sigar->ks.cpu)) * ncpu);
+            sigar->ks.cpu_info = je_malloc(sizeof(*(sigar->ks.cpu_info)) * ncpu);
+            sigar->ks.cpuid = je_malloc(sizeof(*(sigar->ks.cpuid)) * ncpu);
         }
         else {
             sigar_log_printf(sigar, SIGAR_LOG_INFO,
@@ -40,11 +40,11 @@ int sigar_get_kstats(sigar_t *sigar)
                              sigar->ncpu, ncpu);
             if (ncpu > sigar->ks.lcpu) {
                 /* one or more cpus have been added */
-                sigar->ks.cpu = realloc(sigar->ks.cpu,
+                sigar->ks.cpu = je_realloc(sigar->ks.cpu,
                                         sizeof(*(sigar->ks.cpu)) * ncpu);
-                sigar->ks.cpu_info = realloc(sigar->ks.cpu_info,
+                sigar->ks.cpu_info = je_realloc(sigar->ks.cpu_info,
                                              sizeof(*(sigar->ks.cpu_info)) * ncpu);
-                sigar->ks.cpuid = realloc(sigar->ks.cpuid,
+                sigar->ks.cpuid = je_realloc(sigar->ks.cpuid,
                                           sizeof(*(sigar->ks.cpuid)) * ncpu);
                 sigar->ks.lcpu = ncpu;
             }

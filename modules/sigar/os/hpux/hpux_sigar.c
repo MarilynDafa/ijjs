@@ -36,7 +36,7 @@ typedef int32_t pstat_int_t;
 
 int sigar_os_open(sigar_t **sigar)
 {
-    *sigar = malloc(sizeof(**sigar));
+    *sigar = je_malloc(sizeof(**sigar));
 
     /* does not change while system is running */
     pstat_getstatic(&(*sigar)->pstatic,
@@ -58,12 +58,12 @@ int sigar_os_open(sigar_t **sigar)
 int sigar_os_close(sigar_t *sigar)
 {
     if (sigar->pinfo) {
-        free(sigar->pinfo);
+        je_free(sigar->pinfo);
     }
     if (sigar->mib >= 0) {
         close_mib(sigar->mib);
     } 
-    free(sigar);
+    je_free(sigar);
     return SIGAR_OK;
 }
 
@@ -248,7 +248,7 @@ static int sigar_pstat_getproc(sigar_t *sigar, sigar_pid_t pid)
     time_t timenow = time(NULL);
 
     if (sigar->pinfo == NULL) {
-        sigar->pinfo = malloc(sizeof(*sigar->pinfo));
+        sigar->pinfo = je_malloc(sizeof(*sigar->pinfo));
     }
 
     if (sigar->last_pid == pid) {
@@ -762,7 +762,7 @@ static int sigar_get_physical_stat(sigar_t *sigar, int *count)
     len = sizeof(nmapi_phystat) * *count;
 
     if (sigar->ifconf_len < len) {
-        sigar->ifconf_buf = realloc(sigar->ifconf_buf, len);
+        sigar->ifconf_buf = je_realloc(sigar->ifconf_buf, len);
         sigar->ifconf_len = len;
     }
 
@@ -819,14 +819,14 @@ int sigar_net_route_list_get(sigar_t *sigar,
     }
 
     len = count * sizeof(*routes);
-    routes = malloc(len);
+    routes = je_malloc(len);
 
     parms.objid = ID_ipRouteTable;
     parms.buffer = routes;
     parms.len = &len;
 
     if ((status = sigar_get_mib_info(sigar, &parms)) != SIGAR_OK) {
-        free(routes);
+        je_free(routes);
         return status;
     }
 
@@ -861,7 +861,7 @@ int sigar_net_route_list_get(sigar_t *sigar,
         }
     }
 
-    free(routes);
+    je_free(routes);
     
     return SIGAR_OK;
 }
@@ -945,13 +945,13 @@ static int net_conn_get_udp_listen(sigar_net_connection_walker_t *walker)
     }
 
     len =  count * sizeof(*entries);
-    entries = malloc(len);
+    entries = je_malloc(len);
     parms.objid = ID_udpLsnTable;
     parms.buffer = entries;
     parms.len = &len;
 
     if ((status = sigar_get_mib_info(sigar, &parms)) != SIGAR_OK) {
-        free(entries);
+        je_free(entries);
         return status;
     }
 
@@ -978,7 +978,7 @@ static int net_conn_get_udp_listen(sigar_net_connection_walker_t *walker)
         }
     }
 
-    free(entries);
+    je_free(entries);
     return SIGAR_OK;
 }
 
@@ -1022,13 +1022,13 @@ static int net_conn_get_tcp(sigar_net_connection_walker_t *walker)
     }
 
     len =  count * sizeof(*entries);
-    entries = malloc(len);
+    entries = je_malloc(len);
     parms.objid = ID_tcpConnTable;
     parms.buffer = entries;
     parms.len = &len;
 
     if ((status = sigar_get_mib_info(sigar, &parms)) != SIGAR_OK) {
-        free(entries);
+        je_free(entries);
         return status;
     }
 
@@ -1099,7 +1099,7 @@ static int net_conn_get_tcp(sigar_net_connection_walker_t *walker)
         }
     }
 
-    free(entries);
+    je_free(entries);
 
     return SIGAR_OK;
 }

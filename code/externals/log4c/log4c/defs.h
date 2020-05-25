@@ -51,7 +51,7 @@
 #endif
 
 #ifdef _MSC_VER
-#define strdup _strdup
+//#define strdup _strdup
 #define read _read
 #define unlink _unlink
 #define stricmp _stricmp

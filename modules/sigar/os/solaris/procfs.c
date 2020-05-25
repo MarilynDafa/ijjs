@@ -29,7 +29,7 @@ int sigar_proc_psinfo_get(sigar_t *sigar, sigar_pid_t pid)
     time_t timenow = time(NULL);
 
     if (sigar->pinfo == NULL) {
-        sigar->pinfo = malloc(sizeof(*sigar->pinfo));
+        sigar->pinfo = je_malloc(sizeof(*sigar->pinfo));
     }
 
     if (sigar->last_pid == pid) {

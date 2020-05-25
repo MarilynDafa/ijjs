@@ -29,18 +29,18 @@
 #define ENTRIES_SIZE(n) \
     (sizeof(sigar_cache_entry_t *) * (n))
 
-/* wrap free() for use w/ dmalloc */
+/* wrap je_free() for use w/ dmalloc */
 static void free_value(void *ptr)
 {
-    free(ptr);
+    je_free(ptr);
 }
 
 sigar_cache_t *sigar_cache_new(int size)
 {
-    sigar_cache_t *table = malloc(sizeof(*table));
+    sigar_cache_t *table = je_malloc(sizeof(*table));
     table->count = 0;
     table->size = size;
-    table->entries = malloc(ENTRIES_SIZE(size));
+    table->entries = je_malloc(ENTRIES_SIZE(size));
     memset(table->entries, '\0', ENTRIES_SIZE(size));
     table->free_value = free_value;
     return table;
@@ -76,7 +76,7 @@ static void sigar_cache_rehash(sigar_cache_t *table)
     unsigned int new_size = table->size * 2 + 1;
     sigar_cache_entry_t **entries = table->entries;
     sigar_cache_entry_t **new_entries =
-        malloc(ENTRIES_SIZE(new_size));
+        je_malloc(ENTRIES_SIZE(new_size));
 
     memset(new_entries, '\0', ENTRIES_SIZE(new_size));
 
@@ -93,7 +93,7 @@ static void sigar_cache_rehash(sigar_cache_t *table)
         }
     }
 
-    free(table->entries);
+    je_free(table->entries);
     table->entries = new_entries;
     table->size = new_size;
 }
@@ -143,7 +143,7 @@ sigar_cache_entry_t *sigar_cache_get(sigar_cache_t *table,
         }
     }
 
-    *ptr = entry = malloc(sizeof(*entry));
+    *ptr = entry = je_malloc(sizeof(*entry));
     entry->id = key;
     entry->value = NULL;
     entry->next = NULL;
@@ -169,11 +169,11 @@ void sigar_cache_destroy(sigar_cache_t *table)
                 table->free_value(entry->value);
             }
             ptr = entry->next;
-            free(entry);
+            je_free(entry);
             entry = ptr;
         }
     }
 
-    free(table->entries);
-    free(table);
+    je_free(table->entries);
+    je_free(table);
 }

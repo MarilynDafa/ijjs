@@ -30,6 +30,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "redis", "..\modules\redis\redis.vcxitems", "{4D62E7B4-D413-4160-9873-EF486AAA5ECF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "redis-win32", "..\modules\redis\redis-win32.vcxproj", "{10F08319-1AA5-46D9-98DB-F20A34B0F63A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{449EFAEF-2AA2-4A97-AEB5-D812EC64DECC} = {449EFAEF-2AA2-4A97-AEB5-D812EC64DECC}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "postgre", "..\modules\postgresql\postgre.vcxitems", "{B167E6D4-F4F1-43B7-99E5-64FD6ED2E9D6}"
 EndProject

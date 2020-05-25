@@ -158,7 +158,7 @@ int sigar_os_open(sigar_t **sigar)
     struct stat sb;
     struct utsname name;
 
-    *sigar = malloc(sizeof(**sigar));
+    *sigar = je_malloc(sizeof(**sigar));
 
     (*sigar)->pagesize = 0;
     i = getpagesize();
@@ -214,7 +214,7 @@ int sigar_os_open(sigar_t **sigar)
 
 int sigar_os_close(sigar_t *sigar)
 {
-    free(sigar);
+    je_free(sigar);
     return SIGAR_OK;
 }
 

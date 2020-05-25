@@ -138,7 +138,7 @@ sigar_uint64_t sigar_FileTimeToTime(FILETIME* ft)
 static DWORD perfbuf_init(sigar_t* sigar)
 {
     if (!sigar->perfbuf) {
-        sigar->perfbuf = malloc(PERFBUF_SIZE);
+        sigar->perfbuf = je_malloc(PERFBUF_SIZE);
         sigar->perfbuf_size = PERFBUF_SIZE;
     }
 
@@ -150,7 +150,7 @@ static DWORD perfbuf_grow(sigar_t* sigar)
     sigar->perfbuf_size += PERFBUF_SIZE;
 
     sigar->perfbuf =
-        realloc(sigar->perfbuf, sigar->perfbuf_size);
+        je_realloc(sigar->perfbuf, sigar->perfbuf_size);
 
     return sigar->perfbuf_size;
 }
@@ -514,7 +514,7 @@ int sigar_os_open(sigar_t** sigar_ptr)
     int i;
     sigar_t* sigar;
 
-    *sigar_ptr = sigar = malloc(sizeof(*sigar));
+    *sigar_ptr = sigar = je_malloc(sizeof(*sigar));
     sigar->machine = ""; /* local machine */
     sigar->using_wide = 0; /*XXX*/
 
@@ -596,7 +596,7 @@ int sigar_os_close(sigar_t* sigar)
 
 
     if (sigar->perfbuf) {
-        free(sigar->perfbuf);
+        je_free(sigar->perfbuf);
     }
 
     retval = RegCloseKey(sigar->handle);
@@ -621,7 +621,7 @@ int sigar_os_close(sigar_t* sigar)
         sigar_cache_destroy(sigar->netif_names);
     }
 
-    free(sigar);
+    je_free(sigar);
 
     return retval;
 }
@@ -1219,7 +1219,7 @@ sigar_proc_cred_name_get(sigar_t* sigar, sigar_pid_t pid,
     success =
         !GetTokenInformation(token, TokenUser, NULL, 0, &len) &&
         (GetLastError() == ERROR_INSUFFICIENT_BUFFER) &&
-        (user = malloc(len)) &&
+        (user = je_malloc(len)) &&
         GetTokenInformation(token, TokenUser, user, len, &len);
 
     if (success) {
@@ -1232,7 +1232,7 @@ sigar_proc_cred_name_get(sigar_t* sigar, sigar_pid_t pid,
     }
 
     if (user != NULL) {
-        free(user);
+        je_free(user);
     }
     if (!success) {
         CloseHandle(token);
@@ -1242,7 +1242,7 @@ sigar_proc_cred_name_get(sigar_t* sigar, sigar_pid_t pid,
     success =
         !GetTokenInformation(token, TokenPrimaryGroup, NULL, 0, &len) &&
         (GetLastError() == ERROR_INSUFFICIENT_BUFFER) &&
-        (group = malloc(len)) &&
+        (group = je_malloc(len)) &&
         GetTokenInformation(token, TokenPrimaryGroup, group, len, &len);
 
     if (success) {
@@ -1255,7 +1255,7 @@ sigar_proc_cred_name_get(sigar_t* sigar, sigar_pid_t pid,
     }
 
     if (group != NULL) {
-        free(group);
+        je_free(group);
     }
 
     CloseHandle(token);
@@ -2212,10 +2212,10 @@ static int sigar_get_adapters_info(sigar_t* sigar,
     if (rc == ERROR_BUFFER_OVERFLOW) {
         sigar_log_printf(sigar, SIGAR_LOG_DEBUG,
             "GetAdaptersInfo "
-            "realloc ifconf_buf old=%d, new=%d",
+            "je_realloc ifconf_buf old=%d, new=%d",
             sigar->ifconf_len, size);
         sigar->ifconf_len = size;
-        sigar->ifconf_buf = realloc(sigar->ifconf_buf,
+        sigar->ifconf_buf = je_realloc(sigar->ifconf_buf,
             sigar->ifconf_len);
 
         *adapter = (PIP_ADAPTER_INFO)sigar->ifconf_buf;
@@ -2259,7 +2259,7 @@ static int sigar_get_adapter_info(sigar_t* sigar,
             entry = sigar_cache_get(sigar->netif_adapters,
                 info->Index);
             if (!entry->value) {
-                entry->value = malloc(sizeof(*info));
+                entry->value = je_malloc(sizeof(*info));
             }
             memcpy(entry->value, info, sizeof(*info));
             if (info->Index == index) {
@@ -2302,10 +2302,10 @@ static int sigar_get_adapters_addresses(sigar_t* sigar,
     if (rc == ERROR_BUFFER_OVERFLOW) {
         sigar_log_printf(sigar, SIGAR_LOG_DEBUG,
             "GetAdaptersAddresses "
-            "realloc ifconf_buf old=%d, new=%d",
+            "je_realloc ifconf_buf old=%d, new=%d",
             sigar->ifconf_len, size);
         sigar->ifconf_len = size;
-        sigar->ifconf_buf = realloc(sigar->ifconf_buf,
+        sigar->ifconf_buf = je_realloc(sigar->ifconf_buf,
             sigar->ifconf_len);
 
         *addrs = (PIP_ADAPTER_ADDRESSES)sigar->ifconf_buf;
@@ -2345,10 +2345,10 @@ static int sigar_get_ipaddr_table(sigar_t* sigar,
     if (rc == ERROR_INSUFFICIENT_BUFFER) {
         sigar_log_printf(sigar, SIGAR_LOG_DEBUG,
             "GetIpAddrTable "
-            "realloc ifconf_buf old=%d, new=%d",
+            "je_realloc ifconf_buf old=%d, new=%d",
             sigar->ifconf_len, size);
         sigar->ifconf_len = size;
-        sigar->ifconf_buf = realloc(sigar->ifconf_buf,
+        sigar->ifconf_buf = je_realloc(sigar->ifconf_buf,
             sigar->ifconf_len);
 
         *ipaddr = (PMIB_IPADDRTABLE)sigar->ifconf_buf;
@@ -2408,7 +2408,7 @@ static int sigar_get_netif_ipaddr(sigar_t* sigar,
             entry = sigar_cache_get(sigar->netif_addr_rows,
                 row->dwIndex);
             if (!entry->value) {
-                entry->value = malloc(sizeof(*row));
+                entry->value = je_malloc(sizeof(*row));
             }
             memcpy(entry->value, row, sizeof(*row));
 
@@ -2448,10 +2448,10 @@ SIGAR_DECLARE(int) sigar_net_info_get(sigar_t* sigar,
         return rc;
     }
 
-    info = malloc(len);
+    info = je_malloc(len);
     rc = sigar_GetNetworkParams(info, &len);
     if (rc != NO_ERROR) {
-        free(info);
+        je_free(info);
         return rc;
     }
 
@@ -2465,7 +2465,7 @@ SIGAR_DECLARE(int) sigar_net_info_get(sigar_t* sigar,
             ip->IpAddress.String);
     }
 
-    free(info);
+    je_free(info);
 
     if (sigar_get_adapters_info(sigar, &adapter) != SIGAR_OK) {
         return SIGAR_OK;
@@ -2511,10 +2511,10 @@ SIGAR_DECLARE(int) sigar_net_route_list_get(sigar_t* sigar,
         return GetLastError();
     }
 
-    buffer = malloc(bufsize);
+    buffer = je_malloc(bufsize);
     rc = sigar_GetIpForwardTable(buffer, &bufsize, FALSE);
     if (rc != NO_ERROR) {
-        free(buffer);
+        je_free(buffer);
         return GetLastError();
     }
 
@@ -2560,7 +2560,7 @@ SIGAR_DECLARE(int) sigar_net_route_list_get(sigar_t* sigar,
         }
     }
 
-    free(buffer);
+    je_free(buffer);
 
     return SIGAR_OK;
 }
@@ -2588,10 +2588,10 @@ static int sigar_get_if_table(sigar_t* sigar, PMIB_IFTABLE* iftable)
     if (rc == ERROR_INSUFFICIENT_BUFFER) {
         sigar_log_printf(sigar, SIGAR_LOG_DEBUG,
             "GetIfTable "
-            "realloc ifconf_buf old=%d, new=%d",
+            "je_realloc ifconf_buf old=%d, new=%d",
             sigar->ifconf_len, size);
         sigar->ifconf_len = size;
-        sigar->ifconf_buf = realloc(sigar->ifconf_buf,
+        sigar->ifconf_buf = je_realloc(sigar->ifconf_buf,
             sigar->ifconf_len);
 
         *iftable = (PMIB_IFTABLE)sigar->ifconf_buf;
@@ -2679,7 +2679,7 @@ sigar_net_interface_list_get(sigar_t* sigar,
         iflist->number = 0;
         iflist->size = ift->dwNumEntries;
         iflist->data =
-            malloc(sizeof(*(iflist->data)) * iflist->size);
+            je_malloc(sizeof(*(iflist->data)) * iflist->size);
     }
 
     for (i = 0; i < ift->dwNumEntries; i++) {
@@ -2711,7 +2711,7 @@ sigar_net_interface_list_get(sigar_t* sigar,
         key = netif_hash(name);
         entry = sigar_cache_get(sigar->netif_mib_rows, key);
         if (!entry->value) {
-            entry->value = malloc(sizeof(*ifr));
+            entry->value = je_malloc(sizeof(*ifr));
         }
         memcpy(entry->value, ifr, sizeof(*ifr));
 
@@ -2867,10 +2867,10 @@ static int net_conn_get_tcp(sigar_net_connection_walker_t* walker)
     if (rc != ERROR_INSUFFICIENT_BUFFER) {
         return GetLastError();
     }
-    tcp = malloc(size);
+    tcp = je_malloc(size);
     rc = sigar_GetTcpTable(tcp, &size, FALSE);
     if (rc) {
-        free(tcp);
+        je_free(tcp);
         return GetLastError();
     }
 
@@ -2943,7 +2943,7 @@ static int net_conn_get_tcp(sigar_net_connection_walker_t* walker)
         }
     }
 
-    free(tcp);
+    je_free(tcp);
     return SIGAR_OK;
 }
 
@@ -2974,10 +2974,10 @@ static int net_conn_get_udp(sigar_net_connection_walker_t* walker)
     if (rc != ERROR_INSUFFICIENT_BUFFER) {
         return GetLastError();
     }
-    udp = malloc(size);
+    udp = je_malloc(size);
     rc = sigar_GetUdpTable(udp, &size, FALSE);
     if (rc) {
-        free(udp);
+        je_free(udp);
         return GetLastError();
     }
 
@@ -3007,7 +3007,7 @@ static int net_conn_get_udp(sigar_net_connection_walker_t* walker)
         }
     }
 
-    free(udp);
+    je_free(udp);
     return SIGAR_OK;
 }
 
@@ -3682,7 +3682,7 @@ int sigar_services_status_get(sigar_services_status_t* ss, DWORD state)
             return err;
         }
 
-        ss->services = realloc(ss->services, bytes);
+        ss->services = je_realloc(ss->services, bytes);
         ss->size = bytes;
 
         retval = EnumServicesStatus(ss->handle,
@@ -3704,7 +3704,7 @@ void sigar_services_status_close(sigar_services_status_t* ss)
         CloseServiceHandle(ss->handle);
     }
     if (ss->size) {
-        free(ss->services);
+        je_free(ss->services);
     }
     SIGAR_ZERO(ss);
 }
@@ -3779,7 +3779,7 @@ int sigar_file_version_get(sigar_file_version_t* version,
     if (len == 0) {
         return !SIGAR_OK;
     }
-    data = malloc(len);
+    data = je_malloc(len);
 
     if (GetFileVersionInfo(name, handle, len, data)) {
         if (VerQueryValue(data, "\\", &info, &len)) {
@@ -3831,6 +3831,6 @@ int sigar_file_version_get(sigar_file_version_t* version,
         }
     }
 
-    free(data);
+    je_free(data);
     return status;
 }

@@ -179,5 +179,8 @@
     <ClCompile Include="lua\lua.c">
       <Filter>lua</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\jemalloc_cpp.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

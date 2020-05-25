@@ -67,14 +67,14 @@ SIGAR_DECLARE(int) sigar_open(sigar_t **sigar)
 SIGAR_DECLARE(int) sigar_close(sigar_t *sigar)
 {
     if (sigar->ifconf_buf) {
-        free(sigar->ifconf_buf);
+        je_free(sigar->ifconf_buf);
     }
     if (sigar->self_path) {
-        free(sigar->self_path);
+        je_free(sigar->self_path);
     }
     if (sigar->pids) {
         sigar_proc_list_destroy(sigar, sigar->pids);
-        free(sigar->pids);
+        je_free(sigar->pids);
     }
     if (sigar->fsdev) {
         sigar_cache_destroy(sigar->fsdev);
@@ -130,7 +130,7 @@ SIGAR_DECLARE(int) sigar_proc_cpu_get(sigar_t *sigar, sigar_pid_t pid,
         prev = (sigar_proc_cpu_t *)entry->value;
     }
     else {
-        prev = entry->value = malloc(sizeof(*prev));
+        prev = entry->value = je_malloc(sizeof(*prev));
         SIGAR_ZERO(prev);
     }
 
@@ -291,14 +291,14 @@ int sigar_proc_list_create(sigar_proc_list_t *proclist)
 {
     proclist->number = 0;
     proclist->size = SIGAR_PROC_LIST_MAX;
-    proclist->data = malloc(sizeof(*(proclist->data)) *
+    proclist->data = je_malloc(sizeof(*(proclist->data)) *
                             proclist->size);
     return SIGAR_OK;
 }
 
 int sigar_proc_list_grow(sigar_proc_list_t *proclist)
 {
-    proclist->data = realloc(proclist->data,
+    proclist->data = je_realloc(proclist->data,
                              sizeof(*(proclist->data)) *
                              (proclist->size + SIGAR_PROC_LIST_MAX));
     proclist->size += SIGAR_PROC_LIST_MAX;
@@ -310,7 +310,7 @@ SIGAR_DECLARE(int) sigar_proc_list_destroy(sigar_t *sigar,
                                            sigar_proc_list_t *proclist)
 {
     if (proclist->size) {
-        free(proclist->data);
+        je_free(proclist->data);
         proclist->number = proclist->size = 0;
     }
 
@@ -323,7 +323,7 @@ SIGAR_DECLARE(int) sigar_proc_list_get(sigar_t *sigar,
     if (proclist == NULL) {
         /* internal re-use */
         if (sigar->pids == NULL) {
-            sigar->pids = malloc(sizeof(*sigar->pids));
+            sigar->pids = je_malloc(sizeof(*sigar->pids));
             sigar_proc_list_create(sigar->pids);
         }
         else {
@@ -342,14 +342,14 @@ int sigar_proc_args_create(sigar_proc_args_t *procargs)
 {
     procargs->number = 0;
     procargs->size = SIGAR_PROC_ARGS_MAX;
-    procargs->data = malloc(sizeof(*(procargs->data)) *
+    procargs->data = je_malloc(sizeof(*(procargs->data)) *
                             procargs->size);
     return SIGAR_OK;
 }
 
 int sigar_proc_args_grow(sigar_proc_args_t *procargs)
 {
-    procargs->data = realloc(procargs->data,
+    procargs->data = je_realloc(procargs->data,
                              sizeof(*(procargs->data)) *
                              (procargs->size + SIGAR_PROC_ARGS_MAX));
     procargs->size += SIGAR_PROC_ARGS_MAX;
@@ -364,9 +364,9 @@ SIGAR_DECLARE(int) sigar_proc_args_destroy(sigar_t *sigar,
 
     if (procargs->size) {
         for (i=0; i<procargs->number; i++) {
-            free(procargs->data[i]);
+            je_free(procargs->data[i]);
         }
-        free(procargs->data);
+        je_free(procargs->data);
         procargs->number = procargs->size = 0;
     }
 
@@ -390,14 +390,14 @@ int sigar_file_system_list_create(sigar_file_system_list_t *fslist)
 {
     fslist->number = 0;
     fslist->size = SIGAR_FS_MAX;
-    fslist->data = malloc(sizeof(*(fslist->data)) *
+    fslist->data = je_malloc(sizeof(*(fslist->data)) *
                           fslist->size);
     return SIGAR_OK;
 }
 
 int sigar_file_system_list_grow(sigar_file_system_list_t *fslist)
 {
-    fslist->data = realloc(fslist->data,
+    fslist->data = je_realloc(fslist->data,
                            sizeof(*(fslist->data)) *
                            (fslist->size + SIGAR_FS_MAX));
     fslist->size += SIGAR_FS_MAX;
@@ -496,7 +496,7 @@ sigar_file_system_list_destroy(sigar_t *sigar,
                                sigar_file_system_list_t *fslist)
 {
     if (fslist->size) {
-        free(fslist->data);
+        je_free(fslist->data);
         fslist->number = fslist->size = 0;
     }
 
@@ -547,14 +547,14 @@ int sigar_cpu_info_list_create(sigar_cpu_info_list_t *cpu_infos)
 {
     cpu_infos->number = 0;
     cpu_infos->size = SIGAR_CPU_INFO_MAX;
-    cpu_infos->data = malloc(sizeof(*(cpu_infos->data)) *
+    cpu_infos->data = je_malloc(sizeof(*(cpu_infos->data)) *
                              cpu_infos->size);
     return SIGAR_OK;
 }
 
 int sigar_cpu_info_list_grow(sigar_cpu_info_list_t *cpu_infos)
 {
-    cpu_infos->data = realloc(cpu_infos->data,
+    cpu_infos->data = je_realloc(cpu_infos->data,
                               sizeof(*(cpu_infos->data)) *
                               (cpu_infos->size + SIGAR_CPU_INFO_MAX));
     cpu_infos->size += SIGAR_CPU_INFO_MAX;
@@ -567,7 +567,7 @@ sigar_cpu_info_list_destroy(sigar_t *sigar,
                             sigar_cpu_info_list_t *cpu_infos)
 {
     if (cpu_infos->size) {
-        free(cpu_infos->data);
+        je_free(cpu_infos->data);
         cpu_infos->number = cpu_infos->size = 0;
     }
 
@@ -578,14 +578,14 @@ int sigar_cpu_list_create(sigar_cpu_list_t *cpulist)
 {
     cpulist->number = 0;
     cpulist->size = SIGAR_CPU_INFO_MAX;
-    cpulist->data = malloc(sizeof(*(cpulist->data)) *
+    cpulist->data = je_malloc(sizeof(*(cpulist->data)) *
                            cpulist->size);
     return SIGAR_OK;
 }
 
 int sigar_cpu_list_grow(sigar_cpu_list_t *cpulist)
 {
-    cpulist->data = realloc(cpulist->data,
+    cpulist->data = je_realloc(cpulist->data,
                             sizeof(*(cpulist->data)) *
                             (cpulist->size + SIGAR_CPU_INFO_MAX));
     cpulist->size += SIGAR_CPU_INFO_MAX;
@@ -597,7 +597,7 @@ SIGAR_DECLARE(int) sigar_cpu_list_destroy(sigar_t *sigar,
                                           sigar_cpu_list_t *cpulist)
 {
     if (cpulist->size) {
-        free(cpulist->data);
+        je_free(cpulist->data);
         cpulist->number = cpulist->size = 0;
     }
 
@@ -608,7 +608,7 @@ int sigar_net_route_list_create(sigar_net_route_list_t *routelist)
 {
     routelist->number = 0;
     routelist->size = SIGAR_NET_ROUTE_LIST_MAX;
-    routelist->data = malloc(sizeof(*(routelist->data)) *
+    routelist->data = je_malloc(sizeof(*(routelist->data)) *
                              routelist->size);
     return SIGAR_OK;
 }
@@ -616,7 +616,7 @@ int sigar_net_route_list_create(sigar_net_route_list_t *routelist)
 int sigar_net_route_list_grow(sigar_net_route_list_t *routelist)
 {
     routelist->data =
-        realloc(routelist->data,
+        je_realloc(routelist->data,
                 sizeof(*(routelist->data)) *
                 (routelist->size + SIGAR_NET_ROUTE_LIST_MAX));
     routelist->size += SIGAR_NET_ROUTE_LIST_MAX;
@@ -628,7 +628,7 @@ SIGAR_DECLARE(int) sigar_net_route_list_destroy(sigar_t *sigar,
                                                 sigar_net_route_list_t *routelist)
 {
     if (routelist->size) {
-        free(routelist->data);
+        je_free(routelist->data);
         routelist->number = routelist->size = 0;
     }
 
@@ -639,14 +639,14 @@ int sigar_net_interface_list_create(sigar_net_interface_list_t *iflist)
 {
     iflist->number = 0;
     iflist->size = SIGAR_NET_IFLIST_MAX;
-    iflist->data = malloc(sizeof(*(iflist->data)) *
+    iflist->data = je_malloc(sizeof(*(iflist->data)) *
                           iflist->size);
     return SIGAR_OK;
 }
 
 int sigar_net_interface_list_grow(sigar_net_interface_list_t *iflist)
 {
-    iflist->data = realloc(iflist->data,
+    iflist->data = je_realloc(iflist->data,
                            sizeof(*(iflist->data)) *
                            (iflist->size + SIGAR_NET_IFLIST_MAX));
     iflist->size += SIGAR_NET_IFLIST_MAX;
@@ -662,9 +662,9 @@ sigar_net_interface_list_destroy(sigar_t *sigar,
 
     if (iflist->size) {
         for (i=0; i<iflist->number; i++) {
-            free(iflist->data[i]);
+            je_free(iflist->data[i]);
         }
-        free(iflist->data);
+        je_free(iflist->data);
         iflist->number = iflist->size = 0;
     }
 
@@ -675,7 +675,7 @@ int sigar_net_connection_list_create(sigar_net_connection_list_t *connlist)
 {
     connlist->number = 0;
     connlist->size = SIGAR_NET_CONNLIST_MAX;
-    connlist->data = malloc(sizeof(*(connlist->data)) *
+    connlist->data = je_malloc(sizeof(*(connlist->data)) *
                             connlist->size);
     return SIGAR_OK;
 }
@@ -683,7 +683,7 @@ int sigar_net_connection_list_create(sigar_net_connection_list_t *connlist)
 int sigar_net_connection_list_grow(sigar_net_connection_list_t *connlist)
 {
     connlist->data =
-        realloc(connlist->data,
+        je_realloc(connlist->data,
                 sizeof(*(connlist->data)) *
                 (connlist->size + SIGAR_NET_CONNLIST_MAX));
     connlist->size += SIGAR_NET_CONNLIST_MAX;
@@ -696,7 +696,7 @@ sigar_net_connection_list_destroy(sigar_t *sigar,
                                   sigar_net_connection_list_t *connlist)
 {
     if (connlist->size) {
-        free(connlist->data);
+        je_free(connlist->data);
         connlist->number = connlist->size = 0;
     }
 
@@ -758,7 +758,7 @@ static void sigar_net_listen_address_add(sigar_t *sigar,
         }
     }
     else {
-        entry->value = malloc(sizeof(conn->local_address));
+        entry->value = je_malloc(sizeof(conn->local_address));
     }
 
     memcpy(entry->value, &conn->local_address,
@@ -972,14 +972,14 @@ int sigar_who_list_create(sigar_who_list_t *wholist)
 {
     wholist->number = 0;
     wholist->size = SIGAR_WHO_LIST_MAX;
-    wholist->data = malloc(sizeof(*(wholist->data)) *
+    wholist->data = je_malloc(sizeof(*(wholist->data)) *
                            wholist->size);
     return SIGAR_OK;
 }
 
 int sigar_who_list_grow(sigar_who_list_t *wholist)
 {
-    wholist->data = realloc(wholist->data,
+    wholist->data = je_realloc(wholist->data,
                             sizeof(*(wholist->data)) *
                             (wholist->size + SIGAR_WHO_LIST_MAX));
     wholist->size += SIGAR_WHO_LIST_MAX;
@@ -991,7 +991,7 @@ SIGAR_DECLARE(int) sigar_who_list_destroy(sigar_t *sigar,
                                           sigar_who_list_t *wholist)
 {
     if (wholist->size) {
-        free(wholist->data);
+        je_free(wholist->data);
         wholist->number = wholist->size = 0;
     }
 
@@ -1728,7 +1728,7 @@ int sigar_net_interface_list_get(sigar_t *sigar,
     for (;;) {
         if (!sigar->ifconf_buf || lastlen) {
             sigar->ifconf_len += sizeof(struct ifreq) * SIGAR_NET_IFLIST_MAX;
-            sigar->ifconf_buf = realloc(sigar->ifconf_buf, sigar->ifconf_len);
+            sigar->ifconf_buf = je_realloc(sigar->ifconf_buf, sigar->ifconf_len);
         }
 
         ifc.ifc_len = sigar->ifconf_len;
@@ -1739,7 +1739,7 @@ int sigar_net_interface_list_get(sigar_t *sigar,
             if ((errno != EINVAL) ||
                 (lastlen == ifc.ifc_len))
             {
-                free(ifc.ifc_buf);
+                je_free(ifc.ifc_buf);
                 return errno;
             }
         }
@@ -1761,7 +1761,7 @@ int sigar_net_interface_list_get(sigar_t *sigar,
 
     iflist->number = 0;
     iflist->size = ifc.ifc_len;
-    iflist->data = malloc(sizeof(*(iflist->data)) *
+    iflist->data = je_malloc(sizeof(*(iflist->data)) *
                           iflist->size);
 
     ifr = ifc.ifc_req;

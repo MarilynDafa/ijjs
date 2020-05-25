@@ -65,7 +65,7 @@ int sigar_os_open(sigar_t **sig)
     struct utsname name;
     char *ptr;
 
-    sigar = malloc(sizeof(*sigar));
+    sigar = je_malloc(sizeof(*sigar));
     *sig = sigar;
 
     sigar->log_level = -1; /* log nothing by default */
@@ -156,12 +156,12 @@ int sigar_os_close(sigar_t *sigar)
     }
 
     if (sigar->ks.lcpu) {
-        free(sigar->ks.cpu);
-        free(sigar->ks.cpu_info);
-        free(sigar->ks.cpuid);
+        je_free(sigar->ks.cpu);
+        je_free(sigar->ks.cpu_info);
+        je_free(sigar->ks.cpuid);
     }
     if (sigar->pinfo) {
-        free(sigar->pinfo);
+        je_free(sigar->pinfo);
     }
     if (sigar->cpulist.size != 0) {
         sigar_cpu_list_destroy(sigar, &sigar->cpulist);
@@ -172,7 +172,7 @@ int sigar_os_close(sigar_t *sigar)
     if (sigar->pargs) {
         sigar_cache_destroy(sigar->pargs);
     }
-    free(sigar);
+    je_free(sigar);
     return SIGAR_OK;
 }
 
@@ -256,7 +256,7 @@ int sigar_swap_get(sigar_t *sigar, sigar_swap_t *swap)
         return errno;
     }
 
-    stab = malloc(num * sizeof(stab->swt_ent[0]) + sizeof(*stab));
+    stab = je_malloc(num * sizeof(stab->swt_ent[0]) + sizeof(*stab));
 
     stab->swt_n = num;
     for (i=0; i<num; i++) {
@@ -264,7 +264,7 @@ int sigar_swap_get(sigar_t *sigar, sigar_swap_t *swap)
     }
 
     if ((num = swapctl(SC_LIST, stab)) == -1) {
-        free(stab);
+        je_free(stab);
         return errno;
     }
 
@@ -277,7 +277,7 @@ int sigar_swap_get(sigar_t *sigar, sigar_swap_t *swap)
         swap->total += stab->swt_ent[i].ste_pages;
         swap->free  += stab->swt_ent[i].ste_free;
     }
-    free(stab);
+    je_free(stab);
 
     swap->total <<= sigar->pagesize;
     swap->free  <<= sigar->pagesize;
@@ -822,9 +822,9 @@ static void pargs_free(void *value)
 {
     pargs_t *pargs = (pargs_t *)value;
     if (pargs->args != NULL) {
-        free(pargs->args);
+        je_free(pargs->args);
     }
-    free(pargs);
+    je_free(pargs);
 }
 
 static int ucb_ps_args_get(sigar_t *sigar, sigar_pid_t pid,
@@ -846,13 +846,13 @@ static int ucb_ps_args_get(sigar_t *sigar, sigar_pid_t pid,
         pargs = (pargs_t *)ent->value;
         if (pargs->timestamp != timestamp) {
             if (pargs->args) {
-                free(pargs->args);
+                je_free(pargs->args);
                 pargs->args = NULL;
             }
         }
     }
     else {
-        pargs = malloc(sizeof(*pargs));
+        pargs = je_malloc(sizeof(*pargs));
         pargs->args = NULL;
         ent->value = pargs;
     }
@@ -882,7 +882,7 @@ static int ucb_ps_args_get(sigar_t *sigar, sigar_pid_t pid,
                 args[len-1] = '\0'; /* chop \n */
             }
 
-            pargs->args = malloc(len+1);
+            pargs->args = je_malloc(len+1);
             memcpy(pargs->args, args, len);
         }
 
@@ -952,13 +952,13 @@ int sigar_os_proc_args_get(sigar_t *sigar, sigar_pid_t pid,
     }
 
     if (argv_size > sizeof(argvb)) {
-        argvp = malloc(argv_size);
+        argvp = je_malloc(argv_size);
     }
 
     if ((nread = pread(fd, argvp, argv_size, pinfo->pr_argv)) <= 0) {
         close(fd);
         if (argvp != argvb) {
-            free(argvp);
+            je_free(argvp);
         }
         return errno;
     }
@@ -970,14 +970,14 @@ int sigar_os_proc_args_get(sigar_t *sigar, sigar_pid_t pid,
         if ((nread = pread(fd, buffer, sizeof(buffer)-1, (off_t)argvp[n])) <= 0) {
             close(fd);
             if (argvp != argvb) {
-                free(argvp);
+                je_free(argvp);
             }
             return errno;
         }
 
         buffer[nread] = '\0'; 
         alen = strlen(buffer)+1;
-        arg = malloc(alen);
+        arg = je_malloc(alen);
         memcpy(arg, buffer, alen);
 
         SIGAR_PROC_ARGS_GROW(procargs);
@@ -985,7 +985,7 @@ int sigar_os_proc_args_get(sigar_t *sigar, sigar_pid_t pid,
     }
 
     if (argvp != argvb) {
-        free(argvp);
+        je_free(argvp);
     }
 
     close(fd);
@@ -1420,7 +1420,7 @@ static fsdev_path_t *get_fsdev_paths(sigar_t *sigar,
     }
 
     size = sizeof(*paths) * (ndisk+1);
-    mapping = paths = malloc(size);
+    mapping = paths = je_malloc(size);
     memset(mapping, '\0', size);
 
     while ((ptr = fgets(buffer, sizeof(buffer), fp))) {
@@ -1546,7 +1546,7 @@ static int create_fsdev_cache(sigar_t *sigar)
                     iodev_t *iodev;
 
                     if (retval == 0) {
-                        iodev = malloc(sizeof(*iodev));
+                        iodev = je_malloc(sizeof(*iodev));
 
                         SIGAR_DISK_STATS_INIT(&iodev->disk);
                         /* e.g. sd9,g
@@ -1573,7 +1573,7 @@ static int create_fsdev_cache(sigar_t *sigar)
         }
     }
 
-    free(mapping);
+    je_free(mapping);
     sigar_file_system_list_destroy(sigar, &fslist);
 
     return SIGAR_OK;
@@ -1683,7 +1683,7 @@ int sigar_disk_usage_get(sigar_t *sigar, const char *name,
             iodev = (iodev_t *)ent->value;
         }
         else {
-            ent->value = iodev = malloc(sizeof(*iodev));
+            ent->value = iodev = je_malloc(sizeof(*iodev));
             SIGAR_SSTRCPY(iodev->name, name);
             SIGAR_DISK_STATS_INIT(&iodev->disk);
         }

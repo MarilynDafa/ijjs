@@ -81,7 +81,7 @@
 #define	GET_MIB2_ERR_GETMSGD	4	/* error getting message data */
 #define	GET_MIB2_ERR_GETMSGR	5	/* error getting message reply */
 #define	GET_MIB2_ERR_NODATA	6	/* data expected; not received */
-#define	GET_MIB2_ERR_NOSPC	7	/* no malloc() space */
+#define	GET_MIB2_ERR_NOSPC	7	/* no je_malloc() space */
 #define	GET_MIB2_ERR_NOTOPEN	8	/* MIB2 access not open */
 #define	GET_MIB2_ERR_OPEN	9	/* MIB2 access open error */
 #define	GET_MIB2_ERR_PUTMSG	10	/* error putting request message */

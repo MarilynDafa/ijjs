@@ -20,7 +20,7 @@
  */
 #include "ijjs.h"
 #include "jemalloc/jemalloc.h"
-
+#include "mbedtls/platform.h"
 
 static uv_once_t curl__init_once = UV_ONCE_INIT;
 static IJAnsi* je_strdup(IJAnsi* s)
@@ -31,6 +31,7 @@ static IJAnsi* je_strdup(IJAnsi* s)
     return t;
 }
 IJVoid ijCurlInitOnce(IJVoid) {
+    mbedtls_platform_set_calloc_free(je_calloc, je_free);
     curl_global_init_mem(CURL_GLOBAL_ALL, je_malloc, je_free, je_realloc, je_strdup, je_calloc);
 }
 

@@ -78,12 +78,12 @@ close_mib2(solaris_mib2_t *mib2)
     mib2->sd = -1;
     if (mib2->db_len && mib2->db) {
         mib2->db_len = 0;
-        free((void *)mib2->db);
+        je_free((void *)mib2->db);
         mib2->db = NULL;
     }
     if (mib2->smb_len && mib2->smb) {
         mib2->smb_len = 0;
-        free((void *)mib2->smb);
+        je_free((void *)mib2->smb);
         mib2->smb = NULL;
     }
     return(GET_MIB2_OK);
@@ -222,10 +222,10 @@ get_mib2(solaris_mib2_t *mib2,
     if (mib2->op->len >= mib2->db_len) {
         mib2->db_len = mib2->op->len;
         if (mib2->db == NULL) {
-            mib2->db = (char *)malloc(mib2->db_len);
+            mib2->db = (char *)je_malloc(mib2->db_len);
         }
         else {
-            mib2->db = (char *)realloc(mib2->db, mib2->db_len);
+            mib2->db = (char *)je_realloc(mib2->db, mib2->db_len);
         }
         if (mib2->db == NULL) {
             (void) sprintf(mib2->errmsg,
@@ -309,7 +309,7 @@ open_mib2(solaris_mib2_t *mib2)
     if (mib2->smb_len < sizeof(struct T_error_ack)) {
         mib2->smb_len = sizeof(struct T_error_ack);
     }
-    if ((mib2->smb = (char *)malloc(mib2->smb_len)) == NULL) {
+    if ((mib2->smb = (char *)je_malloc(mib2->smb_len)) == NULL) {
         (void) strcpy(mib2->errmsg,
                       "open_mib2: no space for stream message buffer");
         return(GET_MIB2_ERR_NOSPC);

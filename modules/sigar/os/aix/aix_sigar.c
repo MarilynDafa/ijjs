@@ -159,7 +159,7 @@ int sigar_os_open(sigar_t **sigar)
 
     kmem = open("/dev/kmem", O_RDONLY);
 
-    *sigar = malloc(sizeof(**sigar));
+    *sigar = je_malloc(sizeof(**sigar));
 
     (*sigar)->getprocfd = NULL; /*XXX*/
     (*sigar)->kmem = kmem;
@@ -209,10 +209,10 @@ int sigar_os_close(sigar_t *sigar)
         close(sigar->kmem);
     }
     if (sigar->pinfo) {
-        free(sigar->pinfo);
+        je_free(sigar->pinfo);
     }
     if (sigar->cpuinfo) {
-        free(sigar->cpuinfo);
+        je_free(sigar->cpuinfo);
     }
     if (sigar->diskmap) {
         sigar_cache_destroy(sigar->diskmap);
@@ -222,7 +222,7 @@ int sigar_os_close(sigar_t *sigar)
         sigar_thread_rusage(&usage,
                             PTHRDSINFO_RUSAGE_STOP);
     }
-    free(sigar);
+    je_free(sigar);
     return SIGAR_OK;
 }
 
@@ -269,10 +269,10 @@ static void swaps_free(swaps_t *swaps)
         int i;
 
         for (i=0; i<swaps->num; i++) {
-            free(swaps->devs[i]);
+            je_free(swaps->devs[i]);
         }
 
-        free(swaps->devs);
+        je_free(swaps->devs);
 
         swaps->num = 0;
     }
@@ -336,8 +336,8 @@ static int swaps_get(swaps_t *swaps)
             len = strlen(ptr);
             ptr[len-1] = '\0'; /* -1 == chomp \n */
 
-            swaps->devs = realloc(swaps->devs, swaps->num+1 * sizeof(char *));
-            swaps->devs[swaps->num] = malloc(len);
+            swaps->devs = je_realloc(swaps->devs, swaps->num+1 * sizeof(char *));
+            swaps->devs[swaps->num] = je_malloc(len);
             memcpy(swaps->devs[swaps->num], ptr, len);
 
             swaps->num++;
@@ -700,7 +700,7 @@ static int sigar_getprocs(sigar_t *sigar, sigar_pid_t pid)
     time_t timenow = time(NULL);
 
     if (sigar->pinfo == NULL) {
-        sigar->pinfo = malloc(sizeof(*sigar->pinfo));
+        sigar->pinfo = je_malloc(sizeof(*sigar->pinfo));
     }
 
     if (sigar->last_pid == pid) {
@@ -855,7 +855,7 @@ int sigar_os_proc_args_get(sigar_t *sigar, sigar_pid_t pid,
 
     while (*ptr) {
         int alen = strlen(ptr)+1;
-        char *arg = malloc(alen);
+        char *arg = je_malloc(alen);
 
         SIGAR_PROC_ARGS_GROW(procargs);
         memcpy(arg, ptr, alen);
@@ -988,12 +988,12 @@ static int sigar_proc_modules_local_get(sigar_t *sigar,
     int size = 2048, status;
     unsigned int offset;
 
-    buffer = malloc(size);
+    buffer = je_malloc(size);
     while ((loadquery(L_GETINFO, buffer, size) == -1) &&
            (errno == ENOMEM))
     {
         size += 2048;
-        buffer = realloc(buffer, size);
+        buffer = je_realloc(buffer, size);
     }
 
     info = (struct ld_info *)buffer;
@@ -1006,7 +1006,7 @@ static int sigar_proc_modules_local_get(sigar_t *sigar,
 
         if (status != SIGAR_OK) {
             /* not an error; just stop iterating */
-            free(buffer);
+            je_free(buffer);
             return status;
         }
         
@@ -1014,7 +1014,7 @@ static int sigar_proc_modules_local_get(sigar_t *sigar,
         info = (struct ld_info *)((char*)info + offset);
     } while(offset);
 
-    free(buffer);
+    je_free(buffer);
 
     return SIGAR_OK;
 }
@@ -1091,10 +1091,10 @@ int sigar_file_system_list_get(sigar_t *sigar,
         return errno;
     }
 
-    mntlist = buf = malloc(size);
+    mntlist = buf = je_malloc(size);
 
     if ((num = mntctl(MCTL_QUERY, size, buf)) < 0) {
-        free(buf);
+        je_free(buf);
         return errno;
     }
 
@@ -1188,7 +1188,7 @@ int sigar_file_system_list_get(sigar_t *sigar,
         SIGAR_SSTRCPY(fsp->sys_type_name, typename);
     }
 
-    free(buf);
+    je_free(buf);
 
     return SIGAR_OK;
 }
@@ -1209,12 +1209,12 @@ static int create_diskmap(sigar_t *sigar)
         return ENOENT;
     }
 
-    disk = malloc(total * sizeof(*disk));
+    disk = je_malloc(total * sizeof(*disk));
     id.name[0] = '\0';
 
     num = perfstat_disk(&id, disk, sizeof(*disk), total);
     if (num < 1) {
-        free(disk);
+        je_free(disk);
         return ENOENT;
     }
 
@@ -1246,21 +1246,21 @@ static int create_diskmap(sigar_t *sigar)
                 retval = stat(attr->value, &sb);
 
                 if (retval == 0) {
-                    aix_diskio_t *diskio = malloc(sizeof(*diskio));
+                    aix_diskio_t *diskio = je_malloc(sizeof(*diskio));
                     SIGAR_SSTRCPY(diskio->name, disk[i].name);
                     diskio->addr = -1;
                     ent = sigar_cache_get(sigar->diskmap, SIGAR_FSDEV_ID(sb));
                     ent->value = diskio;
                 }
 
-                free(attr);
+                je_free(attr);
             }
         }
 
         odm_free_list(dv, &info);
     }
 
-    free(disk);
+    je_free(disk);
     odm_terminate();
 
     return SIGAR_OK;
@@ -1349,7 +1349,7 @@ static char *sigar_get_odm_model(sigar_t *sigar)
 
         if ((odm_obj = getattr("proc0", "type", 0, &num))) {
             SIGAR_SSTRCPY(sigar->model, odm_obj->value);
-            free(odm_obj);
+            je_free(odm_obj);
         }
 
         odm_terminate();

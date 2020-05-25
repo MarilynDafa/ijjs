@@ -682,10 +682,10 @@ gl_puts(char *buf)
     if (gl_notty) return;
 #ifdef WIN32
     {
-     char *OemBuf = (char *)malloc(2*len);
+     char *OemBuf = (char *)je_malloc(2*len);
      CharToOemBuff(buf,OemBuf,len);
      sigar_write(1, OemBuf, len);
-     free(OemBuf);
+     je_free(OemBuf);
     }
 #else
     sigar_write(1, buf, len);
@@ -700,10 +700,10 @@ gl_error(char *buf)
     gl_cleanup();
 #ifdef WIN32
     {
-      char *OemBuf = (char *)malloc(2*len);
+      char *OemBuf = (char *)je_malloc(2*len);
       CharToOemBuff(buf,OemBuf,len);
       sigar_write(2, OemBuf, len);
-      free(OemBuf);
+      je_free(OemBuf);
     }
 #else
     sigar_write(2, buf, len);
@@ -1402,7 +1402,7 @@ sigar_getline_histadd(char *buf)
             prev = hist_buf[hist_last];
             hist_last = (hist_last + 1) % HIST_SIZE;
             if (hist_buf[hist_last] && *hist_buf[hist_last]) {
-                free(hist_buf[hist_last]);
+                je_free(hist_buf[hist_last]);
             }
             hist_buf[hist_last] = "";
 
@@ -1500,17 +1500,17 @@ hist_save(char *p)
     char *nl = strchr(p, '\n');
 
     if (nl) {
-        if ((s = (char *)malloc(len)) != 0) {
+        if ((s = (char *)je_malloc(len)) != 0) {
             strncpy(s, p, len-1);
             s[len-1] = 0;
         }
     } else {
-        if ((s = (char *)malloc(len+1)) != 0) {
+        if ((s = (char *)je_malloc(len+1)) != 0) {
             strcpy(s, p);
         }
     }
     if (s == 0)
-        gl_error("\n*** Error: hist_save() failed on malloc\n");
+        gl_error("\n*** Error: hist_save() failed on je_malloc\n");
     return s;
 }
 

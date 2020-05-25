@@ -50,6 +50,10 @@
 #	undef malloc
 #endif
 #define malloc sd_malloc
+#ifdef free
+#	undef free
+#endif
+#define free sd_free
 #ifdef calloc
 #	undef calloc
 #endif
@@ -62,6 +66,7 @@
 #	undef yyerror
 #endif
 #define yyerror sd_error
+
 
 static void domnode_attribute(struct __sd_domnode_xml_maker*, const char*,
 			       const char*);

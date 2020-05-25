@@ -90,15 +90,15 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0501;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\externals\cwin\thread;..\..\code\externals\cwin;..\..\code\externals\jemalloc\include;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\bin\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
@@ -107,15 +107,15 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0501;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\externals\cwin\thread;..\..\code\externals\cwin;..\..\code\externals\jemalloc\include;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\bin\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
@@ -126,9 +126,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0501;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\externals\cwin\thread;..\..\code\externals\cwin;..\..\code\externals\jemalloc\include;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
@@ -136,7 +136,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\bin\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
@@ -147,9 +147,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0501;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\externals\cwin\thread;..\..\code\externals\cwin;..\..\code\externals\jemalloc\include;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
@@ -157,7 +157,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\bin\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
@@ -201,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\externals\cwin\sys\time.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\jemalloc_cpp.cpp" />
     <ClCompile Include="lua\lua.c" />
     <ClCompile Include="Win32_Interop\dlfcn.c" />
     <ClCompile Include="Win32_Interop\win32fixes.c" />

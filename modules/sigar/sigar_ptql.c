@@ -157,7 +157,7 @@ typedef struct {
 
 static void data_free(void *data)
 {
-    free(data);
+    je_free(data);
 }
 
 typedef union {
@@ -523,7 +523,7 @@ static int ptql_branch_list_create(ptql_branch_list_t *branches)
 {
     branches->number = 0;
     branches->size = PTQL_BRANCH_LIST_MAX;
-    branches->data = malloc(sizeof(*(branches->data)) *
+    branches->data = je_malloc(sizeof(*(branches->data)) *
                             branches->size);
 
     return SIGAR_OK;
@@ -532,7 +532,7 @@ static int ptql_branch_list_create(ptql_branch_list_t *branches)
 static int ptql_branch_list_grow(ptql_branch_list_t *branches)
 {
     branches->data =
-        realloc(branches->data,
+        je_realloc(branches->data,
                 sizeof(*(branches->data)) *
                 (branches->size + PTQL_BRANCH_LIST_MAX));
     branches->size += PTQL_BRANCH_LIST_MAX;
@@ -564,7 +564,7 @@ static int ptql_branch_list_destroy(ptql_branch_list_t *branches)
             }
         }
 
-        free(branches->data);
+        je_free(branches->data);
         branches->number = branches->size = 0;
     }
 
@@ -1678,7 +1678,7 @@ SIGAR_DECLARE(int) sigar_ptql_query_create(sigar_ptql_query_t **queryp,
     int status = SIGAR_OK;
     int has_ref = 0;
     sigar_ptql_query_t *query =
-        *queryp = malloc(sizeof(*query));
+        *queryp = je_malloc(sizeof(*query));
 
     (void)ptql_error(error, "Malformed query");
 
@@ -1721,7 +1721,7 @@ SIGAR_DECLARE(int) sigar_ptql_query_create(sigar_ptql_query_t **queryp,
         }
     } while (*ptql);
 
-    free(ptql_copy);
+    je_free(ptql_copy);
 
     if (status != SIGAR_OK) {
         sigar_ptql_query_destroy(query);
@@ -1743,10 +1743,10 @@ SIGAR_DECLARE(int) sigar_ptql_query_create(sigar_ptql_query_t **queryp,
 SIGAR_DECLARE(int) sigar_ptql_query_destroy(sigar_ptql_query_t *query)
 {
 #ifdef PTQL_DEBUG
-    free(query->ptql);
+    je_free(query->ptql);
 #endif
     ptql_branch_list_destroy(&query->branches);
-    free(query);
+    je_free(query);
     return SIGAR_OK;
 }
 
@@ -1791,7 +1791,7 @@ SIGAR_DECLARE(int) sigar_ptql_query_match(sigar_t *sigar,
             /* standard sigar_proc_*_get / structptr + offset */
             if (!branch->data.ptr) {
                 branch->data_size = lookup->data_size;
-                branch->data.ptr = malloc(branch->data_size);
+                branch->data.ptr = je_malloc(branch->data_size);
             }
             status = lookup->get(sigar, pid, branch->data.ptr);
             if (status != SIGAR_OK) {
@@ -1838,14 +1838,14 @@ static int ptql_proc_list_get(sigar_t *sigar,
             /* pre-filter pid list for Pid.* queries */
             /* XXX multiple Pid.* may result in dups */
             if (*proclist == NULL) {
-                *proclist = malloc(sizeof(**proclist));
+                *proclist = je_malloc(sizeof(**proclist));
                 SIGAR_ZERO(*proclist);
                 sigar_proc_list_create(*proclist);
             }
             status = ptql_pid_list_get(sigar, branch, *proclist);
             if (status != SIGAR_OK) {
                 sigar_proc_list_destroy(sigar, *proclist);
-                free(*proclist);
+                je_free(*proclist);
                 return status;
             }
         }
@@ -1868,7 +1868,7 @@ static int ptql_proc_list_destroy(sigar_t *sigar,
 {
     if (proclist != sigar->pids) {
         sigar_proc_list_destroy(sigar, proclist);
-        free(proclist);
+        je_free(proclist);
     }
 
     return SIGAR_OK;

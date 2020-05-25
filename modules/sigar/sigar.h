@@ -20,7 +20,7 @@
 /* System Information Gatherer And Reporter */
 
 #include <limits.h>
-
+#include "jemalloc/jemalloc.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

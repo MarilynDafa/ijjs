@@ -31,6 +31,13 @@ char* je_strdup2(char* s);
 #define sd_realloc je_realloc
 #define sd_strdup je_strdup2
 
+
+#define calloc je_calloc
+#define malloc je_malloc
+#define free je_free
+#define realloc je_realloc
+#define strdup je_strdup2
+
 __SD_END_DECLS
 
 #endif

@@ -83,7 +83,7 @@ char *sigar_getword(char **line, char stop)
     }
 
     len = pos - *line;
-    res = malloc(len + 1);
+    res = je_malloc(len + 1);
     memcpy(res, *line, len);
     res[len] = 0;
 
@@ -251,7 +251,7 @@ int sigar_procfs_args_get(sigar_t *sigar, sigar_pid_t pid,
         if (len == 0) {
             break;
         }
-        buf = realloc(buf, total+len+1);
+        buf = je_realloc(buf, total+len+1);
         memcpy(buf+total, buffer, len);
         total += len;
     }
@@ -269,7 +269,7 @@ int sigar_procfs_args_get(sigar_t *sigar, sigar_pid_t pid,
 
     while (total > 0) {
         int alen = strlen(ptr)+1;
-        char *arg = malloc(alen);
+        char *arg = je_malloc(alen);
 
         SIGAR_PROC_ARGS_GROW(procargs);
         memcpy(arg, ptr, alen);
@@ -282,7 +282,7 @@ int sigar_procfs_args_get(sigar_t *sigar, sigar_pid_t pid,
         }
     }
 
-    free(buf);
+    je_free(buf);
 
     return SIGAR_OK;
 }
@@ -391,7 +391,7 @@ sigar_iodev_t *sigar_iodev_get(sigar_t *sigar,
 
     if (is_dev) {
         sigar_iodev_t *iodev;
-        entry->value = iodev = malloc(sizeof(*iodev));
+        entry->value = iodev = je_malloc(sizeof(*iodev));
         SIGAR_ZERO(iodev);
         SIGAR_SSTRCPY(iodev->name, dirname);
         if (debug) {
@@ -433,7 +433,7 @@ sigar_iodev_t *sigar_iodev_get(sigar_t *sigar,
 
             if (SIGAR_NAME_IS_DEV(fsp->dev_name)) {
                 sigar_iodev_t *iodev;
-                ent->value = iodev = malloc(sizeof(*iodev));
+                ent->value = iodev = je_malloc(sizeof(*iodev));
                 SIGAR_ZERO(iodev);
                 iodev->is_partition = 1;
                 SIGAR_SSTRCPY(iodev->name, fsp->dev_name);
