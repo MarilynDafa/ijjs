@@ -11,16 +11,13 @@ log4c final
 
 cli
 jemalloc
-kcp
+log4c
 linux
-osx
 test
-vscode
-log4c	
+vscode	
+kcp
 PostgreSQL  js	
 sigar
 redis
-http-server  js
-express  js
 
 ijpm

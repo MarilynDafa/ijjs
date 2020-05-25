@@ -1,24 +1,10 @@
-/**
- * @author Toru Nagashima <https://github.com/mysticatea>
- * See LICENSE file in root directory for full license.
- */
 import { defineEventAttribute, EventTarget } from '@ijjs/event-target';
 
-/**
- * The signal class.
- * @see https://dom.spec.whatwg.org/#abortsignal
- */
 class AbortSignal extends EventTarget {
-    /**
-     * AbortSignal cannot be constructed directly.
-     */
     constructor() {
         super();
         throw new TypeError("AbortSignal cannot be constructed directly");
     }
-    /**
-     * Returns `true` if this `AbortSignal`'s `AbortController` has signaled to abort, and `false` otherwise.
-     */
     get aborted() {
         const aborted = abortedFlags.get(this);
         if (typeof aborted !== "boolean") {
@@ -27,19 +13,16 @@ class AbortSignal extends EventTarget {
         return aborted;
     }
 }
+
 defineEventAttribute(AbortSignal.prototype, "abort");
-/**
- * Create an AbortSignal object.
- */
+
 function createAbortSignal() {
     const signal = Object.create(AbortSignal.prototype);
     EventTarget.prototype.__init.call(signal);
     abortedFlags.set(signal, false);
     return signal;
 }
-/**
- * Abort a given signal.
- */
+
 function abortSignal(signal) {
     if (abortedFlags.get(signal) !== false) {
         return;
@@ -47,15 +30,13 @@ function abortSignal(signal) {
     abortedFlags.set(signal, true);
     signal.dispatchEvent(new CustomEvent("abort"));
 }
-/**
- * Aborted flag for each instances.
- */
+
 const abortedFlags = new WeakMap();
-// Properties should be enumerable.
+
 Object.defineProperties(AbortSignal.prototype, {
     aborted: { enumerable: true },
 });
-// `toString()` should return `"[object AbortSignal]"`
+
 if (typeof Symbol === "function" && typeof Symbol.toStringTag === "symbol") {
     Object.defineProperty(AbortSignal.prototype, Symbol.toStringTag, {
         configurable: true,
@@ -63,37 +44,22 @@ if (typeof Symbol === "function" && typeof Symbol.toStringTag === "symbol") {
     });
 }
 
-/**
- * The AbortController.
- * @see https://dom.spec.whatwg.org/#abortcontroller
- */
 class AbortController {
-    /**
-     * Initialize this controller.
-     */
     constructor() {
         signals.set(this, createAbortSignal());
     }
-    /**
-     * Returns the `AbortSignal` object associated with this object.
-     */
+
     get signal() {
         return getSignal(this);
     }
-    /**
-     * Abort and signal to any observers that the associated activity is to be aborted.
-     */
+
     abort() {
         abortSignal(getSignal(this));
     }
 }
-/**
- * Associated signals.
- */
+
 const signals = new WeakMap();
-/**
- * Get the associated signal of a given controller.
- */
+
 function getSignal(controller) {
     const signal = signals.get(controller);
     if (signal == null) {
@@ -101,11 +67,12 @@ function getSignal(controller) {
     }
     return signal;
 }
-// Properties should be enumerable.
+
 Object.defineProperties(AbortController.prototype, {
     signal: { enumerable: true },
     abort: { enumerable: true },
 });
+
 if (typeof Symbol === "function" && typeof Symbol.toStringTag === "symbol") {
     Object.defineProperty(AbortController.prototype, Symbol.toStringTag, {
         configurable: true,

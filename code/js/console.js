@@ -1,27 +1,4 @@
 const format = (function() {
-    // Copyright Joyent, Inc. and other Node contributors.
-    //
-    // Permission is hereby granted, free of charge, to any person obtaining a
-    // copy of this software and associated documentation files (the
-    // "Software"), to deal in the Software without restriction, including
-    // without limitation the rights to use, copy, modify, merge, publish,
-    // distribute, sublicense, and/or sell copies of the Software, and to permit
-    // persons to whom the Software is furnished to do so, subject to the
-    // following conditions:
-    //
-    // The above copyright notice and this permission notice shall be included
-    // in all copies or substantial portions of the Software.
-    //
-    // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-    // OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-    // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-    // NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-    // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-    // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-    // USE OR OTHER DEALINGS IN THE SOFTWARE.
-    //
-    // https://github.com/joyent/node/blob/master/lib/util.js
-  
     var formatRegExp = /%[sdj%]/g;
     function format(f) {
         if (!isString(f)) {
@@ -84,26 +61,18 @@ const format = (function() {
     }
   
     function formatValue(ctx, value, recurseTimes) {  
-      // Primitive types cannot have properties
       var primitive = formatPrimitive(ctx, value);
       if (primitive) {
         return primitive;
       }
-  
-      // Look up the keys of the object.
       var keys = Object.keys(value);
       var visibleKeys = arrayToHash(keys);
-  
-      // IE doesn't make error fields non-enumerable
-      // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
       if (
         isError(value) &&
         (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)
       ) {
         return formatError(value);
       }
-  
-      // Some type of object without properties can be shortcutted.
       if (keys.length === 0) {
         if (isFunction(value)) {
           var name = value.name ? ': ' + value.name : '';
@@ -124,29 +93,24 @@ const format = (function() {
         array = false,
         braces = ['{', '}'];
   
-      // Make Array say that they are Array
       if (isArray(value)) {
         array = true;
         braces = ['[', ']'];
       }
   
-      // Make functions say that they are functions
       if (isFunction(value)) {
         var n = value.name ? ': ' + value.name : '';
         base = ' [Function' + n + ']';
       }
   
-      // Make RegExps say that they are RegExps
       if (isRegExp(value)) {
         base = ' ' + RegExp.prototype.toString.call(value);
       }
   
-      // Make dates with properties first say the date
       if (isDate(value)) {
         base = ' ' + Date.prototype.toUTCString.call(value);
       }
   
-      // Make error with message first say the error
       if (isError(value)) {
         base = ' ' + formatError(value);
       }
@@ -208,7 +172,6 @@ const format = (function() {
         return ctx.stylize('' + value, 'number');
       }
       if (isBoolean(value)) return ctx.stylize('' + value, 'boolean');
-      // For some reason typeof null is "object", so special case here.
       if (isNull(value)) return ctx.stylize('null', 'null');
       if (isBigInt(value)) return ctx.stylize('' + value + 'n', 'bigint');
       if (isBigFloat(value)) return ctx.stylize('' + value + 'l', 'bigfloat');
@@ -335,9 +298,7 @@ const format = (function() {
   
       return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
     }
-  
-    // NOTE: These type checking functions intentionally don't use `instanceof`
-    // because it is fragile and can be easily faked with `Object.create()`.
+    
     function isArray(ar) {
       return Array.isArray(ar);
     }
@@ -421,10 +382,6 @@ function printError() {
   ijjs.printError(format.apply(null, arguments));
 }
 
-
-// Copyright Joyent, Inc. and other Node contributors. MIT license.
-// Forked from Node's lib/internal/cli_table.js
-
 function hasOwnProperty(obj, v) {
     if (obj == null) {
       return false;
@@ -468,8 +425,6 @@ function renderRow(row, columnWidths) {
     const cell = row[i];
     const len = countBytes(cell);
     const needed = (columnWidths[i] - len) / 2;
-    // round(needed) + ceil(needed) will always add up to the amount
-    // of spaces we need while also left justifying the output.
     out += `${" ".repeat(needed)}${cell}${" ".repeat(Math.ceil(needed))}`;
     if (i !== row.length - 1) {
       out += tableChars.middle;

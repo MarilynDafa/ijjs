@@ -1,16 +1,8 @@
-// 2nd bootstrap. Here all modules that need to pollute the global namespace are
-// already loaded.
-//
-
 import { AbortController, AbortSignal } from '@ijjs/abort-controller';
 import { Console } from '@ijjs/console';
 import { XMLHttpRequest as XHR, Worker as _Worker } from '@ijjs/core';
 import { defineEventAttribute, EventTarget, Event, CustomEvent } from '@ijjs/event-target';
 import { Performance } from '@ijjs/performance';
-
-
-// Console
-//
 
 Object.defineProperty(window, 'console', {
     enumerable: true,
@@ -18,10 +10,6 @@ Object.defineProperty(window, 'console', {
     writable: true,
     value: new Console()
 });
-
-
-// EventTarget
-//
 
 const kErrorEventData = Symbol('kErrorEventData');
 
@@ -122,14 +110,9 @@ Object.defineProperties(window, {
 
 Object.setPrototypeOf(window, EventTarget.prototype);
 EventTarget.prototype.__init.call(window);
-
 const windowProto = Object.getPrototypeOf(window);
 defineEventAttribute(windowProto, 'load');
 defineEventAttribute(windowProto, 'unhandledrejection');
-
-
-// Performance
-//
 
 Object.defineProperty(window, 'performance', {
     enumerable: true,
@@ -137,10 +120,6 @@ Object.defineProperty(window, 'performance', {
     writable: true,
     value: new Performance()
 });
-
-
-// AbortController
-//
 
 Object.defineProperty(window, 'AbortController', {
     enumerable: true,
@@ -155,11 +134,6 @@ Object.defineProperty(window, 'AbortSignal', {
     writable: true,
     value: AbortSignal
 });
-
-
-// Worker
-//
-
 const kWorker = Symbol('kWorker');
 
 class Worker extends EventTarget {
@@ -181,7 +155,7 @@ class Worker extends EventTarget {
     }
 
     postMessage(...args) {
-        this[kWorker].postMessage(args); 
+        this[kWorker].postMessage(args);
     }
 
     terminate() {
@@ -201,10 +175,6 @@ Object.defineProperty(window, 'Worker', {
     value: Worker
 });
 
-
-// XMLHttpRequest
-//
-
 const kXHR = Symbol('kXHR');
 
 class XMLHttpRequest extends EventTarget {
@@ -218,7 +188,6 @@ class XMLHttpRequest extends EventTarget {
     HEADERS_RECEIVED = XHR.HEADERS_RECEIVED;
     LOADING = XHR.LOADING;
     DONE = XHR.DONE;
-
     constructor() {
         super();
 

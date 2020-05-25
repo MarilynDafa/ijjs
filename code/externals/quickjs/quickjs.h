@@ -24,7 +24,7 @@
  */
 #ifndef QUICKJS_H
 #define QUICKJS_H
-
+#include "../../headers/ijpre.h"
 #include <stdio.h>
 #include <stdint.h>
 
@@ -633,7 +633,7 @@ JSValue __js_printf_like(2, 3) JS_ThrowRangeError(JSContext *ctx, const char *fm
 JSValue __js_printf_like(2, 3) JS_ThrowInternalError(JSContext *ctx, const char *fmt, ...);
 JSValue JS_ThrowOutOfMemory(JSContext *ctx);
 
-void __JS_FreeValue(JSContext *ctx, JSValue v);
+IJ_API void __JS_FreeValue(JSContext *ctx, JSValue v);
 static inline void JS_FreeValue(JSContext *ctx, JSValue v)
 {
     if (JS_VALUE_HAS_REF_COUNT(v)) {
@@ -772,7 +772,7 @@ JSValue JS_CallConstructor2(JSContext *ctx, JSValueConst func_obj,
                             int argc, JSValueConst *argv);
 JS_BOOL JS_DetectModule(const char *input, size_t input_len);
 /* 'input' must be zero terminated i.e. input[input_len] = '\0'. */
-JSValue JS_Eval(JSContext *ctx, const char *input, size_t input_len,
+IJ_API JSValue JS_Eval(JSContext *ctx, const char *input, size_t input_len,
                 const char *filename, int eval_flags);
 JSValue JS_EvalFunction(JSContext *ctx, JSValue fun_obj);
 JSValue JS_GetGlobalObject(JSContext *ctx);

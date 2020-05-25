@@ -80,9 +80,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\read.c">
       <Filter>hiredis</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\sds.c">
-      <Filter>hiredis</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)redis-check-aof.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)redis-check-rdb.c" />
   </ItemGroup>
@@ -146,9 +143,6 @@
       <Filter>hiredis</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\read.h">
-      <Filter>hiredis</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\sds.h">
       <Filter>hiredis</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\sdsalloc.h">

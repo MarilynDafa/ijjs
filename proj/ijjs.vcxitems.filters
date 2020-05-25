@@ -2024,6 +2024,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\ijjs.h">
       <Filter>headers</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\ijpre.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\liblog4c.def">

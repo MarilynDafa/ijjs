@@ -1,6 +1,3 @@
-// ijjs internal bootstrap.
-//
-
 import * as core from '@ijjs/core';
 
 globalThis.setTimeout = core.setTimeout;
@@ -28,10 +25,8 @@ Object.defineProperty(globalThis, 'self', {
     set() {}
 });
 
-// The "ijjs" global.
-//
-
 const ijjs = Object.create(null);
+
 const noExport = [
     'setTimeout',
     'setInterval',
@@ -54,17 +49,13 @@ for (const [key, value] of Object.entries(core)) {
     if (noExport.indexOf(key) !== -1) {
         continue;
     }
-
-    // ijjs.signal.SIGINT etc.
     if (key.startsWith('SIG')) {
         ijjs.signal[key] = value;
         continue;
     }
-
     ijjs[key] = value;
 }
 
-// These values should be immutable.
 ijjs.args = Object.freeze(core.args);
 ijjs.versions = Object.freeze(core.versions);
 

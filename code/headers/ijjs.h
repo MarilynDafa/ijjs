@@ -22,98 +22,7 @@
 #ifndef __ijjs_h_
 #define __ijjs_h_
 
-#define IJJS_VERSION_MAJOR 1
-#define IJJS_VERSION_MINOR 0
-#define IJJS_VERSION_PATCH 0
-#define IJJS_VERSION_SUFFIX ""
-
-#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
-#   define IJJS_PLATFORM_WIN32        0
-#	define IJJS_PLATFORM    IJJS_PLATFORM_WIN32
-#   define S_IFIFO _S_IFIFO
-#   define S_IFBLK 24576
-#   define IJJS_PLATFORM_STR "windows"
-#elif defined(__APPLE_CC__)
-#   define IJJS_PLATFORM_OSX          1
-#	define IJJS_PLATFORM    IJJS_PLATFORM_OSX
-#   define IJJS_PLATFORM_STR "Mac"
-#elif defined(linux) || defined(__linux) || defined(__linux__)
-#   define IJJS_PLATFORM_LINUX      2
-#	define IJJS_PLATFORM    IJJS_PLATFORM_LINUX
-#   define IJJS_PLATFORM_STR "Linux"
-#else
-#	error unsupport platform
-#endif
-#define IJBool bool
-
-#define IJJS_DEFAULT_STACK_SIZE 1048576
-
-#define IJJS_DEFAULt_READ_SIZE 65536
-
-#define STDIN_FILENO 0
-
-#define STDOUT_FILENO 1
-
-#define STDERR_FILENO 2
-
-#define PATH_MAX 250
-
-#define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
-
-#define ERROR_AND_ABORT(expr)                                                                                          \
-    do {                                                                                                               \
-        static const struct IJJSAssertionInfo args = { __FILE__ ":" STRINGIFY(__LINE__), #expr, PRETTY_FUNCTION_NAME };    \
-        ijAssert(args);                                                                                              \
-    } while (0)
-
-#ifdef __GNUC__
-#define IJJS__LIKELY(expr)    __builtin_expect(!!(expr), 1)
-#define IJJS__UNLIKELY(expr)  __builtin_expect(!!(expr), 0)
-#define PRETTY_FUNCTION_NAME __PRETTY_FUNCTION__
-#else
-#define IJJS__LIKELY(expr)    expr
-#define IJJS__UNLIKELY(expr)  expr
-#define PRETTY_FUNCTION_NAME ""
-#endif
-
-#define STRINGIFY_(x) #x
-#define STRINGIFY(x)  STRINGIFY_(x)
-
-#define CHECK(expr)                                                                                                    \
-    do {                                                                                                               \
-        if (IJJS__UNLIKELY(!(expr))) {                                                                                  \
-            ERROR_AND_ABORT(expr);                                                                                     \
-        }                                                                                                              \
-    } while (0)
-
-#define CHECK_EQ(a, b)      CHECK((a) == (b))
-#define CHECK_GE(a, b)      CHECK((a) >= (b))
-#define CHECK_GT(a, b)      CHECK((a) > (b))
-#define CHECK_LE(a, b)      CHECK((a) <= (b))
-#define CHECK_LT(a, b)      CHECK((a) < (b))
-#define CHECK_NE(a, b)      CHECK((a) != (b))
-#define CHECK_NULL(val)     CHECK((val) == NULL)
-#define CHECK_NOT_NULL(val) CHECK((val) != NULL)
-#define IJJS_CONST(x) JS_PROP_INT32_DEF(#x, x, JS_PROP_CONFIGURABLE)
-
-
-
-typedef signed char IJS8;
-typedef unsigned char IJU8;
-typedef signed short IJS16;
-typedef unsigned short IJU16;
-typedef signed int IJS32;
-typedef unsigned int IJU32;
-typedef float IJF32;
-typedef double IJF64;
-typedef char IJAnsi;
-typedef unsigned char IJUtf8;
-typedef unsigned short IJUtf16;
-typedef void IJVoid;
-typedef long long IJS64;
-typedef unsigned long long IJU64;
-
-
+#include "ijpre.h"
 #include <quickjs.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -171,312 +80,312 @@ typedef struct {
     IJVoid (*done_cb)(CURLMsg*, IJVoid*);
 } IJJSCurl;
 
-const IJAnsi* ijVersion();
+IJ_API const IJAnsi* ijVersion();
 
-IJVoid ijDefaultOptions(
+IJ_API IJVoid ijDefaultOptions(
     IJJSRunOptions* options);
 
-IJJSRuntime* ijNewRuntime();
+IJ_API IJJSRuntime* ijNewRuntime();
 
-IJJSRuntime *ijNewRuntimeOptions(
+IJ_API IJJSRuntime *ijNewRuntimeOptions(
     IJJSRunOptions* options);
 
-IJVoid ijFreeRuntime(
+IJ_API IJVoid ijFreeRuntime(
     IJJSRuntime* qrt);
 
-IJVoid ijSetupArgs(
+IJ_API IJVoid ijSetupArgs(
     IJS32 argc, 
     IJAnsi** argv);
 
-JSContext* ijGetJSContext(
+IJ_API JSContext* ijGetJSContext(
     IJJSRuntime* qrt);
 
-IJJSRuntime* ijGetRuntime(
+IJ_API IJJSRuntime* ijGetRuntime(
     JSContext* ctx);
 
-IJVoid ijRun(
+IJ_API IJVoid ijRun(
     IJJSRuntime *qrt);
 
-IJVoid ijStop(
+IJ_API IJVoid ijStop(
     IJJSRuntime *qrt);
 
-JSValue ijEvalFile(
+IJ_API JSValue ijEvalFile(
     JSContext* ctx, 
     const IJAnsi* filename, 
     IJS32 eval_flags, 
     IJBool is_main, 
     IJAnsi* override_filename);
 
-IJVoid ijRunRepl(
+IJ_API IJVoid ijRunRepl(
     JSContext* ctx);
 
-IJVoid ijAssert(
+IJ_API IJVoid ijAssert(
     const struct IJJSAssertionInfo info);
 
-uv_loop_t* ijGetLoop(
+IJ_API uv_loop_t* ijGetLoop(
     JSContext* ctx);
 
-IJS32 ijObj2Addr(
+IJ_API IJS32 ijObj2Addr(
     JSContext* ctx, 
     JSValueConst obj, 
     struct sockaddr_storage* ss);
 
-JSValue ijAddr2Obj(
+IJ_API JSValue ijAddr2Obj(
     JSContext* ctx, 
     const struct sockaddr* sa);
 
-IJVoid ijCallHandler(
+IJ_API IJVoid ijCallHandler(
     JSContext* ctx, 
     JSValueConst func);
 
-IJVoid ijDumpError(
+IJ_API IJVoid ijDumpError(
     JSContext* ctx);
 
-IJVoid ijDumpError1(
+IJ_API IJVoid ijDumpError1(
     JSContext* ctx, 
     JSValueConst exception_val);
 
-IJVoid ijFreePropEnum(
+IJ_API IJVoid ijFreePropEnum(
     JSContext* ctx, 
     JSPropertyEnum* tab, 
     IJU32 len);
 
-JSValue ijInitPromise(
+IJ_API JSValue ijInitPromise(
     JSContext* ctx, 
     IJJSPromise* p);
 
-IJBool ijIsPromisePending(
+IJ_API IJBool ijIsPromisePending(
     JSContext* ctx, 
     IJJSPromise* p);
 
-IJVoid ijFreePromise(
+IJ_API IJVoid ijFreePromise(
     JSContext* ctx, 
     IJJSPromise* p);
 
-IJVoid ijFreePromiseRT(
+IJ_API IJVoid ijFreePromiseRT(
     JSRuntime* rt, 
     IJJSPromise* p);
 
-IJVoid ijClearPromise(
+IJ_API IJVoid ijClearPromise(
     JSContext* ctx, 
     IJJSPromise* p);
 
-IJVoid ijMarkPromise(
+IJ_API IJVoid ijMarkPromise(
     JSRuntime* rt, 
     IJJSPromise* p, 
     JS_MarkFunc* mark_func);
 
-IJVoid ijSettlePromise(
+IJ_API IJVoid ijSettlePromise(
     JSContext* ctx, 
     IJJSPromise* p, 
     IJBool is_reject, 
     IJS32 argc, 
     JSValueConst* argv);
 
-IJVoid ijResolvePromise(
+IJ_API IJVoid ijResolvePromise(
     JSContext* ctx, 
     IJJSPromise* p, 
     IJS32 argc, 
     JSValueConst* argv);
 
-IJVoid ijRejectPromise(
+IJ_API IJVoid ijRejectPromise(
     JSContext* ctx, 
     IJJSPromise* p, 
     IJS32 argc, 
     JSValueConst* argv);
 
-JSValue ijNewResolvedPromise(
+IJ_API JSValue ijNewResolvedPromise(
     JSContext* ctx, 
     IJS32 argc, 
     JSValueConst* argv);
 
-JSValue ijNewRejectedPromise(
+IJ_API JSValue ijNewRejectedPromise(
     JSContext* ctx, 
     IJS32 argc, 
     JSValueConst* argv);
 
-JSValue ijNewUint8Array(
+IJ_API JSValue ijNewUint8Array(
     JSContext* ctx, 
     IJU8* data, 
     IJU32 size);
 
-IJVoid ijCurlInit();
+IJ_API IJVoid ijCurlInit();
 
-IJS32 ijCurlLoadHttp(
+IJ_API IJS32 ijCurlLoadHttp(
     DynBuf* dbuf, 
     const IJAnsi* url);
 
-CURLM* ijGetCurlm(
+IJ_API CURLM* ijGetCurlm(
     JSContext* ctx);
     
-IJVoid ijModDNSInit(
+IJ_API IJVoid ijModDNSInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModDNSExport(
+IJ_API IJVoid ijModDNSExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModErrorInit(
+IJ_API IJVoid ijModErrorInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModErrorExport(
+IJ_API IJVoid ijModErrorExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModFSInit(
+IJ_API IJVoid ijModFSInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModFSExport(
+IJ_API IJVoid ijModFSExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModMiscInit(
+IJ_API IJVoid ijModMiscInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModMiscExport(
+IJ_API IJVoid ijModMiscExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModProcessInit(
+IJ_API IJVoid ijModProcessInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModProcessExport(
+IJ_API IJVoid ijModProcessExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModSignalsInit(
+IJ_API IJVoid ijModSignalsInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModSignalsExport(
+IJ_API IJVoid ijModSignalsExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModStdInit(
+IJ_API IJVoid ijModStdInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModStdExport(
+IJ_API IJVoid ijModStdExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModStreamsInit(
+IJ_API IJVoid ijModStreamsInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModStreamsExport(
+IJ_API IJVoid ijModStreamsExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModTimersInit(
+IJ_API IJVoid ijModTimersInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModTimersExport(
+IJ_API IJVoid ijModTimersExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModUdpInit(
+IJ_API IJVoid ijModUdpInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModUdpExport(
+IJ_API IJVoid ijModUdpExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModWasmInit(
+IJ_API IJVoid ijModWasmInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModWasmExport(
+IJ_API IJVoid ijModWasmExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModWorkerInit(
+IJ_API IJVoid ijModWorkerInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModWorkerExport(
+IJ_API IJVoid ijModWorkerExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModXhrInit(
+IJ_API IJVoid ijModXhrInit(
     JSContext* ctx, 
     JSModuleDef* m);
 
-IJVoid ijModXhrExport(
+IJ_API IJVoid ijModXhrExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
-JSValue ijNewError(
+IJ_API JSValue ijNewError(
     JSContext* ctx, 
     IJS32 err);
 
-JSValue ijThrowErrno(
+IJ_API JSValue ijThrowErrno(
     JSContext* ctx, 
     IJS32 err);
 
-JSValue ijNewPipe(
+IJ_API JSValue ijNewPipe(
     JSContext *ctx);
 
-uv_stream_t* ijPipeGetStream(
+IJ_API uv_stream_t* ijPipeGetStream(
     JSContext *ctx, 
     JSValueConst obj);
 
-IJVoid ijExecuteJobs(
+IJ_API IJVoid ijExecuteJobs(
     JSContext* ctx);
 
-IJS32 ijLoadFile(
+IJ_API IJS32 ijLoadFile(
     JSContext* ctx, 
     DynBuf* dbuf, 
     const IJAnsi* filename);
 
-JSModuleDef* ijModuleLoader(
+IJ_API JSModuleDef* ijModuleLoader(
     JSContext* ctx, 
     const IJAnsi* module_name, 
     IJVoid* opaque);
 
-IJAnsi* ijModuleNormalizer(
+IJ_API IJAnsi* ijModuleNormalizer(
     JSContext* ctx, 
     const IJAnsi* base_name, 
     const IJAnsi* name, 
     IJVoid* opaque);
 
-JSModuleDef* ijInitModuleStd(
+IJ_API JSModuleDef* ijInitModuleStd(
     JSContext* ctx, 
     const IJAnsi* module_name);
 
-IJS32 ijModuleSetImportMeta(
+IJ_API IJS32 ijModuleSetImportMeta(
     JSContext* ctx, 
     JSValueConst func_val, 
     JS_BOOL use_realpath, 
     JS_BOOL is_main);
 
-JSValue ijGetArgs(
+IJ_API JSValue ijGetArgs(
     JSContext* ctx);
 
-IJS32 ijEvalBinary(
+IJ_API IJS32 ijEvalBinary(
     JSContext* ctx, 
     const IJU8* buf, 
     IJU32 buf_len);
 
-IJVoid ijBootstrapGlobals(
+IJ_API IJVoid ijBootstrapGlobals(
     JSContext* ctx);
 
-IJVoid ijAddBuiltins(
+IJ_API IJVoid ijAddBuiltins(
     JSContext *ctx);
 
-uv_loop_t* ijGetLoopRT(
+IJ_API uv_loop_t* ijGetLoopRT(
     IJJSRuntime *qrt);
 
-IJJSRuntime* ijNewRuntimeWorker();
+IJ_API IJJSRuntime* ijNewRuntimeWorker();
 
-IJJSRuntime* ijNewRuntimeInternal(
+IJ_API IJJSRuntime* ijNewRuntimeInternal(
     IJBool is_worker, 
     IJJSRunOptions* options);
 

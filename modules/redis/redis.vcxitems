@@ -40,7 +40,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hiredis.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\net.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\read.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\sds.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)hyperloglog.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)intset.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)latency.c" />
@@ -112,7 +111,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hiredis.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\net.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\read.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\sds.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\sdsalloc.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\win32_hiredis.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)intset.h" />

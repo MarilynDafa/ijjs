@@ -2980,317 +2980,165 @@
       return decoderError(fatal);
     };
   }
-
-  // 14.1.2 euc-kr encoder
-  /**
-   * @constructor
-   * @implements {Encoder}
-   * @param {{fatal: boolean}} options
-   */
+  
   function EUCKREncoder(options) {
     var fatal = options.fatal;
-    /**
-     * @param {Stream} stream Input stream.
-     * @param {number} code_point Next code point read from the stream.
-     * @return {(number|!Array.<number>)} Byte(s) to emit.
-     */
+    
     this.handler = function(stream, code_point) {
-      // 1. If code point is end-of-stream, return finished.
+      
       if (code_point === end_of_stream)
         return finished;
-
-      // 2. If code point is an ASCII code point, return a byte whose
-      // value is code point.
+        
       if (isASCIICodePoint(code_point))
         return code_point;
-
-      // 3. Let pointer be the index pointer for code point in index
-      // euc-kr.
+        
       var pointer = indexPointerFor(code_point, index('euc-kr'));
-
-      // 4. If pointer is null, return error with code point.
+      
       if (pointer === null)
         return encoderError(code_point);
-
-      // 5. Let lead be floor(pointer / 190) + 0x81.
+        
       var lead = floor(pointer / 190) + 0x81;
-
-      // 6. Let trail be pointer % 190 + 0x41.
+      
       var trail = (pointer % 190) + 0x41;
-
-      // 7. Return two bytes whose values are lead and trail.
+      
       return [lead, trail];
     };
   }
-
-  /** @param {{fatal: boolean}} options */
+  
   encoders['EUC-KR'] = function(options) {
     return new EUCKREncoder(options);
   };
-  /** @param {{fatal: boolean}} options */
+  
   decoders['EUC-KR'] = function(options) {
     return new EUCKRDecoder(options);
   };
 
-
-  //
-  // 15. Legacy miscellaneous encodings
-  //
-
-  // 15.1 replacement
-
-  // Not needed - API throws RangeError
-
-  // 15.2 Common infrastructure for utf-16be and utf-16le
-
-  /**
-   * @param {number} code_unit
-   * @param {boolean} utf16be
-   * @return {!Array.<number>} bytes
-   */
   function convertCodeUnitToBytes(code_unit, utf16be) {
-    // 1. Let byte1 be code unit >> 8.
     var byte1 = code_unit >> 8;
-
-    // 2. Let byte2 be code unit & 0x00FF.
     var byte2 = code_unit & 0x00FF;
-
-    // 3. Then return the bytes in order:
-        // utf-16be flag is set: byte1, then byte2.
     if (utf16be)
       return [byte1, byte2];
-    // utf-16be flag is unset: byte2, then byte1.
     return [byte2, byte1];
   }
 
-  // 15.2.1 shared utf-16 decoder
-  /**
-   * @constructor
-   * @implements {Decoder}
-   * @param {boolean} utf16_be True if big-endian, false if little-endian.
-   * @param {{fatal: boolean}} options
-   */
   function UTF16Decoder(utf16_be, options) {
     var fatal = options.fatal;
-    var /** @type {?number} */ utf16_lead_byte = null,
-        /** @type {?number} */ utf16_lead_surrogate = null;
-    /**
-     * @param {Stream} stream The stream of bytes being decoded.
-     * @param {number} bite The next byte read from the stream.
-     * @return {?(number|!Array.<number>)} The next code point(s)
-     *     decoded, or null if not enough data exists in the input
-     *     stream to decode a complete code point.
-     */
+    var  utf16_lead_byte = null, utf16_lead_surrogate = null;
     this.handler = function(stream, bite) {
-      // 1. If byte is end-of-stream and either utf-16 lead byte or
-      // utf-16 lead surrogate is not null, set utf-16 lead byte and
-      // utf-16 lead surrogate to null, and return error.
       if (bite === end_of_stream && (utf16_lead_byte !== null ||
                                 utf16_lead_surrogate !== null)) {
         return decoderError(fatal);
       }
-
-      // 2. If byte is end-of-stream and utf-16 lead byte and utf-16
-      // lead surrogate are null, return finished.
+      
       if (bite === end_of_stream && utf16_lead_byte === null &&
           utf16_lead_surrogate === null) {
         return finished;
       }
-
-      // 3. If utf-16 lead byte is null, set utf-16 lead byte to byte
-      // and return continue.
+      
       if (utf16_lead_byte === null) {
         utf16_lead_byte = bite;
         return null;
       }
-
-      // 4. Let code unit be the result of:
+      
       var code_unit;
-      if (utf16_be) {
-        // utf-16be decoder flag is set
-        //   (utf-16 lead byte << 8) + byte.
+      if (utf16_be) {        
         code_unit = (utf16_lead_byte << 8) + bite;
-      } else {
-        // utf-16be decoder flag is unset
-        //   (byte << 8) + utf-16 lead byte.
+      } else {        
         code_unit = (bite << 8) + utf16_lead_byte;
       }
-      // Then set utf-16 lead byte to null.
+      
       utf16_lead_byte = null;
-
-      // 5. If utf-16 lead surrogate is not null, let lead surrogate
-      // be utf-16 lead surrogate, set utf-16 lead surrogate to null,
-      // and then run these substeps:
+      
       if (utf16_lead_surrogate !== null) {
         var lead_surrogate = utf16_lead_surrogate;
         utf16_lead_surrogate = null;
-
-        // 1. If code unit is in the range U+DC00 to U+DFFF,
-        // inclusive, return a code point whose value is 0x10000 +
-        // ((lead surrogate − 0xD800) << 10) + (code unit − 0xDC00).
+        
         if (inRange(code_unit, 0xDC00, 0xDFFF)) {
           return 0x10000 + (lead_surrogate - 0xD800) * 0x400 +
               (code_unit - 0xDC00);
         }
-
-        // 2. Prepend the sequence resulting of converting code unit
-        // to bytes using utf-16be decoder flag to stream and return
-        // error.
+        
         stream.prepend(convertCodeUnitToBytes(code_unit, utf16_be));
         return decoderError(fatal);
       }
-
-      // 6. If code unit is in the range U+D800 to U+DBFF, inclusive,
-      // set utf-16 lead surrogate to code unit and return continue.
+      
       if (inRange(code_unit, 0xD800, 0xDBFF)) {
         utf16_lead_surrogate = code_unit;
         return null;
       }
-
-      // 7. If code unit is in the range U+DC00 to U+DFFF, inclusive,
-      // return error.
+      
       if (inRange(code_unit, 0xDC00, 0xDFFF))
         return decoderError(fatal);
-
-      // 8. Return code point code unit.
+        
       return code_unit;
     };
   }
-
-  // 15.2.2 shared utf-16 encoder
-  /**
-   * @constructor
-   * @implements {Encoder}
-   * @param {boolean} utf16_be True if big-endian, false if little-endian.
-   * @param {{fatal: boolean}} options
-   */
+  
   function UTF16Encoder(utf16_be, options) {
     var fatal = options.fatal;
-    /**
-     * @param {Stream} stream Input stream.
-     * @param {number} code_point Next code point read from the stream.
-     * @return {(number|!Array.<number>)} Byte(s) to emit.
-     */
+    
     this.handler = function(stream, code_point) {
-      // 1. If code point is end-of-stream, return finished.
+      
       if (code_point === end_of_stream)
         return finished;
-
-      // 2. If code point is in the range U+0000 to U+FFFF, inclusive,
-      // return the sequence resulting of converting code point to
-      // bytes using utf-16be encoder flag.
+        
       if (inRange(code_point, 0x0000, 0xFFFF))
         return convertCodeUnitToBytes(code_point, utf16_be);
-
-      // 3. Let lead be ((code point − 0x10000) >> 10) + 0xD800,
-      // converted to bytes using utf-16be encoder flag.
+        
       var lead = convertCodeUnitToBytes(
         ((code_point - 0x10000) >> 10) + 0xD800, utf16_be);
-
-      // 4. Let trail be ((code point − 0x10000) & 0x3FF) + 0xDC00,
-      // converted to bytes using utf-16be encoder flag.
+        
       var trail = convertCodeUnitToBytes(
         ((code_point - 0x10000) & 0x3FF) + 0xDC00, utf16_be);
-
-      // 5. Return a byte sequence of lead followed by trail.
+        
       return lead.concat(trail);
     };
   }
-
-  // 15.3 utf-16be
-  // 15.3.1 utf-16be decoder
-  /** @param {{fatal: boolean}} options */
+  
   encoders['UTF-16BE'] = function(options) {
     return new UTF16Encoder(true, options);
   };
-  // 15.3.2 utf-16be encoder
-  /** @param {{fatal: boolean}} options */
+  
   decoders['UTF-16BE'] = function(options) {
     return new UTF16Decoder(true, options);
   };
-
-  // 15.4 utf-16le
-  // 15.4.1 utf-16le decoder
-  /** @param {{fatal: boolean}} options */
+  
   encoders['UTF-16LE'] = function(options) {
     return new UTF16Encoder(false, options);
   };
-  // 15.4.2 utf-16le encoder
-  /** @param {{fatal: boolean}} options */
+  
   decoders['UTF-16LE'] = function(options) {
     return new UTF16Decoder(false, options);
   };
-
-  // 15.5 x-user-defined
-
-  // 15.5.1 x-user-defined decoder
-  /**
-   * @constructor
-   * @implements {Decoder}
-   * @param {{fatal: boolean}} options
-   */
+  
   function XUserDefinedDecoder(options) {
     var fatal = options.fatal;
-    /**
-     * @param {Stream} stream The stream of bytes being decoded.
-     * @param {number} bite The next byte read from the stream.
-     * @return {?(number|!Array.<number>)} The next code point(s)
-     *     decoded, or null if not enough data exists in the input
-     *     stream to decode a complete code point.
-     */
     this.handler = function(stream, bite) {
-      // 1. If byte is end-of-stream, return finished.
       if (bite === end_of_stream)
         return finished;
-
-      // 2. If byte is an ASCII byte, return a code point whose value
-      // is byte.
       if (isASCIIByte(bite))
         return bite;
-
-      // 3. Return a code point whose value is 0xF780 + byte − 0x80.
       return 0xF780 + bite - 0x80;
     };
   }
 
-  // 15.5.2 x-user-defined encoder
-  /**
-   * @constructor
-   * @implements {Encoder}
-   * @param {{fatal: boolean}} options
-   */
   function XUserDefinedEncoder(options) {
     var fatal = options.fatal;
-    /**
-     * @param {Stream} stream Input stream.
-     * @param {number} code_point Next code point read from the stream.
-     * @return {(number|!Array.<number>)} Byte(s) to emit.
-     */
     this.handler = function(stream, code_point) {
-      // 1.If code point is end-of-stream, return finished.
       if (code_point === end_of_stream)
         return finished;
-
-      // 2. If code point is an ASCII code point, return a byte whose
-      // value is code point.
       if (isASCIICodePoint(code_point))
         return code_point;
-
-      // 3. If code point is in the range U+F780 to U+F7FF, inclusive,
-      // return a byte whose value is code point − 0xF780 + 0x80.
       if (inRange(code_point, 0xF780, 0xF7FF))
         return code_point - 0xF780 + 0x80;
-
-      // 4. Return error with code point.
       return encoderError(code_point);
     };
   }
-
-  /** @param {{fatal: boolean}} options */
+  
   encoders['x-user-defined'] = function(options) {
     return new XUserDefinedEncoder(options);
   };
-  /** @param {{fatal: boolean}} options */
+  
   decoders['x-user-defined'] = function(options) {
     return new XUserDefinedDecoder(options);
   };
