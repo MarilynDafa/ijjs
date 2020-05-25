@@ -80,7 +80,7 @@ pthread_condattr_destroy (pthread_condattr_t * attr)
     }
   else
     {
-      (void) free (*attr);
+      (void) je_free (*attr);
 
       *attr = NULL;
       result = 0;

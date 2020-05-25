@@ -78,7 +78,7 @@ pthread_mutex_init (pthread_mutex_t * mutex, const pthread_mutexattr_t * attr)
         }
     }
 
-  mx = (pthread_mutex_t) calloc (1, sizeof (*mx));
+  mx = (pthread_mutex_t) je_calloc (1, sizeof (*mx));
 
   if (mx == NULL)
     {
@@ -107,7 +107,7 @@ pthread_mutex_init (pthread_mutex_t * mutex, const pthread_mutexattr_t * attr)
                */
               mx->kind = -mx->kind - 1;
 
-              mx->robustNode = (ptw32_robust_node_t*) malloc(sizeof(ptw32_robust_node_t));
+              mx->robustNode = (ptw32_robust_node_t*) je_malloc(sizeof(ptw32_robust_node_t));
               mx->robustNode->stateInconsistent = PTW32_ROBUST_CONSISTENT;
               mx->robustNode->mx = mx;
               mx->robustNode->next = NULL;
@@ -124,7 +124,7 @@ pthread_mutex_init (pthread_mutex_t * mutex, const pthread_mutexattr_t * attr)
       if (0 == mx->event)
         {
           result = ENOSPC;
-          free (mx);
+          je_free (mx);
           mx = NULL;
         }
     }

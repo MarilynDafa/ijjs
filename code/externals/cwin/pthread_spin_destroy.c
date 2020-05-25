@@ -75,7 +75,7 @@ pthread_spin_destroy (pthread_spinlock_t * lock)
 	   * have finished with the spinlock before destroying it.
 	   */
 	  *lock = NULL;
-	  (void) free (s);
+	  (void) je_free (s);
 	}
     }
   else

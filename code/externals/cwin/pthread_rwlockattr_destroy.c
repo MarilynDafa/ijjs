@@ -82,7 +82,7 @@ pthread_rwlockattr_destroy (pthread_rwlockattr_t * attr)
       pthread_rwlockattr_t rwa = *attr;
 
       *attr = NULL;
-      free (rwa);
+      je_free (rwa);
     }
 
   return (result);

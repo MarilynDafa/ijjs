@@ -9,7 +9,7 @@
 #include "wasm3.h"
 
 #include "m3_core.h"
-
+#include "jemalloc/jemalloc.h"
 void m3Abort(const char* message) {
 #if d_m3LogOutput
     fprintf(stderr, "Error: %s\n", message);
@@ -108,7 +108,7 @@ M3Result  m3Malloc  (void ** o_ptr, size_t i_size)
 {
     M3Result result = m3Err_none;
 
-    void * ptr = malloc (i_size);
+    void * ptr = je_malloc (i_size);
     if (ptr)
     {
         memset (ptr, 0x0, i_size);
@@ -126,7 +126,7 @@ void  m3Free_impl  (void * o_ptr)
     if (!o_ptr) return;
 
     //printf("== free %p\n", o_ptr);
-    free(o_ptr);
+    je_free(o_ptr);
 }
 
 void *  m3Realloc  (void * i_ptr, size_t i_newSize, size_t i_oldSize)
@@ -136,7 +136,7 @@ void *  m3Realloc  (void * i_ptr, size_t i_newSize, size_t i_oldSize)
 
     if (i_newSize != i_oldSize)
     {
-        ptr = realloc (i_ptr, i_newSize);
+        ptr = je_realloc (i_ptr, i_newSize);
 
         if (ptr)
         {

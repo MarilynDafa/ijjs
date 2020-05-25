@@ -76,10 +76,10 @@ extern "C" {
 #define MBEDTLS_PLATFORM_STD_FPRINTF fprintf /**< The default \c fprintf function to use. */
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_CALLOC)
-#define MBEDTLS_PLATFORM_STD_CALLOC   calloc /**< The default \c calloc function to use. */
+#define MBEDTLS_PLATFORM_STD_CALLOC   je_calloc /**< The default \c calloc function to use. */
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_FREE)
-#define MBEDTLS_PLATFORM_STD_FREE       free /**< The default \c free function to use. */
+#define MBEDTLS_PLATFORM_STD_FREE       je_free /**< The default \c free function to use. */
 #endif
 #if !defined(MBEDTLS_PLATFORM_STD_EXIT)
 #define MBEDTLS_PLATFORM_STD_EXIT      exit /**< The default \c exit function to use. */

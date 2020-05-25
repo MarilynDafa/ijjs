@@ -32,6 +32,7 @@
 #include <m3_env.h>
 #include "cutils.h"
 #include "list.h"
+#include "jemalloc/jemalloc.h"
 
 
 typedef struct IJJSRunOptions {

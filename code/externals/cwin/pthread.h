@@ -258,6 +258,14 @@ enum {
 #endif
 
 #include <limits.h>
+#ifndef USE_STD_ALLOC
+#include "jemalloc/jemalloc.h"
+#else
+#define je_malloc  malloc
+#define je_free free
+#define je_calloc calloc
+#define je_realloc realloc
+#endif
 
 #if PTW32_LEVEL >= PTW32_LEVEL_MAX
 #if defined(NEED_ERRNO)

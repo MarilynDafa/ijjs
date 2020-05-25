@@ -20,6 +20,7 @@
  */
 
 #include "headers/ijjs.h"
+#include "jemalloc/jemalloc.h"
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
@@ -167,7 +168,7 @@ static char* get_option_value(char* arg, int argc, char** argv, int* optind) {
         return arg;
     if (*optind >= argc)
         return NULL;
-    char *value = argv[*optind];
+    char* value = argv[*optind];
     if (*value == OPT_PREFIX)
         return NULL;
     *optind += 1;
@@ -223,7 +224,7 @@ int main(int argc, char** argv) {
                     exit_code = EXIT_INVALID_ARG;
                     goto exit;
                 }
-                FileItem* file = malloc(sizeof(*file));
+                FileItem* file = je_malloc(sizeof(*file));
                 if (!file) {
                     eprintf("could not allocate memory\n");
                     exit_code = EXIT_FAILURE;
@@ -313,7 +314,7 @@ exit:
     list_for_each_safe(el, el1, &flags.preload_modules) {
         FileItem *file = list_entry(el, FileItem, link);
         list_del(&file->link);
-        free(file);
+        je_free(file);
     }
     if (qrt) {
         ijFreeRuntime(qrt);

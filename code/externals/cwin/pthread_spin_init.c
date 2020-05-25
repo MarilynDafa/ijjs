@@ -85,7 +85,7 @@ pthread_spin_init (pthread_spinlock_t * lock, int pshared)
 	}
     }
 
-  s = (pthread_spinlock_t) calloc (1, sizeof (*s));
+  s = (pthread_spinlock_t) je_calloc (1, sizeof (*s));
 
   if (s == NULL)
     {
@@ -120,7 +120,7 @@ pthread_spin_init (pthread_spinlock_t * lock, int pshared)
     }
   else
     {
-      (void) free (s);
+      (void) je_free (s);
       *lock = NULL;
     }
 

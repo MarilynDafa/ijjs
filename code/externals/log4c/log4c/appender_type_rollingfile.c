@@ -248,7 +248,7 @@ rollingfile_udata_t *rollingfile_make_udata(void){
 
 LOG4C_API int rollingfile_udata_set_logdir(rollingfile_udata_t* rfup, const char *logdir){
 
-  rfup->rfu_conf.rfc_logdir = strdup(logdir);  
+  rfup->rfu_conf.rfc_logdir = je_strdup2(logdir);  
 
   return(0);
 }
@@ -263,7 +263,7 @@ LOG4C_API const char * rollingfile_udata_get_logdir(rollingfile_udata_t* rfup){
 
 LOG4C_API int rollingfile_udata_set_files_prefix( rollingfile_udata_t* rfup, const char* fprefix){
 
-  rfup->rfu_conf.rfc_files_prefix = strdup(fprefix);
+  rfup->rfu_conf.rfc_files_prefix = je_strdup2(fprefix);
 
   return(0);
 }
@@ -328,7 +328,7 @@ static char *rollingfile_make_base_name(const char *logdir, const char* prefix){
   filename_len = strlen(logdir) + 1 +
     strlen(prefix) + 1 + 10; /* a margin */
 
-  s = (char *)malloc(filename_len);      
+  s = (char *)je_malloc(filename_len);      
   sprintf( s, "%s%s%s", logdir,
 	   FILE_SEP, prefix);
 

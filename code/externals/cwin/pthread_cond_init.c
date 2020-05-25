@@ -92,7 +92,7 @@ pthread_cond_init (pthread_cond_t * cond, const pthread_condattr_t * attr)
       goto DONE;
     }
 
-  cv = (pthread_cond_t) calloc (1, sizeof (*cv));
+  cv = (pthread_cond_t) je_calloc (1, sizeof (*cv));
 
   if (cv == NULL)
     {
@@ -137,7 +137,7 @@ FAIL1:
   (void) sem_destroy (&(cv->semBlockLock));
 
 FAIL0:
-  (void) free (cv);
+  (void) je_free (cv);
   cv = NULL;
 
 DONE:

@@ -216,7 +216,7 @@ static void cdata_handler(struct udata* udata, const XML_Char* s, int len)
 	return;
 
     free((void*) parent->value);
-    parent->value = strdup(udata->cdata);
+    parent->value = je_strdup2(udata->cdata);
 }
 
 /******************************************************************************/

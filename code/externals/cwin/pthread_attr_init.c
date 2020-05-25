@@ -78,7 +78,7 @@ pthread_attr_init (pthread_attr_t * attr)
       return EINVAL;
     }
 
-  attr_result = (pthread_attr_t) malloc (sizeof (*attr_result));
+  attr_result = (pthread_attr_t) je_malloc (sizeof (*attr_result));
 
   if (attr_result == NULL)
     {

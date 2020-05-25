@@ -81,7 +81,7 @@ pthread_mutexattr_destroy (pthread_mutexattr_t * attr)
       pthread_mutexattr_t ma = *attr;
 
       *attr = NULL;
-      free (ma);
+      je_free (ma);
     }
 
   return (result);

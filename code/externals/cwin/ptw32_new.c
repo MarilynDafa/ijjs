@@ -62,7 +62,7 @@ ptw32_new (void)
   else
     {
       /* No reuse threads available */
-      tp = (ptw32_thread_t *) calloc (1, sizeof(ptw32_thread_t));
+      tp = (ptw32_thread_t *) je_calloc (1, sizeof(ptw32_thread_t));
 
       if (tp == NULL)
 	{

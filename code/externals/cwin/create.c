@@ -130,7 +130,7 @@ pthread_create (pthread_t * tid,
 
   priority = tp->sched_priority;
 
-  if ((parms = (ThreadParms *) malloc (sizeof (*parms))) == NULL)
+  if ((parms = (ThreadParms *) je_malloc (sizeof (*parms))) == NULL)
     {
       goto FAIL0;
     }
@@ -298,7 +298,7 @@ FAIL0:
 
       if (parms != NULL)
 	{
-	  free (parms);
+	  je_free (parms);
 	}
     }
   else

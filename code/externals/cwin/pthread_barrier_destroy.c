@@ -81,7 +81,7 @@ pthread_barrier_destroy (pthread_barrier_t * barrier)
            * and will require a major version number increment.
            */
           ptw32_mcs_lock_release(&node);
-	  (void) free (b);
+	  (void) je_free (b);
 	  return 0;
 	}
       else

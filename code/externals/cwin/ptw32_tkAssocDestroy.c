@@ -113,7 +113,7 @@ ptw32_tkAssocDestroy (ThreadKeyAssoc * assoc)
 	  assoc->key->threads = next;
 	}
 
-      free (assoc);
+      je_free (assoc);
     }
 
 }				/* ptw32_tkAssocDestroy */

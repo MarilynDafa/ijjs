@@ -2226,7 +2226,7 @@ static char* word(const char *s)
     for (k = 0; isspace(s[k]) || s[k] == '<'; k++);
     for (i = k; s[i] && ! isspace(s[i]); i++);
     
-    buf = malloc((i - k + 1) * sizeof(char));
+    buf = je_malloc((i - k + 1) * sizeof(char));
     strncpy(buf, &s[k], i - k);
     buf[i - k] = 0;
     
@@ -2240,7 +2240,7 @@ static char* string(const char* s)
     char* buf;
     int i;
     
-    buf = strdup(s + 1);
+    buf = je_strdup2(s + 1);
     for (i = 0; buf[i] != '"'; i++);
     buf[i] = 0;
     
@@ -2257,7 +2257,7 @@ static char* comment(const char* s)
     for (k = 4; isspace(s[k]); k++);
     for (i = k; strncmp(&s[i], "-->", 3); i++);
     
-    buf = malloc((i - k + 1) * sizeof(char));
+    buf = je_malloc((i - k + 1) * sizeof(char));
     strncpy(buf, &s[k], i - k);
     buf[i - k] = 0;
     
@@ -2705,7 +2705,7 @@ YY_RULE_SETUP
 case 5:
 YY_RULE_SETUP
 #line 118 "../../../src/sd/domnode-xml-scanner.l"
-{ yylvalp->s = strdup(yytext); return NAME; }
+{ yylvalp->s = je_strdup2(yytext); return NAME; }
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
@@ -2750,7 +2750,7 @@ YY_RULE_SETUP
 case 12:
 YY_RULE_SETUP
 #line 131 "../../../src/sd/domnode-xml-scanner.l"
-{yylvalp->s = strdup(yytext); return DATA;}
+{yylvalp->s = je_strdup2(yytext); return DATA;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
@@ -3755,7 +3755,7 @@ static int yy_flex_strlen YYFARGS1( yyconst char *,s)
 #ifndef YY_NO_FLEX_ALLOC
 void *yyalloc YYFARGS1( yy_size_t ,size)
 	{
-	return (void *) malloc( size );
+	return (void *) je_malloc( size );
 	}
 #endif
 
@@ -3771,7 +3771,7 @@ void *yyrealloc  YYFARGS2( void *,ptr, yy_size_t ,size)
 	 * any pointer type to void*, and deal with argument conversions
 	 * as though doing an assignment.
 	 */
-	return (void *) realloc( (char *) ptr, size );
+	return (void *) je_realloc( (char *) ptr, size );
 	}
 #endif
 

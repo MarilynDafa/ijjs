@@ -62,7 +62,7 @@ pthread_rwlock_init (pthread_rwlock_t * rwlock,
       goto DONE;
     }
 
-  rwl = (pthread_rwlock_t) calloc (1, sizeof (*rwl));
+  rwl = (pthread_rwlock_t) je_calloc (1, sizeof (*rwl));
 
   if (rwl == NULL)
     {
@@ -104,7 +104,7 @@ FAIL1:
   (void) pthread_mutex_destroy (&(rwl->mtxExclusiveAccess));
 
 FAIL0:
-  (void) free (rwl);
+  (void) je_free (rwl);
   rwl = NULL;
 
 DONE:

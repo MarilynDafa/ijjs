@@ -81,7 +81,7 @@ pthread_barrierattr_destroy (pthread_barrierattr_t * attr)
       pthread_barrierattr_t ba = *attr;
 
       *attr = NULL;
-      free (ba);
+      je_free (ba);
     }
 
   return (result);

@@ -38,7 +38,7 @@ static IJVoid uvSignalCloseCb(uv_handle_t* handle) {
     if (sh) {
         sh->closed = 1;
         if (sh->finalized)
-            free(sh);
+            je_free(sh);
     }
 }
 
@@ -53,7 +53,7 @@ static IJVoid ijSignalHandlerFinalizer(JSRuntime* rt, JSValue val) {
         JS_FreeValueRT(rt, sh->func);
         sh->finalized = 1;
         if (sh->closed)
-            free(sh);
+            je_free(sh);
         else
             uvMaybeClose(sh);
     }
@@ -84,7 +84,7 @@ static JSValue ijSgnal(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValu
     JSValue obj = JS_NewObjectClass(ctx, ijjs_signal_handler_class_id);
     if (JS_IsException(obj))
         return obj;
-    IJJSSignalHandler* sh = calloc(1, sizeof(*sh));
+    IJJSSignalHandler* sh = je_calloc(1, sizeof(*sh));
     if (!sh) {
         JS_FreeValue(ctx, obj);
         return JS_EXCEPTION;
@@ -92,13 +92,13 @@ static JSValue ijSgnal(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValu
     IJS32 r = uv_signal_init(ijGetLoop(ctx), &sh->handle);
     if (r != 0) {
         JS_FreeValue(ctx, obj);
-        free(sh);
+        je_free(sh);
         return JS_ThrowInternalError(ctx, "couldn't initialize Signal handle");
     }
     r = uv_signal_start(&sh->handle, uvSignalCb, sig_num);
     if (r != 0) {
         JS_FreeValue(ctx, obj);
-        free(sh);
+        je_free(sh);
         return ijThrowErrno(ctx, r);
     }
     uv_unref((uv_handle_t*) &sh->handle);

@@ -60,7 +60,7 @@ static IJVoid ijCallTimer(IJJSTimer* th) {
 static IJVoid uvTimerClose(uv_handle_t* handle) {
     IJJSTimer* th = handle->data;
     CHECK_NOT_NULL(th);
-    free(th);
+    je_free(th);
 }
 
 static IJVoid uvTimerCb(uv_timer_t* handle) {
@@ -107,7 +107,7 @@ static JSValue ijSetTimeout(JSContext* ctx, JSValueConst this_val, IJS32 argc, J
     if (JS_IsException(obj))
         return obj;
     IJS32 nargs = argc - 2;
-    th = calloc(1, sizeof(*th) + nargs * sizeof(JSValue));
+    th = je_calloc(1, sizeof(*th) + nargs * sizeof(JSValue));
     if (!th) {
         JS_FreeValue(ctx, obj);
         return JS_EXCEPTION;

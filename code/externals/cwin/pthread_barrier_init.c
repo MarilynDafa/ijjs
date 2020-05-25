@@ -54,7 +54,7 @@ pthread_barrier_init (pthread_barrier_t * barrier,
       return EINVAL;
     }
 
-  if (NULL != (b = (pthread_barrier_t) calloc (1, sizeof (*b))))
+  if (NULL != (b = (pthread_barrier_t) je_calloc (1, sizeof (*b))))
     {
       b->pshared = (attr != NULL && *attr != NULL
 		    ? (*attr)->pshared : PTHREAD_PROCESS_PRIVATE);
@@ -67,7 +67,7 @@ pthread_barrier_init (pthread_barrier_t * barrier,
 	      *barrier = b;
 	      return 0;
 	    }
-      (void) free (b);
+      (void) je_free (b);
     }
 
   return ENOMEM;

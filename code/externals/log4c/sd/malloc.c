@@ -48,7 +48,7 @@ fixup_null_alloc (n)
     static char*  first_break = NULL;
 
     if (n == 0)
-	p = malloc ((size_t) 1);
+	p = je_malloc ((size_t) 1);
 
     if (p == 0) {
 	extern char **environ;
@@ -81,57 +81,10 @@ sd_malloc_set_handler(a_handler)
     handler = a_handler;
     return previous;
 }
-
-/* Allocate N bytes of memory dynamically, with error checking.  */
-
-void *
-sd_malloc (n)
-    size_t n;
+char* je_strdup2(char* s)
 {
-    void *p;
-
-    p = malloc (n);
-    if (p == 0)
-	p = fixup_null_alloc (n);
-    return p;
-}
-
-/* Allocate memory for N elements of S bytes, with error checking.  */
-
-void *
-sd_calloc (n, s)
-    size_t n, s;
-{
-    void *p;
-
-    p = calloc (n, s);
-    if (p == 0)
-	p = fixup_null_alloc (n * s);
-    return p;
-}
-
-/* Change the size of an allocated block of memory P to N bytes,
-   with error checking.
-   If P is NULL, run sd_malloc.  */
-
-void *
-sd_realloc (p, n)
-    void *p;
-    size_t n;
-{
-    if (p == 0)
-	return sd_malloc (n);
-    p = realloc (p, n);
-    if (p == 0)
-	p = fixup_null_alloc (n);
-    return p;
-}
-
-/* Return a newly allocated copy of STRING.  */
-
-char *
-sd_strdup (string)
-     const char *string;
-{
-  return strcpy (sd_malloc (strlen (string) + 1), string);
+    char *t = NULL;
+    if (s && (t = (char*)je_malloc(strlen(s) + 1)))
+        strcpy(t, s);
+    return t;
 }

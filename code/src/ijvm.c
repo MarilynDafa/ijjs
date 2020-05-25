@@ -19,6 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  */
 #include "ijjs.h"
+#include "jemalloc/jemalloc.h"
 #include <string.h>
 
 
@@ -140,11 +141,81 @@ IJJSRuntime* ijNewRuntimeWorker(IJVoid) {
     ijDefaultOptions(&options);
     return ijNewRuntimeInternal(true, &options);
 }
-
+#if defined(__APPLE__)
+#define JE_MALLOC_OVERHEAD  0
+#else
+#define JE_MALLOC_OVERHEAD  8
+#endif
+inline size_t je_def_malloc_usable_size(void* ptr)
+{
+#if defined(__APPLE__)
+    return malloc_size(ptr);
+#elif defined(_WIN32)
+    return _msize(ptr);
+#else
+    return malloc_usable_size(ptr);
+#endif
+}
+static IJVoid* je_def_malloc(JSMallocState* s, size_t size)
+{
+    void* ptr;
+    assert(size != 0);
+    if (unlikely(s->malloc_size + size > s->malloc_limit))
+        return NULL;
+    ptr = je_malloc(size);
+    if (!ptr)
+        return NULL;
+    s->malloc_count++;
+    s->malloc_size += je_def_malloc_usable_size(ptr) + JE_MALLOC_OVERHEAD;
+    return ptr;
+}
+static IJVoid je_def_free(JSMallocState* s, IJVoid* ptr)
+{
+    if (!ptr)
+        return;
+    s->malloc_count--;
+    s->malloc_size -= je_def_malloc_usable_size(ptr) + JE_MALLOC_OVERHEAD;
+    je_free(ptr);
+}
+static IJVoid* je_def_realloc(JSMallocState* s, void* ptr, size_t size)
+{
+    size_t old_size;
+    if (!ptr) {
+        if (size == 0)
+            return NULL;
+        return je_def_malloc(s, size);
+    }
+    old_size = je_def_malloc_usable_size(ptr);
+    if (size == 0) {
+        s->malloc_count--;
+        s->malloc_size -= old_size + JE_MALLOC_OVERHEAD;
+        je_free(ptr);
+        return NULL;
+    }
+    if (s->malloc_size + size - old_size > s->malloc_limit)
+        return NULL;
+    ptr = je_realloc(ptr, size);
+    if (!ptr)
+        return NULL;
+    s->malloc_size += je_def_malloc_usable_size(ptr) - old_size;
+    return ptr;
+}
 IJJSRuntime* ijNewRuntimeInternal(IJBool is_worker, IJJSRunOptions* options) {
-    IJJSRuntime* qrt = calloc(1, sizeof(*qrt));
+    IJJSRuntime* qrt = je_calloc(1, sizeof(*qrt));
     memcpy(&qrt->options, options, sizeof(*options));
-    qrt->rt = JS_NewRuntime();
+    JSMallocFunctions je_malloc_funcs = {
+        je_def_malloc,
+        je_def_free,
+        je_def_realloc,
+#if defined(__APPLE__)
+        malloc_size,
+#elif defined(_WIN32)
+        (size_t (*)(const void *))_msize,
+#else
+        (size_t (*)(const void *))malloc_usable_size,
+#endif
+    };
+    qrt->rt = JS_NewRuntime2(&je_malloc_funcs, NULL);
     CHECK_NOT_NULL(qrt->rt);
     qrt->ctx = JS_NewContext(qrt->rt);
     CHECK_NOT_NULL(qrt->ctx);
@@ -154,6 +225,7 @@ IJJSRuntime* ijNewRuntimeInternal(IJBool is_worker, IJJSRunOptions* options) {
     JS_AddIntrinsicBigFloat(qrt->ctx);
     JS_AddIntrinsicBigDecimal(qrt->ctx);
     qrt->is_worker = is_worker;
+    uv_replace_allocator(je_malloc, je_realloc, je_calloc, je_free);
     CHECK_EQ(uv_loop_init(&qrt->loop), 0);
     CHECK_EQ(uv_prepare_init(&qrt->loop, &qrt->jobs.prepare), 0);
     qrt->jobs.prepare.data = qrt;
@@ -204,7 +276,7 @@ IJVoid ijFreeRuntime(IJJSRuntime* qrt) {
         uv_print_all_handles(&qrt->loop, stderr);
 #endif
     CHECK_EQ(closed, 1);
-    free(qrt);
+    je_free(qrt);
 }
 
 IJVoid ijSetupArgs(IJS32 argc, IJAnsi** argv) {

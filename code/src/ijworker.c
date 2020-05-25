@@ -115,7 +115,7 @@ static IJVoid ijWorkerEntry(IJVoid* arg) {
 static IJVoid uvCloseCb(uv_handle_t* handle) {
     IJJSWorker* w = handle->data;
     CHECK_NOT_NULL(w);
-    free(w);
+    je_free(w);
 }
 
 static IJVoid ijWorkerFinalizer(JSRuntime* rt, JSValue val) {
@@ -196,7 +196,7 @@ static JSValue ijNewWorker(JSContext* ctx, uv_os_sock_t channel_fd, IJBool is_ma
     JSValue obj = JS_NewObjectClass(ctx, ijjs_worker_class_id);
     if (JS_IsException(obj))
         return obj;
-    IJJSWorker* w = calloc(1, sizeof(*w));
+    IJJSWorker* w = je_calloc(1, sizeof(*w));
     if (!w) {
         JS_FreeValue(ctx, obj);
         return JS_EXCEPTION;

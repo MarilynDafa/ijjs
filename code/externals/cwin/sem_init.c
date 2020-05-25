@@ -104,7 +104,7 @@ sem_init (sem_t * sem, int pshared, unsigned int value)
     }
   else
     {
-      s = (sem_t) calloc (1, sizeof (*s));
+      s = (sem_t) je_calloc (1, sizeof (*s));
 
       if (NULL == s)
 	{
@@ -155,7 +155,7 @@ sem_init (sem_t * sem, int pshared, unsigned int value)
 
 	  if (result != 0)
 	    {
-	      free(s);
+	      je_free(s);
 	    }
 	}
     }

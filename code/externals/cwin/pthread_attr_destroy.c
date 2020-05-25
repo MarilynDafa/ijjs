@@ -77,7 +77,7 @@ pthread_attr_destroy (pthread_attr_t * attr)
    * Set the attribute object to a specific invalid value.
    */
   (*attr)->valid = 0;
-  free (*attr);
+  je_free (*attr);
   *attr = NULL;
 
   return 0;

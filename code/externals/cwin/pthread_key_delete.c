@@ -123,7 +123,7 @@ pthread_key_delete (pthread_key_t key)
 #if defined( _DEBUG )
       memset ((char *) key, 0, sizeof (*key));
 #endif
-      free (key);
+      je_free (key);
     }
 
   return (result);

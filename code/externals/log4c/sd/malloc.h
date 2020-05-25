@@ -11,6 +11,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <sd/defs.h>
+#include "jemalloc/jemalloc.h"
 
 /**
  * @file malloc.h
@@ -22,21 +23,13 @@ typedef void (*sd_malloc_handler_t)();
 
 extern sd_malloc_handler_t sd_malloc_set_handler(void (*a_handler)());
 
-#ifndef __SD_DEBUG__
+char* je_strdup2(char* s);
 
-extern void *sd_malloc(size_t n);
-extern void *sd_calloc(size_t n, size_t s);
-extern void *sd_realloc(void *p, size_t n);
-extern char *sd_strdup (const char *__str);
-
-#else
-
-#define sd_malloc	malloc
-#define sd_calloc	calloc
-#define sd_realloc	realloc
-#define sd_strdup	strdup
-
-#endif
+#define sd_calloc je_calloc
+#define sd_malloc je_malloc
+#define sd_free je_free
+#define sd_realloc je_realloc
+#define sd_strdup je_strdup2
 
 __SD_END_DECLS
 

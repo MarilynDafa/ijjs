@@ -108,7 +108,7 @@ pthread_rwlock_destroy (pthread_rwlock_t * rwlock)
 	  result = pthread_cond_destroy (&(rwl->cndSharedAccessCompleted));
 	  result1 = pthread_mutex_destroy (&(rwl->mtxSharedAccessCompleted));
 	  result2 = pthread_mutex_destroy (&(rwl->mtxExclusiveAccess));
-	  (void) free (rwl);
+	  (void) je_free (rwl);
 	}
     }
   else

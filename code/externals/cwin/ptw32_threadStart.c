@@ -150,7 +150,7 @@ ptw32_threadStart (void *vthreadParms)
   start = threadParms->start;
   arg = threadParms->arg;
 
-  free (threadParms);
+  je_free (threadParms);
 
 #if defined (PTW32_CONFIG_MINGW) && ! defined (__MSVCRT__)
   /*

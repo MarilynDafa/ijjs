@@ -73,7 +73,7 @@ pthread_mutexattr_init (pthread_mutexattr_t * attr)
   int result = 0;
   pthread_mutexattr_t ma;
 
-  ma = (pthread_mutexattr_t) calloc (1, sizeof (*ma));
+  ma = (pthread_mutexattr_t) je_calloc (1, sizeof (*ma));
 
   if (ma == NULL)
     {

@@ -73,7 +73,7 @@ pthread_barrierattr_init (pthread_barrierattr_t * attr)
   pthread_barrierattr_t ba;
   int result = 0;
 
-  ba = (pthread_barrierattr_t) calloc (1, sizeof (*ba));
+  ba = (pthread_barrierattr_t) je_calloc (1, sizeof (*ba));
 
   if (ba == NULL)
     {

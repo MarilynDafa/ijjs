@@ -71,7 +71,7 @@ pthread_rwlockattr_init (pthread_rwlockattr_t * attr)
   int result = 0;
   pthread_rwlockattr_t rwa;
 
-  rwa = (pthread_rwlockattr_t) calloc (1, sizeof (*rwa));
+  rwa = (pthread_rwlockattr_t) je_calloc (1, sizeof (*rwa));
 
   if (rwa == NULL)
     {

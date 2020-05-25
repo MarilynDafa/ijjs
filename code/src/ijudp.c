@@ -47,7 +47,7 @@ static IJVoid uvUdpCloseCb(uv_handle_t* handle) {
     CHECK_NOT_NULL(u);
     u->closed = 1;
     if (u->finalized)
-        free(u);
+        je_free(u);
 }
 
 static IJVoid uvMaybeClose(IJJSUdp* u) {
@@ -61,7 +61,7 @@ static IJVoid ijUdpFinalizer(JSRuntime* rt, JSValue val) {
         ijFreePromiseRT(rt, &u->read.result);
         u->finalized = 1;
         if (u->closed)
-            free(u);
+            je_free(u);
         else
             uvMaybeClose(u);
     }
@@ -246,7 +246,7 @@ static JSValue ijNewUdp(JSContext* ctx, IJS32 af) {
     obj = JS_NewObjectClass(ctx, ijjs_udp_class_id);
     if (JS_IsException(obj))
         return obj;
-    u = calloc(1, sizeof(*u));
+    u = je_calloc(1, sizeof(*u));
     if (!u) {
         JS_FreeValue(ctx, obj);
         return JS_EXCEPTION;
@@ -254,7 +254,7 @@ static JSValue ijNewUdp(JSContext* ctx, IJS32 af) {
     r = uv_udp_init_ex(ijGetLoop(ctx), &u->udp, af);
     if (r != 0) {
         JS_FreeValue(ctx, obj);
-        free(u);
+        je_free(u);
         return JS_ThrowInternalError(ctx, "couldn't initialize UDP handle");
     }
     u->ctx = ctx;

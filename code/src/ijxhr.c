@@ -102,7 +102,7 @@ static IJVoid ijXhrFinalizer(JSRuntime* rt, JSValue val) {
         JS_FreeValueRT(rt, x->result.headers);
         JS_FreeValueRT(rt, x->result.response);
         JS_FreeValueRT(rt, x->result.response_text);
-        free(x);
+        je_free(x);
     }
 }
 
@@ -256,7 +256,7 @@ static JSValue ijXhrConstructor(JSContext* ctx, JSValueConst new_target, IJS32 a
     JSValue obj = JS_NewObjectClass(ctx, ijjs_xhr_class_id);
     if (JS_IsException(obj))
         return obj;
-    IJJSXhr* x = calloc(1, sizeof(*x));
+    IJJSXhr* x = je_calloc(1, sizeof(*x));
     if (!x) {
         JS_FreeValue(ctx, obj);
         return JS_EXCEPTION;

@@ -98,7 +98,7 @@ ptw32_processTerminate (void)
       while (tp != PTW32_THREAD_REUSE_EMPTY)
 	{
 	  tpNext = tp->prevReuse;
-	  free (tp);
+	  je_free (tp);
 	  tp = tpNext;
 	}
 

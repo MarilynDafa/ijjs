@@ -19,13 +19,19 @@
  3. This notice may not be removed or altered from any source distribution.
  */
 #include "ijjs.h"
-
+#include "jemalloc/jemalloc.h"
 
 
 static uv_once_t curl__init_once = UV_ONCE_INIT;
-
+static IJAnsi* je_strdup(IJAnsi* s)
+{
+    IJAnsi* t = NULL;
+    if (s && (t = (IJAnsi*)je_malloc(strlen(s) + 1)))
+        strcpy(t, s);
+    return t;
+}
 IJVoid ijCurlInitOnce(IJVoid) {
-    curl_global_init(CURL_GLOBAL_ALL);
+    curl_global_init_mem(CURL_GLOBAL_ALL, je_malloc, je_free, je_realloc, je_strdup, je_calloc);
 }
 
 IJVoid ijCurlInit(IJVoid) {
@@ -101,7 +107,7 @@ typedef struct {
 static IJVoid uvPollCloseCb(uv_handle_t* handle) {
     IJJSCurlPollCtx* poll_ctx = handle->data;
     CHECK_NOT_NULL(poll_ctx);
-    free(poll_ctx);
+    je_free(poll_ctx);
 }
 
 static IJVoid uvPollCb(uv_poll_t* handle, IJS32 status, IJS32 events) {
@@ -128,7 +134,7 @@ static IJS32 ijCurlHandleSocket(CURL* easy, curl_socket_t s, IJS32 action, IJVoi
         case CURL_POLL_INOUT: {
             IJJSCurlPollCtx* poll_ctx;
             if (!socketp) {
-                poll_ctx = malloc(sizeof(*poll_ctx));
+                poll_ctx = je_malloc(sizeof(*poll_ctx));
                 if (!poll_ctx)
                     return -1;
                 CHECK_EQ(uv_poll_init_socket(&qrt->loop, &poll_ctx->poll, s), 0);

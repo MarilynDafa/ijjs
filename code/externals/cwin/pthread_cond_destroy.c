@@ -100,7 +100,7 @@ pthread_cond_destroy (pthread_cond_t * cond)
       *                    (A) pthread_cond_broadcast(&ep->notbusy);
       *                        pthread_mutex_unlock(&lp->lm);
       *                    (B) pthread_cond_destroy(&rp->notbusy);
-      *                        free(ep);
+      *                        je_free(ep);
       *                      }
       *
       *                      In this example, the condition variable
@@ -216,7 +216,7 @@ pthread_cond_destroy (pthread_cond_t * cond)
 	      cv->next->prev = cv->prev;
 	    }
 
-	  (void) free (cv);
+	  (void) je_free (cv);
 	}
 
       ptw32_mcs_lock_release(&node);

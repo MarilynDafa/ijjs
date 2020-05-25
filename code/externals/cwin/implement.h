@@ -746,8 +746,7 @@ extern "C"
 
 /* Declared in misc.c */
 #if defined(NEED_CALLOC)
-#define calloc(n, s) ptw32_calloc(n, s)
-  void *ptw32_calloc (size_t n, size_t s);
+
 #endif
 
 /* Declared in private.c */

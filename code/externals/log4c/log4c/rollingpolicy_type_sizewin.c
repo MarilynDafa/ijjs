@@ -348,7 +348,7 @@ static char* sizewin_get_filename_by_index(rollingpolicy_sizewin_udata_t* swup,
   filename_len = strlen(swup->sw_logdir) + 1 +
     strlen(swup->sw_files_prefix) + 1 +
     strlen(tmp) + 1 + 10; /* a margin */
-  s = (char *)malloc(filename_len);      
+  s = (char *)je_malloc(filename_len);      
   sprintf( s, "%s%s%s%s%s", swup->sw_logdir,
 	   FILE_SEP, swup->sw_files_prefix, ".", tmp);	      
   return(s); 

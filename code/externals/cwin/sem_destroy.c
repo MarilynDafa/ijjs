@@ -142,7 +142,7 @@ sem_destroy (sem_t * sem)
       return -1;
     }
 
-  free (s);
+  je_free (s);
 
   return 0;
 

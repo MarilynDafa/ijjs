@@ -85,7 +85,7 @@ pthread_mutex_destroy (pthread_mutex_t * mutex)
 		{
                   if (mx->robustNode != NULL)
                     {
-                      free(mx->robustNode);
+                      je_free(mx->robustNode);
                     }
 		  if (!CloseHandle (mx->event))
 		    {
@@ -94,7 +94,7 @@ pthread_mutex_destroy (pthread_mutex_t * mutex)
 		    }
 		  else
 		    {
-		      free (mx);
+		      je_free (mx);
 		    }
 		}
 	      else

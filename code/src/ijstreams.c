@@ -68,7 +68,7 @@ static IJVoid uvStreamCloseCb(uv_handle_t* handle) {
     CHECK_NOT_NULL(s);
     s->closed = 1;
     if (s->finalized)
-        free(s);
+        je_free(s);
 }
 
 static IJVoid uvMaybeClose(IJJSStream* s) {
@@ -339,7 +339,7 @@ static IJVoid ijStreamFinalizer(JSRuntime* rt, IJJSStream* s) {
         ijFreePromiseRT(rt, &s->read.result);
         s->finalized = 1;
         if (s->closed)
-            free(s);
+            je_free(s);
         else
             uvMaybeClose(s);
     }
@@ -373,7 +373,7 @@ static JSValue ijNewTcp(JSContext* ctx, IJS32 af) {
     obj = JS_NewObjectClass(ctx, ijjs_tcp_class_id);
     if (JS_IsException(obj))
         return obj;
-    s = calloc(1, sizeof(*s));
+    s = je_calloc(1, sizeof(*s));
     if (!s) {
         JS_FreeValue(ctx, obj);
         return JS_EXCEPTION;
@@ -381,7 +381,7 @@ static JSValue ijNewTcp(JSContext* ctx, IJS32 af) {
     r = uv_tcp_init_ex(ijGetLoop(ctx), &s->h.tcp, af);
     if (r != 0) {
         JS_FreeValue(ctx, obj);
-        free(s);
+        je_free(s);
         return JS_ThrowInternalError(ctx, "couldn't initialize TCP handle");
     }
     return ijInitStream(ctx, obj, s);
@@ -514,7 +514,7 @@ static JSValue ijTtyConstructor(JSContext* ctx, JSValueConst new_target, IJS32 a
     obj = JS_NewObjectClass(ctx, ijjs_tty_class_id);
     if (JS_IsException(obj))
         return obj;
-    s = calloc(1, sizeof(*s));
+    s = je_calloc(1, sizeof(*s));
     if (!s) {
         JS_FreeValue(ctx, obj);
         return JS_EXCEPTION;
@@ -522,7 +522,7 @@ static JSValue ijTtyConstructor(JSContext* ctx, JSValueConst new_target, IJS32 a
     r = uv_tty_init(ijGetLoop(ctx), &s->h.tty, fd, readable);
     if (r != 0) {
         JS_FreeValue(ctx, obj);
-        free(s);
+        je_free(s);
         return JS_ThrowInternalError(ctx, "couldn't initialize TTY handle");
     }
     return ijInitStream(ctx, obj, s);
@@ -600,7 +600,7 @@ JSValue ijNewPipe(JSContext* ctx) {
     obj = JS_NewObjectClass(ctx, ijjs_pipe_class_id);
     if (JS_IsException(obj))
         return obj;
-    s = calloc(1, sizeof(*s));
+    s = je_calloc(1, sizeof(*s));
     if (!s) {
         JS_FreeValue(ctx, obj);
         return JS_EXCEPTION;
@@ -608,7 +608,7 @@ JSValue ijNewPipe(JSContext* ctx) {
     r = uv_pipe_init(ijGetLoop(ctx), &s->h.pipe, 0);
     if (r != 0) {
         JS_FreeValue(ctx, obj);
-        free(s);
+        je_free(s);
         return JS_ThrowInternalError(ctx, "couldn't initialize Pipe handle");
     }
     return ijInitStream(ctx, obj, s);

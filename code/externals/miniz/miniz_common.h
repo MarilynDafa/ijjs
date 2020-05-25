@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "jemalloc/jemalloc.h"
 /* ------------------- Types and macros */
 typedef unsigned char mz_uint8;
 typedef signed short mz_int16;
@@ -48,9 +48,9 @@ typedef struct mz_dummy_time_t_tag
 #define MZ_FREE(x) (void)x, ((void)0)
 #define MZ_REALLOC(p, x) NULL
 #else
-#define MZ_MALLOC(x) malloc(x)
-#define MZ_FREE(x) free(x)
-#define MZ_REALLOC(p, x) realloc(p, x)
+#define MZ_MALLOC(x) je_malloc(x)
+#define MZ_FREE(x) je_free(x)
+#define MZ_REALLOC(p, x) je_realloc(p, x)
 #endif
 
 #define MZ_MAX(a, b) (((a) > (b)) ? (a) : (b))
