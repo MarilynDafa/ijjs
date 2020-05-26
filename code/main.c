@@ -61,7 +61,7 @@ static int eprintf(const char* format, ...) {
     return ret;
 }
 
-static int has_suffix(const char* str, const char* suffix)
+static int has_suffix2(const char* str, const char* suffix)
 {
     size_t len = strlen(str);
     size_t slen = strlen(suffix);
@@ -69,7 +69,7 @@ static int has_suffix(const char* str, const char* suffix)
 }
 
 static int get_eval_flags(const char* filepath, bool strict_module_detection) {
-    int is_mjs = has_suffix(filepath, ".mjs");
+    int is_mjs = has_suffix2(filepath, ".mjs");
     if (strict_module_detection)
         return is_mjs ? JS_EVAL_TYPE_MODULE : JS_EVAL_TYPE_GLOBAL;
     if (is_mjs)

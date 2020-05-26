@@ -2570,6 +2570,7 @@
 			buildConfigurationList = C77A6242247A15D400051CDF /* Build configuration list for PBXNativeTarget "ijjs" */;
 			buildPhases = (
 				C77A623A247A15D400051CDF /* Headers */,
+				C7F5D1D0247CA7E9003974A7 /* ShellScript */,
 				C77A623B247A15D400051CDF /* Sources */,
 				C77A623C247A15D400051CDF /* Frameworks */,
 			);
@@ -2613,6 +2614,26 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C7F5D1D0247CA7E9003974A7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nchmod +x ${SRCROOT}/qjsc.sh\n${SRCROOT}/qjsc.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C77A623B247A15D400051CDF /* Sources */ = {

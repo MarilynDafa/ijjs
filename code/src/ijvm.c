@@ -21,6 +21,9 @@
 #include "ijjs.h"
 #include "jemalloc/jemalloc.h"
 #include <string.h>
+#if IJJS_PLATFORM == IJJS_PLATFORM_OSX
+# include <malloc/malloc.h>
+#endif
 
 
 extern const IJU8 repl[];
@@ -146,7 +149,7 @@ IJJSRuntime* ijNewRuntimeWorker(IJVoid) {
 #else
 #define JE_MALLOC_OVERHEAD  8
 #endif
-inline size_t je_def_malloc_usable_size(void* ptr)
+static inline size_t je_def_malloc_usable_size(void* ptr)
 {
 #if defined(__APPLE__)
     return malloc_size(ptr);

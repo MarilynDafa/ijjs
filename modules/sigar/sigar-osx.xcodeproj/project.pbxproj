@@ -28,6 +28,7 @@
 		C7F5D0AE247ACC95003974A7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F5D0AD247ACC95003974A7 /* IOKit.framework */; };
 		C7F5D0B0247ACCA4003974A7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F5D0AF247ACCA4003974A7 /* CoreFoundation.framework */; };
 		C7F5D0B2247ACDFC003974A7 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F5D0B1247ACDFC003974A7 /* CoreServices.framework */; };
+		C7F5D1D5247CB358003974A7 /* libijjs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F5D1D4247CB358003974A7 /* libijjs.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		C7F5D0AD247ACC95003974A7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		C7F5D0AF247ACCA4003974A7 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		C7F5D0B1247ACDFC003974A7 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		C7F5D1D4247CB358003974A7 /* libijjs.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libijjs.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7F5D1D5247CB358003974A7 /* libijjs.dylib in Frameworks */,
 				C7F5D0B0247ACCA4003974A7 /* CoreFoundation.framework in Frameworks */,
 				C7F5D0B2247ACDFC003974A7 /* CoreServices.framework in Frameworks */,
 				C7F5D0AE247ACC95003974A7 /* IOKit.framework in Frameworks */,
@@ -130,6 +133,7 @@
 		C7F5D0AC247ACC95003974A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7F5D1D4247CB358003974A7 /* libijjs.dylib */,
 				C7F5D0B1247ACDFC003974A7 /* CoreServices.framework */,
 				C7F5D0AF247ACCA4003974A7 /* CoreFoundation.framework */,
 				C7F5D0AD247ACC95003974A7 /* IOKit.framework */,
@@ -234,7 +238,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -264,7 +268,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				FRAMEWORK_SEARCH_PATHS = ../../bin/osx;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -278,6 +283,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../../code/externals/jemalloc/include;
+				LIBRARY_SEARCH_PATHS = ../../bin/osx;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -292,7 +299,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -322,7 +329,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				FRAMEWORK_SEARCH_PATHS = ../../bin/osx;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DARWIN_HAS_LIBPROC_H,
@@ -334,6 +342,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../../code/externals/jemalloc/include;
+				LIBRARY_SEARCH_PATHS = ../../bin/osx;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
