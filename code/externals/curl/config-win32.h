@@ -69,6 +69,8 @@
 #define NEED_MALLOC_H 1
 #endif
 
+#define HAVE_ZLIB_H 1
+#define HAVE_LIBZ 1
 /* Define if you have the <netdb.h> header file. */
 /* #define HAVE_NETDB_H 1 */
 

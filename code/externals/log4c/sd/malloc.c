@@ -81,7 +81,7 @@ sd_malloc_set_handler(a_handler)
     handler = a_handler;
     return previous;
 }
-char* je_strdup2(char* s)
+char* je_strdup2(const char* s)
 {
     char *t = NULL;
     if (s && (t = (char*)je_malloc(strlen(s) + 1)))

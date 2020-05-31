@@ -35,7 +35,7 @@
  */
 
 typedef long long     off_t;
-typedef long        _off_t;
+//typedef long        _off_t;
 
 #ifndef _OFF_T_DEFINED
 #define _OFF_T_DEFINED

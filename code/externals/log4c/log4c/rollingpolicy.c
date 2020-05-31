@@ -86,46 +86,46 @@ LOG4C_API log4c_rollingpolicy_t* log4c_rollingpolicy_get(const char* a_name)
 
 /****************************************************************************/
 LOG4C_API log4c_rollingpolicy_t* log4c_rollingpolicy_new(const char* a_name){
-  log4c_rollingpolicy_t* this;
+  log4c_rollingpolicy_t* thisp;
   
   sd_debug("log4c_rollingpolicy_new[ ");
   if (!a_name)
     return NULL;
   sd_debug("new policy name='%s'", a_name);
-  this	          = sd_calloc(1, sizeof(log4c_rollingpolicy_t));
-  this->policy_name     = sd_strdup(a_name);
-  this->policy_type     = &log4c_rollingpolicy_type_sizewin;
-  this->policy_udata    = NULL;
-  this->policy_rfudatap  = NULL;
-  this->policy_flags = 0; 
+  thisp	          = sd_calloc(1, sizeof(log4c_rollingpolicy_t));
+  thisp->policy_name     = je_strdup2(a_name);
+  thisp->policy_type     = &log4c_rollingpolicy_type_sizewin;
+  thisp->policy_udata    = NULL;
+  thisp->policy_rfudatap  = NULL;
+  thisp->policy_flags = 0; 
   
   sd_debug("]");
   
-  return this;
+  return thisp;
 }
 
 /*******************************************************************************/
-LOG4C_API void log4c_rollingpolicy_delete(log4c_rollingpolicy_t* this)
+LOG4C_API void log4c_rollingpolicy_delete(log4c_rollingpolicy_t* thisp)
 {
   
   sd_debug("log4c_rollingpolicy_delete['%s'", 
-    (this && this->policy_name ? this->policy_name: "(no name)"));
-  if (!this){
+    (thisp && thisp->policy_name ? thisp->policy_name: "(no name)"));
+  if (!thisp){
     goto log4c_rollingpolicy_delete_exit;
   }
   
-  if (log4c_rollingpolicy_fini(this)){
+  if (log4c_rollingpolicy_fini(thisp)){
     sd_error("failed to fini rollingpolicy");
     goto log4c_rollingpolicy_delete_exit;
   }
  
-  if (this->policy_name){
+  if (thisp->policy_name){
     sd_debug("freeing policy name");
-    free(this->policy_name);
-    this->policy_name = NULL;
+    free(thisp->policy_name);
+    thisp->policy_name = NULL;
   };
-  sd_debug("freeing this rolling policy instance");
-  free(this);
+  sd_debug("freeing thisp rolling policy instance");
+  free(thisp);
 
 log4c_rollingpolicy_delete_exit:
   sd_debug("]");
@@ -133,47 +133,47 @@ log4c_rollingpolicy_delete_exit:
 
 /*******************************************************************************/
 
-LOG4C_API int log4c_rollingpolicy_init(log4c_rollingpolicy_t *this, rollingfile_udata_t* rfup){
+LOG4C_API int log4c_rollingpolicy_init(log4c_rollingpolicy_t *thisp, rollingfile_udata_t* rfup){
   
   int rc = 0;
   
-  if (!this)
+  if (!thisp)
     return -1;
   
-  this->policy_rfudatap = rfup;
+  thisp->policy_rfudatap = rfup;
   
-  if (!this->policy_type)
+  if (!thisp->policy_type)
     return 0;
   
-  if (!this->policy_type->init)
+  if (!thisp->policy_type->init)
     return 0;
   
-  rc = this->policy_type->init(this, rfup);
+  rc = thisp->policy_type->init(thisp, rfup);
   
-  this->policy_flags |= PFLAGS_IS_INITIALIZED;
+  thisp->policy_flags |= PFLAGS_IS_INITIALIZED;
   
   return rc;  
   
 }
 
-LOG4C_API int log4c_rollingpolicy_fini(log4c_rollingpolicy_t *this){
+LOG4C_API int log4c_rollingpolicy_fini(log4c_rollingpolicy_t *thisp){
   
   int rc = 0;
   
   sd_debug("log4c_rollingpolicy_fini['%s'", 
-    (this && this->policy_name ? this->policy_name: "(no name")) ;
+    (thisp && thisp->policy_name ? thisp->policy_name: "(no name")) ;
   
-  if (!this){
+  if (!thisp){
     rc = 0;
   } else {
-    if (this->policy_flags & PFLAGS_IS_INITIALIZED){
-      if (this->policy_type){
-        rc = this->policy_type->fini(this);
+    if (thisp->policy_flags & PFLAGS_IS_INITIALIZED){
+      if (thisp->policy_type){
+        rc = thisp->policy_type->fini(thisp);
       }
     }
     
     if (!rc){
-      this->policy_flags &= ~PFLAGS_IS_INITIALIZED;
+      thisp->policy_flags &= ~PFLAGS_IS_INITIALIZED;
     }else{
       sd_debug("Call to rollingpolicy fini failed");
     }
@@ -185,47 +185,47 @@ LOG4C_API int log4c_rollingpolicy_fini(log4c_rollingpolicy_t *this){
 
 /*******************************************************************************/
 
-LOG4C_API int log4c_rollingpolicy_is_triggering_event(log4c_rollingpolicy_t* this, const log4c_logging_event_t* a_event, long current_fs){
-  if (!this)
+LOG4C_API int log4c_rollingpolicy_is_triggering_event(log4c_rollingpolicy_t* thisp, const log4c_logging_event_t* a_event, long current_fs){
+  if (!thisp)
     return -1;
   
-  if (!this->policy_type)
+  if (!thisp->policy_type)
     return 0;
   
-  if (!this->policy_type->is_triggering_event)
+  if (!thisp->policy_type->is_triggering_event)
     return 0;
   
-  return this->policy_type->is_triggering_event(this, a_event, current_fs);  
+  return thisp->policy_type->is_triggering_event(thisp, a_event, current_fs);  
 }
 /*******************************************************************************/
 
-LOG4C_API int log4c_rollingpolicy_rollover(log4c_rollingpolicy_t* this, FILE **fpp){
+LOG4C_API int log4c_rollingpolicy_rollover(log4c_rollingpolicy_t* thisp, FILE **fpp){
   
-  if (!this)
+  if (!thisp)
     return -1;
   
-  if (!this->policy_type)
+  if (!thisp->policy_type)
     return 0;
   
-  if (!this->policy_type->rollover)
+  if (!thisp->policy_type->rollover)
     return 0;
   
-  return this->policy_type->rollover(this, fpp);
+  return thisp->policy_type->rollover(thisp, fpp);
 }
 /*******************************************************************************/
 
-LOG4C_API void* log4c_rollingpolicy_get_udata(const log4c_rollingpolicy_t* this){
-  return (this ? this->policy_udata : NULL);
+LOG4C_API void* log4c_rollingpolicy_get_udata(const log4c_rollingpolicy_t* thisp){
+  return (thisp ? thisp->policy_udata : NULL);
 }
 /*******************************************************************************/
 
-LOG4C_API void* log4c_rollingpolicy_get_name(const log4c_rollingpolicy_t* this){
-  return (this ? this->policy_name : NULL);
+LOG4C_API void* log4c_rollingpolicy_get_name(const log4c_rollingpolicy_t* thisp){
+  return (thisp ? thisp->policy_name : NULL);
 }
 /*******************************************************************************/
 
-LOG4C_API rollingfile_udata_t* log4c_rollingpolicy_get_rfudata(const log4c_rollingpolicy_t* this){
-  return (this ? this->policy_rfudatap : NULL);
+LOG4C_API rollingfile_udata_t* log4c_rollingpolicy_get_rfudata(const log4c_rollingpolicy_t* thisp){
+  return (thisp ? thisp->policy_rfudatap : NULL);
 }
 
 /*******************************************************************************/
@@ -260,9 +260,9 @@ LOG4C_API const log4c_rollingpolicy_type_t* log4c_rollingpolicy_type_get( const 
 }
 /*******************************************************************************/
 
-LOG4C_API void log4c_rollingpolicy_set_udata(log4c_rollingpolicy_t* this, void *udatap){
-  if ( this) {
-    this->policy_udata = udatap;
+LOG4C_API void log4c_rollingpolicy_set_udata(log4c_rollingpolicy_t* thisp, void *udatap){
+  if ( thisp) {
+    thisp->policy_udata = udatap;
   }
 }
 
@@ -280,22 +280,22 @@ LOG4C_API const log4c_rollingpolicy_type_t* log4c_rollingpolicy_set_type( log4c_
 }
 
 /*******************************************************************************/
-LOG4C_API void log4c_rollingpolicy_print(const log4c_rollingpolicy_t* this, FILE* a_stream)
+LOG4C_API void log4c_rollingpolicy_print(const log4c_rollingpolicy_t* thisp, FILE* a_stream)
 {
-  if (!this) 
+  if (!thisp) 
     return;
   
     fprintf(a_stream, "{ name:'%s' udata:%p}",
-	    this->policy_name, 	     
-	    this->policy_udata);
+	    thisp->policy_name, 	     
+	    thisp->policy_udata);
 }
 
 
-LOG4C_API int log4c_rollingpolicy_is_initialized(log4c_rollingpolicy_t* this){
+LOG4C_API int log4c_rollingpolicy_is_initialized(log4c_rollingpolicy_t* thisp){
   
-	if (!this) 
+	if (!thisp) 
 		return(0);	
   
-	return( this->policy_flags & PFLAGS_IS_INITIALIZED);
+	return( thisp->policy_flags & PFLAGS_IS_INITIALIZED);
   
 }

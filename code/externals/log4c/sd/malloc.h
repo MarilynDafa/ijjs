@@ -23,20 +23,18 @@ typedef void (*sd_malloc_handler_t)();
 
 extern sd_malloc_handler_t sd_malloc_set_handler(void (*a_handler)());
 
-char* je_strdup2(char* s);
+extern char* je_strdup2(const char* s);
 
 #define sd_calloc je_calloc
 #define sd_malloc je_malloc
 #define sd_free je_free
 #define sd_realloc je_realloc
-#define sd_strdup je_strdup2
 
 
 #define calloc je_calloc
 #define malloc je_malloc
 #define free je_free
 #define realloc je_realloc
-#define strdup je_strdup2
 
 __SD_END_DECLS
 

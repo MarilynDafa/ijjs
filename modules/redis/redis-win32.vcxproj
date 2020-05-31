@@ -90,10 +90,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;WIN32;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -107,10 +108,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;WIN32;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,10 +128,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;WIN32;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,10 +150,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;_OFF_T_DEFINED;WIN32;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;WIN32;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

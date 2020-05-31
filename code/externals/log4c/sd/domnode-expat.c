@@ -139,8 +139,8 @@ __sd_domnode_new(const char* name, const char* value, int is_elem)
 
     this = sd_calloc(1, sizeof(*this));
 
-    this->name     = name    ? sd_strdup(name) : NULL;
-    this->value    = value   ? sd_strdup(value): NULL;
+    this->name     = name    ? je_strdup2(name) : NULL;
+    this->value    = value   ? je_strdup2(value): NULL;
     this->children = is_elem ? sd_list_new(10) : NULL;
     this->attrs    = is_elem ? sd_list_new(10) : NULL;
 

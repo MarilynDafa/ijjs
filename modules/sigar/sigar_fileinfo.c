@@ -414,9 +414,8 @@ static int fileattrs_get(sigar_t *sigar,
  
     if (handle != INVALID_HANDLE_VALUE) {
         if (GetFileInformationByHandle(handle, &info)) {
-            fileattrs->inode =
-                info.nFileIndexLow |
-                (info.nFileIndexHigh << 32);
+            sigar_uint64_t tmp = info.nFileIndexHigh;
+            fileattrs->inode = info.nFileIndexLow | (tmp << 32);
             fileattrs->device = info.dwVolumeSerialNumber;
             fileattrs->nlink  = info.nNumberOfLinks;
         }

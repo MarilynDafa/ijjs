@@ -26,7 +26,7 @@ struct __sd_factory
 * This is used to access the name field of objects created by
 * factories.  For example instances of appenders, layouts or
 * rollingpolicies.
-* So there's a supposition that the name field is always first--this is true
+* So there's a supposition that the name field is always first--thisp is true
 * but should enforce that probably by extending a base 'name' struct.
 */
 typedef struct {
@@ -37,107 +37,107 @@ typedef struct {
 extern sd_factory_t* sd_factory_new(const char* a_name,
   const sd_factory_ops_t* a_ops)
 {
-  sd_factory_t* this;
+  sd_factory_t* thisp;
   
   if (!a_name || !a_ops)
     return NULL;
   
-  this           = sd_calloc(1, sizeof(*this));
-  this->fac_name = sd_strdup(a_name);
-  this->fac_ops  = a_ops;
-  this->fac_hash = sd_hash_new(20, NULL);
-  return this;
+  thisp           = sd_calloc(1, sizeof(*thisp));
+  thisp->fac_name = je_strdup2(a_name);
+  thisp->fac_ops  = a_ops;
+  thisp->fac_hash = sd_hash_new(20, NULL);
+  return thisp;
 }
 
 /*******************************************************************************/
-extern void sd_factory_delete(sd_factory_t* this)
+extern void sd_factory_delete(sd_factory_t* thisp)
 {
   sd_hash_iter_t* i;
   
   sd_debug("sd_factory_delete['%s',",
-    (this && (this->fac_name) ? this->fac_name: "(no name)"));
+    (thisp && (thisp->fac_name) ? thisp->fac_name: "(no name)"));
   
-  if (!this){
+  if (!thisp){
     goto sd_factory_delete_exit;
   }
   
-  if (this->fac_ops->fac_delete){
-    for (i = sd_hash_begin(this->fac_hash); i != sd_hash_end(this->fac_hash); 
+  if (thisp->fac_ops->fac_delete){
+    for (i = sd_hash_begin(thisp->fac_hash); i != sd_hash_end(thisp->fac_hash); 
       i = sd_hash_iter_next(i)) {
-      this->fac_ops->fac_delete(i->data);
+      thisp->fac_ops->fac_delete(i->data);
     }
   }
   
-  sd_hash_delete(this->fac_hash);
-  free(this->fac_name);
-  free(this);
+  sd_hash_delete(thisp->fac_hash);
+  free(thisp->fac_name);
+  free(thisp);
   
   sd_factory_delete_exit:
   sd_debug("]");
 }
 
 /*******************************************************************************/
-extern void* sd_factory_get(sd_factory_t* this, const char* a_name)
+extern void* sd_factory_get(sd_factory_t* thisp, const char* a_name)
 {
   sd_hash_iter_t*		i;
   sd_factory_product_t*	pr;	
   
-  if ( (i = sd_hash_lookup(this->fac_hash, a_name)) != NULL)
+  if ( (i = sd_hash_lookup(thisp->fac_hash, a_name)) != NULL)
     return i->data;
   
-  if (!this->fac_ops->fac_new)
+  if (!thisp->fac_ops->fac_new)
     return NULL;
   
-  if ( (pr = this->fac_ops->fac_new(a_name)) == NULL)
+  if ( (pr = thisp->fac_ops->fac_new(a_name)) == NULL)
     return NULL;
   
-  sd_hash_add(this->fac_hash, pr->pr_name, pr);
+  sd_hash_add(thisp->fac_hash, pr->pr_name, pr);
   return pr;
   
 }
 
 /*******************************************************************************/
-extern void sd_factory_destroy(sd_factory_t* this, void* a_pr)
+extern void sd_factory_destroy(sd_factory_t* thisp, void* a_pr)
 {
   sd_factory_product_t* pr = (sd_factory_product_t*) a_pr;
   
-  sd_hash_del(this->fac_hash, pr->pr_name);
-  if (this->fac_ops->fac_delete)
-    this->fac_ops->fac_delete(pr);
+  sd_hash_del(thisp->fac_hash, pr->pr_name);
+  if (thisp->fac_ops->fac_delete)
+    thisp->fac_ops->fac_delete(pr);
 }
 
 /*******************************************************************************/
-extern void sd_factory_print(const sd_factory_t* this, FILE* a_stream)
+extern void sd_factory_print(const sd_factory_t* thisp, FILE* a_stream)
 {
   sd_hash_iter_t* i;
   
-  if (!this)
+  if (!thisp)
     return;
   
-  if (!this->fac_ops->fac_print)
+  if (!thisp->fac_ops->fac_print)
     return;
   
-  fprintf(a_stream, "factory[%s]:\n", this->fac_name);
-  for (i = sd_hash_begin(this->fac_hash); i != sd_hash_end(this->fac_hash); 
+  fprintf(a_stream, "factory[%s]:\n", thisp->fac_name);
+  for (i = sd_hash_begin(thisp->fac_hash); i != sd_hash_end(thisp->fac_hash); 
     i = sd_hash_iter_next(i)) 
   {
-    this->fac_ops->fac_print(i->data, a_stream);
+    thisp->fac_ops->fac_print(i->data, a_stream);
     fprintf(a_stream, "\n");
   }
 }
 
 /******************************************************************************/
-extern int sd_factory_list(const sd_factory_t* this, void** a_items,
+extern int sd_factory_list(const sd_factory_t* thisp, void** a_items,
   int a_nitems)
 {
   sd_hash_iter_t* i;
   int j;
   
-  if (!this || !a_items || a_nitems <= 0)
+  if (!thisp || !a_items || a_nitems <= 0)
     return -1;
   
-    for (i = sd_hash_begin(this->fac_hash), j = 0;
-      i != sd_hash_end(this->fac_hash);
+    for (i = sd_hash_begin(thisp->fac_hash), j = 0;
+      i != sd_hash_end(thisp->fac_hash);
       i = sd_hash_iter_next(i), j++)
     {
       if (j < a_nitems)

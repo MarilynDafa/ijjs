@@ -229,7 +229,7 @@ EXPORTS
     sd_stack_pop @228
     sd_stack_push @229
     sd_stat_ctime @230
-    sd_strdup @231
+    je_strdup2 @231
     sd_test_add @232
     sd_test_delete @233
     sd_test_err @234

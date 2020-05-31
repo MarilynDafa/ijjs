@@ -27,7 +27,10 @@
 #include <inttypes.h>
 #include <string.h>
 #include <assert.h>
-
+#include <malloc.h>
+#if defined(__linux__)
+#include <alloca.h>
+#endif
 #include "cutils.h"
 #include "libregexp.h"
 

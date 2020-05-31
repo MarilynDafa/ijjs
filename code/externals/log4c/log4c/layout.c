@@ -121,7 +121,7 @@ extern log4c_layout_t* log4c_layout_new(const char* a_name)
 	return NULL;
 
     this	    = sd_calloc(1, sizeof(log4c_layout_t));
-    this->lo_name   = sd_strdup(a_name);
+    this->lo_name   = je_strdup2(a_name);
     this->lo_type   = &log4c_layout_type_basic;
     this->lo_udata  = NULL;
 

@@ -54,6 +54,7 @@ class WMI {
   private:
     IWbemServices *wbem;
     HRESULT result;
+    wchar_t query[56];    
     BSTR GetProcQuery(DWORD pid);
 };
 
@@ -149,7 +150,7 @@ void WMI::Close()
 
 BSTR WMI::GetProcQuery(DWORD pid)
 {
-    wchar_t query[56];
+    memset(query, 0, sizeof(query));
     wsprintf(query, L"Win32_Process.Handle=%d", pid);
     return (WCHAR*)(query);
 }

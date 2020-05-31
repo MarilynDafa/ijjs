@@ -2198,7 +2198,7 @@ char *yytext;
 #ifdef strdup
 #	undef strdup
 #endif
-#define strdup sd_strdup
+#define strdup je_strdup2
 #ifdef malloc
 #	undef malloc
 #endif

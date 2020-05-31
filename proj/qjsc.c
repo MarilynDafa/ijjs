@@ -28,10 +28,12 @@
 #include <errno.h>
 #include <inttypes.h>
 #include <stdarg.h>
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "unistd.h"
+#include <getopt.h>
 
  /* BEGIN: copied over from quickjs-libc to avoid dependency. */
 
@@ -109,9 +111,15 @@ void namelist_add(namelist_t* lp, const char* name, const char* short_name, int 
         lp->size = newsize;
     }
     e = &lp->array[lp->count++];
+#ifdef _WIN32
+    e->name = _strdup(name);
+    if (short_name)
+        e->short_name = _strdup(short_name);
+#else
     e->name = strdup(name);
     if (short_name)
         e->short_name = strdup(short_name);
+#endif
     else
         e->short_name = NULL;
     e->flags = flags;

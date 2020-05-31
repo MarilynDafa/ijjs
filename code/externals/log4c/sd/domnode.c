@@ -27,8 +27,8 @@ extern sd_domnode_t* __sd_domnode_new(const char* a_name, const char* a_value,
     
     this = sd_calloc(1, sizeof(*this));
     
-    this->name     = a_name    ? sd_strdup(a_name) : 0;
-    this->value    = a_value   ? sd_strdup(a_value): 0;
+    this->name     = a_name    ? je_strdup2(a_name) : 0;
+    this->value    = a_value   ? je_strdup2(a_value): 0;
     this->children = is_elem ? sd_list_new(10) : 0;
     this->attrs    = is_elem ? sd_list_new(10) : 0;
     

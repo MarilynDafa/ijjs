@@ -382,6 +382,8 @@ static sigar_mpr_t sigar_mpr = {
 #define DLLMOD_FREE(name) \
     sigar_dllmod_free((sigar_dll_module_t *)&(sigar->##name))
 
+#define get_process_object(sigar, err) \
+    get_perf_object(sigar, PERF_TITLE_PROC_KEY, err)
 static void sigar_dllmod_free(sigar_dll_module_t* module)
 {
     if (module->handle) {
@@ -755,6 +757,109 @@ static PERF_INSTANCE_DEFINITION* get_cpu_instance(sigar_t* sigar,
 #define sigar_NtQuerySystemInformation \
    sigar->ntdll.query_sys_info.func
 
+int get_proc_info(sigar_t* sigar, sigar_pid_t pid)
+{
+    PERF_OBJECT_TYPE* object;
+    PERF_INSTANCE_DEFINITION* inst;
+    PERF_COUNTER_DEFINITION* counter;
+    DWORD i, err;
+    DWORD perf_offsets[PERF_IX_MAX];
+    sigar_win32_pinfo_t* pinfo = &sigar->pinfo;
+    time_t timenow = time(NULL);
+
+    if (pinfo->pid == pid) {
+        if ((timenow - pinfo->mtime) < SIGAR_LAST_PROC_EXPIRE) {
+            return SIGAR_OK;
+        }
+    }
+
+    memset(&perf_offsets, 0, sizeof(perf_offsets));
+
+    object = get_process_object(sigar, &err);
+
+    if (object == NULL) {
+        return err;
+    }
+
+    pinfo->pid = pid;
+    pinfo->mtime = timenow;
+
+    /*
+     * note we assume here:
+     *  block->NumObjectTypes == 1
+     *  object->ObjectNameTitleIndex == PERF_TITLE_PROC
+     *
+     * which should always be the case.
+     */
+
+    for (i = 0, counter = PdhFirstCounter(object);
+        i < object->NumCounters;
+        i++, counter = PdhNextCounter(counter))
+    {
+        DWORD offset = counter->CounterOffset;
+
+        switch (counter->CounterNameTitleIndex) {
+        case PERF_TITLE_CPUTIME:
+            perf_offsets[PERF_IX_CPUTIME] = offset;
+            break;
+        case PERF_TITLE_PAGE_FAULTS:
+            perf_offsets[PERF_IX_PAGE_FAULTS] = offset;
+            break;
+        case PERF_TITLE_MEM_VSIZE:
+            perf_offsets[PERF_IX_MEM_VSIZE] = offset;
+            break;
+        case PERF_TITLE_MEM_SIZE:
+            perf_offsets[PERF_IX_MEM_SIZE] = offset;
+            break;
+        case PERF_TITLE_THREAD_CNT:
+            perf_offsets[PERF_IX_THREAD_CNT] = offset;
+            break;
+        case PERF_TITLE_HANDLE_CNT:
+            perf_offsets[PERF_IX_HANDLE_CNT] = offset;
+            break;
+        case PERF_TITLE_PID:
+            perf_offsets[PERF_IX_PID] = offset;
+            break;
+        case PERF_TITLE_PPID:
+            perf_offsets[PERF_IX_PPID] = offset;
+            break;
+        case PERF_TITLE_PRIORITY:
+            perf_offsets[PERF_IX_PRIORITY] = offset;
+            break;
+        case PERF_TITLE_START_TIME:
+            perf_offsets[PERF_IX_START_TIME] = offset;
+            break;
+        }
+    }
+
+    for (i = 0, inst = PdhFirstInstance(object);
+        i < object->NumInstances;
+        i++, inst = PdhNextInstance(inst))
+    {
+        PERF_COUNTER_BLOCK* counter_block = PdhGetCounterBlock(inst);
+        sigar_pid_t this_pid = PERF_VAL(PERF_IX_PID);
+
+        if (this_pid != pid) {
+            continue;
+        }
+
+        pinfo->state = 'R'; /* XXX? */
+        SIGAR_W2A(PdhInstanceName(inst),
+            pinfo->name, sizeof(pinfo->name));
+
+        pinfo->size = PERF_VAL(PERF_IX_MEM_VSIZE);
+        pinfo->resident = PERF_VAL(PERF_IX_MEM_SIZE);
+        pinfo->ppid = PERF_VAL(PERF_IX_PPID);
+        pinfo->priority = PERF_VAL(PERF_IX_PRIORITY);
+        pinfo->handles = PERF_VAL(PERF_IX_HANDLE_CNT);
+        pinfo->threads = PERF_VAL(PERF_IX_THREAD_CNT);
+        pinfo->page_faults = PERF_VAL(PERF_IX_PAGE_FAULTS);
+
+        return SIGAR_OK;
+    }
+
+    return SIGAR_NO_SUCH_PROCESS;
+}
 static int get_idle_cpu(sigar_t* sigar, sigar_cpu_t* cpu,
     DWORD idx,
     PERF_COUNTER_BLOCK* counter_block,
@@ -1048,8 +1153,6 @@ SIGAR_DECLARE(int) sigar_loadavg_get(sigar_t* sigar,
     return SIGAR_ENOTIMPL;
 }
 
-#define get_process_object(sigar, err) \
-    get_perf_object(sigar, PERF_TITLE_PROC_KEY, err)
 
 static int sigar_proc_list_get_perf(sigar_t* sigar,
     sigar_proc_list_t* proclist)
@@ -1273,8 +1376,8 @@ SIGAR_DECLARE(int) sigar_proc_cred_get(sigar_t* sigar, sigar_pid_t pid,
     return SIGAR_ENOTIMPL;
 }
 
-#define FILETIME2MSEC(ft) \
-    NS100_2MSEC(((ft.dwHighDateTime << 32) | ft.dwLowDateTime))
+#define FILETIME2MSEC(dwHighDateTime, dwLowDateTime) \
+    NS100_2MSEC(((dwHighDateTime << 32) | dwLowDateTime))
 
 sigar_int64_t sigar_time_now_millis(void)
 {
@@ -1319,8 +1422,10 @@ SIGAR_DECLARE(int) sigar_proc_time_get(sigar_t* sigar, sigar_pid_t pid,
         proctime->start_time = 0;
     }
 
-    proctime->user = FILETIME2MSEC(user_time);
-    proctime->sys = FILETIME2MSEC(system_time);
+    sigar_uint64_t _u = user_time.dwHighDateTime;
+    sigar_uint64_t _s = system_time.dwHighDateTime;
+    proctime->user = FILETIME2MSEC(_u, user_time.dwLowDateTime);
+    proctime->sys = FILETIME2MSEC(_s, user_time.dwLowDateTime);
     proctime->total = proctime->user + proctime->sys;
 
     return SIGAR_OK;
@@ -1348,109 +1453,6 @@ SIGAR_DECLARE(int) sigar_proc_state_get(sigar_t* sigar, sigar_pid_t pid,
     return SIGAR_OK;
 }
 
-int get_proc_info(sigar_t* sigar, sigar_pid_t pid)
-{
-    PERF_OBJECT_TYPE* object;
-    PERF_INSTANCE_DEFINITION* inst;
-    PERF_COUNTER_DEFINITION* counter;
-    DWORD i, err;
-    DWORD perf_offsets[PERF_IX_MAX];
-    sigar_win32_pinfo_t* pinfo = &sigar->pinfo;
-    time_t timenow = time(NULL);
-
-    if (pinfo->pid == pid) {
-        if ((timenow - pinfo->mtime) < SIGAR_LAST_PROC_EXPIRE) {
-            return SIGAR_OK;
-        }
-    }
-
-    memset(&perf_offsets, 0, sizeof(perf_offsets));
-
-    object = get_process_object(sigar, &err);
-
-    if (object == NULL) {
-        return err;
-    }
-
-    pinfo->pid = pid;
-    pinfo->mtime = timenow;
-
-    /*
-     * note we assume here:
-     *  block->NumObjectTypes == 1
-     *  object->ObjectNameTitleIndex == PERF_TITLE_PROC
-     *
-     * which should always be the case.
-     */
-
-    for (i = 0, counter = PdhFirstCounter(object);
-        i < object->NumCounters;
-        i++, counter = PdhNextCounter(counter))
-    {
-        DWORD offset = counter->CounterOffset;
-
-        switch (counter->CounterNameTitleIndex) {
-        case PERF_TITLE_CPUTIME:
-            perf_offsets[PERF_IX_CPUTIME] = offset;
-            break;
-        case PERF_TITLE_PAGE_FAULTS:
-            perf_offsets[PERF_IX_PAGE_FAULTS] = offset;
-            break;
-        case PERF_TITLE_MEM_VSIZE:
-            perf_offsets[PERF_IX_MEM_VSIZE] = offset;
-            break;
-        case PERF_TITLE_MEM_SIZE:
-            perf_offsets[PERF_IX_MEM_SIZE] = offset;
-            break;
-        case PERF_TITLE_THREAD_CNT:
-            perf_offsets[PERF_IX_THREAD_CNT] = offset;
-            break;
-        case PERF_TITLE_HANDLE_CNT:
-            perf_offsets[PERF_IX_HANDLE_CNT] = offset;
-            break;
-        case PERF_TITLE_PID:
-            perf_offsets[PERF_IX_PID] = offset;
-            break;
-        case PERF_TITLE_PPID:
-            perf_offsets[PERF_IX_PPID] = offset;
-            break;
-        case PERF_TITLE_PRIORITY:
-            perf_offsets[PERF_IX_PRIORITY] = offset;
-            break;
-        case PERF_TITLE_START_TIME:
-            perf_offsets[PERF_IX_START_TIME] = offset;
-            break;
-        }
-    }
-
-    for (i = 0, inst = PdhFirstInstance(object);
-        i < object->NumInstances;
-        i++, inst = PdhNextInstance(inst))
-    {
-        PERF_COUNTER_BLOCK* counter_block = PdhGetCounterBlock(inst);
-        sigar_pid_t this_pid = PERF_VAL(PERF_IX_PID);
-
-        if (this_pid != pid) {
-            continue;
-        }
-
-        pinfo->state = 'R'; /* XXX? */
-        SIGAR_W2A(PdhInstanceName(inst),
-            pinfo->name, sizeof(pinfo->name));
-
-        pinfo->size = PERF_VAL(PERF_IX_MEM_VSIZE);
-        pinfo->resident = PERF_VAL(PERF_IX_MEM_SIZE);
-        pinfo->ppid = PERF_VAL(PERF_IX_PPID);
-        pinfo->priority = PERF_VAL(PERF_IX_PRIORITY);
-        pinfo->handles = PERF_VAL(PERF_IX_HANDLE_CNT);
-        pinfo->threads = PERF_VAL(PERF_IX_THREAD_CNT);
-        pinfo->page_faults = PERF_VAL(PERF_IX_PAGE_FAULTS);
-
-        return SIGAR_OK;
-    }
-
-    return SIGAR_NO_SUCH_PROCESS;
-}
 
 static int sigar_remote_proc_args_get(sigar_t* sigar, sigar_pid_t pid,
     sigar_proc_args_t* procargs)

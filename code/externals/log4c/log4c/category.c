@@ -72,56 +72,56 @@ static const char* dot_dirname(char* a_string);
 
 extern log4c_category_t* log4c_category_new(const char* a_name)
 {
-  log4c_category_t* this;
+  log4c_category_t* thisp;
   
   if (!a_name)
     return NULL;
   
-  this		= sd_calloc(1, sizeof(log4c_category_t));
-  this->cat_name	= sd_strdup(a_name);
-  this->cat_priority	= LOG4C_PRIORITY_NOTSET;
-  this->cat_additive	= 1;
-  this->cat_appender	= NULL;
-  this->cat_parent	= NULL;
+  thisp		= sd_calloc(1, sizeof(log4c_category_t));
+  thisp->cat_name	= je_strdup2(a_name);
+  thisp->cat_priority	= LOG4C_PRIORITY_NOTSET;
+  thisp->cat_additive	= 1;
+  thisp->cat_appender	= NULL;
+  thisp->cat_parent	= NULL;
   
   /* skip root category because it has a NULL parent */
   if (strcmp(LOG4C_CATEGORY_DEFAULT, a_name)) {
-    char* tmp = sd_strdup(this->cat_name);
+    char* tmp = je_strdup2(thisp->cat_name);
     
-    this->cat_parent = log4c_category_get(dot_dirname(tmp));
+    thisp->cat_parent = log4c_category_get(dot_dirname(tmp));
     free(tmp);
   }
-  return this;
+  return thisp;
 }
 
 /*******************************************************************************/
-extern void log4c_category_delete(log4c_category_t* this)
+extern void log4c_category_delete(log4c_category_t* thisp)
 {
-  if (!this) 
+  if (!thisp) 
     return;
   
-  free(this->cat_name);
-  free(this);
+  free(thisp->cat_name);
+  free(thisp);
 }
 
 /*******************************************************************************/
-extern const char* log4c_category_get_name(const log4c_category_t* this)
+extern const char* log4c_category_get_name(const log4c_category_t* thisp)
 {
-  return (this ? this->cat_name : "(nil)");
+  return (thisp ? thisp->cat_name : "(nil)");
 }
 
 /*******************************************************************************/
-extern int log4c_category_get_priority(const log4c_category_t* this)
+extern int log4c_category_get_priority(const log4c_category_t* thisp)
 {
-  return (this ? this->cat_priority : LOG4C_PRIORITY_UNKNOWN);
+  return (thisp ? thisp->cat_priority : LOG4C_PRIORITY_UNKNOWN);
 }
 
 /*******************************************************************************/
-extern int log4c_category_get_chainedpriority(const log4c_category_t* this)
+extern int log4c_category_get_chainedpriority(const log4c_category_t* thisp)
 {
-  const log4c_category_t* cat = this;
+  const log4c_category_t* cat = thisp;
   
-  if (!this) 
+  if (!thisp) 
     return LOG4C_PRIORITY_UNKNOWN;
   
   while (cat->cat_priority == LOG4C_PRIORITY_NOTSET && cat->cat_parent)
@@ -131,27 +131,27 @@ extern int log4c_category_get_chainedpriority(const log4c_category_t* this)
 }
 
 /*******************************************************************************/
-extern const log4c_appender_t* log4c_category_get_appender(const log4c_category_t* this)
+extern const log4c_appender_t* log4c_category_get_appender(const log4c_category_t* thisp)
 {
-  return (this ? this->cat_appender : NULL);
+  return (thisp ? thisp->cat_appender : NULL);
 }
 
 /*******************************************************************************/
-extern int log4c_category_get_additivity(const log4c_category_t* this)
+extern int log4c_category_get_additivity(const log4c_category_t* thisp)
 {
-  return (this ? this->cat_additive : -1);
+  return (thisp ? thisp->cat_additive : -1);
 }
 
 /*******************************************************************************/
-extern int log4c_category_set_priority(log4c_category_t* this, int a_priority)
+extern int log4c_category_set_priority(log4c_category_t* thisp, int a_priority)
 {
   int previous;
   
-  if (!this) 
+  if (!thisp) 
     return LOG4C_PRIORITY_UNKNOWN;
   
-  previous = this->cat_priority;
-  this->cat_priority = a_priority;
+  previous = thisp->cat_priority;
+  thisp->cat_priority = a_priority;
   return previous;
 }
 
@@ -161,49 +161,49 @@ extern int log4c_category_set_priority(log4c_category_t* this, int a_priority)
 
 /*******************************************************************************/
 extern const log4c_appender_t* log4c_category_set_appender(
-  log4c_category_t* this, 
+  log4c_category_t* thisp, 
   log4c_appender_t* a_appender)
 {
   log4c_appender_t* previous;
   
-  if (!this) 
+  if (!thisp) 
     return NULL;
   
-  previous = this->cat_appender;
-  this->cat_appender = a_appender;
+  previous = thisp->cat_appender;
+  thisp->cat_appender = a_appender;
   return previous;
 }
 
 /*******************************************************************************/
-extern int log4c_category_set_additivity(log4c_category_t* this, int a_additivity)
+extern int log4c_category_set_additivity(log4c_category_t* thisp, int a_additivity)
 {
   int previous;
   
-  if (!this) 
+  if (!thisp) 
     return -1;
   
-  previous = this->cat_additive;
-  this->cat_additive = a_additivity;
+  previous = thisp->cat_additive;
+  thisp->cat_additive = a_additivity;
   return previous;
 }
 
 /*******************************************************************************/
-extern void log4c_category_print(const log4c_category_t* this, FILE* a_stream)
+extern void log4c_category_print(const log4c_category_t* thisp, FILE* a_stream)
 {
-  if (!this) 
+  if (!thisp) 
     return;
   
     fprintf(a_stream, "{ name:'%s' priority:%s additive:%d appender:'%s' parent:'%s' }",
-	    this->cat_name,
-	    log4c_priority_to_string(this->cat_priority),
-	    this->cat_additive,
-	    log4c_appender_get_name(this->cat_appender),
-	    log4c_category_get_name(this->cat_parent)
+	    thisp->cat_name,
+	    log4c_priority_to_string(thisp->cat_priority),
+	    thisp->cat_additive,
+	    log4c_appender_get_name(thisp->cat_appender),
+	    log4c_category_get_name(thisp->cat_parent)
       );
 }
 
 /*******************************************************************************/
-extern void __log4c_category_vlog(const log4c_category_t* this, 
+extern void __log4c_category_vlog(const log4c_category_t* thisp, 
   const log4c_location_info_t* a_locinfo, 
   int a_priority,
   const char* a_format, 
@@ -214,11 +214,11 @@ extern void __log4c_category_vlog(const log4c_category_t* this,
   const log4c_category_t* cat;
   int yes = 0;
   
-  if (!this)
+  if (!thisp)
     return;
   
   /* check if an appender is defined in the category hierarchy */
-  for (cat = this; cat; cat = cat->cat_parent) {
+  for (cat = thisp; cat; cat = cat->cat_parent) {
     if (cat->cat_appender)
 	    yes++;
   }
@@ -253,13 +253,13 @@ extern void __log4c_category_vlog(const log4c_category_t* this,
       evt.evt_buffer.buf_size);
   }
   
-  evt.evt_category	= this->cat_name;
+  evt.evt_category	= thisp->cat_name;
   evt.evt_priority	= a_priority;
   evt.evt_msg	        = message;
   evt.evt_loc	        = a_locinfo;
   SD_GETTIMEOFDAY(&evt.evt_timestamp, NULL);
   
-  for (cat = this; cat; cat = cat->cat_parent) {
+  for (cat = thisp; cat; cat = cat->cat_parent) {
     if (cat->cat_appender)
 	    log4c_appender_append(cat->cat_appender, &evt);
     

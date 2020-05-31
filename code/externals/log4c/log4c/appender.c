@@ -119,195 +119,195 @@ extern log4c_appender_t* log4c_appender_get(const char* a_name)
 /*******************************************************************************/
 extern log4c_appender_t* log4c_appender_new(const char* a_name)
 {
-  log4c_appender_t* this;
+  log4c_appender_t* thisp;
   
   if (!a_name)
     return NULL;
   
-  this	     = sd_calloc(1, sizeof(log4c_appender_t));
-  this->app_name   = sd_strdup(a_name);
-  this->app_type   = &log4c_appender_type_stream;
-  this->app_layout = log4c_layout_get("basic");
-  this->app_isopen = 0;
-  this->app_udata  = NULL;
-  return this;
+  thisp	     = sd_calloc(1, sizeof(log4c_appender_t));
+  thisp->app_name   = je_strdup2(a_name);
+  thisp->app_type   = &log4c_appender_type_stream;
+  thisp->app_layout = log4c_layout_get("basic");
+  thisp->app_isopen = 0;
+  thisp->app_udata  = NULL;
+  return thisp;
 }
 
 /*******************************************************************************/
-extern void log4c_appender_delete(log4c_appender_t* this)
+extern void log4c_appender_delete(log4c_appender_t* thisp)
 {
   sd_debug("log4c_appender_delete['%s'", 
-                      (this && this->app_name ? this->app_name: "(no name)"));
-  if (!this){
+                      (thisp && thisp->app_name ? thisp->app_name: "(no name)"));
+  if (!thisp){
     goto log4c_appender_delete_exit;
   }
   
-  log4c_appender_close(this);
-  if (this->app_name){
-    free(this->app_name);  
+  log4c_appender_close(thisp);
+  if (thisp->app_name){
+    free(thisp->app_name);  
   }
-  free(this);
+  free(thisp);
   
   log4c_appender_delete_exit:
   sd_debug("]");
 }
 
 /*******************************************************************************/
-extern const char* log4c_appender_get_name(const log4c_appender_t* this)
+extern const char* log4c_appender_get_name(const log4c_appender_t* thisp)
 {
-  return (this ? this->app_name : "(nil)");
+  return (thisp ? thisp->app_name : "(nil)");
 }
 
 /*******************************************************************************/
 extern const log4c_appender_type_t* log4c_appender_get_type(
-  const log4c_appender_t* this)
+  const log4c_appender_t* thisp)
 {
-  return (this ? this->app_type : NULL);
+  return (thisp ? thisp->app_type : NULL);
 }
 
 /*******************************************************************************/
-extern const log4c_layout_t* log4c_appender_get_layout(const log4c_appender_t* this)
+extern const log4c_layout_t* log4c_appender_get_layout(const log4c_appender_t* thisp)
 {
-  return (this ? this->app_layout : NULL);
+  return (thisp ? thisp->app_layout : NULL);
 }
 
 /*******************************************************************************/
-extern void* log4c_appender_get_udata(const log4c_appender_t* this)
+extern void* log4c_appender_get_udata(const log4c_appender_t* thisp)
 {
-  return (this ? this->app_udata : NULL);
+  return (thisp ? thisp->app_udata : NULL);
 }
 
 /*******************************************************************************/
 extern const log4c_appender_type_t* log4c_appender_set_type(
-  log4c_appender_t*			this,
+  log4c_appender_t*			thisp,
   const log4c_appender_type_t*	a_type)
 {
   const log4c_appender_type_t* previous;
   
-  if (!this)
+  if (!thisp)
     return NULL;
   
-  previous = this->app_type;
-  this->app_type = a_type;
+  previous = thisp->app_type;
+  thisp->app_type = a_type;
   return previous;
 }
 
 /*******************************************************************************/
 extern const log4c_layout_t* log4c_appender_set_layout(
-  log4c_appender_t*	this, 
+  log4c_appender_t*	thisp, 
   const log4c_layout_t* a_layout)
 {
   const log4c_layout_t* previous;
   
-  if (!this)
+  if (!thisp)
     return NULL;
   
-  previous = this->app_layout;
-  this->app_layout = a_layout;
+  previous = thisp->app_layout;
+  thisp->app_layout = a_layout;
   return previous;
 }
 
 /*******************************************************************************/
-extern void* log4c_appender_set_udata(log4c_appender_t* this, void* a_udata)
+extern void* log4c_appender_set_udata(log4c_appender_t* thisp, void* a_udata)
 {
   void* previous;
   
-  if (!this)
+  if (!thisp)
     return NULL;
   
-  previous = this->app_udata;
-  this->app_udata = a_udata;
+  previous = thisp->app_udata;
+  thisp->app_udata = a_udata;
   return previous;
 }
 
 /*******************************************************************************/
-extern int log4c_appender_open(log4c_appender_t* this)
+extern int log4c_appender_open(log4c_appender_t* thisp)
 {
   int rc = 0;
   
-  if (!this)
+  if (!thisp)
     return -1;
   
-  if (this->app_isopen)
+  if (thisp->app_isopen)
     return 0;
   
-  if (!this->app_type)
+  if (!thisp->app_type)
     return 0;
 
-  if (!this->app_type->open)
+  if (!thisp->app_type->open)
     return 0;
 
-  if (this->app_type->open(this) == -1){
+  if (thisp->app_type->open(thisp) == -1){
     rc = -1;
   }
   if (!rc) {
-    this->app_isopen++;
+    thisp->app_isopen++;
   }
 
   return rc;
 }
 
 /**
-* @bug is this the right place to open an appender ? 
+* @bug is thisp the right place to open an appender ? 
 */
 
 /*******************************************************************************/
 extern int log4c_appender_append(
-  log4c_appender_t*		this, 
+  log4c_appender_t*		thisp, 
   log4c_logging_event_t*	a_event)
 {
-  if (!this)
+  if (!thisp)
     return -1;
   
-  if (!this->app_type)
+  if (!thisp->app_type)
     return 0;
   
-  if (!this->app_type->append)
+  if (!thisp->app_type->append)
     return 0;
   
-  if (!this->app_isopen)
-    if (log4c_appender_open(this) == -1)
+  if (!thisp->app_isopen)
+    if (log4c_appender_open(thisp) == -1)
      return -1;
 	
     if ( (a_event->evt_rendered_msg = 
-      log4c_layout_format(this->app_layout, a_event)) == NULL)
+      log4c_layout_format(thisp->app_layout, a_event)) == NULL)
         a_event->evt_rendered_msg = a_event->evt_msg;
 
-    return this->app_type->append(this, a_event);
+    return thisp->app_type->append(thisp, a_event);
 }
 
 /*******************************************************************************/
-extern int log4c_appender_close(log4c_appender_t* this)
+extern int log4c_appender_close(log4c_appender_t* thisp)
 {
-  if (!this)
+  if (!thisp)
     return -1;
   
-  if (!this->app_isopen)
+  if (!thisp->app_isopen)
     return 0;
   
-  if (!this->app_type)
+  if (!thisp->app_type)
     return 0;
   
-  if (!this->app_type->close)
+  if (!thisp->app_type->close)
     return 0;
   
-  if (this->app_type->close(this) == -1)
+  if (thisp->app_type->close(thisp) == -1)
     return -1;
   
-  this->app_isopen--;
+  thisp->app_isopen--;
   return 0;
 }
 
 /*******************************************************************************/
-extern void log4c_appender_print(const log4c_appender_t* this, FILE* a_stream)
+extern void log4c_appender_print(const log4c_appender_t* thisp, FILE* a_stream)
 {
-  if (!this) 
+  if (!thisp) 
     return;
   
     fprintf(a_stream, "{ name:'%s' type:'%s' layout:'%s' isopen:%d udata:%p}",
-	    this->app_name, 
-	    this->app_type ? this->app_type->name : "(not set)",
-	    log4c_layout_get_name(this->app_layout),
-	    this->app_isopen, 
-	    this->app_udata);
+	    thisp->app_name, 
+	    thisp->app_type ? thisp->app_type->name : "(not set)",
+	    log4c_layout_get_name(thisp->app_layout),
+	    thisp->app_isopen, 
+	    thisp->app_udata);
 }

@@ -22,7 +22,9 @@
 #include "jemalloc/jemalloc.h"
 #include <string.h>
 #if IJJS_PLATFORM == IJJS_PLATFORM_OSX
-# include <malloc/malloc.h>
+#   include <malloc/malloc.h>
+#elif IJJS_PLATFORM == IJJS_PLATFORM_LINUX
+#   include <malloc.h>
 #endif
 
 

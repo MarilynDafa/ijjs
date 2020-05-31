@@ -49,6 +49,9 @@
     <ClInclude Include="..\code\externals\cwin\unistd.h">
       <Filter>cwin</Filter>
     </ClInclude>
+    <ClInclude Include="..\code\externals\cwin\zlib.h">
+      <Filter>cwin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\code\externals\uv\src\win\async.c">

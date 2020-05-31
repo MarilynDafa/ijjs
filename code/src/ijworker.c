@@ -275,8 +275,13 @@ static JSValue ijWorkerConstructor(JSContext* ctx, JSValueConst new_target, IJS3
     }
     JSValue obj = ijNewWorker(ctx, fds[0], true);
     if (JS_IsException(obj)) {
+#if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
+        closesocket(fds[0]);
+        closesocket(fds[1]);
+#else
         close(fds[0]);
         close(fds[1]);
+#endif
         JS_FreeCString(ctx, path);
         return JS_EXCEPTION;
     }

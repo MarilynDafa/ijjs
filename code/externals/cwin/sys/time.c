@@ -7,7 +7,7 @@ static VOID(WINAPI* fnGetSystemTimePreciseAsFileTime)(LPFILETIME) = NULL;
 
 
 static double highResTimeInterval = 0;
-inline  void InitHighResRelativeTime() {
+static inline  void InitHighResRelativeTime() {
     LARGE_INTEGER perfFrequency;
 
     if (highResTimeInterval != 0)
@@ -26,7 +26,7 @@ inline  void InitHighResRelativeTime() {
     assert(highResTimeInterval != 0);
 }
 
-inline  void InitHighResAbsoluteTime() {
+static inline  void InitHighResAbsoluteTime() {
     FARPROC fp;
     HMODULE module;
 
@@ -163,7 +163,7 @@ int clock_gettime(clockid_t clock_id, struct timespec* tp) {
     FILETIME createTime, exitTime, kernalTime, userTime;
     switch (clock_id) {
     case CLOCK_REALTIME: {
-        const size_t kDeltaEpochIn100NS = 116444736000000000ULL;
+        const unsigned long long kDeltaEpochIn100NS = 116444736000000000ULL;
 
         GetSystemTimeAsFileTime(&createTime);
         return timeToTimespec(tp, ftToUint(createTime) - kDeltaEpochIn100NS);

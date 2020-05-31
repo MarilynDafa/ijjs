@@ -97,9 +97,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;PTW32_CONFIG_H;PTW32_STATIC_LIB;CONFIG_BIGNUM;HAVE_CONFIG_H;USE_PTHREAD_ID;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;CONFIG_BIGNUM;HAVE_CONFIG_H;USE_PTHREAD_ID;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningVersion>
+      </WarningVersion>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -112,9 +115,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;PTW32_CONFIG_H;PTW32_STATIC_LIB;CONFIG_BIGNUM;HAVE_CONFIG_H;USE_PTHREAD_ID;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;CONFIG_BIGNUM;HAVE_CONFIG_H;USE_PTHREAD_ID;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningVersion>
+      </WarningVersion>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,10 +135,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;PTW32_CONFIG_H;PTW32_STATIC_LIB;HAVE_CONFIG_H;USE_PTHREAD_ID;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;USE_PTHREAD_ID;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningVersion>
+      </WarningVersion>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,10 +157,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;PTW32_CONFIG_H;PTW32_STATIC_LIB;HAVE_CONFIG_H;USE_PTHREAD_ID;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;USE_PTHREAD_ID;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningVersion>
+      </WarningVersion>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

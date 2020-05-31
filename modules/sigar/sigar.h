@@ -91,7 +91,7 @@ typedef long long sigar_int64_t;
 
 #ifdef WIN32
 #   define SIGAR_DECLARE(type) \
-        __declspec(dllexport) type __stdcall
+        type __stdcall
 #else
 #   define SIGAR_DECLARE(type) type
 #endif

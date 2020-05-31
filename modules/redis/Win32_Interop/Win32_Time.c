@@ -39,13 +39,51 @@ static VOID(WINAPI *fnGetSystemTimePreciseAsFileTime)(LPFILETIME) = NULL;
 *  -1 : the system doesn't have high-resolution clock support
 */
 static double highResTimeInterval = 0;
+static inline  void _InitHighResRelativeTime() {
+    LARGE_INTEGER perfFrequency;
+
+    if (highResTimeInterval != 0)
+        return;
+
+    /* Retrieve high-resolution timer frequency
+    * and precompute its reciprocal.
+    */
+    if (QueryPerformanceFrequency(&perfFrequency)) {
+        highResTimeInterval = 1.0 / perfFrequency.QuadPart;
+    }
+    else {
+        highResTimeInterval = -1;
+    }
+
+    assert(highResTimeInterval != 0);
+}
+
+static inline  void _InitHighResAbsoluteTime() {
+    FARPROC fp;
+    HMODULE module;
+
+    if (fnGetSystemTimePreciseAsFileTime != NULL)
+        return;
+
+    /* Use GetSystemTimeAsFileTime as fallbcak where GetSystemTimePreciseAsFileTime is not available */
+    fnGetSystemTimePreciseAsFileTime = GetSystemTimeAsFileTime;
+    module = GetModuleHandleA("kernel32.dll");
+    if (module) {
+        fp = GetProcAddress(module, "GetSystemTimePreciseAsFileTime");
+        if (fp) {
+            fnGetSystemTimePreciseAsFileTime = (VOID(WINAPI*)(LPFILETIME)) fp;
+        }
+    }
+
+    assert(fnGetSystemTimePreciseAsFileTime != NULL);
+}
 
 uint64_t GetHighResRelativeTime(double scale) {
     LARGE_INTEGER counter;
 
     if (highResTimeInterval <= 0) {
         if (highResTimeInterval == 0) {
-            InitHighResRelativeTime();
+            _InitHighResRelativeTime();
         }
 
         /* If the performance interval is less than zero, there's no support. */
@@ -122,7 +160,7 @@ int gettimeofday_highres(struct timeval *tv, struct timezone *tz) {
     static int tzflag;
 
     if (NULL == fnGetSystemTimePreciseAsFileTime) {
-        InitHighResAbsoluteTime();
+        _InitHighResAbsoluteTime();
     }
 
     if (NULL != tv) {

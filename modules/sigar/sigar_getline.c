@@ -521,7 +521,7 @@ gl_char_cleanup()               /* undo effects of gl_char_init */
 int pause_()
 {
  static HANDLE hConsoleInput = NULL;
- static iCharCount = 0;
+ static int iCharCount = 0;
  static int chLastChar = 0;
 
  DWORD cRead;
