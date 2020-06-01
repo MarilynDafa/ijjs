@@ -35,7 +35,8 @@ this project is inspired by nodejs
 ## Building
 
 ```
-Windows/Linux: Visual Studio 2019 + clang
+Windows: Visual Studio 2019 + clang
+Linux: Visual Studio 2019 + clang + WSL
 OSX: XCode
 ```
 
