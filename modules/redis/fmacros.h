@@ -34,7 +34,6 @@
 
 #if defined(__linux__)
 #define _GNU_SOURCE
-#define _DEFAULT_SOURCE
 #endif
 
 #if defined(_AIX)

@@ -27,7 +27,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-#ifndef WIN32
+#ifndef WINDOWS
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #if defined(__OpenBSD__) || defined(__FreeBSD__) || defined(__NetBSD__) || defined(_AIX)
@@ -159,7 +159,7 @@ SIGAR_DECLARE(char *) sigar_strerror(sigar_t *sigar, int err)
 char *sigar_strerror_get(int err, char *errbuf, int buflen)
 {
     char *buf = NULL;
-#ifdef WIN32
+#ifdef WINDOWS
     DWORD len;
 
     len = FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM |
@@ -200,7 +200,7 @@ void sigar_strerror_set(sigar_t *sigar, char *msg)
     SIGAR_SSTRCPY(sigar->errbuf, msg);
 }
 
-#ifdef WIN32
+#ifdef WINDOWS
 #define vsnprintf _vsnprintf
 #endif
 
@@ -353,7 +353,7 @@ SIGAR_DECLARE(int) sigar_net_address_equals(sigar_net_address_t *addr1,
     }
 }
 
-#if !defined(WIN32) && !defined(NETWARE) && !defined(__hpux)
+#if !defined(WINDOWS) && !defined(NETWARE) && !defined(__hpux)
 #define sigar_inet_ntop inet_ntop
 #define sigar_inet_ntop_errno errno
 #else
@@ -519,7 +519,7 @@ SIGAR_DECLARE(char *) sigar_net_interface_flags_to_string(sigar_uint64_t flags, 
     return buf;
 }
 
-#ifdef WIN32
+#ifdef WINDOWS
 #define NET_SERVICES_FILE "C:\\windows\\system32\\drivers\\etc\\services"
 #else
 #define NET_SERVICES_FILE "/etc/services"
@@ -561,7 +561,7 @@ static int net_services_parse(sigar_cache_t *names, char *type)
 
         entry = sigar_cache_get(names, port);
         if (!entry->value) {
-#ifdef WIN32
+#ifdef WINDOWS
             entry->value = _strdup(name);
 #else
             entry->value = strdup(name);

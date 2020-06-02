@@ -324,7 +324,7 @@ static void     search_forw(int s);     /* look forw for current string */
 #include <bios.h>
 #endif
 
-#ifdef WIN32
+#ifdef WINDOWS
 #  define MSDOS
 #  include <io.h>
 #  include <windows.h>
@@ -504,7 +504,7 @@ gl_char_cleanup()               /* undo effects of gl_char_init */
 #endif
 }
 
-#if defined(MSDOS) && !defined(WIN32)
+#if defined(MSDOS) && !defined(WINDOWS)
 // +DECK, PAUSE, T=XCC, IF=WINNT. (from KERNDOS.CAR )
 #  include <conio.h>
    int pause_()
@@ -516,7 +516,7 @@ gl_char_cleanup()               /* undo effects of gl_char_init */
    }
 #endif
 
-#if defined(MSDOS) && defined(WIN32)
+#if defined(MSDOS) && defined(WINDOWS)
 //______________________________________________________________________________
 int pause_()
 {
@@ -582,7 +582,7 @@ gl_getc()
 # define k_ESC     27
 # define k_alt_H  -35
 # define k_beep     7
-# ifndef WIN32
+# ifndef WINDOWS
     int get_cursor__(int *,int *);
     int display_off__(int *);
     int display_on__();
@@ -656,13 +656,13 @@ gl_putc(int c)
 
     if ( !gl_passwd || !isgraph(c))
     {
-#ifdef WIN32
+#ifdef WINDOWS
        CharToOemBuff((char const *)&c,&ch,1);
 #endif
 
        sigar_write(1, &ch, 1);
     }
-#if defined(unix) || defined(MSDOS) || defined(WIN32) || defined(R__MWERKS)
+#if defined(unix) || defined(MSDOS) || defined(WINDOWS) || defined(R__MWERKS)
 #ifdef TIOCSETP         /* BSD in RAW mode, map NL to NL,CR */
     if (ch == '\n') {
         ch = '\r';
@@ -680,7 +680,7 @@ gl_puts(char *buf)
     int len = strlen(buf);
 
     if (gl_notty) return;
-#ifdef WIN32
+#ifdef WINDOWS
     {
      char *OemBuf = (char *)je_malloc(2*len);
      CharToOemBuff(buf,OemBuf,len);
@@ -698,7 +698,7 @@ gl_error(char *buf)
     int len = strlen(buf);
 
     gl_cleanup();
-#ifdef WIN32
+#ifdef WINDOWS
     {
       char *OemBuf = (char *)je_malloc(2*len);
       CharToOemBuff(buf,OemBuf,len);
@@ -802,7 +802,7 @@ sigar_getlinem(int mode, char *prompt)
     }
     while ((c = gl_getc()) >= 0) {
         gl_extent = 0;          /* reset to full extent */
-#ifndef WIN32
+#ifndef WINDOWS
         if (isprint(c)) {
 #else
         if (c >= ' ') {
@@ -960,7 +960,7 @@ sigar_getlinem(int mode, char *prompt)
                  break;
             default:          /* check for a terminal signal */
 
-#if defined(unix) || defined(WIN32) || defined(R__MWERKS)
+#if defined(unix) || defined(WINDOWS) || defined(R__MWERKS)
                 if (c > 0) {    /* ignore 0 (reset above) */
                     sig = 0;
 #ifdef SIGINT
@@ -977,10 +977,10 @@ sigar_getlinem(int mode, char *prompt)
 #endif
                     if (sig != 0) {
                         gl_cleanup();
-#if !defined(WIN32)
+#if !defined(WINDOWS)
                         raise(sig);
 #endif
-#ifdef WIN32
+#ifdef WINDOWS
                         if (sig == SIGINT) GenerateConsoleCtrlEvent(CTRL_C_EVENT,0);
                         else raise(sig);
 #endif

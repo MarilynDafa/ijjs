@@ -139,65 +139,105 @@
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/qjsc-linux/code/externals/quickjs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";CONFIG_BIGNUM;HAVE_CONFIG_H;tm_gmtoff=__tm_gmtoff;PRId64=lld;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined %(AdditionalOptions)</AdditionalOptions>
-      <CLanguageStandard>gnu99</CLanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+      <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\bin\linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>
+      </LibraryDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/qjsc-linux/code/externals/quickjs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";CONFIG_BIGNUM;HAVE_CONFIG_H;tm_gmtoff=__tm_gmtoff;PRId64=lld;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined %(AdditionalOptions)</AdditionalOptions>
-      <CLanguageStandard>gnu99</CLanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+      <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\bin\linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>
+      </LibraryDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/qjsc-linux/code/externals/quickjs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";CONFIG_BIGNUM;HAVE_CONFIG_H;tm_gmtoff=__tm_gmtoff;PRId64=lld;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined %(AdditionalOptions)</AdditionalOptions>
-      <CLanguageStandard>gnu99</CLanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+      <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\bin\linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>
+      </LibraryDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/qjsc-linux/code/externals/quickjs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";CONFIG_BIGNUM;HAVE_CONFIG_H;tm_gmtoff=__tm_gmtoff;PRId64=lld;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined %(AdditionalOptions)</AdditionalOptions>
-      <CLanguageStandard>gnu99</CLanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+      <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\bin\linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>
+      </LibraryDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/qjsc-linux/code/externals/quickjs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";CONFIG_BIGNUM;HAVE_CONFIG_H;tm_gmtoff=__tm_gmtoff;__USE_MISC;PRId64=lld;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined %(AdditionalOptions)</AdditionalOptions>
-      <CLanguageStandard>gnu99</CLanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+      <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\bin\linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>
+      </LibraryDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/qjsc-linux/code/externals/quickjs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";CONFIG_BIGNUM;HAVE_CONFIG_H;tm_gmtoff=__tm_gmtoff;__USE_MISC;PRId64=lld;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined %(AdditionalOptions)</AdditionalOptions>
-      <CLanguageStandard>gnu99</CLanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+      <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\bin\linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>
+      </LibraryDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/qjsc-linux/code/externals/quickjs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";CONFIG_BIGNUM;HAVE_CONFIG_H;tm_gmtoff=__tm_gmtoff;PRId64=lld;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined %(AdditionalOptions)</AdditionalOptions>
-      <CLanguageStandard>gnu99</CLanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+      <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\bin\linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>
+      </LibraryDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/qjsc-linux/code/externals/quickjs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";CONFIG_BIGNUM;HAVE_CONFIG_H;tm_gmtoff=__tm_gmtoff;PRId64=lld;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined %(AdditionalOptions)</AdditionalOptions>
-      <CLanguageStandard>gnu99</CLanguageStandard>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+      <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\bin\linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>
+      </LibraryDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

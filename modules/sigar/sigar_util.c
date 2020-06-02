@@ -26,7 +26,7 @@
 #include "sigar_util.h"
 #include "sigar_os.h"
 
-#ifndef WIN32
+#ifndef WINDOWS
 
 #include <dirent.h>
 #include <sys/stat.h>
@@ -345,7 +345,7 @@ int sigar_mem_calc_ram(sigar_t *sigar, sigar_mem_t *mem)
     return ram;
 }
 
-#ifndef WIN32
+#ifndef WINDOWS
 
 sigar_iodev_t *sigar_iodev_get(sigar_t *sigar,
                                const char *dirname)
@@ -522,7 +522,7 @@ static void sigar_cpuid(sigar_uint32_t request,
                   : "memory");
 }
 #  endif
-#elif defined(WIN32)
+#elif defined(WINDOWS)
 #  ifdef _M_X64
 #  include <intrin.h>
 #  define SIGAR_HAS_CPUID
@@ -731,7 +731,7 @@ int sigar_cpu_mhz_from_model(char *model)
     return mhz;
 }
 
-#if !defined(WIN32) && !defined(NETWARE)
+#if !defined(WINDOWS) && !defined(NETWARE)
 #include <netdb.h>
 #include <rpc/rpc.h>
 #include <rpc/pmap_prot.h>
@@ -826,7 +826,7 @@ SIGAR_DECLARE(int) sigar_rpc_ping(char *host,
 int sigar_file2str(const char *fname, char *buffer, int buflen)
 {
     int len, status;
-#ifdef WIN32
+#ifdef WINDOWS
     int fd = _open(fname, O_RDONLY);
 #else
 
@@ -837,7 +837,7 @@ int sigar_file2str(const char *fname, char *buffer, int buflen)
         return ENOENT;
     }
 
-#ifdef WIN32
+#ifdef WINDOWS
     if ((len = _read(fd, buffer, buflen)) < 0) {
 #else
     if ((len = read(fd, buffer, buflen)) < 0) {
@@ -848,7 +848,7 @@ int sigar_file2str(const char *fname, char *buffer, int buflen)
         status = SIGAR_OK;
         buffer[len] = '\0';
     }
-#ifdef WIN32
+#ifdef WINDOWS
     _close(fd);
 #else
     close(fd);
@@ -857,11 +857,11 @@ int sigar_file2str(const char *fname, char *buffer, int buflen)
     return status;
 }
 
-#ifdef WIN32
+#ifdef WINDOWS
 #define vsnprintf _vsnprintf
 #endif
 
-#ifdef WIN32
+#ifdef WINDOWS
 #   define rindex strrchr
 #endif
 
@@ -1057,7 +1057,7 @@ SIGAR_DECLARE(void) sigar_log_impl_file(sigar_t *sigar, void *data,
     fprintf(fp, "[%s] %s\n", log_levels[level], message);
 }
 
-#ifndef WIN32
+#ifndef WINDOWS
 sigar_int64_t sigar_time_now_millis(void)
 {
     struct timeval tv;
