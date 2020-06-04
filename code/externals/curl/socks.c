@@ -62,15 +62,13 @@ int Curl_blockread_all(struct connectdata *conn, /* connection data */
   int result;
   *n = 0;
   for(;;) {
-    timediff_t timeout_ms = Curl_timeleft(conn->data, NULL, TRUE);
-    if(timeout_ms < 0) {
+    timediff_t timeleft = Curl_timeleft(conn->data, NULL, TRUE);
+    if(timeleft < 0) {
       /* we already got the timeout */
       result = CURLE_OPERATION_TIMEDOUT;
       break;
     }
-    if(!timeout_ms)
-      timeout_ms = TIME_T_MAX;
-    if(SOCKET_READABLE(sockfd, timeout_ms) <= 0) {
+    if(SOCKET_READABLE(sockfd, timeleft) <= 0) {
       result = ~CURLE_OK;
       break;
     }

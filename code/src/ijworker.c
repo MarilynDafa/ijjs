@@ -165,7 +165,7 @@ static IJVoid ijMaybeEmitEvent(IJJSWorker* w, IJS32 event, JSValue arg) {
     CHECK_EQ(JS_EnqueueJob(ctx, ijEmitEvent, 2, (JSValueConst*)&args), 0);
 }
 
-static IJVoid uvAllocCb(uv_handle_t* handle, IJU32 suggested_size, uv_buf_t* buf) {
+static IJVoid uvAllocCb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf) {
     IJJSWorker* w = handle->data;
     CHECK_NOT_NULL(w);
     buf->base = js_malloc(w->ctx, suggested_size);
@@ -322,7 +322,7 @@ static JSValue ijWorkerPostMessage(JSContext* ctx, JSValueConst this_val, IJS32 
     IJJSWorkerWriteReq* wr = js_malloc(ctx, sizeof(*wr));
     if (!wr)
         return JS_EXCEPTION;
-    IJU32 len;
+    size_t len;
     IJU8* buf = JS_WriteObject(ctx, &len, argv[0], 0);
     if (!buf) {
         js_free(ctx, wr);

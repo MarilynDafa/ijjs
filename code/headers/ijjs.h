@@ -37,7 +37,7 @@
 
 typedef struct IJJSRunOptions {
     IJBool abort_on_unhandled_rejection;
-    IJU32 stack_size;
+    size_t stack_size;
 } IJJSRunOptions;
 
 typedef struct IJJSRuntime {
@@ -208,7 +208,7 @@ IJ_API JSValue ijNewRejectedPromise(
 IJ_API JSValue ijNewUint8Array(
     JSContext* ctx, 
     IJU8* data, 
-    IJU32 size);
+    size_t size);
 
 IJ_API IJVoid ijCurlInit();
 
@@ -373,7 +373,7 @@ IJ_API JSValue ijGetArgs(
 IJ_API IJS32 ijEvalBinary(
     JSContext* ctx, 
     const IJU8* buf, 
-    IJU32 buf_len);
+    size_t buf_len);
 
 IJ_API IJVoid ijBootstrapGlobals(
     JSContext* ctx);

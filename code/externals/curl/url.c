@@ -114,7 +114,6 @@ bool curl_win32_idn_to_ascii(const char *in, char **out);
 #include "http_ntlm.h"
 #include "curl_rtmp.h"
 #include "gopher.h"
-#include "mqtt.h"
 #include "http_proxy.h"
 #include "conncache.h"
 #include "multihandle.h"
@@ -231,10 +230,6 @@ static const struct Curl_handler * const protocols[] = {
 
 #ifndef CURL_DISABLE_GOPHER
   &Curl_handler_gopher,
-#endif
-
-#ifdef CURL_ENABLE_MQTT
-  &Curl_handler_mqtt,
 #endif
 
 #ifdef USE_LIBRTMP
@@ -3045,14 +3040,7 @@ static CURLcode parse_connect_to_slist(struct Curl_easy *data,
 
 #ifdef USE_ALTSVC
   if(data->asi && !host && (port == -1) &&
-     ((conn->handler->protocol == CURLPROTO_HTTPS) ||
-#ifdef CURLDEBUG
-      /* allow debug builds to circumvent the HTTPS restriction */
-      getenv("CURL_ALTSVC_HTTP")
-#else
-      0
-#endif
-       )) {
+     (conn->handler->protocol == CURLPROTO_HTTPS)) {
     /* no connect_to match, try alt-svc! */
     enum alpnid srcalpnid;
     bool hit;

@@ -77,42 +77,42 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
-    <TargetName>cli</TargetName>
+    <TargetName>ijjs-cli</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
-    <TargetName>cli</TargetName>
+    <TargetName>ijjs-cli</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
-    <TargetName>cli</TargetName>
+    <TargetName>ijjs-cli</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
-    <TargetName>cli</TargetName>
+    <TargetName>ijjs-cli</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
-    <TargetName>cli</TargetName>
+    <TargetName>ijjs-cli</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
-    <TargetName>cli</TargetName>
+    <TargetName>ijjs-cli</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
-    <TargetName>cli</TargetName>
+    <TargetName>ijjs-cli</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
-    <TargetName>cli</TargetName>
+    <TargetName>ijjs-cli</TargetName>
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\code\main.c" />

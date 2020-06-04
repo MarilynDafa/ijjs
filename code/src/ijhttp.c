@@ -20,7 +20,6 @@
  */
 #include "ijjs.h"
 #include "jemalloc/jemalloc.h"
-#include "mbedtls/platform.h"
 
 static uv_once_t curl__init_once = UV_ONCE_INIT;
 static IJAnsi* je_strdup(IJAnsi* s)
@@ -31,7 +30,6 @@ static IJAnsi* je_strdup(IJAnsi* s)
     return t;
 }
 IJVoid ijCurlInitOnce(IJVoid) {
-    mbedtls_platform_set_calloc_free(je_calloc, je_free);
     curl_global_init_mem(CURL_GLOBAL_ALL, je_malloc, je_free, je_realloc, je_strdup, je_calloc);
 }
 
@@ -39,8 +37,8 @@ IJVoid ijCurlInit(IJVoid) {
     uv_once(&curl__init_once, ijCurlInitOnce);
 }
 
-IJU32 ijCurlWriteCb(IJAnsi* ptr, IJU32 size, IJU32 nmemb, IJVoid* userdata) {
-    IJU32 realsize = size * nmemb;
+size_t ijCurlWriteCb(IJAnsi* ptr, size_t size, size_t nmemb, IJVoid* userdata) {
+    size_t realsize = size * nmemb;
     DynBuf* dbuf = userdata;
     if (dbuf_put(dbuf, (const IJU8*)ptr, realsize))
         return -1;
@@ -55,10 +53,11 @@ IJS32 ijCurlLoadHttp(DynBuf* dbuf, const IJAnsi* url) {
     curl_handle = curl_easy_init();
     curl_easy_setopt(curl_handle, CURLOPT_URL, url);
     curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, ijCurlWriteCb);
-    curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (IJVoid *) dbuf);
-     curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "ijjs/1.0");
-#if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
-    curl_easy_setopt(curl_handle, CURLOPT_CAINFO, "cacert.pem");
+    curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (IJVoid*)dbuf);
+    curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "ijjs/1.0");
+    curl_easy_setopt(curl_handle, CURLOPT_SSL_VERIFYPEER, 1L);
+    curl_easy_setopt(curl_handle, CURLOPT_SSL_VERIFYHOST, 2L);
+#if IJJS_PLATFORM != IJJS_PLATFORM_WIN32
 #endif
     res = curl_easy_perform(curl_handle);
     if (res == CURLE_OK) {

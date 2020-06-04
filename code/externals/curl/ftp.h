@@ -150,6 +150,7 @@ struct ftp_conn {
      connection to */
   char *newhost;          /* this is the pair to connect the DATA... */
   unsigned short newport; /* connection to */
+
 };
 
 #define DEFAULT_ACCEPT_TIMEOUT   60000 /* milliseconds == one minute */

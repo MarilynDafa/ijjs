@@ -76,7 +76,7 @@ static JSValue ijGetEnv(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVal
     if (!name)
         return JS_EXCEPTION;
     IJAnsi buf[1024];
-    IJU32 size = sizeof(buf);
+    size_t size = sizeof(buf);
     IJAnsi* dbuf = buf;
     IJS32 r;
     r = uv_os_getenv(name, dbuf, &size);
@@ -123,7 +123,7 @@ static JSValue ijUnsetEnv(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSV
 
 static JSValue ijCwd(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     IJAnsi buf[1024];
-    IJU32 size = sizeof(buf);
+    size_t size = sizeof(buf);
     IJAnsi* dbuf = buf;
     IJS32 r;
     r = uv_cwd(dbuf, &size);
@@ -147,7 +147,7 @@ static JSValue ijCwd(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueC
 
 static JSValue ijHomeDir(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     IJAnsi buf[1024];
-    IJU32 size = sizeof(buf);
+    size_t size = sizeof(buf);
     IJAnsi* dbuf = buf;
     IJS32 r;
     r = uv_os_homedir(dbuf, &size);
@@ -171,7 +171,7 @@ static JSValue ijHomeDir(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVa
 
 static JSValue ijTmpDir(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     IJAnsi buf[1024];
-    IJU32 size = sizeof(buf);
+    size_t size = sizeof(buf);
     IJAnsi* dbuf = buf;
     IJS32 r;
     r = uv_os_tmpdir(dbuf, &size);
@@ -195,7 +195,7 @@ static JSValue ijTmpDir(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVal
 
 static JSValue ijExePath(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     IJAnsi buf[1024];
-    IJU32 size = sizeof(buf);
+    size_t size = sizeof(buf);
     IJAnsi* dbuf = buf;
     IJS32 r;
     r = uv_exepath(dbuf, &size);
@@ -242,7 +242,7 @@ static JSValue ijPrompt(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVal
 }
 
 static JSValue ijRandom(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
-    IJU32 size;
+    size_t size;
     IJU8* buf = JS_GetArrayBuffer(ctx, &size, argv[0]);
     if (!buf)
         return JS_EXCEPTION;

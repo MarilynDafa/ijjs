@@ -164,6 +164,17 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
     if (name[0] != '.') {
         return js_strdup(ctx, name);
     }
+#if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
+    for (p = base_name; *p; p++) {
+        if (p[0] == '/')
+            p[0] = '\\';
+    }
+#else
+    for (p = base_name; *p; p++) {
+        if (p[0] == '\\')
+            p[0] = '/';
+    }
+#endif
     p = strrchr(base_name, IJJS__PATHSEP);
     if (p)
         len = p - base_name;
@@ -203,6 +214,11 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
     for (p = filename; *p; p++) {
         if (p[0] == '/')
             p[0] = '\\';
+    }
+#else
+    for (p = filename; *p; p++) {
+        if (p[0] == '\\')
+            p[0] = '/';
     }
 #endif
     return filename;

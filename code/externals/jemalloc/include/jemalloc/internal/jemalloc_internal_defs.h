@@ -278,17 +278,26 @@
 #define LG_SIZEOF_INT 2
 
 /* sizeof(long) == 2^LG_SIZEOF_LONG. */
-#ifdef WIN32
+#ifdef _WINDOWS
 #define LG_SIZEOF_LONG 2
+#define LG_SIZEOF_INTMAX_T 3
 #else
-#define LG_SIZEOF_LONG 3
+#	if defined(__amd64__) || \
+		defined(__x86_64) || defined(__x86_64__) || defined(_M_IA64) || \
+		defined(_M_AMD64)
+#	define LG_SIZEOF_LONG 3
+#define LG_SIZEOF_INTMAX_T 3
+#	else
+#	define LG_SIZEOF_LONG 2
+#define LG_SIZEOF_INTMAX_T 2
+#	endif
 #endif
+
 
 /* sizeof(long long) == 2^LG_SIZEOF_LONG_LONG. */
 #define LG_SIZEOF_LONG_LONG 3
 
 /* sizeof(intmax_t) == 2^LG_SIZEOF_INTMAX_T. */
-#define LG_SIZEOF_INTMAX_T 3
 
 /* glibc malloc hooks (__malloc_hook, __realloc_hook, __free_hook). */
 /* #undef JEMALLOC_GLIBC_MALLOC_HOOK */

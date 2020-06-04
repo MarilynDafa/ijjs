@@ -174,9 +174,6 @@ int Curl_ssl_init(void)
   return Curl_ssl->init();
 }
 
-#if defined(CURL_WITH_MULTI_SSL)
-static const struct Curl_ssl Curl_ssl_multi;
-#endif
 
 /* Global cleanup */
 void Curl_ssl_cleanup(void)
@@ -184,9 +181,6 @@ void Curl_ssl_cleanup(void)
   if(init_ssl) {
     /* only cleanup if we did a previous init */
     Curl_ssl->cleanup();
-#if defined(CURL_WITH_MULTI_SSL)
-    Curl_ssl = &Curl_ssl_multi;
-#endif
     init_ssl = FALSE;
   }
 }
@@ -495,7 +489,6 @@ CURLcode Curl_ssl_addsessionid(struct connectdata *conn,
   store->scheme = conn->handler->scheme;
 
   if(!Curl_clone_primary_ssl_config(ssl_config, &store->ssl_config)) {
-    Curl_free_primary_ssl_config(&store->ssl_config);
     store->sessionid = NULL; /* let caller free sessionid */
     free(clone_host);
     free(clone_conn_to_host);

@@ -63,8 +63,8 @@ typedef struct {
     IJBool sent;
     IJBool async;
     unsigned long timeout;
-    short response_type;
-    unsigned short ready_state;
+    IJS16 response_type;
+    IJU16 ready_state;
     struct {
         IJAnsi* raw;
         JSValue status;
@@ -177,26 +177,26 @@ static IJVoid curlmDoneCb(CURLMsg* message, IJVoid* arg) {
     x->curl_h = NULL;
 }
 
-static IJU32 curlmDataCb(IJAnsi* ptr, IJU32 size, IJU32 nmemb, IJVoid* userdata) {
+static size_t curlmDataCb(IJAnsi* ptr, size_t size, size_t nmemb, IJVoid* userdata) {
     IJJSXhr* x = userdata;
     CHECK_NOT_NULL(x);
     if (x->ready_state == XHR_RSTATE_HEADERS_RECEIVED) {
         x->ready_state = XHR_RSTATE_LOADING;
         ijMaybeEmitEvent(x, XHR_EVENT_READY_STATE_CHANGED, JS_UNDEFINED);
     }
-    IJU32 realsize = size * nmemb;
+    size_t realsize = size * nmemb;
     if (dbuf_put(&x->result.bbuf, (const IJU8*)ptr, realsize))
         return -1;
     return realsize;
 }
 
-static IJU32 curlmHeaderCb(IJAnsi* ptr, IJU32 size, IJU32 nmemb, IJVoid* userdata) {
+static size_t curlmHeaderCb(IJAnsi* ptr, size_t size, size_t nmemb, IJVoid* userdata) {
     static const IJAnsi status_line[] = "HTTP/";
     static const IJAnsi emptly_line[] = "\r\n";
     IJJSXhr* x = userdata;
     CHECK_NOT_NULL(x);
     DynBuf* hbuf = &x->result.hbuf;
-    IJU32 realsize = size * nmemb;
+    size_t realsize = size * nmemb;
     if (strncmp(status_line, ptr, sizeof(status_line) - 1) == 0) {
         if (hbuf->size == 0) {
             ijMaybeEmitEvent(x, XHR_EVENT_LOAD_START, JS_UNDEFINED);
@@ -297,9 +297,8 @@ static JSValue ijXhrConstructor(JSContext* ctx, JSValueConst new_target, IJS32 a
     curl_easy_setopt(x->curl_h, CURLOPT_WRITEDATA, x);
     curl_easy_setopt(x->curl_h, CURLOPT_HEADERFUNCTION, curlmHeaderCb);
     curl_easy_setopt(x->curl_h, CURLOPT_HEADERDATA, x);
-#if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
-    curl_easy_setopt(x->curl_h, CURLOPT_CAINFO, "cacert.pem");
-#endif
+    curl_easy_setopt(x->curl_h, CURLOPT_SSL_VERIFYPEER, 1L);
+    curl_easy_setopt(x->curl_h, CURLOPT_SSL_VERIFYHOST, 2L);
     JS_SetOpaque(obj, x);
     return obj;
 }
@@ -421,6 +420,8 @@ static JSValue ijXhrStatusGet(JSContext* ctx, JSValueConst this_val) {
     IJJSXhr* x = ijXhrGet(ctx, this_val);
     if (!x)
         return JS_EXCEPTION;
+
+    int tag = JS_VALUE_GET_NORM_TAG(x->status.status);
     return JS_DupValue(ctx, x->status.status);
 }
 
@@ -527,7 +528,7 @@ static JSValue ijXhrGetResponseHeader(JSContext* ctx, JSValueConst this_val, IJS
             p1++; 
             for (; *p1 == ' '; ++p1)
                 ;
-            IJU32 size = p - p1;
+            size_t size = p - p1;
             if (size > 0) {
                 dbuf_put(&r, (const IJU8*)p1, size);
                 dbuf_putstr(&r, ", ");
@@ -614,7 +615,7 @@ static JSValue ijXhrSend(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVa
     if (!x->sent) {
         JSValue arg = argv[0];
         if (JS_IsString(arg)) {
-            IJU32 size;
+            size_t size;
             const IJAnsi* body = JS_ToCStringLen(ctx, &size, arg);
             if (body) {
                 curl_easy_setopt(x->curl_h, CURLOPT_POSTFIELDSIZE, (long)size);

@@ -67,7 +67,7 @@ extern const IJU8 wasm[];
 extern const IJU32 wasm_size;
 
 
-IJS32 ijEvalBinary(JSContext* ctx, const IJU8* buf, IJU32 buf_len) {
+IJS32 ijEvalBinary(JSContext* ctx, const IJU8* buf, size_t buf_len) {
     JSValue obj = JS_ReadObject(ctx, buf, buf_len, JS_READ_OBJ_BYTECODE);
     if (JS_IsException(obj))
         goto error;

@@ -138,5 +138,8 @@
     <ClCompile Include="..\code\externals\cwin\unistd.c">
       <Filter>cwin</Filter>
     </ClCompile>
+    <ClCompile Include="..\code\src\m.c">
+      <Filter>cwin</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -28,7 +28,7 @@ typedef struct {
     IJS32 finalized;
     uv_udp_t udp;
     struct {
-        IJU32 size;
+        size_t size;
         IJJSPromise result;
     } read;
 } IJJSUdp;
@@ -36,7 +36,7 @@ typedef struct {
 typedef struct {
     uv_udp_send_t req;
     IJJSPromise result;
-    IJU32 size;
+    size_t size;
     IJAnsi data[];
 } IJJSSendReq;
 
@@ -94,7 +94,7 @@ static JSValue ijUdpClose(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSV
     return JS_UNDEFINED;
 }
 
-static IJVoid uvUdpAllocCb(uv_handle_t* handle, IJU32 suggested_size, uv_buf_t* buf) {
+static IJVoid uvUdpAllocCb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf) {
     IJJSUdp* u = handle->data;
     CHECK_NOT_NULL(u);
     buf->base = js_malloc(u->ctx, u->read.size);
@@ -165,7 +165,7 @@ static JSValue ijUdpSend(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVa
         return JS_EXCEPTION;
     JSValue jsData = argv[0];
     IJBool is_string = false;
-    IJU32 size;
+    size_t size;
     IJAnsi* buf;
     if (JS_IsString(jsData)) {
         is_string = true;
@@ -173,7 +173,7 @@ static JSValue ijUdpSend(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVa
         if (!buf)
             return JS_EXCEPTION;
     } else {
-        IJU32 aoffset, asize;
+        size_t aoffset, asize;
         JSValue abuf = JS_GetTypedArrayBuffer(ctx, jsData, &aoffset, &asize, NULL);
         if (JS_IsException(abuf))
             return abuf;

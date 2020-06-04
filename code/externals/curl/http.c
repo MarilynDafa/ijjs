@@ -1229,21 +1229,8 @@ CURLcode Curl_add_buffer_send(Curl_send_buffer **inp,
     memcpy(data->state.ulbuf, ptr, sendsize);
     ptr = data->state.ulbuf;
   }
-  else {
-#ifdef CURLDEBUG
-    /* Allow debug builds override this logic to force short initial sends */
-    char *p = getenv("CURL_SMALLREQSEND");
-    if(p) {
-      size_t altsize = (size_t)strtoul(p, NULL, 10);
-      if(altsize)
-        sendsize = CURLMIN(size, altsize);
-      else
-        sendsize = size;
-    }
-    else
-#endif
+  else
     sendsize = size;
-  }
 
   result = Curl_write(conn, sockfd, ptr, sendsize, &amount);
 
@@ -1333,6 +1320,7 @@ CURLcode Curl_add_bufferf(Curl_send_buffer **inp, const char *fmt, ...)
 {
   char *s;
   va_list ap;
+  Curl_send_buffer *in = *inp;
   va_start(ap, fmt);
   s = vaprintf(fmt, ap); /* this allocs a new string to append */
   va_end(ap);
@@ -1343,7 +1331,9 @@ CURLcode Curl_add_bufferf(Curl_send_buffer **inp, const char *fmt, ...)
     return result;
   }
   /* If we failed, we cleanup the whole buffer and return error */
-  Curl_add_buffer_free(inp);
+  free(in->buffer);
+  free(in);
+  *inp = NULL;
   return CURLE_OUT_OF_MEMORY;
 }
 
@@ -1360,7 +1350,9 @@ CURLcode Curl_add_buffer(Curl_send_buffer **inp, const void *inptr,
     /* If resulting used size of send buffer would wrap size_t, cleanup
        the whole buffer and return error. Otherwise the required buffer
        size will fit into a single allocatable memory chunk */
-    Curl_add_buffer_free(inp);
+    Curl_safefree(in->buffer);
+    free(in);
+    *inp = NULL;
     return CURLE_OUT_OF_MEMORY;
   }
 
@@ -2610,10 +2602,8 @@ CURLcode Curl_http(struct connectdata *conn, bool *done)
   if(conn->bits.altused && !Curl_checkheaders(conn, "Alt-Used")) {
     altused = aprintf("Alt-Used: %s:%d\r\n",
                       conn->conn_to_host.name, conn->conn_to_port);
-    if(!altused) {
-      Curl_add_buffer_free(&req_buffer);
+    if(!altused)
       return CURLE_OUT_OF_MEMORY;
-    }
   }
 #endif
   result =
@@ -3054,7 +3044,7 @@ CURLcode Curl_http(struct connectdata *conn, bool *done)
   }
   if(result)
     return result;
-  if(!postsize && (http->sending != HTTPSEND_REQUEST))
+  if(!postsize)
     data->req.upload_done = TRUE;
 
   if(data->req.writebytecount) {

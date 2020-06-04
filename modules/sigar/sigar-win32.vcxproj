@@ -101,6 +101,7 @@
       <AdditionalDependencies>libijjs.lib;Netapi32.lib;version.lib;ws2_32.lib;Ole32.lib;OleAut32.lib;wbemuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -118,6 +119,7 @@
       <AdditionalDependencies>libijjs.lib;Netapi32.lib;version.lib;ws2_32.lib;Ole32.lib;OleAut32.lib;wbemuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -139,6 +141,7 @@
       <AdditionalDependencies>libijjs.lib;Netapi32.lib;version.lib;ws2_32.lib;Ole32.lib;OleAut32.lib;wbemuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -160,6 +163,7 @@
       <AdditionalDependencies>libijjs.lib;Netapi32.lib;version.lib;ws2_32.lib;Ole32.lib;OleAut32.lib;wbemuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

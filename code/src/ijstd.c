@@ -51,7 +51,7 @@ static JSValue ijStdGc(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValu
 
 static JSValue ijEvalScript(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     const IJAnsi* str;
-    IJU32 len;
+    size_t len;
     JSValue ret;
     str = JS_ToCStringLen(ctx, &len, argv[0]);
     if (!str)

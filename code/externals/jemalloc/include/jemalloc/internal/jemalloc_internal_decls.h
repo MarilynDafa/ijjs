@@ -2,11 +2,10 @@
 #define JEMALLOC_INTERNAL_DECLS_H
 
 #include <math.h>
+#include "jemalloc/jemalloc.h"
 #ifdef _WIN32
 #  include <windows.h>
-#include "../jemalloc.h"
-//#  include "msvc_compat/windows_extra.h"
-#  if defined(_WIN64) || defined(__amd64) || defined(__APPLE__)
+#  ifdef _WIN64
 #    if LG_VADDR <= 32
 #      error Generate the headers using x64 vcargs
 #    endif

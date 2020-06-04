@@ -75,15 +75,15 @@ typedef struct {
     JSContext* ctx;
     JSValue obj;
     IJJSPromise result;
-} TIJSFsReq;
+} IJJSFsReq;
 
 typedef struct {
-    TIJSFsReq base;
+    IJJSFsReq base;
     IJAnsi* buf;
 } IJJSFsReadReq;
 
 typedef struct {
-    TIJSFsReq base;
+    IJJSFsReq base;
     IJAnsi data[];
 } IJJSFsWriteReq;
 
@@ -172,7 +172,7 @@ static IJJSDir* ijDirGet(JSContext* ctx, JSValueConst obj) {
     return JS_GetOpaque2(ctx, obj, ijjs_dir_class_id);
 }
 
-static JSValue ijFsReqInit(JSContext* ctx, TIJSFsReq* fr, JSValue obj) {
+static JSValue ijFsReqInit(JSContext* ctx, IJJSFsReq* fr, JSValue obj) {
     fr->ctx = ctx;
     fr->req.data = fr;
     fr->obj = JS_DupValue(ctx, obj);
@@ -180,7 +180,7 @@ static JSValue ijFsReqInit(JSContext* ctx, TIJSFsReq* fr, JSValue obj) {
 }
 
 static IJVoid uvFsReqCb(uv_fs_t* req) {
-    TIJSFsReq* fr = req->data;
+    IJJSFsReq* fr = req->data;
     if (!fr)
         return;
     JSContext* ctx = fr->ctx;
@@ -288,7 +288,7 @@ static JSValue ijFileRead(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSV
         js_free(ctx, rr);
         return JS_EXCEPTION;
     }
-    TIJSFsReq* fr = (TIJSFsReq*)&rr->base;
+    IJJSFsReq* fr = (IJJSFsReq*)&rr->base;
     uv_buf_t b = uv_buf_init(rr->buf, len);
     IJS32 r = uv_fs_read(ijGetLoop(ctx), &fr->req, f->fd, &b, 1, pos, uvFsReqCb);
     if (r != 0) {
@@ -306,7 +306,7 @@ static JSValue ijFileWrite(JSContext* ctx, JSValueConst this_val, IJS32 argc, JS
         return JS_EXCEPTION;
     JSValue jsData = argv[0];
     IJBool is_string = false;
-    IJU32 size;
+    size_t size;
     IJAnsi *buf;
     if (JS_IsString(jsData)) {
         is_string = true;
@@ -314,7 +314,7 @@ static JSValue ijFileWrite(JSContext* ctx, JSValueConst this_val, IJS32 argc, JS
         if (!buf)
             return JS_EXCEPTION;
     } else {
-        IJU32 aoffset, asize;
+        size_t aoffset, asize;
         JSValue abuf = JS_GetTypedArrayBuffer(ctx, jsData, &aoffset, &asize, NULL);
         if (JS_IsException(abuf))
             return abuf;
@@ -340,7 +340,7 @@ static JSValue ijFileWrite(JSContext* ctx, JSValueConst this_val, IJS32 argc, JS
     memcpy(wr->data, buf, size);
     if (is_string)
         JS_FreeCString(ctx, buf);
-    TIJSFsReq* fr = (TIJSFsReq*)&wr->base;
+    IJJSFsReq* fr = (IJJSFsReq*)&wr->base;
     uv_buf_t b = uv_buf_init(wr->data, size);
     IJS32 r = uv_fs_write(ijGetLoop(ctx), &fr->req, f->fd, &b, 1, pos, uvFsReqCb);
     if (r != 0) {
@@ -355,7 +355,7 @@ static JSValue ijFileClose(JSContext* ctx, JSValueConst this_val, IJS32 argc, JS
     IJJSFile* f = ijFileGet(ctx, this_val);
     if (!f)
         return JS_EXCEPTION;
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr)
         return JS_EXCEPTION;
     IJS32 r = uv_fs_close(ijGetLoop(ctx), &fr->req, f->fd, uvFsReqCb);
@@ -370,7 +370,7 @@ static JSValue ijFileStat(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSV
     IJJSFile* f = ijFileGet(ctx, this_val);
     if (!f)
         return JS_EXCEPTION;
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr)
         return JS_EXCEPTION;
     IJS32 r = uv_fs_fstat(ijGetLoop(ctx), &fr->req, f->fd, uvFsReqCb);
@@ -399,7 +399,7 @@ static JSValue ijDirClose(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSV
     IJJSDir* d = ijDirGet(ctx, this_val);
     if (!d)
         return JS_EXCEPTION;
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr)
         return JS_EXCEPTION;
     IJS32 r = uv_fs_closedir(ijGetLoop(ctx), &fr->req, d->dir, uvFsReqCb);
@@ -423,7 +423,7 @@ static JSValue ijDirNext(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVa
         return JS_EXCEPTION;
     if (d->done)
         return JS_UNDEFINED;
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr)
         return JS_EXCEPTION;
     d->dir->dirents = &d->dirent;
@@ -440,7 +440,7 @@ static JSValue ijDirIterator(JSContext* ctx, JSValueConst this_val, IJS32 argc, 
     return JS_DupValue(ctx, this_val);
 }
 
-static IJS32 ijUvOpenFlags(const IJAnsi* strflags, IJU32 len) {
+static IJS32 ijUvOpenFlags(const IJAnsi* strflags, size_t len) {
     IJS32 flags = 0, read = 0, write = 0;
     for (IJS32 i = 0; i < len; i++) {
         switch (strflags[i]) {
@@ -473,7 +473,7 @@ static IJS32 ijUvOpenFlags(const IJAnsi* strflags, IJU32 len) {
 static JSValue ijFsOpen(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     const IJAnsi* path;
     const IJAnsi* strflags;
-    IJU32 len;
+    size_t len;
     IJS32 flags;
     IJS32 mode;
     path = JS_ToCString(ctx, argv[0]);
@@ -491,7 +491,7 @@ static JSValue ijFsOpen(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVal
         JS_FreeCString(ctx, path);
         return JS_EXCEPTION;
     }
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr) {
         JS_FreeCString(ctx, path);
         return JS_EXCEPTION;
@@ -509,7 +509,7 @@ static JSValue ijFsStat(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVal
     const IJAnsi* path = JS_ToCString(ctx, argv[0]);
     if (!path)
         return JS_EXCEPTION;
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr) {
         JS_FreeCString(ctx, path);
         return JS_EXCEPTION;
@@ -531,7 +531,7 @@ static JSValue ijFsRealPath(JSContext* ctx, JSValueConst this_val, IJS32 argc, J
     const IJAnsi* path = JS_ToCString(ctx, argv[0]);
     if (!path)
         return JS_EXCEPTION;
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr) {
         JS_FreeCString(ctx, path);
         return JS_EXCEPTION;
@@ -549,7 +549,7 @@ static JSValue ijFsUnlink(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSV
     const IJAnsi* path = JS_ToCString(ctx, argv[0]);
     if (!path)
         return JS_EXCEPTION;
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr) {
         JS_FreeCString(ctx, path);
         return JS_EXCEPTION;
@@ -572,7 +572,7 @@ static JSValue ijFsRename(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSV
         JS_FreeCString(ctx, path);
         return JS_EXCEPTION;
     }
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr) {
         JS_FreeCString(ctx, path);
         JS_FreeCString(ctx, new_path);
@@ -592,7 +592,7 @@ static JSValue ijFsMkdTemp(JSContext* ctx, JSValueConst this_val, IJS32 argc, JS
     const IJAnsi* tpl = JS_ToCString(ctx, argv[0]);
     if (!tpl)
         return JS_EXCEPTION;
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr) {
         JS_FreeCString(ctx, tpl);
         return JS_EXCEPTION;
@@ -610,7 +610,7 @@ static JSValue ijFsMksTemp(JSContext* ctx, JSValueConst this_val, IJS32 argc, JS
     const IJAnsi* tpl = JS_ToCString(ctx, argv[0]);
     if (!tpl)
         return JS_EXCEPTION;
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr) {
         JS_FreeCString(ctx, tpl);
         return JS_EXCEPTION;
@@ -628,7 +628,7 @@ static JSValue ijFsRmdir(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVa
     const IJAnsi* path = JS_ToCString(ctx, argv[0]);
     if (!path)
         return JS_EXCEPTION;
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr) {
         JS_FreeCString(ctx, path);
         return JS_EXCEPTION;
@@ -657,7 +657,7 @@ static JSValue ijFsCopyFile(JSContext* ctx, JSValueConst this_val, IJS32 argc, J
         JS_FreeCString(ctx, new_path);
         return JS_EXCEPTION;
     }
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr) {
         JS_FreeCString(ctx, path);
         JS_FreeCString(ctx, new_path);
@@ -677,7 +677,7 @@ static JSValue ijFsReadDir(JSContext* ctx, JSValueConst this_val, IJS32 argc, JS
     const IJAnsi* path = JS_ToCString(ctx, argv[0]);
     if (!path)
         return JS_EXCEPTION;
-    TIJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
+    IJJSFsReq* fr = js_malloc(ctx, sizeof(*fr));
     if (!fr) {
         JS_FreeCString(ctx, path);
         return JS_EXCEPTION;

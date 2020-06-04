@@ -403,9 +403,6 @@ static int myssh_is_known(struct connectdata *conn)
           knownkey.keytype = CURLKHTYPE_RSA1;
           break;
         case SSH_KEYTYPE_ECDSA:
-        case SSH_KEYTYPE_ECDSA_P256:
-        case SSH_KEYTYPE_ECDSA_P384:
-        case SSH_KEYTYPE_ECDSA_P521:
           knownkey.keytype = CURLKHTYPE_ECDSA;
           break;
         case SSH_KEYTYPE_ED25519:
@@ -473,11 +470,6 @@ static int myssh_is_known(struct connectdata *conn)
         foundkey.keytype = CURLKHTYPE_RSA1;
         break;
       case SSH_KEYTYPE_ECDSA:
-#if LIBSSH_VERSION_INT >= SSH_VERSION_INT(0,9,0)
-      case SSH_KEYTYPE_ECDSA_P256:
-      case SSH_KEYTYPE_ECDSA_P384:
-      case SSH_KEYTYPE_ECDSA_P521:
-#endif
         foundkey.keytype = CURLKHTYPE_ECDSA;
         break;
 #if LIBSSH_VERSION_INT >= SSH_VERSION_INT(0,7,0)
@@ -2149,7 +2141,6 @@ static CURLcode myssh_connect(struct connectdata *conn, bool *done)
   CURLcode result;
   curl_socket_t sock = conn->sock[FIRSTSOCKET];
   struct Curl_easy *data = conn->data;
-  int rc;
 
   /* initialize per-handle data if not already */
   if(!data->req.protop)
@@ -2176,70 +2167,38 @@ static CURLcode myssh_connect(struct connectdata *conn, bool *done)
     return CURLE_FAILED_INIT;
   }
 
-  rc = ssh_options_set(ssh->ssh_session, SSH_OPTIONS_HOST, conn->host.name);
-  if(rc != SSH_OK) {
-    failf(data, "Could not set remote host");
-    return CURLE_FAILED_INIT;
-  }
+  ssh_options_set(ssh->ssh_session, SSH_OPTIONS_FD, &sock);
 
-  rc = ssh_options_parse_config(ssh->ssh_session, NULL);
-  if(rc != SSH_OK) {
-    infof(data, "Could not parse SSH configuration files");
-    /* ignore */
-  }
-
-  rc = ssh_options_set(ssh->ssh_session, SSH_OPTIONS_FD, &sock);
-  if(rc != SSH_OK) {
-    failf(data, "Could not set socket");
-    return CURLE_FAILED_INIT;
-  }
-
-  if(conn->user && conn->user[0] != '\0') {
+  if(conn->user) {
     infof(data, "User: %s\n", conn->user);
-    rc = ssh_options_set(ssh->ssh_session, SSH_OPTIONS_USER, conn->user);
-    if(rc != SSH_OK) {
-      failf(data, "Could not set user");
-      return CURLE_FAILED_INIT;
-    }
+    ssh_options_set(ssh->ssh_session, SSH_OPTIONS_USER, conn->user);
   }
 
   if(data->set.str[STRING_SSH_KNOWNHOSTS]) {
     infof(data, "Known hosts: %s\n", data->set.str[STRING_SSH_KNOWNHOSTS]);
-    rc = ssh_options_set(ssh->ssh_session, SSH_OPTIONS_KNOWNHOSTS,
-                         data->set.str[STRING_SSH_KNOWNHOSTS]);
-    if(rc != SSH_OK) {
-      failf(data, "Could not set known hosts file path");
-      return CURLE_FAILED_INIT;
-    }
+    ssh_options_set(ssh->ssh_session, SSH_OPTIONS_KNOWNHOSTS,
+                    data->set.str[STRING_SSH_KNOWNHOSTS]);
   }
 
-  if(conn->remote_port) {
-    rc = ssh_options_set(ssh->ssh_session, SSH_OPTIONS_PORT,
-                         &conn->remote_port);
-    if(rc != SSH_OK) {
-      failf(data, "Could not set remote port");
-      return CURLE_FAILED_INIT;
-    }
-  }
+  ssh_options_set(ssh->ssh_session, SSH_OPTIONS_HOST, conn->host.name);
+  if(conn->remote_port)
+    ssh_options_set(ssh->ssh_session, SSH_OPTIONS_PORT,
+                    &conn->remote_port);
 
   if(data->set.ssh_compression) {
-    rc = ssh_options_set(ssh->ssh_session, SSH_OPTIONS_COMPRESSION,
-                         "zlib,zlib@openssh.com,none");
-    if(rc != SSH_OK) {
-      failf(data, "Could not set compression");
-      return CURLE_FAILED_INIT;
-    }
+    ssh_options_set(ssh->ssh_session, SSH_OPTIONS_COMPRESSION,
+                    "zlib,zlib@openssh.com,none");
   }
 
   ssh->privkey = NULL;
   ssh->pubkey = NULL;
 
   if(data->set.str[STRING_SSH_PUBLIC_KEY]) {
-    rc = ssh_pki_import_pubkey_file(data->set.str[STRING_SSH_PUBLIC_KEY],
-                                    &ssh->pubkey);
+    int rc = ssh_pki_import_pubkey_file(data->set.str[STRING_SSH_PUBLIC_KEY],
+                                        &ssh->pubkey);
     if(rc != SSH_OK) {
       failf(data, "Could not load public key file");
-      return CURLE_FAILED_INIT;
+      /* ignore */
     }
   }
 

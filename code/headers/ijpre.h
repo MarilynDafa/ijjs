@@ -59,7 +59,7 @@
 #else
 #	error unsupport platform
 #endif
-#define IJBool bool
+#define IJBool _Bool
 
 #define IJJS_DEFAULT_STACK_SIZE 1048576
 

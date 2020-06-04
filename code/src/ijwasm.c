@@ -26,7 +26,7 @@ typedef struct {
     IM3Module module;
     struct {
         IJU8* bytes;
-        IJU32 size;
+        size_t size;
     } data;
 } IJJSWasmModule;
 
@@ -221,7 +221,7 @@ static JSValue ijWasmModuleExports(JSContext* ctx, JSValueConst this_val, IJS32 
     JSValue exports = JS_NewArray(ctx);
     if (JS_IsException(exports))
         return exports;
-    for (IJU32 i = 0, j = 0; i < m->module->numFunctions; ++i) {
+    for (size_t i = 0, j = 0; i < m->module->numFunctions; ++i) {
         IM3Function f = &m->module->functions[i];
         if (f->name) {
             JSValue item = JS_NewObjectProto(ctx, JS_NULL);
@@ -237,10 +237,10 @@ static JSValue ijWasmModuleExports(JSContext* ctx, JSValueConst this_val, IJS32 
 static JSValue ijWasmParseModule(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     IJJSRuntime* qrt = ijGetRuntime(ctx);
     CHECK_NOT_NULL(qrt);
-    IJU32 size;
+    size_t size;
     IJU8* buf = JS_GetArrayBuffer(ctx, &size, argv[0]);
     if (!buf) {
-        IJU32 aoffset, asize;
+        size_t aoffset, asize;
         JSValue abuf = JS_GetTypedArrayBuffer(ctx, argv[0], &aoffset, &asize, NULL);
         if (JS_IsException(abuf))
             return abuf;

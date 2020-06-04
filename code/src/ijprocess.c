@@ -224,7 +224,7 @@ static JSValue ijSpawn(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValu
                 }
                 const IJAnsi* key = JS_AtomToCString(ctx, ptab[i].atom);
                 const IJAnsi* value = JS_ToCString(ctx, prop);
-                IJU32 len = strlen(key) + strlen(value) + 2;
+                size_t len = strlen(key) + strlen(value) + 2;
                 options.env[i] = js_malloc(ctx, len);
                 snprintf(options.env[i], len, "%s=%s", key, value);
             }

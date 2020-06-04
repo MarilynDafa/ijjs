@@ -16,3 +16,4 @@
 *.dll
 *.lib
 proj/Debug/libijjs-win32.vcxproj.FileListAbsolute.txt
+*.so

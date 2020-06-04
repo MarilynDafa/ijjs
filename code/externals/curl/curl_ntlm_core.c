@@ -342,7 +342,7 @@ static bool encrypt_des(const unsigned char *in, unsigned char *out,
 
   /* Acquire the crypto provider */
   if(!CryptAcquireContext(&hprov, NULL, NULL, PROV_RSA_FULL,
-                          CRYPT_VERIFYCONTEXT | CRYPT_SILENT))
+                          CRYPT_VERIFYCONTEXT))
     return FALSE;
 
   /* Setup the key blob structure */

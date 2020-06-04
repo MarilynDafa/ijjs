@@ -153,13 +153,7 @@ IJJSRuntime* ijNewRuntimeWorker(IJVoid) {
 #endif
 static inline size_t je_def_malloc_usable_size(void* ptr)
 {
-#if defined(__APPLE__)
-    return malloc_size(ptr);
-#elif defined(_WIN32)
-    return _msize(ptr);
-#else
-    return malloc_usable_size(ptr);
-#endif
+    return je_malloc_usable_size(ptr);
 }
 static IJVoid* je_def_malloc(JSMallocState* s, size_t size)
 {
@@ -212,13 +206,7 @@ IJJSRuntime* ijNewRuntimeInternal(IJBool is_worker, IJJSRunOptions* options) {
         je_def_malloc,
         je_def_free,
         je_def_realloc,
-#if defined(__APPLE__)
-        malloc_size,
-#elif defined(_WIN32)
-        (size_t (*)(const void *))_msize,
-#else
-        (size_t (*)(const void *))malloc_usable_size,
-#endif
+        je_def_malloc_usable_size
     };
     qrt->rt = JS_NewRuntime2(&je_malloc_funcs, NULL);
     CHECK_NOT_NULL(qrt->rt);
@@ -367,7 +355,7 @@ IJS32 ijLoadFile(JSContext* ctx, DynBuf* dbuf, const IJAnsi* filename) {
     fd = r;
     IJAnsi buf[64 * 1024];
     uv_buf_t b = uv_buf_init(buf, sizeof(buf));
-    IJU32 offset = 0;
+    size_t offset = 0;
     do {
         r = uv_fs_read(NULL, &req, fd, &b, 1, offset, NULL);
         uv_fs_req_cleanup(&req);

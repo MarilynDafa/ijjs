@@ -231,7 +231,7 @@ static IJVoid ijBufFree(JSRuntime* rt, IJVoid* opaque, IJVoid* ptr) {
     js_free_rt(rt, ptr);
 }
 
-JSValue ijNewUint8Array(JSContext* ctx, IJU8* data, IJU32 size) {
+JSValue ijNewUint8Array(JSContext* ctx, IJU8* data, size_t size) {
     JSValue abuf = JS_NewArrayBuffer(ctx, data, size, ijBufFree, NULL, false);
     if (JS_IsException(abuf))
         return abuf;

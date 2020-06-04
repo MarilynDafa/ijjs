@@ -35,7 +35,7 @@ typedef struct {
         uv_pipe_t pipe;
     } h;
     struct {
-        IJU32 size;
+        size_t size;
         IJJSPromise result;
     } read;
     struct {
@@ -56,7 +56,7 @@ typedef struct {
 typedef struct {
     uv_write_t req;
     IJJSPromise result;
-    IJU32 size;
+    size_t size;
     IJAnsi data[];
 } IJJSWriteReq;
 
@@ -83,7 +83,7 @@ static JSValue ijStreamClose(JSContext* ctx, IJJSStream* s, IJS32 argc, JSValueC
     return JS_UNDEFINED;
 }
 
-static IJVoid uvStreamAllocCb(uv_handle_t* handle, IJU32 suggested_size, uv_buf_t* buf) {
+static IJVoid uvStreamAllocCb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf) {
     IJJSStream* s = handle->data;
     CHECK_NOT_NULL(s);
     buf->base = js_malloc(s->ctx, s->read.size);
@@ -149,7 +149,7 @@ static JSValue ijStreamWrite(JSContext* ctx, IJJSStream* s, IJS32 argc, JSValueC
         return JS_EXCEPTION;
     JSValue jsData = argv[0];
     IJBool is_string = false;
-    IJU32 size;
+    size_t size;
     IJAnsi* buf;
     if (JS_IsString(jsData)) {
         is_string = true;
@@ -157,7 +157,7 @@ static JSValue ijStreamWrite(JSContext* ctx, IJJSStream* s, IJS32 argc, JSValueC
         if (!buf)
             return JS_EXCEPTION;
     } else {
-        IJU32 aoffset, asize;
+        size_t aoffset, asize;
         JSValue abuf = JS_GetTypedArrayBuffer(ctx, jsData, &aoffset, &asize, NULL);
         if (JS_IsException(abuf))
             return abuf;
@@ -634,7 +634,7 @@ static JSValue ijPipeGetSockPeerName(JSContext* ctx, JSValueConst this_val, IJS3
     if (!t)
         return JS_EXCEPTION;
     IJAnsi buf[1024];
-    IJU32 len = sizeof(buf);
+    size_t len = sizeof(buf);
     IJS32 r;
     if (magic == 0) {
         r = uv_pipe_getsockname(&t->h.pipe, buf, &len);
