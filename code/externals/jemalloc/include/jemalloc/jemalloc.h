@@ -39,7 +39,9 @@ extern "C" {
  */
 /* #undef JEMALLOC_USE_CXX_THROW */
 #define LG_HUGEPAGE 21
-#  if defined(_WIN64) || defined(__amd64) || defined(__APPLE__)
+#if defined(_WIN64) || defined(WIN64) || defined(__amd64__) || \
+	defined(__x86_64) || defined(__x86_64__) || defined(_M_IA64) || \
+	defined(_M_AMD64)
 #    define LG_SIZEOF_PTR_WIN 3
 #		define LG_VADDR 64
 #  else
