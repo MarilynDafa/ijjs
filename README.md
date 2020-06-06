@@ -4,6 +4,7 @@ this project is inspired by nodejs
 
 ## Features
 - URL
+- Jemalloc memory pool
 - XMLHttpRequest & fetch
 - Worker API
 - Crypto API
