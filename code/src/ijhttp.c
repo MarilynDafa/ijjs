@@ -64,7 +64,7 @@ IJS32 ijCurlLoadHttp(DynBuf* dbuf, const IJAnsi* url) {
         long code = 0;
         res = curl_easy_getinfo(curl_handle, CURLINFO_RESPONSE_CODE, &code);
         if (res == CURLE_OK)
-            r = (IJS32) code;
+            r = (IJS32)code;
     }
     if (res != CURLE_OK) {
         r = -res;

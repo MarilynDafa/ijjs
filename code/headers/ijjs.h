@@ -210,7 +210,7 @@ IJ_API JSValue ijNewUint8Array(
     IJU8* data, 
     size_t size);
 
-IJ_API IJVoid ijCurlInit();
+IJ_API IJVoid ijCurlInit(IJVoid);
 
 IJ_API IJS32 ijCurlLoadHttp(
     DynBuf* dbuf, 
@@ -307,6 +307,14 @@ IJ_API IJVoid ijModWasmExport(
     JSContext* ctx, 
     JSModuleDef* m);
 
+IJ_API IJVoid ijModLogInit(
+    JSContext* ctx,
+    JSModuleDef* m);
+
+IJ_API IJVoid ijModLogExport(
+    JSContext* ctx,
+    JSModuleDef* m);
+
 IJ_API IJVoid ijModWorkerInit(
     JSContext* ctx, 
     JSModuleDef* m);
@@ -384,7 +392,7 @@ IJ_API IJVoid ijAddBuiltins(
 IJ_API uv_loop_t* ijGetLoopRT(
     IJJSRuntime *qrt);
 
-IJ_API IJJSRuntime* ijNewRuntimeWorker();
+IJ_API IJJSRuntime* ijNewRuntimeWorker(IJVoid);
 
 IJ_API IJJSRuntime* ijNewRuntimeInternal(
     IJBool is_worker, 

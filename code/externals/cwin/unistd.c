@@ -1,10 +1,8 @@
 #include "unistd.h"
-
 int		opterr;			// global - if nonzero print errors - not implemented
 int		optopt;			// global - unknown option character - not implemented
 int		optind = 0; 	// global - next argv index
 char* optarg;			// global - currnet option argument pointer
-
 
 
 int getopt(int argc, char** argv, const char* options)
@@ -71,4 +69,8 @@ int getopt(int argc, char** argv, const char* options)
 	}
 
 	return c;
+}
+
+int fsync(FILE* fp) {
+	return(fflush(fp));
 }
