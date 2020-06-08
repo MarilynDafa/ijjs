@@ -52,8 +52,10 @@
     <ClInclude Include="..\code\externals\cwin\zlib.h">
       <Filter>cwin</Filter>
     </ClInclude>
-    <ClInclude Include="..\code\externals\cwin\syslog.h" />
     <ClInclude Include="..\code\externals\cwin\setenv.h">
+      <Filter>cwin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\cwin\syslog.h">
       <Filter>cwin</Filter>
     </ClInclude>
   </ItemGroup>
