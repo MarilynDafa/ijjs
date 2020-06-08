@@ -7,11 +7,10 @@ fastlz 0.5.0
 kcp 1.6
 mbedtls 2.16.5
 miniz 2.1.0
-log4c final
+zlog 1.2.14
 
 
 ssl darwin linux
-log4c
 vscode	
 kcp
 PostgreSQL  js	
