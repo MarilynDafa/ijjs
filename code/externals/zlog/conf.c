@@ -25,14 +25,14 @@
 #include "zc_defs.h"
 
 /*******************************************************************************/
-#define ZLOG_CONF_DEFAULT_FORMAT "default = \"%D %V [%p:%F:%L] %m%n\""
-#define ZLOG_CONF_DEFAULT_RULE "*.*        >stdout"
+#define ZLOG_CONF_DEFAULT_FORMAT "default = \"%d(%F %X.%ms) %-6V - %m%n\""
+#define ZLOG_CONF_DEFAULT_RULE "*.*             	\"log/ijjslog-%d(%F).log\""
 #define ZLOG_CONF_DEFAULT_BUF_SIZE_MIN 1024
 #define ZLOG_CONF_DEFAULT_BUF_SIZE_MAX (2 * 1024 * 1024)
 #define ZLOG_CONF_DEFAULT_FILE_PERMS 0600
 #define ZLOG_CONF_DEFAULT_RELOAD_CONF_PERIOD 0
 #define ZLOG_CONF_DEFAULT_FSYNC_PERIOD 0
-#define ZLOG_CONF_BACKUP_ROTATE_LOCK_FILE "/tmp/zlog.lock"
+#define ZLOG_CONF_BACKUP_ROTATE_LOCK_FILE "log/zlog.lock"
 /*******************************************************************************/
 
 void zlog_conf_profile(zlog_conf_t * a_conf, int flag)
