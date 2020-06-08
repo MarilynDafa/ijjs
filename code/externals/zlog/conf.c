@@ -26,7 +26,7 @@
 
 /*******************************************************************************/
 #define ZLOG_CONF_DEFAULT_FORMAT "default = \"%d(%F %X.%ms) %-6V - %m%n\""
-#define ZLOG_CONF_DEFAULT_RULE "*.*             	\"log/ijjslog-%d(%F).log\""
+#define ZLOG_CONF_DEFAULT_RULE "*.*             	\"log/ijjslog-%v-%d(%F).log\""
 #define ZLOG_CONF_DEFAULT_BUF_SIZE_MIN 1024
 #define ZLOG_CONF_DEFAULT_BUF_SIZE_MAX (2 * 1024 * 1024)
 #define ZLOG_CONF_DEFAULT_FILE_PERMS 0600
