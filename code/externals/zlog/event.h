@@ -10,17 +10,10 @@
 #define __zlog_event_h
 
 #include <sys/types.h>  /* for pid_t */
-#ifndef _MSC_VER
 #include <sys/time.h>   /* for struct timeval */
-#endif
 #include <pthread.h>    /* for pthread_t */
 #include <stdarg.h>     /* for va_list */
 #include "zc_defs.h"
-
-#ifdef _MSC_VER
-#include <winsock2.h>
-#define pid_t int
-#endif
 
 typedef enum {
 	ZLOG_FMT = 0,
@@ -55,7 +48,7 @@ typedef struct {
 	struct timeval time_stamp;
 
 	time_t time_local_sec;
-	struct tm time_local;	
+	struct tm time_local;
 
 	zlog_time_cache_t *time_caches;
 	int time_cache_count;
@@ -71,6 +64,12 @@ typedef struct {
 
 	char tid_hex_str[30 + 1];
 	size_t tid_hex_str_len;
+
+#if defined __linux__ || __APPLE__
+	pid_t ktid;
+	char ktid_str[30+1];
+	size_t ktid_str_len;
+#endif
 } zlog_event_t;
 
 

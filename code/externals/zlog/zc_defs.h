@@ -18,9 +18,6 @@
 #define calloc je_calloc
 #define realloc je_realloc
 #define free je_free
-#ifdef _WIN32
-#define localtime_r(a, b) localtime_s(b, a)
-#endif
 
 
 #define	LOG_EMERG	0	/* system is unusable */
@@ -49,4 +46,7 @@
 #define	LOG_NDELAY	0x08	/* don't delay open */
 #define	LOG_NOWAIT	0x10	/* don't wait for console forks: DEPRECATED */
 #define	LOG_PERROR	0x20	/* log to stderr as well */
+
+
+
 #endif

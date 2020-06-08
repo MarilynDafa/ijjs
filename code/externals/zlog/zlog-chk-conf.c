@@ -25,12 +25,11 @@ int main(int argc, char *argv[])
 	int op;
 	int quiet = 0;
 	static const char *help = 
-		"useage: zlog-chk-conf [conf files]...\n"
+		"usage: zlog-chk-conf [conf files]...\n"
 		"\t-q,\tsuppress non-error message\n"
 		"\t-h,\tshow help message\n"
 		"zlog version: " ZLOG_VERSION "\n";
 
-#ifndef _MSC_VER
 	while((op = getopt(argc, argv, "qhv")) > 0) {
 		if (op == 'h') {
 			fputs(help, stdout);
@@ -42,16 +41,12 @@ int main(int argc, char *argv[])
 
 	argc -= optind;
 	argv += optind;
-#endif
 
 	if (argc == 0) {
 		fputs(help, stdout);
 		return -1;
 	}
 
-#ifdef _MSC_VER
-#define setenv(a,b,c) _putenv_s(a,b)
-#endif
 	setenv("ZLOG_PROFILE_ERROR", "/dev/stderr", 1);
 	setenv("ZLOG_CHECK_FORMAT_RULE", "1", 1);
 

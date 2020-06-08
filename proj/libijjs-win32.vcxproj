@@ -185,6 +185,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\code\externals\cwin\pthread.h" />
+    <ClInclude Include="..\code\externals\cwin\setenv.h" />
     <ClInclude Include="..\code\externals\cwin\stdatomic.h" />
     <ClInclude Include="..\code\externals\cwin\syslog.h" />
     <ClInclude Include="..\code\externals\cwin\sys\time.h" />
@@ -202,6 +203,7 @@
   <ItemGroup>
     <ClCompile Include="..\code\externals\cwin\pthread.c" />
     <ClCompile Include="..\code\externals\cwin\glob.c" />
+    <ClCompile Include="..\code\externals\cwin\setenv.c" />
     <ClCompile Include="..\code\externals\cwin\syslog-client.c" />
     <ClCompile Include="..\code\externals\cwin\sys\time.c" />
     <ClCompile Include="..\code\externals\cwin\unistd.c" />
@@ -230,6 +232,7 @@
     <ClCompile Include="..\code\externals\uv\src\win\util.c" />
     <ClCompile Include="..\code\externals\uv\src\win\winapi.c" />
     <ClCompile Include="..\code\externals\uv\src\win\winsock.c" />
+    <ClCompile Include="..\code\externals\zlog\win_compat.c" />
     <ClCompile Include="..\code\src\m.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

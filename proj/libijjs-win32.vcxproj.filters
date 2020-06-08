@@ -52,6 +52,10 @@
     <ClInclude Include="..\code\externals\cwin\zlib.h">
       <Filter>cwin</Filter>
     </ClInclude>
+    <ClInclude Include="..\code\externals\cwin\syslog.h" />
+    <ClInclude Include="..\code\externals\cwin\setenv.h">
+      <Filter>cwin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\code\externals\uv\src\win\async.c">
@@ -139,6 +143,18 @@
       <Filter>cwin</Filter>
     </ClCompile>
     <ClCompile Include="..\code\src\m.c">
+      <Filter>cwin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\cwin\glob.c">
+      <Filter>cwin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\cwin\syslog-client.c">
+      <Filter>cwin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\win_compat.c">
+      <Filter>cwin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\cwin\setenv.c">
       <Filter>cwin</Filter>
     </ClCompile>
   </ItemGroup>

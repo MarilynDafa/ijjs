@@ -2,6 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)..\code\externals\3rd.txt" />
+    <Text Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\change.txt">
+      <Filter>externals\zlog</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="externals">
@@ -40,15 +43,6 @@
     <Filter Include="externals\fastlz">
       <UniqueIdentifier>{ff630f8b-08fb-4e5f-b090-02d9f40759dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="externals\log4c">
-      <UniqueIdentifier>{9557ea25-79df-416b-9faa-feafbed60f49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="externals\log4c\sd">
-      <UniqueIdentifier>{fc4240f9-4cc1-41ed-8405-dda14745960c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="externals\log4c\4c">
-      <UniqueIdentifier>{6fecaa39-2cb6-45f6-bbab-fe0c620cec9d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="externals\miniz">
       <UniqueIdentifier>{b4631ba9-be20-4d37-9adb-078374caf5ad}</UniqueIdentifier>
     </Filter>
@@ -60,6 +54,9 @@
     </Filter>
     <Filter Include="externals\jemalloc">
       <UniqueIdentifier>{126a0428-6303-40a3-b469-926774434190}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\zlog">
+      <UniqueIdentifier>{9557ea25-79df-416b-9faa-feafbed60f49}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -513,99 +510,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.c">
       <Filter>externals\fastlz</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml-parser.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml-scanner.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\error4c.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\factory.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\hashsd.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\list.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\malloc.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sprintf.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sprintf.osf.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\stack.c">
-      <Filter>externals\log4c\sd</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_rollingfile.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_stream.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_stream2.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\category.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\init.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_basic.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_basic_r.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_local.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_local_r.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_r.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\logging_event.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\priority.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rc.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rollingpolicy.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rollingpolicy_type_sizewin.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\version4c.c">
-      <Filter>externals\log4c\4c</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz.c">
       <Filter>externals\miniz</Filter>
     </ClCompile>
@@ -656,9 +560,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_parse.c">
       <Filter>externals\wasm</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sd_xplatform.c">
-      <Filter>externals\log4c\sd</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\fs-poll.c">
       <Filter>externals\uv</Filter>
@@ -853,6 +754,69 @@
       <Filter>externals\quickjs</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijjs.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\buf.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\category.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\category_table.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\conf.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\event.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\format.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\level.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\level_list.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\mdc.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\record.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\record_table.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\rotater.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\rule.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\spec.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_arraylist.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_hashtable.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_profile.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_util.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zlog.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zthread.c">
+      <Filter>externals\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijlog.c">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1349,117 +1313,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.h">
       <Filter>externals\fastlz</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\config.h">
-      <Filter>externals\log4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c.h">
-      <Filter>externals\log4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\defs.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml-parser.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\domnode-xml-scanner.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\error.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\factory.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\hash.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\list.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\malloc.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sprintf.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\stack.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_rollingfile.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_stream.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\appender_type_stream2.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\buffer.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\category.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\config-win32.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\defs.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\init.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_basic.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_basic_r.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_local.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_local_r.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\layout_type_dated_r.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\location_info.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\logging_event.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\priority.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rc.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rollingpolicy.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\rollingpolicy_type_sizewin.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\version.h">
-      <Filter>externals\log4c\4c</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-opcode.h">
       <Filter>externals\quickjs</Filter>
     </ClInclude>
@@ -1526,9 +1379,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\wasm3.h">
       <Filter>externals\wasm</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\sd\sd_xplatform.h">
-      <Filter>externals\log4c\sd</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\heap-inl.h">
       <Filter>externals\uv</Filter>
     </ClInclude>
@@ -1553,10 +1403,77 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\ijpre.h">
       <Filter>headers</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)..\code\externals\log4c\log4c\liblog4c.def">
-      <Filter>externals\log4c\4c</Filter>
-    </None>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\buf.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\category.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\category_table.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\conf.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\event.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\fmacros.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\format.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\level.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\level_list.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\mdc.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\record.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\record_table.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\rotater.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\rule.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\spec.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\thread.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\version.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_arraylist.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_defs.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_hashtable.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_profile.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_util.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_xplatform.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zlog.h">
+      <Filter>externals\zlog</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

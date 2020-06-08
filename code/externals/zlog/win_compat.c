@@ -9,22 +9,24 @@ struct tm *localtime_r(long *clock,struct tm *res)
     _localtime32_s(res,clock);
     return(res);
 }
-
-int gettimeofday(struct timeval *tp,struct timezone *tz)
-{
-SYSTEMTIME st;
-
-    if (tp!=NULL) {
-	tp->tv_sec = _time32(NULL);
-	GetLocalTime(&st);
-	tp->tv_usec = 1000L * st.wMilliseconds;
-    } /* if */
-
-    return(0);
+int open(char *f,int m,int p) {
+	//HANDLE h = CreateFile(f,FILE_APPEND_DATA,
+	HANDLE h = CreateFileA(f,FILE_APPEND_DATA,
+			(FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE),
+			NULL, 
+			OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+  return(h);
 }
+int write(int fd,char *data,int len) {
+  int numb = 0;
+  int status;
 
-int fsync(FILE *fp) {
-  return(fflush(fp));
+  status = WriteFile(fd,data,len,&numb,NULL);
+  if(status == 0) return(-1);
+  return(numb);
 }
-
+int close(int fd) {
+  if(CloseHandle(fd)) return(0);
+  return(-1);
+}
 #endif

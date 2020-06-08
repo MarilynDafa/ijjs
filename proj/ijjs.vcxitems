@@ -247,7 +247,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_hashtable.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_profile.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zc_util.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zlog-chk-conf.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zlog.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijbootstrap.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijdns.c" />
@@ -274,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)..\code\externals\3rd.txt" />
+    <Text Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\change.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\altsvc.h" />

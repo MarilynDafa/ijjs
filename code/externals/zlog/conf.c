@@ -24,12 +24,6 @@
 #include "rotater.h"
 #include "zc_defs.h"
 
-#ifdef _MSC_VER
-#define DEF_TIME_FMT "%Y-%m-%d %H:%M:%S"
-#else
-#define DEF_TIME_FMT "%F %T"
-#endif
-
 /*******************************************************************************/
 #define ZLOG_CONF_DEFAULT_FORMAT "default = \"%D %V [%p:%F:%L] %m%n\""
 #define ZLOG_CONF_DEFAULT_RULE "*.*        >stdout"
@@ -132,12 +126,8 @@ zlog_conf_t *zlog_conf_new(const char *confpath)
 	a_conf->buf_size_min = ZLOG_CONF_DEFAULT_BUF_SIZE_MIN;
 	a_conf->buf_size_max = ZLOG_CONF_DEFAULT_BUF_SIZE_MAX;
 	if (has_conf_file) {
-#ifdef _MSC_VER
-                // Use a different lock in windows to avoid some of the built in file locking.
-                sprintf(a_conf->rotate_lock_file, "%s.lock", a_conf->file);
-#else
+		/* configure file as default lock file */
 		strcpy(a_conf->rotate_lock_file, a_conf->file);
-#endif
 	} else {
 		strcpy(a_conf->rotate_lock_file, ZLOG_CONF_BACKUP_ROTATE_LOCK_FILE);
 	}
@@ -225,10 +215,6 @@ static int zlog_conf_build_without_file(zlog_conf_t * a_conf)
 /*******************************************************************************/
 static int zlog_conf_parse_line(zlog_conf_t * a_conf, char *line, int *section);
 
-#ifdef _MSC_VER
-#define lstat(a,b) _stat(a,b)
-#endif
-
 static int zlog_conf_build_with_file(zlog_conf_t * a_conf)
 {
 	int rc = 0;
@@ -253,7 +239,7 @@ static int zlog_conf_build_with_file(zlog_conf_t * a_conf)
 		return -1;
 	}
 	localtime_r(&(a_stat.st_mtime), &local_time);
-	strftime(a_conf->mtime, sizeof(a_conf->mtime), DEF_TIME_FMT, &local_time);
+	strftime(a_conf->mtime, sizeof(a_conf->mtime), "%F %T", &local_time);
 
 	if ((fp = fopen(a_conf->file, "r")) == NULL) {
 		zc_error("open configure file[%s] fail", a_conf->file);
@@ -454,7 +440,7 @@ static int zlog_conf_parse_line(zlog_conf_t * a_conf, char *line, int *section)
 			if (STRCMP(value, ==, "self")) {
 				strcpy(a_conf->rotate_lock_file, a_conf->file);
 			} else {
-			strcpy(a_conf->rotate_lock_file, value);
+				strcpy(a_conf->rotate_lock_file, value);
 			}
 		} else if (STRCMP(word_1, ==, "default") && STRCMP(word_2, ==, "format")) {
 			/* so the input now is [format = "xxyy"], fit format's style */
@@ -511,7 +497,6 @@ static int zlog_conf_parse_line(zlog_conf_t * a_conf, char *line, int *section)
 	default:
 		zc_error("not in any section");
 		return -1;
-		break;
 	}
 
 	return 0;

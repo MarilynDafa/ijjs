@@ -13,7 +13,6 @@
 #include <stdarg.h>
 #include <string.h>
 #include <pthread.h>
-#include <signal.h>
 
 #include "conf.h"
 #include "category_table.h"
@@ -22,10 +21,6 @@
 #include "zc_defs.h"
 #include "rule.h"
 #include "version.h"
-
-#ifdef _MSC_VER
-#include <winsock2.h>
-#endif
 
 /*******************************************************************************/
 extern char *zlog_git_sha1;
@@ -90,6 +85,7 @@ static int zlog_init_inner(const char *confpath)
 			zc_error("atexit fail, rc[%d]", rc);
 			goto err;
 		}
+		zlog_env_init_version++;
 	} /* else maybe after zlog_fini() and need not create pthread_key */
 
 	zlog_env_conf = zlog_conf_new(confpath);
@@ -122,15 +118,12 @@ int zlog_init(const char *confpath)
 	int rc;
 	zc_debug("------zlog_init start------");
 	zc_debug("------compile time[%s %s], version[%s]------", __DATE__, __TIME__, ZLOG_VERSION);
-
 #ifdef _MSC_VER
 	{
 	  WSADATA wasd;
 	  WSAStartup(MAKEWORD(2,2),&wasd);
 	}
 #endif
-
-	zc_debug("------zlog_init locking------");
 	rc = pthread_rwlock_wrlock(&zlog_env_lock);
 	if (rc) {
 		zc_error("pthread_rwlock_wrlock fail, rc[%d]", rc);
@@ -141,6 +134,7 @@ int zlog_init(const char *confpath)
 		zc_error("already init, use zlog_reload pls");
 		goto err;
 	}
+
 
 	if (zlog_init_inner(confpath)) {
 		zc_error("zlog_init_inner[%s] fail", confpath);
@@ -620,6 +614,17 @@ exit:
 	return;
 }
 
+int zlog_level_switch(zlog_category_t * category, int level)
+{
+    // This is NOT thread safe.
+    memset(category->level_bitmap, 0x00, sizeof(category->level_bitmap));
+    category->level_bitmap[level / 8] |= ~(0xFF << (8 - level % 8));
+    memset(category->level_bitmap + level / 8 + 1, 0xFF,
+	    sizeof(category->level_bitmap) -  level / 8 - 1);
+
+    return 0;
+}
+
 /*******************************************************************************/
 void vzlog(zlog_category_t * category,
 	const char *file, size_t filelen,
@@ -1015,3 +1020,10 @@ int zlog_set_record(const char *rname, zlog_record_fn record_output)
 	}
 	return rc;
 }
+/*******************************************************************************/
+int zlog_level_enabled(zlog_category_t *category, const int level)
+{
+	return category && (zlog_category_needless_level(category, level) == 0);
+}
+
+const char *zlog_version(void) { return ZLOG_VERSION; }

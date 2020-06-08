@@ -1,5 +1,6 @@
 #pragma once
 #include <stdio.h>
+#include "setenv.h"
 #include <string.h> 
 extern int		opterr;			// global - if nonzero print errors - not implemented
 extern int		optopt;			// global - unknown option character - not implemented
