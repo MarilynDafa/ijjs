@@ -78,6 +78,7 @@ static JSValue ijLogDebug(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSV
 }
 static JSValue ijLogFinalize(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     zlog_fini();
+    return JS_NULL;
 }
 static const JSCFunctionListEntry ijjs_log_proto_funcs[] = {
     JS_CFUNC_DEF("fatal", 1, ijLogFatal),

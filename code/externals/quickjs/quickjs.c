@@ -32,12 +32,13 @@
 #include <time.h>
 #include <fenv.h>
 #include <math.h>
-#include <malloc.h>
 #include <sys/types.h>
 #if defined(__APPLE__)
 #include <malloc/malloc.h>
 #elif defined(__linux__)
 #include <alloca.h>
+#else
+#include <malloc.h>
 #endif
 
 #include "cutils.h"

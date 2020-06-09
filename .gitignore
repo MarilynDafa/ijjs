@@ -17,3 +17,7 @@
 *.lib
 proj/Debug/libijjs-win32.vcxproj.FileListAbsolute.txt
 *.so
+*.o
+*.dia
+*.d
+*.hmap

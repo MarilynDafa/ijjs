@@ -186,6 +186,7 @@
 					../code/externals/uv/include,
 					../code/externals/wasm,
 					../code/externals/jemalloc/include,
+					../code/externals,
 				);
 				LIBRARY_SEARCH_PATHS = ../../bin/osx;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
@@ -246,6 +247,7 @@
 					../code/externals/uv/include,
 					../code/externals/wasm,
 					../code/externals/jemalloc/include,
+					../code/externals,
 				);
 				LIBRARY_SEARCH_PATHS = ../../bin/osx;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
@@ -265,6 +267,7 @@
 					../code/externals/uv/include,
 					../code/externals/wasm,
 					../code/externals/jemalloc/include,
+					../code/externals,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -280,6 +283,7 @@
 					../code/externals/uv/include,
 					../code/externals/wasm,
 					../code/externals/jemalloc/include,
+					../code/externals,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

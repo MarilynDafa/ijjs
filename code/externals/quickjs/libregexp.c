@@ -27,9 +27,12 @@
 #include <inttypes.h>
 #include <string.h>
 #include <assert.h>
-#include <malloc.h>
-#if defined(__linux__)
+#if defined(__APPLE__)
+#include <malloc/malloc.h>
+#elif defined(__linux__)
 #include <alloca.h>
+#else
+#include <malloc.h>
 #endif
 #include "cutils.h"
 #include "libregexp.h"

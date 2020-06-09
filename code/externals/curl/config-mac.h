@@ -1,5 +1,28 @@
-#ifndef HEADER_CURL_CONFIG_MAC_H
-#define HEADER_CURL_CONFIG_MAC_H
+/***************************************************************************
+ *                                  _   _ ____  _
+ *  Project                     ___| | | |  _ \| |
+ *                             / __| | | | |_) | |
+ *                            | (__| |_| |  _ <| |___
+ *                             \___|\___/|_| \_\_____|
+ *
+ * Copyright (C) 1998 - 2020, Daniel Stenberg, <daniel@haxx.se>, et al.
+ *
+ * This software is licensed as described in the file COPYING, which
+ * you should have received as part of this distribution. The terms
+ * are also available at https://curl.haxx.se/docs/copyright.html.
+ *
+ * You may opt to use, copy, modify, merge, publish, distribute and/or sell
+ * copies of the Software, and permit persons to whom the Software is
+ * furnished to do so, under the terms of the COPYING file.
+ *
+ * This software is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY
+ * KIND, either express or implied.
+ *
+ ***************************************************************************/
+/* lib/curl_config.h.in.  Generated somehow by cmake.  */
+
+/* when building libcurl itself */
+/* #undef BUILDING_LIBCURL */
 
 /* Location of default ca bundle */
 #define CURL_CA_BUNDLE "/etc/ssl/cert.pem"
@@ -35,10 +58,10 @@
 /* #undef CURL_DISABLE_HTTP */
 
 /* to disable LDAP */
-#define CURL_DISABLE_LDAP 1
+/* #undef CURL_DISABLE_LDAP */
 
 /* to disable LDAPS */
-#define CURL_DISABLE_LDAPS 1
+/* #undef CURL_DISABLE_LDAPS */
 
 /* to enable MQTT */
 #undef CURL_ENABLE_MQTT
@@ -935,7 +958,7 @@
 /* #undef USE_GNUTLS */
 
 /* if Secure Transport is enabled */
-/* #undef USE_SECTRANSP */
+#define USE_SECTRANSP 1
 
 /* if mbedTLS is enabled */
 /* #undef USE_MBEDTLS */
@@ -1022,5 +1045,3 @@
 
 /* Define to 1 if you have the mach_absolute_time function. */
 #define HAVE_MACH_ABSOLUTE_TIME 1
-
-#endif /* HEADER_CURL_CONFIG_MAC_H */
