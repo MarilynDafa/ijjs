@@ -10,7 +10,6 @@ miniz 2.1.0
 zlog 1.2.14
 
 
-ssl darwin linux
 vscode	
 kcp
 PostgreSQL  js	
