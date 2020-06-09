@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C7189B8C248FD024003A86B2 /* LDAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7189B8B248FD024003A86B2 /* LDAP.framework */; };
 		C7189B8E248FD03F003A86B2 /* ijlog.c in Sources */ = {isa = PBXBuildFile; fileRef = C7189B8D248FD03F003A86B2 /* ijlog.c */; };
+		C7189B90248FD20F003A86B2 /* ijpre.h in Headers */ = {isa = PBXBuildFile; fileRef = C7189B8F248FD20F003A86B2 /* ijpre.h */; };
 		C759341E248FC809007B37B0 /* rule.h in Headers */ = {isa = PBXBuildFile; fileRef = C75933EF248FC804007B37B0 /* rule.h */; };
 		C759341F248FC809007B37B0 /* zc_profile.c in Sources */ = {isa = PBXBuildFile; fileRef = C75933F0248FC804007B37B0 /* zc_profile.c */; };
 		C7593420248FC809007B37B0 /* rotater.h in Headers */ = {isa = PBXBuildFile; fileRef = C75933F1248FC804007B37B0 /* rotater.h */; };
@@ -515,6 +516,7 @@
 		C7189B89248FD007003A86B2 /* SecurityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityFoundation.framework; path = System/Library/Frameworks/SecurityFoundation.framework; sourceTree = SDKROOT; };
 		C7189B8B248FD024003A86B2 /* LDAP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LDAP.framework; path = System/Library/Frameworks/LDAP.framework; sourceTree = SDKROOT; };
 		C7189B8D248FD03F003A86B2 /* ijlog.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijlog.c; path = ../code/src/ijlog.c; sourceTree = "<group>"; };
+		C7189B8F248FD20F003A86B2 /* ijpre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ijpre.h; path = ../code/headers/ijpre.h; sourceTree = "<group>"; };
 		C75933EF248FC804007B37B0 /* rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rule.h; path = ../code/externals/zlog/rule.h; sourceTree = "<group>"; };
 		C75933F0248FC804007B37B0 /* zc_profile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zc_profile.c; path = ../code/externals/zlog/zc_profile.c; sourceTree = "<group>"; };
 		C75933F1248FC804007B37B0 /* rotater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rotater.h; path = ../code/externals/zlog/rotater.h; sourceTree = "<group>"; };
@@ -1130,6 +1132,7 @@
 		C77A62A2247A177000051CDF /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				C7189B8F248FD20F003A86B2 /* ijpre.h */,
 				C77A6770247A197900051CDF /* ijjs.h */,
 			);
 			name = headers;
@@ -1732,6 +1735,7 @@
 				C77A66EA247A194000051CDF /* multiif.h in Headers */,
 				C7F5D04E247ABD1C003974A7 /* gtls.h in Headers */,
 				C77A670A247A194100051CDF /* curl_ldap.h in Headers */,
+				C7189B90248FD20F003A86B2 /* ijpre.h in Headers */,
 				C7F5D01D247ABCCC003974A7 /* typecheck-gcc.h in Headers */,
 				C7F5D047247ABD1C003974A7 /* gskit.h in Headers */,
 				C77A64C0247A18A900051CDF /* miniz_tdef.h in Headers */,
