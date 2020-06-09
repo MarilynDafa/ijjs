@@ -369,9 +369,6 @@
     <ClInclude Include="..\code\externals\wasm\extra\wasi_core.h">
       <Filter>dummy</Filter>
     </ClInclude>
-    <ClInclude Include="..\code\externals\log4c\log4c\appender_type_syslog.h">
-      <Filter>dummy</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\code\externals\curl\mqtt.c">

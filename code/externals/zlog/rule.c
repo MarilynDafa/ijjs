@@ -512,7 +512,7 @@ static int zlog_rule_output_stdout(zlog_rule_t *a_rule,
 					 zlog_buf_str(a_thread->msg_buf), zlog_buf_len(a_thread->msg_buf));
 	if (iRet < 0)
 	{
-		zc_error("write fail[GLE=%d], errno[%d]", GetLastError(), errno);
+		zc_error("write fail, errno[%d]", errno);
 		return -1;
 	}
 

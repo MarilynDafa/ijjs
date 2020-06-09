@@ -471,5 +471,8 @@
     <ClInclude Include="..\code\externals\uv\include\uv\win.h">
       <Filter>dummy</Filter>
     </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\zlog.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

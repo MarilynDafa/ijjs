@@ -3,9 +3,10 @@ import { dirname, join } from '@ijjs/path';
 const thisFile = import.meta.url.slice(7);   // strip "file://"
 
 (async () => {
-    const script = ijjs.args[2];
+    const script = 'test.wasm';//ijjs.args[2];
     const args = ijjs.args.slice(2);
-    const bytes = await ijjs.fs.readFile(join(dirname(thisFile),script));
+	console.log(join(dirname(thisFile),script))
+    const bytes = await ijjs.fs.readFile('D:/ijjs/tests/wasi/test.wasm');
     const module = new WebAssembly.Module(bytes);
     const wasi = new WebAssembly.WASI({ args });
     const importObject = { wasi_unstable: wasi.wasiImport };

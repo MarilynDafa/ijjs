@@ -128,7 +128,6 @@
     <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\internal\tsd_win.h" />
     <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\internal\util.h" />
     <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\internal\witness.h" />
-    <ClInclude Include="..\code\externals\log4c\log4c\appender_type_syslog.h" />
     <ClInclude Include="..\code\externals\quickjs\libbf.h" />
     <ClInclude Include="..\code\externals\uv\include\uv.h" />
     <ClInclude Include="..\code\externals\uv\include\uv\aix.h" />
@@ -279,13 +278,13 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;_FILE_OFFSET_BITS=64;IJ_EXPORT;d_m3HasWASI;USE_MBEDTLS;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/log4c;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/externals/cwin/thread;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;_FILE_OFFSET_BITS=64;IJ_EXPORT;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
     <Link>
-      <LibraryDependencies>pthread;m;dl;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>pthread;m;dl;ssl;crypto;%(LibraryDependencies)</LibraryDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call "$(SolutionDir)qjsc.bat"</Command>
@@ -297,13 +296,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;_FILE_OFFSET_BITS=64;IJ_EXPORT;d_m3HasWASI;USE_MBEDTLS;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/log4c;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/externals/cwin/thread;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;_FILE_OFFSET_BITS=64;IJ_EXPORT;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
     <Link>
-      <LibraryDependencies>pthread;m;dl;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>pthread;m;dl;ssl;crypto;%(LibraryDependencies)</LibraryDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call "$(SolutionDir)qjsc.bat"</Command>
@@ -315,13 +314,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/log4c;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/externals/cwin/thread;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;IJ_EXPORT;d_m3HasWASI;USE_MBEDTLS;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;IJ_EXPORT;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";</PreprocessorDefinitions>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
     <Link>
-      <LibraryDependencies>pthread;m;dl;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>pthread;m;dl;ssl;crypto;%(LibraryDependencies)</LibraryDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call "$(SolutionDir)qjsc.bat"</Command>
@@ -333,13 +332,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/log4c;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/externals/cwin/thread;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;IJ_EXPORT;d_m3HasWASI;USE_MBEDTLS;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;IJ_EXPORT;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
     <Link>
-      <LibraryDependencies>pthread;m;dl;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>pthread;m;dl;ssl;crypto;%(LibraryDependencies)</LibraryDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call "$(SolutionDir)qjsc.bat"</Command>
@@ -351,13 +350,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/log4c;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/externals/cwin/thread;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;IJ_EXPORT;d_m3HasWASI;USE_MBEDTLS;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;IJ_EXPORT;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";</PreprocessorDefinitions>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
     <Link>
-      <LibraryDependencies>pthread;m;dl;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>pthread;m;dl;ssl;crypto;%(LibraryDependencies)</LibraryDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call "$(SolutionDir)qjsc.bat"</Command>
@@ -369,13 +368,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/log4c;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/externals/cwin/thread;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;IJ_EXPORT;d_m3HasWASI;USE_MBEDTLS;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;IJ_EXPORT;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
     <Link>
-      <LibraryDependencies>pthread;m;dl;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>pthread;m;dl;ssl;crypto;%(LibraryDependencies)</LibraryDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call "$(SolutionDir)qjsc.bat"</Command>
@@ -387,13 +386,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals/cwin;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/log4c;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/externals/cwin/thread;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;_FILE_OFFSET_BITS=32;IJ_EXPORT;d_m3HasWASI;USE_MBEDTLS;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";</PreprocessorDefinitions>
+      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;_FILE_OFFSET_BITS=32;IJ_EXPORT;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";</PreprocessorDefinitions>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <LibraryDependencies>pthread;m;dl;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>pthread;m;dl;ssl;crypto;%(LibraryDependencies)</LibraryDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call "$(SolutionDir)qjsc.bat"</Command>
@@ -405,13 +404,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/log4c;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/externals/cwin/thread;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;_FILE_OFFSET_BITS=32;IJ_EXPORT;d_m3HasWASI;USE_MBEDTLS;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;_FILE_OFFSET_BITS=32;IJ_EXPORT;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;HAVE_CONFIG_H;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;QJS_VERSION_STR="20200412";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
     </ClCompile>
     <Link>
-      <LibraryDependencies>pthread;m;dl;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>pthread;m;dl;ssl;crypto;%(LibraryDependencies)</LibraryDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call "$(SolutionDir)qjsc.bat"</Command>
