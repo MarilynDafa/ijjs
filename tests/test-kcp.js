@@ -24,7 +24,6 @@ async function doEchoServer(server) {
     client.send("PING", serverAddr);
     let rinfo, dataStr;
     rinfo = await client.recv();
-	console.log("guole");
     dataStr = new TextDecoder().decode(rinfo.data);
     assert.eq(dataStr, "PING", "sending strings works");
     assert.eq(serverAddr, rinfo.addr, "source address matches");

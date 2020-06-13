@@ -37,7 +37,6 @@ typedef struct {
     uv_udp_send_t req;
     IJJSPromise result;
     size_t size;
-    IJAnsi data[];
 } IJJSSendReq;
 
 static JSClassID ijjs_udp_class_id;
@@ -118,11 +117,11 @@ static IJVoid uvUdpRecvCb(uv_udp_t* handle, ssize_t nread, const uv_buf_t* buf, 
         js_free(ctx, buf->base);
     } else {
         arg = JS_NewObjectProto(ctx, JS_NULL);
-        JS_DefinePropertyValueStr(ctx, arg, "data", ijNewUint8Array(ctx, (IJU8 *) buf->base, nread), JS_PROP_C_W_E);
+        JS_DefinePropertyValueStr(ctx, arg, "data", ijNewUint8Array(ctx, (IJU8*)buf->base, nread), JS_PROP_C_W_E);
         JS_DefinePropertyValueStr(ctx, arg, "flags", JS_NewInt32(ctx, flags), JS_PROP_C_W_E);
         JS_DefinePropertyValueStr(ctx, arg, "addr", ijAddr2Obj(ctx, addr), JS_PROP_C_W_E);
     }
-    ijSettlePromise(ctx, &u->read.result, is_reject, 1, (JSValueConst *) &arg);
+    ijSettlePromise(ctx, &u->read.result, is_reject, 1, (JSValueConst*)&arg);
     ijClearPromise(ctx, &u->read.result);
 }
 
@@ -205,14 +204,13 @@ static JSValue ijUdpSend(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVa
         buf += r;
         size -= r;
     }
-    IJJSSendReq* sr = js_malloc(ctx, sizeof(*sr) + size);
+    IJJSSendReq* sr = js_malloc(ctx, sizeof(*sr));
     if (!sr)
         return JS_EXCEPTION;
     sr->req.data = sr;
-    memcpy(sr->data, buf, size);
     if (is_string)
         JS_FreeCString(ctx, buf);
-    b = uv_buf_init(sr->data, size);
+    b = uv_buf_init(buf, size);
     r = uv_udp_send(&sr->req, &u->udp, &b, 1, sa, uvUdpSendCb);
     if (r != 0) {
         js_free(ctx, sr);

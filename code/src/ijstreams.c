@@ -140,7 +140,7 @@ static IJVoid uvStreamWriteCb(uv_write_t* req, IJS32 status) {
     } else {
         arg = JS_UNDEFINED;
     }
-    ijSettlePromise(ctx, &wr->result, is_reject, 1, (JSValueConst *) &arg);
+    ijSettlePromise(ctx, &wr->result, is_reject, 1, (JSValueConst*)&arg);
     js_free(ctx, wr);
 }
 
