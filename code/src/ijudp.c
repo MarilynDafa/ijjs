@@ -176,7 +176,7 @@ static JSValue ijUdpSend(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVa
         size_t aoffset, asize;
         JSValue abuf = JS_GetTypedArrayBuffer(ctx, jsData, &aoffset, &asize, NULL);
         if (JS_IsException(abuf))
-            return abuf;
+            return JS_EXCEPTION;
         buf = (IJAnsi*) JS_GetArrayBuffer(ctx, &size, abuf);
         JS_FreeValue(ctx, abuf);
         if (!buf)

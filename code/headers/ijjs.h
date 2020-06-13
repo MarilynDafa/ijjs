@@ -331,6 +331,14 @@ IJ_API IJVoid ijModXhrInit(
 IJ_API IJVoid ijModXhrExport(
     JSContext* ctx, 
     JSModuleDef* m);
+    
+IJ_API IJVoid ijModKcpInit(
+    JSContext* ctx, 
+    JSModuleDef* m);
+
+IJ_API IJVoid ijModKcpExport(
+    JSContext* ctx, 
+    JSModuleDef* m);
 
 IJ_API JSValue ijNewError(
     JSContext* ctx, 

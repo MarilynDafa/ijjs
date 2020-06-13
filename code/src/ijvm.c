@@ -50,6 +50,7 @@ static IJS32 ijInit(JSContext* ctx, JSModuleDef* m) {
     ijModWorkerInit(ctx, m);
     ijModXhrInit(ctx, m);
     ijModLogInit(ctx, m);
+    ijModKcpInit(ctx, m);
     return 0;
 }
 
@@ -72,6 +73,7 @@ JSModuleDef* ijInitModuleUV(JSContext* ctx, const IJAnsi* name) {
     ijModWorkerExport(ctx, m);
     ijModXhrExport(ctx, m);
     ijModLogExport(ctx, m);
+    ijModKcpExport(ctx, m);
     return m;
 }
 
