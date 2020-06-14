@@ -110,6 +110,8 @@
 #define CHECK_NULL(val)     CHECK((val) == NULL)
 #define CHECK_NOT_NULL(val) CHECK((val) != NULL)
 #define IJJS_CONST(x) JS_PROP_INT32_DEF(#x, x, JS_PROP_CONFIGURABLE)
+#define JSFREESAFE(ctx, v) if (JS_VALUE_HAS_REF_COUNT(v) && ((JSRefCountHeader*)JS_VALUE_GET_PTR(v)) && ((JSRefCountHeader*)JS_VALUE_GET_PTR(v))->ref_count>0)JS_FreeValue(ctx, v)
+#define JSFREESAFERT(rt, v) if (JS_VALUE_HAS_REF_COUNT(v) && ((JSRefCountHeader*)JS_VALUE_GET_PTR(v)) && ((JSRefCountHeader*)JS_VALUE_GET_PTR(v))->ref_count>0)JS_FreeValueRT(rt, v)
 
 
 

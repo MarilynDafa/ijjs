@@ -75,6 +75,7 @@ typedef struct IJJSAssertionInfo {
 typedef struct {
     JSValue p;
     JSValue rfuncs[2];
+    IJBool valid;
 } IJJSPromise;
 
 typedef struct {

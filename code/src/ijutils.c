@@ -156,6 +156,7 @@ JSValue ijInitPromise(JSContext* ctx, IJJSPromise* p) {
         return JS_EXCEPTION;
     p->rfuncs[0] = JS_DupValue(ctx, rfuncs[0]);
     p->rfuncs[1] = JS_DupValue(ctx, rfuncs[1]);
+    p->valid = true;
     return JS_DupValue(ctx, p->p);
 }
 
@@ -167,27 +168,34 @@ IJVoid ijFreePromise(JSContext* ctx, IJJSPromise* p) {
     JS_FreeValue(ctx, p->rfuncs[0]);
     JS_FreeValue(ctx, p->rfuncs[1]);
     JS_FreeValue(ctx, p->p);
+    p->valid = false;
 }
 
 IJVoid ijFreePromiseRT(JSRuntime* rt, IJJSPromise* p) {
     JS_FreeValueRT(rt, p->rfuncs[0]);
     JS_FreeValueRT(rt, p->rfuncs[1]);
     JS_FreeValueRT(rt, p->p);
+    p->valid = false;
 }
 
 IJVoid ijClearPromise(JSContext* ctx, IJJSPromise* p) {
     p->p = JS_UNDEFINED;
     p->rfuncs[0] = JS_UNDEFINED;
     p->rfuncs[1] = JS_UNDEFINED;
+    p->valid = false;
 }
 
 IJVoid ijMarkPromise(JSRuntime* rt, IJJSPromise* p, JS_MarkFunc* mark_func) {
+    if (!p->valid)
+        return;
     JS_MarkValue(rt, p->p, mark_func);
     JS_MarkValue(rt, p->rfuncs[0], mark_func);
     JS_MarkValue(rt, p->rfuncs[1], mark_func);
 }
 
 IJVoid ijSettlePromise(JSContext* ctx, IJJSPromise* p, IJBool is_reject, IJS32 argc, JSValueConst* argv) {
+    if (!p->valid)
+        return;
     JSValue ret = JS_Call(ctx, p->rfuncs[is_reject], JS_UNDEFINED, argc, argv);
     for (IJS32 i = 0; i < argc; i++)
         JS_FreeValue(ctx, argv[i]);
