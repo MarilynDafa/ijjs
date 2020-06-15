@@ -44,7 +44,6 @@ typedef struct FileItem {
 } FileItem;
 
 typedef struct Flags {
-    bool interactive;
     bool empty_run;
     bool strict_module_detection;
     struct list_head preload_modules;
@@ -108,7 +107,6 @@ static void print_help(void) {
            "  -h, --help                      list options\n"
            "  -e, --eval EXPR                 evaluate EXPR\n"
            "  -l, --load FILENAME             module to preload (option can be repeated)\n"
-           "  -i, --interactive               go to interactive mode\n"
            "  -q, --quit                      just instantiate the interpreter and quit\n"
            "  --abort-on-unhandled-rejection  abort when a rejected promise is not caught\n"
            "  --override-filename FILENAME    override filename in error messages\n"
@@ -181,8 +179,7 @@ int main(int argc, char** argv) {
     IJJSRunOptions runOptions;
     int exit_code = EXIT_SUCCESS;
     ijDefaultOptions(&runOptions);
-    Flags flags = { .interactive = false,
-                    .empty_run = false,
+    Flags flags = { .empty_run = false,
                     .strict_module_detection = false,
                     .eval_expr = NULL,
                     .override_filename = NULL,
@@ -255,10 +252,6 @@ int main(int argc, char** argv) {
                 exit_code = EXIT_INVALID_ARG;
                 goto exit;
             }
-            if (opt.key == 'i' || is_longopt(opt, "interactive")) {
-                flags.interactive = true;
-                break;
-            }
             if (opt.key == 'q' || is_longopt(opt, "quit")) {
                 flags.empty_run = true;
                 break;
@@ -296,8 +289,6 @@ int main(int argc, char** argv) {
             exit_code = EXIT_FAILURE;
             goto exit;
         }
-    } else if (optind >= argc) {
-        flags.interactive = true;
     } else {
         const char* filepath = argv[optind];
         int eval_flags = get_eval_flags(filepath, flags.strict_module_detection);
@@ -305,9 +296,6 @@ int main(int argc, char** argv) {
             exit_code = EXIT_FAILURE;
             goto exit;
         }
-    }
-    if (flags.interactive) {
-        ijRunRepl(ctx);
     }
     ijRun(qrt);
 exit:

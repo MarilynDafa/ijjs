@@ -412,7 +412,3 @@ JSValue ijEvalFile(JSContext* ctx, const IJAnsi* filename, IJS32 flags, IJBool i
     dbuf_free(&dbuf);
     return ret;
 }
-
-IJVoid ijRunRepl(JSContext* ctx) {
-    CHECK_EQ(0, ijEvalBinary(ctx, repl, repl_size));
-}

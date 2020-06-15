@@ -119,9 +119,6 @@ IJ_API JSValue ijEvalFile(
     IJBool is_main, 
     IJAnsi* override_filename);
 
-IJ_API IJVoid ijRunRepl(
-    JSContext* ctx);
-
 IJ_API IJVoid ijAssert(
     const struct IJJSAssertionInfo info);
 
