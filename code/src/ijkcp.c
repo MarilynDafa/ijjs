@@ -20,23 +20,18 @@ typedef struct {
         IJJSPromise result;
     } read;
     IJJSSendReq* write;
-    uv_timer_t timer;
+    uv_idle_t idle;
     IJU64 nextupdate;
 } IJJSKcp;
 
-static IJVoid uvKcpUpdateCb(uv_timer_t* handle) {
+static IJVoid uvKcpUpdateCb(uv_idle_t* handle) {
     IJJSKcp* k = handle->data;
     IJU64 now64 = uv_now(ijGetLoop(k->ctx));
     if (now64 >= k->nextupdate)
     {
-        printf("update %#X\n", k);
         ikcp_update(k->kcp, (IJU32)now64);
         k->nextupdate = ikcp_check(k->kcp, (IJU32)now64);
     }
-    if (k->nextupdate <= now64)
-        uv_timer_set_repeat(handle, 10);
-    else
-        uv_timer_set_repeat(handle, (k->nextupdate - now64));
 }
 
 static IJVoid uvKcpSendCb(uv_udp_send_t* req, IJS32 status) {
@@ -52,7 +47,6 @@ static IJVoid uvKcpSendCb(uv_udp_send_t* req, IJS32 status) {
     else {
         arg = JS_UNDEFINED;
     }
-    printf("settle , %#X\n", k);
     ijSettlePromise(ctx, &k->write->result, is_reject, 1, (JSValueConst*)&arg);
 }
 static int kcpOutput(const IJAnsi* buf, int size, struct IKCPCB* kcp, void* user){
@@ -60,8 +54,18 @@ static int kcpOutput(const IJAnsi* buf, int size, struct IKCPCB* kcp, void* user
     IJJSKcp* k = (IJJSKcp*)user;
     uv_buf_t b;
     b = uv_buf_init(buf, size);
+    r = uv_udp_try_send(&k->udp, &b, 1, &k->sa);
+    if (r == size) {
+        JSValue arg = JS_UNDEFINED;
+        ijSettlePromise(k->ctx, &k->write->result, 0, 1, (JSValueConst*)&arg);
+        return 0;
+    }
+    if (r >= 0) {
+        buf += r;
+        size -= r;
+    }
+    b = uv_buf_init(buf, size);
     r = uv_udp_send(&(k->write->req), &k->udp, &b, 1, &k->sa, uvKcpSendCb);
-    printf("output %d %s %#X\n",r , buf, k);
     return r;
 }
 static IJVoid uvKcpRecvCb(uv_udp_t* handle, ssize_t nread, const uv_buf_t* buf, const struct sockaddr* addr, unsigned flags) {
@@ -71,22 +75,22 @@ static IJVoid uvKcpRecvCb(uv_udp_t* handle, ssize_t nread, const uv_buf_t* buf, 
         js_free(k->ctx, buf->base);
         return;
     }
-    uv_udp_recv_stop(handle);
     JSContext* ctx = k->ctx;
     JSValue arg;
     IJS32 is_reject = 0;
     if (nread < 0) {
+        uv_udp_recv_stop(handle);
         arg = ijNewError(ctx, nread);
         is_reject = 1;
         js_free(ctx, buf->base);
     }
     else {
-        arg = JS_NewObjectProto(ctx, JS_NULL);
         ikcp_input(k->kcp, buf->base, nread);
-        k->nextupdate = ikcp_check(k->kcp, uv_now(ijGetLoop(k->ctx)));
         IJS32 len = ikcp_peeksize(k->kcp);
         if (len > 0)
         {
+            uv_udp_recv_stop(handle);
+            arg = JS_NewObjectProto(ctx, JS_NULL);
             ikcp_recv(k->kcp, buf->base, len);
             JS_DefinePropertyValueStr(ctx, arg, "data", ijNewUint8Array(ctx, (IJU8*)buf->base, len), JS_PROP_C_W_E);
             JS_DefinePropertyValueStr(ctx, arg, "flags", JS_NewInt32(ctx, flags), JS_PROP_C_W_E);
@@ -94,7 +98,6 @@ static IJVoid uvKcpRecvCb(uv_udp_t* handle, ssize_t nread, const uv_buf_t* buf, 
         }
         else
             return;
-        printf("recv %d, %s, %#X\n", len,buf->base, k);
     }
     ijSettlePromise(ctx, &k->read.result, is_reject, 1, (JSValueConst*)&arg);
     ijClearPromise(ctx, &k->read.result);
@@ -128,8 +131,8 @@ static IJJSKcp* ijKcpGet(JSContext* ctx, JSValueConst obj) {
 static IJVoid ijKcpFinalizer(JSRuntime* rt, JSValue val) {
     IJJSKcp* k = JS_GetOpaque(val, ijjs_kcp_class_id);
     if (k) {
-        uv_timer_stop(&k->timer);
-        uv_close((uv_handle_t*)&k->timer, NULL);
+        uv_idle_stop(&k->idle);
+        uv_close((uv_handle_t*)&k->idle, NULL);
         ikcp_release(k->kcp);
         ijFreePromiseRT(rt, &k->read.result);
         k->finalized = 1;
@@ -161,9 +164,9 @@ static JSValue ijNewKcp(JSContext* ctx, IJS32 af, IJU32 conv) {
         JS_FreeValue(ctx, obj);
         return JS_EXCEPTION;
     }
-    uv_timer_init(ijGetLoop(ctx), &k->timer);
-    k->timer.data = k;
-    CHECK_EQ(uv_timer_start(&k->timer, uvKcpUpdateCb, 30, 30), 0);
+    uv_idle_init(ijGetLoop(ctx), &k->idle);
+    k->idle.data = k;
+    CHECK_EQ(uv_idle_start(&k->idle, uvKcpUpdateCb), 0);
     r = uv_udp_init_ex(ijGetLoop(ctx), &k->udp, af);
     if (r != 0) {
         JS_FreeValue(ctx, obj);
@@ -390,7 +393,6 @@ static JSValue ijKcpSend(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSVa
     if (is_string)
         JS_FreeCString(ctx, buf);
     ikcp_send(k->kcp, buf, size);
-    k->nextupdate = ikcp_check(k->kcp, uv_now(ijGetLoop(k->ctx)));
     return ijInitPromise(ctx, &k->write->result);
 }
 
