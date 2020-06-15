@@ -23,7 +23,7 @@
 #define __ijpre_h_
 
 #define IJJS_VERSION_MAJOR 1
-#define IJJS_VERSION_MINOR 1
+#define IJJS_VERSION_MINOR 2
 #define IJJS_VERSION_PATCH 0
 #define IJJS_VERSION_SUFFIX ""
 
