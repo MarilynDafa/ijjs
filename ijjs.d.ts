@@ -1,6 +1,8 @@
 // Type definitions for ijjs
 // Project: https://github.com/MarilynDafa/ijjs
 
+type Timer = Object;
+
 interface Iterator {
     next(): Object;
 }
@@ -255,7 +257,7 @@ interface PerformanceEntry {
     readonly startTime: number;
     toJSON(): Object;
 }
-declare var PerformanceEntry: {
+declare var performance: {
     prototype: PerformanceEntry;
     new(): PerformanceEntry;
 };
@@ -363,10 +365,11 @@ interface Crypto {
     readonly subtle: Object;
     getRandomValues<T extends Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array>(array: T): T;
 }
-declare var Crypto: {
+declare var crypto: {
     prototype: Crypto;
     new(): Crypto;
 };
+
 
 interface Worker extends EventTarget {
     onmessage: ((this: Worker, ev: MessageEvent) => Object) | null;
@@ -470,23 +473,8 @@ interface ErrorConstructor {
 
 declare var Error: ErrorConstructor;
 
-interface ParsedOptions {
-    _: string[]
-    [key: string]: Object
-}
 
-interface Options {
-    alias?: { [key: string]: string | string[] }
-    string?: string[]
-    boolean?: string[]
-    default?: { [key: string]: Object }
-    unknown?: (optionName: string) => boolean
-    stopEarly?: boolean
-}
-
-declare function getopts(argv: string[], options?: Options): ParsedOptions
 declare function defineEventAttribute(target:Object, eventName:string):void
-type Timer = any;
 declare function setTimeout(callback: (...args: Object[]) => void, ms: number, ...args: Object[]): Timer;
 declare function clearTimeout(timeoutId: Timer): void;
 declare function setInterval(callback: (...args: Object[]) => void, ms: number, ...args: Object[]): Timer;
@@ -520,6 +508,45 @@ declare namespace ijjs {
         version:string
         machine:string
     }
+
+    interface Hash {
+        update(data:string): Hash;
+        digest():string;
+        bytes():Uint8Array;
+    }
+
+    interface ParsedOptions {
+        _: string[]
+        [key: string]: Object
+    }
+    
+    interface Options {
+        alias?: { [key: string]: string | string[] }
+        string?: string[]
+        boolean?: string[]
+        default?: { [key: string]: Object }
+        unknown?: (optionName: string) => boolean
+        stopEarly?: boolean
+    }
+    interface TimeOptionsV1 {
+        node?: number[]
+        clockseq?: number
+        msecs?: number
+        nsecs?: number
+    }
+    interface TimeOptionsV4 {
+        random?: number
+        rng?: number
+    }
+    interface FileInfo {
+        root: string
+        dir: string
+        base: string
+        ext: string 
+        name: string
+    }
+    
+    
     /**
      * ipv4 socket
      */
@@ -560,6 +587,34 @@ declare namespace ijjs {
      * ijjs internal module versions
      */
     export const versions: string[];
+    /**
+     * get file basename
+     */
+    export function basename(path:string, ext?:string): string;
+    /**
+     * get file extname
+     */
+    export function extname(path:string): string;
+    /**
+     * get file dirname
+     */
+    export function dirname(path:string): string;
+    /**
+     * parse fileinfo
+     */
+    export function parse(path:string): FileInfo;
+    /**
+     * is path absolute
+     */
+    export function isAbsolute(path:string): boolean;
+    /**
+     * join path 
+     */
+    export function join(...args:string[]): string;
+    /**
+     * format FileInfo
+     */
+    export function format(info:FileInfo): string;
     /**
      * get os environ
      */
@@ -620,4 +675,30 @@ declare namespace ijjs {
      * get os system info
      */
     export function uname(): UName;
+    /**
+     * create hash object
+     */
+    export function hash(type:string): Hash;
+    /**
+     * get options
+     */
+    export function getopts(argv: string[], options?: Options): ParsedOptions;
+    /**
+     * create uuid version1
+     */
+    export function uuidv1(options?:TimeOptionsV1, buf?:Array, offset?: number):string;
+    /**
+     * create uuid version3
+     * namespace URL:6ba7b811-9dad-11d1-80b4-00c04fd430c8 or DNS:6ba7b810-9dad-11d1-80b4-00c04fd430c8
+     */
+    export function uuidv3(value:string, namespace:string, buf?:Array, offset?: number):string;
+    /**
+     * create uuid version4
+     */
+    export function uuidv4(options?:TimeOptionsV4, buf?:Array, offset?: number):string;
+    /**
+     * create uuid version5
+     * namespace URL:6ba7b811-9dad-11d1-80b4-00c04fd430c8 or DNS:6ba7b810-9dad-11d1-80b4-00c04fd430c8
+     */
+    export function uuidv5(value:string, namespace:string, buf?:Array, offset?: number):string;
 }

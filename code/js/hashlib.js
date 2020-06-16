@@ -124,7 +124,7 @@ class Hash {
     }
 }
 
-function createHash(type) {
+ijjs.hash =function(type) {
     const obj = supportedHashes[type.toLowerCase()];
 
     if (!obj) {
@@ -133,6 +133,3 @@ function createHash(type) {
 
     return new Hash(obj);
 }
-
-
-export { createHash };

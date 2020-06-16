@@ -241,8 +241,7 @@ function createV35(name, version, hashfunc) {
   return generateUUID;
 };
 
-const v3 = createV35('v3', 0x30, 'md5');
-const v5 = createV35('v5', 0x50, 'sha1');
-
-
-export { v1, v3, v4, v5 };
+ijjs.uuidv1 = v1;
+ijjs.uuidv3 = createV35('v3', 0x30, 'md5');
+ijjs.uuidv4 = v4;
+ijjs.uuidv5 = createV35('v5', 0x50, 'sha1');  

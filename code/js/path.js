@@ -1612,10 +1612,10 @@ posix.posix = win32.posix = posix;
 
 const p = ijjs.platform === 'win32' ? win32 : posix;
 
-export const basename = p.basename;
-export const dirname = p.dirname;
-export const extname = p.extname;
-export const format = p.format;
-export const isAbsolute = p.isAbsolute;
-export const join = p.join;
-export const parse = p.parse;
+ijjs.basename = p.basename;
+ijjs.dirname = p.dirname;
+ijjs.extname = p.extname;
+ijjs.format = p.format;
+ijjs.isAbsolute = p.isAbsolute;
+ijjs.join = p.join;
+ijjs.parse = p.parse;
