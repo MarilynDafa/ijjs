@@ -493,12 +493,6 @@ declare function setInterval(callback: (...args: Object[]) => void, ms: number, 
 declare function clearInterval(intervalId: Timer): void;
 declare function alert(...args: Object[]): void;
 
-interface UName {
-    sysname:string
-    release:string
-    version:string
-    machine:string
-}
 
 interface Window extends EventTarget, GlobalEventHandlers, WindowEventHandlers {
 }
@@ -519,6 +513,13 @@ declare var window: Window;
 
 
 declare namespace ijjs {
+    
+    interface UName {
+        sysname:string
+        release:string
+        version:string
+        machine:string
+    }
     /**
      * ipv4 socket
      */
