@@ -456,6 +456,20 @@ declare var XMLHttpRequest: {
     readonly UNSENT: number;
 };
 
+interface Error {
+    name: string;
+    message: string;
+    stack?: string;
+}
+
+interface ErrorConstructor {
+    new(message?: string): Error;
+    (message?: string): Error;
+    readonly prototype: Error;
+}
+
+declare var Error: ErrorConstructor;
+
 interface ParsedOptions {
     _: string[]
     [key: string]: Object
@@ -470,7 +484,6 @@ interface Options {
     stopEarly?: boolean
 }
 
-
 declare function getopts(argv: string[], options?: Options): ParsedOptions
 declare function defineEventAttribute(target:Object, eventName:string):void
 type Timer = any;
@@ -480,6 +493,12 @@ declare function setInterval(callback: (...args: Object[]) => void, ms: number, 
 declare function clearInterval(intervalId: Timer): void;
 declare function alert(...args: Object[]): void;
 
+interface UName {
+    sysname:string
+    release:string
+    version:string
+    machine:string
+}
 
 interface Window extends EventTarget, GlobalEventHandlers, WindowEventHandlers {
 }
@@ -540,4 +559,64 @@ declare namespace ijjs {
      * ijjs internal module versions
      */
     export const versions: string[];
+    /**
+     * get os environ
+     */
+    export function environ(): Object;
+    /**
+     * get ijjscli path
+     */
+    export function exepath(): string;
+    /**
+     * exit program
+     */
+    export function exit(code?: number): void;
+    /**
+     * run Garbage Collector
+     */
+    export function gc(): null;
+    /**
+     * get env value
+     */
+    export function getenv(name:string): string;
+    /**
+     * set env value
+     */
+    export function setenv(name:string, value:string): void;
+    /**
+     * unset env value
+     */
+    export function unsetenv(name:string): void;
+    /**
+     * time function tv.tv_sec * 1000 + (tv.tv_usec / 1000)
+     */
+    export function gettimeofday(): number;
+    /**
+     * get writable dir
+     */
+    export function homedir(): string;
+    /**
+     * get temp dir
+     */
+    export function tmpdir(): string;
+    /**
+     * get current dir
+     */
+    export function cwd(): string;
+    /**
+     * is handle a tty
+     */
+    export function isatty(fd:number): boolean;
+    /**
+     * same as console.log
+     */
+    export function print(...args: Object[]): void;
+    /**
+     * same as console.log
+     */
+    export function printError(...args: Object[]): void;
+    /**
+     * get os system info
+     */
+    export function uname(): UName;
 }
