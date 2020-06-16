@@ -1,8 +1,8 @@
 // Type definitions for ijjs
 // Project: https://github.com/MarilynDafa/ijjs
 
-interface Iterator{
-    next():any;
+interface Iterator {
+    next(): Object;
 }
 
 interface Event {
@@ -97,7 +97,7 @@ interface CustomEvent extends Event {
     /**
      * Returns any custom data event was created with. Typically used for synthetic events.
      */
-    readonly detail: any;
+    readonly detail: boolean;
 }
 declare var CustomEvent: {
     prototype: CustomEvent;
@@ -110,7 +110,7 @@ interface ErrorEvent extends Event {
     readonly filename: string;
     readonly lineno: number;
     readonly colno: number;
-    readonly error: any;
+    readonly error: string;
 }
 declare var ErrorEvent: {
     prototype: ErrorEvent;
@@ -122,7 +122,7 @@ interface MessageEvent extends Event {
     /**
      * Returns the data of the message.
      */
-    readonly data: any;
+    readonly data: Object;
 }
 declare var MessageEvent: {
     prototype: MessageEvent;
@@ -131,7 +131,7 @@ declare var MessageEvent: {
 
 
 interface PromiseRejectionEvent extends Event {
-    readonly reason: any;
+    readonly reason: Object;
 }
 declare var PromiseRejectionEvent: {
     prototype: PromiseRejectionEvent;
@@ -179,7 +179,7 @@ interface AbortSignal extends EventTarget {
      * Returns true if this AbortSignal's AbortController has signaled to abort, and false otherwise.
      */
     readonly aborted: boolean;
-    onabort: ((this: AbortSignal, ev: Event) => any) | null;
+    onabort: ((this: AbortSignal, ev: Event) => Object) | null;
 }
 declare var AbortSignal: {
     prototype: AbortSignal;
@@ -203,47 +203,47 @@ declare var AbortController: {
 };
 
 
-interface Console{
+interface Console {
     /**
      * Prints to `stdout` with newline.
      */
-    log(...args:any[]): void;
+    log(...args: Object[]): void;
     /**
      * The {@link console.info()} function is an alias for {@link console.log()}.
      */
-    info(...args:any[]): void;
+    info(...args: Object[]): void;
     /**
      * The {@link console.warn()} function is an alias for {@link console.error()}.
      */
-    warn(...args:any[]): void;
+    warn(...args: Object[]): void;
     /**
      * Prints to `stderr` with newline.
      */
-    error(...args:any[]): void;
+    error(...args: Object[]): void;
     /**
      * A simple assertion test that verifies whether `value` is truthy.
      * If it is not, an `AssertionError` is thrown.
      * If provided, the error `args` is formatted using `util.format()` and used as the error message.
      */
-    assert(expression: any,...args:any[]): void;
+    assert(expression: Object, ...args: Object[]): void;
     /**
      * Uses {@link util.inspect()} on `obj` and prints the resulting string to `stdout`.
      * This function bypasses any custom `inspect()` function defined on `obj`.
      */
-    dir(obj:any):void;
-     /**
-     * This method calls {@link console.log()} passing it the arguments received. Please note that this method does not produce any XML formatting
-     */
-    dirxml(obj:any): void;
+    dir(obj: Object): void;
+    /**
+    * This method calls {@link console.log()} passing it the arguments received. Please note that this method does not produce any XML formatting
+    */
+    dirxml(obj: Object): void;
     /**
      * This method does not display anything unless used in the inspector.
      *  Prints to `stdout` the array `array` formatted as a table.
      */
-    table(data: any, properties?: string[]): void;
+    table(data: Object, properties?: string[]): void;
     /**
      * Prints to `stderr` the string 'Trace :', followed by the {@link util.format()} formatted args and stack trace to the current position in the code.
      */
-    trace(...args:any[]): void;
+    trace(...args: Object[]): void;
 }
 declare var console: Console;
 
@@ -253,7 +253,7 @@ interface PerformanceEntry {
     readonly entryType: string;
     readonly name: string;
     readonly startTime: number;
-    toJSON(): any;
+    toJSON(): Object;
 }
 declare var PerformanceEntry: {
     prototype: PerformanceEntry;
@@ -261,15 +261,15 @@ declare var PerformanceEntry: {
 };
 
 
-interface GlobalEventHandlers {    
+interface GlobalEventHandlers {
     /**
      * Fires immediately after the browser loads the object.
      * @param ev The event.
      */
-    onload: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onload: ((this: GlobalEventHandlers, ev: Event) => Object) | null;
 }
 interface WindowEventHandlers {
-    onunhandledrejection: ((this: WindowEventHandlers, ev: PromiseRejectionEvent) => any) | null;
+    onunhandledrejection: ((this: WindowEventHandlers, ev: PromiseRejectionEvent) => Object) | null;
 }
 
 
@@ -278,8 +278,8 @@ interface Performance extends EventTarget {
     now(): number;
     mark(markName: string): void;
     measure(measureName: string, startMark?: string, endMark?: string): void;
-    getEntriesByType(type: string):  PerformanceEntry[];
-    getEntriesByName(name: string):  PerformanceEntry[];
+    getEntriesByType(type: string): PerformanceEntry[];
+    getEntriesByName(name: string): PerformanceEntry[];
     clearMarks(markName?: string): void;
     clearMeasures(measureName?: string): void;
 }
@@ -315,7 +315,7 @@ interface URLSearchParams {
      * Returns a string containing a query string suitable for use in a URL. Does not include the question mark.
      */
     toString(): string;
-    forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
+    forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: Object): void;
     sort(): void;
     /**
      * Returns an array of key, value pairs for every entry in the search params.
@@ -354,14 +354,14 @@ interface URL {
 declare var URL: {
     prototype: URL;
     new(url: string, base?: string | URL): URL;
-    createObjectURL(object: any): string;
+    createObjectURL(object: Object): string;
     revokeObjectURL(url: string): void;
 };
 
 
 interface Crypto {
-    readonly subtle: any;
-    getRandomValues<T extends Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array >(array: T): T;
+    readonly subtle: Object;
+    getRandomValues<T extends Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array>(array: T): T;
 }
 declare var Crypto: {
     prototype: Crypto;
@@ -369,10 +369,10 @@ declare var Crypto: {
 };
 
 interface Worker extends EventTarget {
-    onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
-    onmessageerror: ((this: Worker, ev: MessageEvent) => any) | null;
-    onerror: ((this: Worker, ev: ErrorEvent) => any) | null;
-    postMessage(message: any): void;
+    onmessage: ((this: Worker, ev: MessageEvent) => Object) | null;
+    onmessageerror: ((this: Worker, ev: MessageEvent) => Object) | null;
+    onerror: ((this: Worker, ev: ErrorEvent) => Object) | null;
+    postMessage(message: Object): void;
     terminate(): void;
 }
 declare var Worker: {
@@ -388,7 +388,7 @@ interface XMLHttpRequest extends EventTarget {
     /**
      * Returns the response's body.
      */
-    readonly response: any;
+    readonly response: Object;
     /**
      * Returns the text response.
      * 
@@ -405,7 +405,7 @@ interface XMLHttpRequest extends EventTarget {
      * When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global object is a Window object.
      */
     timeout: number;
-    readonly upload: any;
+    readonly upload: Object;
     withCredentials: boolean;
     readonly DONE: number;
     readonly HEADERS_RECEIVED: number;
@@ -420,7 +420,7 @@ interface XMLHttpRequest extends EventTarget {
     /**
      * method url async
      */
-    open(...args): void;
+    open(...args: Object[]): void;
     /**
      * Combines a header in author request headers.
      * 
@@ -437,14 +437,14 @@ interface XMLHttpRequest extends EventTarget {
     setRequestHeader(name: string, value: string): void;
     getAllResponseHeaders(): string;
     getResponseHeader(name: string): string | null;
-    onabort: ((this: XMLHttpRequest, ev: Event) => any) | null;
-    onerror: ((this: XMLHttpRequest, ev: Event) => any) | null;
-    onload: ((this: XMLHttpRequest, ev: Event) => any) | null;
-    onloadend: ((this: XMLHttpRequest, ev: Event) => any) | null;
-    onloadstart: ((this: XMLHttpRequest, ev: Event) => any) | null;
-    onprogress: ((this: XMLHttpRequest, ev: Event) => any) | null;
-    ontimeout: ((this: XMLHttpRequest, ev: Event) => any) | null;
-    onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null;
+    onabort: ((this: XMLHttpRequest, ev: Event) => Object) | null;
+    onerror: ((this: XMLHttpRequest, ev: Event) => Object) | null;
+    onload: ((this: XMLHttpRequest, ev: Event) => Object) | null;
+    onloadend: ((this: XMLHttpRequest, ev: Event) => Object) | null;
+    onloadstart: ((this: XMLHttpRequest, ev: Event) => Object) | null;
+    onprogress: ((this: XMLHttpRequest, ev: Event) => Object) | null;
+    ontimeout: ((this: XMLHttpRequest, ev: Event) => Object) | null;
+    onreadystatechange: ((this: XMLHttpRequest, ev: Event) => Object) | null;
 }
 declare var XMLHttpRequest: {
     prototype: XMLHttpRequest;
@@ -456,8 +456,32 @@ declare var XMLHttpRequest: {
     readonly UNSENT: number;
 };
 
+interface ParsedOptions {
+    _: string[]
+    [key: string]: Object
+}
 
-interface Window extends EventTarget, GlobalEventHandlers, WindowEventHandlers{
+interface Options {
+    alias?: { [key: string]: string | string[] }
+    string?: string[]
+    boolean?: string[]
+    default?: { [key: string]: Object }
+    unknown?: (optionName: string) => boolean
+    stopEarly?: boolean
+}
+
+
+declare function getopts(argv: string[], options?: Options): ParsedOptions
+declare function defineEventAttribute(target:Object, eventName:string):void
+type Timer = any;
+declare function setTimeout(callback: (...args: Object[]) => void, ms: number, ...args: Object[]): Timer;
+declare function clearTimeout(timeoutId: Timer): void;
+declare function setInterval(callback: (...args: Object[]) => void, ms: number, ...args: Object[]): Timer;
+declare function clearInterval(intervalId: Timer): void;
+declare function alert(...args: Object[]): void;
+
+
+interface Window extends EventTarget, GlobalEventHandlers, WindowEventHandlers {
 }
 
 
@@ -503,17 +527,17 @@ declare namespace ijjs {
     /**
      * platform id
      */
-    export const platform:string;
+    export const platform: string;
     /**
      * ijjs version string
      */
-    export const version:string;
+    export const version: string;
     /**
      * ijjs boost arguments
      */
-    export const args:string[];
+    export const args: string[];
     /**
      * ijjs internal module versions
      */
-    export const versions:string[];
+    export const versions: string[];
 }

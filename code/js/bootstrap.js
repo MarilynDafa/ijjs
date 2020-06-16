@@ -5,7 +5,6 @@ globalThis.clearTimeout = core.clearTimeout;
 globalThis.setInterval = core.setInterval;
 globalThis.clearInterval = core.clearInterval;
 globalThis.alert = core.alert;
-globalThis.prompt = core.prompt;
 
 Object.defineProperty(globalThis, 'global', {
     enumerable: true,
@@ -33,7 +32,6 @@ const noExport = [
     'clearTimeout',
     'clearInterval',
     'alert',
-    'prompt',
     'XMLHttpRequest',
     'Worker',
     'signal',

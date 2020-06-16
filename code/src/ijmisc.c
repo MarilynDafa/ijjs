@@ -234,13 +234,6 @@ static JSValue ijPrint(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValu
     return JS_UNDEFINED;
 }
 
-static JSValue ijPrompt(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
-    JSValue str;
-    //fixme
-    //miss function
-    return str;
-}
-
 static JSValue ijRandom(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     size_t size;
     IJU8* buf = JS_GetArrayBuffer(ctx, &size, argv[0]);
@@ -282,7 +275,6 @@ static const JSCFunctionListEntry ijjs_misc_funcs[] = {
     JS_CFUNC_MAGIC_DEF("print", 1, ijPrint, 0),
     JS_CFUNC_MAGIC_DEF("printError", 1, ijPrint, 1),
     JS_CFUNC_MAGIC_DEF("alert", 1, ijPrint, 1),
-    JS_CFUNC_DEF("prompt", 0, ijPrompt),
     JS_CFUNC_DEF("random", 3, ijRandom),
 };
 
