@@ -473,6 +473,253 @@ interface ErrorConstructor {
 
 declare var Error: ErrorConstructor;
 
+interface TextCodeOptions {
+    stream?: boolean;
+}
+
+interface TextEncoderOptions{
+    fatal?: boolean;
+    NONSTANDARD_allowLegacyEncoding?: boolean;
+}
+
+interface TextDecoderOptions {
+    fatal?: boolean;
+    ignoreBOM?: boolean;
+}
+
+interface BufferSource{
+    buffer:ArrayBuffer
+    byteOffset:number
+    byteLength:number
+}
+
+/** TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+interface TextEncoder {
+    /**
+     * Returns "utf-8".
+     */
+    readonly encoding: string;
+    /**
+     * Returns the result of running UTF-8's encoder.
+     */
+    encode(input: string, options?: TextCodeOptions): Uint8Array;
+}
+declare var TextEncoder: {
+    prototype: TextEncoder;
+    /**
+     * label:
+     *      utf-8
+     *      ibm866
+     *      iso-8859-2
+     *      iso-8859-3
+     *      iso-8859-4
+     *      iso-8859-5
+     *      iso-8859-6
+     *      iso-8859-7
+     *      iso-8859-8
+     *      iso-8859-8-i
+     *      iso-8859-10
+     *      iso-8859-13
+     *      iso-8859-14
+     *      iso-8859-15
+     *      iso-8859-16
+     *      koi8-r
+     *      koi8-u
+     *      macintosh
+     *      windows-874
+     *      windows-1250
+     *      windows-1251
+     *      windows-1252
+     *      windows-1253
+     *      windows-1254
+     *      windows-1255
+     *      windows-1256
+     *      windows-1257
+     *      windows-1258
+     *      x-mac-cyrillic
+     *      gbk
+     *      gb18030
+     *      big5
+     *      euc-jp
+     *      iso-2022-jp
+     *      shift_jis
+     *      euc-kr
+     *      csiso2022kr
+     *      utf-16be
+     *      utf-16
+     *      x-user-defined
+     */
+    new(label?: string, options?: TextEncoderOptions): TextEncoder;
+};
+
+/** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+interface TextDecoder {
+    /**
+     * Returns encoding's name, lowercased.
+     */
+    readonly encoding: Object;
+    /**
+     * Returns true if error mode is "fatal", and false otherwise.
+     */
+    readonly fatal: boolean;
+    /**
+     * Returns true if ignore BOM flag is set, and false otherwise.
+     */
+    readonly ignoreBOM: boolean;
+    /**
+     * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented stream. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
+     * 
+     * ```
+     * var string = "", decoder = new TextDecoder(encoding), buffer;
+     * while(buffer = next_chunk()) {
+     *   string += decoder.decode(buffer, {stream:true});
+     * }
+     * string += decoder.decode(); // end-of-stream
+     * ```
+     * 
+     * If the error mode is "fatal" and encoding's decoder returns error, throws a TypeError.
+     */
+    decode(input: BufferSource | ArrayBuffer, options?: TextCodeOptions): string;
+}
+
+declare var TextDecoder: {
+    prototype: TextDecoder;
+    /**
+     * label:
+     *      utf-8
+     *      ibm866
+     *      iso-8859-2
+     *      iso-8859-3
+     *      iso-8859-4
+     *      iso-8859-5
+     *      iso-8859-6
+     *      iso-8859-7
+     *      iso-8859-8
+     *      iso-8859-8-i
+     *      iso-8859-10
+     *      iso-8859-13
+     *      iso-8859-14
+     *      iso-8859-15
+     *      iso-8859-16
+     *      koi8-r
+     *      koi8-u
+     *      macintosh
+     *      windows-874
+     *      windows-1250
+     *      windows-1251
+     *      windows-1252
+     *      windows-1253
+     *      windows-1254
+     *      windows-1255
+     *      windows-1256
+     *      windows-1257
+     *      windows-1258
+     *      x-mac-cyrillic
+     *      gbk
+     *      gb18030
+     *      big5
+     *      euc-jp
+     *      iso-2022-jp
+     *      shift_jis
+     *      euc-kr
+     *      csiso2022kr
+     *      utf-16be
+     *      utf-16
+     *      x-user-defined
+     */
+    new(label?: string, options?: TextDecoderOptions): TextDecoder;
+};
+
+/** This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
+interface Headers {
+    append(name: string, value: string): void;
+    delete(name: string): void;
+    get(name: string): string | null;
+    has(name: string): boolean;
+    set(name: string, value: string): void;
+    forEach(callbackfn: (value: string, key: string, parent: Headers) => void, thisArg?: any): void;
+    /**
+     * Returns an array of key, value pairs for every entry in the search params.
+     */
+    entries(): Iterator;
+    /**
+     * Returns a list of keys in the search params.
+     */
+    keys(): Iterator;
+    /**
+     * Returns a list of values in the search params.
+     */
+    values(): Iterator;
+}
+
+declare var Headers: {
+    prototype: Headers;
+    new(init?: Headers | string[][] | Object): Headers;
+};
+
+
+interface RequestOptions {
+    /**
+     * A BodyInit object or null to set request's body.
+     */
+    body?:  Blob | string | FormData | URLSearchParams | ArrayBuffer | null;
+    /**
+     * A Headers object, an object literal, or an array of two-item arrays to set request's headers.
+     */
+    headers?: Headers | string[][] | Object;
+    /**
+     * A string indicating whether credentials will be sent with the request always, never, or only when sent to a same-origin URL. Sets request's credentials.
+     */
+    credentials?: string;
+    /**
+     * Returns request's HTTP method, which is "GET" by default.
+     */
+    method?: string;
+    /**
+     * Returns the mode associated with request, which is a string indicating whether the request will use CORS, or will be restricted to same-origin URLs.
+     */
+    mode?: "cors" | "navigate" | "no-cors" | "same-origin";
+    /**
+     * Returns the signal associated with request, which is an AbortSignal object indicating whether or not request has been aborted, and its abort event handler.
+     */
+    signal?: AbortSignal;
+}
+
+interface Request{
+    /**
+     * Returns request's HTTP method, which is "GET" by default.
+     */
+    readonly method: string;
+    /**
+     * Returns the URL of request as a string.
+     */
+    readonly url: string;
+    /**
+     * Returns the credentials mode associated with request, which is a string indicating whether credentials will be sent with the request always, never, or only when sent to a same-origin URL.
+     */
+    readonly credentials: string;
+    /**
+     * Returns a Headers object consisting of the headers associated with request. Note that headers added in the network layer by the user agent will not be accounted for in this object, e.g., the "Host" header.
+     */
+    readonly headers: Headers;
+    /**
+     * Returns the mode associated with request, which is a string indicating whether the request will use CORS, or will be restricted to same-origin URLs.
+     */
+    readonly mode: "cors" | "navigate" | "no-cors" | "same-origin";
+    /**
+     * Returns the signal associated with request, which is an AbortSignal object indicating whether or not request has been aborted, and its abort event handler.
+     */
+    readonly signal: AbortSignal;
+    /**
+     * Returns the referrer of request. Its value can be a same-origin URL if explicitly set in init, the empty string to indicate no referrer, and "about:client" when defaulting to the global's default. This is used during fetching to determine the value of the `Referer` header of the request being made.
+     */
+    readonly referrer: string;
+}
+
+declare var Request: {
+    prototype: Request;
+    new(input: Request | string, options?: RequestOptions): Request;
+};
 
 declare function defineEventAttribute(target:Object, eventName:string):void
 declare function setTimeout(callback: (...args: Object[]) => void, ms: number, ...args: Object[]): Timer;
