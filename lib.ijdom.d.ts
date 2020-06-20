@@ -3,10 +3,6 @@
 
 type Timer = Object;
 
-interface Iterator {
-    next(): Object;
-}
-
 interface Event {
     /**
      * Returns true if event was dispatched by the user agent, and false otherwise.
@@ -85,9 +81,14 @@ interface Event {
      */
     preventDefault(): void;
 }
+interface EventInit {
+    bubbles?: boolean;
+    cancelable?: boolean;
+    composed?: boolean;
+}
 declare var Event: {
     prototype: Event;
-    new(type: string, eventInitDict?: Object): Event;
+    new(type: string, eventInitDict?: EventInit): Event;
     readonly AT_TARGET: number;
     readonly BUBBLING_PHASE: number;
     readonly CAPTURING_PHASE: number;
@@ -101,11 +102,15 @@ interface CustomEvent extends Event {
      */
     readonly detail: boolean;
 }
+
+interface CustomEventInit extends EventInit {
+    detail?: boolean;
+}
+
 declare var CustomEvent: {
     prototype: CustomEvent;
-    new(typeArg: string, eventInitDict?: Object): CustomEvent;
+    new(typeArg: string, eventInitDict?: CustomEventInit): CustomEvent;
 };
-
 
 interface ErrorEvent extends Event {
     readonly message: string;
@@ -114,9 +119,16 @@ interface ErrorEvent extends Event {
     readonly colno: number;
     readonly error: string;
 }
+interface ErrorEventInit extends EventInit {
+    colno?: number;
+    error?: any;
+    filename?: string;
+    lineno?: number;
+    message?: string;
+}
 declare var ErrorEvent: {
     prototype: ErrorEvent;
-    new(type: string, eventInitDict?: Object): ErrorEvent;
+    new(type: string, eventInitDict?: ErrorEventInit): ErrorEvent;
 };
 
 
@@ -124,20 +136,27 @@ interface MessageEvent extends Event {
     /**
      * Returns the data of the message.
      */
-    readonly data: Object;
+    readonly data: any;
+}
+interface MessageEventInit extends EventInit {
+    data?: any;
 }
 declare var MessageEvent: {
     prototype: MessageEvent;
-    new(type: string, eventInitDict?: Object): MessageEvent;
+    new(type: string, eventInitDict?: MessageEventInit): MessageEvent;
 };
 
 
 interface PromiseRejectionEvent extends Event {
-    readonly reason: Object;
+    readonly reason: any;
+}
+interface PromiseRejectionEventInit extends EventInit {
+    promise: Promise<any>;
+    reason?: any;
 }
 declare var PromiseRejectionEvent: {
     prototype: PromiseRejectionEvent;
-    new(type: string, eventInitDict: Object): PromiseRejectionEvent;
+    new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
 };
 
 
@@ -181,7 +200,7 @@ interface AbortSignal extends EventTarget {
      * Returns true if this AbortSignal's AbortController has signaled to abort, and false otherwise.
      */
     readonly aborted: boolean;
-    onabort: ((this: AbortSignal, ev: Event) => Object) | null;
+    onabort: ((this: AbortSignal, ev: Event) => any) | null;
 }
 declare var AbortSignal: {
     prototype: AbortSignal;
@@ -209,58 +228,45 @@ interface Console {
     /**
      * Prints to `stdout` with newline.
      */
-    log(...args: Object[]): void;
+    log(...args: any[]): void;
     /**
      * The {@link console.info()} function is an alias for {@link console.log()}.
      */
-    info(...args: Object[]): void;
+    info(...args: any[]): void;
     /**
      * The {@link console.warn()} function is an alias for {@link console.error()}.
      */
-    warn(...args: Object[]): void;
+    warn(...args: any[]): void;
     /**
      * Prints to `stderr` with newline.
      */
-    error(...args: Object[]): void;
+    error(...args: any[]): void;
     /**
      * A simple assertion test that verifies whether `value` is truthy.
      * If it is not, an `AssertionError` is thrown.
      * If provided, the error `args` is formatted using `util.format()` and used as the error message.
      */
-    assert(expression: Object, ...args: Object[]): void;
+    assert(expression: any, ...args: any[]): void;
     /**
      * Uses {@link util.inspect()} on `obj` and prints the resulting string to `stdout`.
      * This function bypasses any custom `inspect()` function defined on `obj`.
      */
-    dir(obj: Object): void;
+    dir(obj: any): void;
     /**
     * This method calls {@link console.log()} passing it the arguments received. Please note that this method does not produce any XML formatting
     */
-    dirxml(obj: Object): void;
+    dirxml(obj: any): void;
     /**
      * This method does not display anything unless used in the inspector.
      *  Prints to `stdout` the array `array` formatted as a table.
      */
-    table(data: Object, properties?: string[]): void;
+    table(data: any, properties?: string[]): void;
     /**
      * Prints to `stderr` the string 'Trace :', followed by the {@link util.format()} formatted args and stack trace to the current position in the code.
      */
-    trace(...args: Object[]): void;
+    trace(...args: any[]): void;
 }
 declare var console: Console;
-
-
-interface PerformanceEntry {
-    readonly duration: number;
-    readonly entryType: string;
-    readonly name: string;
-    readonly startTime: number;
-    toJSON(): Object;
-}
-declare var performance: {
-    prototype: PerformanceEntry;
-    new(): PerformanceEntry;
-};
 
 
 interface GlobalEventHandlers {
@@ -268,12 +274,23 @@ interface GlobalEventHandlers {
      * Fires immediately after the browser loads the object.
      * @param ev The event.
      */
-    onload: ((this: GlobalEventHandlers, ev: Event) => Object) | null;
+    onload: ((this: GlobalEventHandlers, ev: Event) => any) | null;
 }
 interface WindowEventHandlers {
-    onunhandledrejection: ((this: WindowEventHandlers, ev: PromiseRejectionEvent) => Object) | null;
+    onunhandledrejection: ((this: WindowEventHandlers, ev: PromiseRejectionEvent) => any) | null;
 }
 
+interface PerformanceEntry {
+    readonly duration: number;
+    readonly entryType: string;
+    readonly name: string;
+    readonly startTime: number;
+    toJSON(): any;
+}
+declare var PerformanceEntry: {
+    prototype: PerformanceEntry;
+    new(): PerformanceEntry;
+};
 
 interface Performance extends EventTarget {
     readonly timeOrigin: number;
@@ -285,6 +302,10 @@ interface Performance extends EventTarget {
     clearMarks(markName?: string): void;
     clearMeasures(measureName?: string): void;
 }
+declare var Performance: {
+    prototype: Performance;
+    new(): Performance;
+};
 declare var performance: Performance;
 
 interface URLSearchParams {
@@ -317,20 +338,20 @@ interface URLSearchParams {
      * Returns a string containing a query string suitable for use in a URL. Does not include the question mark.
      */
     toString(): string;
-    forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: Object): void;
+    forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
     sort(): void;
     /**
      * Returns an array of key, value pairs for every entry in the search params.
      */
-    entries(): Iterator;
+    entries(): Iterator<[string, string]>;
     /**
      * Returns a list of keys in the search params.
      */
-    keys(): Iterator;
+    keys(): Iterator<string>;
     /**
      * Returns a list of values in the search params.
      */
-    values(): Iterator;
+    values(): Iterator<string>;
 }
 
 declare var URLSearchParams: {
@@ -356,13 +377,13 @@ interface URL {
 declare var URL: {
     prototype: URL;
     new(url: string, base?: string | URL): URL;
-    createObjectURL(object: Object): string;
+    createObjectURL(object: any): string;
     revokeObjectURL(url: string): void;
 };
 
 
 interface Crypto {
-    readonly subtle: Object;
+    readonly subtle: any;
     getRandomValues<T extends Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array>(array: T): T;
 }
 declare var crypto: {
@@ -372,10 +393,10 @@ declare var crypto: {
 
 
 interface Worker extends EventTarget {
-    onmessage: ((this: Worker, ev: MessageEvent) => Object) | null;
-    onmessageerror: ((this: Worker, ev: MessageEvent) => Object) | null;
-    onerror: ((this: Worker, ev: ErrorEvent) => Object) | null;
-    postMessage(message: Object): void;
+    onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
+    onmessageerror: ((this: Worker, ev: MessageEvent) => any) | null;
+    onerror: ((this: Worker, ev: ErrorEvent) => any) | null;
+    postMessage(message: any): void;
     terminate(): void;
 }
 declare var Worker: {
@@ -391,7 +412,7 @@ interface XMLHttpRequest extends EventTarget {
     /**
      * Returns the response's body.
      */
-    readonly response: Object;
+    readonly response: any;
     /**
      * Returns the text response.
      * 
@@ -408,7 +429,7 @@ interface XMLHttpRequest extends EventTarget {
      * When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global object is a Window object.
      */
     timeout: number;
-    readonly upload: Object;
+    readonly upload: any;
     withCredentials: boolean;
     readonly DONE: number;
     readonly HEADERS_RECEIVED: number;
@@ -423,7 +444,7 @@ interface XMLHttpRequest extends EventTarget {
     /**
      * method url async
      */
-    open(...args: Object[]): void;
+    open(...args: any[]): void;
     /**
      * Combines a header in author request headers.
      * 
@@ -440,14 +461,14 @@ interface XMLHttpRequest extends EventTarget {
     setRequestHeader(name: string, value: string): void;
     getAllResponseHeaders(): string;
     getResponseHeader(name: string): string | null;
-    onabort: ((this: XMLHttpRequest, ev: Event) => Object) | null;
-    onerror: ((this: XMLHttpRequest, ev: Event) => Object) | null;
-    onload: ((this: XMLHttpRequest, ev: Event) => Object) | null;
-    onloadend: ((this: XMLHttpRequest, ev: Event) => Object) | null;
-    onloadstart: ((this: XMLHttpRequest, ev: Event) => Object) | null;
-    onprogress: ((this: XMLHttpRequest, ev: Event) => Object) | null;
-    ontimeout: ((this: XMLHttpRequest, ev: Event) => Object) | null;
-    onreadystatechange: ((this: XMLHttpRequest, ev: Event) => Object) | null;
+    onabort: ((this: XMLHttpRequest, ev: Event) => any) | null;
+    onerror: ((this: XMLHttpRequest, ev: Event) => any) | null;
+    onload: ((this: XMLHttpRequest, ev: Event) => any) | null;
+    onloadend: ((this: XMLHttpRequest, ev: Event) => any) | null;
+    onloadstart: ((this: XMLHttpRequest, ev: Event) => any) | null;
+    onprogress: ((this: XMLHttpRequest, ev: Event) => any) | null;
+    ontimeout: ((this: XMLHttpRequest, ev: Event) => any) | null;
+    onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null;
 }
 declare var XMLHttpRequest: {
     prototype: XMLHttpRequest;
@@ -488,9 +509,9 @@ interface TextDecoderOptions {
 }
 
 interface BufferSource{
-    buffer:ArrayBuffer
-    byteOffset:number
-    byteLength:number
+    buffer:ArrayBuffer;
+    byteOffset:number;
+    byteLength:number;
 }
 
 /** TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
@@ -552,12 +573,12 @@ declare var TextEncoder: {
     new(label?: string, options?: TextEncoderOptions): TextEncoder;
 };
 
-/** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+/** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
 interface TextDecoder {
     /**
      * Returns encoding's name, lowercased.
      */
-    readonly encoding: Object;
+    readonly encoding: string;
     /**
      * Returns true if error mode is "fatal", and false otherwise.
      */
@@ -630,8 +651,9 @@ declare var TextDecoder: {
     new(label?: string, options?: TextDecoderOptions): TextDecoder;
 };
 
-/** This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
+/** This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
 interface Headers {
+    readonly map:Map<string, string>;
     append(name: string, value: string): void;
     delete(name: string): void;
     get(name: string): string | null;
@@ -641,32 +663,31 @@ interface Headers {
     /**
      * Returns an array of key, value pairs for every entry in the search params.
      */
-    entries(): Iterator;
+    entries(): Iterator<[string, string]>;
     /**
      * Returns a list of keys in the search params.
      */
-    keys(): Iterator;
+    keys(): Iterator<string>;
     /**
      * Returns a list of values in the search params.
      */
-    values(): Iterator;
+    values(): Iterator<string>;
 }
 
 declare var Headers: {
     prototype: Headers;
-    new(init?: Headers | string[][] | Object): Headers;
+    new(init?: Headers | string[][] | Record<string, string>): Headers;
 };
 
-
-interface RequestOptions {
+interface RequestInit {
     /**
      * A BodyInit object or null to set request's body.
      */
-    body?:  Blob | string | FormData | URLSearchParams | ArrayBuffer | null;
+    body?:  string  | URLSearchParams | ArrayBuffer | null;
     /**
      * A Headers object, an object literal, or an array of two-item arrays to set request's headers.
      */
-    headers?: Headers | string[][] | Object;
+    headers?: Headers | string[][] | Record<string, string>;
     /**
      * A string indicating whether credentials will be sent with the request always, never, or only when sent to a same-origin URL. Sets request's credentials.
      */
@@ -705,7 +726,7 @@ interface Request{
     /**
      * Returns the mode associated with request, which is a string indicating whether the request will use CORS, or will be restricted to same-origin URLs.
      */
-    readonly mode: "cors" | "navigate" | "no-cors" | "same-origin";
+    readonly mode: "cors" | "navigate" | "no-cors" | "same-origin" | null;
     /**
      * Returns the signal associated with request, which is an AbortSignal object indicating whether or not request has been aborted, and its abort event handler.
      */
@@ -714,238 +735,159 @@ interface Request{
      * Returns the referrer of request. Its value can be a same-origin URL if explicitly set in init, the empty string to indicate no referrer, and "about:client" when defaulting to the global's default. This is used during fetching to determine the value of the `Referer` header of the request being made.
      */
     readonly referrer: string;
+    clone(): Response;
+    json(): Promise<any>;
+    text(): Promise<string>;
 }
 
 declare var Request: {
     prototype: Request;
-    new(input: Request | string, options?: RequestOptions): Request;
+    new(input: Request | string, init?: RequestInit): Request;
 };
 
+
+interface ResponseInit {
+    headers?: Headers | string[][] | Record<string, string>;
+    status?: number;
+    statusText?: string;
+}
+
+/** This Fetch API interface represents the response to a request. */
+interface Response {
+    readonly headers: Headers;
+    readonly ok: boolean;
+    readonly status: number;
+    readonly statusText: string;
+    readonly type: "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
+    readonly url: string;
+    clone(): Response;
+    json(): Promise<any>;
+    text(): Promise<string>;
+}
+
+declare var Response: {
+    prototype: Response;
+    new(body?:  string  | URLSearchParams | ArrayBuffer | null, init?: ResponseInit): Response;
+    error(): Response;
+    redirect(url: string, status?: number): Response;
+};
+
+declare namespace WebAssembly {       
+    type ExportValue = Function | Global | Memory | Table; 
+
+    interface ModuleExportDescriptor {
+        kind: "function" | "global" | "memory" | "table";
+        name: string;
+    }  
+
+    interface ModuleImportDescriptor {
+        kind: "function" | "global" | "memory" | "table";
+        module: string;
+        name: string;
+    }
+
+    interface Global {
+        value: any;
+        valueOf(): any;
+    }
+
+    interface Memory {
+        readonly buffer: ArrayBuffer;
+        grow(delta: number): number;
+    }
+    
+    interface Table {
+        readonly length: number;
+        get(index: number): Function | null;
+        grow(delta: number): number;
+        set(index: number, value: Function | null): void;
+    }
+
+    interface Module {
+    }   
+    
+    var Module: {
+        prototype: Module;
+        new(bytes: BufferSource): Module;
+        customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
+        exports(moduleObject: Module): ModuleExportDescriptor[];
+        imports(moduleObject: Module): ModuleImportDescriptor[];
+    };
+    
+    interface Instance {
+        readonly exports: Record<string, ExportValue>;
+    }
+    
+    var Instance: {
+        prototype: Instance;
+        new(module: Module, importObject?: Record<string, Record<string, ExportValue | number>>): Instance;
+    };
+
+    interface CompileError {
+    }
+    
+    var CompileError: {
+        prototype: CompileError;
+        new(): CompileError;
+    };
+    
+    interface LinkError {
+    }
+    
+    var LinkError: {
+        prototype: LinkError;
+        new(): LinkError;
+    };
+    
+    interface RuntimeError {
+    }
+    
+    var RuntimeError: {
+        prototype: RuntimeError;
+        new(): RuntimeError;
+    };
+    
+    interface WASIOptions {
+        args:string[];
+        env:Object;
+        preopens:Object;
+    }
+
+    interface IstantiateReturn{
+        module:Module;
+        instance:Instance;
+    }
+    
+    interface WASI {
+        readonly wasiImport:string;
+        start(instance:Instance):void;
+    }
+    var WASI: {
+        prototype: WASI;
+        new(options:WASIOptions): WASI;
+    }
+
+    export function compile(buf:BufferSource):Module;
+
+    export function instantiate(buf:BufferSource, importObject?: Record<string, Record<string, ExportValue | number>>): IstantiateReturn;
+}
+
 declare function defineEventAttribute(target:Object, eventName:string):void
-declare function setTimeout(callback: (...args: Object[]) => void, ms: number, ...args: Object[]): Timer;
+declare function setTimeout(handler: string | Function, timeout?: number, ...arguments: any[]): Timer;
 declare function clearTimeout(timeoutId: Timer): void;
-declare function setInterval(callback: (...args: Object[]) => void, ms: number, ...args: Object[]): Timer;
+declare function setInterval(handler: string | Function, timeout?: number, ...arguments: any[]): Timer;
 declare function clearInterval(intervalId: Timer): void;
-declare function alert(...args: Object[]): void;
+declare function alert(...args: any[]): void;
+declare function fetch(input: Request | string, init?: RequestInit): Promise<Response>;
 
 
 interface Window extends EventTarget, GlobalEventHandlers, WindowEventHandlers {
+    readonly self: Window & typeof globalThis;
+    readonly global: Window & typeof globalThis;
 }
+declare var Window: {
+    prototype: Window;
+    new(): Window;
+};
+declare var window: Window & typeof globalThis;
 
-
-
-
-
-
-
-
-
-
-
-
-
-declare var window: Window;
-
-
-declare namespace ijjs {
-    
-    interface UName {
-        sysname:string
-        release:string
-        version:string
-        machine:string
-    }
-
-    interface Hash {
-        update(data:string): Hash;
-        digest():string;
-        bytes():Uint8Array;
-    }
-
-    interface ParsedOptions {
-        _: string[]
-        [key: string]: Object
-    }
-    
-    interface Options {
-        alias?: { [key: string]: string | string[] }
-        string?: string[]
-        boolean?: string[]
-        default?: { [key: string]: Object }
-        unknown?: (optionName: string) => boolean
-        stopEarly?: boolean
-    }
-    interface TimeOptionsV1 {
-        node?: number[]
-        clockseq?: number
-        msecs?: number
-        nsecs?: number
-    }
-    interface TimeOptionsV4 {
-        random?: number
-        rng?: number
-    }
-    interface FileInfo {
-        root: string
-        dir: string
-        base: string
-        ext: string 
-        name: string
-    }
-    
-    
-    /**
-     * ipv4 socket
-     */
-    export const AF_INET: number;
-    /**
-     * ipv6 socket
-     */
-    export const AF_INET6: number;
-    /**
-     * sunpecific socket
-     */
-    export const AF_UNSPEC: number;
-    /**
-     * standard erro
-     */
-    export const STDERR_FILENO: number;
-    /**
-     * standard in
-     */
-    export const STDIN_FILENO: number;
-    /**
-     * standard out
-     */
-    export const STDOUT_FILENO: number;
-    /**
-     * platform id
-     */
-    export const platform: string;
-    /**
-     * ijjs version string
-     */
-    export const version: string;
-    /**
-     * ijjs boost arguments
-     */
-    export const args: string[];
-    /**
-     * ijjs internal module versions
-     */
-    export const versions: string[];
-    /**
-     * get file basename
-     */
-    export function basename(path:string, ext?:string): string;
-    /**
-     * get file extname
-     */
-    export function extname(path:string): string;
-    /**
-     * get file dirname
-     */
-    export function dirname(path:string): string;
-    /**
-     * parse fileinfo
-     */
-    export function parse(path:string): FileInfo;
-    /**
-     * is path absolute
-     */
-    export function isAbsolute(path:string): boolean;
-    /**
-     * join path 
-     */
-    export function join(...args:string[]): string;
-    /**
-     * format FileInfo
-     */
-    export function format(info:FileInfo): string;
-    /**
-     * get os environ
-     */
-    export function environ(): Object;
-    /**
-     * get ijjscli path
-     */
-    export function exepath(): string;
-    /**
-     * exit program
-     */
-    export function exit(code?: number): void;
-    /**
-     * run Garbage Collector
-     */
-    export function gc(): null;
-    /**
-     * get env value
-     */
-    export function getenv(name:string): string;
-    /**
-     * set env value
-     */
-    export function setenv(name:string, value:string): void;
-    /**
-     * unset env value
-     */
-    export function unsetenv(name:string): void;
-    /**
-     * time function tv.tv_sec * 1000 + (tv.tv_usec / 1000)
-     */
-    export function gettimeofday(): number;
-    /**
-     * get writable dir
-     */
-    export function homedir(): string;
-    /**
-     * get temp dir
-     */
-    export function tmpdir(): string;
-    /**
-     * get current dir
-     */
-    export function cwd(): string;
-    /**
-     * is handle a tty
-     */
-    export function isatty(fd:number): boolean;
-    /**
-     * same as console.log
-     */
-    export function print(...args: Object[]): void;
-    /**
-     * same as console.log
-     */
-    export function printError(...args: Object[]): void;
-    /**
-     * get os system info
-     */
-    export function uname(): UName;
-    /**
-     * create hash object
-     */
-    export function hash(type:string): Hash;
-    /**
-     * get options
-     */
-    export function getopts(argv: string[], options?: Options): ParsedOptions;
-    /**
-     * create uuid version1
-     */
-    export function uuidv1(options?:TimeOptionsV1, buf?:Array, offset?: number):string;
-    /**
-     * create uuid version3
-     * namespace URL:6ba7b811-9dad-11d1-80b4-00c04fd430c8 or DNS:6ba7b810-9dad-11d1-80b4-00c04fd430c8
-     */
-    export function uuidv3(value:string, namespace:string, buf?:Array, offset?: number):string;
-    /**
-     * create uuid version4
-     */
-    export function uuidv4(options?:TimeOptionsV4, buf?:Array, offset?: number):string;
-    /**
-     * create uuid version5
-     * namespace URL:6ba7b811-9dad-11d1-80b4-00c04fd430c8 or DNS:6ba7b810-9dad-11d1-80b4-00c04fd430c8
-     */
-    export function uuidv5(value:string, namespace:string, buf?:Array, offset?: number):string;
-}
