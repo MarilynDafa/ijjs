@@ -74,7 +74,7 @@ static IJVoid uvSignalCb(uv_signal_t* handle, IJS32 sig_num) {
     ijCallHandler(sh->ctx, sh->func);
 }
 
-static JSValue ijSgnal(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
+static JSValue ijSignal(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     IJS32 sig_num;
     if (JS_ToInt32(ctx, &sig_num, argv[0]))
         return JS_EXCEPTION;
@@ -245,7 +245,7 @@ static const JSCFunctionListEntry ijjs_signal_funcs[] = {
 #ifdef SIGUNUSED
     IJJS_CONST(SIGUNUSED),
 #endif
-    JS_CFUNC_DEF("signal", 2, ijSgnal),
+    JS_CFUNC_DEF("signal", 2, ijSignal),
 };
 
 IJVoid ijModSignalsInit(JSContext* ctx, JSModuleDef* m) {

@@ -32,7 +32,7 @@
 #define ZLOG_CONF_DEFAULT_FILE_PERMS 0600
 #define ZLOG_CONF_DEFAULT_RELOAD_CONF_PERIOD 0
 #define ZLOG_CONF_DEFAULT_FSYNC_PERIOD 0
-#define ZLOG_CONF_BACKUP_ROTATE_LOCK_FILE "log/zlog.lock"
+#define ZLOG_CONF_BACKUP_ROTATE_LOCK_FILE "zlog.lock"
 /*******************************************************************************/
 
 void zlog_conf_profile(zlog_conf_t * a_conf, int flag)

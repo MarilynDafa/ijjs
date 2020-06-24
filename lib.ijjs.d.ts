@@ -2,7 +2,7 @@
 // Project: https://github.com/MarilynDafa/ijjs
 
 declare namespace ijjs {
-    
+    type File = Object;
     interface UName {
         sysname:string
         release:string
@@ -46,8 +46,91 @@ declare namespace ijjs {
         ext: string 
         name: string
     }
+    interface Signals {
+        sig:number;
+        close():void;
+    }
+    interface AddrHint {
+        family?:string;
+        socktype?:string;
+        protocol?:string;
+        flags?:string;
+        service?:string;
+    }
+    interface AddrInfo {
+        addr:{family:number, ip:string, port:number};
+        socktype:number;
+        protocal:number;
+        canonname:string;
+    }
+
+    /**
+     * ipv4 socket
+     */
+    export const signal: {
+        signal(sig:number, func:any):void;
+        SIGABRT: number;
+        SIGBREAK: number;
+        SIGFPE: number;
+        SIGHUP: number;
+        SIGILL: number;
+        SIGINT: number;
+        SIGKILL: number;
+        SIGSEGV: number;
+        SIGTERM: number;
+        SIGWINCH: number;
+    }   
+
+    /**
+     * dns
+     */
+    export const dns: {
+        AI_PASSIVE:number;
+        AI_CANONNAME:number;
+        AI_NUMERICHOST:number;
+        AI_V4MAPPED:number;
+        AI_ALL:number;
+        AI_ADDRCONFIG:number;
+        AI_NUMERICSERV:number;
+        getaddrinfo(getaddrinfo:string, opts?:AddrHint):Promise<AddrInfo>;
+    }  
+
     
+    /**
+     * advance log
+     */
+    export const log : {
+        fatal(msg:string):void;
+        debug(msg:string):void;
+        fatal(msg:string):void;
+        info(msg:string):void;
+        finalize():void;
+    }
     
+    /**
+     * file system
+     */
+    export const fs : {
+        UV_DIRENT_UNKNOWN:number;
+        UV_DIRENT_FILE:number;
+        UV_DIRENT_DIR:number;
+        UV_DIRENT_LINK:number;
+        UV_DIRENT_FIFO:number;
+        UV_DIRENT_SOCKET:number;
+        UV_DIRENT_CHAR:number;
+        UV_DIRENT_BLOCK:number;
+        UV_FS_COPYFILE_EXCL:number;
+        UV_FS_COPYFILE_FICLONE:number;
+        UV_FS_COPYFILE_FICLONE_FORCE:number;
+        S_IFMT:number;
+        S_IFIFO:number;
+        S_IFCHR:number;
+        S_IFDIR:number;
+        S_IFBLK:number;
+        S_IFREG:number;
+        S_IFLNK:number;
+        open(path:string, flag:string, mode:number): Promise<File>;
+    }
     /**
      * ipv4 socket
      */
@@ -149,6 +232,10 @@ declare namespace ijjs {
      */
     export function gettimeofday(): number;
     /**
+     * high resolution time function
+     */
+    export function hrtime():bigInt;
+    /**
      * get writable dir
      */
     export function homedir(): string;
@@ -202,4 +289,12 @@ declare namespace ijjs {
      * namespace URL:6ba7b811-9dad-11d1-80b4-00c04fd430c8 or DNS:6ba7b810-9dad-11d1-80b4-00c04fd430c8
      */
     export function uuidv5(value:string, namespace:string, buf?:Uint8Array, offset?: number):string;
+    /**
+    * eval a js fragment
+    */
+    export function evalScript(value:string): any;
+    /**
+    * load a js file
+    */
+    export function loadScript(filename:string): any;
 }

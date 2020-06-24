@@ -9,6 +9,7 @@ mbedtls 2.16.5
 miniz 2.1.0
 zlog 1.2.14
 
+zlog
 d.ts
 vscode	
 PostgreSQL  js	
