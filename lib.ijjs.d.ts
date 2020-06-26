@@ -61,6 +61,8 @@ declare namespace ijjs {
         ip:string;
         family?:number;
         port?:number;
+        flowinfo?:number;
+        scopeId?:number;
     }
     interface AddrInfo {
         addr:{family:number, ip:string, port:number};

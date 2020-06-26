@@ -35,6 +35,11 @@ static IJS32 ijjs__argc = 0;
 static IJAnsi **ijjs__argv = NULL;
 
 
+
+const IJAnsi* ijGetScriptPath(){
+    return ijjs__argv[ijjs__argc - 1];
+}
+
 static IJS32 ijInit(JSContext* ctx, JSModuleDef* m) {
     ijModDNSInit(ctx, m);
     ijModErrorInit(ctx, m);

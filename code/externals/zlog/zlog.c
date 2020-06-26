@@ -64,7 +64,7 @@ static void zlog_clean_rest_thread(void)
 	return;
 }
 
-static int zlog_init_inner(const char *confpath)
+static int zlog_init_inner(const char *confpath, const char* logpath)
 {
 	int rc = 0;
 
@@ -88,7 +88,7 @@ static int zlog_init_inner(const char *confpath)
 		zlog_env_init_version++;
 	} /* else maybe after zlog_fini() and need not create pthread_key */
 
-	zlog_env_conf = zlog_conf_new(confpath);
+	zlog_env_conf = zlog_conf_new(confpath , logpath);
 	if (!zlog_env_conf) {
 		zc_error("zlog_conf_new[%s] fail", confpath);
 		goto err;
@@ -113,7 +113,7 @@ err:
 }
 
 /*******************************************************************************/
-int zlog_init(const char *confpath)
+int zlog_init(const char *confpath, const char* logpath)
 {
 	int rc;
 	zc_debug("------zlog_init start------");
@@ -136,7 +136,7 @@ int zlog_init(const char *confpath)
 	}
 
 
-	if (zlog_init_inner(confpath)) {
+	if (zlog_init_inner(confpath, logpath)) {
 		zc_error("zlog_init_inner[%s] fail", confpath);
 		goto err;
 	}
@@ -179,7 +179,7 @@ int dzlog_init(const char *confpath, const char *cname)
 		goto err;
 	}
 
-	if (zlog_init_inner(confpath)) {
+	if (zlog_init_inner(confpath, NULL)) {
 		zc_error("zlog_init_inner[%s] fail", confpath);
 		goto err;
 	}
@@ -250,7 +250,7 @@ int zlog_reload(const char *confpath)
 	/* reset counter, whether automaticlly or mannually */
 	zlog_env_reload_conf_count = 0;
 
-	new_conf = zlog_conf_new(confpath);
+	new_conf = zlog_conf_new(confpath, NULL);
 	if (!new_conf) {
 		zc_error("zlog_conf_new fail");
 		goto err;

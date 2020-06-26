@@ -33,6 +33,7 @@
 #define ZLOG_CONF_DEFAULT_RELOAD_CONF_PERIOD 0
 #define ZLOG_CONF_DEFAULT_FSYNC_PERIOD 0
 #define ZLOG_CONF_BACKUP_ROTATE_LOCK_FILE "zlog.lock"
+static char g_logpath[256] = {0};
 /*******************************************************************************/
 
 void zlog_conf_profile(zlog_conf_t * a_conf, int flag)
@@ -94,8 +95,10 @@ void zlog_conf_del(zlog_conf_t * a_conf)
 static int zlog_conf_build_without_file(zlog_conf_t * a_conf);
 static int zlog_conf_build_with_file(zlog_conf_t * a_conf);
 
-zlog_conf_t *zlog_conf_new(const char *confpath)
+zlog_conf_t *zlog_conf_new(const char *confpath, const char* logpath)
 {
+	if (logpath)
+		strcpy(g_logpath, logpath);
 	int nwrite = 0;
 	int has_conf_file = 0;
 	zlog_conf_t *a_conf = NULL;
@@ -174,6 +177,117 @@ err:
 	return NULL;
 }
 /*******************************************************************************/
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+int os_tmpdir(char* buffer, size_t* size) {
+  wchar_t *path;
+  DWORD bufsize;
+  size_t len;
+
+  if (buffer == NULL || size == NULL || *size == 0)
+    return 1;
+
+  len = 0;
+  len = GetTempPathW(0, NULL);
+  if (len == 0) {
+    return (GetLastError());
+  }
+  /* Include space for terminating null char. */
+  len += 1;
+  path = je_malloc(len * sizeof(wchar_t));
+  if (path == NULL) {
+    return 2;
+  }
+  len  = GetTempPathW(len, path);
+
+  if (len == 0) {
+    je_free(path);
+    return (GetLastError());
+  }
+
+  /* The returned directory should not have a trailing slash, unless it points
+   * at a drive root, like c:\. Remove it if needed. */
+  if (path[len - 1] == L'\\' &&
+      !(len == 3 && path[1] == L':')) {
+    len--;
+    path[len] = L'\0';
+  }
+
+  /* Check how much space we need */
+  bufsize = WideCharToMultiByte(CP_UTF8, 0, path, -1, NULL, 0, NULL, NULL);
+
+  if (bufsize == 0) {
+    je_free(path);
+    return (GetLastError());
+  } else if (bufsize > *size) {
+    je_free(path);
+    *size = bufsize;
+    return 3;
+  }
+
+  /* Convert to UTF-8 */
+  bufsize = WideCharToMultiByte(CP_UTF8,
+                                0,
+                                path,
+                                -1,
+                                buffer,
+                                *size,
+                                NULL,
+                                NULL);
+  je_free(path);
+
+  if (bufsize == 0)
+    return (GetLastError());
+
+  *size = bufsize - 1;
+  return 0;
+}
+#else
+int os_tmpdir(char* buffer, size_t* size) {
+  const char* buf;
+  size_t len;
+
+  if (buffer == NULL || size == NULL || *size == 0)
+    return 1;
+
+#define CHECK_ENV_VAR(name)                                                   \
+  do {                                                                        \
+    buf = getenv(name);                                                       \
+    if (buf != NULL)                                                          \
+      goto return_buffer;                                                     \
+  }                                                                           \
+  while (0)
+
+  /* Check the TMPDIR, TMP, TEMP, and TEMPDIR environment variables in order */
+  CHECK_ENV_VAR("TMPDIR");
+  CHECK_ENV_VAR("TMP");
+  CHECK_ENV_VAR("TEMP");
+  CHECK_ENV_VAR("TEMPDIR");
+
+#undef CHECK_ENV_VAR
+
+  /* No temp environment variables defined */
+
+    buf = "/tmp";
+return_buffer:
+  len = strlen(buf);
+
+  if (len >= *size) {
+    *size = len + 1;
+    return 2;
+  }
+
+  /* The returned directory should not have a trailing slash. */
+  if (len > 1 && buf[len - 1] == '/') {
+    len--;
+  }
+
+  memcpy(buffer, buf, len + 1);
+  buffer[len] = '\0';
+  *size = len;
+
+  return 0;
+}
+#endif
 static int zlog_conf_build_without_file(zlog_conf_t * a_conf)
 {
 	zlog_rule_t *default_rule;
@@ -183,15 +297,26 @@ static int zlog_conf_build_without_file(zlog_conf_t * a_conf)
 		zc_error("zlog_format_new fail");
 		return -1;
 	}
-
+	size_t sz;
+	os_tmpdir(a_conf->rotate_lock_file, &sz);
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+	strcat(a_conf->rotate_lock_file, "\\zlog.lock");
+#else
+	strcat(a_conf->rotate_lock_file, "/zlog.lock");
+#endif
 	a_conf->rotater = zlog_rotater_new(a_conf->rotate_lock_file);
 	if (!a_conf->rotater) {
 		zc_error("zlog_rotater_new fail");
 		return -1;
 	}
 
+
+	char rule[256] = {0};
+	strcpy(rule, "*.*             	\"");
+	strcat(rule, g_logpath);
+	strcat(rule, "/ijjslog-%v-%d(%F).log\"");
 	default_rule = zlog_rule_new(
-			ZLOG_CONF_DEFAULT_RULE,
+		rule,
 			a_conf->levels,
 			a_conf->default_format,
 			a_conf->formats,

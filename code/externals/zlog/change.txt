@@ -3,4 +3,4 @@ zlog.h
 event.h struct zlog_event_t
 rotater.c zlog_rotater_trylock  zlog_rotater_unlock
 rule.c zlog_rule_output_stdout zlog_rule_output_stderr  zlog_rule_new zlog_rule_del
-conf.c
+conf.c zlog_conf_build_without_file

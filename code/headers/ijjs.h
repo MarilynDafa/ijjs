@@ -385,6 +385,8 @@ IJ_API IJS32 ijModuleSetImportMeta(
 IJ_API JSValue ijGetArgs(
     JSContext* ctx);
 
+IJ_API const IJAnsi* ijGetScriptPath();
+
 IJ_API IJS32 ijEvalBinary(
     JSContext* ctx, 
     const IJU8* buf, 

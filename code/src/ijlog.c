@@ -96,7 +96,22 @@ IJVoid ijModLogInit(JSContext* ctx, JSModuleDef* m) {
     JS_SetPropertyFunctionList(ctx, obj, ijjs_log_proto_funcs, countof(ijjs_log_proto_funcs));
     if (!zc)
     {
-        IJS32 rc = zlog_init(NULL);
+        IJAnsi buf[256] = {0};
+        strcpy(buf, ijGetScriptPath());
+        for (IJS32 _i = 255; _i >= 0; --_i)
+        {
+            if (buf[_i] == '/' || buf[_i] == '\\')
+                break;
+            else
+                buf[_i] = 0;
+        }
+        strcat(buf, "log");
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+        CreateDirectoryA(buf, NULL);
+#else
+        mkdir(buf, 0755);
+#endif
+        IJS32 rc = zlog_init(NULL, buf);
         assert(rc == 0);
         zc = zlog_get_category("ijjs_rule");
     }
