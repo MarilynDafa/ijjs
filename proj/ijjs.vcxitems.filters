@@ -702,9 +702,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijfs.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijhttp.c">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijkcp.c">
       <Filter>src</Filter>
     </ClCompile>
