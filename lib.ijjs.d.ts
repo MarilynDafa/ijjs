@@ -2,7 +2,7 @@
 // Project: https://github.com/MarilynDafa/ijjs
 
 declare namespace ijjs {
-    type File = Object;
+    type Exception = undefined;
     interface UName {
         sysname:string
         release:string
@@ -57,15 +57,213 @@ declare namespace ijjs {
         flags?:string;
         service?:string;
     }
+    interface Addr {
+        ip:string;
+        family?:number;
+        port?:number;
+    }
     interface AddrInfo {
         addr:{family:number, ip:string, port:number};
         socktype:number;
         protocal:number;
         canonname:string;
     }
+    interface SpawnEnv {
+        env?:string;
+        cwd?:string;
+        uid?:string;
+        gid?:string;
+        stdin?:"inherit"|"pipe"|"ignore";
+        stdout?:"inherit"|"pipe"|"ignore";
+        stderr?:"inherit"|"pipe"|"ignore";
+    }
+    interface Stat {
+        st_dev:bigInt;
+        st_mode:bigInt;
+        st_nlink:bigInt;
+        st_uid:bigInt;
+        st_gid:bigInt;
+        st_rdev:bigInt;
+        st_ino:bigInt;
+        st_size:bigInt;
+        st_blksize:bigInt;
+        st_blocks:bigInt;
+        st_flags:bigInt;
+        st_gen:bigInt;
+        st_atim:number;
+        st_mtim:number;
+        st_ctim:number;
+        st_birthtim:number;
+    }
+
+    interface File {
+        readonly path:string;
+        read(len?:number, pos?:number):Promise<ArrayBuffer>;
+        write(data:string|ArrayBuffer, pos?:number):Promise<number>;
+        close():Promise<Exception>;
+        fileno():number;
+        stat():Promise<Stat>;
+    }
+
+    interface Dir {
+        readonly path:string;
+        close():Promise<Exception>;
+        next():Promise<{done:boolean, value?:{name:string, type:number}}>;
+    }
+
+    
 
     /**
-     * ipv4 socket
+     * process
+     */
+    interface Process {
+        readonly pid:number;
+        readonly stdin:Pipe;
+        readonly stdout:Pipe;
+        readonly stderr:Pipe;
+        kill(sig?:number):void;
+        wait():Promise<{exit_status:number, term_signal:number}>;
+    }  
+
+    interface Error {
+        message: string;
+        errno: number;
+    }
+    
+    interface ErrorConstructor {
+        new(errno: number): Error;
+    }
+    
+    export var Error: ErrorConstructor;
+
+    /**
+     * UDP
+     */
+
+    interface UDP {
+        readonly IPV6ONLY:number;
+        readonly PARTIAL:number;
+        readonly REUSEADDR:number;
+        close():void;
+        fileno():number;
+        getsockname():Addr;
+        getpeername():Addr;
+        connect(addr:Addr):void;
+        bind(addr:Addr, flags?:number):void;
+        send(data:string|ArrayBuffer|number, addr?:Addr):Promise<Exception>;
+        recv(size?:number):Promise<{data:Uint8Array, flags:number, addr:Addr}>;
+    }
+    
+    interface UDPConstructor {
+        new(af?: number): UDP;
+    }
+    
+    export var UDP: UDPConstructor;
+
+    
+
+    /**
+     * KCP
+     */
+
+    interface KCP {
+        readonly IPV6ONLY:number;
+        readonly PARTIAL:number;
+        readonly REUSEADDR:number;
+        close():void;
+        fileno():number;
+        getsockname():Addr;
+        getpeername():Addr;
+        connect(addr:Addr):void;
+        bind(addr:Addr, flags?:number):void;
+        send(data:string|ArrayBuffer|number, addr?:Addr):Promise<Exception>;
+        recv(size?:number):Promise<{data:Uint8Array, flags:number, addr:Addr}>;
+        getconv():number;
+        nodelay(nodelay:number, interval:number, resend:number, nc:number):void;
+        setwndsize(sndwnd:number, rcvwnd:number):void;
+        setmtu(mtu:number):void;
+    }
+    
+    interface KCPConstructor {
+        new(af?: number): KCP;
+    }
+    
+    export var KCP: KCPConstructor;
+
+    
+    /**
+     * TCP
+     */
+
+    interface TCP {
+        readonly IPV6ONLY:number;
+        close():void;
+        read(size?:number):Promise<Uint8Array>;
+        write(data:string|ArrayBuffer|number):Promise<Exception>;
+        shutdown():Promise<Exception>;
+        fileno():number;
+        listen(backlog?:number):void;
+        accept():Promise<TCP>;
+        getsockname():Addr;
+        getpeername():Addr;
+        connect(addr:Addr):Promise<Exception>;
+        bind(addr:Addr, flags?:number):void;
+    }
+    
+    interface TCPConstructor {
+        new(af?: number): TCP;
+    }
+    
+    export var TCP: TCPConstructor;
+
+    
+    /**
+     * TTY
+     */
+
+    interface TTY {
+        readonly MODE_NORMAL:number;
+        readonly MODE_RAW:number;
+        readonly MODE_IO:number;
+        close():void;
+        read(size?:number):Promise<Uint8Array>;
+        write(data:string|ArrayBuffer|number):Promise<Exception>;
+        fileno():number;
+        setMode(mode:number):void;
+        getWinSize():{width:number, height:number};
+    }
+    
+    interface TTYConstructor {
+        new(fd: number, readable:boolean): TTY;
+    }
+    
+    export var TTY: TTYConstructor;
+
+    
+    /**
+     * Pipe
+     */
+
+    interface Pipe {
+        close():void;
+        read(size?:number):Promise<Uint8Array>;
+        write(data:string|ArrayBuffer|number):Promise<Exception>;
+        fileno():number;
+        listen(backlog?:number):void;
+        accept():Promise<Pipe>;
+        getsockname():Addr;
+        getpeername():Addr;
+        connect(name:string):Promise<Exception>;
+        bind(name:string):void;
+    }
+    
+    interface PipeConstructor {
+        new(): Pipe;
+    }
+    
+    export var Pipe: PipeConstructor;
+    /**
+     * system signal
      */
     export const signal: {
         signal(sig:number, func:any):void;
@@ -79,7 +277,7 @@ declare namespace ijjs {
         SIGSEGV: number;
         SIGTERM: number;
         SIGWINCH: number;
-    }   
+    }    
 
     /**
      * dns
@@ -92,12 +290,12 @@ declare namespace ijjs {
         AI_ALL:number;
         AI_ADDRCONFIG:number;
         AI_NUMERICSERV:number;
-        getaddrinfo(getaddrinfo:string, opts?:AddrHint):Promise<AddrInfo>;
+        getaddrinfo(node:string, opts?:AddrHint):Promise<AddrInfo>;
     }  
 
     
     /**
-     * advance log
+     * advance persistence log
      */
     export const log : {
         fatal(msg:string):void;
@@ -129,7 +327,54 @@ declare namespace ijjs {
         S_IFBLK:number;
         S_IFREG:number;
         S_IFLNK:number;
-        open(path:string, flag:string, mode:number): Promise<File>;
+        /**
+         * open file
+         */
+        open(path:string, flag:string, mode?:number): Promise<File>;
+        /**
+         * stat file
+         */
+        stat(path:string):Promise<Stat>;
+        /**
+         * stat file or link
+         */
+        lstat(path:string):Promise<Stat>;
+        /**
+         * get file realpath
+         */
+        realpath(path:string):Promise<string>;
+        /**
+         * remove file
+         */
+        unlink(path:string):Promise<Exception>;
+        /**
+         * rename file
+         */
+        rename(path:string, newpath:string):Promise<Exception>;
+        /**
+         * create tmp dir
+         */
+        mkdtemp(path:string):Promise<string>;
+        /**
+         * create tmp file
+         */
+        mkstemp(path:string):Promise<File>;
+        /**
+         * remove dir
+         */
+        rmdir(path:string):Promise<Exception>;
+        /**
+         * copy file
+         */
+        copyfile(path:string, newpath:string, flag:number):Promise<Exception>;
+        /**
+         * read dir
+         */
+        readdir(path:string):Promise<Dir>;
+        /**
+         * read file
+         */
+        readFile(path:string):Promise<ArrayBuffer>;
     }
     /**
      * ipv4 socket
@@ -277,18 +522,16 @@ declare namespace ijjs {
     export function uuidv1(options?:TimeOptionsV1, buf?:Uint8Array, offset?: number):string;
     /**
      * create uuid version3
-     * namespace URL:6ba7b811-9dad-11d1-80b4-00c04fd430c8 or DNS:6ba7b810-9dad-11d1-80b4-00c04fd430c8
      */
-    export function uuidv3(value:string, namespace:string, buf?:Uint8Array, offset?: number):string;
+    export function uuidv3(value:string, namespace:"6ba7b811-9dad-11d1-80b4-00c04fd430c8"|"6ba7b810-9dad-11d1-80b4-00c04fd430c8", buf?:Uint8Array, offset?: number):string;
     /**
      * create uuid version4
      */
     export function uuidv4(options?:TimeOptionsV4, buf?:Uint8Array, offset?: number):string;
     /**
      * create uuid version5
-     * namespace URL:6ba7b811-9dad-11d1-80b4-00c04fd430c8 or DNS:6ba7b810-9dad-11d1-80b4-00c04fd430c8
      */
-    export function uuidv5(value:string, namespace:string, buf?:Uint8Array, offset?: number):string;
+    export function uuidv5(value:string, namespace:"6ba7b811-9dad-11d1-80b4-00c04fd430c8"|"6ba7b810-9dad-11d1-80b4-00c04fd430c8", buf?:Uint8Array, offset?: number):string;
     /**
     * eval a js fragment
     */
@@ -297,4 +540,8 @@ declare namespace ijjs {
     * load a js file
     */
     export function loadScript(filename:string): any;
+    /**
+    * spawn a process
+    */
+    export function spawn(args:string|string[], env?:SpawnEnv): Process;
 }

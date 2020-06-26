@@ -1,6 +1,4 @@
-import { basename, dirname, join } from '@ijjs/path';
 
-const thisFile = import.meta.url;  // strip "file://"
 
 const TIMEOUT = 10 * 1000;
 
@@ -51,7 +49,7 @@ class Test {
         const status = status_.value;
 
         return {
-            name: basename(this._fileName),
+            name: ijjs.basename(this._fileName),
             failed: status.exit_status !== 0 || status.term_signal !== 0,
             status,
             stdout: stdout.value,
@@ -99,7 +97,7 @@ function printResult(result) {
     for await (const item of dirIter) {
         const { name } = item;
         if (name.startsWith('test-') && name.endsWith('.js')) {
-            tests.push(new Test(join(dir, name)));
+            tests.push(new Test(ijjs.join(dir, name)));
         }
     }
 

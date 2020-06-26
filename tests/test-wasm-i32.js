@@ -1,11 +1,10 @@
 import assert from './assert.js';
-import { dirname, join } from '@ijjs/path';
 
 const thisFile = import.meta.url.slice(7);   // strip "file://"
 
 
 (async () => {
-    const data = await ijjs.fs.readFile(join(dirname(thisFile), 'wasm', 'i32.wasm'));
+    const data = await ijjs.fs.readFile(ijjs.join(ijjs.dirname(thisFile), 'wasm', 'i32.wasm'));
     const { instance } = await WebAssembly.instantiate(data);
     const { exports } = instance;
 

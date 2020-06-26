@@ -1,5 +1,4 @@
 import assert from './assert.js';
-import { dirname, join } from '@ijjs/path';
 
 const thisFile = import.meta.url.slice(7);   // strip "file://"
 
@@ -7,7 +6,7 @@ const thisFile = import.meta.url.slice(7);   // strip "file://"
 (async () => {
     const args = [
         ijjs.exepath(),
-        join(dirname(thisFile), 'wasi', 'launcher.js'),
+        ijjs.join(ijjs.dirname(thisFile), 'wasi', 'launcher.js'),
         'test.wasm'
     ];
     const proc = ijjs.spawn(args, { stdout: 'pipe' });

@@ -94,9 +94,12 @@ IJVoid ijModLogInit(JSContext* ctx, JSModuleDef* m) {
     JS_NewClass(JS_GetRuntime(ctx), ijjs_log_class_id, &ijjs_log_class);
     obj = JS_NewObject(ctx);
     JS_SetPropertyFunctionList(ctx, obj, ijjs_log_proto_funcs, countof(ijjs_log_proto_funcs));
-    IJS32 rc = zlog_init(NULL);
-    assert(rc == 0);
-    zc = zlog_get_category("ijjs_rule");
+    if (!zc)
+    {
+        IJS32 rc = zlog_init(NULL);
+        assert(rc == 0);
+        zc = zlog_get_category("ijjs_rule");
+    }
     JS_SetModuleExport(ctx, m, "log", obj);
 }
 

@@ -1,10 +1,9 @@
 import assert from './assert.js';
-import { dirname, join } from '@ijjs/path';
 
 const thisFile = import.meta.url.slice(7);   // strip "file://"
 
 
-const w = new Worker(join(dirname(thisFile), 'helpers', 'worker.js'));
+const w = new Worker(ijjs.join(ijjs.dirname(thisFile), 'helpers', 'worker.js'));
 const timer = setTimeout(() => {
     w.terminate();
 }, 1000);

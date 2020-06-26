@@ -1610,12 +1610,11 @@ const posix = {
 posix.win32 = win32.win32 = win32;
 posix.posix = win32.posix = posix;
 
-const p = ijjs.platform === 'win32' ? win32 : posix;
 
-ijjs.basename = p.basename;
-ijjs.dirname = p.dirname;
-ijjs.extname = p.extname;
-ijjs.format = p.format;
-ijjs.isAbsolute = p.isAbsolute;
-ijjs.join = p.join;
-ijjs.parse = p.parse;
+ijjs.basename = ijjs.platform === 'win32' ? win32.basename : posix.basename;
+ijjs.dirname = ijjs.platform === 'win32' ? win32.dirname : posix.dirname;
+ijjs.extname = ijjs.platform === 'win32' ? win32.extname : posix.extname;
+ijjs.format = ijjs.platform === 'win32' ? win32.format : posix.format;
+ijjs.isAbsolute = ijjs.platform === 'win32' ? win32.isAbsolute : posix.isAbsolute;
+ijjs.join = ijjs.platform === 'win32' ? win32.join : posix.join;
+ijjs.parse = ijjs.platform === 'win32' ? win32.parse : posix.parse;

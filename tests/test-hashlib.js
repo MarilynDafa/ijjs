@@ -1,5 +1,4 @@
 import assert from './assert.js';
-import * as hashlib from '@ijjs/hashlib';
 
 
 const text = 'The quick brown fox jumps over the lazy dog';
@@ -20,6 +19,6 @@ const hashTests = {
 };
 
 for (const [type, result] of Object.entries(hashTests)) {
-    const obj = hashlib.createHash(type).update(text).update('.');
+    const obj = ijjs.hash(type).update(text).update('.');
     assert.eq(obj.digest(), result, `${type} hash matches`);
 }

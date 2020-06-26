@@ -1,5 +1,4 @@
 import assert from './assert.js';
-import { dirname, join } from '@ijjs/path';
 
 const thisFile = import.meta.url.slice(7);   // strip "file://"
 
@@ -8,7 +7,7 @@ const thisFile = import.meta.url.slice(7);   // strip "file://"
     const args = [
         ijjs.exepath(),
         '--abort-on-unhandled-rejection',
-        join(dirname(thisFile), 'helpers', 'unhandled-rejection.js')
+        ijjs.join(ijjs.dirname(thisFile), 'helpers', 'unhandled-rejection.js')
     ];
     const proc = ijjs.spawn(args, { stdout: 'ignore', stderr: 'pipe' });
     const stderr = await proc.stderr.read();
