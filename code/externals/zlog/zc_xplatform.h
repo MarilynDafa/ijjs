@@ -23,6 +23,7 @@
 
 #define MAXLEN_PATH 1024
 #define MAXLEN_CFG_LINE (MAXLEN_PATH * 4)
+#define MAXLINES_NO 128
 
 #define FILE_NEWLINE "\n"
 #define FILE_NEWLINE_LEN 1
@@ -45,8 +46,8 @@
 #define STRNICMP(_a_,_C_,_b_,_n_) ( _strnicmp(_a_,_b_,_n_) _C_ 0 )
 #include <windows.h>
 #define lstat(a,b) _stat(a,b)
-int open(char *f,int m,int p) ;
-int write(int fd,char *data,int len);
+int open(char* f, int m, int p);
+int write(int fd, char* data, int len);
 int close(int fd);
 struct tm* localtime_r(long* clock, struct tm* res);
 #define setenv unixem_setenv
@@ -68,7 +69,7 @@ struct tm* localtime_r(long* clock, struct tm* res);
 #include <AvailabilityMacros.h>
 #endif
 
-/* Define zlog_fstat to fstat or fstat64() */
+ /* Define zlog_fstat to fstat or fstat64() */
 #if defined(__APPLE__) && !defined(MAC_OS_X_VERSION_10_6)
 #define zlog_fstat fstat64
 #define zlog_stat stat64

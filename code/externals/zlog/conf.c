@@ -46,6 +46,7 @@ void zlog_conf_profile(zlog_conf_t * a_conf, int flag)
 	zc_profile(flag, "-conf[%p]-", a_conf);
 	zc_profile(flag, "--global--");
 	zc_profile(flag, "---file[%s],mtime[%s]---", a_conf->file, a_conf->mtime);
+	zc_profile(flag, "---in-memory conf[%s]---", a_conf->cfg_ptr);
 	zc_profile(flag, "---strict init[%d]---", a_conf->strict_init);
 	zc_profile(flag, "---buffer min[%ld]---", a_conf->buf_size_min);
 	zc_profile(flag, "---buffer max[%ld]---", a_conf->buf_size_max);
@@ -94,13 +95,20 @@ void zlog_conf_del(zlog_conf_t * a_conf)
 
 static int zlog_conf_build_without_file(zlog_conf_t * a_conf);
 static int zlog_conf_build_with_file(zlog_conf_t * a_conf);
+static int zlog_conf_build_with_in_memory(zlog_conf_t * a_conf);
 
-zlog_conf_t *zlog_conf_new(const char *confpath, const char* logpath)
+enum{
+	NO_CFG,
+	FILE_CFG,
+	IN_MEMORY_CFG
+};
+
+zlog_conf_t *zlog_conf_new(const char *config, const char* logpath)
 {
 	if (logpath)
 		strcpy(g_logpath, logpath);
 	int nwrite = 0;
-	int has_conf_file = 0;
+	int cfg_source = 0;
 	zlog_conf_t *a_conf = NULL;
 
 	a_conf = calloc(1, sizeof(zlog_conf_t));
@@ -109,17 +117,9 @@ zlog_conf_t *zlog_conf_new(const char *confpath, const char* logpath)
 		return NULL;
 	}
 
-	if (confpath && confpath[0] != '\0') {
-		nwrite = snprintf(a_conf->file, sizeof(a_conf->file), "%s", confpath);
-		has_conf_file = 1;
-	} else if (getenv("ZLOG_CONF_PATH") != NULL) {
-		nwrite = snprintf(a_conf->file, sizeof(a_conf->file), "%s", getenv("ZLOG_CONF_PATH"));
-		has_conf_file = 1;
-	} else {
 		memset(a_conf->file, 0x00, sizeof(a_conf->file));
-		has_conf_file = 0;
-	}
-	if (nwrite < 0 || nwrite >= sizeof(a_conf->file)) {
+		cfg_source = NO_CFG;
+	if (nwrite < 0 || nwrite >= sizeof(a_conf->file) && cfg_source == FILE_CFG) {
 		zc_error("not enough space for path name, nwrite=[%d], errno[%d]", nwrite, errno);
 		goto err;
 	}
@@ -128,7 +128,7 @@ zlog_conf_t *zlog_conf_new(const char *confpath, const char* logpath)
 	a_conf->strict_init = 1;
 	a_conf->buf_size_min = ZLOG_CONF_DEFAULT_BUF_SIZE_MIN;
 	a_conf->buf_size_max = ZLOG_CONF_DEFAULT_BUF_SIZE_MAX;
-	if (has_conf_file) {
+	if (cfg_source == FILE_CFG) {
 		/* configure file as default lock file */
 		strcpy(a_conf->rotate_lock_file, a_conf->file);
 	} else {
@@ -144,7 +144,7 @@ zlog_conf_t *zlog_conf_new(const char *confpath, const char* logpath)
 	if (!a_conf->levels) {
 		zc_error("zlog_level_list_new fail");
 		goto err;
-	} 
+	}
 
 	a_conf->formats = zc_arraylist_new((zc_arraylist_del_fn) zlog_format_del);
 	if (!a_conf->formats) {
@@ -158,9 +158,14 @@ zlog_conf_t *zlog_conf_new(const char *confpath, const char* logpath)
 		goto err;
 	}
 
-	if (has_conf_file) {
+	if (cfg_source == FILE_CFG) {
 		if (zlog_conf_build_with_file(a_conf)) {
 			zc_error("zlog_conf_build_with_file fail");
+			goto err;
+		}
+	} else if (cfg_source == IN_MEMORY_CFG) {
+		if(zlog_conf_build_with_in_memory(a_conf)){
+			zc_error("zlog_conf_build_with_in_memory fail");
 			goto err;
 		}
 	} else {
@@ -176,6 +181,7 @@ err:
 	zlog_conf_del(a_conf);
 	return NULL;
 }
+
 /*******************************************************************************/
 #if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
 int os_tmpdir(char* buffer, size_t* size) {
@@ -288,6 +294,7 @@ return_buffer:
   return 0;
 }
 #endif
+/*******************************************************************************/
 static int zlog_conf_build_without_file(zlog_conf_t * a_conf)
 {
 	zlog_rule_t *default_rule;
@@ -304,19 +311,19 @@ static int zlog_conf_build_without_file(zlog_conf_t * a_conf)
 #else
 	strcat(a_conf->rotate_lock_file, "/zlog.lock");
 #endif
+
+
 	a_conf->rotater = zlog_rotater_new(a_conf->rotate_lock_file);
 	if (!a_conf->rotater) {
 		zc_error("zlog_rotater_new fail");
 		return -1;
 	}
-
-
 	char rule[256] = {0};
 	strcpy(rule, "*.*             	\"");
 	strcat(rule, g_logpath);
 	strcat(rule, "/ijjslog-%v-%d(%F).log\"");
 	default_rule = zlog_rule_new(
-		rule,
+			rule,
 			a_conf->levels,
 			a_conf->default_format,
 			a_conf->formats,
@@ -378,6 +385,10 @@ static int zlog_conf_build_with_file(zlog_conf_t * a_conf)
 	while (fgets((char *)pline, sizeof(line) - (pline - line), fp) != NULL) {
 		++line_no;
 		line_len = strlen(pline);
+		if (0 == line_len) {
+			continue;
+		}
+
 		if (pline[line_len - 1] == '\n') {
 			pline[line_len - 1] = '\0';
 		}
@@ -452,7 +463,32 @@ exit:
 	fclose(fp);
 	return rc;
 }
+/**********************************************************************/
+static int zlog_conf_build_with_in_memory(zlog_conf_t * a_conf)
+{
+	int rc = 0;
+	char line[MAXLEN_CFG_LINE + 1];
+	char *pline = NULL;
+	int section = 0;
+	pline = line;
+	memset(&line, 0x00, sizeof(line));
+	pline = strtok((char *)a_conf->cfg_ptr, "\n");
 
+	while (pline != NULL) {
+		rc = zlog_conf_parse_line(a_conf, pline, &section);
+		if (rc < 0) {
+			zc_error("parse in-memory configurations[%s] line [%s] fail", a_conf->cfg_ptr, pline);
+			break;
+		} else if (rc > 0) {
+			zc_error("parse in-memory configurations[%s] line [%s] fail", a_conf->cfg_ptr, pline);
+			zc_warn("as strict init is set to false, ignore and go on");
+			rc = 0;
+			continue;
+		}
+		pline = strtok(NULL, "\n");
+	}
+	return rc;
+}
 /* section [global:1] [levels:2] [formats:3] [rules:4] */
 static int zlog_conf_parse_line(zlog_conf_t * a_conf, char *line, int *section)
 {
@@ -468,7 +504,7 @@ static int zlog_conf_parse_line(zlog_conf_t * a_conf, char *line, int *section)
 
 	if (strlen(line) > MAXLEN_CFG_LINE) {
 		zc_error ("line_len[%ld] > MAXLEN_CFG_LINE[%ld], may cause overflow",
-		     strlen(line), MAXLEN_CFG_LINE);
+			strlen(line), MAXLEN_CFG_LINE);
 		return -1;
 	}
 
@@ -511,7 +547,7 @@ static int zlog_conf_parse_line(zlog_conf_t * a_conf, char *line, int *section)
 			/* now build rotater and default_format
 			 * from the unchanging global setting,
 			 * for zlog_rule_new() */
-			a_conf->rotater = zlog_rotater_new(a_conf->rotate_lock_file);	
+			a_conf->rotater = zlog_rotater_new(a_conf->rotate_lock_file);
 			if (!a_conf->rotater) {
 				zc_error("zlog_rotater_new fail");
 				return -1;
@@ -546,7 +582,7 @@ static int zlog_conf_parse_line(zlog_conf_t * a_conf, char *line, int *section)
 
 		if (STRCMP(word_1, ==, "strict") && STRCMP(word_2, ==, "init")) {
 			/* if environment variable ZLOG_STRICT_INIT is set
-			 * then always make it strict 
+			 * then always make it strict
 			 */
 			if (STRICMP(value, ==, "false") && !getenv("ZLOG_STRICT_INIT")) {
 				a_conf->strict_init = 0;

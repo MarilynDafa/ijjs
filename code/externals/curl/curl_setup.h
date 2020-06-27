@@ -26,17 +26,17 @@
 #define CURL_NO_OLDIES
 #endif
 
-/*
- * Disable Visual Studio warnings:
- * 4127 "conditional expression is constant"
- */
+ /*
+  * Disable Visual Studio warnings:
+  * 4127 "conditional expression is constant"
+  */
 #ifdef _MSC_VER
 #pragma warning(disable:4127)
 #endif
 
-/*
- * Define WIN32 when build target is Win32 API
- */
+  /*
+   * Define WIN32 when build target is Win32 API
+   */
 
 #if (defined(_WIN32) || defined(__WIN32__)) && !defined(WIN32) && \
     !defined(__SYMBIAN32__)
@@ -44,11 +44,11 @@
 #endif
 
 #ifdef WIN32
-/*
- * Don't include unneeded stuff in Windows headers to avoid compiler
- * warnings and macro clashes.
- * Make sure to define this macro before including any Windows headers.
- */
+   /*
+    * Don't include unneeded stuff in Windows headers to avoid compiler
+    * warnings and macro clashes.
+    * Make sure to define this macro before including any Windows headers.
+    */
 #  ifndef WIN32_LEAN_AND_MEAN
 #    define WIN32_LEAN_AND_MEAN
 #  endif
@@ -57,10 +57,10 @@
 #  endif
 #endif
 
-/*
- * Include configuration script results or hand-crafted
- * configuration file for platforms which lack config tool.
- */
+    /*
+     * Include configuration script results or hand-crafted
+     * configuration file for platforms which lack config tool.
+     */
 
 #ifdef HAVE_CURL_CONFIG_H
 
@@ -110,19 +110,19 @@
 
 #endif /* HAVE_CONFIG_H */
 
-/* ================================================================ */
-/* Definition of preprocessor macros/symbols which modify compiler  */
-/* behavior or generated code characteristics must be done here,   */
-/* as appropriate, before any system header file is included. It is */
-/* also possible to have them defined in the config file included   */
-/* before this point. As a result of all this we frown inclusion of */
-/* system header files in our config files, avoid this at any cost. */
-/* ================================================================ */
+     /* ================================================================ */
+     /* Definition of preprocessor macros/symbols which modify compiler  */
+     /* behavior or generated code characteristics must be done here,   */
+     /* as appropriate, before any system header file is included. It is */
+     /* also possible to have them defined in the config file included   */
+     /* before this point. As a result of all this we frown inclusion of */
+     /* system header files in our config files, avoid this at any cost. */
+     /* ================================================================ */
 
-/*
- * AIX 4.3 and newer needs _THREAD_SAFE defined to build
- * proper reentrant code. Others may also need it.
- */
+     /*
+      * AIX 4.3 and newer needs _THREAD_SAFE defined to build
+      * proper reentrant code. Others may also need it.
+      */
 
 #ifdef NEED_THREAD_SAFE
 #  ifndef _THREAD_SAFE
@@ -130,11 +130,11 @@
 #  endif
 #endif
 
-/*
- * Tru64 needs _REENTRANT set for a few function prototypes and
- * things to appear in the system header files. Unixware needs it
- * to build proper reentrant code. Others may also need it.
- */
+      /*
+       * Tru64 needs _REENTRANT set for a few function prototypes and
+       * things to appear in the system header files. Unixware needs it
+       * to build proper reentrant code. Others may also need it.
+       */
 
 #ifdef NEED_REENTRANT
 #  ifndef _REENTRANT
@@ -142,7 +142,7 @@
 #  endif
 #endif
 
-/* Solaris needs this to get a POSIX-conformant getpwuid_r */
+       /* Solaris needs this to get a POSIX-conformant getpwuid_r */
 #if defined(sun) || defined(__sun)
 #  ifndef _POSIX_PTHREAD_SEMANTICS
 #    define _POSIX_PTHREAD_SEMANTICS 1
@@ -201,48 +201,48 @@
 #  endif
 #endif
 
-/*
- * When http is disabled rtsp is not supported.
- */
+ /*
+  * When http is disabled rtsp is not supported.
+  */
 
 #if defined(CURL_DISABLE_HTTP) && !defined(CURL_DISABLE_RTSP)
 #  define CURL_DISABLE_RTSP
 #endif
 
-/* ================================================================ */
-/* No system header file shall be included in this file before this */
-/* point. The only allowed ones are those included from curl/system.h */
-/* ================================================================ */
+  /* ================================================================ */
+  /* No system header file shall be included in this file before this */
+  /* point. The only allowed ones are those included from curl/system.h */
+  /* ================================================================ */
 
-/*
- * OS/400 setup file includes some system headers.
- */
+  /*
+   * OS/400 setup file includes some system headers.
+   */
 
 #ifdef __OS400__
 #  include "setup-os400.h"
 #endif
 
-/*
- * VMS setup file includes some system headers.
- */
+   /*
+    * VMS setup file includes some system headers.
+    */
 
 #ifdef __VMS
 #  include "setup-vms.h"
 #endif
 
-/*
- * Windows setup file includes some system headers.
- */
+    /*
+     * Windows setup file includes some system headers.
+     */
 
 #ifdef HAVE_WINDOWS_H
 #  include "setup-win32.h"
 #endif
 
-/*
- * Use getaddrinfo to resolve the IPv4 address literal. If the current network
- * interface doesn't support IPv4, but supports IPv6, NAT64, and DNS64,
- * performing this task will result in a synthesized IPv6 address.
- */
+     /*
+      * Use getaddrinfo to resolve the IPv4 address literal. If the current network
+      * interface doesn't support IPv4, but supports IPv6, NAT64, and DNS64,
+      * performing this task will result in a synthesized IPv6 address.
+      */
 #ifdef  __APPLE__
 #define USE_RESOLVE_ON_IPS 1
 #endif
@@ -268,7 +268,7 @@
 #  include <sys/socket.h> /* for select and ioctl*/
 #  include <netdb.h>      /* for in_addr_t definition */
 #  include <tpf/sysapi.h> /* for tpf_process_signals */
-   /* change which select is used for libcurl */
+      /* change which select is used for libcurl */
 #  define select(a,b,c,d,e) tpf_select_libcurl(a,b,c,d,e)
 #endif
 
@@ -311,16 +311,16 @@
  * Salford-C kludge section (mostly borrowed from wxWidgets).
  */
 #ifdef __SALFORDC__
-  #pragma suppress 353             /* Possible nested comments */
-  #pragma suppress 593             /* Define not used */
-  #pragma suppress 61              /* enum has no name */
-  #pragma suppress 106             /* unnamed, unused parameter */
-  #include <clib.h>
+#pragma suppress 353             /* Possible nested comments */
+#pragma suppress 593             /* Define not used */
+#pragma suppress 61              /* enum has no name */
+#pragma suppress 106             /* unnamed, unused parameter */
+#include <clib.h>
 #endif
 
-/*
- * Large file (>2Gb) support using WIN32 functions.
- */
+ /*
+  * Large file (>2Gb) support using WIN32 functions.
+  */
 
 #ifdef USE_WIN32_LARGE_FILES
 #  include <io.h>
@@ -336,9 +336,9 @@
 #  define LSEEK_ERROR                (__int64)-1
 #endif
 
-/*
- * Small file (<2Gb) support using WIN32 functions.
- */
+  /*
+   * Small file (<2Gb) support using WIN32 functions.
+   */
 
 #ifdef USE_WIN32_SMALL_FILES
 #  include <io.h>
@@ -363,7 +363,7 @@
 #endif
 
 #ifndef SIZEOF_TIME_T
-/* assume default size of time_t to be 32 bit */
+   /* assume default size of time_t to be 32 bit */
 #define SIZEOF_TIME_T 4
 #endif
 
@@ -397,7 +397,7 @@
 #if (SIZEOF_CURL_OFF_T == 4)
 #  define CURL_OFF_T_MAX CURL_OFF_T_C(0x7FFFFFFF)
 #else
-   /* assume CURL_SIZEOF_CURL_OFF_T == 8 */
+ /* assume CURL_SIZEOF_CURL_OFF_T == 8 */
 #  define CURL_OFF_T_MAX CURL_OFF_T_C(0x7FFFFFFFFFFFFFFF)
 #endif
 #define CURL_OFF_T_MIN (-CURL_OFF_T_MAX - CURL_OFF_T_C(1))
@@ -441,11 +441,10 @@
 #  endif
 #endif
 
-/* Below we define some functions. They should
-
-   4. set the SIGALRM signal timeout
-   5. set dir/file naming defines
-   */
+ /* Below we define some functions. They should
+    4. set the SIGALRM signal timeout
+    5. set dir/file naming defines
+    */
 
 #ifdef WIN32
 
@@ -469,15 +468,15 @@
 #  endif /* MSDOS */
 
 #  ifdef __minix
-     /* Minix 3 versions up to at least 3.1.3 are missing these prototypes */
-     extern char *strtok_r(char *s, const char *delim, char **last);
-     extern struct tm *gmtime_r(const time_t * const timep, struct tm *tmp);
+    /* Minix 3 versions up to at least 3.1.3 are missing these prototypes */
+extern char* strtok_r(char* s, const char* delim, char** last);
+extern struct tm* gmtime_r(const time_t* const timep, struct tm* tmp);
 #  endif
 
 #  define DIR_CHAR      "/"
 
 #  ifndef fileno /* sunos 4 have this as a macro! */
-     int fileno(FILE *stream);
+int fileno(FILE* stream);
 #  endif
 
 #endif /* WIN32 */
@@ -499,33 +498,33 @@
 #  endif
 #endif
 
-/* ---------------------------------------------------------------- */
-/*             resolver specialty compile-time defines              */
-/*         CURLRES_* defines to use in the host*.c sources          */
-/* ---------------------------------------------------------------- */
+ /* ---------------------------------------------------------------- */
+ /*             resolver specialty compile-time defines              */
+ /*         CURLRES_* defines to use in the host*.c sources          */
+ /* ---------------------------------------------------------------- */
 
-/*
- * lcc-win32 doesn't have _beginthreadex(), lacks threads support.
- */
+ /*
+  * lcc-win32 doesn't have _beginthreadex(), lacks threads support.
+  */
 
 #if defined(__LCC__) && defined(WIN32)
 #  undef USE_THREADS_POSIX
 #  undef USE_THREADS_WIN32
 #endif
 
-/*
- * MSVC threads support requires a multi-threaded runtime library.
- * _beginthreadex() is not available in single-threaded ones.
- */
+  /*
+   * MSVC threads support requires a multi-threaded runtime library.
+   * _beginthreadex() is not available in single-threaded ones.
+   */
 
 #if defined(_MSC_VER) && !defined(__POCC__) && !defined(_MT)
 #  undef USE_THREADS_POSIX
 #  undef USE_THREADS_WIN32
 #endif
 
-/*
- * Mutually exclusive CURLRES_* definitions.
- */
+   /*
+    * Mutually exclusive CURLRES_* definitions.
+    */
 
 #if defined(ENABLE_IPV6) && defined(HAVE_GETADDRINFO)
 #  define CURLRES_IPV6
@@ -536,7 +535,7 @@
 #ifdef USE_ARES
 #  define CURLRES_ASYNCH
 #  define CURLRES_ARES
-/* now undef the stock libc functions just to avoid them being used */
+    /* now undef the stock libc functions just to avoid them being used */
 #  undef HAVE_GETADDRINFO
 #  undef HAVE_FREEADDRINFO
 #  undef HAVE_GETHOSTBYNAME
@@ -547,21 +546,21 @@
 #  define CURLRES_SYNCH
 #endif
 
-/* ---------------------------------------------------------------- */
+    /* ---------------------------------------------------------------- */
 
-/*
- * When using WINSOCK, TELNET protocol requires WINSOCK2 API.
- */
+    /*
+     * When using WINSOCK, TELNET protocol requires WINSOCK2 API.
+     */
 
 #if defined(USE_WINSOCK) && (USE_WINSOCK != 2)
 #  define CURL_DISABLE_TELNET 1
 #endif
 
-/*
- * msvc 6.0 does not have struct sockaddr_storage and
- * does not define IPPROTO_ESP in winsock2.h. But both
- * are available if PSDK is properly installed.
- */
+     /*
+      * msvc 6.0 does not have struct sockaddr_storage and
+      * does not define IPPROTO_ESP in winsock2.h. But both
+      * are available if PSDK is properly installed.
+      */
 
 #if defined(_MSC_VER) && !defined(__POCC__)
 #  if !defined(HAVE_WINSOCK2_H) || ((_MSC_VER < 1300) && !defined(IPPROTO_ESP))
@@ -569,11 +568,11 @@
 #  endif
 #endif
 
-/*
- * Intentionally fail to build when using msvc 6.0 without PSDK installed.
- * The brave of heart can circumvent this, defining ALLOW_MSVC6_WITHOUT_PSDK
- * in lib/config-win32.h although absolutely discouraged and unsupported.
- */
+      /*
+       * Intentionally fail to build when using msvc 6.0 without PSDK installed.
+       * The brave of heart can circumvent this, defining ALLOW_MSVC6_WITHOUT_PSDK
+       * in lib/config-win32.h although absolutely discouraged and unsupported.
+       */
 
 #if defined(_MSC_VER) && !defined(__POCC__)
 #  if !defined(HAVE_WINDOWS_H) || ((_MSC_VER < 1300) && !defined(_FILETIME_))
@@ -665,25 +664,25 @@ int netware_init(void);
 #  define WARN_UNUSED_RESULT
 #endif
 
-/*
- * Include macros and defines that should only be processed once.
- */
+ /*
+  * Include macros and defines that should only be processed once.
+  */
 
 #ifndef HEADER_CURL_SETUP_ONCE_H
 #include "curl_setup_once.h"
 #endif
 
-/*
- * Definition of our NOP statement Object-like macro
- */
+  /*
+   * Definition of our NOP statement Object-like macro
+   */
 
 #ifndef Curl_nop_stmt
 #  define Curl_nop_stmt do { } while(0)
 #endif
 
-/*
- * Ensure that Winsock and lwIP TCP/IP stacks are not mixed.
- */
+   /*
+    * Ensure that Winsock and lwIP TCP/IP stacks are not mixed.
+    */
 
 #if defined(__LWIP_OPT_H__) || defined(LWIP_HDR_OPT_H)
 #  if defined(SOCKET) || \
@@ -695,9 +694,9 @@ int netware_init(void);
 #  endif
 #endif
 
-/*
- * Portable symbolic names for Winsock shutdown() mode flags.
- */
+    /*
+     * Portable symbolic names for Winsock shutdown() mode flags.
+     */
 
 #ifdef USE_WINSOCK
 #  define SHUT_RD   0x00
@@ -705,7 +704,7 @@ int netware_init(void);
 #  define SHUT_RDWR 0x02
 #endif
 
-/* Define S_ISREG if not defined by system headers, f.e. MSVC */
+     /* Define S_ISREG if not defined by system headers, f.e. MSVC */
 #if !defined(S_ISREG) && defined(S_IFMT) && defined(S_IFREG)
 #define S_ISREG(m) (((m) & S_IFMT) == S_IFREG)
 #endif
@@ -753,8 +752,8 @@ endings either CRLF or LF so 't' is appropriate.
 #  endif
 #endif /* DONT_USE_RECV_BEFORE_SEND_WORKAROUND */
 
-/* Detect Windows App environment which has a restricted access
- * to the Win32 APIs. */
+ /* Detect Windows App environment which has a restricted access
+  * to the Win32 APIs. */
 # if (defined(_WIN32_WINNT) && (_WIN32_WINNT >= 0x0602)) || \
   defined(WINAPI_FAMILY)
 #  include <winapifamily.h>
@@ -764,7 +763,7 @@ endings either CRLF or LF so 't' is appropriate.
 #  endif
 # endif
 
-/* for systems that don't detect this in configure, use a sensible default */
+  /* for systems that don't detect this in configure, use a sensible default */
 #ifndef CURL_SA_FAMILY_T
 #define CURL_SA_FAMILY_T unsigned short
 #endif
@@ -774,11 +773,11 @@ endings either CRLF or LF so 't' is appropriate.
 #define CURLMAX(x,y) ((x)>(y)?(x):(y))
 #define CURLMIN(x,y) ((x)<(y)?(x):(y))
 
-/* Some versions of the Android SDK is missing the declaration */
+   /* Some versions of the Android SDK is missing the declaration */
 #if defined(HAVE_GETPWUID_R) && defined(HAVE_DECL_GETPWUID_R_MISSING)
 struct passwd;
-int getpwuid_r(uid_t uid, struct passwd *pwd, char *buf,
-               size_t buflen, struct passwd **result);
+int getpwuid_r(uid_t uid, struct passwd* pwd, char* buf,
+    size_t buflen, struct passwd** result);
 #endif
 
 #ifdef DEBUGBUILD

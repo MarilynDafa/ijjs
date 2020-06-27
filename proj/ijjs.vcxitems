@@ -50,6 +50,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dict.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\doh.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dotdot.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dynbuf.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\easy.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\escape.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\file.c" />
@@ -214,6 +215,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\version.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_libc.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_meta_wasi.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_tracer.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_uvwasi.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_wasi.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_bind.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_code.c" />
@@ -337,6 +340,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dict.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\doh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dotdot.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dynbuf.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\easyif.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\escape.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\file.h" />
@@ -453,6 +457,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_defs.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_libc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_tracer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_wasi.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_code.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_compile.h" />

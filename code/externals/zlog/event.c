@@ -32,6 +32,7 @@ static long tidname(zlog_event_t *p) {
 #endif
 }
 
+
 void zlog_event_profile(zlog_event_t * a_event, int flag)
 {
 	zc_assert(a_event,);

@@ -111,14 +111,14 @@ static int unixem__setenv__putenv_(
             int r;
 
 #ifdef UNIXEM_USING_SAFE_STR_FUNCTIONS
-            (void)strncpy_s(&buffer[0], NUM_ELEMENTS(buffer), name, nameLen);
+            (void)strncpy(&buffer[0], name, nameLen);
 #else /* ? UNIXEM_USING_SAFE_STR_FUNCTIONS */
             (void)strncpy(&buffer[0], name, nameLen);
 #endif /* UNIXEM_USING_SAFE_STR_FUNCTIONS */
             buffer[nameLen] = '=';
             buffer[nameLen + 1] = '\0';
 #ifdef UNIXEM_USING_SAFE_STR_FUNCTIONS
-            (void)strncpy_s(&buffer[nameLen + 1], NUM_ELEMENTS(buffer) - (nameLen + 1), value, valueLen);
+            (void)strncpy(&buffer[nameLen + 1],  value, valueLen);
 #else /* ? UNIXEM_USING_SAFE_STR_FUNCTIONS */
             (void)strncpy(&buffer[nameLen + 1], value, valueLen);
 #endif /* UNIXEM_USING_SAFE_STR_FUNCTIONS */

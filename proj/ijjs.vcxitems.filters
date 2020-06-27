@@ -816,6 +816,15 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijlog.c">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_tracer.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_uvwasi.c">
+      <Filter>externals\wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dynbuf.c">
+      <Filter>externals\curl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\kcp\ikcp.h">
@@ -1471,6 +1480,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zlog.h">
       <Filter>externals\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\wasm\m3_api_tracer.h">
+      <Filter>externals\wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dynbuf.h">
+      <Filter>externals\curl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
