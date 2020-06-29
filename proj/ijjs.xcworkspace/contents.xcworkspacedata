@@ -2,22 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ijjscli.xcodeproj">
+      location = "absolute:/Users/zhoubo/Documents/GitHub/ijjs/proj/ijjscli.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:qjsc.xcodeproj">
+      location = "absolute:/Users/zhoubo/Documents/GitHub/ijjs/proj/ijjs.xcodeproj">
    </FileRef>
-   <Group
-      location = "container:"
-      name = "MODULES">
-      <FileRef
-         location = "group:../modules/redis/redis-osx.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:../modules/sigar/sigar-osx.xcodeproj">
-      </FileRef>
-   </Group>
    <FileRef
-      location = "group:ijjs.xcodeproj">
+      location = "group:/Users/zhoubo/Documents/GitHub/ijjs/proj/qjsc.xcodeproj">
    </FileRef>
 </Workspace>

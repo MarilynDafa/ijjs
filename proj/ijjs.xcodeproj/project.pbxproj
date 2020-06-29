@@ -10,6 +10,12 @@
 		C7189B8C248FD024003A86B2 /* LDAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7189B8B248FD024003A86B2 /* LDAP.framework */; };
 		C7189B8E248FD03F003A86B2 /* ijlog.c in Sources */ = {isa = PBXBuildFile; fileRef = C7189B8D248FD03F003A86B2 /* ijlog.c */; };
 		C7189B90248FD20F003A86B2 /* ijpre.h in Headers */ = {isa = PBXBuildFile; fileRef = C7189B8F248FD20F003A86B2 /* ijpre.h */; };
+		C7189B9524AA494B003A86B2 /* quickjs-debugger-transport-win.c in Sources */ = {isa = PBXBuildFile; fileRef = C7189B9124AA494A003A86B2 /* quickjs-debugger-transport-win.c */; };
+		C7189B9624AA494B003A86B2 /* quickjs-debugger.c in Sources */ = {isa = PBXBuildFile; fileRef = C7189B9224AA494A003A86B2 /* quickjs-debugger.c */; };
+		C7189B9724AA494B003A86B2 /* quickjs-debugger-transport-unix.c in Sources */ = {isa = PBXBuildFile; fileRef = C7189B9324AA494B003A86B2 /* quickjs-debugger-transport-unix.c */; };
+		C7189B9824AA494B003A86B2 /* quickjs-debugger.h in Headers */ = {isa = PBXBuildFile; fileRef = C7189B9424AA494B003A86B2 /* quickjs-debugger.h */; };
+		C7189B9B24AA49B9003A86B2 /* dynbuf.h in Headers */ = {isa = PBXBuildFile; fileRef = C7189B9924AA49B9003A86B2 /* dynbuf.h */; };
+		C7189B9C24AA49B9003A86B2 /* dynbuf.c in Sources */ = {isa = PBXBuildFile; fileRef = C7189B9A24AA49B9003A86B2 /* dynbuf.c */; };
 		C759341E248FC809007B37B0 /* rule.h in Headers */ = {isa = PBXBuildFile; fileRef = C75933EF248FC804007B37B0 /* rule.h */; };
 		C759341F248FC809007B37B0 /* zc_profile.c in Sources */ = {isa = PBXBuildFile; fileRef = C75933F0248FC804007B37B0 /* zc_profile.c */; };
 		C7593420248FC809007B37B0 /* rotater.h in Headers */ = {isa = PBXBuildFile; fileRef = C75933F1248FC804007B37B0 /* rotater.h */; };
@@ -24,7 +30,6 @@
 		C759342A248FC809007B37B0 /* rule.c in Sources */ = {isa = PBXBuildFile; fileRef = C75933FB248FC805007B37B0 /* rule.c */; };
 		C759342B248FC809007B37B0 /* win_compat.c in Sources */ = {isa = PBXBuildFile; fileRef = C75933FC248FC806007B37B0 /* win_compat.c */; };
 		C759342C248FC809007B37B0 /* zc_util.h in Headers */ = {isa = PBXBuildFile; fileRef = C75933FD248FC806007B37B0 /* zc_util.h */; };
-		C759342D248FC809007B37B0 /* zlog-chk-conf.c in Sources */ = {isa = PBXBuildFile; fileRef = C75933FE248FC806007B37B0 /* zlog-chk-conf.c */; };
 		C759342E248FC809007B37B0 /* zthread.c in Sources */ = {isa = PBXBuildFile; fileRef = C75933FF248FC806007B37B0 /* zthread.c */; };
 		C759342F248FC809007B37B0 /* zc_hashtable.c in Sources */ = {isa = PBXBuildFile; fileRef = C7593400248FC806007B37B0 /* zc_hashtable.c */; };
 		C7593430248FC809007B37B0 /* rotater.c in Sources */ = {isa = PBXBuildFile; fileRef = C7593401248FC806007B37B0 /* rotater.c */; };
@@ -58,8 +63,6 @@
 		C759344C248FC809007B37B0 /* record.c in Sources */ = {isa = PBXBuildFile; fileRef = C759341D248FC809007B37B0 /* record.c */; };
 		C77A62B0247A17E900051CDF /* ikcp.c in Sources */ = {isa = PBXBuildFile; fileRef = C77A62AE247A17E900051CDF /* ikcp.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		C77A62B1247A17E900051CDF /* ikcp.h in Headers */ = {isa = PBXBuildFile; fileRef = C77A62AF247A17E900051CDF /* ikcp.h */; };
-		C77A62B4247A17F600051CDF /* fastlz.h in Headers */ = {isa = PBXBuildFile; fileRef = C77A62B2247A17F600051CDF /* fastlz.h */; };
-		C77A62B5247A17F600051CDF /* fastlz.c in Sources */ = {isa = PBXBuildFile; fileRef = C77A62B3247A17F600051CDF /* fastlz.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		C77A64A2247A189700051CDF /* libunicode.h in Headers */ = {isa = PBXBuildFile; fileRef = C77A6490247A189500051CDF /* libunicode.h */; };
 		C77A64A3247A189700051CDF /* bjson.c in Sources */ = {isa = PBXBuildFile; fileRef = C77A6491247A189500051CDF /* bjson.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		C77A64A4247A189700051CDF /* libunicode-table.h in Headers */ = {isa = PBXBuildFile; fileRef = C77A6492247A189500051CDF /* libunicode-table.h */; };
@@ -356,7 +359,6 @@
 		C77A6771247A197900051CDF /* ijjs.h in Headers */ = {isa = PBXBuildFile; fileRef = C77A6770247A197900051CDF /* ijjs.h */; };
 		C77A6787247A198B00051CDF /* ijutils.c in Sources */ = {isa = PBXBuildFile; fileRef = C77A6772247A198800051CDF /* ijutils.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		C77A6788247A198B00051CDF /* ijmodules.c in Sources */ = {isa = PBXBuildFile; fileRef = C77A6773247A198800051CDF /* ijmodules.c */; settings = {COMPILER_FLAGS = "-w"; }; };
-		C77A6789247A198B00051CDF /* ijhttp.c in Sources */ = {isa = PBXBuildFile; fileRef = C77A6774247A198800051CDF /* ijhttp.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		C77A678A247A198B00051CDF /* ijbootstrap.c in Sources */ = {isa = PBXBuildFile; fileRef = C77A6775247A198800051CDF /* ijbootstrap.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		C77A678B247A198B00051CDF /* ijsignals.c in Sources */ = {isa = PBXBuildFile; fileRef = C77A6776247A198800051CDF /* ijsignals.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		C77A678C247A198B00051CDF /* ijstreams.c in Sources */ = {isa = PBXBuildFile; fileRef = C77A6777247A198900051CDF /* ijstreams.c */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -517,6 +519,12 @@
 		C7189B8B248FD024003A86B2 /* LDAP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LDAP.framework; path = System/Library/Frameworks/LDAP.framework; sourceTree = SDKROOT; };
 		C7189B8D248FD03F003A86B2 /* ijlog.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijlog.c; path = ../code/src/ijlog.c; sourceTree = "<group>"; };
 		C7189B8F248FD20F003A86B2 /* ijpre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ijpre.h; path = ../code/headers/ijpre.h; sourceTree = "<group>"; };
+		C7189B9124AA494A003A86B2 /* quickjs-debugger-transport-win.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "quickjs-debugger-transport-win.c"; path = "../code/externals/quickjs/quickjs-debugger-transport-win.c"; sourceTree = "<group>"; };
+		C7189B9224AA494A003A86B2 /* quickjs-debugger.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "quickjs-debugger.c"; path = "../code/externals/quickjs/quickjs-debugger.c"; sourceTree = "<group>"; };
+		C7189B9324AA494B003A86B2 /* quickjs-debugger-transport-unix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "quickjs-debugger-transport-unix.c"; path = "../code/externals/quickjs/quickjs-debugger-transport-unix.c"; sourceTree = "<group>"; };
+		C7189B9424AA494B003A86B2 /* quickjs-debugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "quickjs-debugger.h"; path = "../code/externals/quickjs/quickjs-debugger.h"; sourceTree = "<group>"; };
+		C7189B9924AA49B9003A86B2 /* dynbuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dynbuf.h; path = ../code/externals/curl/dynbuf.h; sourceTree = "<group>"; };
+		C7189B9A24AA49B9003A86B2 /* dynbuf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dynbuf.c; path = ../code/externals/curl/dynbuf.c; sourceTree = "<group>"; };
 		C75933EF248FC804007B37B0 /* rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rule.h; path = ../code/externals/zlog/rule.h; sourceTree = "<group>"; };
 		C75933F0248FC804007B37B0 /* zc_profile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zc_profile.c; path = ../code/externals/zlog/zc_profile.c; sourceTree = "<group>"; };
 		C75933F1248FC804007B37B0 /* rotater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rotater.h; path = ../code/externals/zlog/rotater.h; sourceTree = "<group>"; };
@@ -531,7 +539,6 @@
 		C75933FB248FC805007B37B0 /* rule.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rule.c; path = ../code/externals/zlog/rule.c; sourceTree = "<group>"; };
 		C75933FC248FC806007B37B0 /* win_compat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = win_compat.c; path = ../code/externals/zlog/win_compat.c; sourceTree = "<group>"; };
 		C75933FD248FC806007B37B0 /* zc_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zc_util.h; path = ../code/externals/zlog/zc_util.h; sourceTree = "<group>"; };
-		C75933FE248FC806007B37B0 /* zlog-chk-conf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "zlog-chk-conf.c"; path = "../code/externals/zlog/zlog-chk-conf.c"; sourceTree = "<group>"; };
 		C75933FF248FC806007B37B0 /* zthread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zthread.c; path = ../code/externals/zlog/zthread.c; sourceTree = "<group>"; };
 		C7593400248FC806007B37B0 /* zc_hashtable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zc_hashtable.c; path = ../code/externals/zlog/zc_hashtable.c; sourceTree = "<group>"; };
 		C7593401248FC806007B37B0 /* rotater.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rotater.c; path = ../code/externals/zlog/rotater.c; sourceTree = "<group>"; };
@@ -566,8 +573,6 @@
 		C77A623E247A15D400051CDF /* libijjs.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libijjs.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		C77A62AE247A17E900051CDF /* ikcp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ikcp.c; path = ../code/externals/kcp/ikcp.c; sourceTree = "<group>"; };
 		C77A62AF247A17E900051CDF /* ikcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ikcp.h; path = ../code/externals/kcp/ikcp.h; sourceTree = "<group>"; };
-		C77A62B2247A17F600051CDF /* fastlz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fastlz.h; path = ../code/externals/fastlz/fastlz.h; sourceTree = "<group>"; };
-		C77A62B3247A17F600051CDF /* fastlz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fastlz.c; path = ../code/externals/fastlz/fastlz.c; sourceTree = "<group>"; };
 		C77A6490247A189500051CDF /* libunicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libunicode.h; path = ../code/externals/quickjs/libunicode.h; sourceTree = "<group>"; };
 		C77A6491247A189500051CDF /* bjson.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bjson.c; path = ../code/externals/quickjs/bjson.c; sourceTree = "<group>"; };
 		C77A6492247A189500051CDF /* libunicode-table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "libunicode-table.h"; path = "../code/externals/quickjs/libunicode-table.h"; sourceTree = "<group>"; };
@@ -864,7 +869,6 @@
 		C77A6770247A197900051CDF /* ijjs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ijjs.h; path = ../code/headers/ijjs.h; sourceTree = "<group>"; };
 		C77A6772247A198800051CDF /* ijutils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijutils.c; path = ../code/src/ijutils.c; sourceTree = "<group>"; };
 		C77A6773247A198800051CDF /* ijmodules.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijmodules.c; path = ../code/src/ijmodules.c; sourceTree = "<group>"; };
-		C77A6774247A198800051CDF /* ijhttp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijhttp.c; path = ../code/src/ijhttp.c; sourceTree = "<group>"; };
 		C77A6775247A198800051CDF /* ijbootstrap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijbootstrap.c; path = ../code/src/ijbootstrap.c; sourceTree = "<group>"; };
 		C77A6776247A198800051CDF /* ijsignals.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijsignals.c; path = ../code/src/ijsignals.c; sourceTree = "<group>"; };
 		C77A6777247A198900051CDF /* ijstreams.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijstreams.c; path = ../code/src/ijstreams.c; sourceTree = "<group>"; };
@@ -1086,7 +1090,6 @@
 				C75933F9248FC805007B37B0 /* zc_util.c */,
 				C75933FD248FC806007B37B0 /* zc_util.h */,
 				C7593410248FC807007B37B0 /* zc_xplatform.h */,
-				C75933FE248FC806007B37B0 /* zlog-chk-conf.c */,
 				C7593418248FC808007B37B0 /* zlog.c */,
 				C7593408248FC807007B37B0 /* zlog.h */,
 				C75933FF248FC806007B37B0 /* zthread.c */,
@@ -1123,7 +1126,6 @@
 				C77A62AA247A17BC00051CDF /* miniz */,
 				C77A62A7247A17A100051CDF /* kcp */,
 				C77A62A6247A179800051CDF /* jemalloc */,
-				C77A62A5247A179000051CDF /* fastlz */,
 				C77A62A4247A178600051CDF /* curl */,
 			);
 			name = externals;
@@ -1146,7 +1148,6 @@
 				C77A6784247A198A00051CDF /* ijdns.c */,
 				C77A6786247A198B00051CDF /* ijerror.c */,
 				C77A677B247A198900051CDF /* ijfs.c */,
-				C77A6774247A198800051CDF /* ijhttp.c */,
 				C77A6785247A198B00051CDF /* ijjs.c */,
 				C77A6778247A198900051CDF /* ijkcp.c */,
 				C77A6780247A198A00051CDF /* ijmisc.c */,
@@ -1170,6 +1171,8 @@
 		C77A62A4247A178600051CDF /* curl */ = {
 			isa = PBXGroup;
 			children = (
+				C7189B9A24AA49B9003A86B2 /* dynbuf.c */,
+				C7189B9924AA49B9003A86B2 /* dynbuf.h */,
 				C7F5D01F247ABCFF003974A7 /* mqtt.c */,
 				C7F5D020247ABD00003974A7 /* mqtt.h */,
 				C7F5D00C247ABCB4003974A7 /* curl */,
@@ -1418,15 +1421,6 @@
 			name = curl;
 			sourceTree = "<group>";
 		};
-		C77A62A5247A179000051CDF /* fastlz */ = {
-			isa = PBXGroup;
-			children = (
-				C77A62B3247A17F600051CDF /* fastlz.c */,
-				C77A62B2247A17F600051CDF /* fastlz.h */,
-			);
-			name = fastlz;
-			sourceTree = "<group>";
-		};
 		C77A62A6247A179800051CDF /* jemalloc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1493,6 +1487,10 @@
 		C77A62AB247A17C400051CDF /* quickjs */ = {
 			isa = PBXGroup;
 			children = (
+				C7189B9324AA494B003A86B2 /* quickjs-debugger-transport-unix.c */,
+				C7189B9124AA494A003A86B2 /* quickjs-debugger-transport-win.c */,
+				C7189B9224AA494A003A86B2 /* quickjs-debugger.c */,
+				C7189B9424AA494B003A86B2 /* quickjs-debugger.h */,
 				C77A6491247A189500051CDF /* bjson.c */,
 				C77A649D247A189600051CDF /* cutils.c */,
 				C77A649E247A189600051CDF /* cutils.h */,
@@ -1732,6 +1730,7 @@
 				C7F5D064247ABD46003974A7 /* quiche.h in Headers */,
 				C77A6764247A194100051CDF /* curl_setup_once.h in Headers */,
 				C77A66C7247A194000051CDF /* netrc.h in Headers */,
+				C7189B9824AA494B003A86B2 /* quickjs-debugger.h in Headers */,
 				C77A66EA247A194000051CDF /* multiif.h in Headers */,
 				C7F5D04E247ABD1C003974A7 /* gtls.h in Headers */,
 				C77A670A247A194100051CDF /* curl_ldap.h in Headers */,
@@ -1812,7 +1811,6 @@
 				C77A6688247A194000051CDF /* transfer.h in Headers */,
 				C77A669E247A194000051CDF /* splay.h in Headers */,
 				C77A6760247A194100051CDF /* config-symbian.h in Headers */,
-				C77A62B4247A17F600051CDF /* fastlz.h in Headers */,
 				C77A668F247A194000051CDF /* http.h in Headers */,
 				C7F5D04C247ABD1C003974A7 /* nssg.h in Headers */,
 				C759343B248FC809007B37B0 /* level.h in Headers */,
@@ -1886,6 +1884,7 @@
 				C7F5CFB7247A480E003974A7 /* idna.h in Headers */,
 				C759343E248FC809007B37B0 /* zc_hashtable.h in Headers */,
 				C77A6681247A194000051CDF /* wildcard.h in Headers */,
+				C7189B9B24AA49B9003A86B2 /* dynbuf.h in Headers */,
 				C759343F248FC809007B37B0 /* zc_xplatform.h in Headers */,
 				C7593434248FC809007B37B0 /* category_table.h in Headers */,
 				C77A66C3247A194000051CDF /* curl_endian.h in Headers */,
@@ -2031,6 +2030,7 @@
 				C7F5D07B247ABD5B003974A7 /* oauth2.c in Sources */,
 				C77A64EF247A18CA00051CDF /* m3_module.c in Sources */,
 				C77A668C247A194000051CDF /* content_encoding.c in Sources */,
+				C7189B9724AA494B003A86B2 /* quickjs-debugger-transport-unix.c in Sources */,
 				C77A67C4247A217700051CDF /* extent_mmap.c in Sources */,
 				C77A6704247A194100051CDF /* share.c in Sources */,
 				C77A64BC247A18A900051CDF /* miniz_tinfl.c in Sources */,
@@ -2050,8 +2050,8 @@
 				C7F5CFEA247A4AA3003974A7 /* darwin-proctitle.c in Sources */,
 				C7F5D040247ABD1C003974A7 /* gtls.c in Sources */,
 				C77A64F2247A18CA00051CDF /* m3_bind.c in Sources */,
+				C7189B9524AA494B003A86B2 /* quickjs-debugger-transport-win.c in Sources */,
 				C7F5CFBF247A480E003974A7 /* uv-common.c in Sources */,
-				C77A62B5247A17F600051CDF /* fastlz.c in Sources */,
 				C77A66DB247A194000051CDF /* nonblock.c in Sources */,
 				C7F5CFE9247A4AA3003974A7 /* fs.c in Sources */,
 				C77A67DC247A217700051CDF /* base.c in Sources */,
@@ -2125,6 +2125,7 @@
 				C77A6753247A194100051CDF /* curl_sasl.c in Sources */,
 				C7F5CFC1247A480E003974A7 /* version.c in Sources */,
 				C77A67D4247A217700051CDF /* ckh.c in Sources */,
+				C7189B9624AA494B003A86B2 /* quickjs-debugger.c in Sources */,
 				C77A6739247A194100051CDF /* socks_gssapi.c in Sources */,
 				C77A6747247A194100051CDF /* smtp.c in Sources */,
 				C77A6741247A194100051CDF /* progress.c in Sources */,
@@ -2146,7 +2147,6 @@
 				C77A678B247A198B00051CDF /* ijsignals.c in Sources */,
 				C77A6796247A198B00051CDF /* ijudp.c in Sources */,
 				C77A6762247A194100051CDF /* timeval.c in Sources */,
-				C77A6789247A198B00051CDF /* ijhttp.c in Sources */,
 				C77A674B247A194100051CDF /* hmac.c in Sources */,
 				C7593442248FC809007B37B0 /* spec.c in Sources */,
 				C77A678C247A198B00051CDF /* ijstreams.c in Sources */,
@@ -2222,7 +2222,6 @@
 				C7593429248FC809007B37B0 /* level.c in Sources */,
 				C77A67DD247A217700051CDF /* hash.c in Sources */,
 				C77A67D7247A217700051CDF /* prng.c in Sources */,
-				C759342D248FC809007B37B0 /* zlog-chk-conf.c in Sources */,
 				C77A67CF247A217700051CDF /* mutex.c in Sources */,
 				C7F5D065247ABD46003974A7 /* quiche.c in Sources */,
 				C77A66A0247A194000051CDF /* tftp.c in Sources */,
@@ -2279,6 +2278,7 @@
 				C7F5D054247ABD1C003974A7 /* sectransp.c in Sources */,
 				C77A678F247A198B00051CDF /* ijtimers.c in Sources */,
 				C77A64A6247A189700051CDF /* libbf.c in Sources */,
+				C7189B9C24AA49B9003A86B2 /* dynbuf.c in Sources */,
 				C7F5CFEB247A4AA3003974A7 /* poll.c in Sources */,
 				C77A66AB247A194000051CDF /* strdup.c in Sources */,
 				C77A6743247A194100051CDF /* pop3.c in Sources */,
@@ -2350,6 +2350,7 @@
 					"QJS_VERSION_STR=\"20200412\"",
 					macintosh,
 					__MRC__,
+					CONFIG_QJSDEBUG,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -2429,6 +2430,7 @@
 					"QJS_VERSION_STR=\"20200412\"",
 					macintosh,
 					__MRC__,
+					CONFIG_QJSDEBUG,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -2475,6 +2477,7 @@
 					"QJS_VERSION_STR=\"20200412\"",
 					macintosh,
 					__MRC__,
+					CONFIG_QJSDEBUG,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2513,6 +2516,7 @@
 					"QJS_VERSION_STR=\"20200412\"",
 					macintosh,
 					__MRC__,
+					CONFIG_QJSDEBUG,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

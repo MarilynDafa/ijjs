@@ -26,7 +26,6 @@ this project is inspired by nodejs
 - jemalloc
 - libuv
 - wasm3
-- fastlz
 - quickjs
 - kcp
 - log4c
@@ -47,6 +46,4 @@ OSX: XCode
 * GNU/Linux
 * macOS
 * Windows
-* Android
-* IOS
 * Other Unixes
