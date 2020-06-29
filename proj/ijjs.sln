@@ -55,6 +55,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sigar-linux", "..\modules\s
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "redis-linux", "..\modules\redis\redis-linux.vcxproj", "{0B124F56-D72C-47DD-8317-1CE028E4DE60}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Android", "Android", "{E3C1DC79-9C43-4FA0-BB0E-29A8F58F41D5}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\modules\redis\redis.vcxitems*{0b124f56-d72c-47dd-8317-1ce028e4de60}*SharedItemsImports = 4
