@@ -47,4 +47,6 @@ OSX: XCode
 * GNU/Linux
 * macOS
 * Windows
+* Android
+* IOS
 * Other Unixes
