@@ -1,6 +1,6 @@
 ![image](https://github.com/MarilynDafa/ijjs/blob/master/logo.png)
 ## Overview
-ijjs is an open-source, cross-platform, tiny JavaScript runtime environment. It executes JavaScript code outside of a browser.
+ijjs is an open-source, cross-platform, lightweight JavaScript runtime environment. It executes JavaScript code outside of a browser.
 this project is inspired by nodejs
 
 ## Features
@@ -47,4 +47,6 @@ OSX: XCode
 * GNU/Linux
 * macOS
 * Windows
+* Android
+* IOS
 * Other Unixes
