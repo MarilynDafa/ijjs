@@ -562,6 +562,12 @@ static inline JS_BOOL JS_IsNumber(JSValueConst v)
     int tag = JS_VALUE_GET_TAG(v);
     return tag == JS_TAG_INT || JS_TAG_IS_FLOAT64(tag);
 }
+static inline JS_BOOL JS_IsInteger(JSValueConst v)
+{
+    int tag = JS_VALUE_GET_TAG(v);
+    return tag == JS_TAG_INT || tag == JS_TAG_BIG_INT;
+}
+
 
 static inline JS_BOOL JS_IsBigInt(JSContext *ctx, JSValueConst v)
 {

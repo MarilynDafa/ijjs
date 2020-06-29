@@ -825,6 +825,15 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dynbuf.c">
       <Filter>externals\curl</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-debugger.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-debugger-transport-unix.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-debugger-transport-win.c">
+      <Filter>externals\quickjs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\kcp\ikcp.h">
@@ -1486,6 +1495,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\dynbuf.h">
       <Filter>externals\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-debugger.h">
+      <Filter>externals\quickjs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

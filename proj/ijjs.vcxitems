@@ -202,6 +202,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libbf.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libregexp.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libunicode.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-debugger-transport-unix.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-debugger-transport-win.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-debugger.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\fs-poll.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\uv\src\idna.c" />
@@ -445,6 +448,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\libunicode.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\list.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-atom.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-debugger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-libc.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-opcode.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs.h" />

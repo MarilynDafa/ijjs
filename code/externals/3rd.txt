@@ -9,9 +9,11 @@ miniz 2.1.0
 zlog 1.2.15
 
 vscode
-ijhttp	
-PostgreSQL  js	
+httpserver
 sigar
 redis
+PostgreSQL  js	
+android
+ios
 
 ijpm
