@@ -40,9 +40,6 @@
     <Filter Include="externals\curl\vtls">
       <UniqueIdentifier>{0c45fc2b-b5cb-4a23-a821-d413e562500c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="externals\fastlz">
-      <UniqueIdentifier>{ff630f8b-08fb-4e5f-b090-02d9f40759dd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="externals\miniz">
       <UniqueIdentifier>{b4631ba9-be20-4d37-9adb-078374caf5ad}</UniqueIdentifier>
     </Filter>
@@ -506,9 +503,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\vauth.c">
       <Filter>externals\curl\vauth</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.c">
-      <Filter>externals\fastlz</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz.c">
       <Filter>externals\miniz</Filter>
@@ -1324,9 +1318,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vauth\vauth.h">
       <Filter>externals\curl\vauth</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.h">
-      <Filter>externals\fastlz</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-opcode.h">
       <Filter>externals\quickjs</Filter>

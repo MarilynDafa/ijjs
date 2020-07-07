@@ -55,6 +55,7 @@ typedef struct JSDebuggerInfo {
 void js_debugger_check(JSContext *ctx, const uint8_t *pc);
 void js_debugger_exception(JSContext* ctx);
 void js_debugger_free(JSContext *ctx, JSDebuggerInfo *info);
+char* js_debuger_file_normalize(JSContext* ctx, const char* path);
 
 void js_debugger_attach(
     JSContext* ctx,

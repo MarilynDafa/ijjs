@@ -251,13 +251,13 @@ IJJSRuntime* ijNewRuntimeInternal(IJBool is_worker, IJJSRunOptions* options) {
     JS_FreeValue(qrt->ctx, global_obj);
     return qrt;
 }
-
 IJVoid ijFreeRuntime(IJJSRuntime* qrt) {
     uv_close((uv_handle_t*)&qrt->jobs.prepare, NULL);
     uv_close((uv_handle_t*)&qrt->jobs.idle, NULL);
     uv_close((uv_handle_t*)&qrt->jobs.check, NULL);
     uv_close((uv_handle_t*)&qrt->stop, NULL);
     JS_FreeValue(qrt->ctx, qrt->builtins.u8array_ctor);
+
     JS_FreeContext(qrt->ctx);
     JS_FreeRuntime(qrt->rt);
     if (qrt->curl_ctx.curlm_h) {

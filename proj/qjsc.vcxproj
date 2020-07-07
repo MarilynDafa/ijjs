@@ -18,37 +18,51 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\code\externals\cwin\pthread.c" />
+    <ClCompile Include="..\code\externals\cwin\sys\time.c" />
+    <ClCompile Include="..\code\externals\cwin\unistd.c" />
+    <ClCompile Include="..\code\externals\quickjs\cutils.c" />
+    <ClCompile Include="..\code\externals\quickjs\libbf.c" />
+    <ClCompile Include="..\code\externals\quickjs\libregexp.c" />
+    <ClCompile Include="..\code\externals\quickjs\libunicode.c" />
+    <ClCompile Include="..\code\externals\quickjs\quickjs.c" />
+    <ClCompile Include="..\code\src\m.c" />
+    <ClCompile Include="qjsc.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{4E484DF8-8C71-45AD-8980-6BC859730B0E}</ProjectGuid>
-    <RootNamespace>qjscwin32</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{747ec416-4ddc-43d1-84ac-a2e5f3559674}</ProjectGuid>
+    <RootNamespace>qjsc</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>ClangCL</PlatformToolset>
-    <CharacterSet>NotSet</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>ClangCL</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>NotSet</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>ClangCL</PlatformToolset>
-    <CharacterSet>NotSet</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>ClangCL</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>NotSet</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -70,62 +84,39 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetName>qjsc</TargetName>
     <OutDir>..\bin\win32</OutDir>
     <IntDir>$(Platform)\$(Configuration)\qjsc</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
     <TargetName>qjsc</TargetName>
-    <OutDir>..\bin\win32</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\qjsc</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <TargetName>qjsc</TargetName>
     <OutDir>..\bin\win32</OutDir>
     <IntDir>$(Platform)\$(Configuration)\qjsc</IntDir>
+    <TargetName>qjsc</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\bin\win32</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\qjsc</IntDir>
+    <TargetName>qjsc</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <TargetName>qjsc</TargetName>
     <OutDir>..\bin\win32</OutDir>
     <IntDir>$(Platform)\$(Configuration)\qjsc</IntDir>
+    <TargetName>qjsc</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;CONFIG_BIGNUM;HAVE_CONFIG_H;USE_PTHREAD_ID;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;DISQJSD;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_CONFIG_H;CONFIG_BIGNUM;USE_PTHREAD_ID;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WarningVersion>
-      </WarningVersion>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;CONFIG_BIGNUM;HAVE_CONFIG_H;USE_PTHREAD_ID;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WarningVersion>
-      </WarningVersion>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference %(AdditionalOptions)</AdditionalOptions>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -134,20 +125,28 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;USE_PTHREAD_ID;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;DISQJSD;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_CONFIG_H;CONFIG_BIGNUM;USE_PTHREAD_ID;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WarningVersion>
-      </WarningVersion>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;DISQJSD;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_CONFIG_H;CONFIG_BIGNUM;USE_PTHREAD_ID;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,38 +155,17 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;USE_PTHREAD_ID;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;DISQJSD;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_CONFIG_H;CONFIG_BIGNUM;USE_PTHREAD_ID;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WarningVersion>
-      </WarningVersion>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\code\externals\cwin\pthread.c" />
-    <ClCompile Include="..\code\externals\cwin\sys\time.c" />
-    <ClCompile Include="..\code\externals\cwin\unistd.c" />
-    <ClCompile Include="..\code\externals\quickjs\cutils.c" />
-    <ClCompile Include="..\code\externals\quickjs\libbf.c" />
-    <ClCompile Include="..\code\externals\quickjs\libregexp.c" />
-    <ClCompile Include="..\code\externals\quickjs\libunicode.c" />
-    <ClCompile Include="..\code\externals\quickjs\quickjs.c" />
-    <ClCompile Include="..\code\src\m.c" />
-    <ClCompile Include="qjsc.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\code\externals\cwin\sys\time.h" />
-    <ClInclude Include="..\code\externals\cwin\unistd.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

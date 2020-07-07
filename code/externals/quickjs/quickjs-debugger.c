@@ -1,11 +1,16 @@
 #include "quickjs-debugger.h"
 #include <time.h>
 #include <math.h>
+#ifdef _WIN32
+#include <winsock2.h>
+#else
 #include <sys/socket.h>
 #include <netinet/in.h>
+#endif
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <ctype.h>
 
 typedef struct DebuggerSuspendedState {
     uint32_t variable_reference_count;
@@ -13,7 +18,7 @@ typedef struct DebuggerSuspendedState {
     JSValue variable_pointers;
     const uint8_t *cur_pc;
 } DebuggerSuspendedState;
-
+#ifndef DISQJSD
 static int js_transport_read_fully(JSDebuggerInfo *info, char *buffer, size_t length) {
     int offset = 0;
     while (offset < length) {
@@ -117,6 +122,11 @@ static JSValue js_get_scopes(JSContext *ctx, int frame) {
     return scopes;
 }
 
+static inline JS_BOOL JS_IsInteger(JSValueConst v)
+{
+    int tag = JS_VALUE_GET_TAG(v);
+    return tag == JS_TAG_INT || tag == JS_TAG_BIG_INT;
+}
 static void js_debugger_get_variable_type(JSContext *ctx,
         struct DebuggerSuspendedState *state,
         JSValue var, JSValue var_val) {
@@ -373,6 +383,28 @@ static void js_process_request(JSDebuggerInfo *info, struct DebuggerSuspendedSta
     JS_FreeValue(ctx, request);
 }
 
+char *js_debuger_file_normalize(JSContext *ctx, const char *path)
+{
+    if (!path)
+        return NULL;
+
+    char *copy = js_strdup(ctx, path);
+    if (NULL == copy)
+        return NULL;
+    char *ptr = copy;
+    while (*path) {
+        if (*path == '\\') {
+            *ptr++ = '/';
+            while (*path == '\\')
+                path++;
+        } else
+            *ptr++ = tolower(*path++);
+    }
+
+    *ptr = 0;
+    return copy;
+}
+
 static void js_process_breakpoints(JSDebuggerInfo *info, JSValue message) {
     JSContext *ctx = info->ctx;
 
@@ -381,6 +413,7 @@ static void js_process_breakpoints(JSDebuggerInfo *info, JSValue message) {
 
     JSValue path_property = JS_GetPropertyStr(ctx, message, "path");
     const char *path = JS_ToCString(ctx, path_property);
+   // char *_path = js_debuger_file_normalize(ctx, path);
     JSValue path_data = JS_GetPropertyStr(ctx, info->breakpoints, path);
 
     if (!JS_IsUndefined(path_data))
@@ -389,6 +422,7 @@ static void js_process_breakpoints(JSDebuggerInfo *info, JSValue message) {
     // this will get resolved into a pc array mirror when its detected as dirty.
     path_data = JS_NewObject(ctx);
     JS_SetPropertyStr(ctx, info->breakpoints, path, path_data);
+   // js_free(ctx, _path);
     JS_FreeCString(ctx, path);
     JS_FreeValue(ctx, path_property);
 
@@ -401,7 +435,9 @@ static void js_process_breakpoints(JSDebuggerInfo *info, JSValue message) {
 
 JSValue js_debugger_file_breakpoints(JSContext *ctx, const char* path) {
     JSDebuggerInfo *info = js_debugger_info(ctx);
-    JSValue path_data = JS_GetPropertyStr(ctx, info->breakpoints, path);
+    char *_path = js_debuger_file_normalize(ctx, path);
+    JSValue path_data = JS_GetPropertyStr(ctx, info->breakpoints, _path);
+    js_free(ctx, _path);
     return path_data;    
 }
 
@@ -680,3 +716,4 @@ int js_debugger_is_transport_connected(JSContext *ctx) {
 void js_debugger_cooperate(JSContext *ctx) {
     js_debugger_info(ctx)->should_peek = 1;
 }
+#endif
