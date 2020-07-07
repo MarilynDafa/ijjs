@@ -450,7 +450,7 @@ struct JSContext {
 
     //qjsd
 #ifndef DISQJSD
-    JSDebuggerInfo debugger_info;
+    JSDebuggerInfo* debugger_info;
 #endif
     struct list_head loaded_modules; /* list of JSModuleDef.link */
 
@@ -2136,6 +2136,10 @@ JSContext *JS_NewContextRaw(JSRuntime *rt)
     init_list_head(&ctx->loaded_modules);
 
     JS_AddIntrinsicBasicObjects(ctx);
+
+#ifndef DISQJSD
+    ctx->debugger_info = js_malloc_rt(rt, sizeof(JSContext));
+#endif
     return ctx;
 }
 
@@ -2257,7 +2261,9 @@ static void JS_MarkContext(JSRuntime *rt, JSContext *ctx,
     JS_MarkValue(rt, ctx->regexp_ctor, mark_func);
     JS_MarkValue(rt, ctx->function_ctor, mark_func);
     JS_MarkValue(rt, ctx->function_proto, mark_func);
-
+#ifndef DISQJSD
+    JS_MarkValue(rt, ctx->debugger_info->breakpoints, mark_func);
+#endif
     if (ctx->array_shape)
         mark_func(rt, &ctx->array_shape->header);
 }
@@ -2300,7 +2306,8 @@ void JS_FreeContext(JSContext *ctx)
 
     //qjsd
 #ifndef DISQJSD
-    js_debugger_free(ctx, &(ctx->debugger_info));
+    js_debugger_free(ctx, ctx->debugger_info);
+    js_free_rt(ctx->rt, ctx->debugger_info);
 #endif
     js_free_modules(ctx, JS_FREE_MODULE_ALL);
 
@@ -16059,7 +16066,7 @@ static JSValue JS_CallInternal(JSContext *caller_ctx, JSValueConst func_obj,
 #endif
     //qjsd
 #ifndef DISQJSD
-    const void* const* active_dispatch_table = caller_ctx->debugger_info.transport_close ? debugger_dispatch_table : dispatch_table;
+    const void* const* active_dispatch_table = caller_ctx->debugger_info->transport_close ? debugger_dispatch_table : dispatch_table;
 #endif
 
     if (js_poll_interrupts(caller_ctx))
@@ -53391,7 +53398,7 @@ JSDebuggerLocation js_debugger_current_location(JSContext* ctx, const uint8_t* c
 }
 
 JSDebuggerInfo* js_debugger_info(JSContext* ctx) {
-    return &ctx->debugger_info;
+    return ctx->debugger_info;
 }
 
 uint32_t js_debugger_stack_depth(JSContext* ctx) {
