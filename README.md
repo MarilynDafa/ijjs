@@ -31,7 +31,6 @@ this project is inspired by nodejs
 - log4c
 - miniz
 - curl
-- mbedtls
 
 ## Building
 
