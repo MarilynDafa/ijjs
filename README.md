@@ -37,7 +37,7 @@ this project is inspired by nodejs
 ```
 Windows: Visual Studio 2019 + clang
 Linux: Visual Studio 2019 + clang + WSL
-OSX: XCode
+OSX/IOS: XCode
 Android: Visual Studio 2019 + NDK
 ```
 
