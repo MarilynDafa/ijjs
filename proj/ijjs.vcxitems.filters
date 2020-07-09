@@ -1490,5 +1490,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-debugger.h">
       <Filter>externals\quickjs</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-android.h">
+      <Filter>externals\curl</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -123,7 +123,7 @@ typedef void CURLSH;
 #    define CURL_EXTERN  __declspec(dllimport)
 #  endif
 #elif defined(BUILDING_LIBCURL) && defined(CURL_HIDDEN_SYMBOLS)
-#  define CURL_EXTERN CURL_EXTERN_SYMBOL
+#  define CURL_EXTERN 
 #else
 #  define CURL_EXTERN
 #endif

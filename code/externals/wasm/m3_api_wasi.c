@@ -556,7 +556,7 @@ m3ApiRawFunction(m3_wasi_unstable_random_get)
 #   if defined(__APPLE__) && (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)
         retlen = SecRandomCopyBytes(kSecRandomDefault, reqlen, buf) < 0 ? -1 : reqlen;
 #   else
-        retlen = getentropy(buf, reqlen) < 0 ? -1 : reqlen;
+        m3ApiReturn(__WASI_ENOSYS);
 #   endif
 #elif defined(__FreeBSD__) || defined(__linux__)
         retlen = getrandom(buf, buflen, 0);

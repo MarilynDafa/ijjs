@@ -7,14 +7,13 @@ kcp 1.7
 miniz 2.1.0
 zlog 1.2.15
 
-
+android
+ios
 setup
+tsmap
+
 
 httpserver
 sigar
 redis
 PostgreSQL  js	
-android
-ios
-
-ijpm

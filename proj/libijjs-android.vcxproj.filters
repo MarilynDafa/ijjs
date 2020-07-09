@@ -1,0 +1,719 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="uv">
+      <UniqueIdentifier>{cd667285-6bce-4465-a5ef-030dc3d4518b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="jemalloc">
+      <UniqueIdentifier>{b22e24cc-6bf8-4c3c-ba06-07ea96bc24b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kcp">
+      <UniqueIdentifier>{de776d26-07c2-45ec-a89b-47f057ef4157}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="quickjs">
+      <UniqueIdentifier>{01f87fe9-b875-4e39-a916-14d4cdc30549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers">
+      <UniqueIdentifier>{5ad26452-f0d0-4bab-8371-6f1cdbe40e13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{77c2d68a-f045-4731-87a4-b9bcf611a559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wasm">
+      <UniqueIdentifier>{34960273-659f-45c1-8eef-708783ac08b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zlog">
+      <UniqueIdentifier>{9865610e-a5f0-4f5f-af5a-f2b6b82adcc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libz">
+      <UniqueIdentifier>{1bbc4046-da82-4046-93df-7bdd15c98ff0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\code\externals\uv\src\unix\async.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\core.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\fs.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\getaddrinfo.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\getnameinfo.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\loop.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\loop-watcher.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\pipe.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\poll.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\process.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\proctitle.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\random-devurandom.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\random-getrandom.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\signal.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\stream.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\sysinfo-loadavg.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\tcp.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\thread.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\tty.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\udp.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\linux-core.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\linux-syscalls.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\random-sysctl-linux.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\procfs-exepath.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\linux-inotify.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\android-ifaddrs.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\unix\pthread-fixes.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\arena.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\background_thread.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\base.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\bin.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\bitmap.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\ckh.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\ctl.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\div.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\extent.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\extent_dss.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\extent_mmap.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\hash.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\hook.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\jemalloc.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\large.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\log.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\malloc_io.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\mutex.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\mutex_pool.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\nstime.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\pages.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\prng.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\prof.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\rtree.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\safety_check.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\sc.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\stats.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\sz.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\tcache.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\test_hooks.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\ticker.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\tsd.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\jemalloc\witness.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\kcp\ikcp.c">
+      <Filter>kcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\quickjs\cutils.c">
+      <Filter>quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\quickjs\libbf.c">
+      <Filter>quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\quickjs\libregexp.c">
+      <Filter>quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\quickjs\libunicode.c">
+      <Filter>quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\quickjs\quickjs-debugger-transport-unix.c">
+      <Filter>quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\quickjs\quickjs-debugger-transport-win.c">
+      <Filter>quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\quickjs\quickjs-debugger.c">
+      <Filter>quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\quickjs\quickjs.c">
+      <Filter>quickjs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\fs-poll.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\idna.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\inet.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\random.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\strscpy.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\threadpool.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\timer.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\uv-common.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\uv-data-getter-setters.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\uv\src\version.c">
+      <Filter>uv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijbootstrap.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijdns.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijerror.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijfs.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijjs.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijkcp.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijlog.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijmisc.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijmodules.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijprocess.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijsignals.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijstd.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijstreams.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijtimers.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijudp.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijutils.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijversion.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijvm.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijwasm.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijworker.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijxhr.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_api_libc.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_api_meta_wasi.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_api_tracer.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_api_uvwasi.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_api_wasi.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_bind.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_code.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_compile.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_core.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_emit.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_env.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_exec.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_info.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_module.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_optimize.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\wasm\m3_parse.c">
+      <Filter>wasm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\buf.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\category.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\category_table.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\conf.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\event.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\format.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\level.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\level_list.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\mdc.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\record.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\record_table.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\rotater.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\rule.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\spec.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\zthread.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\zc_arraylist.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\zc_hashtable.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\zc_profile.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\zc_util.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\zlog\zlog.c">
+      <Filter>zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\adler32.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\compress.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\crc32.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\deflate.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\gzclose.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\gzlib.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\gzread.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\gzwrite.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\infback.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\inffast.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\inflate.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\inftrees.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\trees.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\uncompr.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+    <ClCompile Include="curl-ssl\android\zutil.c">
+      <Filter>libz</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\jemalloc.h">
+      <Filter>jemalloc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\kcp\ikcp.h">
+      <Filter>kcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\cutils.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\libregexp-opcode.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\libregexp.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\libunicode-table.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\libunicode.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\list.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\quickjs-atom.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\quickjs-debugger.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\quickjs-libc.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\quickjs-opcode.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\quickjs.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\quickjs\unicode_gen_def.h">
+      <Filter>quickjs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\heap-inl.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\idna.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\queue.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\strscpy.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\uv\src\uv-common.h">
+      <Filter>uv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\headers\ijjs.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\headers\ijpre.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_api_defs.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_api_libc.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_api_tracer.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_api_wasi.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_code.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_compile.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_config.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_config_platforms.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_core.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_emit.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_env.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_exception.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_exec.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_exec_defs.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_info.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\m3_math_utils.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\wasm\wasm3.h">
+      <Filter>wasm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\buf.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\category.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\category_table.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\conf.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\event.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\fmacros.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\format.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\level.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\level_list.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\mdc.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\record.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\record_table.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\rotater.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\rule.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\spec.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\thread.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\version.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\zc_arraylist.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\zc_defs.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\zc_hashtable.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\zc_profile.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\zc_util.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\zc_xplatform.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\zlog\zlog.h">
+      <Filter>zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="curl-ssl\android\crc32.h">
+      <Filter>libz</Filter>
+    </ClInclude>
+    <ClInclude Include="curl-ssl\android\deflate.h">
+      <Filter>libz</Filter>
+    </ClInclude>
+    <ClInclude Include="curl-ssl\android\gzguts.h">
+      <Filter>libz</Filter>
+    </ClInclude>
+    <ClInclude Include="curl-ssl\android\inffast.h">
+      <Filter>libz</Filter>
+    </ClInclude>
+    <ClInclude Include="curl-ssl\android\inffixed.h">
+      <Filter>libz</Filter>
+    </ClInclude>
+    <ClInclude Include="curl-ssl\android\inflate.h">
+      <Filter>libz</Filter>
+    </ClInclude>
+    <ClInclude Include="curl-ssl\android\inftrees.h">
+      <Filter>libz</Filter>
+    </ClInclude>
+    <ClInclude Include="curl-ssl\android\trees.h">
+      <Filter>libz</Filter>
+    </ClInclude>
+    <ClInclude Include="curl-ssl\android\zconf.h">
+      <Filter>libz</Filter>
+    </ClInclude>
+    <ClInclude Include="curl-ssl\android\zlib.h">
+      <Filter>libz</Filter>
+    </ClInclude>
+    <ClInclude Include="curl-ssl\android\zutil.h">
+      <Filter>libz</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="curl-ssl\android\libcurl.a" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\code\externals\zlog\change.txt">
+      <Filter>zlog</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

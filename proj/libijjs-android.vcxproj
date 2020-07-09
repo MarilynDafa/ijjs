@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\code\externals\jemalloc\arena.c" />
+    <ClCompile Include="..\code\externals\jemalloc\background_thread.c" />
+    <ClCompile Include="..\code\externals\jemalloc\base.c" />
+    <ClCompile Include="..\code\externals\jemalloc\bin.c" />
+    <ClCompile Include="..\code\externals\jemalloc\bitmap.c" />
+    <ClCompile Include="..\code\externals\jemalloc\ckh.c" />
+    <ClCompile Include="..\code\externals\jemalloc\ctl.c" />
+    <ClCompile Include="..\code\externals\jemalloc\div.c" />
+    <ClCompile Include="..\code\externals\jemalloc\extent.c" />
+    <ClCompile Include="..\code\externals\jemalloc\extent_dss.c" />
+    <ClCompile Include="..\code\externals\jemalloc\extent_mmap.c" />
+    <ClCompile Include="..\code\externals\jemalloc\hash.c" />
+    <ClCompile Include="..\code\externals\jemalloc\hook.c" />
+    <ClCompile Include="..\code\externals\jemalloc\jemalloc.c" />
+    <ClCompile Include="..\code\externals\jemalloc\large.c" />
+    <ClCompile Include="..\code\externals\jemalloc\log.c" />
+    <ClCompile Include="..\code\externals\jemalloc\malloc_io.c" />
+    <ClCompile Include="..\code\externals\jemalloc\mutex.c" />
+    <ClCompile Include="..\code\externals\jemalloc\mutex_pool.c" />
+    <ClCompile Include="..\code\externals\jemalloc\nstime.c" />
+    <ClCompile Include="..\code\externals\jemalloc\pages.c" />
+    <ClCompile Include="..\code\externals\jemalloc\prng.c" />
+    <ClCompile Include="..\code\externals\jemalloc\prof.c" />
+    <ClCompile Include="..\code\externals\jemalloc\rtree.c" />
+    <ClCompile Include="..\code\externals\jemalloc\safety_check.c" />
+    <ClCompile Include="..\code\externals\jemalloc\sc.c" />
+    <ClCompile Include="..\code\externals\jemalloc\stats.c" />
+    <ClCompile Include="..\code\externals\jemalloc\sz.c" />
+    <ClCompile Include="..\code\externals\jemalloc\tcache.c" />
+    <ClCompile Include="..\code\externals\jemalloc\test_hooks.c" />
+    <ClCompile Include="..\code\externals\jemalloc\ticker.c" />
+    <ClCompile Include="..\code\externals\jemalloc\tsd.c" />
+    <ClCompile Include="..\code\externals\jemalloc\witness.c" />
+    <ClCompile Include="..\code\externals\kcp\ikcp.c" />
+    <ClCompile Include="..\code\externals\quickjs\cutils.c" />
+    <ClCompile Include="..\code\externals\quickjs\libbf.c" />
+    <ClCompile Include="..\code\externals\quickjs\libregexp.c" />
+    <ClCompile Include="..\code\externals\quickjs\libunicode.c" />
+    <ClCompile Include="..\code\externals\quickjs\quickjs-debugger-transport-unix.c" />
+    <ClCompile Include="..\code\externals\quickjs\quickjs-debugger-transport-win.c" />
+    <ClCompile Include="..\code\externals\quickjs\quickjs-debugger.c" />
+    <ClCompile Include="..\code\externals\quickjs\quickjs.c" />
+    <ClCompile Include="..\code\externals\uv\src\fs-poll.c" />
+    <ClCompile Include="..\code\externals\uv\src\idna.c" />
+    <ClCompile Include="..\code\externals\uv\src\inet.c" />
+    <ClCompile Include="..\code\externals\uv\src\random.c" />
+    <ClCompile Include="..\code\externals\uv\src\strscpy.c" />
+    <ClCompile Include="..\code\externals\uv\src\threadpool.c" />
+    <ClCompile Include="..\code\externals\uv\src\timer.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\android-ifaddrs.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\async.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\core.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\fs.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\getaddrinfo.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\getnameinfo.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\linux-core.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\linux-inotify.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\linux-syscalls.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\loop-watcher.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\loop.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\pipe.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\poll.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\process.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\procfs-exepath.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\proctitle.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\pthread-fixes.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\random-devurandom.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\random-getrandom.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\random-sysctl-linux.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\signal.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\stream.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\sysinfo-loadavg.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\tcp.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\thread.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\tty.c" />
+    <ClCompile Include="..\code\externals\uv\src\unix\udp.c" />
+    <ClCompile Include="..\code\externals\uv\src\uv-common.c" />
+    <ClCompile Include="..\code\externals\uv\src\uv-data-getter-setters.c" />
+    <ClCompile Include="..\code\externals\uv\src\version.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_api_libc.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_api_meta_wasi.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_api_tracer.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_api_uvwasi.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_api_wasi.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_bind.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_code.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_compile.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_core.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_emit.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_env.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_exec.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_info.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_module.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_optimize.c" />
+    <ClCompile Include="..\code\externals\wasm\m3_parse.c" />
+    <ClCompile Include="..\code\externals\zlog\buf.c" />
+    <ClCompile Include="..\code\externals\zlog\category.c" />
+    <ClCompile Include="..\code\externals\zlog\category_table.c" />
+    <ClCompile Include="..\code\externals\zlog\conf.c" />
+    <ClCompile Include="..\code\externals\zlog\event.c" />
+    <ClCompile Include="..\code\externals\zlog\format.c" />
+    <ClCompile Include="..\code\externals\zlog\level.c" />
+    <ClCompile Include="..\code\externals\zlog\level_list.c" />
+    <ClCompile Include="..\code\externals\zlog\mdc.c" />
+    <ClCompile Include="..\code\externals\zlog\record.c" />
+    <ClCompile Include="..\code\externals\zlog\record_table.c" />
+    <ClCompile Include="..\code\externals\zlog\rotater.c" />
+    <ClCompile Include="..\code\externals\zlog\rule.c" />
+    <ClCompile Include="..\code\externals\zlog\spec.c" />
+    <ClCompile Include="..\code\externals\zlog\zc_arraylist.c" />
+    <ClCompile Include="..\code\externals\zlog\zc_hashtable.c" />
+    <ClCompile Include="..\code\externals\zlog\zc_profile.c" />
+    <ClCompile Include="..\code\externals\zlog\zc_util.c" />
+    <ClCompile Include="..\code\externals\zlog\zlog.c" />
+    <ClCompile Include="..\code\externals\zlog\zthread.c">
+      <FileType>CppCode</FileType>
+    </ClCompile>
+    <ClCompile Include="..\code\src\ijbootstrap.c" />
+    <ClCompile Include="..\code\src\ijdns.c" />
+    <ClCompile Include="..\code\src\ijerror.c" />
+    <ClCompile Include="..\code\src\ijfs.c" />
+    <ClCompile Include="..\code\src\ijjs.c" />
+    <ClCompile Include="..\code\src\ijkcp.c" />
+    <ClCompile Include="..\code\src\ijlog.c" />
+    <ClCompile Include="..\code\src\ijmisc.c" />
+    <ClCompile Include="..\code\src\ijmodules.c" />
+    <ClCompile Include="..\code\src\ijprocess.c" />
+    <ClCompile Include="..\code\src\ijsignals.c" />
+    <ClCompile Include="..\code\src\ijstd.c" />
+    <ClCompile Include="..\code\src\ijstreams.c" />
+    <ClCompile Include="..\code\src\ijtimers.c" />
+    <ClCompile Include="..\code\src\ijudp.c" />
+    <ClCompile Include="..\code\src\ijutils.c" />
+    <ClCompile Include="..\code\src\ijversion.c" />
+    <ClCompile Include="..\code\src\ijvm.c" />
+    <ClCompile Include="..\code\src\ijwasm.c" />
+    <ClCompile Include="..\code\src\ijworker.c" />
+    <ClCompile Include="..\code\src\ijxhr.c" />
+    <ClCompile Include="curl-ssl\android\adler32.c" />
+    <ClCompile Include="curl-ssl\android\compress.c" />
+    <ClCompile Include="curl-ssl\android\crc32.c" />
+    <ClCompile Include="curl-ssl\android\deflate.c" />
+    <ClCompile Include="curl-ssl\android\gzclose.c" />
+    <ClCompile Include="curl-ssl\android\gzlib.c" />
+    <ClCompile Include="curl-ssl\android\gzread.c" />
+    <ClCompile Include="curl-ssl\android\gzwrite.c" />
+    <ClCompile Include="curl-ssl\android\infback.c" />
+    <ClCompile Include="curl-ssl\android\inffast.c" />
+    <ClCompile Include="curl-ssl\android\inflate.c" />
+    <ClCompile Include="curl-ssl\android\inftrees.c" />
+    <ClCompile Include="curl-ssl\android\trees.c" />
+    <ClCompile Include="curl-ssl\android\uncompr.c" />
+    <ClCompile Include="curl-ssl\android\zutil.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\jemalloc.h" />
+    <ClInclude Include="..\code\externals\kcp\ikcp.h" />
+    <ClInclude Include="..\code\externals\quickjs\cutils.h" />
+    <ClInclude Include="..\code\externals\quickjs\libregexp-opcode.h" />
+    <ClInclude Include="..\code\externals\quickjs\libregexp.h" />
+    <ClInclude Include="..\code\externals\quickjs\libunicode-table.h" />
+    <ClInclude Include="..\code\externals\quickjs\libunicode.h" />
+    <ClInclude Include="..\code\externals\quickjs\list.h" />
+    <ClInclude Include="..\code\externals\quickjs\quickjs-atom.h" />
+    <ClInclude Include="..\code\externals\quickjs\quickjs-debugger.h" />
+    <ClInclude Include="..\code\externals\quickjs\quickjs-libc.h" />
+    <ClInclude Include="..\code\externals\quickjs\quickjs-opcode.h" />
+    <ClInclude Include="..\code\externals\quickjs\quickjs.h" />
+    <ClInclude Include="..\code\externals\quickjs\unicode_gen_def.h" />
+    <ClInclude Include="..\code\externals\uv\src\heap-inl.h" />
+    <ClInclude Include="..\code\externals\uv\src\idna.h" />
+    <ClInclude Include="..\code\externals\uv\src\queue.h" />
+    <ClInclude Include="..\code\externals\uv\src\strscpy.h" />
+    <ClInclude Include="..\code\externals\uv\src\uv-common.h" />
+    <ClInclude Include="..\code\externals\wasm\m3.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_api_defs.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_api_libc.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_api_tracer.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_api_wasi.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_code.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_compile.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_config.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_config_platforms.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_core.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_emit.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_env.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_exception.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_exec.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_exec_defs.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_info.h" />
+    <ClInclude Include="..\code\externals\wasm\m3_math_utils.h" />
+    <ClInclude Include="..\code\externals\wasm\wasm3.h" />
+    <ClInclude Include="..\code\externals\zlog\buf.h" />
+    <ClInclude Include="..\code\externals\zlog\category.h" />
+    <ClInclude Include="..\code\externals\zlog\category_table.h" />
+    <ClInclude Include="..\code\externals\zlog\conf.h" />
+    <ClInclude Include="..\code\externals\zlog\event.h" />
+    <ClInclude Include="..\code\externals\zlog\fmacros.h" />
+    <ClInclude Include="..\code\externals\zlog\format.h" />
+    <ClInclude Include="..\code\externals\zlog\level.h" />
+    <ClInclude Include="..\code\externals\zlog\level_list.h" />
+    <ClInclude Include="..\code\externals\zlog\mdc.h" />
+    <ClInclude Include="..\code\externals\zlog\record.h" />
+    <ClInclude Include="..\code\externals\zlog\record_table.h" />
+    <ClInclude Include="..\code\externals\zlog\rotater.h" />
+    <ClInclude Include="..\code\externals\zlog\rule.h" />
+    <ClInclude Include="..\code\externals\zlog\spec.h" />
+    <ClInclude Include="..\code\externals\zlog\thread.h" />
+    <ClInclude Include="..\code\externals\zlog\version.h" />
+    <ClInclude Include="..\code\externals\zlog\zc_arraylist.h" />
+    <ClInclude Include="..\code\externals\zlog\zc_defs.h" />
+    <ClInclude Include="..\code\externals\zlog\zc_hashtable.h" />
+    <ClInclude Include="..\code\externals\zlog\zc_profile.h" />
+    <ClInclude Include="..\code\externals\zlog\zc_util.h" />
+    <ClInclude Include="..\code\externals\zlog\zc_xplatform.h" />
+    <ClInclude Include="..\code\externals\zlog\zlog.h" />
+    <ClInclude Include="..\code\headers\ijjs.h" />
+    <ClInclude Include="..\code\headers\ijpre.h" />
+    <ClInclude Include="curl-ssl\android\crc32.h" />
+    <ClInclude Include="curl-ssl\android\deflate.h" />
+    <ClInclude Include="curl-ssl\android\gzguts.h" />
+    <ClInclude Include="curl-ssl\android\inffast.h" />
+    <ClInclude Include="curl-ssl\android\inffixed.h" />
+    <ClInclude Include="curl-ssl\android\inflate.h" />
+    <ClInclude Include="curl-ssl\android\inftrees.h" />
+    <ClInclude Include="curl-ssl\android\trees.h" />
+    <ClInclude Include="curl-ssl\android\zconf.h" />
+    <ClInclude Include="curl-ssl\android\zlib.h" />
+    <ClInclude Include="curl-ssl\android\zutil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="curl-ssl\android\libcurl.a" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\code\externals\zlog\change.txt" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{124013d9-3522-420d-87bd-01be579fe7ce}</ProjectGuid>
+    <Keyword>Android</Keyword>
+    <RootNamespace>libijjs_android</RootNamespace>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <ApplicationType>Android</ApplicationType>
+    <ApplicationTypeRevision>3.0</ApplicationTypeRevision>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>Clang_5_0</PlatformToolset>
+    <AndroidAPILevel>android-21</AndroidAPILevel>
+    <UseOfStl>system</UseOfStl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>Clang_5_0</PlatformToolset>
+    <AndroidAPILevel>android-21</AndroidAPILevel>
+    <UseOfStl>system</UseOfStl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>Clang_5_0</PlatformToolset>
+    <UseOfStl>system</UseOfStl>
+    <AndroidAPILevel>android-21</AndroidAPILevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>Clang_5_0</PlatformToolset>
+    <UseOfStl>system</UseOfStl>
+    <AndroidAPILevel>android-21</AndroidAPILevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>Clang_5_0</PlatformToolset>
+    <AndroidAPILevel>android-21</AndroidAPILevel>
+    <UseOfStl>system</UseOfStl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>Clang_5_0</PlatformToolset>
+    <AndroidAPILevel>android-21</AndroidAPILevel>
+    <UseOfStl>system</UseOfStl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>Clang_5_0</PlatformToolset>
+    <UseOfStl>system</UseOfStl>
+    <AndroidAPILevel>android-21</AndroidAPILevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>Clang_5_0</PlatformToolset>
+    <UseOfStl>system</UseOfStl>
+    <AndroidAPILevel>android-21</AndroidAPILevel>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

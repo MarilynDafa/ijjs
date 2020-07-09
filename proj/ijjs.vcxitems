@@ -285,6 +285,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\arpa_telnet.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\asyn.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-amigaos.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-android.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-dos.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-mac.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-os400.h" />
