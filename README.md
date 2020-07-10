@@ -49,3 +49,12 @@ Android: Visual Studio 2019 + NDK
 * Android
 * IOS
 * Other Unixes
+
+## Using IJJS
+
+* Install IJJS.
+* Install the [**IJJS Debug** extension] in VS Code.
+* Use command "ijjs-cli --init" to create project
+* Switch to the debug viewlet and press the gear dropdown.
+* Select the debug environment "ijjs.launch".
+* Press the green 'play' button to start debugging.
