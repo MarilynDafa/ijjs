@@ -37,6 +37,7 @@
 #include <malloc/malloc.h>
 #elif defined(__linux__)
 #include <alloca.h>
+#include <malloc.h>
 #else
 #include <malloc.h>
 #endif

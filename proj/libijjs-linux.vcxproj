@@ -36,6 +36,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\code\externals\curl\mqtt.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\bearssl.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\gskit.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\gtls.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\keylog.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\mbedtls.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\mbedtls_threadlock.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\mesalink.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\nssg.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\openssl.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\schannel.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\sectransp.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\vtls.h" />
+    <ClInclude Include="..\code\externals\curl\vtls\wolfssl.h" />
     <ClInclude Include="..\code\externals\cwin\zlib.h" />
     <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\internal\arena_externs.h" />
     <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\internal\arena_inlines_a.h" />

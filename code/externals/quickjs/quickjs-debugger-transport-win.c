@@ -1,5 +1,5 @@
 #include "quickjs-debugger.h"
-#ifdef WIN32
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
 #undef _WIN32_WINNT
 #define _WIN32_WINNT 0x0600
 #include <winsock2.h>
@@ -153,7 +153,7 @@ void js_debugger_wait_connection(JSContext *ctx, const char* address) {
     struct sockaddr_in client_addr;
     socklen_t client_addr_size = (socklen_t) sizeof(addr);
     int client = accept(server, (struct sockaddr *) &client_addr, &client_addr_size);
-    close(server);
+    closesocket(server);
     assert(client >= 0);
 
     struct js_transport_data *data = (struct js_transport_data *)je_malloc(sizeof(struct js_transport_data));

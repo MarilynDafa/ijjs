@@ -9,7 +9,6 @@ zlog 1.2.15
 
 ios
 setup
-tsmap
 
 
 httpserver

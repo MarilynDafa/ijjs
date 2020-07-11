@@ -369,6 +369,45 @@
     <ClInclude Include="..\code\externals\wasm\extra\wasi_core.h">
       <Filter>dummy</Filter>
     </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\bearssl.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\gskit.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\gtls.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\keylog.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\mbedtls.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\mbedtls_threadlock.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\mesalink.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\nssg.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\openssl.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\schannel.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\sectransp.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\vtls.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\wolfssl.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\code\externals\curl\mqtt.c">

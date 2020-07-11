@@ -69,6 +69,9 @@
     <ClCompile Include="..\code\externals\jemalloc\tsd.c" />
     <ClCompile Include="..\code\externals\jemalloc\witness.c" />
     <ClCompile Include="..\code\externals\kcp\ikcp.c" />
+    <ClCompile Include="..\code\externals\miniz\miniz.c" />
+    <ClCompile Include="..\code\externals\miniz\miniz_tdef.c" />
+    <ClCompile Include="..\code\externals\miniz\miniz_tinfl.c" />
     <ClCompile Include="..\code\externals\quickjs\cutils.c" />
     <ClCompile Include="..\code\externals\quickjs\libbf.c" />
     <ClCompile Include="..\code\externals\quickjs\libregexp.c" />
@@ -192,6 +195,10 @@
   <ItemGroup>
     <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\jemalloc.h" />
     <ClInclude Include="..\code\externals\kcp\ikcp.h" />
+    <ClInclude Include="..\code\externals\miniz\miniz.h" />
+    <ClInclude Include="..\code\externals\miniz\miniz_common.h" />
+    <ClInclude Include="..\code\externals\miniz\miniz_tdef.h" />
+    <ClInclude Include="..\code\externals\miniz\miniz_tinfl.h" />
     <ClInclude Include="..\code\externals\quickjs\cutils.h" />
     <ClInclude Include="..\code\externals\quickjs\libregexp-opcode.h" />
     <ClInclude Include="..\code\externals\quickjs\libregexp.h" />
@@ -266,10 +273,10 @@
     <ClInclude Include="curl-ssl\android\zutil.h" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="curl-ssl\android\libcurl.a" />
+    <Text Include="..\code\externals\zlog\change.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\code\externals\zlog\change.txt" />
+    <Library Include="curl-ssl\android\libcurl.a" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{124013d9-3522-420d-87bd-01be579fe7ce}</ProjectGuid>
@@ -281,56 +288,56 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>Clang_5_0</PlatformToolset>
     <AndroidAPILevel>android-21</AndroidAPILevel>
     <UseOfStl>system</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>Clang_5_0</PlatformToolset>
     <AndroidAPILevel>android-21</AndroidAPILevel>
     <UseOfStl>system</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>Clang_5_0</PlatformToolset>
     <UseOfStl>system</UseOfStl>
     <AndroidAPILevel>android-21</AndroidAPILevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>Clang_5_0</PlatformToolset>
     <UseOfStl>system</UseOfStl>
     <AndroidAPILevel>android-21</AndroidAPILevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>Clang_5_0</PlatformToolset>
     <AndroidAPILevel>android-21</AndroidAPILevel>
     <UseOfStl>system</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>Clang_5_0</PlatformToolset>
     <AndroidAPILevel>android-21</AndroidAPILevel>
     <UseOfStl>system</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>Clang_5_0</PlatformToolset>
     <UseOfStl>system</UseOfStl>
     <AndroidAPILevel>android-21</AndroidAPILevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>Clang_5_0</PlatformToolset>
     <UseOfStl>system</UseOfStl>

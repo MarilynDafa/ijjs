@@ -1,5 +1,5 @@
 #include "quickjs-debugger.h"
-#ifndef WIN32
+#if !defined(_WIN32) && !defined(_WIN64) && !defined(WIN32) && !defined(WIN64)
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>

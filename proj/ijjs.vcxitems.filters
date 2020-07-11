@@ -828,6 +828,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\quickjs\quickjs-debugger-transport-win.c">
       <Filter>externals\quickjs</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\keylog.c">
+      <Filter>externals\curl\vtls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\kcp\ikcp.h">

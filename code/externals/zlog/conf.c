@@ -189,9 +189,6 @@ int os_tmpdir(char* buffer, size_t* size) {
   DWORD bufsize;
   size_t len;
 
-  if (buffer == NULL || size == NULL || *size == 0)
-    return 1;
-
   len = 0;
   len = GetTempPathW(0, NULL);
   if (len == 0) {
@@ -304,7 +301,7 @@ static int zlog_conf_build_without_file(zlog_conf_t * a_conf)
 		zc_error("zlog_format_new fail");
 		return -1;
 	}
-	size_t sz;
+	size_t sz = 256;
 	os_tmpdir(a_conf->rotate_lock_file, &sz);
 #if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
 	strcat(a_conf->rotate_lock_file, "\\zlog.lock");
