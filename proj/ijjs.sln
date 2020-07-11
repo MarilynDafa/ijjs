@@ -64,6 +64,7 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\modules\redis\redis.vcxitems*{0b124f56-d72c-47dd-8317-1ce028e4de60}*SharedItemsImports = 4
 		..\modules\redis\redis.vcxitems*{10f08319-1aa5-46d9-98db-f20a34b0f63a}*SharedItemsImports = 4
+		ijjs.vcxitems*{124013d9-3522-420d-87bd-01be579fe7ce}*SharedItemsImports = 4
 		ijjs.vcxitems*{3960714b-e3b2-43fb-a358-ba09b9f4148c}*SharedItemsImports = 9
 		ijjs.vcxitems*{449efaef-2aa2-4a97-aeb5-d812ec64decc}*SharedItemsImports = 4
 		..\modules\sigar\sigar.vcxitems*{47bf1528-f94a-4fdc-8429-27887f9bbfdd}*SharedItemsImports = 4

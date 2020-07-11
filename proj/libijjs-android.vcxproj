@@ -35,58 +35,80 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\code\externals\jemalloc\arena.c" />
-    <ClCompile Include="..\code\externals\jemalloc\background_thread.c" />
-    <ClCompile Include="..\code\externals\jemalloc\base.c" />
-    <ClCompile Include="..\code\externals\jemalloc\bin.c" />
-    <ClCompile Include="..\code\externals\jemalloc\bitmap.c" />
-    <ClCompile Include="..\code\externals\jemalloc\ckh.c" />
-    <ClCompile Include="..\code\externals\jemalloc\ctl.c" />
-    <ClCompile Include="..\code\externals\jemalloc\div.c" />
-    <ClCompile Include="..\code\externals\jemalloc\extent.c" />
-    <ClCompile Include="..\code\externals\jemalloc\extent_dss.c" />
-    <ClCompile Include="..\code\externals\jemalloc\extent_mmap.c" />
-    <ClCompile Include="..\code\externals\jemalloc\hash.c" />
-    <ClCompile Include="..\code\externals\jemalloc\hook.c" />
-    <ClCompile Include="..\code\externals\jemalloc\jemalloc.c" />
-    <ClCompile Include="..\code\externals\jemalloc\large.c" />
-    <ClCompile Include="..\code\externals\jemalloc\log.c" />
-    <ClCompile Include="..\code\externals\jemalloc\malloc_io.c" />
-    <ClCompile Include="..\code\externals\jemalloc\mutex.c" />
-    <ClCompile Include="..\code\externals\jemalloc\mutex_pool.c" />
-    <ClCompile Include="..\code\externals\jemalloc\nstime.c" />
-    <ClCompile Include="..\code\externals\jemalloc\pages.c" />
-    <ClCompile Include="..\code\externals\jemalloc\prng.c" />
-    <ClCompile Include="..\code\externals\jemalloc\prof.c" />
-    <ClCompile Include="..\code\externals\jemalloc\rtree.c" />
-    <ClCompile Include="..\code\externals\jemalloc\safety_check.c" />
-    <ClCompile Include="..\code\externals\jemalloc\sc.c" />
-    <ClCompile Include="..\code\externals\jemalloc\stats.c" />
-    <ClCompile Include="..\code\externals\jemalloc\sz.c" />
-    <ClCompile Include="..\code\externals\jemalloc\tcache.c" />
-    <ClCompile Include="..\code\externals\jemalloc\test_hooks.c" />
-    <ClCompile Include="..\code\externals\jemalloc\ticker.c" />
-    <ClCompile Include="..\code\externals\jemalloc\tsd.c" />
-    <ClCompile Include="..\code\externals\jemalloc\witness.c" />
-    <ClCompile Include="..\code\externals\kcp\ikcp.c" />
-    <ClCompile Include="..\code\externals\miniz\miniz.c" />
-    <ClCompile Include="..\code\externals\miniz\miniz_tdef.c" />
-    <ClCompile Include="..\code\externals\miniz\miniz_tinfl.c" />
-    <ClCompile Include="..\code\externals\quickjs\cutils.c" />
-    <ClCompile Include="..\code\externals\quickjs\libbf.c" />
-    <ClCompile Include="..\code\externals\quickjs\libregexp.c" />
-    <ClCompile Include="..\code\externals\quickjs\libunicode.c" />
-    <ClCompile Include="..\code\externals\quickjs\quickjs-debugger-transport-unix.c" />
-    <ClCompile Include="..\code\externals\quickjs\quickjs-debugger-transport-win.c" />
-    <ClCompile Include="..\code\externals\quickjs\quickjs-debugger.c" />
-    <ClCompile Include="..\code\externals\quickjs\quickjs.c" />
-    <ClCompile Include="..\code\externals\uv\src\fs-poll.c" />
-    <ClCompile Include="..\code\externals\uv\src\idna.c" />
-    <ClCompile Include="..\code\externals\uv\src\inet.c" />
-    <ClCompile Include="..\code\externals\uv\src\random.c" />
-    <ClCompile Include="..\code\externals\uv\src\strscpy.c" />
-    <ClCompile Include="..\code\externals\uv\src\threadpool.c" />
-    <ClCompile Include="..\code\externals\uv\src\timer.c" />
+    <ClCompile Include="..\code\externals\mbedtls\aes.c" />
+    <ClCompile Include="..\code\externals\mbedtls\aesni.c" />
+    <ClCompile Include="..\code\externals\mbedtls\arc4.c" />
+    <ClCompile Include="..\code\externals\mbedtls\aria.c" />
+    <ClCompile Include="..\code\externals\mbedtls\asn1parse.c" />
+    <ClCompile Include="..\code\externals\mbedtls\asn1write.c" />
+    <ClCompile Include="..\code\externals\mbedtls\base64.c" />
+    <ClCompile Include="..\code\externals\mbedtls\bignum.c" />
+    <ClCompile Include="..\code\externals\mbedtls\blowfish.c" />
+    <ClCompile Include="..\code\externals\mbedtls\camellia.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ccm.c" />
+    <ClCompile Include="..\code\externals\mbedtls\certs.c" />
+    <ClCompile Include="..\code\externals\mbedtls\cipher.c" />
+    <ClCompile Include="..\code\externals\mbedtls\cipher_wrap.c" />
+    <ClCompile Include="..\code\externals\mbedtls\cmac.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ctr_drbg.c" />
+    <ClCompile Include="..\code\externals\mbedtls\debug.c" />
+    <ClCompile Include="..\code\externals\mbedtls\des.c" />
+    <ClCompile Include="..\code\externals\mbedtls\dhm.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ecdh.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ecdsa.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ecjpake.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ecp.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ecp_curves.c" />
+    <ClCompile Include="..\code\externals\mbedtls\entropy.c" />
+    <ClCompile Include="..\code\externals\mbedtls\entropy_poll.c" />
+    <ClCompile Include="..\code\externals\mbedtls\gcm.c" />
+    <ClCompile Include="..\code\externals\mbedtls\havege.c" />
+    <ClCompile Include="..\code\externals\mbedtls\hmac_drbg.c" />
+    <ClCompile Include="..\code\externals\mbedtls\md.c" />
+    <ClCompile Include="..\code\externals\mbedtls\md2.c" />
+    <ClCompile Include="..\code\externals\mbedtls\md4.c" />
+    <ClCompile Include="..\code\externals\mbedtls\md5.c" />
+    <ClCompile Include="..\code\externals\mbedtls\md_wrap.c" />
+    <ClCompile Include="..\code\externals\mbedtls\memory_buffer_alloc.c" />
+    <ClCompile Include="..\code\externals\mbedtls\merror.c" />
+    <ClCompile Include="..\code\externals\mbedtls\mversion.c" />
+    <ClCompile Include="..\code\externals\mbedtls\net_sockets.c" />
+    <ClCompile Include="..\code\externals\mbedtls\oid.c" />
+    <ClCompile Include="..\code\externals\mbedtls\padlock.c" />
+    <ClCompile Include="..\code\externals\mbedtls\pem.c" />
+    <ClCompile Include="..\code\externals\mbedtls\pk.c" />
+    <ClCompile Include="..\code\externals\mbedtls\pkcs11.c" />
+    <ClCompile Include="..\code\externals\mbedtls\pkcs12.c" />
+    <ClCompile Include="..\code\externals\mbedtls\pkcs5.c" />
+    <ClCompile Include="..\code\externals\mbedtls\pkparse.c" />
+    <ClCompile Include="..\code\externals\mbedtls\pkwrite.c" />
+    <ClCompile Include="..\code\externals\mbedtls\pk_wrap.c" />
+    <ClCompile Include="..\code\externals\mbedtls\platform.c" />
+    <ClCompile Include="..\code\externals\mbedtls\platform_util.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ripemd160.c" />
+    <ClCompile Include="..\code\externals\mbedtls\rsa.c" />
+    <ClCompile Include="..\code\externals\mbedtls\rsa_internal.c" />
+    <ClCompile Include="..\code\externals\mbedtls\sha1.c" />
+    <ClCompile Include="..\code\externals\mbedtls\sha256.c" />
+    <ClCompile Include="..\code\externals\mbedtls\sha512.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ssl_cache.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ssl_ciphersuites.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ssl_cli.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ssl_cookie.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ssl_srv.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ssl_ticket.c" />
+    <ClCompile Include="..\code\externals\mbedtls\ssl_tls.c" />
+    <ClCompile Include="..\code\externals\mbedtls\threading.c" />
+    <ClCompile Include="..\code\externals\mbedtls\timing.c" />
+    <ClCompile Include="..\code\externals\mbedtls\version_features.c" />
+    <ClCompile Include="..\code\externals\mbedtls\x509.c" />
+    <ClCompile Include="..\code\externals\mbedtls\x509write_crt.c" />
+    <ClCompile Include="..\code\externals\mbedtls\x509write_csr.c" />
+    <ClCompile Include="..\code\externals\mbedtls\x509_create.c" />
+    <ClCompile Include="..\code\externals\mbedtls\x509_crl.c" />
+    <ClCompile Include="..\code\externals\mbedtls\x509_crt.c" />
+    <ClCompile Include="..\code\externals\mbedtls\x509_csr.c" />
+    <ClCompile Include="..\code\externals\mbedtls\xtea.c" />
     <ClCompile Include="..\code\externals\uv\src\unix\android-ifaddrs.c" />
     <ClCompile Include="..\code\externals\uv\src\unix\async.c" />
     <ClCompile Include="..\code\externals\uv\src\unix\core.c" />
@@ -114,169 +136,81 @@
     <ClCompile Include="..\code\externals\uv\src\unix\thread.c" />
     <ClCompile Include="..\code\externals\uv\src\unix\tty.c" />
     <ClCompile Include="..\code\externals\uv\src\unix\udp.c" />
-    <ClCompile Include="..\code\externals\uv\src\uv-common.c" />
-    <ClCompile Include="..\code\externals\uv\src\uv-data-getter-setters.c" />
-    <ClCompile Include="..\code\externals\uv\src\version.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_api_libc.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_api_meta_wasi.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_api_tracer.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_api_uvwasi.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_api_wasi.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_bind.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_code.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_compile.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_core.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_emit.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_env.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_exec.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_info.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_module.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_optimize.c" />
-    <ClCompile Include="..\code\externals\wasm\m3_parse.c" />
-    <ClCompile Include="..\code\externals\zlog\buf.c" />
-    <ClCompile Include="..\code\externals\zlog\category.c" />
-    <ClCompile Include="..\code\externals\zlog\category_table.c" />
-    <ClCompile Include="..\code\externals\zlog\conf.c" />
-    <ClCompile Include="..\code\externals\zlog\event.c" />
-    <ClCompile Include="..\code\externals\zlog\format.c" />
-    <ClCompile Include="..\code\externals\zlog\level.c" />
-    <ClCompile Include="..\code\externals\zlog\level_list.c" />
-    <ClCompile Include="..\code\externals\zlog\mdc.c" />
-    <ClCompile Include="..\code\externals\zlog\record.c" />
-    <ClCompile Include="..\code\externals\zlog\record_table.c" />
-    <ClCompile Include="..\code\externals\zlog\rotater.c" />
-    <ClCompile Include="..\code\externals\zlog\rule.c" />
-    <ClCompile Include="..\code\externals\zlog\spec.c" />
-    <ClCompile Include="..\code\externals\zlog\zc_arraylist.c" />
-    <ClCompile Include="..\code\externals\zlog\zc_hashtable.c" />
-    <ClCompile Include="..\code\externals\zlog\zc_profile.c" />
-    <ClCompile Include="..\code\externals\zlog\zc_util.c" />
-    <ClCompile Include="..\code\externals\zlog\zlog.c" />
-    <ClCompile Include="..\code\externals\zlog\zthread.c">
-      <FileType>CppCode</FileType>
-    </ClCompile>
-    <ClCompile Include="..\code\src\ijbootstrap.c" />
-    <ClCompile Include="..\code\src\ijdns.c" />
-    <ClCompile Include="..\code\src\ijerror.c" />
-    <ClCompile Include="..\code\src\ijfs.c" />
-    <ClCompile Include="..\code\src\ijjs.c" />
-    <ClCompile Include="..\code\src\ijkcp.c" />
-    <ClCompile Include="..\code\src\ijlog.c" />
-    <ClCompile Include="..\code\src\ijmisc.c" />
-    <ClCompile Include="..\code\src\ijmodules.c" />
-    <ClCompile Include="..\code\src\ijprocess.c" />
-    <ClCompile Include="..\code\src\ijsignals.c" />
-    <ClCompile Include="..\code\src\ijstd.c" />
-    <ClCompile Include="..\code\src\ijstreams.c" />
-    <ClCompile Include="..\code\src\ijtimers.c" />
-    <ClCompile Include="..\code\src\ijudp.c" />
-    <ClCompile Include="..\code\src\ijutils.c" />
-    <ClCompile Include="..\code\src\ijversion.c" />
-    <ClCompile Include="..\code\src\ijvm.c" />
-    <ClCompile Include="..\code\src\ijwasm.c" />
-    <ClCompile Include="..\code\src\ijworker.c" />
-    <ClCompile Include="..\code\src\ijxhr.c" />
-    <ClCompile Include="curl-ssl\android\adler32.c" />
-    <ClCompile Include="curl-ssl\android\compress.c" />
-    <ClCompile Include="curl-ssl\android\crc32.c" />
-    <ClCompile Include="curl-ssl\android\deflate.c" />
-    <ClCompile Include="curl-ssl\android\gzclose.c" />
-    <ClCompile Include="curl-ssl\android\gzlib.c" />
-    <ClCompile Include="curl-ssl\android\gzread.c" />
-    <ClCompile Include="curl-ssl\android\gzwrite.c" />
-    <ClCompile Include="curl-ssl\android\infback.c" />
-    <ClCompile Include="curl-ssl\android\inffast.c" />
-    <ClCompile Include="curl-ssl\android\inflate.c" />
-    <ClCompile Include="curl-ssl\android\inftrees.c" />
-    <ClCompile Include="curl-ssl\android\trees.c" />
-    <ClCompile Include="curl-ssl\android\uncompr.c" />
-    <ClCompile Include="curl-ssl\android\zutil.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\jemalloc.h" />
-    <ClInclude Include="..\code\externals\kcp\ikcp.h" />
-    <ClInclude Include="..\code\externals\miniz\miniz.h" />
-    <ClInclude Include="..\code\externals\miniz\miniz_common.h" />
-    <ClInclude Include="..\code\externals\miniz\miniz_tdef.h" />
-    <ClInclude Include="..\code\externals\miniz\miniz_tinfl.h" />
-    <ClInclude Include="..\code\externals\quickjs\cutils.h" />
-    <ClInclude Include="..\code\externals\quickjs\libregexp-opcode.h" />
-    <ClInclude Include="..\code\externals\quickjs\libregexp.h" />
-    <ClInclude Include="..\code\externals\quickjs\libunicode-table.h" />
-    <ClInclude Include="..\code\externals\quickjs\libunicode.h" />
-    <ClInclude Include="..\code\externals\quickjs\list.h" />
-    <ClInclude Include="..\code\externals\quickjs\quickjs-atom.h" />
-    <ClInclude Include="..\code\externals\quickjs\quickjs-debugger.h" />
-    <ClInclude Include="..\code\externals\quickjs\quickjs-libc.h" />
-    <ClInclude Include="..\code\externals\quickjs\quickjs-opcode.h" />
-    <ClInclude Include="..\code\externals\quickjs\quickjs.h" />
-    <ClInclude Include="..\code\externals\quickjs\unicode_gen_def.h" />
-    <ClInclude Include="..\code\externals\uv\src\heap-inl.h" />
-    <ClInclude Include="..\code\externals\uv\src\idna.h" />
-    <ClInclude Include="..\code\externals\uv\src\queue.h" />
-    <ClInclude Include="..\code\externals\uv\src\strscpy.h" />
-    <ClInclude Include="..\code\externals\uv\src\uv-common.h" />
-    <ClInclude Include="..\code\externals\wasm\m3.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_api_defs.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_api_libc.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_api_tracer.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_api_wasi.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_code.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_compile.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_config.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_config_platforms.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_core.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_emit.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_env.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_exception.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_exec.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_exec_defs.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_info.h" />
-    <ClInclude Include="..\code\externals\wasm\m3_math_utils.h" />
-    <ClInclude Include="..\code\externals\wasm\wasm3.h" />
-    <ClInclude Include="..\code\externals\zlog\buf.h" />
-    <ClInclude Include="..\code\externals\zlog\category.h" />
-    <ClInclude Include="..\code\externals\zlog\category_table.h" />
-    <ClInclude Include="..\code\externals\zlog\conf.h" />
-    <ClInclude Include="..\code\externals\zlog\event.h" />
-    <ClInclude Include="..\code\externals\zlog\fmacros.h" />
-    <ClInclude Include="..\code\externals\zlog\format.h" />
-    <ClInclude Include="..\code\externals\zlog\level.h" />
-    <ClInclude Include="..\code\externals\zlog\level_list.h" />
-    <ClInclude Include="..\code\externals\zlog\mdc.h" />
-    <ClInclude Include="..\code\externals\zlog\record.h" />
-    <ClInclude Include="..\code\externals\zlog\record_table.h" />
-    <ClInclude Include="..\code\externals\zlog\rotater.h" />
-    <ClInclude Include="..\code\externals\zlog\rule.h" />
-    <ClInclude Include="..\code\externals\zlog\spec.h" />
-    <ClInclude Include="..\code\externals\zlog\thread.h" />
-    <ClInclude Include="..\code\externals\zlog\version.h" />
-    <ClInclude Include="..\code\externals\zlog\zc_arraylist.h" />
-    <ClInclude Include="..\code\externals\zlog\zc_defs.h" />
-    <ClInclude Include="..\code\externals\zlog\zc_hashtable.h" />
-    <ClInclude Include="..\code\externals\zlog\zc_profile.h" />
-    <ClInclude Include="..\code\externals\zlog\zc_util.h" />
-    <ClInclude Include="..\code\externals\zlog\zc_xplatform.h" />
-    <ClInclude Include="..\code\externals\zlog\zlog.h" />
-    <ClInclude Include="..\code\headers\ijjs.h" />
-    <ClInclude Include="..\code\headers\ijpre.h" />
-    <ClInclude Include="curl-ssl\android\crc32.h" />
-    <ClInclude Include="curl-ssl\android\deflate.h" />
-    <ClInclude Include="curl-ssl\android\gzguts.h" />
-    <ClInclude Include="curl-ssl\android\inffast.h" />
-    <ClInclude Include="curl-ssl\android\inffixed.h" />
-    <ClInclude Include="curl-ssl\android\inflate.h" />
-    <ClInclude Include="curl-ssl\android\inftrees.h" />
-    <ClInclude Include="curl-ssl\android\trees.h" />
-    <ClInclude Include="curl-ssl\android\zconf.h" />
-    <ClInclude Include="curl-ssl\android\zlib.h" />
-    <ClInclude Include="curl-ssl\android\zutil.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\code\externals\zlog\change.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="curl-ssl\android\libcurl.a" />
+    <ClInclude Include="..\code\externals\mbedtls\aes.h" />
+    <ClInclude Include="..\code\externals\mbedtls\aesni.h" />
+    <ClInclude Include="..\code\externals\mbedtls\arc4.h" />
+    <ClInclude Include="..\code\externals\mbedtls\aria.h" />
+    <ClInclude Include="..\code\externals\mbedtls\asn1.h" />
+    <ClInclude Include="..\code\externals\mbedtls\asn1write.h" />
+    <ClInclude Include="..\code\externals\mbedtls\base64.h" />
+    <ClInclude Include="..\code\externals\mbedtls\bignum.h" />
+    <ClInclude Include="..\code\externals\mbedtls\blowfish.h" />
+    <ClInclude Include="..\code\externals\mbedtls\bn_mul.h" />
+    <ClInclude Include="..\code\externals\mbedtls\camellia.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ccm.h" />
+    <ClInclude Include="..\code\externals\mbedtls\certs.h" />
+    <ClInclude Include="..\code\externals\mbedtls\check_config.h" />
+    <ClInclude Include="..\code\externals\mbedtls\cipher.h" />
+    <ClInclude Include="..\code\externals\mbedtls\cipher_internal.h" />
+    <ClInclude Include="..\code\externals\mbedtls\cmac.h" />
+    <ClInclude Include="..\code\externals\mbedtls\compat-1.3.h" />
+    <ClInclude Include="..\code\externals\mbedtls\config.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ctr_drbg.h" />
+    <ClInclude Include="..\code\externals\mbedtls\debug.h" />
+    <ClInclude Include="..\code\externals\mbedtls\des.h" />
+    <ClInclude Include="..\code\externals\mbedtls\dhm.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ecdh.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ecdsa.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ecjpake.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ecp.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ecp_internal.h" />
+    <ClInclude Include="..\code\externals\mbedtls\entropy.h" />
+    <ClInclude Include="..\code\externals\mbedtls\entropy_poll.h" />
+    <ClInclude Include="..\code\externals\mbedtls\error.h" />
+    <ClInclude Include="..\code\externals\mbedtls\gcm.h" />
+    <ClInclude Include="..\code\externals\mbedtls\havege.h" />
+    <ClInclude Include="..\code\externals\mbedtls\hmac_drbg.h" />
+    <ClInclude Include="..\code\externals\mbedtls\md.h" />
+    <ClInclude Include="..\code\externals\mbedtls\md2.h" />
+    <ClInclude Include="..\code\externals\mbedtls\md4.h" />
+    <ClInclude Include="..\code\externals\mbedtls\md5.h" />
+    <ClInclude Include="..\code\externals\mbedtls\md_internal.h" />
+    <ClInclude Include="..\code\externals\mbedtls\memory_buffer_alloc.h" />
+    <ClInclude Include="..\code\externals\mbedtls\net.h" />
+    <ClInclude Include="..\code\externals\mbedtls\net_sockets.h" />
+    <ClInclude Include="..\code\externals\mbedtls\oid.h" />
+    <ClInclude Include="..\code\externals\mbedtls\padlock.h" />
+    <ClInclude Include="..\code\externals\mbedtls\pem.h" />
+    <ClInclude Include="..\code\externals\mbedtls\pk.h" />
+    <ClInclude Include="..\code\externals\mbedtls\pkcs11.h" />
+    <ClInclude Include="..\code\externals\mbedtls\pkcs12.h" />
+    <ClInclude Include="..\code\externals\mbedtls\pkcs5.h" />
+    <ClInclude Include="..\code\externals\mbedtls\pk_internal.h" />
+    <ClInclude Include="..\code\externals\mbedtls\platform.h" />
+    <ClInclude Include="..\code\externals\mbedtls\platform_time.h" />
+    <ClInclude Include="..\code\externals\mbedtls\platform_util.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ripemd160.h" />
+    <ClInclude Include="..\code\externals\mbedtls\rsa.h" />
+    <ClInclude Include="..\code\externals\mbedtls\rsa_internal.h" />
+    <ClInclude Include="..\code\externals\mbedtls\sha1.h" />
+    <ClInclude Include="..\code\externals\mbedtls\sha256.h" />
+    <ClInclude Include="..\code\externals\mbedtls\sha512.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ssl.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ssl_cache.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ssl_ciphersuites.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ssl_cookie.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ssl_internal.h" />
+    <ClInclude Include="..\code\externals\mbedtls\ssl_ticket.h" />
+    <ClInclude Include="..\code\externals\mbedtls\threading.h" />
+    <ClInclude Include="..\code\externals\mbedtls\timing.h" />
+    <ClInclude Include="..\code\externals\mbedtls\version.h" />
+    <ClInclude Include="..\code\externals\mbedtls\x509.h" />
+    <ClInclude Include="..\code\externals\mbedtls\x509_crl.h" />
+    <ClInclude Include="..\code\externals\mbedtls\x509_crt.h" />
+    <ClInclude Include="..\code\externals\mbedtls\x509_csr.h" />
+    <ClInclude Include="..\code\externals\mbedtls\xtea.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{124013d9-3522-420d-87bd-01be579fe7ce}</ProjectGuid>
@@ -345,35 +279,45 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />
-  <ImportGroup Label="Shared" />
+  <ImportGroup Label="Shared">
+    <Import Project="ijjs.vcxitems" Label="Shared" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>libijjs</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>libijjs</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <TargetName>libijjs</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <TargetName>libijjs</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <TargetName>libijjs</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <TargetName>libijjs</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <TargetName>libijjs</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <TargetName>libijjs</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>m;z;%(LibraryDependencies)</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -381,11 +325,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>m;z;%(LibraryDependencies)</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
@@ -393,11 +337,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>m;z;%(LibraryDependencies)</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
@@ -405,11 +349,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>m;z;%(LibraryDependencies)</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -417,11 +361,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>m;z;%(LibraryDependencies)</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -429,11 +373,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>m;z;%(LibraryDependencies)</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -441,11 +385,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>m;z;%(LibraryDependencies)</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -453,11 +397,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\curl-ssl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\code\externals\curl;..\code\externals\wasm;..\code\externals\quickjs;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\headers;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DLLEXPORT;__ANDROID__;IJ_EXPORT;__USE_GNU;d_m3HasWASI;__CLEANUP_SEH;CONFIG_BIGNUM;BUILDING_LIBCURL;BUILDING_UV_SHARED;JEMALLOC_C11_ATOMICS;config_opt_safety_checks=1;JEMALLOC_HAVE_ATTR;JEMALLOC_HAVE_BUILTIN_CLZ;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <LibraryDependencies>m;%(LibraryDependencies)</LibraryDependencies>
+      <LibraryDependencies>m;z;%(LibraryDependencies)</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

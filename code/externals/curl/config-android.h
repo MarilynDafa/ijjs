@@ -505,28 +505,28 @@
    /* #undef HAVE_OLD_GSSMIT */
 
    /* Define to 1 if you have the <openssl/crypto.h> header file. */
-#define HAVE_OPENSSL_CRYPTO_H 1
+//#define HAVE_OPENSSL_CRYPTO_H 1
 
 /* Define to 1 if you have the <openssl/err.h> header file. */
-#define HAVE_OPENSSL_ERR_H 1
+//#define HAVE_OPENSSL_ERR_H 1
 
 /* Define to 1 if you have the <openssl/pem.h> header file. */
-#define HAVE_OPENSSL_PEM_H 1
+//#define HAVE_OPENSSL_PEM_H 1
 
 /* Define to 1 if you have the <openssl/rsa.h> header file. */
-#define HAVE_OPENSSL_RSA_H 1
+//#define HAVE_OPENSSL_RSA_H 1
 
 /* if you have the function SRP_Calc_client_key */
-#define HAVE_OPENSSL_SRP 1
+//#define HAVE_OPENSSL_SRP 1
 
 /* Define to 1 if you have the <openssl/ssl.h> header file. */
-#define HAVE_OPENSSL_SSL_H 1
+//#define HAVE_OPENSSL_SSL_H 1
 
 /* Define to 1 if you have the `OpenSSL_version' function. */
 /* #undef HAVE_OPENSSL_VERSION */
 
 /* Define to 1 if you have the <openssl/x509.h> header file. */
-#define HAVE_OPENSSL_X509_H 1
+//#define HAVE_OPENSSL_X509_H 1
 
 /* Define to 1 if you have the <pem.h> header file. */
 /* #undef HAVE_PEM_H */
@@ -991,7 +991,7 @@
 #define USE_MANUAL 1
 
 /* if mbedTLS is enabled */
-/* #undef USE_MBEDTLS */
+#define USE_MBEDTLS 1
 
 /* if MesaLink is enabled */
 /* #undef USE_MESALINK */
@@ -1018,7 +1018,7 @@
 /* #undef USE_OPENLDAP */
 
 /* if OpenSSL is in use */
-#define USE_OPENSSL 1
+//#define USE_OPENSSL 1
 
 /* if quiche is in use */
 /* #undef USE_QUICHE */
