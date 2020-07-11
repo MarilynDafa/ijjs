@@ -1,7 +1,23 @@
 /**
  * \file net_sockets.h
  *
- * \brief Network communication functions
+ * \brief   Network sockets abstraction layer to integrate Mbed TLS into a
+ *          BSD-style sockets API.
+ *
+ *          The network sockets module provides an example integration of the
+ *          Mbed TLS library into a BSD sockets implementation. The module is
+ *          intended to be an example of how Mbed TLS can be integrated into a
+ *          networking stack, as well as to be Mbed TLS's network integration
+ *          for its supported platforms.
+ *
+ *          The module is intended only to be used with the Mbed TLS library and
+ *          is not intended to be used by third party application software
+ *          directly.
+ *
+ *          The supported platforms are as follows:
+ *              * Microsoft Windows and Windows CE
+ *              * POSIX/Unix platforms including Linux, OS X
+ *
  */
 /*
  *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
@@ -25,12 +41,12 @@
 #define MBEDTLS_NET_SOCKETS_H
 
 #if !defined(MBEDTLS_CONFIG_FILE)
-#include "config.h"
+#include "mbedtls/config.h"
 #else
 #include MBEDTLS_CONFIG_FILE
 #endif
 
-#include "ssl.h"
+#include "mbedtls/ssl.h"
 
 #include <stddef.h>
 #include <stdint.h>
@@ -68,7 +84,7 @@ extern "C" {
  * (eg two file descriptors for combined IPv4 + IPv6 support, or additional
  * structures for hand-made UDP demultiplexing).
  */
-typedef struct
+typedef struct mbedtls_net_context
 {
     int fd;             /**< The underlying file descriptor                 */
 }
@@ -240,6 +256,13 @@ int mbedtls_net_send( void *ctx, const unsigned char *buf, size_t len );
  */
 int mbedtls_net_recv_timeout( void *ctx, unsigned char *buf, size_t len,
                       uint32_t timeout );
+
+/**
+ * \brief          Closes down the connection and free associated data
+ *
+ * \param ctx      The context to close
+ */
+void mbedtls_net_close( mbedtls_net_context *ctx );
 
 /**
  * \brief          Gracefully shutdown the connection and free associated data

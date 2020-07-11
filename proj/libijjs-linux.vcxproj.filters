@@ -372,6 +372,9 @@
     <ClInclude Include="..\code\externals\wasm\extra\wasi_core.h">
       <Filter>dummy</Filter>
     </ClInclude>
+    <ClInclude Include="..\code\externals\curl\vtls\keylog.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
     <ClInclude Include="..\code\externals\mbedtls\aes.h">
       <Filter>mbedtls</Filter>
     </ClInclude>
@@ -411,6 +414,12 @@
     <ClInclude Include="..\code\externals\mbedtls\certs.h">
       <Filter>mbedtls</Filter>
     </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\chacha20.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\chachapoly.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
     <ClInclude Include="..\code\externals\mbedtls\check_config.h">
       <Filter>mbedtls</Filter>
     </ClInclude>
@@ -421,6 +430,9 @@
       <Filter>mbedtls</Filter>
     </ClInclude>
     <ClInclude Include="..\code\externals\mbedtls\cmac.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\common.h">
       <Filter>mbedtls</Filter>
     </ClInclude>
     <ClInclude Include="..\code\externals\mbedtls\compat-1.3.h">
@@ -471,6 +483,9 @@
     <ClInclude Include="..\code\externals\mbedtls\havege.h">
       <Filter>mbedtls</Filter>
     </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\hkdf.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
     <ClInclude Include="..\code\externals\mbedtls\hmac_drbg.h">
       <Filter>mbedtls</Filter>
     </ClInclude>
@@ -496,6 +511,9 @@
       <Filter>mbedtls</Filter>
     </ClInclude>
     <ClInclude Include="..\code\externals\mbedtls\net_sockets.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\nist_kw.h">
       <Filter>mbedtls</Filter>
     </ClInclude>
     <ClInclude Include="..\code\externals\mbedtls\oid.h">
@@ -529,6 +547,33 @@
       <Filter>mbedtls</Filter>
     </ClInclude>
     <ClInclude Include="..\code\externals\mbedtls\platform_util.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\poly1305.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\psa_crypto_core.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\psa_crypto_invasive.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\psa_crypto_its.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\psa_crypto_se.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\psa_crypto_service_integration.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\psa_crypto_slot_management.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\psa_crypto_storage.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\psa_util.h">
       <Filter>mbedtls</Filter>
     </ClInclude>
     <ClInclude Include="..\code\externals\mbedtls\ripemd160.h">
@@ -590,9 +635,6 @@
     </ClInclude>
     <ClInclude Include="..\code\externals\mbedtls\xtea.h">
       <Filter>mbedtls</Filter>
-    </ClInclude>
-    <ClInclude Include="..\code\externals\curl\vtls\keylog.h">
-      <Filter>dummy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -710,6 +752,12 @@
     <ClCompile Include="..\code\externals\mbedtls\certs.c">
       <Filter>mbedtls</Filter>
     </ClCompile>
+    <ClCompile Include="..\code\externals\mbedtls\chacha20.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\mbedtls\chachapoly.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
     <ClCompile Include="..\code\externals\mbedtls\cipher.c">
       <Filter>mbedtls</Filter>
     </ClCompile>
@@ -758,13 +806,13 @@
     <ClCompile Include="..\code\externals\mbedtls\havege.c">
       <Filter>mbedtls</Filter>
     </ClCompile>
+    <ClCompile Include="..\code\externals\mbedtls\hkdf.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
     <ClCompile Include="..\code\externals\mbedtls\hmac_drbg.c">
       <Filter>mbedtls</Filter>
     </ClCompile>
     <ClCompile Include="..\code\externals\mbedtls\md.c">
-      <Filter>mbedtls</Filter>
-    </ClCompile>
-    <ClCompile Include="..\code\externals\mbedtls\md_wrap.c">
       <Filter>mbedtls</Filter>
     </ClCompile>
     <ClCompile Include="..\code\externals\mbedtls\md2.c">
@@ -786,6 +834,9 @@
       <Filter>mbedtls</Filter>
     </ClCompile>
     <ClCompile Include="..\code\externals\mbedtls\net_sockets.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\mbedtls\nist_kw.c">
       <Filter>mbedtls</Filter>
     </ClCompile>
     <ClCompile Include="..\code\externals\mbedtls\oid.c">
@@ -824,6 +875,24 @@
     <ClCompile Include="..\code\externals\mbedtls\platform_util.c">
       <Filter>mbedtls</Filter>
     </ClCompile>
+    <ClCompile Include="..\code\externals\mbedtls\poly1305.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\mbedtls\psa_crypto.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\mbedtls\psa_crypto_se.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\mbedtls\psa_crypto_slot_management.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\mbedtls\psa_crypto_storage.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\mbedtls\psa_its_file.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
     <ClCompile Include="..\code\externals\mbedtls\ripemd160.c">
       <Filter>mbedtls</Filter>
     </ClCompile>
@@ -852,6 +921,9 @@
       <Filter>mbedtls</Filter>
     </ClCompile>
     <ClCompile Include="..\code\externals\mbedtls\ssl_cookie.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\mbedtls\ssl_msg.c">
       <Filter>mbedtls</Filter>
     </ClCompile>
     <ClCompile Include="..\code\externals\mbedtls\ssl_srv.c">

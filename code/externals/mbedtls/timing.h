@@ -25,7 +25,7 @@
 #define MBEDTLS_TIMING_H
 
 #if !defined(MBEDTLS_CONFIG_FILE)
-#include "config.h"
+#include "mbedtls/config.h"
 #else
 #include MBEDTLS_CONFIG_FILE
 #endif
@@ -51,7 +51,7 @@ struct mbedtls_timing_hr_time
 /**
  * \brief          Context for mbedtls_timing_set/get_delay()
  */
-typedef struct
+typedef struct mbedtls_timing_delay_context
 {
     struct mbedtls_timing_hr_time   timer;
     uint32_t                        int_ms;
