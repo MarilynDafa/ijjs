@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>IJJS</Name>
+    <Version>1.0.0</Version>
+    <Title>IJJS</Title>
+    <Publisher>MarilynDafa</Publisher>
+    <!-- Directory name is used in component.xml -->
+    <StartMenuDir>IJJS</StartMenuDir>
+    <TargetDir>@HomeDir@/ijjs</TargetDir>
+</Installer>
