@@ -278,9 +278,6 @@ static char* get_option_value(char* arg, int argc, char** argv, int* optind) {
 }
 
 int main(int argc, char** argv) {
-    argc = 2;
-    argv[0] = "/Users/zhoubo/Documents/GitHub/ijjs/bin/osx/ijjs-cli";
-    argv[1] = "/Users/zhoubo/Documents/GitHub/ijjs/tests/test-fetch.js";
     IJJSRuntime* qrt = NULL;
     JSContext* ctx = NULL;
     IJJSRunOptions runOptions;

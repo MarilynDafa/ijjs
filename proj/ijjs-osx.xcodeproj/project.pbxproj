@@ -2490,6 +2490,7 @@
 					../code/externals/uv/include,
 					../code/externals,
 				);
+				INSTALL_PATH = "@executable_path/";
 				PRODUCT_NAME = ijjs;
 				SKIP_INSTALL = YES;
 			};
@@ -2529,6 +2530,7 @@
 					../code/externals/uv/include,
 					../code/externals,
 				);
+				INSTALL_PATH = "@executable_path/";
 				PRODUCT_NAME = ijjs;
 				SKIP_INSTALL = YES;
 			};
