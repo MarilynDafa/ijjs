@@ -68,6 +68,10 @@
 
 #else /* HAVE_CONFIG_H */
 
+#ifdef __ANDROID_API__
+#include "config-android.h"
+#endif
+
 #ifdef _WIN32_WCE
 #  include "config-win32ce.h"
 #else
@@ -107,6 +111,7 @@
 #ifdef __PLAN9__
 #  include "config-plan9.h"
 #endif
+
 
 #endif /* HAVE_CONFIG_H */
 

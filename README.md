@@ -31,14 +31,14 @@ this project is inspired by nodejs
 - log4c
 - miniz
 - curl
-- mbedtls
 
 ## Building
 
 ```
 Windows: Visual Studio 2019 + clang
 Linux: Visual Studio 2019 + clang + WSL
-OSX: XCode
+OSX/IOS: XCode
+Android: Visual Studio 2019 + NDK
 ```
 
 ## Supported platforms
@@ -46,4 +46,15 @@ OSX: XCode
 * GNU/Linux
 * macOS
 * Windows
+* Android
+* IOS
 * Other Unixes
+
+## Using IJJS
+
+* Install IJJS.
+* Install the [**IJJS Debug** extension] in VS Code.
+* Use command "ijjs-cli --init" to create project
+* Switch to the debug viewlet and press the gear dropdown.
+* Select the debug environment "ijjs.launch".
+* Press the green 'play' button to start debugging.

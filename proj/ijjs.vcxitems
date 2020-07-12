@@ -147,6 +147,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\bearssl.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\gskit.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\gtls.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\keylog.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mbedtls.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mbedtls_threadlock.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\vtls\mesalink.c" />
@@ -160,7 +161,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\warnless.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\wildcard.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\curl\x509asn1.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\arena.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\background_thread.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\base.c" />
@@ -286,6 +286,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\arpa_telnet.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\asyn.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-amigaos.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-android.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-dos.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-mac.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-os400.h" />
@@ -434,7 +435,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\warnless.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\wildcard.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\x509asn1.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\fastlz\fastlz.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\include\jemalloc\jemalloc.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\kcp\ikcp.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz.h" />

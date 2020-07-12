@@ -1,5 +1,5 @@
 #include "quickjs-debugger.h"
-#ifndef WIN32
+#if !defined(_WIN32) && !defined(_WIN64) && !defined(WIN32) && !defined(WIN64)
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
@@ -10,6 +10,7 @@
 #include <assert.h>
 #include <poll.h>
 #include <arpa/inet.h>
+#include "jemalloc/jemalloc.h"
 
 struct js_transport_data {
     int handle;
@@ -87,7 +88,7 @@ static void js_transport_close(JSContext* ctx, void *udata) {
         return;
     close(data->handle);
     data->handle = 0;
-    free(udata);
+    je_free(udata);
 }
 
 // todo: fixup asserts to return errors.
@@ -101,6 +102,11 @@ static struct sockaddr_in js_debugger_parse_sockaddr(const char* address) {
     char host_string[256];
     strcpy(host_string, address);
     host_string[port_string - address] = 0;
+    if (host_string[0] == 'l')
+    {
+        memset(host_string, 0, sizeof(host_string));
+        strcpy(host_string, "127.0.0.1");
+    }
 
     struct hostent *host = gethostbyname(host_string);
     assert(host);
@@ -113,7 +119,7 @@ static struct sockaddr_in js_debugger_parse_sockaddr(const char* address) {
 
     return addr;
 }
-
+#ifndef DISQJSD
 void js_debugger_connect(JSContext *ctx, const char *address) {
     struct sockaddr_in addr = js_debugger_parse_sockaddr(address);
 
@@ -122,7 +128,7 @@ void js_debugger_connect(JSContext *ctx, const char *address) {
 
     assert(!connect(client, (const struct sockaddr *)&addr, sizeof(addr)));
 
-    struct js_transport_data *data = (struct js_transport_data *)malloc(sizeof(struct js_transport_data));
+    struct js_transport_data *data = (struct js_transport_data *)je_malloc(sizeof(struct js_transport_data));
     memset(data, 0, sizeof(js_transport_data));
     data->handle = client;
     js_debugger_attach(ctx, js_transport_read, js_transport_write, js_transport_peek, js_transport_close, data);
@@ -147,9 +153,10 @@ void js_debugger_wait_connection(JSContext *ctx, const char* address) {
     close(server);
     assert(client >= 0);
 
-    struct js_transport_data *data = (struct js_transport_data *)malloc(sizeof(struct js_transport_data));
+    struct js_transport_data *data = (struct js_transport_data *)je_malloc(sizeof(struct js_transport_data));
     memset(data, 0, sizeof(js_transport_data));
     data->handle = client;
     js_debugger_attach(ctx, js_transport_read, js_transport_write, js_transport_peek, js_transport_close, data);
 }
+#endif
 #endif

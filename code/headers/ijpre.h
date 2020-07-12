@@ -23,9 +23,10 @@
 #define __ijpre_h_
 
 #define IJJS_VERSION_MAJOR 1
-#define IJJS_VERSION_MINOR 3
+#define IJJS_VERSION_MINOR 4
 #define IJJS_VERSION_PATCH 1
 #define IJJS_VERSION_SUFFIX ""
+#define QJS_VERSION_STR "20200705"
 
 #   define IJJS_PLATFORM_WIN32        0
 #   define IJJS_PLATFORM_OSX          1

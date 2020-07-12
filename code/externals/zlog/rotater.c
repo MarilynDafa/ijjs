@@ -180,6 +180,7 @@ static int zlog_file_cmp(zlog_file_t * a_file_1, zlog_file_t * a_file_2)
 
 static int zlog_rotater_add_archive_files(zlog_rotater_t * a_rotater)
 {
+#ifndef __ANDROID__
 	int rc = 0;
 	glob_t glob_buf;
 	size_t pathc;
@@ -227,6 +228,9 @@ exit:
 err:
 	globfree(&glob_buf);
 	return -1;
+#else
+	return 0;
+#endif
 }
 
 static int zlog_rotater_seq_files(zlog_rotater_t * a_rotater)
