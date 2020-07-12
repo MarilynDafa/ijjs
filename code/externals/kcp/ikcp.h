@@ -24,7 +24,7 @@
 #define __INTEGER_32_BITS__
 #if defined(_WIN64) || defined(WIN64) || defined(__amd64__) || \
 	defined(__x86_64) || defined(__x86_64__) || defined(_M_IA64) || \
-	defined(_M_AMD64)
+	defined(_M_AMD64) || defined(__arm64__)
 	typedef unsigned int ISTDUINT32;
 	typedef int ISTDINT32;
 #elif defined(_WIN32) || defined(WIN32) || defined(__i386__) || \

@@ -570,7 +570,7 @@
 		C759341B248FC809007B37B0 /* buf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = buf.c; path = ../code/externals/zlog/buf.c; sourceTree = "<group>"; };
 		C759341C248FC809007B37B0 /* mdc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mdc.h; path = ../code/externals/zlog/mdc.h; sourceTree = "<group>"; };
 		C759341D248FC809007B37B0 /* record.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = record.c; path = ../code/externals/zlog/record.c; sourceTree = "<group>"; };
-		C77A623E247A15D400051CDF /* libijjs.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libijjs.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		C77A623E247A15D400051CDF /* libijjs-osx.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libijjs-osx.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C77A62AE247A17E900051CDF /* ikcp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ikcp.c; path = ../code/externals/kcp/ikcp.c; sourceTree = "<group>"; };
 		C77A62AF247A17E900051CDF /* ikcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ikcp.h; path = ../code/externals/kcp/ikcp.h; sourceTree = "<group>"; };
 		C77A6490247A189500051CDF /* libunicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libunicode.h; path = ../code/externals/quickjs/libunicode.h; sourceTree = "<group>"; };
@@ -1111,7 +1111,7 @@
 		C77A623F247A15D400051CDF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C77A623E247A15D400051CDF /* libijjs.dylib */,
+				C77A623E247A15D400051CDF /* libijjs-osx.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1932,9 +1932,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		C77A623D247A15D400051CDF /* ijjs */ = {
+		C77A623D247A15D400051CDF /* ijjs-osx */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C77A6242247A15D400051CDF /* Build configuration list for PBXNativeTarget "ijjs" */;
+			buildConfigurationList = C77A6242247A15D400051CDF /* Build configuration list for PBXNativeTarget "ijjs-osx" */;
 			buildPhases = (
 				C77A623A247A15D400051CDF /* Headers */,
 				C7F5D1D0247CA7E9003974A7 /* ShellScript */,
@@ -1945,9 +1945,9 @@
 			);
 			dependencies = (
 			);
-			name = ijjs;
+			name = "ijjs-osx";
 			productName = ijjs;
-			productReference = C77A623E247A15D400051CDF /* libijjs.dylib */;
+			productReference = C77A623E247A15D400051CDF /* libijjs-osx.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -1964,7 +1964,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C77A6239247A15D400051CDF /* Build configuration list for PBXProject "ijjs" */;
+			buildConfigurationList = C77A6239247A15D400051CDF /* Build configuration list for PBXProject "ijjs-osx" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1977,7 +1977,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C77A623D247A15D400051CDF /* ijjs */,
+				C77A623D247A15D400051CDF /* ijjs-osx */,
 			);
 		};
 /* End PBXProject section */
@@ -2537,7 +2537,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C77A6239247A15D400051CDF /* Build configuration list for PBXProject "ijjs" */ = {
+		C77A6239247A15D400051CDF /* Build configuration list for PBXProject "ijjs-osx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C77A6240247A15D400051CDF /* Debug */,
@@ -2546,7 +2546,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C77A6242247A15D400051CDF /* Build configuration list for PBXNativeTarget "ijjs" */ = {
+		C77A6242247A15D400051CDF /* Build configuration list for PBXNativeTarget "ijjs-osx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C77A6243247A15D400051CDF /* Debug */,

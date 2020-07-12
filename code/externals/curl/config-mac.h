@@ -58,10 +58,10 @@
 /* #undef CURL_DISABLE_HTTP */
 
 /* to disable LDAP */
-/* #undef CURL_DISABLE_LDAP */
+#define CURL_DISABLE_LDAP
 
 /* to disable LDAPS */
-/* #undef CURL_DISABLE_LDAPS */
+#define CURL_DISABLE_LDAPS
 
 /* to enable MQTT */
 #undef CURL_ENABLE_MQTT
@@ -799,8 +799,13 @@
 /* #undef NEED_REENTRANT */
 
 /* cpu-machine-OS */
+#ifdef __arm64__
+#define OS "IOS"
+#define USE_MBEDTLS 1
+#else
 #define OS "Darwin"
-
+#define USE_SECTRANSP 1
+#endif
 /* Name of package */
 /* #undef PACKAGE */
 
@@ -958,7 +963,6 @@
 /* #undef USE_GNUTLS */
 
 /* if Secure Transport is enabled */
-#define USE_SECTRANSP 1
 
 /* if mbedTLS is enabled */
 /* #undef USE_MBEDTLS */

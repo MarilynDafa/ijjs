@@ -27,7 +27,9 @@
 #include <inttypes.h>
 #include <string.h>
 #include <assert.h>
+#ifndef macintosh
 #include <malloc.h>
+#endif
 #include "cutils.h"
 #include "libregexp.h"
 

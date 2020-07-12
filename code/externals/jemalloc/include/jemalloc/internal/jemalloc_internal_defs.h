@@ -284,7 +284,7 @@
 #else
 #	if defined(__amd64__) || \
 		defined(__x86_64) || defined(__x86_64__) || defined(_M_IA64) || \
-		defined(_M_AMD64)
+		defined(_M_AMD64)  || defined(__arm64__)
 #	define LG_SIZEOF_LONG 3
 #define LG_SIZEOF_INTMAX_T 3
 #	else
