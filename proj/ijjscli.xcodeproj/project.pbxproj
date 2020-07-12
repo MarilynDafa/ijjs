@@ -24,7 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C77A6267247A169200051CDF /* ijjscli */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ijjscli; sourceTree = BUILT_PRODUCTS_DIR; };
+		C77A6267247A169200051CDF /* ijjs-cli */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ijjs-cli"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F5CFFA247A5930003974A7 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = ../code/main.c; sourceTree = "<group>"; };
 		C7F5D1D2247CB15A003974A7 /* libijjs.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libijjs.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -53,7 +53,7 @@
 		C77A6268247A169200051CDF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C77A6267247A169200051CDF /* ijjscli */,
+				C77A6267247A169200051CDF /* ijjs-cli */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,7 +83,7 @@
 			);
 			name = ijjscli;
 			productName = ijjscli;
-			productReference = C77A6267247A169200051CDF /* ijjscli */;
+			productReference = C77A6267247A169200051CDF /* ijjs-cli */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -269,7 +269,7 @@
 					../code/externals/jemalloc/include,
 					../code/externals,
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "ijjs-cli";
 			};
 			name = Debug;
 		};
@@ -285,7 +285,7 @@
 					../code/externals/jemalloc/include,
 					../code/externals,
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "ijjs-cli";
 			};
 			name = Release;
 		};

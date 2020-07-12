@@ -391,7 +391,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C7189BC724AA4F73003A86B2 /* libijjs-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libijjs-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7189BC724AA4F73003A86B2 /* libijjs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libijjs.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7189BD624AA4FD4003A86B2 /* ijprocess.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijprocess.c; path = ../code/src/ijprocess.c; sourceTree = "<group>"; };
 		C7189BD724AA4FD4003A86B2 /* ijworker.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijworker.c; path = ../code/src/ijworker.c; sourceTree = "<group>"; };
 		C7189BD824AA4FD4003A86B2 /* ijstreams.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijstreams.c; path = ../code/src/ijstreams.c; sourceTree = "<group>"; };
@@ -1095,7 +1095,7 @@
 		C7189BC824AA4F73003A86B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C7189BC724AA4F73003A86B2 /* libijjs-ios.a */,
+				C7189BC724AA4F73003A86B2 /* libijjs.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1935,7 +1935,7 @@
 			);
 			name = "ijjs-ios";
 			productName = "ijjs-ios";
-			productReference = C7189BC724AA4F73003A86B2 /* libijjs-ios.a */;
+			productReference = C7189BC724AA4F73003A86B2 /* libijjs.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -2519,7 +2519,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ijjs;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2531,7 +2531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ijjs;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
