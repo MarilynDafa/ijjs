@@ -245,7 +245,6 @@
     <ClInclude Include="..\code\externals\wasm\extra\wasi_core.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\code\externals\curl\mqtt.c" />
     <ClCompile Include="..\code\externals\mbedtls\aes.c" />
     <ClCompile Include="..\code\externals\mbedtls\aesni.c" />
     <ClCompile Include="..\code\externals\mbedtls\arc4.c" />
@@ -356,6 +355,58 @@
     <ClCompile Include="..\code\externals\uv\src\unix\tty.c" />
     <ClCompile Include="..\code\externals\uv\src\unix\udp.c" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\tests\assert.js" />
+    <None Include="..\tests\floatops.js" />
+    <None Include="..\tests\helpers\a\b\c\d\e\foo.js" />
+    <None Include="..\tests\helpers\unhandled-rejection.js" />
+    <None Include="..\tests\helpers\worker.js" />
+    <None Include="..\tests\run.js" />
+    <None Include="..\tests\test-abort-on-unhandled-rejection.js" />
+    <None Include="..\tests\test-args.js" />
+    <None Include="..\tests\test-async-task-sequence.js" />
+    <None Include="..\tests\test-fetch.js" />
+    <None Include="..\tests\test-fs.js" />
+    <None Include="..\tests\test-global-window.js" />
+    <None Include="..\tests\test-hashlib.js" />
+    <None Include="..\tests\test-import-http.js" />
+    <None Include="..\tests\test-import-json.js" />
+    <None Include="..\tests\test-import.js" />
+    <None Include="..\tests\test-kcp.js" />
+    <None Include="..\tests\test-log.js" />
+    <None Include="..\tests\test-noop.js" />
+    <None Include="..\tests\test-performance.js" />
+    <None Include="..\tests\test-pipe.js" />
+    <None Include="..\tests\test-random.js" />
+    <None Include="..\tests\test-tcp.js" />
+    <None Include="..\tests\test-timer.js" />
+    <None Include="..\tests\test-udp.js" />
+    <None Include="..\tests\test-uuid.js" />
+    <None Include="..\tests\test-version.js" />
+    <None Include="..\tests\test-wasm-f32.js" />
+    <None Include="..\tests\test-wasm-f64.js" />
+    <None Include="..\tests\test-wasm-i32.js" />
+    <None Include="..\tests\test-wasm-i64.js" />
+    <None Include="..\tests\test-wasm-wasi.js" />
+    <None Include="..\tests\test-worker-et.js" />
+    <None Include="..\tests\test-worker.js" />
+    <None Include="..\tests\test-xhr-abort.js" />
+    <None Include="..\tests\test-xhr-basic.js" />
+    <None Include="..\tests\test-xhr-body.js" />
+    <None Include="..\tests\test-xhr-et.js" />
+    <None Include="..\tests\test-xhr-persistent.js" />
+    <None Include="..\tests\test-xhr-timeout.js" />
+    <None Include="..\tests\wasi\launcher.js" />
+    <None Include="..\tests\wasi\test.wasm" />
+    <None Include="..\tests\wasm\f32.wasm" />
+    <None Include="..\tests\wasm\f32.wat" />
+    <None Include="..\tests\wasm\f64.wasm" />
+    <None Include="..\tests\wasm\f64.wat" />
+    <None Include="..\tests\wasm\i32.wasm" />
+    <None Include="..\tests\wasm\i32.wat" />
+    <None Include="..\tests\wasm\i64.wasm" />
+    <None Include="..\tests\wasm\i64.wat" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{75c95d74-279d-4117-a2f8-f3b9dc77b20d}</ProjectGuid>
     <Keyword>Linux</Keyword>
@@ -407,46 +458,62 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>..\bin\linux</OutDir>
+    <OutDir>$(RemoteRootDir)/ijjs/bin/linux</OutDir>
     <TargetName>libijjs</TargetName>
     <TargetExt>.so</TargetExt>
-    <IntDir>$(Platform)\$(Configuration)\ijjs</IntDir>
+    <IntDir>$(RemoteRootDir)/ijjs/libijjs/obj</IntDir>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\bin\linux</OutDir>
     <TargetName>libijjs</TargetName>
     <TargetExt>.so</TargetExt>
     <IntDir>$(Platform)\$(Configuration)\ijjs</IntDir>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <TargetName>libijjs</TargetName>
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\ijjs</IntDir>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <TargetName>libijjs</TargetName>
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\ijjs</IntDir>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <TargetName>libijjs</TargetName>
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\ijjs</IntDir>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <TargetName>libijjs</TargetName>
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\ijjs</IntDir>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <TargetName>libijjs</TargetName>
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\ijjs</IntDir>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <TargetName>libijjs</TargetName>
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\ijjs</IntDir>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -457,6 +524,7 @@
     </ClCompile>
     <Link>
       <LibraryDependencies>pthread;m;dl;%(LibraryDependencies)</LibraryDependencies>
+      <OutputFile>$(RemoteRootDir)/ijjs/bin/linux/libijjs.so</OutputFile>
     </Link>
     <PreBuildEvent>
       <Command>call "$(SolutionDir)qjsc.bat"</Command>

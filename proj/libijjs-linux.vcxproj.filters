@@ -638,9 +638,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\code\externals\curl\mqtt.c">
-      <Filter>dummy</Filter>
-    </ClCompile>
     <ClCompile Include="..\code\externals\uv\src\unix\linux-syscalls.c">
       <Filter>uv</Filter>
     </ClCompile>
@@ -968,5 +965,157 @@
     <ClCompile Include="..\code\externals\mbedtls\xtea.c">
       <Filter>mbedtls</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\tests\assert.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\floatops.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\run.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-abort-on-unhandled-rejection.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-args.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-async-task-sequence.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-fetch.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-fs.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-global-window.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-hashlib.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-import.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-import-http.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-import-json.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-kcp.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-log.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-noop.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-performance.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-pipe.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-random.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-tcp.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-timer.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-udp.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-uuid.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-version.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-wasm-f32.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-wasm-f64.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-wasm-i32.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-wasm-i64.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-wasm-wasi.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-worker.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-worker-et.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-xhr-abort.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-xhr-basic.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-xhr-body.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-xhr-et.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-xhr-persistent.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\test-xhr-timeout.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\helpers\unhandled-rejection.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\helpers\worker.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\helpers\a\b\c\d\e\foo.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\wasm\f32.wasm">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\wasm\f32.wat">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\wasm\f64.wasm">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\wasm\f64.wat">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\wasm\i32.wasm">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\wasm\i32.wat">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\wasm\i64.wasm">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\wasm\i64.wat">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\wasi\launcher.js">
+      <Filter>dummy</Filter>
+    </None>
+    <None Include="..\tests\wasi\test.wasm">
+      <Filter>dummy</Filter>
+    </None>
   </ItemGroup>
 </Project>

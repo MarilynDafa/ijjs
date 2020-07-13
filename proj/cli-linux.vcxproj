@@ -78,41 +78,57 @@
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>..\bin\linux</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
+    <OutDir>$(RemoteRootDir)/ijjs/bin/linux</OutDir>
+    <IntDir>$(RemoteRootDir)/ijjs/cli/obj</IntDir>
     <TargetName>ijjs-cli</TargetName>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <OutDir>..\bin\linux</OutDir>
     <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
+    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\code\main.c" />
@@ -330,7 +346,7 @@
       <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(RemoteRootDir)/ijjs/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>

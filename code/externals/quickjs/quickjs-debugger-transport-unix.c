@@ -126,7 +126,7 @@ void js_debugger_connect(JSContext *ctx, const char *address) {
     int client = socket(AF_INET, SOCK_STREAM, 0);
     assert(client > 0);
 
-    assert(!connect(client, (const struct sockaddr *)&addr, sizeof(addr)));
+    connect(client, (const struct sockaddr *)&addr, sizeof(addr));
 
     struct js_transport_data *data = (struct js_transport_data *)je_malloc(sizeof(struct js_transport_data));
     memset(data, 0, sizeof(js_transport_data));
@@ -141,9 +141,9 @@ void js_debugger_wait_connection(JSContext *ctx, const char* address) {
     assert(server >= 0);
 
     int reuseAddress = 1;
-    assert(setsockopt(server, SOL_SOCKET, SO_REUSEADDR, (const char *) &reuseAddress, sizeof(reuseAddress)) >= 0);
+    setsockopt(server, SOL_SOCKET, SO_REUSEADDR, (const char *) &reuseAddress, sizeof(reuseAddress));
 
-    assert(bind(server, (struct sockaddr *) &addr, sizeof(addr)) >= 0);
+    bind(server, (struct sockaddr *) &addr, sizeof(addr));
 
     listen(server, 1);
 

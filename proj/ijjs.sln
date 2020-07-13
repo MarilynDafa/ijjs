@@ -49,6 +49,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libijjs-linux", "libijjs-li
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cli-linux", "cli-linux.vcxproj", "{7EB6584D-E69F-45CC-AD6F-74E788EC7090}"
+	ProjectSection(ProjectDependencies) = postProject
+		{75C95D74-279D-4117-A2F8-F3B9DC77B20D} = {75C95D74-279D-4117-A2F8-F3B9DC77B20D}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sigar-linux", "..\modules\sigar\sigar-linux.vcxproj", "{7C631899-2877-4562-B554-BF029FC9D73F}"
 EndProject
