@@ -77,17 +77,10 @@
 #define JEMALLOC_HAVE_PTHREAD_ATFORK 
 
 /* Defined if pthread_setname_np(3) is available. */
-#define JEMALLOC_HAVE_PTHREAD_SETNAME_NP 
 
 /*
  * Defined if clock_gettime(CLOCK_MONOTONIC_COARSE, ...) is available.
  */
-#define JEMALLOC_HAVE_CLOCK_MONOTONIC_COARSE 1
-
-/*
- * Defined if clock_gettime(CLOCK_MONOTONIC, ...) is available.
- */
-#define JEMALLOC_HAVE_CLOCK_MONOTONIC 1
 
 /*
  * Defined if mach_absolute_time() is available.
@@ -304,42 +297,38 @@
 
 /* dlsym() support */
 #ifndef _WINDOWS
-#define JEMALLOC_TLS_MODEL __attribute__((tls_model("initial-exec")))
-#define JEMALLOC_HAVE_DLSYM 
-//#define JEMALLOC_HAVE_SECURE_GETENV 
-#define JEMALLOC_GLIBC_MALLOC_HOOK 
-#define JEMALLOC_GLIBC_MEMALIGN_HOOK 
-#define JEMALLOC_MADVISE_DONTDUMP 
-#define JEMALLOC_HAVE_MADVISE_HUGE 
-#define JEMALLOC_HAVE_MADVISE 
+#ifndef macintosh
+#define JEMALLOC_GLIBC_MALLOC_HOOK
+#define JEMALLOC_GLIBC_MEMALIGN_HOOK
+#define JEMALLOC_MADVISE_DONTDUMP
+#define JEMALLOC_HAVE_MADVISE_HUGE
+#define JEMALLOC_HAVE_MADVISE
+#define JEMALLOC_HAVE_CLOCK_MONOTONIC_COARSE 1
+#define JEMALLOC_HAVE_CLOCK_MONOTONIC 1
+#define JEMALLOC_HAVE_SCHED_GETCPU
+#define JEMALLOC_HAVE_SCHED_SETAFFINITY
+#define JEMALLOC_HAVE_PTHREAD_SETNAME_NP
+#define JEMALLOC_GCC_ATOMIC_ATOMICS 1
+#define JEMALLOC_GCC_U8_ATOMIC_ATOMICS 1
+#define JEMALLOC_GCC_SYNC_ATOMICS 1
+#define HAVE_CPU_SPINWAIT 1
+#define JEMALLOC_GCC_U8_SYNC_ATOMICS 1
+#define CPU_SPINWAIT __asm__ volatile("pause")
+#endif
 #define LG_SIZEOF_LONG 3
 #define LG_SIZEOF_INTMAX_T 3
 #define JEMALLOC_DSS 
 #define JEMALLOC_THREADED_INIT 
 #define JEMALLOC_PURGE_MADVISE_FREE 
-#define JEMALLOC_PURGE_MADVISE_DONTNEED 
-#define CPU_SPINWAIT __asm__ volatile("pause")
-#define JEMALLOC_PURGE_MADVISE_DONTNEED_ZEROS 
-/* Defined if GCC __atomic atomics are available. */
-#define JEMALLOC_GCC_ATOMIC_ATOMICS 1
-/* and the 8-bit variant support. */
-#define JEMALLOC_GCC_U8_ATOMIC_ATOMICS 1
-
-/* Defined if GCC __sync atomics are available. */
-#define JEMALLOC_GCC_SYNC_ATOMICS 1
-/* and the 8-bit variant support. */
-#define HAVE_CPU_SPINWAIT 1
-/* TLS is used to map arenas and magazine caches to threads. */
-#define JEMALLOC_TLS 
-#define JEMALLOC_GCC_U8_SYNC_ATOMICS 1
+#define JEMALLOC_PURGE_MADVISE_DONTNEED
+#define JEMALLOC_PURGE_MADVISE_DONTNEED_ZEROS
+#define JEMALLOC_TLS
+#define JEMALLOC_TLS_MODEL __attribute__((tls_model("initial-exec")))
+#define JEMALLOC_HAVE_DLSYM 
 #define JEMALLOC_MAPS_COALESCE 
 #define JEMALLOC_PROC_SYS_VM_OVERCOMMIT_MEMORY 
-#define JEMALLOC_USE_SYSCALL 
-/* If defined, jemalloc takes the malloc/free/etc. symbol names. */
+#define JEMALLOC_USE_SYSCALL
 #define JEMALLOC_IS_MALLOC 1
-/* GNU specific sched_getcpu support */
-#define JEMALLOC_HAVE_SCHED_GETCPU 
-#define JEMALLOC_HAVE_SCHED_SETAFFINITY 
 #define JEMALLOC_RETAIN 
 #define JEMALLOC_BACKGROUND_THREAD 1
 #define JEMALLOC_STRERROR_R_RETURNS_CHAR_WITH_GNU_SOURCE 
@@ -347,6 +336,7 @@
 
 #define LG_SIZEOF_INTMAX_T 2
 #define LG_SIZEOF_LONG 2
+#define JEMALLOC_HAVE_PTHREAD_SETNAME_NP
 #endif
 /* Adaptive mutex support in pthreads. */
 #define JEMALLOC_HAVE_PTHREAD_MUTEX_ADAPTIVE_NP 

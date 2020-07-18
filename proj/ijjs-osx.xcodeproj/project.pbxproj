@@ -2343,14 +2343,13 @@
 					HAVE_CONFIG_H,
 					BUILDING_LIBCURL,
 					BUILDING_UV_SHARED,
-					JEMALLOC_C11_ATOMICS,
-					"config_opt_safety_checks=1",
-					JEMALLOC_HAVE_ATTR,
-					JEMALLOC_HAVE_BUILTIN_CLZ,
 					"QJS_VERSION_STR=\"20200412\"",
 					macintosh,
+					_REENTRANT,
 					__MRC__,
-					CONFIG_QJSDEBUG,
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					JEMALLOC_NO_PRIVATE_NAMESPACE,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -2373,6 +2372,11 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fvisibility=hidden",
+					"-funroll-loops",
+					"-pipe",
+				);
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -2423,14 +2427,13 @@
 					HAVE_CONFIG_H,
 					BUILDING_LIBCURL,
 					BUILDING_UV_SHARED,
-					JEMALLOC_C11_ATOMICS,
-					"config_opt_safety_checks=1",
-					JEMALLOC_HAVE_ATTR,
-					JEMALLOC_HAVE_BUILTIN_CLZ,
 					"QJS_VERSION_STR=\"20200412\"",
 					macintosh,
+					_REENTRANT,
 					__MRC__,
-					CONFIG_QJSDEBUG,
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					JEMALLOC_NO_PRIVATE_NAMESPACE,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -2452,6 +2455,11 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-fvisibility=hidden",
+					"-funroll-loops",
+					"-pipe",
+				);
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -2470,14 +2478,13 @@
 					HAVE_CONFIG_H,
 					BUILDING_LIBCURL,
 					BUILDING_UV_SHARED,
-					JEMALLOC_C11_ATOMICS,
-					"config_opt_safety_checks=1",
-					JEMALLOC_HAVE_ATTR,
-					JEMALLOC_HAVE_BUILTIN_CLZ,
 					"QJS_VERSION_STR=\"20200412\"",
 					macintosh,
+					_REENTRANT,
 					__MRC__,
-					CONFIG_QJSDEBUG,
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					JEMALLOC_NO_PRIVATE_NAMESPACE,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2510,14 +2517,13 @@
 					HAVE_CONFIG_H,
 					BUILDING_LIBCURL,
 					BUILDING_UV_SHARED,
-					JEMALLOC_C11_ATOMICS,
-					"config_opt_safety_checks=1",
-					JEMALLOC_HAVE_ATTR,
-					JEMALLOC_HAVE_BUILTIN_CLZ,
 					"QJS_VERSION_STR=\"20200412\"",
 					macintosh,
+					_REENTRANT,
 					__MRC__,
-					CONFIG_QJSDEBUG,
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					JEMALLOC_NO_PRIVATE_NAMESPACE,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

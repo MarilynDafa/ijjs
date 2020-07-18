@@ -2396,15 +2396,15 @@
 					HAVE_CONFIG_H,
 					BUILDING_LIBCURL,
 					BUILDING_UV_SHARED,
-					JEMALLOC_C11_ATOMICS,
-					"config_opt_safety_checks=1",
-					JEMALLOC_HAVE_ATTR,
-					JEMALLOC_HAVE_BUILTIN_CLZ,
 					"QJS_VERSION_STR=\"20200412\"",
 					"DEBUG=1",
 					"$(inherited)",
 					macintosh,
 					__MRC__,
+					JEMALLOC_NO_DEMANGLE,
+					_REENTRANT,
+					JEMALLOC_NO_RENAME,
+					JEMALLOC_NO_PRIVATE_NAMESPACE,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -2428,6 +2428,11 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fvisibility=hidden",
+					"-funroll-loops",
+					"-pipe",
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2477,14 +2482,14 @@
 					HAVE_CONFIG_H,
 					BUILDING_LIBCURL,
 					BUILDING_UV_SHARED,
-					JEMALLOC_C11_ATOMICS,
-					"config_opt_safety_checks=1",
-					JEMALLOC_HAVE_ATTR,
-					JEMALLOC_HAVE_BUILTIN_CLZ,
 					"QJS_VERSION_STR=\"20200412\"",
 					"$(inherited)",
 					__MRC__,
 					macintosh,
+					_REENTRANT,
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					JEMALLOC_NO_PRIVATE_NAMESPACE,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -2507,6 +2512,11 @@
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-fvisibility=hidden",
+					"-funroll-loops",
+					"-pipe",
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2517,6 +2527,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					d_m3HasWASI,
+					CONFIG_BIGNUM,
+					HAVE_CONFIG_H,
+					BUILDING_LIBCURL,
+					BUILDING_UV_SHARED,
+					"QJS_VERSION_STR=\"20200412\"",
+					"DEBUG=1",
+					"$(inherited)",
+					macintosh,
+					__MRC__,
+					_REENTRANT,
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					JEMALLOC_NO_PRIVATE_NAMESPACE,
+				);
 				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ijjs;
@@ -2529,6 +2555,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					d_m3HasWASI,
+					CONFIG_BIGNUM,
+					HAVE_CONFIG_H,
+					BUILDING_LIBCURL,
+					BUILDING_UV_SHARED,
+					"QJS_VERSION_STR=\"20200412\"",
+					"$(inherited)",
+					__MRC__,
+					macintosh,
+					_REENTRANT,
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					JEMALLOC_NO_PRIVATE_NAMESPACE,
+				);
 				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ijjs;
