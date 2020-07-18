@@ -179,6 +179,8 @@ static void init_project() {
     fclose(fp);
     //7.create d.ts
     const char* path = getenv("IJJS");
+    if (!path)
+        goto initerror;
     char dom[256] = { 0 };
     strcpy(dom, path);
     strcat(dom, "/lib.ijdom.d.ts");

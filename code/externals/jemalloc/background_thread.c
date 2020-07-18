@@ -4,6 +4,8 @@
 
 #include "jemalloc/internal/assert.h"
 
+#include <sys/time.h>   /* for struct timeval */
+#include <dlfcn.h>
 JEMALLOC_DIAGNOSTIC_DISABLE_SPURIOUS
 
 /******************************************************************************/

@@ -435,7 +435,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\warnless.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\wildcard.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\x509asn1.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\include\jemalloc\internal\rtree.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\include\jemalloc\jemalloc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\include\jemalloc\jemalloc_defs.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\kcp\ikcp.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\miniz\miniz_common.h" />

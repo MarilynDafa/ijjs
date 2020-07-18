@@ -21,3 +21,7 @@ proj/Debug/libijjs-win32.vcxproj.FileListAbsolute.txt
 *.dia
 *.d
 *.hmap
+*.awk
+*.in
+*.in
+*.in

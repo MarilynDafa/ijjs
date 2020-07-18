@@ -5,23 +5,26 @@ extern "C" {
 #endif
 
 /* Defined if __attribute__((...)) syntax is supported. */
-/* #undef JEMALLOC_HAVE_ATTR */
+#define JEMALLOC_HAVE_ATTR
 
 /* Defined if alloc_size attribute is supported. */
-/* #undef JEMALLOC_HAVE_ATTR_ALLOC_SIZE */
+#define JEMALLOC_HAVE_ATTR_ALLOC_SIZE
+
+/* Defined if format_arg(...) attribute is supported. */
+#define JEMALLOC_HAVE_ATTR_FORMAT_ARG
 
 /* Defined if format(gnu_printf, ...) attribute is supported. */
-/* #undef JEMALLOC_HAVE_ATTR_FORMAT_GNU_PRINTF */
+#define JEMALLOC_HAVE_ATTR_FORMAT_GNU_PRINTF
 
 /* Defined if format(printf, ...) attribute is supported. */
-/* #undef JEMALLOC_HAVE_ATTR_FORMAT_PRINTF */
+#define JEMALLOC_HAVE_ATTR_FORMAT_PRINTF
 
 /*
  * Define overrides for non-standard allocator-related functions if they are
  * present on the system.
  */
-/* #undef JEMALLOC_OVERRIDE_MEMALIGN */
-/* #undef JEMALLOC_OVERRIDE_VALLOC */
+#define JEMALLOC_OVERRIDE_MEMALIGN
+#define JEMALLOC_OVERRIDE_VALLOC
 
 /*
  * At least Linux omits the "const" in:
@@ -30,27 +33,25 @@ extern "C" {
  *
  * Match the operating system's prototype.
  */
-#define JEMALLOC_USABLE_SIZE_CONST const
+#define JEMALLOC_USABLE_SIZE_CONST
 
 /*
  * If defined, specify throw() for the public function prototypes when compiling
  * with C++.  The only justification for this is to match the prototypes that
  * glibc defines.
  */
-/* #undef JEMALLOC_USE_CXX_THROW */
-#define LG_HUGEPAGE 21
-#if defined(_WIN64) || defined(WIN64) || defined(__amd64__) || \
-	defined(__x86_64) || defined(__x86_64__) || defined(_M_IA64) || \
-	defined(_M_AMD64) || defined(__arm64__)
+#define JEMALLOC_USE_CXX_THROW
+
+#ifdef _MSC_VER
+#  ifdef _WIN64
 #    define LG_SIZEOF_PTR_WIN 3
-#		define LG_VADDR 64
 #  else
 #    define LG_SIZEOF_PTR_WIN 2
-#	define LG_VADDR 32
 #  endif
+#endif
 
 /* sizeof(void *) == 2^LG_SIZEOF_PTR. */
-#define LG_SIZEOF_PTR LG_SIZEOF_PTR_WIN
+#define LG_SIZEOF_PTR 3
 
 /*
  * Name mangling for public symbols is controlled by --with-mangling and
@@ -58,46 +59,44 @@ extern "C" {
  * these macro definitions.
  */
 #ifndef JEMALLOC_NO_RENAME
-#  define je_aligned_alloc je_aligned_alloc
-#  define je_calloc je_calloc
-#  define je_dallocx je_dallocx
-#  define je_free je_free
-#  define je_mallctl je_mallctl
-#  define je_mallctlbymib je_mallctlbymib
-#  define je_mallctlnametomib je_mallctlnametomib
-#  define je_malloc je_malloc
-#  define je_malloc_conf je_malloc_conf
-#  define je_malloc_message je_malloc_message
-#  define je_malloc_stats_print je_malloc_stats_print
-#  define je_malloc_usable_size je_malloc_usable_size
-#  define je_mallocx je_mallocx
-#  define je_smallocx_0000000000000000000000000000000000000000 je_smallocx_0000000000000000000000000000000000000000
-#  define je_nallocx je_nallocx
-#  define je_posix_memalign je_posix_memalign
-#  define je_rallocx je_rallocx
-#  define je_realloc je_realloc
-#  define je_sallocx je_sallocx
-#  define je_sdallocx je_sdallocx
-#  define je_xallocx je_xallocx
+#  define je_aligned_alloc aligned_alloc
+#  define je_calloc calloc
+#  define je_dallocx dallocx
+#  define je_free free
+#  define je_mallctl mallctl
+#  define je_mallctlbymib mallctlbymib
+#  define je_mallctlnametomib mallctlnametomib
+#  define je_malloc malloc
+#  define je_malloc_conf malloc_conf
+#  define je_malloc_message malloc_message
+#  define je_malloc_stats_print malloc_stats_print
+#  define je_malloc_usable_size malloc_usable_size
+#  define je_mallocx mallocx
+#  define je_smallocx_ea6b3e973b477b8061e0076bb257dbd7f3faa756 smallocx_ea6b3e973b477b8061e0076bb257dbd7f3faa756
+#  define je_nallocx nallocx
+#  define je_posix_memalign posix_memalign
+#  define je_rallocx rallocx
+#  define je_realloc realloc
+#  define je_sallocx sallocx
+#  define je_sdallocx sdallocx
+#  define je_xallocx xallocx
+#  define je_memalign memalign
+#  define je_valloc valloc
 #endif
 
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <limits.h>
-#ifdef WIN32
-#include <string.h>
-#else
 #include <strings.h>
-#endif
 
-#define JEMALLOC_VERSION "5.2.1-0-g0000000000000000000000000000000000000000"
+#define JEMALLOC_VERSION "5.2.1-0-gea6b3e973b477b8061e0076bb257dbd7f3faa756"
 #define JEMALLOC_VERSION_MAJOR 5
 #define JEMALLOC_VERSION_MINOR 2
-#define JEMALLOC_VERSION_BUGFIX 0
+#define JEMALLOC_VERSION_BUGFIX 1
 #define JEMALLOC_VERSION_NREV 0
-#define JEMALLOC_VERSION_GID "0000000000000000000000000000000000000000"
-#define JEMALLOC_VERSION_GID_IDENT 0000000000000000000000000000000000000000
+#define JEMALLOC_VERSION_GID "ea6b3e973b477b8061e0076bb257dbd7f3faa756"
+#define JEMALLOC_VERSION_GID_IDENT ea6b3e973b477b8061e0076bb257dbd7f3faa756
 
 #define MALLOCX_LG_ALIGN(la)	((int)(la))
 #if LG_SIZEOF_PTR == 2
@@ -143,6 +142,7 @@ extern "C" {
 #else
 #  define JEMALLOC_CXX_THROW
 #endif
+
 #if defined(_MSC_VER)
 #  define JEMALLOC_ATTR(s)
 #  define JEMALLOC_ALIGNED(s) __declspec(align(s))
@@ -155,6 +155,7 @@ extern "C" {
 #      define JEMALLOC_EXPORT __declspec(dllimport)
 #    endif
 #  endif
+#  define JEMALLOC_FORMAT_ARG(i)
 #  define JEMALLOC_FORMAT_PRINTF(s, i)
 #  define JEMALLOC_NOINLINE __declspec(noinline)
 #  ifdef __cplusplus
@@ -181,6 +182,11 @@ extern "C" {
 #  endif
 #  ifndef JEMALLOC_EXPORT
 #    define JEMALLOC_EXPORT JEMALLOC_ATTR(visibility("default"))
+#  endif
+#  ifdef JEMALLOC_HAVE_ATTR_FORMAT_ARG
+#    define JEMALLOC_FORMAT_ARG(i) JEMALLOC_ATTR(__format_arg__(3))
+#  else
+#    define JEMALLOC_FORMAT_ARG(i)
 #  endif
 #  ifdef JEMALLOC_HAVE_ATTR_FORMAT_GNU_PRINTF
 #    define JEMALLOC_FORMAT_PRINTF(s, i) JEMALLOC_ATTR(format(gnu_printf, s, i))
@@ -377,7 +383,7 @@ struct extent_hooks_s {
 #  define malloc_stats_print je_malloc_stats_print
 #  define malloc_usable_size je_malloc_usable_size
 #  define mallocx je_mallocx
-#  define smallocx_0000000000000000000000000000000000000000 je_smallocx_0000000000000000000000000000000000000000
+#  define smallocx_ea6b3e973b477b8061e0076bb257dbd7f3faa756 je_smallocx_ea6b3e973b477b8061e0076bb257dbd7f3faa756
 #  define nallocx je_nallocx
 #  define posix_memalign je_posix_memalign
 #  define rallocx je_rallocx
@@ -385,6 +391,8 @@ struct extent_hooks_s {
 #  define sallocx je_sallocx
 #  define sdallocx je_sdallocx
 #  define xallocx je_xallocx
+#  define memalign je_memalign
+#  define valloc je_valloc
 #endif
 
 /*
@@ -408,7 +416,7 @@ struct extent_hooks_s {
 #  undef je_malloc_stats_print
 #  undef je_malloc_usable_size
 #  undef je_mallocx
-#  undef je_smallocx_0000000000000000000000000000000000000000
+#  undef je_smallocx_ea6b3e973b477b8061e0076bb257dbd7f3faa756
 #  undef je_nallocx
 #  undef je_posix_memalign
 #  undef je_rallocx
@@ -416,6 +424,8 @@ struct extent_hooks_s {
 #  undef je_sallocx
 #  undef je_sdallocx
 #  undef je_xallocx
+#  undef je_memalign
+#  undef je_valloc
 #endif
 
 #ifdef __cplusplus

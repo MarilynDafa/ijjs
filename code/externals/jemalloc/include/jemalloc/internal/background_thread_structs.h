@@ -1,6 +1,6 @@
 #ifndef JEMALLOC_INTERNAL_BACKGROUND_THREAD_STRUCTS_H
 #define JEMALLOC_INTERNAL_BACKGROUND_THREAD_STRUCTS_H
-
+#include <pthread.h>
 /* This file really combines "structs" and "types", but only transitionally. */
 
 #if defined(JEMALLOC_BACKGROUND_THREAD) || defined(JEMALLOC_LAZY_LOCK)

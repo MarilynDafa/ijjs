@@ -47,27 +47,35 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />
@@ -75,60 +83,60 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <OutDir>..\bin\linux</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
-    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
-    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
+    <RemoteProjectDir>$(RemoteRootDir)/$(ProjectName)</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteProjectDir)</RemoteDeployDir>
+    <OutDir>../bin/linux</OutDir>
+    <IntDir>$(ProjectDir)obj</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <OutDir>..\bin\linux</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
-    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
-    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
+    <RemoteProjectDir>$(RemoteRootDir)/$(ProjectName)</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteProjectDir)</RemoteDeployDir>
+    <OutDir>../bin/linux</OutDir>
+    <IntDir>$(ProjectDir)obj</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
-    <OutDir>..\bin\linux</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
-    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
-    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
+    <RemoteProjectDir>$(RemoteRootDir)/$(ProjectName)</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteProjectDir)</RemoteDeployDir>
+    <OutDir>../bin/linux</OutDir>
+    <IntDir>$(ProjectDir)obj</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
-    <OutDir>..\bin\linux</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
-    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
-    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
+    <RemoteProjectDir>$(RemoteRootDir)/$(ProjectName)</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteProjectDir)</RemoteDeployDir>
+    <OutDir>../bin/linux</OutDir>
+    <IntDir>$(ProjectDir)obj</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(RemoteRootDir)/ijjs/bin/linux</OutDir>
-    <IntDir>$(RemoteRootDir)/ijjs/cli/obj</IntDir>
     <TargetName>ijjs-cli</TargetName>
-    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
-    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
+    <RemoteProjectDir>$(RemoteRootDir)/$(ProjectName)</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteProjectDir)</RemoteDeployDir>
+    <OutDir>../bin/linux</OutDir>
+    <IntDir>$(ProjectDir)obj</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\bin\linux</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
-    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
-    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
+    <RemoteProjectDir>$(RemoteRootDir)/$(ProjectName)</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteProjectDir)</RemoteDeployDir>
+    <OutDir>../bin/linux</OutDir>
+    <IntDir>$(ProjectDir)obj</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <OutDir>..\bin\linux</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
-    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
-    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
+    <RemoteProjectDir>$(RemoteRootDir)/$(ProjectName)</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteProjectDir)</RemoteDeployDir>
+    <OutDir>../bin/linux</OutDir>
+    <IntDir>$(ProjectDir)obj</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-    <OutDir>..\bin\linux</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\cli</IntDir>
     <TargetName>ijjs-cli</TargetName>
-    <RemoteProjectDir>$(RemoteRootDir)/ijjs</RemoteProjectDir>
-    <RemoteDeployDir>$(RemoteRootDir)/ijjs</RemoteDeployDir>
+    <RemoteProjectDir>$(RemoteRootDir)/$(ProjectName)</RemoteProjectDir>
+    <RemoteDeployDir>$(RemoteProjectDir)</RemoteDeployDir>
+    <OutDir>../bin/linux</OutDir>
+    <IntDir>$(ProjectDir)obj</IntDir>
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\code\main.c" />
@@ -300,6 +308,8 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -312,6 +322,8 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -324,6 +336,8 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -336,6 +350,8 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -348,6 +364,8 @@
     <Link>
       <AdditionalLibraryDirectories>$(RemoteRootDir)/ijjs/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -360,6 +378,8 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
@@ -372,6 +392,8 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
@@ -384,6 +406,8 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

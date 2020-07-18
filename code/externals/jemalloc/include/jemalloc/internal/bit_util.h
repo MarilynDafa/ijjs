@@ -88,7 +88,7 @@ pow2_ceil_u64(uint64_t x) {
 	}
 	size_t msb_on_index;
 #if (defined(__amd64__) || defined(__x86_64__))
-	__asm__ ("bsrq %1, %0"
+	asm ("bsrq %1, %0"
 			: "=r"(msb_on_index) // Outputs.
 			: "r"(x-1)           // Inputs.
 		);
@@ -118,7 +118,7 @@ pow2_ceil_u32(uint32_t x) {
 	}
 	size_t msb_on_index;
 #if (defined(__i386__))
-	__asm__ ("bsr %1, %0"
+	asm ("bsr %1, %0"
 			: "=r"(msb_on_index) // Outputs.
 			: "r"(x-1)           // Inputs.
 		);
@@ -155,7 +155,7 @@ lg_floor(size_t x) {
 	size_t ret;
 	assert(x != 0);
 
-	__asm__ ("bsr %1, %0"
+	asm ("bsr %1, %0"
 	    : "=r"(ret) // Outputs.
 	    : "r"(x)    // Inputs.
 	    );

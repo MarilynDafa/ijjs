@@ -1,22 +1,25 @@
 /* include/jemalloc/jemalloc_defs.h.  Generated from jemalloc_defs.h.in by configure.  */
 /* Defined if __attribute__((...)) syntax is supported. */
-/* #undef JEMALLOC_HAVE_ATTR */
+#define JEMALLOC_HAVE_ATTR 
 
 /* Defined if alloc_size attribute is supported. */
-/* #undef JEMALLOC_HAVE_ATTR_ALLOC_SIZE */
+#define JEMALLOC_HAVE_ATTR_ALLOC_SIZE 
+
+/* Defined if format_arg(...) attribute is supported. */
+#define JEMALLOC_HAVE_ATTR_FORMAT_ARG 
 
 /* Defined if format(gnu_printf, ...) attribute is supported. */
-/* #undef JEMALLOC_HAVE_ATTR_FORMAT_GNU_PRINTF */
+#define JEMALLOC_HAVE_ATTR_FORMAT_GNU_PRINTF 
 
 /* Defined if format(printf, ...) attribute is supported. */
-/* #undef JEMALLOC_HAVE_ATTR_FORMAT_PRINTF */
+#define JEMALLOC_HAVE_ATTR_FORMAT_PRINTF 
 
 /*
  * Define overrides for non-standard allocator-related functions if they are
  * present on the system.
  */
-/* #undef JEMALLOC_OVERRIDE_MEMALIGN */
-/* #undef JEMALLOC_OVERRIDE_VALLOC */
+#define JEMALLOC_OVERRIDE_MEMALIGN 
+#define JEMALLOC_OVERRIDE_VALLOC 
 
 /*
  * At least Linux omits the "const" in:
@@ -25,14 +28,14 @@
  *
  * Match the operating system's prototype.
  */
-#define JEMALLOC_USABLE_SIZE_CONST const
+#define JEMALLOC_USABLE_SIZE_CONST 
 
 /*
  * If defined, specify throw() for the public function prototypes when compiling
  * with C++.  The only justification for this is to match the prototypes that
  * glibc defines.
  */
-/* #undef JEMALLOC_USE_CXX_THROW */
+#define JEMALLOC_USE_CXX_THROW 
 
 #if defined(_WIN64) || defined(WIN64) || defined(__amd64__) || \
 	defined(__x86_64) || defined(__x86_64__) || defined(_M_IA64) || \
@@ -41,5 +44,5 @@
 #else
 #    define LG_SIZEOF_PTR_WIN 2
 #endif
-/* sizeof(void *) == 2^LG_SIZEOF_PTR. */
+ /* sizeof(void *) == 2^LG_SIZEOF_PTR. */
 #define LG_SIZEOF_PTR LG_SIZEOF_PTR_WIN

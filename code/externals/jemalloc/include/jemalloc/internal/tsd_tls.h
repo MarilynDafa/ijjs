@@ -1,6 +1,7 @@
 #ifdef JEMALLOC_INTERNAL_TSD_TLS_H
 #error This file should be included only once, by tsd.h.
 #endif
+#include <pthread.h>
 #define JEMALLOC_INTERNAL_TSD_TLS_H
 
 #define JEMALLOC_TSD_TYPE_ATTR(type) __thread type JEMALLOC_TLS_MODEL
