@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C77A6266247A169200051CDF"
                BuildableName = "ijjs-cli"
-               BlueprintName = "ijjscli"
-               ReferencedContainer = "container:ijjscli.xcodeproj">
+               BlueprintName = "ijjs-cli"
+               ReferencedContainer = "container:ijjs-cli.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,10 +46,16 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C77A6266247A169200051CDF"
             BuildableName = "ijjs-cli"
-            BlueprintName = "ijjscli"
-            ReferencedContainer = "container:ijjscli.xcodeproj">
+            BlueprintName = "ijjs-cli"
+            ReferencedContainer = "container:ijjs-cli.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "/Users/zhoubo/Documents/GitHub/ijjs/tests/test-args.js"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -63,8 +69,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C77A6266247A169200051CDF"
             BuildableName = "ijjs-cli"
-            BlueprintName = "ijjscli"
-            ReferencedContainer = "container:ijjscli.xcodeproj">
+            BlueprintName = "ijjs-cli"
+            ReferencedContainer = "container:ijjs-cli.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
