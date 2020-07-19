@@ -40,9 +40,9 @@ Component.prototype.createOperations = function()
         component.addOperation("CreateShortcut", "@TargetDir@/README.txt", "@StartMenuDir@/README.lnk",
             "workingDirectory=@TargetDir@", "iconPath=%SystemRoot%/system32/SHELL32.dll",
             "iconId=2", "description=Open README file");
+    	component.addElevatedOperation("EnvironmentVariable","IJJS","@TargetDir@",true);
     }
-	
-    var winpath = installer.environmentVariable("PATH") + ";" + installer.value("TargetDir");
-    component.addElevatedOperation("EnvironmentVariable","PATH",winpath,true);
-    component.addElevatedOperation("EnvironmentVariable","IJJS","@TargetDir@",true);
+    else {
+	component.addElevatedOperation("Execute","/bin/sh","@TargetDir@/env.sh");
+    }	
 }
