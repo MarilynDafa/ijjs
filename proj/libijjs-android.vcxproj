@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\code\externals\mbedtls\common.h" />
+    <ClInclude Include="..\code\externals\mbedtls\config.h" />
     <ClInclude Include="..\code\externals\mbedtls\psa_crypto_core.h" />
     <ClInclude Include="..\code\externals\mbedtls\psa_crypto_invasive.h" />
     <ClInclude Include="..\code\externals\mbedtls\psa_crypto_its.h" />

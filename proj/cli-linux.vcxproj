@@ -311,6 +311,10 @@
       <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
+del $(TargetDir)ijjs-cli.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
@@ -325,6 +329,10 @@
       <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
+del $(TargetDir)ijjs-cli.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
@@ -339,6 +347,10 @@
       <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
+del $(TargetDir)ijjs-cli.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
@@ -353,6 +365,10 @@
       <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
+del $(TargetDir)ijjs-cli.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -362,11 +378,15 @@
       <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(RemoteRootDir)/ijjs/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
       <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
+del $(TargetDir)ijjs-cli.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -381,6 +401,10 @@
       <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
+del $(TargetDir)ijjs-cli.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
@@ -395,6 +419,10 @@
       <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
+del $(TargetDir)ijjs-cli.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
@@ -409,6 +437,10 @@
       <SharedLibrarySearchPath>'$$ORIGIN';%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
+del $(TargetDir)ijjs-cli.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

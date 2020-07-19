@@ -42,17 +42,16 @@ extern "C" {
  */
 #define JEMALLOC_USE_CXX_THROW
 
-#ifdef _MSC_VER
-#  ifdef _WIN64
+
+#if defined(_WIN64) || defined(WIN64) || defined(__amd64__) || \
+	defined(__x86_64) || defined(__x86_64__) || defined(_M_IA64) || \
+	defined(_M_AMD64)
 #    define LG_SIZEOF_PTR_WIN 3
-#  else
+#else
 #    define LG_SIZEOF_PTR_WIN 2
-#  endif
 #endif
-
-/* sizeof(void *) == 2^LG_SIZEOF_PTR. */
-#define LG_SIZEOF_PTR 3
-
+ /* sizeof(void *) == 2^LG_SIZEOF_PTR. */
+#define LG_SIZEOF_PTR LG_SIZEOF_PTR_WIN
 /*
  * Name mangling for public symbols is controlled by --with-mangling and
  * --with-jemalloc-prefix.  With default settings the je_ prefix is stripped by

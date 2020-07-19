@@ -10,7 +10,6 @@ mbedtls 2.23.0
 
 
 osx setup
-linuxµ÷ÊÔ
 linux setup
 
 httpserver

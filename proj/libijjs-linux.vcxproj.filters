@@ -222,9 +222,6 @@
     <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\internal\rb.h">
       <Filter>dummy</Filter>
     </ClInclude>
-    <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\internal\rtree.h">
-      <Filter>dummy</Filter>
-    </ClInclude>
     <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\internal\rtree_tsd.h">
       <Filter>dummy</Filter>
     </ClInclude>
@@ -635,6 +632,9 @@
     </ClInclude>
     <ClInclude Include="..\code\externals\mbedtls\xtea.h">
       <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\jemalloc\include\jemalloc\internal\rtree.h">
+      <Filter>dummy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

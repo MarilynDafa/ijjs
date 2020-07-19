@@ -368,5 +368,8 @@
     <ClInclude Include="..\code\externals\mbedtls\psa_crypto_storage.h">
       <Filter>mbedtls</Filter>
     </ClInclude>
+    <ClInclude Include="..\code\externals\mbedtls\config.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
