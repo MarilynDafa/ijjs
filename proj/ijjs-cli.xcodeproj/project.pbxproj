@@ -78,6 +78,7 @@
 				C77A6263247A169200051CDF /* Sources */,
 				C77A6264247A169200051CDF /* Frameworks */,
 				C77A6265247A169200051CDF /* CopyFiles */,
+				C7065E6F24C7419300276B1C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -119,6 +120,26 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C7065E6F24C7419300276B1C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -R ../bin/osx/libijjs.dylib ../install/packages/org.ifw.ijjs/data\ncp -R ../bin/osx/ijjs-cli ../install/packages/org.ifw.ijjs/data\ncp -R ../lib.ijdom.d.ts ../install/packages/org.ifw.ijjs/data\ncp -R ../lib.ijjs.d.ts ../install/packages/org.ifw.ijjs/data\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C77A6263247A169200051CDF /* Sources */ = {
