@@ -7,4 +7,6 @@ basepath=$(
 set -e
 
 echo "\nexport IJJS=\"${basepath}\"" >> ~/.bash_profile
+echo 'export PATH=$IJJS:$PATH' >> ~/.bash_profile
+echo 'source ~/.bash_profile' >> ~/.zshrc
 source ~/.bash_profile

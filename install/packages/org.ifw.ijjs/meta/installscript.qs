@@ -43,6 +43,6 @@ Component.prototype.createOperations = function()
     	component.addElevatedOperation("EnvironmentVariable","IJJS","@TargetDir@",true);
     }
     else {
-	component.addElevatedOperation("Execute","/bin/sh","@TargetDir@/env.sh");
+	component.addElevatedOperation("Execute","/bin/sh","@TargetDir@/envmac.sh");
     }	
 }
