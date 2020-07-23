@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C77A6266247A169200051CDF"
-               BuildableName = "ijjs-cli"
-               BlueprintName = "ijjscli"
-               ReferencedContainer = "container:ijjscli.xcodeproj">
+               BlueprintIdentifier = "C7189BC624AA4F73003A86B2"
+               BuildableName = "libijjs.a"
+               BlueprintName = "ijjs-ios"
+               ReferencedContainer = "container:ijjs-ios.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,16 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C77A6266247A169200051CDF"
-            BuildableName = "ijjs-cli"
-            BlueprintName = "ijjscli"
-            ReferencedContainer = "container:ijjscli.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C77A6266247A169200051CDF"
-            BuildableName = "ijjs-cli"
-            BlueprintName = "ijjscli"
-            ReferencedContainer = "container:ijjscli.xcodeproj">
+            BlueprintIdentifier = "C7189BC624AA4F73003A86B2"
+            BuildableName = "libijjs.a"
+            BlueprintName = "ijjs-ios"
+            ReferencedContainer = "container:ijjs-ios.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -331,7 +331,7 @@ int main(int argc, char** argv) {
                     exit_code = EXIT_INVALID_ARG;
                     goto exit;
                 }
-                FileItem* file = je_malloc(sizeof(*file));
+                FileItem* file = malloc(sizeof(*file));
                 if (!file) {
                     eprintf("could not allocate memory\n");
                     exit_code = EXIT_FAILURE;
@@ -412,7 +412,7 @@ exit:
     list_for_each_safe(el, el1, &flags.preload_modules) {
         FileItem *file = list_entry(el, FileItem, link);
         list_del(&file->link);
-        je_free(file);
+        free(file);
     }
     if (qrt) {
         ijFreeRuntime(qrt);
