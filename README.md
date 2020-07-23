@@ -28,7 +28,7 @@ this project is inspired by nodejs
 - wasm3
 - quickjs
 - kcp
-- log4c
+- zlog
 - miniz
 - curl
 
