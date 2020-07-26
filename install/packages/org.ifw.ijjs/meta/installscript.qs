@@ -37,10 +37,22 @@ Component.prototype.createOperations = function()
     component.createOperations();
 
     if (systemInfo.productType === "windows") {
-        component.addOperation("CreateShortcut", "@TargetDir@/README.txt", "@StartMenuDir@/README.lnk",
-            "workingDirectory=@TargetDir@", "iconPath=%SystemRoot%/system32/SHELL32.dll",
-            "iconId=2", "description=Open README file");
-    	component.addElevatedOperation("EnvironmentVariable","IJJS","@TargetDir@",true);
+		var winpath = installer.environmentVariable("PATH") + ";" + installer.value("TargetDir");
+		var arr = winpath.split(";");
+		var hash=[];
+	　　for (var i = 0; i < arr.length; i++) {
+	　　　　if(hash.indexOf(arr[i]) === -1){
+	　　　　　　hash.push(arr[i]);
+	　　　　}
+	 　 }
+		var newpath = "";
+		for (var j = 0; j < hash.length; ++j) {
+			newpath += hash[j];
+			if (j != hash.length - 1)
+				newpath += ";";
+		}
+		component.addElevatedOperation("EnvironmentVariable","PATH",newpath,true);
+		component.addElevatedOperation("EnvironmentVariable","IJJS","@TargetDir@",true);
     }
     else {
 	component.addElevatedOperation("Execute","/bin/sh","@TargetDir@/envmac.sh");
