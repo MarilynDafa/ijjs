@@ -106,6 +106,12 @@
       <AdditionalDependencies>libijjs.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
+copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -125,6 +131,12 @@
       <AdditionalDependencies>libijjs.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
+copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -148,6 +160,12 @@
       <AdditionalDependencies>libijjs.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
+copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -171,6 +189,12 @@
       <AdditionalDependencies>libijjs.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
+copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\code\main.c" />

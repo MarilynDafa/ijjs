@@ -313,7 +313,11 @@
     </Link>
     <PostBuildEvent>
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
-del $(TargetDir)ijjs-cli.out</Command>
+del $(TargetDir)ijjs-cli.out
+copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -331,7 +335,11 @@ del $(TargetDir)ijjs-cli.out</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
-del $(TargetDir)ijjs-cli.out</Command>
+del $(TargetDir)ijjs-cli.out
+copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -349,7 +357,11 @@ del $(TargetDir)ijjs-cli.out</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
-del $(TargetDir)ijjs-cli.out</Command>
+del $(TargetDir)ijjs-cli.out
+copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -367,7 +379,11 @@ del $(TargetDir)ijjs-cli.out</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
-del $(TargetDir)ijjs-cli.out</Command>
+del $(TargetDir)ijjs-cli.out
+copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -385,7 +401,11 @@ del $(TargetDir)ijjs-cli.out</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
-del $(TargetDir)ijjs-cli.out</Command>
+del $(TargetDir)ijjs-cli.out
+copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -403,7 +423,11 @@ del $(TargetDir)ijjs-cli.out</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
-del $(TargetDir)ijjs-cli.out</Command>
+del $(TargetDir)ijjs-cli.out
+copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
@@ -421,7 +445,11 @@ del $(TargetDir)ijjs-cli.out</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
-del $(TargetDir)ijjs-cli.out</Command>
+del $(TargetDir)ijjs-cli.out
+copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
@@ -439,7 +467,11 @@ del $(TargetDir)ijjs-cli.out</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
-del $(TargetDir)ijjs-cli.out</Command>
+del $(TargetDir)ijjs-cli.out
+copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
+copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

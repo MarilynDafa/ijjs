@@ -1496,9 +1496,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\curl\config-android.h">
       <Filter>externals\curl</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\include\jemalloc\internal\rtree.h">
-      <Filter>externals\jemalloc</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\jemalloc\include\jemalloc\jemalloc_defs.h">
       <Filter>externals\jemalloc</Filter>
     </ClInclude>
