@@ -33,6 +33,7 @@ extern const IJU32 repl_size;
 
 static IJS32 ijjs__argc = 0;
 static IJAnsi **ijjs__argv = NULL;
+static IJJSRuntime* ijjs__rt = NULL;
 
 
 
@@ -249,7 +250,8 @@ IJJSRuntime* ijNewRuntimeInternal(IJBool is_worker, IJJSRunOptions* options) {
     qrt->builtins.u8array_ctor = JS_GetPropertyStr(qrt->ctx, global_obj, "Uint8Array");
     CHECK_EQ(JS_IsUndefined(qrt->builtins.u8array_ctor), 0);
     JS_FreeValue(qrt->ctx, global_obj);
-    return qrt;
+    ijjs__rt = qrt;
+    return ijjs__rt;
 }
 IJVoid ijFreeRuntime(IJJSRuntime* qrt) {
     uv_close((uv_handle_t*)&qrt->jobs.prepare, NULL);

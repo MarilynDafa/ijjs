@@ -47,6 +47,74 @@ end:
     return m;
 }
 
+typedef JSModuleDef* (JSInitModuleFunc)(JSContext* ctx, const char* module_name);
+JSModuleDef* ijLoadDynamicLibrary(JSContext* ctx, const IJAnsi* module_name) {
+    JSModuleDef* m;
+    JSInitModuleFunc* init;
+    IJAnsi filename[260] = { 0 };
+    strcpy(filename, module_name);
+    IJS32 len = strlen(module_name);
+    for (; len >= 0; len--)
+    {
+        if (filename[len] == '.')
+            break;
+        else
+            filename[len] = 0;
+    }
+#ifdef _WINDOWS
+    strcat(filename, "dll");
+#elif defined(macintosh)
+    strcat(filename, "dylib");
+#else
+    strcat(filename, "so");
+#endif
+    IJAnsi buf[PATH_MAX + 16];
+    uv_fs_t req;
+    uv_fs_realpath(NULL, &req, filename, NULL);
+    pstrcat(buf, sizeof(buf), req.ptr);
+    uv_fs_req_cleanup(&req);
+#ifdef _WINDOWS
+    HMODULE hd = LoadLibraryEx(filename, NULL, LOAD_WITH_ALTERED_SEARCH_PATH);
+    if (!hd) {
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s' as shared library", filename);
+        goto fail;
+    }
+    init = GetProcAddress(hd, "js_init_module");
+    if (!init) {
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s': js_init_module not found", filename);
+        goto fail;
+    }
+    m = init(ctx, filename);
+    if (!m) {
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s': initialization error", filename);
+fail:
+    if (hd)
+        FreeLibrary(hd);
+    return NULL;
+}
+#else
+    IJVoid* hd;
+    hd = dlopen(filename, RTLD_NOW | RTLD_LOCAL);
+    if (!hd) {
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s' as shared library", filename);
+        goto fail;
+    }
+    init = dlsym(hd, "js_init_module");
+    if (!init) {
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s': js_init_module not found", filename);
+        goto fail;
+    }
+    m = init(ctx, filename);
+    if (!m) {
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s': initialization error", filename);
+fail:
+        if (hd)
+            dlclose(hd);
+        return NULL;
+    }
+#endif
+    return m;
+}
 
 JSModuleDef* ijModuleLoader(JSContext* ctx, const IJAnsi* module_name, IJVoid* opaque) {
     static const IJAnsi http[] = "http://";
@@ -60,29 +128,34 @@ JSModuleDef* ijModuleLoader(JSContext* ctx, const IJAnsi* module_name, IJVoid* o
     if (strncmp(http, module_name, strlen(http)) == 0 || strncmp(https, module_name, strlen(https)) == 0) {
         return ijLoadHttp(ctx, module_name);
     }
-    dbuf_init(&dbuf);
-    is_json = has_suffix(module_name, ".json");
-    if (is_json)
-        dbuf_put(&dbuf, (const IJU8 *) json_tpl_start, strlen(json_tpl_start));
-    r = ijLoadFile(ctx, &dbuf, module_name);
-    if (r != 0) {
+    else if (has_suffix(module_name, "dl")) {
+        return ijLoadDynamicLibrary(ctx, module_name);
+    }
+    else {
+        dbuf_init(&dbuf);
+        is_json = has_suffix(module_name, ".json");
+        if (is_json)
+            dbuf_put(&dbuf, (const IJU8*)json_tpl_start, strlen(json_tpl_start));
+        r = ijLoadFile(ctx, &dbuf, module_name);
+        if (r != 0) {
+            dbuf_free(&dbuf);
+            JS_ThrowReferenceError(ctx, "could not load '%s'", module_name);
+            return NULL;
+        }
+        if (is_json)
+            dbuf_put(&dbuf, (const IJU8*)json_tpl_end, strlen(json_tpl_end));
+        dbuf_putc(&dbuf, '\0');
+        func_val = JS_Eval(ctx, (IJAnsi*)dbuf.buf, dbuf.size, module_name, JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
         dbuf_free(&dbuf);
-        JS_ThrowReferenceError(ctx, "could not load '%s'", module_name);
-        return NULL;
-    }
-    if (is_json)
-        dbuf_put(&dbuf, (const IJU8*) json_tpl_end, strlen(json_tpl_end));
-    dbuf_putc(&dbuf, '\0');
-    func_val = JS_Eval(ctx, (IJAnsi*) dbuf.buf, dbuf.size, module_name, JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
-    dbuf_free(&dbuf);
-    if (JS_IsException(func_val)) {
+        if (JS_IsException(func_val)) {
+            JS_FreeValue(ctx, func_val);
+            return NULL;
+        }
+        ijModuleSetImportMeta(ctx, func_val, TRUE, FALSE);
+        m = JS_VALUE_GET_PTR(func_val);
         JS_FreeValue(ctx, func_val);
-        return NULL;
+        return m;
     }
-    ijModuleSetImportMeta(ctx, func_val, TRUE, FALSE);
-    m = JS_VALUE_GET_PTR(func_val);
-    JS_FreeValue(ctx, func_val);
-    return m;
 }
 
 IJS32 ijModuleSetImportMeta(JSContext* ctx, JSValueConst func_val, JS_BOOL use_realpath, JS_BOOL is_main) {

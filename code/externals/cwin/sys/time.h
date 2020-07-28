@@ -1,11 +1,8 @@
 #pragma once
 #include <time.h>
 #if !defined(_SSIZE_T_) && !defined(_SSIZE_T_DEFINED)
-#ifdef _WIN64
-typedef long long          ssize_t;
-#else
-typedef long              ssize_t;
-#endif
+
+typedef intptr_t ssize_t;
 # define SSIZE_MAX INTPTR_MAX
 # define _SSIZE_T_
 # define _SSIZE_T_DEFINED
