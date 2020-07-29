@@ -26,3 +26,4 @@ proj/Debug/libijjs-win32.vcxproj.FileListAbsolute.txt
 *.in
 *.in
 code/externals/jemalloc/include/jemalloc/jemalloc.sh
+tests/test-ss.js

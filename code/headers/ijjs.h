@@ -34,6 +34,11 @@
 #include "list.h"
 #include "zlog/zlog.h"
 #include "jemalloc/jemalloc.h"
+#ifdef _WINDOWS
+#include <io.h>
+#else
+#include <unistd.h>
+#endif
 
 
 typedef struct IJJSRunOptions {

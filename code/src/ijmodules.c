@@ -21,7 +21,21 @@
 
 #include "ijjs.h"
 #include <string.h>
-
+#define HTTP_MODULE 0
+#define DL_MODULE 1
+#define SCRIPT_MODULE 2
+#ifdef _WINDOWS
+#define DL_SUFFIX ".dll"
+#define ACCESS _access
+#elif defined(macintosh)
+#define DL_SUFFIX ".dylib"
+#define ACCESS access
+#else
+#define DL_SUFFIX ".so"
+#define ACCESS access
+#endif
+static const IJAnsi http[] = "http://";
+static const IJAnsi https[] = "https://";
 
 JSModuleDef* ijLoadHttp(JSContext* ctx, const IJAnsi* url) {
     JSModuleDef* m;
@@ -51,42 +65,25 @@ typedef JSModuleDef* (JSInitModuleFunc)(JSContext* ctx, const char* module_name)
 JSModuleDef* ijLoadDynamicLibrary(JSContext* ctx, const IJAnsi* module_name) {
     JSModuleDef* m;
     JSInitModuleFunc* init;
-    IJAnsi filename[260] = { 0 };
-    strcpy(filename, module_name);
-    IJS32 len = strlen(module_name);
-    for (; len >= 0; len--)
-    {
-        if (filename[len] == '.')
-            break;
-        else
-            filename[len] = 0;
-    }
-#ifdef _WINDOWS
-    strcat(filename, "dll");
-#elif defined(macintosh)
-    strcat(filename, "dylib");
-#else
-    strcat(filename, "so");
-#endif
     IJAnsi buf[PATH_MAX + 16];
     uv_fs_t req;
-    uv_fs_realpath(NULL, &req, filename, NULL);
+    uv_fs_realpath(NULL, &req, module_name, NULL);
     pstrcat(buf, sizeof(buf), req.ptr);
     uv_fs_req_cleanup(&req);
 #ifdef _WINDOWS
-    HMODULE hd = LoadLibraryEx(filename, NULL, LOAD_WITH_ALTERED_SEARCH_PATH);
+    HMODULE hd = LoadLibraryEx(module_name, NULL, LOAD_WITH_ALTERED_SEARCH_PATH);
     if (!hd) {
-        JS_ThrowReferenceError(ctx, "could not load module filename '%s' as shared library", filename);
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s' as shared library", module_name);
         goto fail;
     }
     init = GetProcAddress(hd, "js_init_module");
     if (!init) {
-        JS_ThrowReferenceError(ctx, "could not load module filename '%s': js_init_module not found", filename);
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s': js_init_module not found", module_name);
         goto fail;
     }
-    m = init(ctx, filename);
+    m = init(ctx, module_name);
     if (!m) {
-        JS_ThrowReferenceError(ctx, "could not load module filename '%s': initialization error", filename);
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s': initialization error", module_name);
 fail:
     if (hd)
         FreeLibrary(hd);
@@ -94,19 +91,19 @@ fail:
 }
 #else
     IJVoid* hd;
-    hd = dlopen(filename, RTLD_NOW | RTLD_LOCAL);
+    hd = dlopen(module_name, RTLD_NOW | RTLD_LOCAL);
     if (!hd) {
-        JS_ThrowReferenceError(ctx, "could not load module filename '%s' as shared library", filename);
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s' as shared library", module_name);
         goto fail;
     }
     init = dlsym(hd, "js_init_module");
     if (!init) {
-        JS_ThrowReferenceError(ctx, "could not load module filename '%s': js_init_module not found", filename);
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s': js_init_module not found", module_name);
         goto fail;
     }
-    m = init(ctx, filename);
+    m = init(ctx, module_name);
     if (!m) {
-        JS_ThrowReferenceError(ctx, "could not load module filename '%s': initialization error", filename);
+        JS_ThrowReferenceError(ctx, "could not load module filename '%s': initialization error", module_name);
 fail:
         if (hd)
             dlclose(hd);
@@ -117,21 +114,33 @@ fail:
 }
 
 JSModuleDef* ijModuleLoader(JSContext* ctx, const IJAnsi* module_name, IJVoid* opaque) {
-    static const IJAnsi http[] = "http://";
-    static const IJAnsi https[] = "https://";
     static const IJAnsi json_tpl_start[] = "export default JSON.parse(`";
     static const IJAnsi json_tpl_end[] = "`);";
     JSModuleDef* m;
     JSValue func_val;
     IJS32 r, is_json;
     DynBuf dbuf;
-    if (strncmp(http, module_name, strlen(http)) == 0 || strncmp(https, module_name, strlen(https)) == 0) {
-        return ijLoadHttp(ctx, module_name);
-    }
-    else if (has_suffix(module_name, "dl")) {
-        return ijLoadDynamicLibrary(ctx, module_name);
+    IJAnsi dlfile[260] = { 0 };
+    IJS32 type = SCRIPT_MODULE;
+    if (strncmp(http, module_name, strlen(http)) == 0 || strncmp(https, module_name, strlen(https)) == 0)
+        type = HTTP_MODULE;
+    else if (has_suffix(module_name, "js") || has_suffix(module_name, "ts") || has_suffix(module_name, "json"))
+    {
+        type = SCRIPT_MODULE;
     }
     else {
+        strcpy(dlfile, module_name);
+        strcat(dlfile, DL_SUFFIX);
+        if (ACCESS(dlfile, 0) == 0) {
+            type = DL_MODULE;
+        }
+    }
+    switch (type) {
+    case HTTP_MODULE:
+        return ijLoadHttp(ctx, module_name);
+    case DL_MODULE:
+        return ijLoadDynamicLibrary(ctx, dlfile);
+    default:
         dbuf_init(&dbuf);
         is_json = has_suffix(module_name, ".json");
         if (is_json)
@@ -234,8 +243,73 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
     IJAnsi* p;
     const IJAnsi* r;
     IJS32 len;
-    if (name[0] != '.') {
+    if (name[0] == '@') {
         return js_strdup(ctx, name);
+    }
+    else if (strncmp(http, name, strlen(http)) == 0 || strncmp(https, name, strlen(https)) == 0)
+        return js_strdup(ctx, name);
+    else if (name[0] != '.') {
+#if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
+        for (p = base_name; *p; p++) {
+            if (p[0] == '/')
+                p[0] = '\\';
+        }
+#else
+        for (p = base_name; *p; p++) {
+            if (p[0] == '\\')
+                p[0] = '/';
+        }
+#endif
+        p = strrchr(base_name, IJJS__PATHSEP);
+        if (p)
+            len = p - base_name;
+        else
+            len = 0;
+        filename = js_malloc(ctx, len + strlen(name) + 1 + 1);
+        if (!filename)
+            return NULL;
+        memcpy(filename, base_name, len);
+        filename[len] = '\0';
+        r = name;
+        for (;;) {
+            if (r[0] == '.' && r[1] == '/') {
+                r += 2;
+            }
+            else if (r[0] == '.' && r[1] == '.' && r[2] == '/') {
+                if (filename[0] == '\0')
+                    break;
+                p = strrchr(filename, '/');
+                if (!p)
+                    p = filename;
+                else
+                    p++;
+                if (!strcmp(p, ".") || !strcmp(p, ".."))
+                    break;
+                if (p > filename)
+                    p--;
+                *p = '\0';
+                r += 3;
+            }
+            else {
+                break;
+            }
+        }
+        if (filename[0] != '\0')
+            strcat(filename, "/");
+        strcat(filename, "ij_modules/");
+        strcat(filename, r);
+#if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
+        for (p = filename; *p; p++) {
+            if (p[0] == '/')
+                p[0] = '\\';
+        }
+#else
+        for (p = filename; *p; p++) {
+            if (p[0] == '\\')
+                p[0] = '/';
+        }
+#endif
+        return filename;
     }
 #if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
     for (p = base_name; *p; p++) {
@@ -253,7 +327,7 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
         len = p - base_name;
     else
         len = 0;
-    filename = js_malloc(ctx, len + strlen(name) + 1 + 1);
+    filename = js_malloc(ctx, len + strlen(name) + 18);
     if (!filename)
         return NULL;
     memcpy(filename, base_name, len);
