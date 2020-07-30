@@ -66,13 +66,14 @@ static JSValue js_system_info(JSContext* ctx, JSValueConst this_val, IJS32 argc,
             IJAnsi* name = netiflist.data[i];
             if (name) {
                 sigar_net_interface_stat_t netstat;
-                sigar_net_interface_stat_get(g_sigar, name, &netstat);
-                rx += netstat.rx_packets;
-                tx += netstat.tx_packets;
-                rxerr += netstat.rx_errors;
-                txerr += netstat.tx_errors;
-                rxmiss += netstat.rx_dropped;
-                txmiss += netstat.tx_dropped;
+                if (sigar_net_interface_stat_get(g_sigar, name, &netstat) == SIGAR_OK) {
+                    rx += netstat.rx_packets;
+                    tx += netstat.tx_packets;
+                    rxerr += netstat.rx_errors;
+                    txerr += netstat.tx_errors;
+                    rxmiss += netstat.rx_dropped;
+                    txmiss += netstat.tx_dropped;
+                }
             }
         }
         netinfo = JS_NewObjectProto(ctx, JS_NULL);

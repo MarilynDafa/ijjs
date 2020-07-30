@@ -561,11 +561,7 @@ static int net_services_parse(sigar_cache_t *names, char *type)
 
         entry = sigar_cache_get(names, port);
         if (!entry->value) {
-#ifdef WINDOWS
-            entry->value = _strdup(name);
-#else
-            entry->value = strdup(name);
-#endif
+            entry->value = je_strdup(name);
         }
     }
 

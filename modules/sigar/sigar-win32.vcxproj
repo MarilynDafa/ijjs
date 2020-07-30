@@ -98,7 +98,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libijjs.lib;Netapi32.lib;version.lib;ws2_32.lib;Ole32.lib;OleAut32.lib;wbemuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libijjs.lib;ws2_32.lib;Netapi32.lib;version.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
@@ -116,7 +116,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libijjs.lib;Netapi32.lib;version.lib;ws2_32.lib;Ole32.lib;OleAut32.lib;wbemuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libijjs.lib;ws2_32.lib;Netapi32.lib;version.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
@@ -138,7 +138,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libijjs.lib;Netapi32.lib;version.lib;ws2_32.lib;Ole32.lib;OleAut32.lib;wbemuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libijjs.lib;ws2_32.lib;Netapi32.lib;version.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
@@ -160,7 +160,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libijjs.lib;Netapi32.lib;version.lib;ws2_32.lib;Ole32.lib;OleAut32.lib;wbemuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libijjs.lib;ws2_32.lib;Netapi32.lib;version.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
@@ -169,7 +169,7 @@
   <ItemGroup>
     <ClCompile Include="os\win32\peb.c" />
     <ClCompile Include="os\win32\win32_sigar.c" />
-    <ClCompile Include="os\win32\wmi.cpp" />
+    <ClCompile Include="os\win32\wmi.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="os\win32\sigar_os.h" />

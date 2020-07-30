@@ -622,7 +622,7 @@ static int create_fsdev_cache(sigar_t *sigar)
             }
 
             ent = sigar_cache_get(sigar->fsdev, SIGAR_FSDEV_ID(sb));
-            ent->value = strdup(fsp->dev_name);
+            ent->value = je_strdup(fsp->dev_name);
         }
     }
 

@@ -2703,6 +2703,7 @@ sigar_net_interface_list_get(sigar_t* sigar,
             sprintf(name, "eth%d", eth++);
         }
         else {
+            iflist->data[iflist->number++] = NULL;
             continue; /*XXX*/
         }
 

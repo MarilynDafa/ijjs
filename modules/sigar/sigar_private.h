@@ -77,17 +77,14 @@
 #   define SIGAR_INLINE
 #endif
 
-#ifdef DMALLOC
-/* linux has its own strdup macro, make sure we use dmalloc's */
-#define sigar_strdup(s) \
-    dmalloc_strndup(__FILE__, __LINE__, (s), -1, 0)
-#else
-#  ifdef WINDOWS
-#    define sigar_strdup(s) _strdup(s)
-#  else
-#    define sigar_strdup(s) strdup(s)
-#  endif
-#endif
+static char* je_strdup(char* s)
+{
+    char* t = NULL;
+    if (s && (t = (char*)je_malloc( strlen(s) + 1)))
+        strcpy(t, s);
+    return t;
+}
+#    define sigar_strdup(s) je_strdup(s)
 
 #define SIGAR_ZERO(s) \
     memset(s, '\0', sizeof(*(s)))
