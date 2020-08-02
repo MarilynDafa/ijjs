@@ -21,17 +21,23 @@
 #include "quickjs.h"
 #include "cutils.h"
 #include "sigar.h"
-static sigar_t* g_sigar = NULL;
-
+static JSClassID ijjs_sigar_class_id;
+static IJVoid ijSigarFinalizer(JSRuntime* rt, JSValue val) {
+    sigar_t* k = JS_GetOpaque(val, ijjs_sigar_class_id);
+    if (k) {
+        sigar_close(k);
+    }
+}
+static JSClassDef ijjs_sigar_class = { "sigar", .finalizer = ijSigarFinalizer};
 static JSValue js_system_info(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv)
 {
-    if (!g_sigar) sigar_open(&g_sigar);
+    sigar_t* sig = JS_GetOpaque2(ctx, this_val, ijjs_sigar_class_id);
     sigar_cpu_list_t cpulist;
     sigar_cpu_info_list_t cpuinfolist;
     sigar_mem_t mem;
     sigar_net_interface_list_t netiflist;
     JSValue info, cpuinfo, meminfo, netinfo;
-    if (sigar_cpu_list_get(g_sigar, &cpulist) != SIGAR_OK || sigar_cpu_info_list_get(g_sigar, &cpuinfolist)) {
+    if (sigar_cpu_list_get(sig, &cpulist) != SIGAR_OK || sigar_cpu_info_list_get(sig, &cpuinfolist)) {
         cpuinfo = JS_UNDEFINED;
     }
     else {
@@ -47,8 +53,10 @@ static JSValue js_system_info(JSContext* ctx, JSValueConst this_val, IJS32 argc,
             JS_DefinePropertyValueStr(ctx, info, "idle", JS_NewFloat64(ctx, cpu.idle / (IJF64)cpu.total), JS_PROP_C_W_E);
             JS_DefinePropertyValueUint32(ctx, cpuinfo, i, info, JS_PROP_C_W_E);
         }
+        sigar_cpu_list_destroy(sig, &cpulist);
+        sigar_cpu_info_list_destroy(sig, &cpuinfolist);
     }
-    if (sigar_mem_get(g_sigar, &mem) != SIGAR_OK) {
+    if (sigar_mem_get(sig, &mem) != SIGAR_OK) {
         meminfo = JS_UNDEFINED;
     }
     else {
@@ -57,7 +65,7 @@ static JSValue js_system_info(JSContext* ctx, JSValueConst this_val, IJS32 argc,
         JS_DefinePropertyValueStr(ctx, meminfo, "used", JS_NewUint32(ctx, mem.used / 1048576L), JS_PROP_C_W_E);
         JS_DefinePropertyValueStr(ctx, meminfo, "free", JS_NewUint32(ctx, mem.free / 1048576L), JS_PROP_C_W_E);
     }
-    if (sigar_net_interface_list_get(g_sigar, &netiflist) != SIGAR_OK ) {
+    if (sigar_net_interface_list_get(sig, &netiflist) != SIGAR_OK ) {
         netinfo = JS_UNDEFINED;
     }
     else {
@@ -66,7 +74,7 @@ static JSValue js_system_info(JSContext* ctx, JSValueConst this_val, IJS32 argc,
             IJAnsi* name = netiflist.data[i];
             if (name) {
                 sigar_net_interface_stat_t netstat;
-                if (sigar_net_interface_stat_get(g_sigar, name, &netstat) == SIGAR_OK) {
+                if (sigar_net_interface_stat_get(sig, name, &netstat) == SIGAR_OK) {
                     rx += netstat.rx_packets;
                     tx += netstat.tx_packets;
                     rxerr += netstat.rx_errors;
@@ -83,6 +91,7 @@ static JSValue js_system_info(JSContext* ctx, JSValueConst this_val, IJS32 argc,
         JS_DefinePropertyValueStr(ctx, netinfo, "senderr", JS_NewBigUint64(ctx, txerr), JS_PROP_C_W_E);
         JS_DefinePropertyValueStr(ctx, netinfo, "recvdrop", JS_NewBigUint64(ctx, rxmiss), JS_PROP_C_W_E);
         JS_DefinePropertyValueStr(ctx, netinfo, "senddrop", JS_NewBigUint64(ctx, txmiss), JS_PROP_C_W_E);
+        sigar_net_interface_list_destroy(sig, &netiflist);
     }
     info = JS_NewObjectProto(ctx, JS_NULL);
     JS_DefinePropertyValueStr(ctx, info, "cpu", cpuinfo, JS_PROP_C_W_E);
@@ -97,7 +106,19 @@ static const JSCFunctionListEntry module_funcs[] = {
 
 static int module_init(JSContext* ctx, JSModuleDef* m)
 {
-    return JS_SetModuleExportList(ctx, m, module_funcs, countof(module_funcs));
+    JSValue proto, obj;
+    JS_NewClassID(&ijjs_sigar_class_id);
+    JS_NewClass(JS_GetRuntime(ctx), ijjs_sigar_class_id, &ijjs_sigar_class);
+    proto = JS_NewObject(ctx);
+    JS_SetPropertyFunctionList(ctx, proto, module_funcs, countof(module_funcs));
+    JS_SetClassProto(ctx, ijjs_sigar_class_id, proto);
+    obj = JS_NewObjectClass(ctx, ijjs_sigar_class_id);
+    JS_SetPropertyFunctionList(ctx, obj, module_funcs, countof(module_funcs));
+    sigar_t* sig = NULL;
+    sigar_open(&sig);
+    JS_SetOpaque(obj, sig);
+    JS_SetModuleExport(ctx, m, "sigar", obj);
+    return 0;
 }
 
 IJ_API JSModuleDef* js_init_module(JSContext* ctx, const char* module_name)
@@ -106,6 +127,6 @@ IJ_API JSModuleDef* js_init_module(JSContext* ctx, const char* module_name)
     m = JS_NewCModule(ctx, module_name, module_init);
     if (!m)
         return 0;
-    JS_AddModuleExportList(ctx, m, module_funcs, countof(module_funcs));
+    JS_AddModuleExport(ctx, m, "sigar");
     return m;
 }

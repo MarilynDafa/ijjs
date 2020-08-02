@@ -27,15 +27,24 @@
 #ifdef _WINDOWS
 #define DL_SUFFIX ".dll"
 #define ACCESS _access
+#define IJJS__PATHSEP  '\\'
+#define IJJS__PATHSEPS "\\"
 #elif defined(macintosh)
 #define DL_SUFFIX ".dylib"
 #define ACCESS access
+#define IJJS__PATHSEP  '/'
+#define IJJS__PATHSEPS "/"
 #else
 #define DL_SUFFIX ".so"
 #define ACCESS access
+#define IJJS__PATHSEP  '/'
+#define IJJS__PATHSEPS "/"
 #endif
+
 static const IJAnsi http[] = "http://";
 static const IJAnsi https[] = "https://";
+static const IJAnsi json_tpl_start[] = "export default JSON.parse(`";
+static const IJAnsi json_tpl_end[] = "`);";
 
 JSModuleDef* ijLoadHttp(JSContext* ctx, const IJAnsi* url) {
     JSModuleDef* m;
@@ -65,11 +74,6 @@ typedef JSModuleDef* (JSInitModuleFunc)(JSContext* ctx, const char* module_name)
 JSModuleDef* ijLoadDynamicLibrary(JSContext* ctx, const IJAnsi* module_name) {
     JSModuleDef* m;
     JSInitModuleFunc* init;
-    IJAnsi buf[PATH_MAX + 16];
-    uv_fs_t req;
-    uv_fs_realpath(NULL, &req, module_name, NULL);
-    pstrcat(buf, sizeof(buf), req.ptr);
-    uv_fs_req_cleanup(&req);
 #ifdef _WINDOWS
     HMODULE hd = LoadLibraryEx(module_name, NULL, LOAD_WITH_ALTERED_SEARCH_PATH);
     if (!hd) {
@@ -85,10 +89,10 @@ JSModuleDef* ijLoadDynamicLibrary(JSContext* ctx, const IJAnsi* module_name) {
     if (!m) {
         JS_ThrowReferenceError(ctx, "could not load module filename '%s': initialization error", module_name);
 fail:
-    if (hd)
-        FreeLibrary(hd);
-    return NULL;
-}
+        if (hd)
+            FreeLibrary(hd);
+        return NULL;
+    }
 #else
     IJVoid* hd;
     hd = dlopen(module_name, RTLD_NOW | RTLD_LOCAL);
@@ -114,8 +118,6 @@ fail:
 }
 
 JSModuleDef* ijModuleLoader(JSContext* ctx, const IJAnsi* module_name, IJVoid* opaque) {
-    static const IJAnsi json_tpl_start[] = "export default JSON.parse(`";
-    static const IJAnsi json_tpl_end[] = "`);";
     JSModuleDef* m;
     JSValue func_val;
     IJS32 r, is_json;
@@ -210,14 +212,6 @@ IJS32 ijModuleSetImportMeta(JSContext* ctx, JSValueConst func_val, JS_BOOL use_r
     return 0;
 }
 
-#if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
-#define IJJS__PATHSEP  '\\'
-#define IJJS__PATHSEPS "\\"
-#else
-#define IJJS__PATHSEP  '/'
-#define IJJS__PATHSEPS "/"
-#endif
-
 IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi* name, IJVoid* opaque) {
     static IJAnsi* internal_modules[] = {
         "@ijjs/abort-controller",
@@ -249,6 +243,34 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
     else if (strncmp(http, name, strlen(http)) == 0 || strncmp(https, name, strlen(https)) == 0)
         return js_strdup(ctx, name);
     else if (name[0] != '.') {
+        p = strrchr(base_name, IJJS__PATHSEP);
+        if (p)
+            len = p - base_name;
+        else
+            len = 0;
+        filename = js_malloc(ctx, len + strlen(name) + 18);
+        if (!filename)
+            return NULL;
+        memcpy(filename, base_name, len);
+        filename[len] = '\0';
+        if (filename[0] != '\0')
+            strcat(filename, "/");
+        strcat(filename, "ij_modules/");
+        strcat(filename, name);
+#if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
+        for (p = filename; *p; p++) {
+            if (p[0] == '/')
+                p[0] = '\\';
+        }
+#else
+        for (p = filename; *p; p++) {
+            if (p[0] == '\\')
+                p[0] = '/';
+        }
+#endif
+        return filename;
+    }
+    else {
 #if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
         for (p = base_name; *p; p++) {
             if (p[0] == '/')
@@ -265,7 +287,7 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
             len = p - base_name;
         else
             len = 0;
-        filename = js_malloc(ctx, len + strlen(name) + 1 + 1);
+        filename = js_malloc(ctx, len + strlen(name) + 18);
         if (!filename)
             return NULL;
         memcpy(filename, base_name, len);
@@ -296,7 +318,6 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
         }
         if (filename[0] != '\0')
             strcat(filename, "/");
-        strcat(filename, "ij_modules/");
         strcat(filename, r);
 #if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
         for (p = filename; *p; p++) {
@@ -311,64 +332,6 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
 #endif
         return filename;
     }
-#if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
-    for (p = base_name; *p; p++) {
-        if (p[0] == '/')
-            p[0] = '\\';
-    }
-#else
-    for (p = base_name; *p; p++) {
-        if (p[0] == '\\')
-            p[0] = '/';
-    }
-#endif
-    p = strrchr(base_name, IJJS__PATHSEP);
-    if (p)
-        len = p - base_name;
-    else
-        len = 0;
-    filename = js_malloc(ctx, len + strlen(name) + 18);
-    if (!filename)
-        return NULL;
-    memcpy(filename, base_name, len);
-    filename[len] = '\0';
-    r = name;
-    for (;;) {
-        if (r[0] == '.' && r[1] == '/') {
-            r += 2;
-        } else if (r[0] == '.' && r[1] == '.' && r[2] == '/') {
-            if (filename[0] == '\0')
-                break;
-            p = strrchr(filename, '/');
-            if (!p)
-                p = filename;
-            else
-                p++;
-            if (!strcmp(p, ".") || !strcmp(p, ".."))
-                break;
-            if (p > filename)
-                p--;
-            *p = '\0';
-            r += 3;
-        } else {
-            break;
-        }
-    }
-    if (filename[0] != '\0')
-        strcat(filename, "/");
-    strcat(filename, r);
-#if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
-    for (p = filename; *p; p++) {
-        if (p[0] == '/')
-            p[0] = '\\';
-    }
-#else
-    for (p = filename; *p; p++) {
-        if (p[0] == '\\')
-            p[0] = '/';
-    }
-#endif
-    return filename;
 }
 
 #undef IJJS__PATHSEP

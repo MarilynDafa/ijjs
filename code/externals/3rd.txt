@@ -8,7 +8,7 @@ miniz 2.1.0
 zlog 1.2.15
 mbedtls 2.23.0
 
-sigar
+sigar回收 跨平台
 
 httpserver
 redis
