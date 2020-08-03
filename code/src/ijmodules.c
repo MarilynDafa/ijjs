@@ -30,11 +30,13 @@
 #define IJJS__PATHSEP  '\\'
 #define IJJS__PATHSEPS "\\"
 #elif defined(macintosh)
+#include <dlfcn.h>
 #define DL_SUFFIX ".dylib"
 #define ACCESS access
 #define IJJS__PATHSEP  '/'
 #define IJJS__PATHSEPS "/"
 #else
+#include <dlfcn.h>
 #define DL_SUFFIX ".so"
 #define ACCESS access
 #define IJJS__PATHSEP  '/'

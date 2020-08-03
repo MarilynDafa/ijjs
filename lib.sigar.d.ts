@@ -30,4 +30,12 @@ interface SystemInformation {
     readonly memory:MemInfo;
     readonly network:NetInfo;
 }  
-export function sysinfo(): SystemInformation;
+
+
+interface SIGAR {
+    /**
+     * query system infomation
+     */
+    sysinfo(): SystemInformation;
+}
+export var sigar: SIGAR;

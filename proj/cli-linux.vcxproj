@@ -300,7 +300,7 @@
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/cli-linux/code/externals/wasm;/root/projects/cli-linux/code/externals/quickjs;/root/projects/cli-linux/code/externals/curl;/root/projects/cli-linux/code/externals;/root/projects/cli-linux/code/externals/jemalloc/include;/root/projects/cli-linux/code/externals/uv/include;/root/projects/cli-linux/code/externals/uv/src;/root/projects/cli-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;</PreprocessorDefinitions>
@@ -315,14 +315,16 @@
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
-copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
+copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/cli-linux/code/externals/wasm;/root/projects/cli-linux/code/externals/quickjs;/root/projects/cli-linux/code/externals/curl;/root/projects/cli-linux/code/externals;/root/projects/cli-linux/code/externals/jemalloc/include;/root/projects/cli-linux/code/externals/uv/include;/root/projects/cli-linux/code/externals/uv/src;/root/projects/cli-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -337,14 +339,16 @@ copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Comma
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
-copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
+copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/cli-linux/code/externals/wasm;/root/projects/cli-linux/code/externals/quickjs;/root/projects/cli-linux/code/externals/curl;/root/projects/cli-linux/code/externals;/root/projects/cli-linux/code/externals/jemalloc/include;/root/projects/cli-linux/code/externals/uv/include;/root/projects/cli-linux/code/externals/uv/src;/root/projects/cli-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;</PreprocessorDefinitions>
@@ -359,14 +363,16 @@ copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Comma
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
-copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
+copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/cli-linux/code/externals/wasm;/root/projects/cli-linux/code/externals/quickjs;/root/projects/cli-linux/code/externals/curl;/root/projects/cli-linux/code/externals;/root/projects/cli-linux/code/externals/jemalloc/include;/root/projects/cli-linux/code/externals/uv/include;/root/projects/cli-linux/code/externals/uv/src;/root/projects/cli-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -381,14 +387,16 @@ copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Comma
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
-copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
+copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/cli-linux/code/externals/wasm;/root/projects/cli-linux/code/externals/quickjs;/root/projects/cli-linux/code/externals/curl;/root/projects/cli-linux/code/externals;/root/projects/cli-linux/code/externals/jemalloc/include;/root/projects/cli-linux/code/externals/uv/include;/root/projects/cli-linux/code/externals/uv/src;/root/projects/cli-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;</PreprocessorDefinitions>
@@ -403,14 +411,16 @@ copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Comma
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
-copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
+copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/cli-linux/code/externals/wasm;/root/projects/cli-linux/code/externals/quickjs;/root/projects/cli-linux/code/externals/curl;/root/projects/cli-linux/code/externals;/root/projects/cli-linux/code/externals/jemalloc/include;/root/projects/cli-linux/code/externals/uv/include;/root/projects/cli-linux/code/externals/uv/src;/root/projects/cli-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -425,14 +435,16 @@ copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Comma
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
-copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
+copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/cli-linux/code/externals/wasm;/root/projects/cli-linux/code/externals/quickjs;/root/projects/cli-linux/code/externals/curl;/root/projects/cli-linux/code/externals;/root/projects/cli-linux/code/externals/jemalloc/include;/root/projects/cli-linux/code/externals/uv/include;/root/projects/cli-linux/code/externals/uv/src;/root/projects/cli-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;</PreprocessorDefinitions>
@@ -447,14 +459,16 @@ copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Comma
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
-copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
+copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/cli-linux/code/externals/wasm;/root/projects/cli-linux/code/externals/quickjs;/root/projects/cli-linux/code/externals/curl;/root/projects/cli-linux/code/externals;/root/projects/cli-linux/code/externals/jemalloc/include;/root/projects/cli-linux/code/externals/uv/include;/root/projects/cli-linux/code/externals/uv/src;/root/projects/cli-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -469,9 +483,11 @@ copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Comma
       <Command>copy $(TargetDir)ijjs-cli.out $(TargetDir)ijjs-cli
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
+copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
-copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts</Command>
+copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
+copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
