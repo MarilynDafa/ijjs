@@ -144,16 +144,19 @@ const char* launch = "{\r\n\
 const char* tscfg = "{\r\n\
     \"compilerOptions\": {\r\n\
         \"target\" : \"es2017\",\r\n\
-        \"module\" : \"commonjs\",\r\n\
+        \"module\" : \"es6\",\r\n\
         \"strict\" : true,\r\n\
         \"declaration\" : false,\r\n\
         \"removeComments\" : true,\r\n\
         \"outDir\" : \"./dist\",\r\n\
         \"lib\" : [\"es2017\"],\r\n\
         \"sourceMap\" : true,\r\n\
-        \"typeRoots\": [\"./ij_modules/@types\"],\r\n\
+        \"baseUrl\": \"./ij_modules\",\r\n\
+        \"paths\": {\r\n\
+            \"sigar/libsigar\": [\"sigar/libsigar\"],\r\n\
+        },\r\n\
     },\r\n\
-    \"include\": [\"src/**/*\", \"ij_modules/@types/lib.ijdom.d.ts\", \"ij_modules/@types/lib.ijjs.d.ts\"],\r\n\
+    \"include\": [\"src/**/*\", \"ij_modules/**/*\"],\r\n\
     \"exclude\": [\"dist\"]\r\n\
 }";
 
@@ -165,6 +168,9 @@ static void init_project() {
     //2.create ij_modules folder
     MKDIR("ij_modules");
     MKDIR("ij_modules/@types");
+    MKDIR("ij_modules/sigar");
+    MKDIR("ij_modules/redis");
+    MKDIR("ij_modules/postgresql");
     //3.create src folder
     MKDIR("src");
     //4.create dist folder
@@ -188,6 +194,9 @@ static void init_project() {
     char ij[256] = { 0 };
     strcpy(ij, path);
     strcat(ij, "/lib.ijjs.d.ts");
+    char sigar[256] = { 0 };
+    strcpy(sigar, path);
+    strcat(sigar, "/libsigar.d.ts");
     fp = fopen(dom, "rb");
     fseek(fp, 0, SEEK_END);
     int sz = ftell(fp);
@@ -211,11 +220,49 @@ static void init_project() {
     fwrite(buf, 1, sz, fp);
     fclose(fp);
     free(buf);
+    fp = fopen(sigar, "rb");
+    fseek(fp, 0, SEEK_END);
+    sz = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    buf = malloc(sz);
+    fread(buf, 1, sz, fp);
+    fclose(fp);
+    fp = fopen("ij_modules/sigar/libsigar.d.ts", "wb");
+    fwrite(buf, 1, sz, fp);
+    fclose(fp);
+    free(buf);
     //8.create main.ts
     fp = fopen("src/main.ts", "wb");
     fwrite(mainfile, 1, strlen(mainfile), fp);
     fclose(fp);
     printf("ijjs project init successfully\n");
+    //9.copy sigar module
+    char sigardl[256] = { 0 };
+    strcpy(sigardl, path);
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+    strcat(sigardl, "/libsigar.dll");
+#elif defined(__APPLE_CC__)
+    strcat(sigardl, "/libsigar.dylib");
+#elif defined(linux) || defined(__linux) || defined(__linux__)
+    strcat(sigardl, "/libsigar.so");
+#endif
+    fp = fopen(sigardl, "rb");
+    fseek(fp, 0, SEEK_END);
+    sz = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    buf = malloc(sz);
+    fread(buf, 1, sz, fp);
+    fclose(fp);
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+    fp = fopen("ij_modules/sigar/libsigar.dll", "wb");
+#elif defined(__APPLE_CC__)
+    fp = fopen("ij_modules/sigar/libsigar.dylib", "wb");
+#elif defined(linux) || defined(__linux) || defined(__linux__)
+    fp = fopen("ij_modules/sigar/libsigar.so", "wb");
+#endif
+    fwrite(buf, 1, sz, fp);
+    fclose(fp);
+    free(buf);
     return;
 initerror:
     printf("ijjs project init error(ijjs env error)\n");

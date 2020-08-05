@@ -224,11 +224,10 @@
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
-      <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation </AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/linijjs-linux/code/externals/jemalloc;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/sigar-linux/modules/sigar/os/linux;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions>IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -239,9 +238,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/linijjs-linux/code/externals/jemalloc;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/sigar-linux/modules/sigar/os/linux;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions>IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
       <CLanguageStandard>gnu11</CLanguageStandard>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation </AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -252,8 +251,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/linijjs-linux/code/externals/jemalloc;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/sigar-linux/modules/sigar/os/linux;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CLanguageStandard>gnu11</CLanguageStandard>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation </AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -264,9 +264,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/linijjs-linux/code/externals/jemalloc;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/sigar-linux/modules/sigar/os/linux;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions>IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
       <CLanguageStandard>gnu11</CLanguageStandard>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation </AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -277,8 +277,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/linijjs-linux/code/externals/jemalloc;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/sigar-linux/modules/sigar/os/linux;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CLanguageStandard>gnu11</CLanguageStandard>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation </AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -289,9 +290,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/linijjs-linux/code/externals/jemalloc;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/sigar-linux/modules/sigar/os/linux;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions>IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
       <CLanguageStandard>gnu11</CLanguageStandard>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation </AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -302,8 +303,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/linijjs-linux/code/externals/jemalloc;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/sigar-linux/modules/sigar/os/linux;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CLanguageStandard>gnu11</CLanguageStandard>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation </AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -314,8 +316,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
       <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/linijjs-linux/code/externals/jemalloc;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/sigar-linux/modules/sigar/os/linux;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CLanguageStandard>gnu11</CLanguageStandard>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation </AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

@@ -1764,6 +1764,8 @@ int sigar_net_interface_list_get(sigar_t *sigar,
     iflist->data = je_malloc(sizeof(*(iflist->data)) *
                           iflist->size);
 
+    memset(iflist->data, 0, sizeof(*(iflist->data)) *  iflist->size);
+
     ifr = ifc.ifc_req;
     for (n = 0; n < ifc.ifc_len; n += sizeof(struct ifreq), ifr++) {
 #if defined(_AIX) || defined(__osf__) /* pass the bourbon */

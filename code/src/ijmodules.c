@@ -99,11 +99,13 @@ fail:
     IJVoid* hd;
     hd = dlopen(module_name, RTLD_NOW | RTLD_LOCAL);
     if (!hd) {
+        printf("%s\n", dlerror());
         JS_ThrowReferenceError(ctx, "could not load module filename '%s' as shared library", module_name);
         goto fail;
     }
     init = dlsym(hd, "js_init_module");
     if (!init) {
+        printf("%s\n", dlerror());
         JS_ThrowReferenceError(ctx, "could not load module filename '%s': js_init_module not found", module_name);
         goto fail;
     }
@@ -245,9 +247,28 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
     else if (strncmp(http, name, strlen(http)) == 0 || strncmp(https, name, strlen(https)) == 0)
         return js_strdup(ctx, name);
     else if (name[0] != '.') {
+#if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
+        for (p = base_name; *p; p++) {
+            if (p[0] == '/')
+                p[0] = '\\';
+        }
+#else
+        for (p = base_name; *p; p++) {
+            if (p[0] == '\\')
+                p[0] = '/';
+        }
+#endif
+        IJAnsi tmp[260] = { 0 };
         p = strrchr(base_name, IJJS__PATHSEP);
         if (p)
             len = p - base_name;
+        else
+            len = 0;
+        strcpy(tmp, base_name);
+        tmp[len] = '#';
+        p = strrchr(tmp, IJJS__PATHSEP);
+        if (p)
+            len = p - tmp;
         else
             len = 0;
         filename = js_malloc(ctx, len + strlen(name) + 18);
@@ -289,7 +310,7 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
             len = p - base_name;
         else
             len = 0;
-        filename = js_malloc(ctx, len + strlen(name) + 18);
+        filename = js_malloc(ctx, len + strlen(name) + 18 + 5);
         if (!filename)
             return NULL;
         memcpy(filename, base_name, len);
@@ -332,7 +353,13 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
                 p[0] = '/';
         }
 #endif
-        return filename;
+        if (ACCESS(filename, 0) == 0) 
+            return filename;
+        else
+        {
+            strcat(filename, ".js");
+            return filename;
+        }
     }
 }
 

@@ -319,7 +319,7 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -343,7 +343,7 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -367,7 +367,7 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -391,7 +391,7 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -399,7 +399,7 @@ copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Com
       <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/uv/src;/root/projects/libijjs-linux/code/headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
-      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>HAVE_CURL_CONFIG_H;_LARGEFILE_SOURCE;_GNU_SOURCE</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -415,7 +415,7 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -439,7 +439,7 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
@@ -463,7 +463,7 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
@@ -487,7 +487,7 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\lib.sigar.d.ts ..\install\packages\org.ifw.ijjs\data\lib.sigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
