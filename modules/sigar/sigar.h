@@ -21,6 +21,7 @@
 
 #include <limits.h>
 #include "jemalloc/jemalloc.h"
+#include "ijpre.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -95,7 +96,6 @@ typedef long long sigar_int64_t;
 #else
 #   define SIGAR_DECLARE(type) type
 #endif
-
 #if defined(PATH_MAX)
 #   define SIGAR_PATH_MAX PATH_MAX
 #elif defined(MAXPATHLEN)

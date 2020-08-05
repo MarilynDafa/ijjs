@@ -16,7 +16,6 @@
 
 #ifndef SIGAR_OS_H
 #define SIGAR_OS_H
-
 #ifdef DARWIN
 #include <mach/port.h>
 #include <mach/host_info.h>

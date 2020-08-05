@@ -641,6 +641,8 @@ int sigar_net_interface_list_create(sigar_net_interface_list_t *iflist)
     iflist->size = SIGAR_NET_IFLIST_MAX;
     iflist->data = je_malloc(sizeof(*(iflist->data)) *
                           iflist->size);
+    memset(iflist->data, 0,sizeof(*(iflist->data)) *
+           iflist->size);
     return SIGAR_OK;
 }
 
