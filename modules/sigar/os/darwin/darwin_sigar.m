@@ -3460,11 +3460,9 @@ int sigar_os_sys_info_get(sigar_t *sigar,
     SIGAR_SSTRCPY(sysinfo->name, "MacOSX");
     SIGAR_SSTRCPY(sysinfo->vendor_name, "Mac OS X");
     SIGAR_SSTRCPY(sysinfo->vendor, "Apple");
-    struct kern kern;
-    GetKernelVersion(&kern);
-    version_major = kern.version[0];
-    version_minor = kern.version[1];
-    version_fix = kern.version[2];
+    version_major = 10;
+    version_minor = 0;
+    version_fix = 0;
     version = version_fix + (version_minor << 4) + (version_major << 8);
     
     

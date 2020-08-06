@@ -28,7 +28,7 @@
 #include <unistd.h>
 #include <stddef.h>
 #ifndef DARWIN
-#include <sys/sysmacros.h>
+//#include <sys/sysmacros.h>
 #include <strings.h>
 #endif
 #endif

@@ -11,6 +11,13 @@
    <Group
       location = "container:"
       name = "OSX">
+      <Group
+         location = "container:"
+         name = "MODULES">
+         <FileRef
+            location = "group:../modules/sigar/sigar-osx.xcodeproj">
+         </FileRef>
+      </Group>
       <FileRef
          location = "absolute:/Users/zhoubo/Documents/GitHub/ijjs/proj/ijjs-cli.xcodeproj">
       </FileRef>

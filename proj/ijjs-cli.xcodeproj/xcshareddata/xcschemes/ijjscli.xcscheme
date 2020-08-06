@@ -52,7 +52,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/zhoubo/Documents/GitHub/ijjs/tests/test-args.js"
+            argument = "/Users/zhoubo/Documents/GitHub/ijjs/tests/ss.js"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
