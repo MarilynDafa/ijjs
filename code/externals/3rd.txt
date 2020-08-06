@@ -8,8 +8,7 @@ miniz 2.1.0
 zlog 1.2.15
 mbedtls 2.23.0
 
-sigar回收 跨平台
-
-httpserver
+ijdebugger
+cron
 redis
-PostgreSQL  js	
+PostgreSQL	

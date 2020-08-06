@@ -132,6 +132,7 @@ const char* launch = "{\r\n\
             \"request\" : \"launch\",\r\n\
             \"name\" : \"ijjs.launch\",\r\n\
             \"runtimeExecutable\" : \"ijjs-cli\",\r\n\
+            \"cwd\" : \"${workspaceFolder}\",\r\n\
             \"sourceMaps\":true,\r\n\
             \"args\": [\"--stack-size 1048576\"],\r\n\
 			\"localRoot\" : \"${workspaceFolder}/src/\",\r\n\

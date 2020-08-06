@@ -132,6 +132,7 @@ JSModuleDef* ijModuleLoader(JSContext* ctx, const IJAnsi* module_name, IJVoid* o
         type = HTTP_MODULE;
     else if (has_suffix(module_name, "js") || has_suffix(module_name, "ts") || has_suffix(module_name, "json"))
     {
+        strcpy(dlfile, module_name);
         type = SCRIPT_MODULE;
     }
     else {
@@ -139,6 +140,12 @@ JSModuleDef* ijModuleLoader(JSContext* ctx, const IJAnsi* module_name, IJVoid* o
         strcat(dlfile, DL_SUFFIX);
         if (ACCESS(dlfile, 0) == 0) {
             type = DL_MODULE;
+        }
+        else {
+            type = SCRIPT_MODULE;
+            memset(dlfile, 0, sizeof(dlfile));
+            strcpy(dlfile, module_name);
+            strcat(dlfile, ".js");
         }
     }
     switch (type) {
@@ -148,19 +155,19 @@ JSModuleDef* ijModuleLoader(JSContext* ctx, const IJAnsi* module_name, IJVoid* o
         return ijLoadDynamicLibrary(ctx, dlfile);
     default:
         dbuf_init(&dbuf);
-        is_json = has_suffix(module_name, ".json");
+        is_json = has_suffix(dlfile, ".json");
         if (is_json)
             dbuf_put(&dbuf, (const IJU8*)json_tpl_start, strlen(json_tpl_start));
-        r = ijLoadFile(ctx, &dbuf, module_name);
+        r = ijLoadFile(ctx, &dbuf, dlfile);
         if (r != 0) {
             dbuf_free(&dbuf);
-            JS_ThrowReferenceError(ctx, "could not load '%s'", module_name);
+            JS_ThrowReferenceError(ctx, "could not load '%s'", dlfile);
             return NULL;
         }
         if (is_json)
             dbuf_put(&dbuf, (const IJU8*)json_tpl_end, strlen(json_tpl_end));
         dbuf_putc(&dbuf, '\0');
-        func_val = JS_Eval(ctx, (IJAnsi*)dbuf.buf, dbuf.size, module_name, JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
+        func_val = JS_Eval(ctx, (IJAnsi*)dbuf.buf, dbuf.size, dlfile, JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
         dbuf_free(&dbuf);
         if (JS_IsException(func_val)) {
             JS_FreeValue(ctx, func_val);
