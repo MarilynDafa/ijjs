@@ -330,7 +330,7 @@ IJAnsi* ijModuleNormalizer(JSContext* ctx, const IJAnsi* base_name, const IJAnsi
             else if (r[0] == '.' && r[1] == '.' && r[2] == '/') {
                 if (filename[0] == '\0')
                     break;
-                p = strrchr(filename, '/');
+                p = strrchr(filename, IJJS__PATHSEP);
                 if (!p)
                     p = filename;
                 else

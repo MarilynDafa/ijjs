@@ -1,5 +1,5 @@
 jemalloc 5.2.1
-libuv 1.38.0
+libuv 1.38.1
 curl 7.71.0
 wasm3 0.4.7
 quickjs 20200705
@@ -7,8 +7,8 @@ kcp 1.7
 miniz 2.1.0
 zlog 1.2.15
 mbedtls 2.23.0
+js minify https://www.jb51.net/tools/jsmin/index.htm
 
-ijdebugger
-cron
+ijdebugger 无法调试 不结束进程
 redis
 PostgreSQL	
