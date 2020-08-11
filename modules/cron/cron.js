@@ -1,62 +1,481 @@
+var offsets = {"Etc/GMT+12":720,"Pacific/Pago_Pago":660,"Pacific/Midway":660,"Pacific/Honolulu":600,"America/Juneau":540,"America/Los_Angeles":480,"America/Tijuana":480,"America/Phoenix":420,"America/Chihuahua":420,"America/Mazatlan":420,"America/Denver":420,"America/Guatemala":360,"America/Chicago":360,"America/Mexico_City":360,"America/Monterrey":360,"America/Regina":360,"America/Bogota":300,"America/New_York":300,"America/Indiana/Indianapolis":300,"America/Lima":300,"America/Halifax":240,"America/Caracas":240,"America/Guyana":240,"America/La_Paz":240,"America/Puerto_Rico":240,"America/Santiago":240,"America/St_Johns":210,"America/Sao_Paulo":180,"America/Argentina/Buenos_Aires":180,"America/Godthab":180,"America/Montevideo":180,"Atlantic/South_Georgia":120,"Atlantic/Azores":60,"Atlantic/Cape_Verde":60,"Africa/Casablanca":0,"Europe/London":0,"Europe/Lisbon":0,"Africa/Monrovia":0,"Etc/UTC":0,"Europe/Amsterdam":-60,"Europe/Belgrade":-60,"Europe/Berlin":-60,"Europe/Zurich":-60,"Europe/Bratislava":-60,"Europe/Brussels":-60,"Europe/Budapest":-60,"Europe/Copenhagen":-60,"Europe/Dublin":-60,"Europe/Ljubljana":-60,"Europe/Madrid":-60,"Europe/Paris":-60,"Europe/Prague":-60,"Europe/Rome":-60,"Europe/Sarajevo":-60,"Europe/Skopje":-60,"Europe/Stockholm":-60,"Europe/Vienna":-60,"Europe/Warsaw":-60,"Africa/Algiers":-60,"Europe/Zagreb":-60,"Europe/Athens":-120,"Europe/Bucharest":-120,"Africa/Cairo":-120,"Africa/Harare":-120,"Europe/Helsinki":-120,"Asia/Jerusalem":-120,"Europe/Kaliningrad":-120,"Europe/Kiev":-120,"Africa/Johannesburg":-120,"Europe/Riga":-120,"Europe/Sofia":-120,"Europe/Tallinn":-120,"Europe/Vilnius":-120,"Asia/Baghdad":-180,"Europe/Istanbul":-180,"Asia/Kuwait":-180,"Europe/Minsk":-180,"Europe/Moscow":-180,"Africa/Nairobi":-180,"Asia/Riyadh":-180,"Europe/Volgograd":-180,"Asia/Tehran":-210,"Asia/Muscat":-240,"Asia/Baku":-240,"Europe/Samara":-240,"Asia/Tbilisi":-240,"Asia/Yerevan":-240,"Asia/Kabul":-270,"Asia/Yekaterinburg":-300,"Asia/Karachi":-300,"Asia/Tashkent":-300,"Asia/Kolkata":-330,"Asia/Colombo":-330,"Asia/Kathmandu":-345,"Asia/Almaty":-360,"Asia/Dhaka":-360,"Asia/Urumqi":-360,"Asia/Rangoon":-390,"Asia/Bangkok":-420,"Asia/Jakarta":-420,"Asia/Krasnoyarsk":-420,"Asia/Novosibirsk":-420,"Asia/Shanghai":-480,"Asia/Chongqing":-480,"Asia/Hong_Kong":-480,"Asia/Irkutsk":-480,"Asia/Kuala_Lumpur":-480,"Australia/Perth":-480,"Asia/Singapore":-480,"Asia/Taipei":-480,"Asia/Ulaanbaatar":-480,"Asia/Tokyo":-540,"Asia/Seoul":-540,"Asia/Yakutsk":-540,"Australia/Adelaide":-570,"Australia/Darwin":-570,"Australia/Brisbane":-600,"Australia/Melbourne":-600,"Pacific/Guam":-600,"Australia/Hobart":-600,"Pacific/Port_Moresby":-600,"Australia/Sydney":-600,"Asia/Vladivostok":-600,"Asia/Magadan":-660,"Pacific/Noumea":-660,"Pacific/Guadalcanal":-660,"Asia/Srednekolymsk":-660,"Pacific/Auckland":-720,"Pacific/Fiji":-720,"Asia/Kamchatka":-720,"Pacific/Majuro":-720,"Pacific/Chatham":-765,"Pacific/Tongatapu":-780,"Pacific/Apia":-780,"Pacific/Fakaofo":-780}
 
-import moment from'./moment'
-var timeUnits=['second','minute','hour','dayOfMonth','month','dayOfWeek'];function CronTime(source,zone,utcOffset){this.source=source;if(zone){if(moment.tz.names().indexOf(zone)===-1){throw new Error('Invalid timezone.');}
-this.zone=zone;}
-if(typeof utcOffset!=='undefined')this.utcOffset=utcOffset;var that=this;timeUnits.map(function(timeUnit){that[timeUnit]={};});if(this.source instanceof Date||this.source._isAMomentObject){this.source=moment(this.source);this.realDate=true;}else{this._parse();this._verifyParse();}}
-CronTime.constraints=[[0,59],[0,59],[0,23],[1,31],[0,11],[0,6]];CronTime.monthConstraints=[31,29,31,30,31,30,31,31,30,31,30,31];CronTime.parseDefaults=['0','*','*','*','*','*'];CronTime.aliases={jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11,sun:0,mon:1,tue:2,wed:3,thu:4,fri:5,sat:6};CronTime.prototype={_verifyParse:function(){var months=Object.keys(this.month);var ok=false;var lastWrongMonth=NaN;for(var i=0;i<months.length;i++){var m=months[i];var con=CronTime.monthConstraints[parseInt(m,10)];var dsom=Object.keys(this.dayOfMonth);for(var j=0;j<dsom.length;j++){var dom=dsom[j];if(dom<=con){ok=true;}}
-if(!ok){lastWrongMonth=m;console.warn("Month '"+m+"' is limited to '"+con+"' days.");}}
-if(!ok){var con=CronTime.monthConstraints[parseInt(lastWrongMonth,10)];var dsom=Object.keys(this.dayOfMonth);for(var k=0;k<dsom.length;k++){var dom=dsom[k];if(dom>con){delete this.dayOfMonth[dom];var fixedDay=Number(dom)%con;this.dayOfMonth[fixedDay]=true;}}}},sendAt:function(i){var date=this.realDate?this.source:moment();if(this.zone){date=date.tz(this.zone);}
-if(typeof this.utcOffset!=='undefined'){date=date.utcOffset(this.utcOffset);}
-if(this.realDate){const diff=moment().diff(date,'s');if(diff>0){throw new Error('WARNING: Date in past. Will never be fired.');}
-return date;}
-if(isNaN(i)||i<0){date=this._getNextDateFrom(date);return date;}else{var dates=[];for(;i>0;i--){date=this._getNextDateFrom(date);dates.push(moment(date));}
-return dates;}},getTimeout:function(){return Math.max(-1,this.sendAt()-moment());},toString:function(){return this.toJSON().join(' ');},toJSON:function(){var self=this;return timeUnits.map(function(timeName){return self._wcOrAll(timeName);});},_getNextDateFrom:function(start,zone){var date;var firstDate=moment(start).valueOf();if(zone){date=moment(start).tz(zone);}else{date=moment(start);}
-if(!this.realDate){const milliseconds=(start.milliseconds&&start.milliseconds())||(start.getMilliseconds&&start.getMilliseconds())||0;if(milliseconds>0){date.milliseconds(0);date.seconds(date.seconds()+1);}}
-if(date.toString()==='Invalid date'){throw new Error('ERROR: You specified an invalid date.');}
-var timeout=Date.now()+5000;while(true){var diff=date-start;var prevMonth=date.month();var prevDay=date.days();var prevMinute=date.minutes();var prevSeconds=date.seconds();var origDate=new Date(date);if(Date.now()>timeout){throw new Error(`Something went wrong.cron reached maximum iterations.Please open an issue(https:Time Zone:${zone||'""'}-Cron String:${this}-UTC offset:${date.format('Z')}-current Date:${moment().toString()}`);}
-if(!(date.month()in this.month)&&Object.keys(this.month).length!==12){date.add(1,'M');if(date.month()===prevMonth){date.add(1,'M');}
-date.date(1);date.hours(0);date.minutes(0);date.seconds(0);continue;}
-if(!(date.date()in this.dayOfMonth)&&Object.keys(this.dayOfMonth).length!==31&&!(date.day()in this.dayOfWeek&&Object.keys(this.dayOfWeek).length!==7)){date.add(1,'d');if(date.days()===prevDay){date.add(1,'d');}
-date.hours(0);date.minutes(0);date.seconds(0);continue;}
-if(!(date.day()in this.dayOfWeek)&&Object.keys(this.dayOfWeek).length!==7&&!(date.date()in this.dayOfMonth&&Object.keys(this.dayOfMonth).length!==31)){date.add(1,'d');if(date.days()===prevDay){date.add(1,'d');}
-date.hours(0);date.minutes(0);date.seconds(0);if(date<=origDate){date=this._findDST(origDate);}
-continue;}
-if(!(date.hours()in this.hour)&&Object.keys(this.hour).length!==24){origDate=moment(date);var curHour=date.hours();date.hours(date.hours()===23&&diff>86400000?0:date.hours()+1);if(curHour===date.hours()){date.hours(date.hours()+2);}
-date.minutes(0);date.seconds(0);if(date<=origDate){date=this._findDST(origDate);}
-continue;}
-if(!(date.minutes()in this.minute)&&Object.keys(this.minute).length!==60){origDate=moment(date);date.minutes(date.minutes()===59&&diff>60*60*1000?0:date.minutes()+1);date.seconds(0);if(date<=origDate){date=this._findDST(origDate);}
-continue;}
-if(!(date.seconds()in this.second)&&Object.keys(this.second).length!==60){origDate=moment(date);date.seconds(date.seconds()===59&&diff>60*1000?0:date.seconds()+1);if(date<=origDate){date=this._findDST(origDate);}
-continue;}
-if(date.valueOf()===firstDate){date.seconds(date.seconds()+1);continue;}
-break;}
-return date;},_findDST:function(date){var newDate=moment(date);while(newDate<=date){newDate.add(1,'s');}
-return newDate;},_wcOrAll:function(type){if(this._hasAll(type))return'*';var all=[];for(var time in this[type]){all.push(time);}
-return all.join(',');},_hasAll:function(type){var constrain=CronTime.constraints[timeUnits.indexOf(type)];for(var i=constrain[0],n=constrain[1];i<n;i++){if(!(i in this[type]))return false;}
-return true;},_parse:function(){var aliases=CronTime.aliases;var source=this.source.replace(/[a-z]{1,3}/gi,function(alias){alias=alias.toLowerCase();if(alias in aliases){return aliases[alias];}
-throw new Error('Unknown alias: '+alias);});var split=source.replace(/^\s\s*|\s\s*$/g,'').split(/\s+/);var cur;var i=0;var len=timeUnits.length;if(split.length<timeUnits.length-1){throw new Error('Too few fields');}
-if(split.length>timeUnits.length){throw new Error('Too many fields');}
-for(;i<timeUnits.length;i++){cur=split[i-(len-split.length)]||CronTime.parseDefaults[i];this._parseField(cur,timeUnits[i],CronTime.constraints[i]);}},_parseField:function(field,type,constraints){var rangePattern=/^(\d+)(?:-(\d+))?(?:\/(\d+))?$/g;var typeObj=this[type];var pointer;var low=constraints[0];var high=constraints[1];var fields=field.split(',');fields.forEach(function(field){var wildcardIndex=field.indexOf('*');if(wildcardIndex!==-1&&wildcardIndex!==0){throw new Error('Field ('+field+') has an invalid wildcard expression');}});field=field.replace(/\*/g,low+'-'+high);var allRanges=field.split(',');for(var i=0;i<allRanges.length;i++){if(allRanges[i].match(rangePattern)){allRanges[i].replace(rangePattern,function($0,lower,upper,step){lower=parseInt(lower,10);upper=parseInt(upper,10)||undefined;const wasStepDefined=!isNaN(parseInt(step,10));if(step==='0'){throw new Error('Field ('+field+') has a step of zero');}
-step=parseInt(step,10)||1;if(upper&&lower>upper){throw new Error('Field ('+field+') has an invalid range');}
-const outOfRangeError=lower<low||(upper&&upper>high)||(!upper&&lower>high);if(outOfRangeError){throw new Error('Field ('+field+') value is out of range');}
-lower=Math.min(Math.max(low,~~Math.abs(lower)),high);if(upper){upper=Math.min(high,~~Math.abs(upper));}else{upper=wasStepDefined?high:lower;}
-pointer=lower;do{typeObj[pointer]=true;pointer+=step;}while(pointer<=upper);});}else{throw new Error('Field ('+field+') cannot be parsed');}}}};function command2function(cmd){var command;var args;switch(typeof cmd){case'string':args=cmd.split(' ');ijjs.spawn(args);break;case'object':command=cmd&&cmd.command;if(command){var sargs=[];sargs.push(command)
-for(var i=0;i<cmd.args.length;++i)
-sargs.push(cmd.args[i])
-ijjs.spawn(sargs,cmd.options);}
-break;}
-return cmd;}
-function CronJob(cronTime,onTick,onComplete,startNow,timeZone,context,runOnInit,utcOffset,unrefTimeout){var _cronTime=cronTime;var argCount=0;for(var i=0;i<arguments.length;i++){if(arguments[i]!==undefined){argCount++;}}
-if(typeof cronTime!=='string'&&argCount===1){onTick=cronTime.onTick;onComplete=cronTime.onComplete;context=cronTime.context;startNow=cronTime.start||cronTime.startNow||cronTime.startJob;timeZone=cronTime.timeZone;runOnInit=cronTime.runOnInit;_cronTime=cronTime.cronTime;utcOffset=cronTime.utcOffset;unrefTimeout=cronTime.unrefTimeout;}
-this.context=context||this;this._callbacks=[];this.onComplete=command2function(onComplete);this.cronTime=new CronTime(_cronTime,timeZone,utcOffset);this.unrefTimeout=unrefTimeout;addCallback.call(this,command2function(onTick));if(runOnInit){this.lastExecution=new Date();fireOnTick.call(this);}
-if(startNow){start.call(this);}
-return this;}
-var addCallback=function(callback){if(typeof callback==='function')this._callbacks.push(callback);};CronJob.prototype.addCallback=addCallback;CronJob.prototype.setTime=function(time){if(!(time instanceof CronTime))
-throw new Error('time must be an instance of CronTime.');this.stop();this.cronTime=time;};CronJob.prototype.nextDate=function(){return this.cronTime.sendAt();};var fireOnTick=function(){for(var i=this._callbacks.length-1;i>=0;i--)
-this._callbacks[i].call(this.context,this.onComplete);};CronJob.prototype.fireOnTick=fireOnTick;CronJob.prototype.nextDates=function(i){return this.cronTime.sendAt(i);};var start=function(){if(this.running)return;var MAXDELAY=2147483647;var self=this;var timeout=this.cronTime.getTimeout();var remaining=0;var startTime;if(this.cronTime.realDate)this.runOnce=true;function _setTimeout(timeout){startTime=Date.now();self._timeout=setTimeout(callbackWrapper,timeout);if(self.unrefTimeout&&typeof self._timeout.unref==='function'){self._timeout.unref();}}
-function callbackWrapper(){var diff=startTime+timeout-Date.now();if(diff>0){var newTimeout=self.cronTime.getTimeout();if(newTimeout>diff){newTimeout=diff;}
-remaining+=newTimeout;}
-self.lastExecution=new Date();if(remaining){if(remaining>MAXDELAY){remaining-=MAXDELAY;timeout=MAXDELAY;}else{timeout=Math.max(0,remaining);remaining=0;}
-_setTimeout(timeout);}else{self.running=false;if(!self.runOnce)self.start();self.fireOnTick();}}
-if(timeout>=0){this.running=true;if(timeout>MAXDELAY){remaining=timeout-MAXDELAY;timeout=MAXDELAY;}
-_setTimeout(timeout);}else{this.stop();}};CronJob.prototype.start=start;CronJob.prototype.lastDate=function(){return this.lastExecution;};CronJob.prototype.stop=function(){if(this._timeout)clearTimeout(this._timeout);this.running=false;if(typeof this.onComplete==='function')this.onComplete();};export function job(cronTime,onTick,onComplete,startNow,timeZone,context,runOnInit,utcOffset,unrefTimeout){return new CronJob(cronTime,onTick,onComplete,startNow,timeZone,context,runOnInit,utcOffset,unrefTimeout);};export function time(cronTime,timeZone){return new CronTime(cronTime,timeZone);};export function sendAt(cronTime){return time(cronTime).sendAt();};export function timeout(cronTime){return time(cronTime).getTimeout();};export{CronJob,CronTime}
+function offsetOf(timezone){
+    var offset = offsets[timezone];
+    if(offset != undefined && offset != null){
+        return offset;
+    } else {
+        throw Error("Invalid timezone "+ timezone);
+    }
+}
+
+function removeOffset(date){
+    var currentOffset = date.getTimezoneOffset() * -60000;
+    return date.getTime() - currentOffset;
+}
+
+function tz_timeAt(date, timezone){
+    let timeUtc = removeOffset(date);
+    var offset = offsetOf(timezone) * -60000;
+    return new Date(timeUtc + offset);
+}
+
+//!month-names-conversion.js
+var months = ['january', 'february', 'march', 'april', 'may', 'june', 'july',
+    'august', 'september', 'october', 'november', 'december'];
+var shortMonths = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
+    'sep', 'oct', 'nov', 'dec'];
+
+function convertMonthName(expression, items) {
+    for (var i = 0; i < items.length; i++) {
+        expression = expression.replace(new RegExp(items[i], 'gi'), parseInt(i, 10) + 1);
+    }
+    return expression;
+}
+
+function monthNamesConversion(monthExpression) {
+    monthExpression = convertMonthName(monthExpression, months);
+    monthExpression = convertMonthName(monthExpression, shortMonths);
+    return monthExpression;
+}
+
+//!week-day-names-conversion.js
+
+var weekDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday',
+    'friday', 'saturday'];
+var shortWeekDays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+
+function convertWeekDayName(expression, items) {
+    for (var i = 0; i < items.length; i++) {
+        expression = expression.replace(new RegExp(items[i], 'gi'), parseInt(i, 10));
+    }
+    return expression;
+}
+
+function weekDayNamesConversion(expression) {
+    expression = expression.replace('7', '0');
+    expression = convertWeekDayName(expression, weekDays);
+    return convertWeekDayName(expression, shortWeekDays);
+}
+
+//!asterisk-to-range-conversion.js
+
+function convertAsterisk(expression, replecement) {
+    if (expression.indexOf('*') !== -1) {
+        return expression.replace('*', replecement);
+    }
+    return expression;
+}
+
+function convertAsterisksToRanges(expressions) {
+    expressions[0] = convertAsterisk(expressions[0], '0-59');
+    expressions[1] = convertAsterisk(expressions[1], '0-59');
+    expressions[2] = convertAsterisk(expressions[2], '0-23');
+    expressions[3] = convertAsterisk(expressions[3], '1-31');
+    expressions[4] = convertAsterisk(expressions[4], '1-12');
+    expressions[5] = convertAsterisk(expressions[5], '0-6');
+    return expressions;
+}
+
+//!range-conversion.js
+
+function replaceWithRange(expression, text, init, end) {
+
+    var numbers = [];
+    var last = parseInt(end);
+    var first = parseInt(init);
+
+    if (first > last) {
+        last = parseInt(init);
+        first = parseInt(end);
+    }
+
+    for (var i = first; i <= last; i++) {
+        numbers.push(i);
+    }
+
+    return expression.replace(new RegExp(text, 'gi'), numbers.join());
+}
+
+function _convertRange(expression) {
+    var rangeRegEx = /(\d+)\-(\d+)/;
+    var match = rangeRegEx.exec(expression);
+    while (match !== null && match.length > 0) {
+        expression = replaceWithRange(expression, match[0], match[1], match[2]);
+        match = rangeRegEx.exec(expression);
+    }
+    return expression;
+}
+
+function convertRanges(expressions) {
+    for (var i = 0; i < expressions.length; i++) {
+        expressions[i] = _convertRange(expressions[i]);
+    }
+    return expressions;
+}
+
+
+//!step-values-conversion.js
+
+
+function convertSteps(expressions) {
+    var stepValuePattern = /^(.+)\/(\d+)$/;
+    for (var i = 0; i < expressions.length; i++) {
+        var match = stepValuePattern.exec(expressions[i]);
+        var isStepValue = match !== null && match.length > 0;
+        if (isStepValue) {
+            var values = match[1].split(',');
+            var setpValues = [];
+            var divider = parseInt(match[2], 10);
+            for (var j = 0; j <= values.length; j++) {
+                var value = parseInt(values[j], 10);
+                if (value % divider === 0) {
+                    setpValues.push(value);
+                }
+            }
+            expressions[i] = setpValues.join(',');
+        }
+    }
+    return expressions;
+}
+
+
+function appendSeccondExpression(expressions) {
+    if (expressions.length === 5) {
+        return ['0'].concat(expressions);
+    }
+    return expressions;
+}
+
+function removeSpaces(str) {
+    return str.replace(/\s{2,}/g, ' ').trim();
+}
+
+// Function that takes care of normalization.
+function normalizeIntegers(expressions) {
+    for (var i = 0; i < expressions.length; i++) {
+        var numbers = expressions[i].split(',');
+        for (var j = 0; j < numbers.length; j++) {
+            numbers[j] = parseInt(numbers[j]);
+        }
+        expressions[i] = numbers;
+    }
+    return expressions;
+}
+
+//!index.js
+/*
+ * The node-cron core allows only numbers (including multiple numbers e.g 1,2).
+ * This module is going to translate the month names, week day names and ranges
+ * to integers relatives.
+ *
+ * Month names example:
+ *  - expression 0 1 1 January,Sep *
+ *  - Will be translated to 0 1 1 1,9 *
+ *
+ * Week day names example:
+ *  - expression 0 1 1 2 Monday,Sat
+ *  - Will be translated to 0 1 1 1,5 *
+ *
+ * Ranges example:
+ *  - expression 1-5 * * * *
+ *  - Will be translated to 1,2,3,4,5 * * * *
+ */
+function convertExpression(expression) {
+    var expressions = removeSpaces(expression).split(' ');
+    expressions = appendSeccondExpression(expressions);
+    expressions[4] = monthNamesConversion(expressions[4]);
+    expressions[5] = weekDayNamesConversion(expressions[5]);
+    expressions = convertAsterisksToRanges(expressions);
+    expressions = convertRanges(expressions);
+    expressions = convertSteps(expressions);
+
+    expressions = normalizeIntegers(expressions);
+
+    return expressions.join(' ');
+}
+
+//!pattern-validation.js
+
+function isValidExpression(expression, min, max) {
+    var options = expression.split(',');
+    var regexValidation = /^\d+$|^\*$|^\*\/\d+$/;
+    for (var i = 0; i < options.length; i++) {
+        var option = options[i];
+        var optionAsInt = parseInt(options[i], 10);
+        if (optionAsInt < min || optionAsInt > max || !regexValidation.test(option)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function isInvalidSecond(expression) {
+    return !isValidExpression(expression, 0, 59);
+}
+
+function isInvalidMinute(expression) {
+    return !isValidExpression(expression, 0, 59);
+}
+
+function isInvalidHour(expression) {
+    return !isValidExpression(expression, 0, 23);
+}
+
+function isInvalidDayOfMonth(expression) {
+    return !isValidExpression(expression, 1, 31);
+}
+
+function isInvalidMonth(expression) {
+    return !isValidExpression(expression, 1, 12);
+}
+
+function isInvalidWeekDay(expression) {
+    return !isValidExpression(expression, 0, 7);
+}
+
+function validateFields(patterns, executablePatterns) {
+    if (isInvalidSecond(executablePatterns[0])) {
+        throw patterns[0] + ' is a invalid expression for second';
+    }
+
+    if (isInvalidMinute(executablePatterns[1])) {
+        throw patterns[1] + ' is a invalid expression for minute';
+    }
+
+    if (isInvalidHour(executablePatterns[2])) {
+        throw patterns[2] + ' is a invalid expression for hour';
+    }
+
+    if (isInvalidDayOfMonth(executablePatterns[3])) {
+        throw patterns[3] + ' is a invalid expression for day of month';
+    }
+
+    if (isInvalidMonth(executablePatterns[4])) {
+        throw patterns[4] + ' is a invalid expression for month';
+    }
+
+    if (isInvalidWeekDay(executablePatterns[5])) {
+        throw patterns[5] + ' is a invalid expression for week day';
+    }
+}
+
+function validatePattern(pattern) {
+    if (typeof pattern !== 'string') {
+        throw 'pattern must be a string!';
+    }
+
+    var patterns = pattern.split(' ');
+    var executablePattern = convertExpression(pattern);
+    var executablePatterns = executablePattern.split(' ');
+
+    if (patterns.length === 5) {
+        patterns = ['0'].concat(patterns);
+    }
+
+    validateFields(patterns, executablePatterns);
+}
+
+
+//!task.js
+function matchPattern(pattern, value) {
+    if (pattern.indexOf(',') !== -1) {
+        var patterns = pattern.split(',');
+        return patterns.indexOf(value.toString()) !== -1;
+    }
+    return pattern === value.toString();
+}
+
+function mustRun(task, date) {
+    var runInSecond = matchPattern(task.expressions[0], date.getSeconds());
+    var runOnMinute = matchPattern(task.expressions[1], date.getMinutes());
+    var runOnHour = matchPattern(task.expressions[2], date.getHours());
+    var runOnDayOfMonth = matchPattern(task.expressions[3], date.getDate());
+    var runOnMonth = matchPattern(task.expressions[4], date.getMonth() + 1);
+    var runOnDayOfWeek = matchPattern(task.expressions[5], date.getDay());
+
+    var runOnDay = false;
+    var delta = task.initialPattern.length === 6 ? 0 : -1;
+
+    if (task.initialPattern[3 + delta] === '*') {
+        runOnDay = runOnDayOfWeek;
+    } else if (task.initialPattern[5 + delta] === '*') {
+        runOnDay = runOnDayOfMonth;
+    } else {
+        runOnDay = runOnDayOfMonth || runOnDayOfWeek;
+    }
+
+    return runInSecond && runOnMinute && runOnHour && runOnDay && runOnMonth;
+}
+
+function Task(pattern, execution) {
+    validatePattern(pattern);
+    this.initialPattern = pattern.split(' ');
+    this.pattern = convertExpression(pattern);
+    this.execution = execution;
+    this.expressions = this.pattern.split(' ');
+
+    //events.EventEmitter.call(this);
+
+    this.update = (date) => {
+        if (mustRun(this, date)) {
+            new Promise((resolve, reject) => {
+                //this.status = 'started';
+                var ex = this.execution();
+                if (ex instanceof Promise) {
+                    ex.then(resolve).catch(reject);
+                } else {
+                    resolve();
+                }
+            }).then(() => {
+                //this.status = 'done';
+            }).catch((error) => {
+                console.error(error);
+                //this.status = 'failed';
+            });
+        }
+    };
+}
+
+
+//!scheduled-task.js
+
+/**
+* Creates a new scheduled task.
+*
+* @param {Task} task - task to schedule.
+* @param {*} options - task options.
+*/
+function ScheduledTask(task, options) {
+    var timezone = options.timezone;
+
+    /**
+    * Starts updating the task.
+    *
+    * @returns {ScheduledTask} instance of this task.
+    */
+    this.start = () => {
+        this.status = 'scheduled';
+        if (this.task && !this.tick) {
+            this.tick = setTimeout(this.task, 1000 - new Date().getMilliseconds() + 1);
+        }
+
+        return this;
+    };
+
+    /**
+    * Stops updating the task.
+    *
+    * @returns {ScheduledTask} instance of this task.
+    */
+    this.stop = () => {
+        this.status = 'stoped';
+        if (this.tick) {
+            clearTimeout(this.tick);
+            this.tick = null;
+        }
+
+        return this;
+    };
+
+    /**
+    * Returns the current task status.
+    *
+    * @returns {string} current task status.
+    * The return may be:
+    * - scheduled: when a task is scheduled and waiting to be executed.
+    * - running: the task status while the task is executing. 
+    * - stoped: when the task is stoped.
+    * - destroyed: whe the task is destroyed, in that status the task cannot be re-started.
+    * - failed: a task is maker as failed when the previous execution fails.
+    */
+    this.getStatus = () => {
+        return this.status;
+    };
+
+    /**
+    * Destroys the scheduled task.
+    */
+    this.destroy = () => {
+        this.stop();
+        this.status = 'destroyed';
+
+        this.task = null;
+    };
+/*
+    task.on('started', () => {
+        this.status = 'running';
+    });
+
+    task.on('done', () => {
+        this.status = 'scheduled';
+    });
+
+    task.on('failed', () => {
+        this.status = 'failed';
+    });
+*/
+    this.task = () => {
+        var date = new Date();
+        if (timezone) {
+            date = tz_timeAt(date, timezone);
+        }
+        this.tick = setTimeout(this.task, 1000 - date.getMilliseconds() + 1);
+        task.update(date);
+    };
+
+    this.tick = null;
+
+    if (options.scheduled !== false) {
+        this.start();
+    }
+}
+
+
+//!cron.js
+/**
+ * Creates a new task to execute given function when the cron
+ *  expression ticks.
+ *
+ * @param {string} expression - cron expression.
+ * @param {Function} func - task to be executed.
+ * @param {Object} options - a set of options for the scheduled task:
+ *    - scheduled <boolean>: if a schaduled task is ready and running to be 
+ *      performed when the time mach with the cron excpression.
+ *    - timezone <string>: the tiemzone to execute the tasks.
+ * 
+ *    Example: 
+ *    {
+ *      "scheduled": true,
+ *      "timezone": "America/Sao_Paulo"
+ *    } 
+ * 
+ * @returns {ScheduledTask} update function.
+ */
+export function schedule(expression, func, options) {
+    // Added for immediateStart depreciation
+    if (typeof options === 'boolean') {
+        console.warn('DEPRECIATION: imediateStart is deprecated and will be removed soon in favor of the options param.');
+        options = {
+            scheduled: options
+        };
+    }
+
+    if (!options) {
+        options = {
+            scheduled: true
+        };
+    }
+
+    var task = new Task(expression, func);
+    return new ScheduledTask(task, options);
+}
+
+export function validate(expression) {
+    try {
+        validation(expression);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
