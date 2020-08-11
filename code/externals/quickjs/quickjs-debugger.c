@@ -1,16 +1,11 @@
 #include "quickjs-debugger.h"
 #include <time.h>
 #include <math.h>
-#ifdef _WIN32
-#include <winsock2.h>
-#else
 #include <sys/socket.h>
 #include <netinet/in.h>
-#endif
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-#include <ctype.h>
 
 typedef struct DebuggerSuspendedState {
     uint32_t variable_reference_count;
@@ -18,7 +13,7 @@ typedef struct DebuggerSuspendedState {
     JSValue variable_pointers;
     const uint8_t *cur_pc;
 } DebuggerSuspendedState;
-#ifndef DISQJSD
+
 static int js_transport_read_fully(JSDebuggerInfo *info, char *buffer, size_t length) {
     int offset = 0;
     while (offset < length) {
@@ -127,6 +122,7 @@ static inline JS_BOOL JS_IsInteger(JSValueConst v)
     int tag = JS_VALUE_GET_TAG(v);
     return tag == JS_TAG_INT || tag == JS_TAG_BIG_INT;
 }
+
 static void js_debugger_get_variable_type(JSContext *ctx,
         struct DebuggerSuspendedState *state,
         JSValue var, JSValue var_val) {
@@ -203,13 +199,14 @@ static int js_debugger_get_frame(JSContext *ctx, JSValue args) {
 }
 
 static void js_send_stopped_event(JSDebuggerInfo *info, const char *reason) {
-    JSContext *ctx = info->ctx;
+    JSContext *ctx = info->debugging_ctx;
 
     JSValue event = JS_NewObject(ctx);
     // better thread id?
     JS_SetPropertyStr(ctx, event, "type", JS_NewString(ctx, "StoppedEvent"));
     JS_SetPropertyStr(ctx, event, "reason", JS_NewString(ctx, reason));
-    JS_SetPropertyStr(ctx, event, "thread", JS_NewInt64(ctx, (int64_t)ctx));
+    int64_t id = (int64_t)info->ctx;
+    JS_SetPropertyStr(ctx, event, "thread", JS_NewInt64(ctx, id));
     js_transport_send_event(info, event);
 }
 
@@ -383,46 +380,37 @@ static void js_process_request(JSDebuggerInfo *info, struct DebuggerSuspendedSta
     JS_FreeValue(ctx, request);
 }
 
-char *js_debuger_file_normalize(JSContext *ctx, const char *path)
-{
-    if (!path)
-        return NULL;
-
-    char *copy = js_strdup(ctx, path);
-    if (NULL == copy)
-        return NULL;
-    char *ptr = copy;
-    while (*path) {
-        if (*path == '\\') {
-            *ptr++ = '/';
-            while (*path == '\\')
-                path++;
-        } else
-            *ptr++ = tolower(*path++);
-    }
-
-    *ptr = 0;
-    return copy;
-}
-
 static void js_process_breakpoints(JSDebuggerInfo *info, JSValue message) {
     JSContext *ctx = info->ctx;
-
+#define SPLIT_WIN '\\'
+#define SPLIT_UNIX '/'
     // force all functions to reprocess their breakpoints.
     info->breakpoints_dirty_counter++;
 
     JSValue path_property = JS_GetPropertyStr(ctx, message, "path");
     const char *path = JS_ToCString(ctx, path_property);
-   // char *_path = js_debuger_file_normalize(ctx, path);
-    JSValue path_data = JS_GetPropertyStr(ctx, info->breakpoints, path);
+    char _path[260] = { 0 };
+    size_t _pathlen = strlen(path);
+    for (int i = 0; i < _pathlen; ++i) 
+    {
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+        if (path[i] == SPLIT_UNIX)
+            _path[i] = SPLIT_WIN;
+#else
+        if (path[i] == SPLIT_WIN)
+            _path[i] = SPLIT_UNIX;
+#endif
+        else
+            _path[i] = path[i];
+    }
+    JSValue path_data = JS_GetPropertyStr(ctx, info->breakpoints, _path);
 
     if (!JS_IsUndefined(path_data))
         JS_FreeValue(ctx, path_data);
     // use an object to store the breakpoints as a sparse array, basically.
     // this will get resolved into a pc array mirror when its detected as dirty.
     path_data = JS_NewObject(ctx);
-    JS_SetPropertyStr(ctx, info->breakpoints, path, path_data);
-   // js_free(ctx, _path);
+    JS_SetPropertyStr(ctx, info->breakpoints, _path, path_data);
     JS_FreeCString(ctx, path);
     JS_FreeValue(ctx, path_property);
 
@@ -434,10 +422,8 @@ static void js_process_breakpoints(JSDebuggerInfo *info, JSValue message) {
 }
 
 JSValue js_debugger_file_breakpoints(JSContext *ctx, const char* path) {
-    JSDebuggerInfo *info = js_debugger_info(ctx);
-    char *_path = js_debuger_file_normalize(ctx, path);
-    JSValue path_data = JS_GetPropertyStr(ctx, info->breakpoints, _path);
-    js_free(ctx, _path);
+    JSDebuggerInfo *info = js_debugger_info(JS_GetRuntime(ctx));
+    JSValue path_data = JS_GetPropertyStr(ctx, info->breakpoints, path);
     return path_data;    
 }
 
@@ -471,7 +457,7 @@ static int js_process_debugger_messages(JSDebuggerInfo *info, const uint8_t *cur
             }
 
             // extra for null termination (debugger inspect, etc)
-            info->message_buffer = js_malloc(ctx, message_length + 1);
+            info->message_buffer = js_malloc_rt(JS_GetRuntime(ctx), message_length + 1);
             info->message_buffer_length = message_length;
         }
 
@@ -512,25 +498,56 @@ done:
 }
 
 void js_debugger_exception(JSContext *ctx) {
-    JSDebuggerInfo *info = js_debugger_info(ctx);
+    JSDebuggerInfo *info = js_debugger_info(JS_GetRuntime(ctx));
     if (!info->exception_breakpoint)
         return;
     if (info->is_debugging)
         return;
     info->is_debugging = 1;
+    info->ctx = ctx;
     js_send_stopped_event(info, "exception");
     info->is_paused = 1;
     js_process_debugger_messages(info, NULL);
     info->is_debugging = 0;
+    info->ctx = NULL;
+}
+
+static void js_debugger_context_event(JSContext *caller_ctx, const char *reason) {
+    if (!js_debugger_is_transport_connected(JS_GetRuntime(caller_ctx)))
+        return;
+
+    JSDebuggerInfo *info = js_debugger_info(JS_GetRuntime(caller_ctx));
+    if (info->debugging_ctx == caller_ctx)
+        return;
+
+    JSContext *ctx = info->debugging_ctx;
+
+    JSValue event = JS_NewObject(ctx);
+    // better thread id?
+    JS_SetPropertyStr(ctx, event, "type", JS_NewString(ctx, "ThreadEvent"));
+    JS_SetPropertyStr(ctx, event, "reason", JS_NewString(ctx, reason));
+    JS_SetPropertyStr(ctx, event, "thread", JS_NewInt64(ctx, (int64_t)caller_ctx));
+    js_transport_send_event(info, event);
+}
+
+void js_debugger_new_context(JSContext *ctx) {
+    js_debugger_context_event(ctx, "new");
+}
+
+void js_debugger_free_context(JSContext *ctx) {
+    js_debugger_context_event(ctx, "exited");
 }
 
 // in thread check request/response of pending commands.
 // todo: background thread that reads the socket.
 void js_debugger_check(JSContext* ctx, const uint8_t *cur_pc) {
-    JSDebuggerInfo *info = js_debugger_info(ctx);
+    JSDebuggerInfo *info = js_debugger_info(JS_GetRuntime(ctx));
     if (info->is_debugging)
         return;
+    if (info->debugging_ctx == ctx)
+        return;
     info->is_debugging = 1;
+    info->ctx = ctx;
 
     if (!info->attempted_connect) {
         info->attempted_connect = 1;
@@ -547,7 +564,6 @@ void js_debugger_check(JSContext* ctx, const uint8_t *cur_pc) {
 
     if (info->transport_close == NULL)
         goto done;
-
 
     struct JSDebuggerLocation location;
     int depth;
@@ -655,12 +671,13 @@ void js_debugger_check(JSContext* ctx, const uint8_t *cur_pc) {
         goto done;
 
     fail: 
-        js_debugger_free(ctx, info);
+        js_debugger_free(JS_GetRuntime(ctx), info);
     done:
         info->is_debugging = 0;
+        info->ctx = NULL;
 }
 
-void js_debugger_free(JSContext *ctx, JSDebuggerInfo *info) {
+void js_debugger_free(JSRuntime *rt, JSDebuggerInfo *info) {
     if (!info->transport_close)
         return;
 
@@ -668,7 +685,7 @@ void js_debugger_free(JSContext *ctx, JSDebuggerInfo *info) {
     const char* terminated = "{\"type\":\"event\",\"event\":{\"type\":\"terminated\"}}";
     js_transport_write_message_newline(info, terminated, strlen(terminated));
 
-    info->transport_close(ctx, info->transport_udata);
+    info->transport_close(rt, info->transport_udata);
 
     info->transport_read = NULL;
     info->transport_write = NULL;
@@ -676,44 +693,52 @@ void js_debugger_free(JSContext *ctx, JSDebuggerInfo *info) {
     info->transport_close = NULL;
 
     if (info->message_buffer) {
-        js_free(ctx, info->message_buffer);
+        js_free_rt(rt, info->message_buffer);
         info->message_buffer = NULL;
     }
 
-    JS_FreeValue(ctx, info->breakpoints);
+    JS_FreeValue(info->debugging_ctx, info->breakpoints);
+
+    JS_FreeContext(info->debugging_ctx);
+    info->debugging_ctx = NULL;
 }
 
 void js_debugger_attach(
-    JSContext *ctx,
+    JSContext* ctx,
     size_t (*transport_read)(void *udata, char* buffer, size_t length),
     size_t (*transport_write)(void *udata, const char* buffer, size_t length),
     size_t (*transport_peek)(void *udata),
-    void (*transport_close)(JSContext* ctx, void *udata),
+    void (*transport_close)(JSRuntime* rt, void *udata),
     void *udata
 ) {
-    JSDebuggerInfo *info = js_debugger_info(ctx);
-    js_debugger_free(ctx, info);
+    JSRuntime *rt = JS_GetRuntime(ctx);
+    JSDebuggerInfo *info = js_debugger_info(rt);
+    js_debugger_free(rt, info);
 
-    info->ctx = ctx;
+    info->debugging_ctx = JS_NewContext(rt);
     info->transport_read = transport_read;
     info->transport_write = transport_write;
     info->transport_peek = transport_peek;
     info->transport_close = transport_close;
     info->transport_udata = udata;
 
+    JSContext *original_ctx = info->ctx;
+    info->ctx = ctx;
+
     js_send_stopped_event(info, "entry");
 
-    info->breakpoints = JS_NewObject(ctx);
+    info->breakpoints = JS_NewObject(info->debugging_ctx);
     info->is_paused = 1;
 
     js_process_debugger_messages(info, NULL);
+
+    info->ctx = original_ctx;
 }
 
-int js_debugger_is_transport_connected(JSContext *ctx) {
-    return js_debugger_info(ctx)->transport_close != NULL;
+int js_debugger_is_transport_connected(JSRuntime *rt) {
+    return js_debugger_info(rt)->transport_close != NULL;
 }
 
 void js_debugger_cooperate(JSContext *ctx) {
-    js_debugger_info(ctx)->should_peek = 1;
+    js_debugger_info(JS_GetRuntime(ctx))->should_peek = 1;
 }
-#endif

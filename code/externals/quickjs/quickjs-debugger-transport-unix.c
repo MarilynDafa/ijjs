@@ -82,7 +82,7 @@ static size_t js_transport_peek(void *udata) {
     return 1;
 }
 
-static void js_transport_close(JSContext* ctx, void *udata) {
+static void js_transport_close(JSRuntime* rt, void *udata) {
     struct js_transport_data* data = (struct js_transport_data *)udata;
     if (data->handle <= 0)
         return;
@@ -102,11 +102,6 @@ static struct sockaddr_in js_debugger_parse_sockaddr(const char* address) {
     char host_string[256];
     strcpy(host_string, address);
     host_string[port_string - address] = 0;
-    if (host_string[0] == 'l')
-    {
-        memset(host_string, 0, sizeof(host_string));
-        strcpy(host_string, "127.0.0.1");
-    }
 
     struct hostent *host = gethostbyname(host_string);
     assert(host);
@@ -126,9 +121,9 @@ void js_debugger_connect(JSContext *ctx, const char *address) {
     int client = socket(AF_INET, SOCK_STREAM, 0);
     assert(client > 0);
 
-    connect(client, (const struct sockaddr *)&addr, sizeof(addr));
+    !connect(client, (const struct sockaddr *)&addr, sizeof(addr));
 
-    struct js_transport_data *data = (struct js_transport_data *)je_malloc(sizeof(struct js_transport_data));
+    struct js_transport_data *data = (struct js_transport_data *)malloc(sizeof(struct js_transport_data));
     memset(data, 0, sizeof(js_transport_data));
     data->handle = client;
     js_debugger_attach(ctx, js_transport_read, js_transport_write, js_transport_peek, js_transport_close, data);
@@ -141,9 +136,9 @@ void js_debugger_wait_connection(JSContext *ctx, const char* address) {
     assert(server >= 0);
 
     int reuseAddress = 1;
-    setsockopt(server, SOL_SOCKET, SO_REUSEADDR, (const char *) &reuseAddress, sizeof(reuseAddress));
+    setsockopt(server, SOL_SOCKET, SO_REUSEADDR, (const char *) &reuseAddress, sizeof(reuseAddress)) >= 0;
 
-    bind(server, (struct sockaddr *) &addr, sizeof(addr));
+    bind(server, (struct sockaddr *) &addr, sizeof(addr)) >= 0;
 
     listen(server, 1);
 
@@ -154,7 +149,7 @@ void js_debugger_wait_connection(JSContext *ctx, const char* address) {
     assert(client >= 0);
 
     struct js_transport_data *data = (struct js_transport_data *)je_malloc(sizeof(struct js_transport_data));
-    memset(data, 0, sizeof(js_transport_data));
+   memset(data, 0, sizeof(js_transport_data));
     data->handle = client;
     js_debugger_attach(ctx, js_transport_read, js_transport_write, js_transport_peek, js_transport_close, data);
 }

@@ -83,7 +83,7 @@ static size_t js_transport_peek(void *udata) {
     return 1;
 }
 
-static void js_transport_close(JSContext* ctx, void *udata) {
+static void js_transport_close(JSRuntime* rt, void *udata) {
     struct js_transport_data* data = (struct js_transport_data *)udata;
     if (data->handle <= 0)
         return;
@@ -106,11 +106,6 @@ static struct sockaddr_in js_debugger_parse_sockaddr(const char* address) {
     char host_string[256];
     strcpy(host_string, address);
     host_string[port_string - address] = 0;
-    if (host_string[0] == 'l')
-    {
-        memset(host_string, 0, sizeof(host_string));
-        strcpy(host_string, "127.0.0.1");
-    }
 
     struct hostent *host = gethostbyname(host_string);
     assert(host);
