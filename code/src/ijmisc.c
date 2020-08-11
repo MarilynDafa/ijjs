@@ -231,6 +231,7 @@ static JSValue ijPrint(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValu
         JS_FreeCString(ctx, str);
     }
     fputc('\n', f);
+    fflush(f);
     return JS_UNDEFINED;
 }
 
