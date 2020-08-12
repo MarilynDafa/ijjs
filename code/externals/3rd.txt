@@ -9,6 +9,6 @@ zlog 1.2.15
 mbedtls 2.23.0
 js minify https://www.jb51.net/tools/jsmin/index.htm
 
-ijdebugger 断点位置不对 不结束进程
+ijdebugger 断点位置不对
 redis
 PostgreSQL	

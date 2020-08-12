@@ -283,6 +283,9 @@ static void js_process_request(JSDebuggerInfo *info, struct DebuggerSuspendedSta
         JS_FreeValue(ctx, result);
         js_transport_send_response(info, request, body);
     }
+    else if (strcmp("exit", command) == 0) {
+        exit(0);
+    }
     else if (strcmp("stackTrace", command) == 0) {
         JSValue stack_trace = js_debugger_build_backtrace(ctx, state->cur_pc);
         js_transport_send_response(info, request, stack_trace);
@@ -471,6 +474,9 @@ static int js_process_debugger_messages(JSDebuggerInfo *info, const uint8_t *cur
         if (strcmp("request", type) == 0) {
             js_process_request(info, &state, JS_GetPropertyStr(ctx, message, "request"));
             // done_processing = 1;
+        }
+        else if (strcmp("exit", type) == 0) {
+            exit(0);
         }
         else if (strcmp("continue", type) == 0) {
             info->is_paused = 0;
