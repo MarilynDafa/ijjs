@@ -172,6 +172,7 @@ static void init_project() {
     MKDIR("ij_modules/sigar");
     MKDIR("ij_modules/redis");
     MKDIR("ij_modules/postgresql");
+    MKDIR("ij_modules/cron");
     //3.create src folder
     MKDIR("src");
     //4.create dist folder
@@ -261,6 +262,35 @@ static void init_project() {
 #elif defined(linux) || defined(__linux) || defined(__linux__)
     fp = fopen("ij_modules/sigar/libsigar.so", "wb");
 #endif
+    fwrite(buf, 1, sz, fp);
+    fclose(fp);
+    free(buf);
+    //10.copy cron module
+    char cronjs[256] = { 0 };
+    strcpy(cronjs, path);
+    strcat(cronjs, "/cron.js");
+    fp = fopen(cronjs, "rb");
+    fseek(fp, 0, SEEK_END);
+    sz = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    buf = malloc(sz);
+    fread(buf, 1, sz, fp);
+    fclose(fp);
+    fp = fopen("ij_modules/cron/cron.js", "wb");
+    fwrite(buf, 1, sz, fp);
+    fclose(fp);
+    free(buf);
+    char crondts[256] = { 0 };
+    strcpy(crondts, path);
+    strcat(crondts, "/cron.d.ts");
+    fp = fopen(crondts, "rb");
+    fseek(fp, 0, SEEK_END);
+    sz = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    buf = malloc(sz);
+    fread(buf, 1, sz, fp);
+    fclose(fp);
+    fp = fopen("ij_modules/cron/cron.d.ts", "wb");
     fwrite(buf, 1, sz, fp);
     fclose(fp);
     free(buf);
@@ -360,10 +390,6 @@ int main(int argc, char** argv) {
             }
             if (is_longopt(opt, "init")) {
                 init_project();
-                goto exit;
-            }
-            if (is_longopt(opt, "publish")) {
-                compress_project();
                 goto exit;
             }
             if (opt.key == 'h' || is_longopt(opt, "help")) {

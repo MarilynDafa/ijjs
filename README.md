@@ -58,3 +58,8 @@ Android: Visual Studio 2019 + NDK
 * Switch to the debug viewlet and press the gear dropdown.
 * Select the debug environment "ijjs.launch".
 * Press the green 'play' button to start debugging.
+
+## Module Development
+
+* Develop C module, you can refer to sigar module 
+* Develop JS module, you can refer to cron module
