@@ -319,7 +319,9 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -343,7 +345,9 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -367,7 +371,9 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -391,7 +397,9 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -415,7 +423,9 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -439,7 +449,9 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
@@ -463,7 +475,9 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
@@ -487,7 +501,9 @@ copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts</Command>
+copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
