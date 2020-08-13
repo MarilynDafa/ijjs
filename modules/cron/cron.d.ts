@@ -30,6 +30,7 @@ export interface ScheduledTask {
     start: () => this;
     stop: () => this;
     destroy: () => void;
+    getStatus: () => string;
 }
 
 export interface ScheduleOptions {
