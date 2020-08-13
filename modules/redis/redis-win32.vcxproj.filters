@@ -107,9 +107,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="change.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Win32_Interop\dlfcn.c">
       <Filter>Win32_Interop</Filter>
     </ClCompile>

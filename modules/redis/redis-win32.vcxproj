@@ -205,9 +205,6 @@
     <ClInclude Include="Win32_Interop\WS2tcpip.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="change.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\code\externals\cwin\sys\time.c" />
     <ClCompile Include="..\..\code\externals\jemalloc\jemalloc_cpp.cpp" />
     <ClCompile Include="lua\lua.c" />
