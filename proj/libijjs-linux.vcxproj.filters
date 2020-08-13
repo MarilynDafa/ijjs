@@ -710,9 +710,6 @@
     <ClCompile Include="..\code\externals\uv\src\unix\proctitle.c">
       <Filter>uv</Filter>
     </ClCompile>
-    <ClCompile Include="..\code\externals\uv\src\unix\sysinfo-loadavg.c">
-      <Filter>uv</Filter>
-    </ClCompile>
     <ClCompile Include="..\code\externals\mbedtls\aes.c">
       <Filter>mbedtls</Filter>
     </ClCompile>

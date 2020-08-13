@@ -349,7 +349,6 @@
     <ClCompile Include="..\code\externals\uv\src\unix\random-sysctl-linux.c" />
     <ClCompile Include="..\code\externals\uv\src\unix\signal.c" />
     <ClCompile Include="..\code\externals\uv\src\unix\stream.c" />
-    <ClCompile Include="..\code\externals\uv\src\unix\sysinfo-loadavg.c" />
     <ClCompile Include="..\code\externals\uv\src\unix\tcp.c" />
     <ClCompile Include="..\code\externals\uv\src\unix\thread.c" />
     <ClCompile Include="..\code\externals\uv\src\unix\tty.c" />
