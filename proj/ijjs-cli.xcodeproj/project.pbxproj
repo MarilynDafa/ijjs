@@ -137,7 +137,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -R ../bin/osx/libijjs.dylib ../install/packages/org.ifw.ijjs/data\ncp -R ../bin/osx/ijjs-cli ../install/packages/org.ifw.ijjs/data\ncp -R ../lib.ijdom.d.ts ../install/packages/org.ifw.ijjs/data\ncp -R ../lib.ijjs.d.ts ../install/packages/org.ifw.ijjs/data\n";
+			shellScript = "cp -R ../bin/osx/libijjs.dylib ../install/packages/org.ifw.ijjs/data\ncp -R ../bin/osx/libsigar.dylib ../install/packages/org.ifw.ijjs/data\ncp -R ../bin/osx/ijjs-cli ../install/packages/org.ifw.ijjs/data\ncp -R ../lib.ijdom.d.ts ../install/packages/org.ifw.ijjs/data\ncp -R ../lib.ijjs.d.ts ../install/packages/org.ifw.ijjs/data\ncp -R ../libsigar.d.ts ../install/packages/org.ifw.ijjs/data\ncp -R ../modules/cron/cron.js ../install/packages/org.ifw.ijjs/data\ncp -R ../modules/cron/cron.d.ts ../install/packages/org.ifw.ijjs/data\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
