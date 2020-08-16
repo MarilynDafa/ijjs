@@ -71,21 +71,29 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(POSTGRESQL)\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(POSTGRESQL)\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\bin\win32</OutDir>
+    <TargetName>libpostgre</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(POSTGRESQL)\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(POSTGRESQL)\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\bin\win32</OutDir>
+    <TargetName>libpostgre</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(POSTGRESQL)\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(POSTGRESQL)\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\bin\win32</OutDir>
+    <TargetName>libpostgre</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(POSTGRESQL)\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(POSTGRESQL)\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\bin\win32</OutDir>
+    <TargetName>libpostgre</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -93,28 +101,36 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals\quickjs;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\curl;..\..\code\externals\wasm;..\..\code\externals\quickjs;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>libpq.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableUAC>true</EnableUAC>
+      <AdditionalDependencies>libijjs.lib;libpq.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals\quickjs;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\curl;..\..\code\externals\wasm;..\..\code\externals\quickjs;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>libpq.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableUAC>true</EnableUAC>
+      <AdditionalDependencies>libijjs.lib;libpq.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -125,15 +141,19 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals\quickjs;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\curl;..\..\code\externals\wasm;..\..\code\externals\quickjs;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>libpq.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableUAC>true</EnableUAC>
+      <AdditionalDependencies>libijjs.lib;libpq.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -144,15 +164,19 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals\quickjs;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\curl;..\..\code\externals\wasm;..\..\code\externals\quickjs;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>libpq.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableUAC>true</EnableUAC>
+      <AdditionalDependencies>libijjs.lib;libpq.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

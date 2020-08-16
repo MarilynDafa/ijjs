@@ -37,6 +37,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "postgre", "..\modules\postgresql\postgre.vcxitems", "{B167E6D4-F4F1-43B7-99E5-64FD6ED2E9D6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "postgre-win32", "..\modules\postgresql\postgre-win32.vcxproj", "{A9AF641D-C012-4CB1-ACC1-7712545DC824}"
+	ProjectSection(ProjectDependencies) = postProject
+		{449EFAEF-2AA2-4A97-AEB5-D812EC64DECC} = {449EFAEF-2AA2-4A97-AEB5-D812EC64DECC}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cli-win32", "cli-win32.vcxproj", "{0E5D41FA-C553-4085-8FF7-AE3AD8CDBCF8}"
 	ProjectSection(ProjectDependencies) = postProject

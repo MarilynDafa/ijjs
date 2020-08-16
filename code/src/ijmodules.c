@@ -79,7 +79,7 @@ JSModuleDef* ijLoadDynamicLibrary(JSContext* ctx, const IJAnsi* module_name) {
 #ifdef _WINDOWS
     HMODULE hd = LoadLibraryEx(module_name, NULL, LOAD_WITH_ALTERED_SEARCH_PATH);
     if (!hd) {
-        JS_ThrowReferenceError(ctx, "could not load module filename '%s' as shared library", module_name);
+        JS_ThrowReferenceError(ctx, "could not load module filename '%d' as shared library", GetLastError());
         goto fail;
     }
     init = GetProcAddress(hd, "js_init_module");

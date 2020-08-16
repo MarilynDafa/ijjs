@@ -14,11 +14,8 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ijpq.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)util.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)pquv.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)util.h" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ijpg.c">
+      <FileType>CppCode</FileType>
+    </ClCompile>
   </ItemGroup>
 </Project>

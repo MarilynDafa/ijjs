@@ -289,7 +289,7 @@ static JSValue ijWorkerConstructor(JSContext* ctx, JSValueConst new_target, IJS3
     uv_sem_t sem;
     CHECK_EQ(uv_sem_init(&sem, 0), 0);
     IJJSWorkerData worker_data = { .channel_fd = fds[1], .path = path, .sem = &sem, .wrt = NULL };
-    CHECK_EQ(uv_thread_create(&w->tid, ijWorkerEntry, (IJVoid *) &worker_data), 0);
+    CHECK_EQ(uv_thread_create(&w->tid, ijWorkerEntry, (IJVoid*)&worker_data), 0);
     uv_sem_wait(&sem);
     uv_sem_destroy(&sem);
     JS_FreeCString(ctx, path);
