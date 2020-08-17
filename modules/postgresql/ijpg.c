@@ -104,8 +104,7 @@ static IJVoid ijDBConnAfterWorkCb(uv_work_t* req, IJS32 status) {
         arg = JS_UNDEFINED;
     }
     ijSettlePromise(ctx, &dr->result, is_reject, 1, (JSValueConst*)&arg);
-    if (is_reject)
-        js_free(ctx, dr);
+    js_free(ctx, dr);
 }
 static JSValue js_pg_connect(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv)
 {
@@ -150,7 +149,7 @@ static IJVoid ijDBExecWorkCb(uv_work_t* req) {
     CHECK_NOT_NULL(dr);
     JSContext* ctx = dr->ctx;
     PGresult* ret = NULL;
-    if (dr->ext)
+    if (!dr->ext)
         ret = PQexec(g_conn, dr->cmd);
     else
         ret = PQexecParams(g_conn, dr->cmd, dr->params, dr->oids, dr->values, dr->lens, dr->formats, dr->rfmt);
@@ -208,8 +207,7 @@ static IJVoid ijDBExecAfterWorkCb(uv_work_t* req, IJS32 status) {
         is_reject = true;
         ijSettlePromise(ctx, &dr->result, is_reject, 1, (JSValueConst*)&arg);
     }
-    if (is_reject)
-        js_free(ctx, dr);
+    js_free(ctx, dr);
 }
 static JSValue js_pg_exec(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv)
 {
