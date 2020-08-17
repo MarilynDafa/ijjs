@@ -38,21 +38,37 @@ typedef struct {
 }IJJSDBConnReq;
 typedef struct {
     IJAnsi* cmd;
+    IJAnsi** values;
+    IJS32* lens;
+    IJS32* formats;
+    IJS32 rfmt;
+    Oid* oids;
     uv_work_t req;
     JSContext* ctx;
     IJS32 r;
+    IJS32 params;
+    IJBool ext;
     IJJSPromise result;
 }IJJSDBExecReq;
+typedef struct {
+    JSContext* ctx;
+    PGresult* ret;
+} IJJSPGResult;
 static PGconn* g_conn = NULL;
-static PGresult* g_lastResult = NULL;
 static JSClassID ijjs_pg_class_id;
+static JSClassID ijjs_pgresult_class_id;
 static IJVoid ijPgFinalizer(JSRuntime* rt, JSValue val) {
     if (g_conn) {
-        PQclear(g_lastResult);
         PQfinish(g_conn);
     }
 }
+static IJVoid ijPGResultFinalizer(JSRuntime* rt, JSValue val) {
+    IJJSPGResult* f = JS_GetOpaque(val, ijjs_pgresult_class_id);
+    PQclear(f);
+    js_free_rt(rt, f);
+}
 static JSClassDef ijjs_pg_class = { "postgre", .finalizer = ijPgFinalizer };
+static JSClassDef ijjs_pgresult_class = { "PGResult", .finalizer = ijPGResultFinalizer };
 static IJVoid ijDBConnWorkCb(uv_work_t* req) {
     IJJSDBConnReq* dr = req->data;
     CHECK_NOT_NULL(dr);
@@ -79,11 +95,13 @@ static IJVoid ijDBConnAfterWorkCb(uv_work_t* req, IJS32 status) {
         is_reject = true;
     }
     else if (dr->r < 0) {
-        arg = JS_NewInt32(ctx, dr->r);
+        arg = JS_NewError(ctx);
+        JS_DefinePropertyValueStr(ctx, arg, "message", JS_NewString(ctx, "libpg error"), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        JS_DefinePropertyValueStr(ctx, arg, "errno", JS_NewInt32(ctx, dr->r), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
         is_reject = true;
     }
     else {
-        arg = JS_NewInt32(ctx,0);
+        arg = JS_UNDEFINED;
     }
     ijSettlePromise(ctx, &dr->result, is_reject, 1, (JSValueConst*)&arg);
     if (is_reject)
@@ -131,14 +149,45 @@ static IJVoid ijDBExecWorkCb(uv_work_t* req) {
     IJJSDBExecReq* dr = req->data;
     CHECK_NOT_NULL(dr);
     JSContext* ctx = dr->ctx;
-    PGresult* ret = PQexec(g_conn, dr->cmd);
-    if (g_lastResult && ret)
+    PGresult* ret = NULL;
+    if (dr->ext)
+        ret = PQexec(g_conn, dr->cmd);
+    else
+        ret = PQexecParams(g_conn, dr->cmd, dr->params, dr->oids, dr->values, dr->lens, dr->formats, dr->rfmt);
+    if (ret)
     {
-        PQclear(g_lastResult);
-        g_lastResult = ret;
+        IJJSPGResult* r;
+        JSValue obj;
+        obj = JS_NewObjectClass(ctx, ijjs_pgresult_class_id);
+        if (JS_IsException(obj))
+            return;
+        r = js_malloc(ctx, sizeof(*r));
+        if (!r) {
+            JS_FreeValue(ctx, obj);
+            return;
+        }
+        r->ctx = ctx;
+        r->ret = ret;
+        dr->r = 0;
+        ijSettlePromise(ctx, &dr->result, false, 1, (JSValueConst*)&obj);
     }
-    if (ret) dr->r = 0;
     js_free(ctx, dr->cmd);
+    if (dr->ext) {
+        for (IJS32 i = 0; i < dr->params; ++i)
+            js_free(ctx, dr->values[i]);
+        js_free(ctx, dr->values);
+        for (IJS32 i = 0; i < dr->params; ++i)
+            js_free(ctx, dr->lens[i]);
+        js_free(ctx, dr->lens);
+        for (IJS32 i = 0; i < dr->params; ++i)
+            js_free(ctx, dr->formats[i]);
+        js_free(ctx, dr->formats);
+        if (dr->oids) {
+            for (IJS32 i = 0; i < dr->params; ++i)
+                js_free(ctx, dr->oids[i]);
+            js_free(ctx, dr->oids);
+        }
+    }
 }
 
 static IJVoid ijDBExecAfterWorkCb(uv_work_t* req, IJS32 status) {
@@ -150,15 +199,15 @@ static IJVoid ijDBExecAfterWorkCb(uv_work_t* req, IJS32 status) {
     if (status != 0) {
         arg = ijNewError(ctx, status);
         is_reject = true;
+        ijSettlePromise(ctx, &dr->result, is_reject, 1, (JSValueConst*)&arg);
     }
     else if (dr->r < 0) {
-        arg = JS_NewInt32(ctx, dr->r);
+        arg = JS_NewError(ctx);
+        JS_DefinePropertyValueStr(ctx, arg, "message", JS_NewString(ctx, "libpg error"), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        JS_DefinePropertyValueStr(ctx, arg, "errno", JS_NewInt32(ctx, dr->r), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
         is_reject = true;
+        ijSettlePromise(ctx, &dr->result, is_reject, 1, (JSValueConst*)&arg);
     }
-    else {
-        arg = JS_NewInt32(ctx, 0);
-    }
-    ijSettlePromise(ctx, &dr->result, is_reject, 1, (JSValueConst*)&arg);
     if (is_reject)
         js_free(ctx, dr);
 }
@@ -170,6 +219,7 @@ static JSValue js_pg_exec(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSV
     dr->req.data = dr;
     dr->ctx = ctx;
     dr->r = -1;
+    dr->ext = false;
     dr->cmd = JS_ToCString(ctx, argv[0]);
     IJS32 r = uv_queue_work(ijGetLoop(ctx), &dr->req, ijDBExecWorkCb, ijDBExecAfterWorkCb);
     if (r != 0) {
@@ -181,6 +231,62 @@ static JSValue js_pg_exec(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSV
 }
 static JSValue js_pg_execParams(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv)
 {
+    IJJSDBExecReq* dr = js_malloc(ctx, sizeof(*dr));
+    if (!dr)
+        return JS_EXCEPTION;
+    dr->req.data = dr;
+    dr->ctx = ctx;
+    dr->r = -1;
+    dr->cmd = JS_ToCString(ctx, argv[0]);
+    JS_ToInt32(ctx, &dr->params, argv[1]);
+    dr->values = js_malloc(ctx, dr->params * sizeof(IJAnsi*));
+    for (IJS32 i = 0; i < dr->params; ++i) {
+        JSValue v = JS_GetPropertyUint32(ctx, argv[2], i);
+        dr->values[i] = js_strdup(ctx, JS_ToCString(ctx, v));
+    }
+    dr->lens = js_malloc(ctx, dr->params * sizeof(IJS32));
+    for (IJS32 i = 0; i < dr->params; ++i) {
+        JSValue v = JS_GetPropertyUint32(ctx, argv[3], i);
+        JS_ToInt32(ctx, &dr->lens[i], v);
+    }
+    dr->formats = js_malloc(ctx, dr->params * sizeof(IJS32));
+    for (IJS32 i = 0; i < dr->params; ++i) {
+        JSValue v = JS_GetPropertyUint32(ctx, argv[4], i);
+        JS_ToInt32(ctx, &dr->formats[i], v);
+    }
+    JS_ToInt32(ctx, &dr->rfmt, argv[5]);
+    if (JS_IsUndefined(argv[6])) {
+        dr->oids = NULL;
+    }
+    else {
+        dr->oids = js_malloc(ctx, dr->params * sizeof(IJU32));
+        for (IJS32 i = 0; i < dr->params; ++i) {
+            JSValue v = JS_GetPropertyUint32(ctx, argv[6], i);
+            JS_ToUint32(ctx, &dr->oids[i], v);
+        }
+    }
+    dr->ext = true;
+    IJS32 r = uv_queue_work(ijGetLoop(ctx), &dr->req, ijDBExecWorkCb, ijDBExecAfterWorkCb);
+    if (r != 0) {
+        js_free(ctx, dr->cmd);
+        for (IJS32 i = 0; i < dr->params; ++i) 
+            js_free(ctx, dr->values[i]);
+        js_free(ctx, dr->values);
+        for (IJS32 i = 0; i < dr->params; ++i)
+            js_free(ctx, dr->lens[i]);
+        js_free(ctx, dr->lens);
+        for (IJS32 i = 0; i < dr->params; ++i)
+            js_free(ctx, dr->formats[i]);
+        js_free(ctx, dr->formats);
+        if (dr->oids) {
+            for (IJS32 i = 0; i < dr->params; ++i)
+                js_free(ctx, dr->oids[i]);
+            js_free(ctx, dr->oids);
+        }
+        js_free(ctx, dr);
+        return ijThrowErrno(ctx, r);
+    }
+    return ijInitPromise(ctx, &dr->result);
 }
 static JSValue js_pg_prepare(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv)
 {
@@ -226,6 +332,11 @@ static const JSCFunctionListEntry module_funcs[] = {
     JS_CFUNC_DEF("execParams", 2, js_pg_execParams),
     JS_CFUNC_DEF("prepare", 0, js_pg_prepare),
     JS_CFUNC_DEF("execPrepared", 0, js_pg_execPrepared),
+    JS_CFUNC_DEF("cmdStatus", 0, js_pg_cmdStatus),
+    JS_CFUNC_DEF("cmdTuples", 0, js_pg_cmdTuples),
+};
+
+static const JSCFunctionListEntry pgresult_proto_funcs[] = {
     JS_CFUNC_DEF("resultStatus", 0, js_pg_resultStatus),
     JS_CFUNC_DEF("resultError", 0, js_pg_resultError),
     JS_CFUNC_DEF("ntuples", 0, js_pg_ntuples),
@@ -234,13 +345,17 @@ static const JSCFunctionListEntry module_funcs[] = {
     JS_CFUNC_DEF("ftype", 0, js_pg_ftype),
     JS_CFUNC_DEF("value", 0, js_pg_value),
     JS_CFUNC_DEF("isnull", 0, js_pg_isnull),
-    JS_CFUNC_DEF("cmdStatus", 0, js_pg_cmdStatus),
-    JS_CFUNC_DEF("cmdTuples", 0, js_pg_cmdTuples),
 };
+
 
 static int module_init(JSContext* ctx, JSModuleDef* m)
 {
     JSValue proto, obj;
+    JS_NewClassID(&ijjs_pgresult_class_id);
+    JS_NewClass(JS_GetRuntime(ctx), ijjs_pgresult_class_id, &ijjs_pgresult_class);
+    proto = JS_NewObject(ctx);
+    JS_SetPropertyFunctionList(ctx, proto, pgresult_proto_funcs, countof(pgresult_proto_funcs));
+    JS_SetClassProto(ctx, ijjs_pgresult_class_id, proto);
     JS_NewClassID(&ijjs_pg_class_id);
     JS_NewClass(JS_GetRuntime(ctx), ijjs_pg_class_id, &ijjs_pg_class);
     proto = JS_NewObject(ctx);

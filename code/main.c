@@ -153,9 +153,6 @@ const char* tscfg = "{\r\n\
         \"lib\" : [\"es2017\"],\r\n\
         \"sourceMap\" : true,\r\n\
         \"baseUrl\": \"./ij_modules\",\r\n\
-        \"paths\": {\r\n\
-            \"sigar/libsigar\": [\"sigar/libsigar\"],\r\n\
-        },\r\n\
     },\r\n\
     \"include\": [\"src/**/*\", \"ij_modules/**/*\"],\r\n\
     \"exclude\": [\"dist\"]\r\n\
