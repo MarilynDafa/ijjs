@@ -104,7 +104,8 @@ static IJVoid ijDBConnWorkCb(uv_work_t* req) {
     CHECK_NOT_NULL(dr);
     JSContext* ctx = dr->ctx;
     g_conn = PQsetdbLogin(dr->pghost, dr->pgport, dr->pgoptions, dr->pgtty, dr->dbName, dr->login, dr->pwd);
-    if (g_conn) dr->r = 0;
+    if (PQstatus(g_conn) == CONNECTION_OK) dr->r = 0;
+    else g_conn = NULL;
     js_free(ctx, dr->pghost);
     js_free(ctx, dr->pgport);
     js_free(ctx, dr->pgoptions);
@@ -438,6 +439,19 @@ static JSValue js_pg_execPrepared(JSContext* ctx, JSValueConst this_val, IJS32 a
     }
     return ijInitPromise(ctx, &pr->result);
 }
+static JSValue js_pg_notifies(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv)
+{
+    PQconsumeInput(g_conn);
+    PGnotify* notify = PQnotifies(g_conn);
+    if (!notify)
+        return JS_UNDEFINED;
+    JSValue info = JS_NewObjectProto(ctx, JS_NULL);
+    JS_DefinePropertyValueStr(ctx, info, "relname", JS_NewString(ctx, notify->relname), JS_PROP_C_W_E);
+    JS_DefinePropertyValueStr(ctx, info, "extra", JS_NewString(ctx, notify->extra), JS_PROP_C_W_E);
+    JS_DefinePropertyValueStr(ctx, info, "pid", JS_NewUint32(ctx, notify->be_pid), JS_PROP_C_W_E);
+    PQfreemem(notify);
+    return info;
+}
 static JSValue js_pg_serverVersion(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv)
 {
     return JS_NewInt32(ctx, PQserverVersion(g_conn));
@@ -551,6 +565,7 @@ static const JSCFunctionListEntry module_funcs[] = {
     JS_CFUNC_DEF("execParams", 7, js_pg_execParams),
     JS_CFUNC_DEF("prepare", 4, js_pg_prepare),
     JS_CFUNC_DEF("execPrepared", 6, js_pg_execPrepared),
+    JS_CFUNC_DEF("notifies", 0, js_pg_notifies),
     JS_CFUNC_DEF("serverVersion", 0, js_pg_serverVersion),
     JS_CFUNC_DEF("escapeLiteral", 1, js_pg_escapeLiteral),
     JS_CFUNC_DEF("escapeIdentifier", 1, js_pg_escapeIdentifier),

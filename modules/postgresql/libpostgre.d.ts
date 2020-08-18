@@ -11,6 +11,11 @@ interface PGResult{
     value(tup:number, field:number):string;
     isnull(tup:number, field:number):string;
 }
+interface PGNotify{
+    relname: string;
+    extra: string;
+    pid: number;
+}
 
 interface POSTGRESQL {
     /**
@@ -49,6 +54,10 @@ interface POSTGRESQL {
      * exec prepared query
      */
     execPrepared(stmt:string, params:number, values:string[], lengths:number[], formats:number[], resultfmt:number):Promise<PGResult>;
+    /**
+     * Checks for NOTIFY messages 
+     */
+    notifies():PGNotify;
     /**
      *  putting buffers directly into the databse
      */
