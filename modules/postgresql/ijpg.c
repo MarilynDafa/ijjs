@@ -66,6 +66,15 @@ typedef struct {
     IJJSPromise result;
 } IJJSPrepareReq;
 typedef struct {
+    IJAnsi* buffer;
+    IJU32 length;
+    IJS32 type;
+    uv_work_t req;
+    JSContext* ctx;
+    IJS32 r;
+    IJJSPromise result;
+} IJJSCopyReq;
+typedef struct {
     JSContext* ctx;
     PGresult* ret;
 } IJJSPGResult;
@@ -472,17 +481,110 @@ static JSValue js_pg_escapeIdentifier(JSContext* ctx, JSValueConst this_val, IJS
     PQfreemem(result);
     return obj;
 }
+static IJVoid ijDBCopyWorkCb(uv_work_t* req) {
+    IJJSCopyReq* cr = req->data;
+    CHECK_NOT_NULL(cr);
+    JSContext* ctx = cr->ctx;
+    IJS32 ret = 0;
+    switch (cr->type)
+    {
+    case 0:
+        ret = PQputCopyData(g_conn, cr->buffer, cr->length);
+        break;
+    case 1:
+        ret = PQputCopyEnd(g_conn, cr->buffer);
+        break;
+    case 2:
+        cr->length = PQgetCopyData(g_conn, &cr->buffer, 0);
+        cr->r = (cr->length > 0) ? 0 : -1;
+        break;
+    }
+    if (ret >= 0)
+        cr->r = 0;
+    js_free(ctx, cr->buffer);
+}
+static IJVoid ijDBCopyAfterWorkCb(uv_work_t* req, IJS32 status) {
+    IJJSCopyReq* cr = req->data;
+    CHECK_NOT_NULL(cr);
+    JSContext* ctx = cr->ctx;
+    JSValue arg;
+    IJBool is_reject = false;
+    if (status != 0) {
+        arg = ijNewError(ctx, status);
+        is_reject = true;
+        ijSettlePromise(ctx, &cr->result, is_reject, 1, (JSValueConst*)&arg);
+    }
+    else if (cr->r < 0) {
+        arg = JS_NewError(ctx);
+        JS_DefinePropertyValueStr(ctx, arg, "message", JS_NewString(ctx, "libpg error"), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        JS_DefinePropertyValueStr(ctx, arg, "errno", JS_NewInt32(ctx, cr->r), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        is_reject = true;
+        ijSettlePromise(ctx, &cr->result, is_reject, 1, (JSValueConst*)&arg);
+    }
+    else {
+        if (cr->type != 2) 
+            arg = JS_UNDEFINED;
+        else 
+            arg = JS_NewArrayBufferCopy(ctx, cr->buffer, cr->length);
+        ijSettlePromise(ctx, &cr->result, is_reject, 1, (JSValueConst*)&arg);
+    }
+    js_free(ctx, cr);
+}
 static JSValue js_pg_putCopyData(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv)
 {
-    return JS_NewInt32(ctx, PQserverVersion(g_conn));
+    IJJSCopyReq* cr = js_malloc(ctx, sizeof(*cr));
+    if (!cr)
+        return JS_EXCEPTION;
+    cr->req.data = cr;
+    cr->ctx = ctx;
+    cr->r = -1;
+    cr->type = 0;
+    JSValue jlen = JS_GetPropertyStr(ctx, argv[0], "length");
+    JSValue jdata = JS_GetPropertyStr(ctx, argv[0], "buffer");
+    JS_ToInt32(ctx, &cr->length, jlen);
+    cr->buffer = JS_GetArrayBuffer(ctx, &cr->length, jdata);
+    IJS32 r = uv_queue_work(ijGetLoop(ctx), &cr->req, ijDBCopyWorkCb, ijDBCopyAfterWorkCb);
+    if (r != 0) {
+        js_free(ctx, cr);
+        return ijThrowErrno(ctx, r);
+    }
+    return ijInitPromise(ctx, &cr->result);
 }
 static JSValue js_pg_putCopyEnd(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv)
 {
-    return JS_NewInt32(ctx, PQserverVersion(g_conn));
+    IJJSCopyReq* cr = js_malloc(ctx, sizeof(*cr));
+    if (!cr)
+        return JS_EXCEPTION;
+    cr->req.data = cr;
+    cr->ctx = ctx;
+    cr->r = -1;
+    cr->type = 1;
+    cr->buffer = JS_ToCString(ctx, argv[0]);
+    IJS32 r = uv_queue_work(ijGetLoop(ctx), &cr->req, ijDBCopyWorkCb, ijDBCopyAfterWorkCb);
+    if (r != 0) {
+        js_free(ctx, cr->buffer);
+        js_free(ctx, cr);
+        return ijThrowErrno(ctx, r);
+    }
+    return ijInitPromise(ctx, &cr->result);
 }
 static JSValue js_pg_getCopyData(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv)
 {
-    return JS_NewInt32(ctx, PQserverVersion(g_conn));
+    IJJSCopyReq* cr = js_malloc(ctx, sizeof(*cr));
+    if (!cr)
+        return JS_EXCEPTION;
+    cr->req.data = cr;
+    cr->ctx = ctx;
+    cr->r = -1;
+    cr->type = 2;
+    cr->buffer = JS_ToCString(ctx, argv[0]);
+    IJS32 r = uv_queue_work(ijGetLoop(ctx), &cr->req, ijDBCopyWorkCb, ijDBCopyAfterWorkCb);
+    if (r != 0) {
+        js_free(ctx, cr->buffer);
+        js_free(ctx, cr);
+        return ijThrowErrno(ctx, r);
+    }
+    return ijInitPromise(ctx, &cr->result);
 }
 static JSValue js_pg_resultStatus(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv)
 {

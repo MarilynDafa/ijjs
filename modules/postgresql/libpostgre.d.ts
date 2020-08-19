@@ -61,15 +61,15 @@ interface POSTGRESQL {
     /**
      *  putting buffers directly into the databse
      */
-    putCopyData(buffer:Uint8Array):boolean;
+    putCopyData(buffer:Uint8Array):Promise<ijjs.Error>;
     /**
      *  cancel the copy operation
      */
-    putCopyEnd(error?:string):void;
+    putCopyEnd(error?:string):Promise<ijjs.Error>;
     /**
      *  gets copy data
      */
-    getCopyData():Uint8Array;
+    getCopyData():Promise<Uint8Array|ijjs.Error>;
     /**
      *  escapeLiteral function in libpq
      */
