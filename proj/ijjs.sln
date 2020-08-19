@@ -66,6 +66,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qjsc", "qjsc.vcxproj", "{74
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libijjs-android", "libijjs-android.vcxproj", "{124013D9-3522-420D-87BD-01BE579FE7CE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "postgre-linux", "..\modules\postgresql\postgre-linux.vcxproj", "{7B004287-2688-4AA8-AA1F-3D4293142E88}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\modules\redis\redis.vcxitems*{0b124f56-d72c-47dd-8317-1ce028e4de60}*SharedItemsImports = 4
@@ -76,6 +78,7 @@ Global
 		..\modules\sigar\sigar.vcxitems*{47bf1528-f94a-4fdc-8429-27887f9bbfdd}*SharedItemsImports = 4
 		..\modules\redis\redis.vcxitems*{4d62e7b4-d413-4160-9873-ef486aaa5ecf}*SharedItemsImports = 9
 		ijjs.vcxitems*{75c95d74-279d-4117-a2f8-f3b9dc77b20d}*SharedItemsImports = 4
+		..\modules\postgresql\postgre.vcxitems*{7b004287-2688-4aa8-aa1f-3d4293142e88}*SharedItemsImports = 4
 		..\modules\sigar\sigar.vcxitems*{7c631899-2877-4562-b554-bf029fc9d73f}*SharedItemsImports = 4
 		..\modules\postgresql\postgre.vcxitems*{a9af641d-c012-4cb1-acc1-7712545dc824}*SharedItemsImports = 4
 		..\modules\postgresql\postgre.vcxitems*{b167e6d4-f4f1-43b7-99e5-64fd6ed2e9d6}*SharedItemsImports = 9
@@ -276,6 +279,30 @@ Global
 		{124013D9-3522-420D-87BD-01BE579FE7CE}.Release|x64.Build.0 = Release|x64
 		{124013D9-3522-420D-87BD-01BE579FE7CE}.Release|x86.ActiveCfg = Release|x86
 		{124013D9-3522-420D-87BD-01BE579FE7CE}.Release|x86.Build.0 = Release|x86
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|ARM.ActiveCfg = Debug|ARM
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|ARM.Build.0 = Debug|ARM
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|ARM.Deploy.0 = Debug|ARM
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|ARM64.Build.0 = Debug|ARM64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|x64.ActiveCfg = Debug|x64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|x64.Build.0 = Debug|x64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|x64.Deploy.0 = Debug|x64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|x86.ActiveCfg = Debug|x86
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|x86.Build.0 = Debug|x86
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Debug|x86.Deploy.0 = Debug|x86
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|ARM.ActiveCfg = Release|ARM
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|ARM.Build.0 = Release|ARM
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|ARM.Deploy.0 = Release|ARM
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|ARM64.ActiveCfg = Release|ARM64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|ARM64.Build.0 = Release|ARM64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|ARM64.Deploy.0 = Release|ARM64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|x64.ActiveCfg = Release|x64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|x64.Build.0 = Release|x64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|x64.Deploy.0 = Release|x64
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|x86.ActiveCfg = Release|x86
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|x86.Build.0 = Release|x86
+		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -296,6 +323,7 @@ Global
 		{7C631899-2877-4562-B554-BF029FC9D73F} = {C0BF1A60-63FF-4C60-B824-3AE9FA16C06E}
 		{0B124F56-D72C-47DD-8317-1CE028E4DE60} = {C0BF1A60-63FF-4C60-B824-3AE9FA16C06E}
 		{124013D9-3522-420D-87BD-01BE579FE7CE} = {E3C1DC79-9C43-4FA0-BB0E-29A8F58F41D5}
+		{7B004287-2688-4AA8-AA1F-3D4293142E88} = {C0BF1A60-63FF-4C60-B824-3AE9FA16C06E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4BEE78A6-AF26-40F1-AEF5-C14F2321CB3F}
