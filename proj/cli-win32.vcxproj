@@ -112,10 +112,12 @@
     <PostBuildEvent>
       <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
 copy $(OutDir)libsigar.dll ..\install\packages\org.ifw.ijjs\data\libsigar.dll
+copy $(OutDir)libpostgre.dll ..\install\packages\org.ifw.ijjs\data\libpostgre.dll
 copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
@@ -141,10 +143,12 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
     <PostBuildEvent>
       <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
 copy $(OutDir)libsigar.dll ..\install\packages\org.ifw.ijjs\data\libsigar.dll
+copy $(OutDir)libpostgre.dll ..\install\packages\org.ifw.ijjs\data\libpostgre.dll
 copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
@@ -174,10 +178,12 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
     <PostBuildEvent>
       <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
 copy $(OutDir)libsigar.dll ..\install\packages\org.ifw.ijjs\data\libsigar.dll
+copy $(OutDir)libpostgre.dll ..\install\packages\org.ifw.ijjs\data\libpostgre.dll
 copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
@@ -207,10 +213,12 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
     <PostBuildEvent>
       <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
 copy $(OutDir)libsigar.dll ..\install\packages\org.ifw.ijjs\data\libsigar.dll
+copy $(OutDir)libpostgre.dll ..\install\packages\org.ifw.ijjs\data\libpostgre.dll
 copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>

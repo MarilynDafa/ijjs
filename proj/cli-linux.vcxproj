@@ -316,10 +316,12 @@
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
 copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
+copy $(TargetDir)libpostgre.so ..\install\packages\org.ifw.ijjs\data\libpostgre.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
@@ -342,10 +344,12 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
 copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
+copy $(TargetDir)libpostgre.so ..\install\packages\org.ifw.ijjs\data\libpostgre.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
@@ -368,10 +372,12 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
 copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
+copy $(TargetDir)libpostgre.so ..\install\packages\org.ifw.ijjs\data\libpostgre.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
@@ -394,10 +400,12 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
 copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
+copy $(TargetDir)libpostgre.so ..\install\packages\org.ifw.ijjs\data\libpostgre.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
@@ -420,10 +428,12 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
 copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
+copy $(TargetDir)libpostgre.so ..\install\packages\org.ifw.ijjs\data\libpostgre.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
@@ -446,10 +456,12 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
 copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
+copy $(TargetDir)libpostgre.so ..\install\packages\org.ifw.ijjs\data\libpostgre.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
@@ -472,10 +484,12 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
 copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
+copy $(TargetDir)libpostgre.so ..\install\packages\org.ifw.ijjs\data\libpostgre.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>
@@ -498,10 +512,12 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
 del $(TargetDir)ijjs-cli.out
 copy $(TargetDir)libijjs.so ..\install\packages\org.ifw.ijjs\data\libijjs.so
 copy $(TargetDir)libsigar.so ..\install\packages\org.ifw.ijjs\data\libsigar.so
+copy $(TargetDir)libpostgre.so ..\install\packages\org.ifw.ijjs\data\libpostgre.so
 copy $(TargetDir)ijjs-cli ..\install\packages\org.ifw.ijjs\data\ijjs-cli
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
-copy ..\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
+copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
+copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
 copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
     </PostBuildEvent>

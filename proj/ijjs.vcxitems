@@ -277,7 +277,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\code\src\ijxhr.c" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="$(MSBuildThisFileDirectory)..\code\externals\3rd.txt" />
     <Text Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\change.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -503,5 +502,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\externals\zlog\zlog.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\ijjs.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\code\headers\ijpre.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)..\code\externals\3rd" />
   </ItemGroup>
 </Project>

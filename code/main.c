@@ -196,6 +196,9 @@ static void init_project() {
     char sigar[256] = { 0 };
     strcpy(sigar, path);
     strcat(sigar, "/libsigar.d.ts");
+    char postgre[256] = { 0 };
+    strcpy(postgre, path);
+    strcat(postgre, "/libpostgre.d.ts");
     fp = fopen(dom, "rb");
     fseek(fp, 0, SEEK_END);
     int sz = ftell(fp);
@@ -227,6 +230,17 @@ static void init_project() {
     fread(buf, 1, sz, fp);
     fclose(fp);
     fp = fopen("ij_modules/sigar/libsigar.d.ts", "wb");
+    fwrite(buf, 1, sz, fp);
+    fclose(fp);
+    free(buf);
+    fp = fopen(postgre, "rb");
+    fseek(fp, 0, SEEK_END);
+    sz = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    buf = malloc(sz);
+    fread(buf, 1, sz, fp);
+    fclose(fp);
+    fp = fopen("ij_modules/postgresql/libpostgre.d.ts", "wb");
     fwrite(buf, 1, sz, fp);
     fclose(fp);
     free(buf);
@@ -288,6 +302,33 @@ static void init_project() {
     fread(buf, 1, sz, fp);
     fclose(fp);
     fp = fopen("ij_modules/cron/cron.d.ts", "wb");
+    fwrite(buf, 1, sz, fp);
+    fclose(fp);
+    free(buf);
+    //11.copy postgre module
+    char postdl[256] = { 0 };
+    strcpy(postdl, path);
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+    strcat(postdl, "/libpostgre.dll");
+#elif defined(__APPLE_CC__)
+    strcat(postdl, "/libpostgre.dylib");
+#elif defined(linux) || defined(__linux) || defined(__linux__)
+    strcat(postdl, "/libpostgre.so");
+#endif
+    fp = fopen(postdl, "rb");
+    fseek(fp, 0, SEEK_END);
+    sz = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    buf = malloc(sz);
+    fread(buf, 1, sz, fp);
+    fclose(fp);
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+    fp = fopen("ij_modules/postgresql/libpostgre.dll", "wb");
+#elif defined(__APPLE_CC__)
+    fp = fopen("ij_modules/postgresql/libpostgre.dylib", "wb");
+#elif defined(linux) || defined(__linux) || defined(__linux__)
+    fp = fopen("ij_modules/postgresql/libpostgre.so", "wb");
+#endif
     fwrite(buf, 1, sz, fp);
     fclose(fp);
     free(buf);
