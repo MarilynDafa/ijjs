@@ -29,7 +29,18 @@
 
 /******************************************************************************/
 /* Data. */
-
+#ifdef _DEBUG
+bool		opt_prof = true;
+bool		opt_prof_active = true;
+bool		opt_prof_thread_active_init = true;
+size_t		opt_lg_prof_sample = LG_PROF_SAMPLE_DEFAULT;
+ssize_t		opt_lg_prof_interval = LG_PROF_INTERVAL_DEFAULT;
+bool		opt_prof_gdump = true;
+bool		opt_prof_final = true;
+bool		opt_prof_leak = true;
+bool		opt_prof_accum = true;
+bool		opt_prof_log = true;
+#else
 bool		opt_prof = false;
 bool		opt_prof_active = true;
 bool		opt_prof_thread_active_init = true;
@@ -40,6 +51,7 @@ bool		opt_prof_final = false;
 bool		opt_prof_leak = false;
 bool		opt_prof_accum = false;
 bool		opt_prof_log = false;
+#endif
 char		opt_prof_prefix[
     /* Minimize memory bloat for non-prof builds. */
 #ifdef JEMALLOC_PROF
