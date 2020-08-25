@@ -26,7 +26,14 @@ SOFTWARE.
 
 #include <stdlib.h>
 #include <string.h>
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
 #include <io.h>
+#else
+#include <sys/io.h>
+#include <dirent.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#endif
 #include <stdio.h>
 static FILE* fp = NULL;
 static FILE* outfp = NULL;
@@ -327,45 +334,126 @@ int compressjs(const char* file) {
     unlink("temp");
     return 0;
 }
-void listFiles(const char* dir)
-{
-    char dirNew[260];
-    strcpy(dirNew, dir);
-    strcat(dirNew, "/*.*");
-    intptr_t handle;
-    struct _finddata_t findData;
 
-    handle = _findfirst(dirNew, &findData);
-    if (handle == -1)  
-        return;
-
-    do
-    {
-        if (findData.attrib & _A_SUBDIR)
-        {
-            if (strcmp(findData.name, ".") == 0 || strcmp(findData.name, "..") == 0)
-                continue;
-            strcpy(dirNew, dir);
-            strcat(dirNew, "/");
-            strcat(dirNew, findData.name);
-            listFiles(dirNew);
-        }
-        else
-        {
-            char rpath[260] = { 0 };
-            strncpy(rpath, dirNew, strlen(dirNew) - 3);
-            strcat(rpath, findData.name);
-            size_t sz = strlen(rpath);
-            if (rpath[sz-3] == '.' && rpath[sz-2] == 'j' && rpath[sz-1] == 's')
-                compressjs(rpath);
-        }
-    } while (_findnext(handle, &findData) == 0);
-    _findclose(handle); 
+int isJS(const char* file) {
+    size_t sz = strlen(file);
+    if (file[sz - 3] == '.' && file[sz - 2] == 'j' && file[sz - 1] == 's')
+        return 1;
+    else
+        return 0;
 }
 
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+#include <Windows.h>
+void findAllFile(char* pFilePath)
+{
+    WIN32_FIND_DATA FindFileData;
+    HANDLE hFind = INVALID_HANDLE_VALUE;
+    char DirSpec[MAX_PATH + 1] = {0};  // directory specification
+    DWORD dwError;
 
+    strncpy(DirSpec, pFilePath, strlen(pFilePath) + 1);
+    SetCurrentDirectory(pFilePath);
+    strncat(DirSpec, "\\*", 3);
+
+    hFind = FindFirstFile(DirSpec, &FindFileData);
+
+    if (hFind == INVALID_HANDLE_VALUE)
+    {
+        printf("Invalid file handle. Error is %u\n", GetLastError());
+        return;
+    }
+    else
+    {
+        if (FindFileData.dwFileAttributes != FILE_ATTRIBUTE_DIRECTORY)
+        {
+            char Dir[MAX_PATH + 1] = { 0 };
+            strcpy(Dir, pFilePath);
+            strncat(Dir, "\\", 2);
+            strcat(Dir, FindFileData.cFileName);
+            if (isJS(Dir))
+                compressjs(Dir);
+        }
+        else if (FindFileData.dwFileAttributes == FILE_ATTRIBUTE_DIRECTORY
+            && strcmp(FindFileData.cFileName, ".") != 0
+            && strcmp(FindFileData.cFileName, "..") != 0)
+        {
+            char Dir[MAX_PATH + 1] = {0};
+            strcpy(Dir, pFilePath);
+            strncat(Dir, "\\", 2);
+            strcat(Dir, FindFileData.cFileName);
+            findAllFile(Dir);
+        }
+
+        while (FindNextFile(hFind, &FindFileData) != 0)
+        {
+            if (FindFileData.dwFileAttributes != FILE_ATTRIBUTE_DIRECTORY)
+            {
+                char Dir[MAX_PATH + 1] = { 0 };
+                strcpy(Dir, pFilePath);
+                strncat(Dir, "\\", 2);
+                strcat(Dir, FindFileData.cFileName);
+                if (isJS(Dir))
+                    compressjs(Dir);
+            }
+            else if (FindFileData.dwFileAttributes == FILE_ATTRIBUTE_DIRECTORY
+                && strcmp(FindFileData.cFileName, ".") != 0
+                && strcmp(FindFileData.cFileName, "..") != 0)
+            {
+                char Dir[MAX_PATH + 1] = {0};
+                strcpy(Dir, pFilePath);
+                strncat(Dir, "\\", 2);
+                strcat(Dir, FindFileData.cFileName);
+                findAllFile(Dir);
+            }
+
+        }
+        dwError = GetLastError();
+        FindClose(hFind);
+        if (dwError != ERROR_NO_MORE_FILES)
+        {
+            printf("FindNextFile error. Error is %u\n", dwError);
+            return;
+        }
+    }
+}
+#else
+void findAllFile(char* pFilePath) {
+    DIR* dir;
+    struct dirent* ptr;
+    struct stat stStatBuf;
+    chdir(pFilePath);
+    dir = opendir(pFilePath);
+    while ((ptr = readdir(dir)) != NULL) {
+        if (stat(ptr->d_name, &stStatBuf) == -1)
+        {
+            printf("Get the stat error on file:%s\n", ptr->d_name);
+            continue;
+        }
+        if ((stStatBuf.st_mode & S_IFDIR) && strcmp(ptr->d_name, ".") != 0 && strcmp(ptr->d_name, "..") != 0)
+        {
+            char Path[260] = { 0 };
+            strcpy(Path, pFilePath);
+            strncat(Path, "/", 1);
+            strcat(Path, ptr->d_name);
+            findAllFile(Path);
+        }
+        if (stStatBuf.st_mode & S_IFREG)
+        {
+            char Path[260] = { 0 };
+            strcpy(Path, pFilePath);
+            strncat(Path, "/", 1);
+            strcat(Path, ptr->d_name);
+            if (isJS(Path))
+                compressjs(Path);
+        }
+        chdir(pFilePath);
+    }
+    closedir(dir);
+}
+#endif
 void compress(const char* dir) {
-    listFiles(dir);
+    findAllFile(dir);
     printf("js files minify complete");
 }
 

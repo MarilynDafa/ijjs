@@ -58,6 +58,7 @@ Android: Visual Studio 2019 + NDK
 * Switch to the debug viewlet and press the gear dropdown.
 * Select the debug environment "ijjs.launch".
 * Press the green 'play' button to start debugging.
+* Use command "ijjs-cli --min" to minify all js files in dist folder
 
 ## Module Development
 
