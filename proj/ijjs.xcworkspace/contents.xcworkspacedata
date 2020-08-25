@@ -15,6 +15,9 @@
          location = "container:"
          name = "MODULES">
          <FileRef
+            location = "group:../modules/postgresql/postgre-osx.xcodeproj">
+         </FileRef>
+         <FileRef
             location = "group:../modules/sigar/sigar-osx.xcodeproj">
          </FileRef>
       </Group>

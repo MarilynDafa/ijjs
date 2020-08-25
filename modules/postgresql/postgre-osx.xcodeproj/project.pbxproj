@@ -7,103 +7,98 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C7065E6D24C4518A00276B1C /* libijjs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C7065E6C24C4518A00276B1C /* libijjs.dylib */; };
-		C7F5CFFB247A5930003974A7 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F5CFFA247A5930003974A7 /* main.c */; };
+		C7C1301224ED567300F817C8 /* ijpg.c in Sources */ = {isa = PBXBuildFile; fileRef = C7C1301124ED567300F817C8 /* ijpg.c */; };
+		C7C1301524ED572F00F817C8 /* libijjs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C1301424ED572F00F817C8 /* libijjs.dylib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		C77A6265247A169200051CDF /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		C7065E6C24C4518A00276B1C /* libijjs.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libijjs.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		C77A6267247A169200051CDF /* ijjs-cli */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ijjs-cli"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C7F5CFFA247A5930003974A7 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = ../code/main.c; sourceTree = "<group>"; };
-		C7F5D1D2247CB15A003974A7 /* libijjs.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libijjs.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7C1300A24ED55E600F817C8 /* libpostgre.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libpostgre.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7C1301124ED567300F817C8 /* ijpg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ijpg.c; sourceTree = "<group>"; };
+		C7C1301424ED572F00F817C8 /* libijjs.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libijjs.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C77A6264247A169200051CDF /* Frameworks */ = {
+		C7C1300824ED55E600F817C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7065E6D24C4518A00276B1C /* libijjs.dylib in Frameworks */,
+				C7C1301524ED572F00F817C8 /* libijjs.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C77A625E247A169200051CDF = {
+		C7C1300124ED55E600F817C8 = {
 			isa = PBXGroup;
 			children = (
-				C7F5CFFA247A5930003974A7 /* main.c */,
-				C77A6268247A169200051CDF /* Products */,
-				C7F5D1D1247CB15A003974A7 /* Frameworks */,
+				C7C1301124ED567300F817C8 /* ijpg.c */,
+				C7C1300B24ED55E600F817C8 /* Products */,
+				C7C1301324ED572F00F817C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		C77A6268247A169200051CDF /* Products */ = {
+		C7C1300B24ED55E600F817C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C77A6267247A169200051CDF /* ijjs-cli */,
+				C7C1300A24ED55E600F817C8 /* libpostgre.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C7F5D1D1247CB15A003974A7 /* Frameworks */ = {
+		C7C1301324ED572F00F817C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C7065E6C24C4518A00276B1C /* libijjs.dylib */,
-				C7F5D1D2247CB15A003974A7 /* libijjs.dylib */,
+				C7C1301424ED572F00F817C8 /* libijjs.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		C7C1300624ED55E600F817C8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		C77A6266247A169200051CDF /* ijjs-cli */ = {
+		C7C1300924ED55E600F817C8 /* postgre-osx */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C77A626E247A169200051CDF /* Build configuration list for PBXNativeTarget "ijjs-cli" */;
+			buildConfigurationList = C7C1300E24ED55E600F817C8 /* Build configuration list for PBXNativeTarget "postgre-osx" */;
 			buildPhases = (
-				C77A6263247A169200051CDF /* Sources */,
-				C77A6264247A169200051CDF /* Frameworks */,
-				C77A6265247A169200051CDF /* CopyFiles */,
-				C7065E6F24C7419300276B1C /* ShellScript */,
+				C7C1300624ED55E600F817C8 /* Headers */,
+				C7C1300724ED55E600F817C8 /* Sources */,
+				C7C1300824ED55E600F817C8 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "ijjs-cli";
-			productName = ijjscli;
-			productReference = C77A6267247A169200051CDF /* ijjs-cli */;
-			productType = "com.apple.product-type.tool";
+			name = "postgre-osx";
+			productName = "postgre-osx";
+			productReference = C7C1300A24ED55E600F817C8 /* libpostgre.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C77A625F247A169200051CDF /* Project object */ = {
+		C7C1300224ED55E600F817C8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = trix;
 				TargetAttributes = {
-					C77A6266247A169200051CDF = {
+					C7C1300924ED55E600F817C8 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
 				};
 			};
-			buildConfigurationList = C77A6262247A169200051CDF /* Build configuration list for PBXProject "ijjs-cli" */;
+			buildConfigurationList = C7C1300524ED55E600F817C8 /* Build configuration list for PBXProject "postgre-osx" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -111,55 +106,35 @@
 				en,
 				Base,
 			);
-			mainGroup = C77A625E247A169200051CDF;
-			productRefGroup = C77A6268247A169200051CDF /* Products */;
+			mainGroup = C7C1300124ED55E600F817C8;
+			productRefGroup = C7C1300B24ED55E600F817C8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C77A6266247A169200051CDF /* ijjs-cli */,
+				C7C1300924ED55E600F817C8 /* postgre-osx */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		C7065E6F24C7419300276B1C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cp -R ../bin/osx/libijjs.dylib ../install/packages/org.ifw.ijjs/data\ncp -R ../bin/osx/libsigar.dylib ../install/packages/org.ifw.ijjs/data\ncp -R ../bin/osx/libpostgre.dylib ../install/packages/org.ifw.ijjs/data\ncp -R ../bin/osx/ijjs-cli ../install/packages/org.ifw.ijjs/data\ncp -R ../lib.ijdom.d.ts ../install/packages/org.ifw.ijjs/data\ncp -R ../lib.ijjs.d.ts ../install/packages/org.ifw.ijjs/data\ncp -R ../modules/sigar/libsigar.d.ts ../install/packages/org.ifw.ijjs/data\ncp -R ../modules/postgresql/libpostgre.d.ts ../install/packages/org.ifw.ijjs/data\ncp -R ../modules/cron/cron.js ../install/packages/org.ifw.ijjs/data\ncp -R ../modules/cron/cron.d.ts ../install/packages/org.ifw.ijjs/data\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		C77A6263247A169200051CDF /* Sources */ = {
+		C7C1300724ED55E600F817C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7F5CFFB247A5930003974A7 /* main.c in Sources */,
+				C7C1301224ED567300F817C8 /* ijpg.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C77A626C247A169200051CDF /* Debug */ = {
+		C7C1300C24ED55E600F817C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -185,11 +160,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = ../../bin/osx;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = ../../bin/osx;
+				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/PostgreSQL/12/lib";
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -197,6 +173,10 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					IJ_EXPORT,
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					DARWIN,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -204,29 +184,33 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					../code/externals/quickjs,
-					../code/externals/uv/include,
-					../code/externals/wasm,
-					../code/externals/jemalloc/include,
-					../code/externals,
-				);
-				LIBRARY_SEARCH_PATHS = ../../bin/osx;
+				INSTALL_PATH = "@executable_path/";
+				LIBRARY_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/PostgreSQL/12/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lpq";
 				SDKROOT = macosx;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = ../../bin/osx;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../../code/externals,
+					../../code/externals/jemalloc/include,
+					../../code/externals/quickjs,
+					../../code/headers,
+					../../code/externals/uv/include,
+					../../code/externals/wasm,
+				);
 			};
 			name = Debug;
 		};
-		C77A626D247A169200051CDF /* Release */ = {
+		C7C1300D24ED55E600F817C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -252,90 +236,125 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = ../../bin/osx;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = ../../bin/osx;
+				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/PostgreSQL/12/lib";
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					IJ_EXPORT,
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					DARWIN,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					../code/externals/quickjs,
-					../code/externals/uv/include,
-					../code/externals/wasm,
-					../code/externals/jemalloc/include,
-					../code/externals,
-				);
-				LIBRARY_SEARCH_PATHS = ../../bin/osx;
+				INSTALL_PATH = "@executable_path/";
+				LIBRARY_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/PostgreSQL/12/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-lpq";
 				SDKROOT = macosx;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = ../../bin/osx;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../../code/externals,
+					../../code/externals/jemalloc/include,
+					../../code/externals/quickjs,
+					../../code/headers,
+					../../code/externals/uv/include,
+					../../code/externals/wasm,
+				);
 			};
 			name = Release;
 		};
-		C77A626F247A169200051CDF /* Debug */ = {
+		C7C1300F24ED55E600F817C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CONFIGURATION_BUILD_DIR = ../bin/osx;
-				HEADER_SEARCH_PATHS = (
-					../code/externals/quickjs,
-					../code/externals/uv/include,
-					../code/externals/wasm,
-					../code/externals/jemalloc/include,
-					../code/externals,
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/PostgreSQL/12/lib";
+				INSTALL_PATH = "@executable_path/";
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/PostgreSQL/12/lib",
 				);
-				PRODUCT_MODULE_NAME = "ijjs-cli";
-				PRODUCT_NAME = "ijjs-cli";
+				PRODUCT_NAME = postgre;
+				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../../code/externals,
+					../../code/externals/jemalloc/include,
+					../../code/externals/quickjs,
+					../../code/headers,
+					../../code/externals/uv/include,
+					../../code/externals/wasm,
+					/Library/PostgreSQL/12/include,
+				);
 			};
 			name = Debug;
 		};
-		C77A6270247A169200051CDF /* Release */ = {
+		C7C1301024ED55E600F817C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CONFIGURATION_BUILD_DIR = ../bin/osx;
-				HEADER_SEARCH_PATHS = (
-					../code/externals/quickjs,
-					../code/externals/uv/include,
-					../code/externals/wasm,
-					../code/externals/jemalloc/include,
-					../code/externals,
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/PostgreSQL/12/lib";
+				INSTALL_PATH = "@executable_path/";
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/PostgreSQL/12/lib",
 				);
-				PRODUCT_MODULE_NAME = "ijjs-cli";
-				PRODUCT_NAME = "ijjs-cli";
+				PRODUCT_NAME = postgre;
+				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					../../code/externals,
+					../../code/externals/jemalloc/include,
+					../../code/externals/quickjs,
+					../../code/headers,
+					../../code/externals/uv/include,
+					../../code/externals/wasm,
+					/Library/PostgreSQL/12/include,
+				);
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C77A6262247A169200051CDF /* Build configuration list for PBXProject "ijjs-cli" */ = {
+		C7C1300524ED55E600F817C8 /* Build configuration list for PBXProject "postgre-osx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C77A626C247A169200051CDF /* Debug */,
-				C77A626D247A169200051CDF /* Release */,
+				C7C1300C24ED55E600F817C8 /* Debug */,
+				C7C1300D24ED55E600F817C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C77A626E247A169200051CDF /* Build configuration list for PBXNativeTarget "ijjs-cli" */ = {
+		C7C1300E24ED55E600F817C8 /* Build configuration list for PBXNativeTarget "postgre-osx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C77A626F247A169200051CDF /* Debug */,
-				C77A6270247A169200051CDF /* Release */,
+				C7C1300F24ED55E600F817C8 /* Debug */,
+				C7C1301024ED55E600F817C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C77A625F247A169200051CDF /* Project object */;
+	rootObject = C7C1300224ED55E600F817C8 /* Project object */;
 }
