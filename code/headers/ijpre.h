@@ -23,7 +23,7 @@
 #define __ijpre_h_
 
 #define IJJS_VERSION_MAJOR 2
-#define IJJS_VERSION_MINOR 0
+#define IJJS_VERSION_MINOR 1
 #define IJJS_VERSION_PATCH 0
 #define IJJS_VERSION_SUFFIX ""
 #define QJS_VERSION_STR "20200705"

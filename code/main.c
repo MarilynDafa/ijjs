@@ -20,6 +20,7 @@
  */
 
 #include "headers/ijjs.h"
+#include "externals/jsmin/jsmin.c"
 #include "jemalloc/jemalloc.h"
 #include <stdarg.h>
 #include <stdlib.h>
@@ -337,6 +338,9 @@ initerror:
     printf("ijjs project init error(ijjs env error)\n");
 }
 
+static void min_jsfiles(const char* dir) {
+    compress(dir);
+}
 
 static void print_version() {
     printf("v%s\n", ijVersion());
@@ -428,6 +432,10 @@ int main(int argc, char** argv) {
             }
             if (is_longopt(opt, "init")) {
                 init_project();
+                goto exit;
+            }
+            if (is_longopt(opt, "min")) {
+                min_jsfiles("dist");
                 goto exit;
             }
             if (opt.key == 'h' || is_longopt(opt, "help")) {
