@@ -29,7 +29,6 @@ SOFTWARE.
 #if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
 #include <io.h>
 #else
-#include <sys/io.h>
 #include <dirent.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -424,6 +423,8 @@ void findAllFile(char* pFilePath) {
     struct stat stStatBuf;
     chdir(pFilePath);
     dir = opendir(pFilePath);
+    if (!dir)
+        return;
     while ((ptr = readdir(dir)) != NULL) {
         if (stat(ptr->d_name, &stStatBuf) == -1)
         {
@@ -454,7 +455,7 @@ void findAllFile(char* pFilePath) {
 #endif
 void compress(const char* dir) {
     findAllFile(dir);
-    printf("js files minify complete");
+    printf("js files minify complete\n");
 }
 
 /* main -- Output any command line arguments as comments

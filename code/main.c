@@ -435,7 +435,11 @@ int main(int argc, char** argv) {
                 goto exit;
             }
             if (is_longopt(opt, "min")) {
-                min_jsfiles("dist");
+                size_t sz = 260;
+                char buffer[260] = {0};
+                uv_cwd(buffer, &sz);
+                strcat(buffer, "/dist");
+                min_jsfiles(buffer);
                 goto exit;
             }
             if (opt.key == 'h' || is_longopt(opt, "help")) {

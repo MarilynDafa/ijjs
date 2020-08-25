@@ -52,7 +52,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/zhoubo/Documents/test/dist/main.js"
+            argument = "--min"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
