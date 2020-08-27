@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{f1917859-c4e0-4706-b87f-3b0c1adf6c55}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hiasync.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hidict.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hinet.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hiread.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hiredis.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\ijredis.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hiasync.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hidict.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hifmacros.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hinet.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hiread.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hiredis.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hisdsalloc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\win32_hiredis.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\zmalloc.h" />
+  </ItemGroup>
+</Project>

@@ -50,17 +50,15 @@
 #include <string.h>
 #include <time.h>
 #include <limits.h>
-#ifndef _WIN32
-#include <unistd.h>
-#endif
 #include <errno.h>
 #ifndef _WIN32
 #include <inttypes.h>
 #include <pthread.h>
 #include <syslog.h>
 #include <netinet/in.h>
+#include <unistd.h>
 #else
-#include <pthread.h>
+#include "Win32_Interop\Win32_PThread.h"
 #endif
 #include <lua.h>
 #include <signal.h>

@@ -57,7 +57,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef _WIN32
 #include <pthread.h>
+#else
+#include "Win32_Interop\Win32_PThread.h"
+#endif
 
 #ifndef __ATOMIC_VAR_H
 #define __ATOMIC_VAR_H

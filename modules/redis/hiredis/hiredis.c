@@ -31,7 +31,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fmacros.h"
+#include "hifmacros.h"
 #include <string.h>
 #include <stdlib.h>
 #ifndef _WIN32
@@ -42,8 +42,8 @@
 #include <ctype.h>
 
 #include "hiredis.h"
-#include "net.h"
-#include "sds.h"
+#include "hinet.h"
+#include "../redis/sds.h"
 
 #ifdef _WIN32
 #include "win32_hiredis.h"

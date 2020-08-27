@@ -36,15 +36,15 @@
 #include "Win32_Interop/win32_types.h"
 #include "Win32_Interop/Win32_Time.h"
 #include "Win32_Interop/Win32_Error.h"
-#endif
-
-#include "server.h"
-#include "cluster.h"
-#ifndef _WIN32
+#else
 #include <sys/time.h>
 #include <unistd.h>
 #include <sys/socket.h>
 #endif
+
+#include "server.h"
+#include "cluster.h"
+
 #include <fcntl.h>
 #include <sys/stat.h>
 

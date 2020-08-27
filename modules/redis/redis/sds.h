@@ -39,6 +39,10 @@ extern const char *SDS_NOINIT;
 #ifdef _WIN32
 #include "Win32_Interop/Win32_Portability.h"
 #include "Win32_Interop/win32_types.h"
+#elif defined(__linux__)
+#include "Linux_Interop/portmacro.h"
+#else
+#include "OSX_Interop/portmacro.h"
 #endif
 #include <sys/types.h>
 #include <stdarg.h>

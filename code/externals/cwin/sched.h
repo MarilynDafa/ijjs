@@ -161,6 +161,11 @@ typedef void* pid_t;
   typedef int pid_t;
 # endif
 #endif
+
+#ifdef USE_PTHREAD_ID2
+
+  typedef int pid_t;
+#endif
 #endif
 
 /*

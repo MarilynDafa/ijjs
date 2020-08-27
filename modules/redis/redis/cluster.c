@@ -33,13 +33,6 @@
 #include "endianconv.h"
 
 #include <sys/types.h>
-#ifndef _WIN32
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <unistd.h>
-#include <sys/socket.h>
-#include <sys/file.h>
-#endif
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <math.h>
@@ -47,6 +40,12 @@
 #ifdef _WIN32
 extern int WSIOCP_QueueAccept(int listenfd);
 #include "Win32_Interop/Win32_Error.h"
+#else
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <sys/file.h>
 #endif
 
 /* A global reference to myself is handy to make code more clear.

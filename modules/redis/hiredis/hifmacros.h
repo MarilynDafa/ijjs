@@ -4,6 +4,7 @@
 #if defined(__linux__)
 #define _BSD_SOURCE
 #define _DEFAULT_SOURCE
+#include "../Linux_Interop/portmacro.h"
 #endif
 
 #if defined(__CYGWIN__)
@@ -20,6 +21,7 @@
 
 #if defined(__APPLE__) && defined(__MACH__)
 #define _OSX
+#include "../OSX_Interop/portmacro.h"
 #endif
 
 #endif

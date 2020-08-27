@@ -30,7 +30,7 @@
  */
 
 
-#include "fmacros.h"
+#include "hifmacros.h"
 #include <string.h>
 #include <stdlib.h>
 #ifndef _MSC_VER
@@ -40,8 +40,8 @@
 #include <errno.h>
 #include <ctype.h>
 
-#include "read.h"
-#include "sds.h"
+#include "hiread.h"
+#include "../redis/sds.h"
 
 static void __redisReaderSetError(redisReader *r, int type, const char *str) {
     size_t len;

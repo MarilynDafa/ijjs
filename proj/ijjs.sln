@@ -68,6 +68,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libijjs-android", "libijjs-
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "postgre-linux", "..\modules\postgresql\postgre-linux.vcxproj", "{7B004287-2688-4AA8-AA1F-3D4293142E88}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hiredis-win32", "..\modules\redis\hiredis-win32.vcxproj", "{7329DC39-26DA-4659-8975-D160642DFA2D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hiredis", "..\modules\redis\hiredis.vcxitems", "{F1917859-C4E0-4706-B87F-3B0C1ADF6C55}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hiredis-linux", "..\modules\redis\hiredis-linux.vcxproj", "{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\modules\redis\redis.vcxitems*{0b124f56-d72c-47dd-8317-1ce028e4de60}*SharedItemsImports = 4
@@ -77,12 +83,15 @@ Global
 		ijjs.vcxitems*{449efaef-2aa2-4a97-aeb5-d812ec64decc}*SharedItemsImports = 4
 		..\modules\sigar\sigar.vcxitems*{47bf1528-f94a-4fdc-8429-27887f9bbfdd}*SharedItemsImports = 4
 		..\modules\redis\redis.vcxitems*{4d62e7b4-d413-4160-9873-ef486aaa5ecf}*SharedItemsImports = 9
+		..\modules\redis\hiredis.vcxitems*{6d9ed1b6-82bb-4f45-87b3-844263cfa99d}*SharedItemsImports = 4
+		..\modules\redis\hiredis.vcxitems*{7329dc39-26da-4659-8975-d160642dfa2d}*SharedItemsImports = 4
 		ijjs.vcxitems*{75c95d74-279d-4117-a2f8-f3b9dc77b20d}*SharedItemsImports = 4
 		..\modules\postgresql\postgre.vcxitems*{7b004287-2688-4aa8-aa1f-3d4293142e88}*SharedItemsImports = 4
 		..\modules\sigar\sigar.vcxitems*{7c631899-2877-4562-b554-bf029fc9d73f}*SharedItemsImports = 4
 		..\modules\postgresql\postgre.vcxitems*{a9af641d-c012-4cb1-acc1-7712545dc824}*SharedItemsImports = 4
 		..\modules\postgresql\postgre.vcxitems*{b167e6d4-f4f1-43b7-99e5-64fd6ed2e9d6}*SharedItemsImports = 9
 		..\modules\sigar\sigar.vcxitems*{e5819a51-6a17-4595-aeb8-56049f089f5a}*SharedItemsImports = 9
+		..\modules\redis\hiredis.vcxitems*{f1917859-c4e0-4706-b87f-3b0c1adf6c55}*SharedItemsImports = 9
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -303,6 +312,42 @@ Global
 		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|x86.ActiveCfg = Release|x86
 		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|x86.Build.0 = Release|x86
 		{7B004287-2688-4AA8-AA1F-3D4293142E88}.Release|x86.Deploy.0 = Release|x86
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Debug|ARM.ActiveCfg = Debug|Win32
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Debug|x64.ActiveCfg = Debug|x64
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Debug|x64.Build.0 = Debug|x64
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Debug|x86.ActiveCfg = Debug|Win32
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Debug|x86.Build.0 = Debug|Win32
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Release|ARM.ActiveCfg = Release|Win32
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Release|ARM64.ActiveCfg = Release|Win32
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Release|x64.ActiveCfg = Release|x64
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Release|x64.Build.0 = Release|x64
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Release|x86.ActiveCfg = Release|Win32
+		{7329DC39-26DA-4659-8975-D160642DFA2D}.Release|x86.Build.0 = Release|Win32
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|ARM.ActiveCfg = Debug|ARM
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|ARM.Build.0 = Debug|ARM
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|ARM.Deploy.0 = Debug|ARM
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|ARM64.Build.0 = Debug|ARM64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|x64.ActiveCfg = Debug|x64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|x64.Build.0 = Debug|x64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|x64.Deploy.0 = Debug|x64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|x86.ActiveCfg = Debug|x86
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|x86.Build.0 = Debug|x86
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Debug|x86.Deploy.0 = Debug|x86
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|ARM.ActiveCfg = Release|ARM
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|ARM.Build.0 = Release|ARM
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|ARM.Deploy.0 = Release|ARM
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|ARM64.ActiveCfg = Release|ARM64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|ARM64.Build.0 = Release|ARM64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|ARM64.Deploy.0 = Release|ARM64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|x64.ActiveCfg = Release|x64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|x64.Build.0 = Release|x64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|x64.Deploy.0 = Release|x64
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|x86.ActiveCfg = Release|x86
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|x86.Build.0 = Release|x86
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -324,6 +369,9 @@ Global
 		{0B124F56-D72C-47DD-8317-1CE028E4DE60} = {C0BF1A60-63FF-4C60-B824-3AE9FA16C06E}
 		{124013D9-3522-420D-87BD-01BE579FE7CE} = {E3C1DC79-9C43-4FA0-BB0E-29A8F58F41D5}
 		{7B004287-2688-4AA8-AA1F-3D4293142E88} = {C0BF1A60-63FF-4C60-B824-3AE9FA16C06E}
+		{7329DC39-26DA-4659-8975-D160642DFA2D} = {569EFA2D-8A45-4707-A1AD-25EF5F7911EC}
+		{F1917859-C4E0-4706-B87F-3B0C1ADF6C55} = {320D16CE-C469-46D2-A152-C634884B0320}
+		{6D9ED1B6-82BB-4F45-87B3-844263CFA99D} = {C0BF1A60-63FF-4C60-B824-3AE9FA16C06E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4BEE78A6-AF26-40F1-AEF5-C14F2321CB3F}

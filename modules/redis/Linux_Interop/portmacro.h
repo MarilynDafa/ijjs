@@ -9,6 +9,7 @@
 #define PORT_ULONGLONG unsigned long long
 #define IF_WIN32(x,y) y
 #define WIN32_ONLY(x)
+#define POSIX_ONLY(x) x
 #define WIN_PORT_FIX
 #define _GNU_SOURCE
 #include <link.h>

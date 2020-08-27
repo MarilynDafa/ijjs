@@ -21,8 +21,8 @@
  */
 
 #include "win32fixes.h"
-#include "..\ae.h"
-#include "..\adlist.h"
+#include "../redis/ae.h"
+#include "../redis/adlist.h"
 #include <mswsock.h>
 #include "win32_wsiocp.h"
 #include "Win32_FDAPI.h"

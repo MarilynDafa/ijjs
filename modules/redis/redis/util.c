@@ -34,6 +34,10 @@
 #include <process.h>    // for getpid
 #include <direct.h>     // for getcwd
 #include <shlwapi.h>    // for PathIsRelative
+#else
+#include <unistd.h>
+#include <sys/time.h>
+
 #endif
 
 #include "fmacros.h"
@@ -43,10 +47,6 @@
 #include <ctype.h>
 #include <limits.h>
 #include <math.h>
-#ifndef _WIN32
-#include <unistd.h>
-#include <sys/time.h>
-#endif
 #include <float.h>
 #include <stdint.h>
 #include <errno.h>

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Win32_Interop">
+      <UniqueIdentifier>{714f6d42-f68d-43b6-91eb-a8e8d07f4f2e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Win32_Interop\Win32_FDAPI.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_fdapi_crt.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\win32_rfdmap.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_variadicFunctor.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_EventLog.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_RedisLog.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_ANSI.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_Error.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\win32_wsiocp.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_Time.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_Common.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_service.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_CommandLine.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="redis\adlist.c" />
+    <ClCompile Include="redis\ae.c" />
+    <ClCompile Include="redis\zmalloc.c" />
+    <ClCompile Include="Win32_Interop\Win32_PThread.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32_Interop\Win32_ThreadControl.c">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="redis\sds.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Win32_Interop\Win32_FDAPI.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_fdapi_crt.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\win32_rfdmap.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_variadicFunctor.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_EventLog.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_RedisLog.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_ANSI.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_Error.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\win32_wsiocp.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\win32_wsiocp2.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_Time.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_Common.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_Service.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_CommandLine.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_PThread.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\win32_types_hiredis.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32_Interop\Win32_ThreadControl.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

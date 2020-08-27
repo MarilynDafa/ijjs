@@ -33,6 +33,12 @@
 #include "Win32_Interop/win32_types.h"
 #include "Win32_Interop/win32fixes.h"
 #include "Win32_Interop/Win32_QFork.h"
+#elif defined(__linux__)
+#include "Linux_Interop/portmacro.h"
+#include <pthread.h>
+#else
+#include "OSX_Interop/portmacro.h"
+#include <pthread.h>
 #endif
 
 #include <stdio.h>
@@ -48,9 +54,6 @@ void zlibc_free(void *ptr) {
 }
 
 #include <string.h>
-#ifndef _WIN32
-#include <pthread.h>
-#endif
 #include "config.h"
 #include "zmalloc.h"
 #include "atomicvar.h"

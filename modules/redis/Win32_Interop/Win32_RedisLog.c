@@ -20,7 +20,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Win32_types.h"
+#include "win32_types.h"
 #include "Win32_RedisLog.h"
 #include <stdio.h>
 #include <stdarg.h>
@@ -28,7 +28,7 @@
 #include <string.h>
 #include <process.h>
 #include <time.h>
-#include "Win32Fixes.h"
+#include "win32fixes.h"
 #include "Win32_EventLog.h"
 #include "Win32_Time.h"
 #include <assert.h>

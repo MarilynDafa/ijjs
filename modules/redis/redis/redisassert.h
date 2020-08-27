@@ -1,5 +1,13 @@
-/*
- * Copyright (c) 2009-2012, Salvatore Sanfilippo <antirez at gmail dot com>
+/* redisassert.h -- Drop in replacements assert.h that prints the stack trace
+ *                  in the Redis logs.
+ *
+ * This file should be included instead of "assert.h" inside libraries used by
+ * Redis that are using assertions, so instead of Redis disappearing with
+ * SIGABORT, we get the details and stack trace inside the log file.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Copyright (c) 2006-2012, Salvatore Sanfilippo <antirez at gmail dot com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,34 +35,20 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _REDIS_FMACRO_H
-#define _REDIS_FMACRO_H
+#ifndef __REDIS_ASSERT_H__
+#define __REDIS_ASSERT_H__
 
-#define _BSD_SOURCE
 
-#if defined(__linux__)
-#define _GNU_SOURCE
+#ifdef _WIN32
+#include "Win32_Interop/Win32_Portability.h"
+#else
+#include <unistd.h> /* for _exit() */
 #endif
 
-#if defined(_AIX)
-#define _ALL_SOURCE
-#endif
+#define assert(_e) ((_e)?(void)0 : (_serverAssert(#_e,__FILE__,__LINE__),_exit(1)))
+#define panic(...) _serverPanic(__FILE__,__LINE__,__VA_ARGS__),_exit(1)
 
-#if defined(__linux__) || defined(__OpenBSD__)
-#define _XOPEN_SOURCE 700
-/*
- * On NetBSD, _XOPEN_SOURCE undefines _NETBSD_SOURCE and
- * thus hides inet_aton etc.
- */
-#elif !defined(__NetBSD__)
-#define _XOPEN_SOURCE
-#endif
-
-#if defined(__sun)
-#define _POSIX_C_SOURCE 199506L
-#endif
-
-#define _LARGEFILE_SOURCE
-#define _FILE_OFFSET_BITS 64
+void _serverAssert(char *estr, char *file, int line);
+void _serverPanic(const char *file, int line, const char *msg, ...);
 
 #endif

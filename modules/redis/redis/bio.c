@@ -59,7 +59,7 @@
 #ifdef _WIN32
 #include "Win32_Interop/Win32_Portability.h"
 #include "Win32_Interop/win32fixes.h"
-#include <pthread.h>
+#include "Win32_Interop/Win32_PThread.h"
 #include "Win32_Interop/Win32_ThreadControl.h"
 #include "Win32_Interop/Win32_Error.h"
 #endif

@@ -34,7 +34,7 @@
 #include <dlfcn.h>
 #else
 #include "Win32_Interop/dlfcn.h"
-#include <pthread.h>
+#include "Win32_Interop/Win32_PThread.h"
 #include "Win32_Interop/Win32_Error.h"
 #endif
 

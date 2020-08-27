@@ -33,7 +33,7 @@
 
 #ifndef __HIREDIS_H
 #define __HIREDIS_H
-#include "read.h"
+#include "hiread.h"
 #include <stdio.h> /* for size_t */
 #include <stdarg.h> /* for va_list */
 #ifndef _WIN32
@@ -42,7 +42,7 @@
 #include "../Win32_Interop/win32_types_hiredis.h"
 #endif
 #include <stdint.h> /* uintXX_t, etc */
-#include "sds.h" /* for sds */
+#include "../redis/sds.h" /* for sds */
 
 #define HIREDIS_MAJOR 0
 #define HIREDIS_MINOR 13
@@ -104,7 +104,7 @@
          * need to copy the result into our private buffer. */                 \
         if (err_str != (buf)) {                                                \
             strncpy((buf), err_str, ((len) - 1));                              \
-            buf[(len)-1] = '\0';                                               \
+            (buf)[(len)-1] = '\0';                                               \
         }                                                                      \
     } while (0)
 #endif

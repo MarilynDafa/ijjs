@@ -36,7 +36,7 @@
 #ifndef _WIN32          // This should not be here in the first place since it's not used by the posix code either
 #include "hiredis.h"
 #endif
-#include "async.h"
+#include "hiasync.h"
 
 #include <ctype.h>
 #ifndef _WIN32

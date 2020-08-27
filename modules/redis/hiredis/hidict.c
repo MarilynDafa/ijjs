@@ -33,10 +33,10 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 #ifdef _WIN32
-#include "../win32_Interop/win32_types.h"
+#include "../Win32_Interop/win32_types.h"
 #endif
 
-#include "fmacros.h"
+#include "hifmacros.h"
 #include <stdlib.h>
 #include <assert.h>
 #include <limits.h>

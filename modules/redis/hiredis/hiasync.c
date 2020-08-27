@@ -31,20 +31,19 @@
 #ifdef _WIN32
 #include "win32_hiredis.h"
 #include "../Win32_Interop/win32_wsiocp2.h"
-#endif
-#include "fmacros.h"
-#include <stdlib.h>
-#include <string.h>
-#ifndef _WIN32
+#else
 #include <strings.h>
 #endif
+#include "hifmacros.h"
+#include <stdlib.h>
+#include <string.h>
 #include <assert.h>
 #include <ctype.h>
 #include <errno.h>
-#include "async.h"
-#include "net.h"
+#include "hiasync.h"
+#include "hinet.h"
 #include "hidict.c"
-#include "sds.h"
+#include "../redis/sds.h"
 
 #define _EL_ADD_READ(ctx) do { \
         if ((ctx)->ev.addRead) (ctx)->ev.addRead((ctx)->ev.data); \

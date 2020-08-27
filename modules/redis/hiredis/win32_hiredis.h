@@ -24,7 +24,7 @@
 #define WIN32_HIREDIS_H
 
 #include "../Win32_Interop/Win32_Portability.h"
-#include "../Win32_Interop/Win32_types_hiredis.h"
+#include "../Win32_Interop/win32_types_hiredis.h"
 #include "../Win32_Interop/Win32_Error.h"
 #include "../Win32_Interop/Win32_FDAPI.h"
 #define INCL_WINSOCK_API_PROTOTYPES 0 // Important! Do not include Winsock API definitions to avoid conflicts with API entry points defined below.

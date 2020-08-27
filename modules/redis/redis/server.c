@@ -33,6 +33,17 @@
 #include "Win32_Interop/Win32_ThreadControl.h"
 #include "Win32_Interop/Win32_QFork.h"
 #include "Win32_Interop/Win32_Error.h"
+#else
+#include <sys/wait.h>
+#include <arpa/inet.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/resource.h>
+#include <sys/utsname.h>
+#include <sys/socket.h>
+
 #endif
 
 #include "server.h"
@@ -54,17 +65,6 @@
 #include <float.h>
 #include <math.h>
 #include <locale.h>
-#ifndef _WIN32
-#include <sys/socket.h>
-#include <sys/resource.h>
-#include <sys/utsname.h>
-#include <sys/time.h>
-#include <sys/resource.h>
-#include <sys/uio.h>
-#include <sys/un.h>
-#include <arpa/inet.h>
-#include <sys/wait.h>
-#endif
 
 /* Our shared "common" objects */
 

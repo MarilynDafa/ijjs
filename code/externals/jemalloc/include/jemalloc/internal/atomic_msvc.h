@@ -1,8 +1,8 @@
 #ifndef JEMALLOC_INTERNAL_ATOMIC_MSVC_H
 #define JEMALLOC_INTERNAL_ATOMIC_MSVC_H
+#include <intrin.h>
 
 #define ATOMIC_INIT(...) {__VA_ARGS__}
-
 typedef enum {
 	atomic_memory_order_relaxed,
 	atomic_memory_order_acquire,

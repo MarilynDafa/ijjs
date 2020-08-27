@@ -20,7 +20,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "..\server.h"
+#include "../redis/server.h"
 #include "Win32_Portability.h"
 
 void SetupRedisGlobals(LPVOID redisData, size_t redisDataSize, uint8_t *dictHashSeed, LPVOID redisModules)

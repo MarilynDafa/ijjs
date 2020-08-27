@@ -32,7 +32,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fmacros.h"
+#include "hifmacros.h"
 #include <sys/types.h>
 #ifndef _WIN32
 #include <sys/socket.h>
@@ -57,8 +57,8 @@
 #endif
 #include <limits.h>
 
-#include "net.h"
-#include "sds.h"
+#include "hinet.h"
+#include "../redis/sds.h"
 #ifdef _WIN32
 #include "win32_hiredis.h"
 #include "mstcpip.h"
@@ -80,8 +80,7 @@ static void __redisSetErrorFromErrno(redisContext *c, int type, const char *pref
 
 	if (prefix != NULL)
 		len = snprintf(buf, sizeof(buf), "%s: ", prefix);
-	char* _buf = (char*)(buf + len);
-	__redis_strerror_r(errno, _buf, sizeof(buf) - len);
+	__redis_strerror_r(errno, (char *)(buf + len), sizeof(buf) - len);
 	__redisSetError(c, type, buf);
 }
 

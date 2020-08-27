@@ -72,7 +72,7 @@ typedef struct winsize
 {
     unsigned short ws_row;
     unsigned short ws_col;
-}winsize;
+};
 #endif
 
 static struct winsize ws;

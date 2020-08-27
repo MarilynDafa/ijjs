@@ -1,5 +1,5 @@
 #include "lua.h"
-#include "../server.h"
+#include "../redis/server.h"
 void evalCommand(client* c)
 {
 }
@@ -22,6 +22,10 @@ sds luaCreateFunction(client* c, lua_State* lua, robj* body) {
     return NULL;
 }
 int lua_gc(void* c, int a, int b)
+{
+    return 0;
+}
+int lua_pushnumber(void* c, int n)
 {
     return 0;
 }

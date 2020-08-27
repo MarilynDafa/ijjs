@@ -47,35 +47,35 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />
@@ -86,299 +86,230 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <OutDir>..\..\bin\linux</OutDir>
-    <TargetName>libredis</TargetName>
+    <TargetName>redis</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <OutDir>..\..\bin\linux</OutDir>
-    <TargetName>libredis</TargetName>
+    <TargetName>redis</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <OutDir>..\..\bin\linux</OutDir>
-    <TargetName>libredis</TargetName>
+    <TargetName>redis</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <OutDir>..\..\bin\linux</OutDir>
-    <TargetName>libredis</TargetName>
+    <TargetName>redis</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>..\..\bin\linux</OutDir>
-    <TargetName>libredis</TargetName>
+    <TargetName>redis</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\..\bin\linux</OutDir>
-    <TargetName>libredis</TargetName>
+    <TargetName>redis</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <OutDir>..\..\bin\linux</OutDir>
-    <TargetName>libredis</TargetName>
+    <TargetName>redis</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <OutDir>..\..\bin\linux</OutDir>
-    <TargetName>libredis</TargetName>
+    <TargetName>redis</TargetName>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="ae_epoll.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="ae_evport.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="ae_kqueue.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="ae_select.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="hiredis\hidict.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="lua\lua.c" />
+    <ClCompile Include="redis\ae_epoll.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="redis\ae_evport.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="redis\ae_kqueue.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="redis\ae_select.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="redis\ae_wsiocp.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="redis\localtime.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\arena_externs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\arena_inlines_a.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\arena_inlines_b.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\arena_stats.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\arena_structs_a.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\arena_structs_b.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\arena_types.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\assert.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\atomic.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\atomic_c11.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\atomic_gcc_atomic.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\atomic_gcc_sync.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\atomic_msvc.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\background_thread_externs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\background_thread_inlines.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\background_thread_structs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\base_externs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\base_inlines.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\base_structs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\base_types.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\bin.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\bin_stats.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\bin_types.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\bitmap.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\bit_util.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\cache_bin.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\ckh.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\ctl.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\div.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\emitter.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\extent_dss.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\extent_externs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\extent_inlines.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\extent_mmap.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\extent_structs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\extent_types.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\hash.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\hook.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\jemalloc_internal_decls.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\jemalloc_internal_defs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\jemalloc_internal_externs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\jemalloc_internal_includes.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\jemalloc_internal_inlines_a.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\jemalloc_internal_inlines_b.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\jemalloc_internal_inlines_c.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\jemalloc_internal_macros.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\jemalloc_internal_types.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\jemalloc_preamble.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\large_externs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\log.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\malloc_io.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\mutex.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\mutex_pool.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\mutex_prof.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\nstime.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\pages.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\ph.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\private_namespace.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\prng.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\prof_externs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\prof_inlines_a.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\prof_inlines_b.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\prof_structs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\prof_types.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\ql.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\qr.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\quantum.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\rb.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\rtree.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\rtree_tsd.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\safety_check.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\sc.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\seq.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\smoothstep.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\spin.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\stats.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\sz.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\tcache_externs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\tcache_inlines.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\tcache_structs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\tcache_types.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\test_hooks.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\ticker.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\tsd.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\tsd_generic.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\tsd_malloc_thread_cleanup.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\tsd_tls.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\tsd_types.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\tsd_win.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\util.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\internal\witness.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc_defs.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc_macros.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc_mangle.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc_mangle_jet.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc_protos.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc_protos_jet.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc_rename.h" />
-    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc_typedefs.h" />
-    <ClInclude Include="hiredis\hidict.h" />
     <ClInclude Include="Linux_Interop\portmacro.h" />
     <ClInclude Include="lua\lua.h" />
     <ClInclude Include="lua\lualib.h" />
-    <ClInclude Include="release.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
-      <ForcedIncludeFiles>/root/projects/redis-linux/modules/redis/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/redis-linux/code/externals/jemalloc/include;/root/projects/redis-linux/modules/redis/hiredis;/root/projects/redis-linux/modules/redis/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
-      <PreprocessorDefinitions>USE_JEMALLOC;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(Link.AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)redis.out $(TargetDir)redis
+del $(TargetDir)redis.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
-      <ForcedIncludeFiles>/root/projects/redis-linux/modules/redis/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/redis-linux/code/externals/jemalloc/include;/root/projects/redis-linux/modules/redis/hiredis;/root/projects/redis-linux/modules/redis/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
-      <PreprocessorDefinitions>USE_JEMALLOC;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(Link.AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)redis.out $(TargetDir)redis
+del $(TargetDir)redis.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
-      <ForcedIncludeFiles>/root/projects/redis-linux/modules/redis/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/redis-linux/code/externals/jemalloc/include;/root/projects/redis-linux/modules/redis/hiredis;/root/projects/redis-linux/modules/redis/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
-      <PreprocessorDefinitions>USE_JEMALLOC;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(Link.AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)redis.out $(TargetDir)redis
+del $(TargetDir)redis.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
-      <ForcedIncludeFiles>/root/projects/redis-linux/modules/redis/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/redis-linux/code/externals/jemalloc/include;/root/projects/redis-linux/modules/redis/hiredis;/root/projects/redis-linux/modules/redis/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
-      <PreprocessorDefinitions>USE_JEMALLOC;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(Link.AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)redis.out $(TargetDir)redis
+del $(TargetDir)redis.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
-      <ForcedIncludeFiles>/root/projects/redis-linux/modules/redis/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/redis-linux/code/externals/jemalloc/include;/root/projects/redis-linux/modules/redis/hiredis;/root/projects/redis-linux/modules/redis/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
-      <PreprocessorDefinitions>USE_JEMALLOC;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(Link.AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)redis.out $(TargetDir)redis
+del $(TargetDir)redis.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
-      <ForcedIncludeFiles>/root/projects/redis-linux/modules/redis/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/redis-linux/code/externals/jemalloc/include;/root/projects/redis-linux/modules/redis/hiredis;/root/projects/redis-linux/modules/redis/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
-      <PreprocessorDefinitions>USE_JEMALLOC;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(Link.AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)redis.out $(TargetDir)redis
+del $(TargetDir)redis.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
-      <ForcedIncludeFiles>/root/projects/redis-linux/modules/redis/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/redis-linux/code/externals/jemalloc/include;/root/projects/redis-linux/modules/redis/hiredis;/root/projects/redis-linux/modules/redis/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
-      <PreprocessorDefinitions>USE_JEMALLOC;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(Link.AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)redis.out $(TargetDir)redis
+del $(TargetDir)redis.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
-      <ForcedIncludeFiles>/root/projects/redis-linux/modules/redis/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/redis-linux/code/externals/jemalloc/include;/root/projects/redis-linux/modules/redis/hiredis;/root/projects/redis-linux/modules/redis/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
-      <PreprocessorDefinitions>USE_JEMALLOC;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(Link.AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetDir)redis.out $(TargetDir)redis
+del $(TargetDir)redis.out</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

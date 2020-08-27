@@ -48,14 +48,14 @@
 #include "Win32_Interop/Win32_Portability.h"
 #include "win32_interop/win32_types.h"
 #include "Win32_Interop/Win32_FDAPI.h"
+#else
+
+#include <unistd.h>
 #endif
 
 #include "fmacros.h"
 #include <string.h>
 #include <stdio.h>
-#ifndef _WIN32
-#include <unistd.h>
-#endif
 #include "rio.h"
 #include "util.h"
 #include "crc64.h"
