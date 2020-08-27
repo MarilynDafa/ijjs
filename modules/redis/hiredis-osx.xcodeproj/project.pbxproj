@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C725C1F924F7EFA400CA6B7B /* zmalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1E924F7EFA300CA6B7B /* zmalloc.h */; };
+		C725C1FA24F7EFA400CA6B7B /* hinet.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1EA24F7EFA400CA6B7B /* hinet.h */; };
+		C725C1FB24F7EFA400CA6B7B /* hiredis.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1EB24F7EFA400CA6B7B /* hiredis.c */; };
+		C725C1FC24F7EFA400CA6B7B /* hisdsalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1EC24F7EFA400CA6B7B /* hisdsalloc.h */; };
+		C725C1FD24F7EFA400CA6B7B /* hiasync.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1ED24F7EFA400CA6B7B /* hiasync.c */; };
+		C725C1FE24F7EFA400CA6B7B /* win32_hiredis.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1EE24F7EFA400CA6B7B /* win32_hiredis.h */; };
+		C725C20024F7EFA400CA6B7B /* hiread.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1F024F7EFA400CA6B7B /* hiread.h */; };
+		C725C20124F7EFA400CA6B7B /* hidict.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1F124F7EFA400CA6B7B /* hidict.h */; };
+		C725C20224F7EFA400CA6B7B /* ijredis.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1F224F7EFA400CA6B7B /* ijredis.c */; };
+		C725C20324F7EFA400CA6B7B /* hiredis.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1F324F7EFA400CA6B7B /* hiredis.h */; };
+		C725C20424F7EFA400CA6B7B /* hinet.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1F424F7EFA400CA6B7B /* hinet.c */; };
+		C725C20524F7EFA400CA6B7B /* hiread.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1F524F7EFA400CA6B7B /* hiread.c */; };
+		C725C20624F7EFA400CA6B7B /* hidict.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1F624F7EFA400CA6B7B /* hidict.c */; };
+		C725C20724F7EFA400CA6B7B /* hifmacros.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1F724F7EFA400CA6B7B /* hifmacros.h */; };
+		C725C20824F7EFA400CA6B7B /* hiasync.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1F824F7EFA400CA6B7B /* hiasync.h */; };
+		C725C20C24F7F15B00CA6B7B /* sdsalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C20924F7F15B00CA6B7B /* sdsalloc.h */; };
+		C725C20D24F7F15B00CA6B7B /* sds.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C20A24F7F15B00CA6B7B /* sds.c */; };
+		C725C20E24F7F15B00CA6B7B /* sds.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C20B24F7F15B00CA6B7B /* sds.h */; };
+		C725C21124F7F17F00CA6B7B /* zmalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C20F24F7F17F00CA6B7B /* zmalloc.h */; };
+		C725C21224F7F17F00CA6B7B /* zmalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C21024F7F17F00CA6B7B /* zmalloc.c */; };
+		C725C21524F7F19500CA6B7B /* libijjs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C725C21424F7F19500CA6B7B /* libijjs.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C725C1E224F7EF6400CA6B7B /* libredis.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libredis.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		C725C1E924F7EFA300CA6B7B /* zmalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zmalloc.h; path = hiredis/zmalloc.h; sourceTree = "<group>"; };
+		C725C1EA24F7EFA400CA6B7B /* hinet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hinet.h; path = hiredis/hinet.h; sourceTree = "<group>"; };
+		C725C1EB24F7EFA400CA6B7B /* hiredis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hiredis.c; path = hiredis/hiredis.c; sourceTree = "<group>"; };
+		C725C1EC24F7EFA400CA6B7B /* hisdsalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hisdsalloc.h; path = hiredis/hisdsalloc.h; sourceTree = "<group>"; };
+		C725C1ED24F7EFA400CA6B7B /* hiasync.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hiasync.c; path = hiredis/hiasync.c; sourceTree = "<group>"; };
+		C725C1EE24F7EFA400CA6B7B /* win32_hiredis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = win32_hiredis.h; path = hiredis/win32_hiredis.h; sourceTree = "<group>"; };
+		C725C1F024F7EFA400CA6B7B /* hiread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hiread.h; path = hiredis/hiread.h; sourceTree = "<group>"; };
+		C725C1F124F7EFA400CA6B7B /* hidict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hidict.h; path = hiredis/hidict.h; sourceTree = "<group>"; };
+		C725C1F224F7EFA400CA6B7B /* ijredis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijredis.c; path = hiredis/ijredis.c; sourceTree = "<group>"; };
+		C725C1F324F7EFA400CA6B7B /* hiredis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hiredis.h; path = hiredis/hiredis.h; sourceTree = "<group>"; };
+		C725C1F424F7EFA400CA6B7B /* hinet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hinet.c; path = hiredis/hinet.c; sourceTree = "<group>"; };
+		C725C1F524F7EFA400CA6B7B /* hiread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hiread.c; path = hiredis/hiread.c; sourceTree = "<group>"; };
+		C725C1F624F7EFA400CA6B7B /* hidict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hidict.c; path = hiredis/hidict.c; sourceTree = "<group>"; };
+		C725C1F724F7EFA400CA6B7B /* hifmacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hifmacros.h; path = hiredis/hifmacros.h; sourceTree = "<group>"; };
+		C725C1F824F7EFA400CA6B7B /* hiasync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hiasync.h; path = hiredis/hiasync.h; sourceTree = "<group>"; };
+		C725C20924F7F15B00CA6B7B /* sdsalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sdsalloc.h; path = redis/sdsalloc.h; sourceTree = "<group>"; };
+		C725C20A24F7F15B00CA6B7B /* sds.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sds.c; path = redis/sds.c; sourceTree = "<group>"; };
+		C725C20B24F7F15B00CA6B7B /* sds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sds.h; path = redis/sds.h; sourceTree = "<group>"; };
+		C725C20F24F7F17F00CA6B7B /* zmalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zmalloc.h; path = redis/zmalloc.h; sourceTree = "<group>"; };
+		C725C21024F7F17F00CA6B7B /* zmalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zmalloc.c; path = redis/zmalloc.c; sourceTree = "<group>"; };
+		C725C21424F7F19500CA6B7B /* libijjs.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libijjs.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C725C1E024F7EF6400CA6B7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C725C21524F7F19500CA6B7B /* libijjs.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C725C1D924F7EF6400CA6B7B = {
+			isa = PBXGroup;
+			children = (
+				C725C21024F7F17F00CA6B7B /* zmalloc.c */,
+				C725C20F24F7F17F00CA6B7B /* zmalloc.h */,
+				C725C20A24F7F15B00CA6B7B /* sds.c */,
+				C725C20B24F7F15B00CA6B7B /* sds.h */,
+				C725C20924F7F15B00CA6B7B /* sdsalloc.h */,
+				C725C1ED24F7EFA400CA6B7B /* hiasync.c */,
+				C725C1F824F7EFA400CA6B7B /* hiasync.h */,
+				C725C1F624F7EFA400CA6B7B /* hidict.c */,
+				C725C1F124F7EFA400CA6B7B /* hidict.h */,
+				C725C1F724F7EFA400CA6B7B /* hifmacros.h */,
+				C725C1F424F7EFA400CA6B7B /* hinet.c */,
+				C725C1EA24F7EFA400CA6B7B /* hinet.h */,
+				C725C1F524F7EFA400CA6B7B /* hiread.c */,
+				C725C1F024F7EFA400CA6B7B /* hiread.h */,
+				C725C1EB24F7EFA400CA6B7B /* hiredis.c */,
+				C725C1F324F7EFA400CA6B7B /* hiredis.h */,
+				C725C1EC24F7EFA400CA6B7B /* hisdsalloc.h */,
+				C725C1F224F7EFA400CA6B7B /* ijredis.c */,
+				C725C1EE24F7EFA400CA6B7B /* win32_hiredis.h */,
+				C725C1E924F7EFA300CA6B7B /* zmalloc.h */,
+				C725C1E324F7EF6400CA6B7B /* Products */,
+				C725C21324F7F19500CA6B7B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C725C1E324F7EF6400CA6B7B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C725C1E224F7EF6400CA6B7B /* libredis.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C725C21324F7F19500CA6B7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C725C21424F7F19500CA6B7B /* libijjs.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C725C1DE24F7EF6400CA6B7B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C725C20E24F7F15B00CA6B7B /* sds.h in Headers */,
+				C725C21124F7F17F00CA6B7B /* zmalloc.h in Headers */,
+				C725C1F924F7EFA400CA6B7B /* zmalloc.h in Headers */,
+				C725C20824F7EFA400CA6B7B /* hiasync.h in Headers */,
+				C725C20124F7EFA400CA6B7B /* hidict.h in Headers */,
+				C725C1FA24F7EFA400CA6B7B /* hinet.h in Headers */,
+				C725C20324F7EFA400CA6B7B /* hiredis.h in Headers */,
+				C725C20C24F7F15B00CA6B7B /* sdsalloc.h in Headers */,
+				C725C20024F7EFA400CA6B7B /* hiread.h in Headers */,
+				C725C20724F7EFA400CA6B7B /* hifmacros.h in Headers */,
+				C725C1FC24F7EFA400CA6B7B /* hisdsalloc.h in Headers */,
+				C725C1FE24F7EFA400CA6B7B /* win32_hiredis.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C725C1E124F7EF6400CA6B7B /* hiredis-osx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C725C1E624F7EF6400CA6B7B /* Build configuration list for PBXNativeTarget "hiredis-osx" */;
+			buildPhases = (
+				C725C1DE24F7EF6400CA6B7B /* Headers */,
+				C725C1DF24F7EF6400CA6B7B /* Sources */,
+				C725C1E024F7EF6400CA6B7B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "hiredis-osx";
+			productName = "hiredis-osx";
+			productReference = C725C1E224F7EF6400CA6B7B /* libredis.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C725C1DA24F7EF6400CA6B7B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = trix;
+				TargetAttributes = {
+					C725C1E124F7EF6400CA6B7B = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+				};
+			};
+			buildConfigurationList = C725C1DD24F7EF6400CA6B7B /* Build configuration list for PBXProject "hiredis-osx" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C725C1D924F7EF6400CA6B7B;
+			productRefGroup = C725C1E324F7EF6400CA6B7B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C725C1E124F7EF6400CA6B7B /* hiredis-osx */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C725C1DF24F7EF6400CA6B7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C725C20224F7EFA400CA6B7B /* ijredis.c in Sources */,
+				C725C20424F7EFA400CA6B7B /* hinet.c in Sources */,
+				C725C20624F7EFA400CA6B7B /* hidict.c in Sources */,
+				C725C20524F7EFA400CA6B7B /* hiread.c in Sources */,
+				C725C21224F7F17F00CA6B7B /* zmalloc.c in Sources */,
+				C725C1FB24F7EFA400CA6B7B /* hiredis.c in Sources */,
+				C725C20D24F7F15B00CA6B7B /* sds.c in Sources */,
+				C725C1FD24F7EFA400CA6B7B /* hiasync.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C725C1E424F7EF6400CA6B7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = ../../bin/osx;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = ../../bin/osx;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = redis;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C725C1E524F7EF6400CA6B7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = ../../bin/osx;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = ../../bin/osx;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = redis;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C725C1E724F7EF6400CA6B7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CONFIGURATION_BUILD_DIR = ../../bin/osx;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = ../../bin/osx;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					USE_JEMALLOC,
+				);
+				HEADER_SEARCH_PATHS = (
+					../../code/externals/jemalloc/include,
+					.,
+				);
+				INSTALL_PATH = "@executable_path/";
+				LIBRARY_SEARCH_PATHS = ../../bin/osx;
+				PRODUCT_NAME = redis;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C725C1E824F7EF6400CA6B7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CONFIGURATION_BUILD_DIR = ../../bin/osx;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = ../../bin/osx;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					USE_JEMALLOC,
+				);
+				HEADER_SEARCH_PATHS = (
+					../../code/externals/jemalloc/include,
+					.,
+				);
+				INSTALL_PATH = "@executable_path/";
+				LIBRARY_SEARCH_PATHS = ../../bin/osx;
+				PRODUCT_NAME = redis;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C725C1DD24F7EF6400CA6B7B /* Build configuration list for PBXProject "hiredis-osx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C725C1E424F7EF6400CA6B7B /* Debug */,
+				C725C1E524F7EF6400CA6B7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C725C1E624F7EF6400CA6B7B /* Build configuration list for PBXNativeTarget "hiredis-osx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C725C1E724F7EF6400CA6B7B /* Debug */,
+				C725C1E824F7EF6400CA6B7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C725C1DA24F7EF6400CA6B7B /* Project object */;
+}

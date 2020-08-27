@@ -60,7 +60,7 @@
 #else
 #include "Win32_Interop\Win32_PThread.h"
 #endif
-#include <lua.h>
+#include "lua.h"
 #include <signal.h>
 
 typedef PORT_LONGLONG mstime_t; /* millisecond time type. */

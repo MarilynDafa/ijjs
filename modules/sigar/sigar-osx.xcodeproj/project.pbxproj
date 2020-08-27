@@ -346,6 +346,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					JEMALLOC_NO_DEMANGLE,
+					JEMALLOC_NO_RENAME,
+					IJ_EXPORT,
+					DARWIN,
+				);
 				INSTALL_PATH = "@executable_path/";
 				PRODUCT_NAME = sigar;
 				SKIP_INSTALL = YES;
