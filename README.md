@@ -1,7 +1,7 @@
 ![image](https://github.com/MarilynDafa/ijjs/blob/master/logo.png)
 ## Overview
-ijjs is an open-source, cross-platform, lightweight JavaScript runtime environment. It executes JavaScript code outside of a browser.
-this project is inspired by nodejs
+IJJS is an open-source, cross-platform, lightweight JavaScript runtime environment. It executes JavaScript code outside of a browser.
+this project is inspired by nodejs,txiki.js.IJJS is especially suitable for server development, Internet of Things, artificial intelligence and so on.
 
 ## Features
 - URL
@@ -20,6 +20,9 @@ this project is inspired by nodejs
 - Miscellaneous utility functions
 - Worker threads
 - Child processes
+- System Information
+- PostgreSQL
+- Redis
 
 ## 3rd library
 
