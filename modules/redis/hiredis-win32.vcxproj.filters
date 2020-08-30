@@ -48,9 +48,6 @@
     <ClCompile Include="redis\adlist.c" />
     <ClCompile Include="redis\ae.c" />
     <ClCompile Include="redis\zmalloc.c" />
-    <ClCompile Include="Win32_Interop\Win32_PThread.c">
-      <Filter>Win32_Interop</Filter>
-    </ClCompile>
     <ClCompile Include="Win32_Interop\Win32_ThreadControl.c">
       <Filter>Win32_Interop</Filter>
     </ClCompile>

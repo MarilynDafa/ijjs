@@ -30,7 +30,6 @@
     <ClCompile Include="Win32_Interop\Win32_EventLog.cpp" />
     <ClCompile Include="Win32_Interop\Win32_FDAPI.cpp" />
     <ClCompile Include="Win32_Interop\Win32_fdapi_crt.cpp" />
-    <ClCompile Include="Win32_Interop\Win32_PThread.c" />
     <ClCompile Include="Win32_Interop\Win32_RedisLog.c" />
     <ClCompile Include="Win32_Interop\win32_rfdmap.cpp" />
     <ClCompile Include="Win32_Interop\Win32_service.cpp" />
