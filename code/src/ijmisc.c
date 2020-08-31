@@ -21,6 +21,7 @@
 
 #include "ijjs.h"
 #include <unistd.h>
+#include <curl/curl.h>
 
 static JSValue ijHrTime(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     return JS_NewBigUint64(ctx, uv_hrtime());

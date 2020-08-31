@@ -21,6 +21,7 @@
 #include "ijjs.h"
 #include <stdlib.h>
 #include <string.h>
+#include <curl/curl.h>
 
 
 static uv_once_t curl__init_once = UV_ONCE_INIT;
@@ -417,7 +418,7 @@ static IJS32 ijCurlStartTimeout(CURLM* multi, long timeout_ms, IJVoid* userp) {
     return 0;
 }
 
-CURLM* ijGetCurlm(JSContext* ctx) {
+void* ijGetCurlm(JSContext* ctx) {
     IJJSRuntime* qrt = ijGetRuntime(ctx);
     CHECK_NOT_NULL(qrt);
     if (!qrt->curl_ctx.curlm_h) {

@@ -134,11 +134,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;WIN32;_DEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;WIN32;_DEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\modules\redis;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;..\..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\quickjs;..\..\code\externals\wasm;..\..\modules\redis;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -155,11 +155,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;WIN32;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;WIN32;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\modules\redis;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;..\..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\quickjs;..\..\code\externals\wasm;..\..\modules\redis;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -176,11 +176,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;_DEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_OFF_T_DEFINED;_off_t=long;_DEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\modules\redis;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;..\..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\quickjs;..\..\code\externals\wasm;..\..\modules\redis;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -197,11 +197,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\modules\redis;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;..\..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\quickjs;..\..\code\externals\wasm;..\..\modules\redis;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;..\..\code\externals\cwin;..\..\code\externals\uv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>

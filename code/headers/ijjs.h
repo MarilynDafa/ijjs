@@ -27,7 +27,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <uv.h>
-#include <curl/curl.h>
 #include <m3_api_wasi.h>
 #include <m3_env.h>
 #include "cutils.h"
@@ -39,7 +38,6 @@
 #else
 #include <unistd.h>
 #endif
-
 
 typedef struct IJJSRunOptions {
     IJBool abort_on_unhandled_rejection;
@@ -60,7 +58,7 @@ typedef struct IJJSRuntime {
     IJBool is_worker;
     IJBool in_bootstrap;
     struct {
-        CURLM* curlm_h;
+        void* curlm_h;
         uv_timer_t timer;
     } curl_ctx;
     struct {
@@ -85,7 +83,7 @@ typedef struct {
 
 typedef struct {
     IJVoid *arg;
-    IJVoid (*done_cb)(CURLMsg*, IJVoid*);
+    IJVoid (*done_cb)(void*, IJVoid*);
 } IJJSCurl;
 
 IJ_API const IJAnsi* ijVersion();
@@ -220,7 +218,7 @@ IJ_API IJS32 ijCurlLoadHttp(
     DynBuf* dbuf, 
     const IJAnsi* url);
 
-IJ_API CURLM* ijGetCurlm(
+IJ_API void* ijGetCurlm(
     JSContext* ctx);
     
 IJ_API IJVoid ijModDNSInit(

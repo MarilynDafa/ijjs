@@ -21,6 +21,7 @@
 #include "ijjs.h"
 #include <ctype.h>
 #include <string.h>
+#include <curl/curl.h>
 #if IJJS_PLATFORM == IJJS_PLATFORM_WIN32
 #define strncasecmp _strnicmp
 #define strcasecmp _stricmp
