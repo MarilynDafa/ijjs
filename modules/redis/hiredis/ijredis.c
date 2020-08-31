@@ -26,6 +26,7 @@
 #ifdef _WIN32
 int main(int argc, char** argv) {}
 #endif
+int gPid = 0xDEAD;
 static JSClassID ijjs_redis_class_id;
 static IJVoid ijRedisFinalizer(JSRuntime* rt, JSValue val) {
     redisContext* c = JS_GetOpaque(val, ijjs_redis_class_id);
@@ -57,11 +58,13 @@ static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 arg
 #else
     strcat(buffer, "/ij_modules/redis/redis");
 #endif
+    options.args = js_mallocz(ctx, sizeof(*options.args) * 2);
     options.args[0] = js_strdup(ctx, buffer);
     options.file = options.args[0];
     IJS32 r = uv_spawn(ijGetLoop(ctx), &process, &options);
-    if (r != 0) 
-        ijThrowErrno(ctx, r);
+    if (r != 0)
+        return JS_ThrowInternalError(ctx, "couldn't start redis");
+    gPid = process.pid;
     return JS_UNDEFINED;
 }
 static JSValue js_stop_service(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
