@@ -27,6 +27,10 @@
 #ifdef _WIN32
 int main(int argc, char** argv) {}
 #endif
+typedef struct {
+    JSContext* ctx;
+    IJJSPromise result;
+}IJJSRDConnReq;
 int gPid = 0xDEAD;
 static JSClassID ijjs_redis_class_id;
 static JSClassID ijjs_rdresult_class_id;
@@ -42,6 +46,28 @@ static IJVoid ijRDResultFinalizer(JSRuntime* rt, JSValue val) {
 static JSClassDef ijjs_sigar_class = { "redis", .finalizer = ijRedisFinalizer };
 static JSClassDef ijjs_rdresult_class = { "RDResult", .finalizer = ijRDResultFinalizer };
 
+void connectCallback(const redisAsyncContext* c, int status) {
+    JSValue arg;
+    IJJSRDConnReq* dr = c->data;
+    IJBool is_reject = false;
+    if (status != REDIS_OK) {
+        arg = JS_NewError(dr->ctx);
+        JS_DefinePropertyValueStr(dr->ctx, arg, "message", JS_NewString(dr->ctx, "redis error"), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        JS_DefinePropertyValueStr(dr->ctx, arg, "errno", JS_NewInt32(dr->ctx, status), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        is_reject = true;
+        return;
+    }
+    else {
+        arg = JS_UNDEFINED;
+    }
+    ijSettlePromise(dr, &dr->result, is_reject, 1, (JSValueConst*)&arg);
+    js_free(dr->ctx, dr);
+}
+void disconnectCallback(const redisAsyncContext* c, int status) {
+    if (status != REDIS_OK) {
+        return;
+    }
+}
 static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     uv_process_t process;
     uv_process_options_t options;
@@ -71,8 +97,14 @@ static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 arg
     if (r != 0)
         return JS_ThrowInternalError(ctx, "couldn't start redis");
     gPid = process.pid;
-    _ac = redisAsyncConnect("127.0.0.1", 6379);
-    return JS_UNDEFINED;
+    redisAsyncContext* actx = redisAsyncConnect("127.0.0.1", 6379);
+    redisLibuvAttach(actx, ijGetLoop(ctx));  
+    redisAsyncSetConnectCallback(actx, connectCallback);
+    redisAsyncSetDisconnectCallback(actx, disconnectCallback);
+    IJJSRDConnReq* dr = js_malloc(ctx, sizeof(*dr));
+    dr->ctx = ctx;
+    actx->data = dr;
+    return ijInitPromise(ctx, &dr->result);
 }
 static JSValue js_stop_service(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     return JS_UNDEFINED;
