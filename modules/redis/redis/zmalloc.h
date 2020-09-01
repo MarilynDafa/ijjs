@@ -36,7 +36,7 @@
 #include "Win32_Interop/win32_types_hiredis.h"
 #endif
 
-/* Double expansion needed for stringification of macro values. */
+ /* Double expansion needed for stringification of macro values. */
 #define __xstr(s) __str(s)
 #define __str(s) #s
 
@@ -78,34 +78,34 @@
 #define HAVE_DEFRAG
 #endif
 
-void *zmalloc(size_t size);
-void *zcalloc(size_t size);
-void *zrealloc(void *ptr, size_t size);
-void zfree(void *ptr);
-char *zstrdup(const char *s);
+void* zmalloc(size_t size);
+void* zcalloc(size_t size);
+void* zrealloc(void* ptr, size_t size);
+void zfree(void* ptr);
+char* zstrdup(const char* s);
 size_t zmalloc_used_memory(void);
 void zmalloc_set_oom_handler(void (*oom_handler)(size_t));
 size_t zmalloc_get_rss(void);
-int zmalloc_get_allocator_info(size_t *allocated, size_t *active, size_t *resident);
+int zmalloc_get_allocator_info(size_t* allocated, size_t* active, size_t* resident);
 size_t zmalloc_get_private_dirty(PORT_LONG pid);
-size_t zmalloc_get_smap_bytes_by_field(char *field, PORT_LONG pid);
+size_t zmalloc_get_smap_bytes_by_field(char* field, PORT_LONG pid);
 size_t zmalloc_get_memory_size(void);
-void zlibc_free(void *ptr);
+void zlibc_free(void* ptr);
 
 #ifdef HAVE_DEFRAG
-void zfree_no_tcache(void *ptr);
-void *zmalloc_no_tcache(size_t size);
+void zfree_no_tcache(void* ptr);
+void* zmalloc_no_tcache(size_t size);
 #endif
 
 #ifndef HAVE_MALLOC_SIZE
-size_t zmalloc_size(void *ptr);
-size_t zmalloc_usable(void *ptr);
+size_t zmalloc_size(void* ptr);
+size_t zmalloc_usable(void* ptr);
 #else
 #define zmalloc_usable(p) zmalloc_size(p)
 #endif
 
 #ifdef REDIS_TEST
-int zmalloc_test(int argc, char **argv);
+int zmalloc_test(int argc, char** argv);
 #endif
 
 #endif /* __ZMALLOC_H */

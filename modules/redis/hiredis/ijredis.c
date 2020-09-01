@@ -22,19 +22,25 @@
 #include "ijjs.h"
 #include "cutils.h"
 #include "hiredis.h"
+#include "adapters/libuv.h"
 #include <uv.h>
 #ifdef _WIN32
 int main(int argc, char** argv) {}
 #endif
 int gPid = 0xDEAD;
 static JSClassID ijjs_redis_class_id;
+static JSClassID ijjs_rdresult_class_id;
 static IJVoid ijRedisFinalizer(JSRuntime* rt, JSValue val) {
     redisContext* c = JS_GetOpaque(val, ijjs_redis_class_id);
    if (c) {
        redisFree(c);
    }
 }
+static IJVoid ijRDResultFinalizer(JSRuntime* rt, JSValue val) {
+
+}
 static JSClassDef ijjs_sigar_class = { "redis", .finalizer = ijRedisFinalizer };
+static JSClassDef ijjs_rdresult_class = { "RDResult", .finalizer = ijRDResultFinalizer };
 
 static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     uv_process_t process;
@@ -65,6 +71,7 @@ static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 arg
     if (r != 0)
         return JS_ThrowInternalError(ctx, "couldn't start redis");
     gPid = process.pid;
+    _ac = redisAsyncConnect("127.0.0.1", 6379);
     return JS_UNDEFINED;
 }
 static JSValue js_stop_service(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
@@ -78,10 +85,16 @@ static const JSCFunctionListEntry module_funcs[] = {
     JS_CFUNC_DEF("stopService", 0, js_stop_service),
     JS_CFUNC_DEF("execCommand", 2, js_exec_command)
 };
-
+static const JSCFunctionListEntry rdresult_proto_funcs[] = {
+};
 static int module_init(JSContext* ctx, JSModuleDef* m)
 {
     JSValue proto, obj;
+    JS_NewClassID(&ijjs_rdresult_class_id);
+    JS_NewClass(JS_GetRuntime(ctx), ijjs_rdresult_class_id, &ijjs_rdresult_class);
+    proto = JS_NewObject(ctx);
+    JS_SetPropertyFunctionList(ctx, proto, rdresult_proto_funcs, countof(rdresult_proto_funcs));
+    JS_SetClassProto(ctx, ijjs_rdresult_class_id, proto);
     JS_NewClassID(&ijjs_redis_class_id);
     JS_NewClass(JS_GetRuntime(ctx), ijjs_redis_class_id, &ijjs_sigar_class);
     proto = JS_NewObject(ctx);

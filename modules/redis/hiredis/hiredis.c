@@ -31,422 +31,504 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "hifmacros.h"
+#include "fmacros.h"
 #include <string.h>
 #include <stdlib.h>
-#ifndef _WIN32
-#include <unistd.h>
-#endif
 #include <assert.h>
 #include <errno.h>
 #include <ctype.h>
 
 #include "hiredis.h"
-#include "hinet.h"
-#include "../redis/sds.h"
+#include "net.h"
+#include "sds.h"
+#include "async.h"
+#include "win32.h"
 
-#ifdef _WIN32
-#include "win32_hiredis.h"
-#endif
+extern int redisContextUpdateConnectTimeout(redisContext *c, const struct timeval *timeout);
+extern int redisContextUpdateCommandTimeout(redisContext *c, const struct timeval *timeout);
+
+static redisContextFuncs redisContextDefaultFuncs = {
+    .free_privctx = NULL,
+    .async_read = redisAsyncRead,
+    .async_write = redisAsyncWrite,
+    .read = redisNetRead,
+    .write = redisNetWrite
+};
 
 static redisReply *createReplyObject(int type);
 static void *createStringObject(const redisReadTask *task, char *str, size_t len);
-static void *createArrayObject(const redisReadTask *task, int elements);
-static void *createIntegerObject(const redisReadTask *task, PORT_LONGLONG value);
+static void *createArrayObject(const redisReadTask *task, size_t elements);
+static void *createIntegerObject(const redisReadTask *task, long long value);
+static void *createDoubleObject(const redisReadTask *task, double value, char *str, size_t len);
 static void *createNilObject(const redisReadTask *task);
+static void *createBoolObject(const redisReadTask *task, int bval);
 
 /* Default set of functions to build the reply. Keep in mind that such a
  * function returning NULL is interpreted as OOM. */
 static redisReplyObjectFunctions defaultFunctions = {
-	createStringObject,
-	createArrayObject,
-	createIntegerObject,
-	createNilObject,
-	freeReplyObject
+    createStringObject,
+    createArrayObject,
+    createIntegerObject,
+    createDoubleObject,
+    createNilObject,
+    createBoolObject,
+    freeReplyObject
 };
 
 /* Create a reply object */
 static redisReply *createReplyObject(int type) {
-	redisReply *r = calloc(1, sizeof(*r));
+    redisReply *r = hi_calloc(1,sizeof(*r));
 
-	if (r == NULL)
-		return NULL;
+    if (r == NULL)
+        return NULL;
 
-	r->type = type;
-	return r;
+    r->type = type;
+    return r;
 }
 
 /* Free a reply object */
 void freeReplyObject(void *reply) {
-	redisReply *r = reply;
-	size_t j;
+    redisReply *r = reply;
+    size_t j;
 
-	if (r == NULL)
-		return;
+    if (r == NULL)
+        return;
 
-	switch (r->type) {
-	case REDIS_REPLY_INTEGER:
-		break; /* Nothing to free */
-	case REDIS_REPLY_ARRAY:
-		if (r->element != NULL) {
-			for (j = 0; j < r->elements; j++)
-				if (r->element[j] != NULL)
-					freeReplyObject(r->element[j]);
-			free(r->element);
-		}
-		break;
-	case REDIS_REPLY_ERROR:
-	case REDIS_REPLY_STATUS:
-	case REDIS_REPLY_STRING:
-		if (r->str != NULL)
-			free(r->str);
-		break;
-	}
-	free(r);
+    switch(r->type) {
+    case REDIS_REPLY_INTEGER:
+        break; /* Nothing to free */
+    case REDIS_REPLY_ARRAY:
+    case REDIS_REPLY_MAP:
+    case REDIS_REPLY_SET:
+    case REDIS_REPLY_PUSH:
+        if (r->element != NULL) {
+            for (j = 0; j < r->elements; j++)
+                freeReplyObject(r->element[j]);
+            hi_free(r->element);
+        }
+        break;
+    case REDIS_REPLY_ERROR:
+    case REDIS_REPLY_STATUS:
+    case REDIS_REPLY_STRING:
+    case REDIS_REPLY_DOUBLE:
+    case REDIS_REPLY_VERB:
+        hi_free(r->str);
+        break;
+    }
+    hi_free(r);
 }
 
 static void *createStringObject(const redisReadTask *task, char *str, size_t len) {
-	redisReply *r, *parent;
-	char *buf;
+    redisReply *r, *parent;
+    char *buf;
 
-	r = createReplyObject(task->type);
-	if (r == NULL)
-		return NULL;
+    r = createReplyObject(task->type);
+    if (r == NULL)
+        return NULL;
 
-	buf = malloc(len + 1);
-	if (buf == NULL) {
-		freeReplyObject(r);
-		return NULL;
-	}
+    assert(task->type == REDIS_REPLY_ERROR  ||
+           task->type == REDIS_REPLY_STATUS ||
+           task->type == REDIS_REPLY_STRING ||
+           task->type == REDIS_REPLY_VERB);
 
-	assert(task->type == REDIS_REPLY_ERROR ||
-		task->type == REDIS_REPLY_STATUS ||
-		task->type == REDIS_REPLY_STRING);
+    /* Copy string value */
+    if (task->type == REDIS_REPLY_VERB) {
+        buf = hi_malloc(len-4+1); /* Skip 4 bytes of verbatim type header. */
+        if (buf == NULL) goto oom;
 
-	/* Copy string value */
-	memcpy(buf, str, len);
-	buf[len] = '\0';
-	r->str = buf;
-	r->len = (int)len;
+        memcpy(r->vtype,str,3);
+        r->vtype[3] = '\0';
+        memcpy(buf,str+4,len-4);
+        buf[len-4] = '\0';
+        r->len = len - 4;
+    } else {
+        buf = hi_malloc(len+1);
+        if (buf == NULL) goto oom;
 
-	if (task->parent) {
-		parent = task->parent->obj;
-		assert(parent->type == REDIS_REPLY_ARRAY);
-		parent->element[task->idx] = r;
-	}
-	return r;
+        memcpy(buf,str,len);
+        buf[len] = '\0';
+        r->len = len;
+    }
+    r->str = buf;
+
+    if (task->parent) {
+        parent = task->parent->obj;
+        assert(parent->type == REDIS_REPLY_ARRAY ||
+               parent->type == REDIS_REPLY_MAP ||
+               parent->type == REDIS_REPLY_SET ||
+               parent->type == REDIS_REPLY_PUSH);
+        parent->element[task->idx] = r;
+    }
+    return r;
+
+oom:
+    freeReplyObject(r);
+    return NULL;
 }
 
-static void *createArrayObject(const redisReadTask *task, int elements) {
-	redisReply *r, *parent;
+static void *createArrayObject(const redisReadTask *task, size_t elements) {
+    redisReply *r, *parent;
 
-	r = createReplyObject(REDIS_REPLY_ARRAY);
-	if (r == NULL)
-		return NULL;
+    r = createReplyObject(task->type);
+    if (r == NULL)
+        return NULL;
 
-	if (elements > 0) {
-		r->element = calloc(elements, sizeof(redisReply*));
-		if (r->element == NULL) {
-			freeReplyObject(r);
-			return NULL;
-		}
-	}
+    if (elements > 0) {
+        r->element = hi_calloc(elements,sizeof(redisReply*));
+        if (r->element == NULL) {
+            freeReplyObject(r);
+            return NULL;
+        }
+    }
 
-	r->elements = elements;
+    r->elements = elements;
 
-	if (task->parent) {
-		parent = task->parent->obj;
-		assert(parent->type == REDIS_REPLY_ARRAY);
-		parent->element[task->idx] = r;
-	}
-	return r;
+    if (task->parent) {
+        parent = task->parent->obj;
+        assert(parent->type == REDIS_REPLY_ARRAY ||
+               parent->type == REDIS_REPLY_MAP ||
+               parent->type == REDIS_REPLY_SET ||
+               parent->type == REDIS_REPLY_PUSH);
+        parent->element[task->idx] = r;
+    }
+    return r;
 }
 
-static void *createIntegerObject(const redisReadTask *task, PORT_LONGLONG value) {
-	redisReply *r, *parent;
+static void *createIntegerObject(const redisReadTask *task, long long value) {
+    redisReply *r, *parent;
 
-	r = createReplyObject(REDIS_REPLY_INTEGER);
-	if (r == NULL)
-		return NULL;
+    r = createReplyObject(REDIS_REPLY_INTEGER);
+    if (r == NULL)
+        return NULL;
 
-	r->integer = value;
+    r->integer = value;
 
-	if (task->parent) {
-		parent = task->parent->obj;
-		assert(parent->type == REDIS_REPLY_ARRAY);
-		parent->element[task->idx] = r;
-	}
-	return r;
+    if (task->parent) {
+        parent = task->parent->obj;
+        assert(parent->type == REDIS_REPLY_ARRAY ||
+               parent->type == REDIS_REPLY_MAP ||
+               parent->type == REDIS_REPLY_SET ||
+               parent->type == REDIS_REPLY_PUSH);
+        parent->element[task->idx] = r;
+    }
+    return r;
+}
+
+static void *createDoubleObject(const redisReadTask *task, double value, char *str, size_t len) {
+    redisReply *r, *parent;
+
+    r = createReplyObject(REDIS_REPLY_DOUBLE);
+    if (r == NULL)
+        return NULL;
+
+    r->dval = value;
+    r->str = hi_malloc(len+1);
+    if (r->str == NULL) {
+        freeReplyObject(r);
+        return NULL;
+    }
+
+    /* The double reply also has the original protocol string representing a
+     * double as a null terminated string. This way the caller does not need
+     * to format back for string conversion, especially since Redis does efforts
+     * to make the string more human readable avoiding the calssical double
+     * decimal string conversion artifacts. */
+    memcpy(r->str, str, len);
+    r->str[len] = '\0';
+
+    if (task->parent) {
+        parent = task->parent->obj;
+        assert(parent->type == REDIS_REPLY_ARRAY ||
+               parent->type == REDIS_REPLY_MAP ||
+               parent->type == REDIS_REPLY_SET);
+        parent->element[task->idx] = r;
+    }
+    return r;
 }
 
 static void *createNilObject(const redisReadTask *task) {
-	redisReply *r, *parent;
+    redisReply *r, *parent;
 
-	r = createReplyObject(REDIS_REPLY_NIL);
-	if (r == NULL)
-		return NULL;
+    r = createReplyObject(REDIS_REPLY_NIL);
+    if (r == NULL)
+        return NULL;
 
-	if (task->parent) {
-		parent = task->parent->obj;
-		assert(parent->type == REDIS_REPLY_ARRAY);
-		parent->element[task->idx] = r;
-	}
-	return r;
+    if (task->parent) {
+        parent = task->parent->obj;
+        assert(parent->type == REDIS_REPLY_ARRAY ||
+               parent->type == REDIS_REPLY_MAP ||
+               parent->type == REDIS_REPLY_SET);
+        parent->element[task->idx] = r;
+    }
+    return r;
+}
+
+static void *createBoolObject(const redisReadTask *task, int bval) {
+    redisReply *r, *parent;
+
+    r = createReplyObject(REDIS_REPLY_BOOL);
+    if (r == NULL)
+        return NULL;
+
+    r->integer = bval != 0;
+
+    if (task->parent) {
+        parent = task->parent->obj;
+        assert(parent->type == REDIS_REPLY_ARRAY ||
+               parent->type == REDIS_REPLY_MAP ||
+               parent->type == REDIS_REPLY_SET);
+        parent->element[task->idx] = r;
+    }
+    return r;
 }
 
 /* Return the number of digits of 'v' when converted to string in radix 10.
  * Implementation borrowed from link in redis/src/util.c:string2ll(). */
 static uint32_t countDigits(uint64_t v) {
-	uint32_t result = 1;
-	for (;;) {
-		if (v < 10) return result;
-		if (v < 100) return result + 1;
-		if (v < 1000) return result + 2;
-		if (v < 10000) return result + 3;
-		v /= 10000U;
-		result += 4;
-	}
+  uint32_t result = 1;
+  for (;;) {
+    if (v < 10) return result;
+    if (v < 100) return result + 1;
+    if (v < 1000) return result + 2;
+    if (v < 10000) return result + 3;
+    v /= 10000U;
+    result += 4;
+  }
 }
 
 /* Helper that calculates the bulk length given a certain string length. */
 static size_t bulklen(size_t len) {
-	return (size_t)(1 + countDigits(len) + 2 + len + 2);
+    return 1+countDigits(len)+2+len+2;
 }
 
 int redisvFormatCommand(char **target, const char *format, va_list ap) {
-	const char *c = format;
-	char *cmd = NULL; /* final command */
-	int pos; /* position in final command */
-	sds curarg, newarg; /* current argument */
-	int touched = 0; /* was the current argument touched? */
-	char **curargv = NULL, **newargv = NULL;
-	int argc = 0;
-	int totlen = 0;
-	int error_type = 0; /* 0 = no error; -1 = memory error; -2 = format error */
-	int j;
+    const char *c = format;
+    char *cmd = NULL; /* final command */
+    int pos; /* position in final command */
+    sds curarg, newarg; /* current argument */
+    int touched = 0; /* was the current argument touched? */
+    char **curargv = NULL, **newargv = NULL;
+    int argc = 0;
+    int totlen = 0;
+    int error_type = 0; /* 0 = no error; -1 = memory error; -2 = format error */
+    int j;
 
-	/* Abort if there is not target to set */
-	if (target == NULL)
-		return -1;
+    /* Abort if there is not target to set */
+    if (target == NULL)
+        return -1;
 
-	/* Build the command string accordingly to protocol */
-	curarg = sdsempty();
-	if (curarg == NULL)
-		return -1;
+    /* Build the command string accordingly to protocol */
+    curarg = sdsempty();
+    if (curarg == NULL)
+        return -1;
 
-	while (*c != '\0') {
-		if (*c != '%' || c[1] == '\0') {
-			if (*c == ' ') {
-				if (touched) {
-					newargv = realloc(curargv, sizeof(char*)*(argc + 1));
-					if (newargv == NULL) goto memory_err;
-					curargv = newargv;
-					curargv[argc++] = curarg;
-					totlen += (int)bulklen(sdslen(curarg));
+    while(*c != '\0') {
+        if (*c != '%' || c[1] == '\0') {
+            if (*c == ' ') {
+                if (touched) {
+                    newargv = hi_realloc(curargv,sizeof(char*)*(argc+1));
+                    if (newargv == NULL) goto memory_err;
+                    curargv = newargv;
+                    curargv[argc++] = curarg;
+                    totlen += bulklen(sdslen(curarg));
 
-					/* curarg is put in argv so it can be overwritten. */
-					curarg = sdsempty();
-					if (curarg == NULL) goto memory_err;
-					touched = 0;
-				}
-			}
-			else {
-				newarg = sdscatlen(curarg, c, 1);
-				if (newarg == NULL) goto memory_err;
-				curarg = newarg;
-				touched = 1;
-			}
-		}
-		else {
-			char *arg;
-			size_t size;
+                    /* curarg is put in argv so it can be overwritten. */
+                    curarg = sdsempty();
+                    if (curarg == NULL) goto memory_err;
+                    touched = 0;
+                }
+            } else {
+                newarg = sdscatlen(curarg,c,1);
+                if (newarg == NULL) goto memory_err;
+                curarg = newarg;
+                touched = 1;
+            }
+        } else {
+            char *arg;
+            size_t size;
 
-			/* Set newarg so it can be checked even if it is not touched. */
-			newarg = curarg;
+            /* Set newarg so it can be checked even if it is not touched. */
+            newarg = curarg;
 
-			switch (c[1]) {
-			case 's':
-				arg = va_arg(ap, char*);
-				size = strlen(arg);
-				if (size > 0)
-					newarg = sdscatlen(curarg, arg, size);
-				break;
-			case 'b':
-				arg = va_arg(ap, char*);
-				size = va_arg(ap, size_t);
-				if (size > 0)
-					newarg = sdscatlen(curarg, arg, size);
-				break;
-			case '%':
-				newarg = sdscat(curarg, "%");
-				break;
-			default:
-				/* Try to detect printf format */
-			{
-				static const char intfmts[] = "diouxX";
-				static const char flags[] = "#0-+ ";
-				char _format[16];
-				const char *_p = c + 1;
-				size_t _l = 0;
-				va_list _cpy;
+            switch(c[1]) {
+            case 's':
+                arg = va_arg(ap,char*);
+                size = strlen(arg);
+                if (size > 0)
+                    newarg = sdscatlen(curarg,arg,size);
+                break;
+            case 'b':
+                arg = va_arg(ap,char*);
+                size = va_arg(ap,size_t);
+                if (size > 0)
+                    newarg = sdscatlen(curarg,arg,size);
+                break;
+            case '%':
+                newarg = sdscat(curarg,"%");
+                break;
+            default:
+                /* Try to detect printf format */
+                {
+                    static const char intfmts[] = "diouxX";
+                    static const char flags[] = "#0-+ ";
+                    char _format[16];
+                    const char *_p = c+1;
+                    size_t _l = 0;
+                    va_list _cpy;
 
-				/* Flags */
-				while (*_p != '\0' && strchr(flags, *_p) != NULL) _p++;
+                    /* Flags */
+                    while (*_p != '\0' && strchr(flags,*_p) != NULL) _p++;
 
-				/* Field width */
-				while (*_p != '\0' && isdigit(*_p)) _p++;
+                    /* Field width */
+                    while (*_p != '\0' && isdigit(*_p)) _p++;
 
-				/* Precision */
-				if (*_p == '.') {
-					_p++;
-					while (*_p != '\0' && isdigit(*_p)) _p++;
-				}
+                    /* Precision */
+                    if (*_p == '.') {
+                        _p++;
+                        while (*_p != '\0' && isdigit(*_p)) _p++;
+                    }
 
-				/* Copy va_list before consuming with va_arg */
-				va_copy(_cpy, ap);
+                    /* Copy va_list before consuming with va_arg */
+                    va_copy(_cpy,ap);
 
-				/* Integer conversion (without modifiers) */
-				if (strchr(intfmts, *_p) != NULL) {
-					va_arg(ap, int);
-					goto fmt_valid;
-				}
+                    /* Integer conversion (without modifiers) */
+                    if (strchr(intfmts,*_p) != NULL) {
+                        va_arg(ap,int);
+                        goto fmt_valid;
+                    }
 
-				/* Double conversion (without modifiers) */
-				if (strchr("eEfFgGaA", *_p) != NULL) {
-					va_arg(ap, double);
-					goto fmt_valid;
-				}
+                    /* Double conversion (without modifiers) */
+                    if (strchr("eEfFgGaA",*_p) != NULL) {
+                        va_arg(ap,double);
+                        goto fmt_valid;
+                    }
 
-				/* Size: char */
-				if (_p[0] == 'h' && _p[1] == 'h') {
-					_p += 2;
-					if (*_p != '\0' && strchr(intfmts, *_p) != NULL) {
-						va_arg(ap, int); /* char gets promoted to int */
-						goto fmt_valid;
-					}
-					goto fmt_invalid;
-				}
+                    /* Size: char */
+                    if (_p[0] == 'h' && _p[1] == 'h') {
+                        _p += 2;
+                        if (*_p != '\0' && strchr(intfmts,*_p) != NULL) {
+                            va_arg(ap,int); /* char gets promoted to int */
+                            goto fmt_valid;
+                        }
+                        goto fmt_invalid;
+                    }
 
-				/* Size: short */
-				if (_p[0] == 'h') {
-					_p += 1;
-					if (*_p != '\0' && strchr(intfmts, *_p) != NULL) {
-						va_arg(ap, int); /* short gets promoted to int */
-						goto fmt_valid;
-					}
-					goto fmt_invalid;
-				}
+                    /* Size: short */
+                    if (_p[0] == 'h') {
+                        _p += 1;
+                        if (*_p != '\0' && strchr(intfmts,*_p) != NULL) {
+                            va_arg(ap,int); /* short gets promoted to int */
+                            goto fmt_valid;
+                        }
+                        goto fmt_invalid;
+                    }
 
-				/* Size: PORT_LONGLONG */
-				if (_p[0] == 'l' && _p[1] == 'l') {
-					_p += 2;
-					if (*_p != '\0' && strchr(intfmts, *_p) != NULL) {
-						va_arg(ap, PORT_LONGLONG);
-						goto fmt_valid;
-					}
-					goto fmt_invalid;
-				}
+                    /* Size: long long */
+                    if (_p[0] == 'l' && _p[1] == 'l') {
+                        _p += 2;
+                        if (*_p != '\0' && strchr(intfmts,*_p) != NULL) {
+                            va_arg(ap,long long);
+                            goto fmt_valid;
+                        }
+                        goto fmt_invalid;
+                    }
 
-				/* Size: PORT_LONG */
-				if (_p[0] == 'l') {
-					_p += 1;
-					if (*_p != '\0' && strchr(intfmts, *_p) != NULL) {
-						va_arg(ap, PORT_LONG);
-						goto fmt_valid;
-					}
-					goto fmt_invalid;
-				}
+                    /* Size: long */
+                    if (_p[0] == 'l') {
+                        _p += 1;
+                        if (*_p != '\0' && strchr(intfmts,*_p) != NULL) {
+                            va_arg(ap,long);
+                            goto fmt_valid;
+                        }
+                        goto fmt_invalid;
+                    }
 
-			fmt_invalid:
-				va_end(_cpy);
-				goto format_err;
+                fmt_invalid:
+                    va_end(_cpy);
+                    goto format_err;
 
-			fmt_valid:
-				_l = (_p + 1) - c;
-				if (_l < sizeof(_format) - 2) {
-					memcpy(_format, c, _l);
-					_format[_l] = '\0';
-					newarg = sdscatvprintf(curarg, _format, _cpy);
+                fmt_valid:
+                    _l = (_p+1)-c;
+                    if (_l < sizeof(_format)-2) {
+                        memcpy(_format,c,_l);
+                        _format[_l] = '\0';
+                        newarg = sdscatvprintf(curarg,_format,_cpy);
 
-					/* Update current position (note: outer blocks
-					 * increment c twice so compensate here) */
-					c = _p - 1;
-				}
+                        /* Update current position (note: outer blocks
+                         * increment c twice so compensate here) */
+                        c = _p-1;
+                    }
 
-				va_end(_cpy);
-				break;
-			}
-			}
+                    va_end(_cpy);
+                    break;
+                }
+            }
 
-			if (newarg == NULL) goto memory_err;
-			curarg = newarg;
+            if (newarg == NULL) goto memory_err;
+            curarg = newarg;
 
-			touched = 1;
-			c++;
-		}
-		c++;
-	}
+            touched = 1;
+            c++;
+        }
+        c++;
+    }
 
-	/* Add the last argument if needed */
-	if (touched) {
-		newargv = realloc(curargv, sizeof(char*)*(argc + 1));
-		if (newargv == NULL) goto memory_err;
-		curargv = newargv;
-		curargv[argc++] = curarg;
-		totlen += (int)bulklen(sdslen(curarg));
-	}	else {
-		sdsfree(curarg);
-	}
+    /* Add the last argument if needed */
+    if (touched) {
+        newargv = hi_realloc(curargv,sizeof(char*)*(argc+1));
+        if (newargv == NULL) goto memory_err;
+        curargv = newargv;
+        curargv[argc++] = curarg;
+        totlen += bulklen(sdslen(curarg));
+    } else {
+        sdsfree(curarg);
+    }
 
-	/* Clear curarg because it was put in curargv or was free'd. */
-	curarg = NULL;
+    /* Clear curarg because it was put in curargv or was free'd. */
+    curarg = NULL;
 
-	/* Add bytes needed to hold multi bulk count */
-	totlen += 1 + countDigits(argc) + 2;
+    /* Add bytes needed to hold multi bulk count */
+    totlen += 1+countDigits(argc)+2;
 
-	/* Build the command at protocol level */
-	cmd = malloc(totlen + 1);
-	if (cmd == NULL) goto memory_err;
+    /* Build the command at protocol level */
+    cmd = hi_malloc(totlen+1);
+    if (cmd == NULL) goto memory_err;
 
-	pos = sprintf(cmd, "*%d\r\n", argc);
-	for (j = 0; j < argc; j++) {
-		pos += sprintf(cmd + pos, "$%Iu\r\n", sdslen(curargv[j]));                  WIN_PORT_FIX /* %zu -> %Iu */
-			memcpy(cmd + pos, curargv[j], sdslen(curargv[j]));
-		pos += (int)sdslen(curargv[j]);
-		sdsfree(curargv[j]);
-		cmd[pos++] = '\r';
-		cmd[pos++] = '\n';
-	}
-	assert(pos == totlen);
-	cmd[pos] = '\0';
+    pos = sprintf(cmd,"*%d\r\n",argc);
+    for (j = 0; j < argc; j++) {
+        pos += sprintf(cmd+pos,"$%zu\r\n",sdslen(curargv[j]));
+        memcpy(cmd+pos,curargv[j],sdslen(curargv[j]));
+        pos += sdslen(curargv[j]);
+        sdsfree(curargv[j]);
+        cmd[pos++] = '\r';
+        cmd[pos++] = '\n';
+    }
+    assert(pos == totlen);
+    cmd[pos] = '\0';
 
-	free(curargv);
-	*target = cmd;
-	return totlen;
+    hi_free(curargv);
+    *target = cmd;
+    return totlen;
 
 format_err:
-	error_type = -2;
-	goto cleanup;
+    error_type = -2;
+    goto cleanup;
 
 memory_err:
-	error_type = -1;
-	goto cleanup;
+    error_type = -1;
+    goto cleanup;
 
 cleanup:
-	if (curargv) {
-		while (argc--)
-			sdsfree(curargv[argc]);
-		free(curargv);
-	}
+    if (curargv) {
+        while(argc--)
+            sdsfree(curargv[argc]);
+        hi_free(curargv);
+    }
 
-	sdsfree(curarg);
+    sdsfree(curarg);
+    hi_free(cmd);
 
-	/* No need to check cmd since it is the last statement that can fail,
-	 * but do it anyway to be as defensive as possible. */
-	if (cmd != NULL)
-		free(cmd);
-
-	return error_type;
+    return error_type;
 }
 
 /* Format a command according to the Redis protocol. This function
@@ -462,18 +544,18 @@ cleanup:
  * len = redisFormatCommand(target, "SET %s %b", mykey, myval, myvallen);
  */
 int redisFormatCommand(char **target, const char *format, ...) {
-	va_list ap;
-	int len;
-	va_start(ap, format);
-	len = redisvFormatCommand(target, format, ap);
-	va_end(ap);
+    va_list ap;
+    int len;
+    va_start(ap,format);
+    len = redisvFormatCommand(target,format,ap);
+    va_end(ap);
 
-	/* The API says "-1" means bad result, but we now also return "-2" in some
-	 * cases.  Force the return value to always be -1. */
-	if (len < 0)
-		len = -1;
+    /* The API says "-1" means bad result, but we now also return "-2" in some
+     * cases.  Force the return value to always be -1. */
+    if (len < 0)
+        len = -1;
 
-	return len;
+    return len;
 }
 
 /* Format a command according to the Redis protocol using an sds string and
@@ -483,51 +565,55 @@ int redisFormatCommand(char **target, const char *format, ...) {
  * argument lengths.
  */
 int redisFormatSdsCommandArgv(sds *target, int argc, const char **argv,
-	const size_t *argvlen)
+                              const size_t *argvlen)
 {
-	sds cmd;
-	PORT_ULONGLONG totlen;
-	int j;
-	size_t len;
+    sds cmd, aux;
+    unsigned long long totlen;
+    int j;
+    size_t len;
 
-	/* Abort on a NULL target */
-	if (target == NULL)
-		return -1;
+    /* Abort on a NULL target */
+    if (target == NULL)
+        return -1;
 
-	/* Calculate our total size */
-	totlen = 1 + countDigits(argc) + 2;
-	for (j = 0; j < argc; j++) {
-		len = argvlen ? argvlen[j] : strlen(argv[j]);
-		totlen += bulklen(len);
-	}
+    /* Calculate our total size */
+    totlen = 1+countDigits(argc)+2;
+    for (j = 0; j < argc; j++) {
+        len = argvlen ? argvlen[j] : strlen(argv[j]);
+        totlen += bulklen(len);
+    }
 
-	/* Use an SDS string for command construction */
-	cmd = sdsempty();
-	if (cmd == NULL)
-		return -1;
+    /* Use an SDS string for command construction */
+    cmd = sdsempty();
+    if (cmd == NULL)
+        return -1;
 
-	/* We already know how much storage we need */
-	cmd = sdsMakeRoomFor(cmd, totlen);
-	if (cmd == NULL)
-		return -1;
+    /* We already know how much storage we need */
+    aux = sdsMakeRoomFor(cmd, totlen);
+    if (aux == NULL) {
+        sdsfree(cmd);
+        return -1;
+    }
 
-	/* Construct command */
-	cmd = sdscatfmt(cmd, "*%i\r\n", argc);
-	for (j = 0; j < argc; j++) {
-		len = argvlen ? argvlen[j] : strlen(argv[j]);
-		cmd = sdscatfmt(cmd, "$%u\r\n", len);
-		cmd = sdscatlen(cmd, argv[j], len);
-		cmd = sdscatlen(cmd, "\r\n", sizeof("\r\n") - 1);
-	}
+    cmd = aux;
 
-	assert(sdslen(cmd) == totlen);
+    /* Construct command */
+    cmd = sdscatfmt(cmd, "*%i\r\n", argc);
+    for (j=0; j < argc; j++) {
+        len = argvlen ? argvlen[j] : strlen(argv[j]);
+        cmd = sdscatfmt(cmd, "$%u\r\n", len);
+        cmd = sdscatlen(cmd, argv[j], len);
+        cmd = sdscatlen(cmd, "\r\n", sizeof("\r\n")-1);
+    }
 
-	*target = cmd;
-	return totlen;
+    assert(sdslen(cmd)==totlen);
+
+    *target = cmd;
+    return totlen;
 }
 
 void redisFreeSdsCommand(sds cmd) {
-	sdsfree(cmd);
+    sdsfree(cmd);
 }
 
 /* Format a command according to the Redis protocol. This function takes the
@@ -536,339 +622,333 @@ void redisFreeSdsCommand(sds cmd) {
  * argument lengths.
  */
 int redisFormatCommandArgv(char **target, int argc, const char **argv, const size_t *argvlen) {
-	char *cmd = NULL; /* final command */
-	int pos; /* position in final command */
-	size_t len;
-	int totlen, j;
+    char *cmd = NULL; /* final command */
+    int pos; /* position in final command */
+    size_t len;
+    int totlen, j;
 
-	/* Abort on a NULL target */
-	if (target == NULL)
-		return -1;
+    /* Abort on a NULL target */
+    if (target == NULL)
+        return -1;
 
-	/* Calculate number of bytes needed for the command */
-	totlen = 1 + countDigits(argc) + 2;
-	for (j = 0; j < argc; j++) {
-		len = argvlen ? argvlen[j] : strlen(argv[j]);
-		totlen += bulklen(len);
-	}
+    /* Calculate number of bytes needed for the command */
+    totlen = 1+countDigits(argc)+2;
+    for (j = 0; j < argc; j++) {
+        len = argvlen ? argvlen[j] : strlen(argv[j]);
+        totlen += bulklen(len);
+    }
 
-	/* Build the command at protocol level */
-	cmd = malloc(totlen + 1);
-	if (cmd == NULL)
-		return -1;
+    /* Build the command at protocol level */
+    cmd = hi_malloc(totlen+1);
+    if (cmd == NULL)
+        return -1;
 
-	pos = sprintf(cmd, "*%d\r\n", argc);
-	for (j = 0; j < argc; j++) {
-		len = argvlen ? argvlen[j] : strlen(argv[j]);
-		pos += sprintf(cmd + pos, "$%Iu\r\n", len);                                 WIN_PORT_FIX /* %zu -> %Iu */
-			memcpy(cmd + pos, argv[j], len);
-		pos += (int)len;
-		cmd[pos++] = '\r';
-		cmd[pos++] = '\n';
-	}
-	assert(pos == totlen);
-	cmd[pos] = '\0';
+    pos = sprintf(cmd,"*%d\r\n",argc);
+    for (j = 0; j < argc; j++) {
+        len = argvlen ? argvlen[j] : strlen(argv[j]);
+        pos += sprintf(cmd+pos,"$%zu\r\n",len);
+        memcpy(cmd+pos,argv[j],len);
+        pos += len;
+        cmd[pos++] = '\r';
+        cmd[pos++] = '\n';
+    }
+    assert(pos == totlen);
+    cmd[pos] = '\0';
 
-	*target = cmd;
-	return totlen;
+    *target = cmd;
+    return totlen;
 }
 
 void redisFreeCommand(char *cmd) {
-	free(cmd);
+    hi_free(cmd);
 }
 
 void __redisSetError(redisContext *c, int type, const char *str) {
-	size_t len;
+    size_t len;
 
-	c->err = type;
-	if (str != NULL) {
-		len = strlen(str);
-		len = len < (sizeof(c->errstr) - 1) ? len : (sizeof(c->errstr) - 1);
-		memcpy(c->errstr, str, len);
-		c->errstr[len] = '\0';
+    c->err = type;
+    if (str != NULL) {
+        len = strlen(str);
+        len = len < (sizeof(c->errstr)-1) ? len : (sizeof(c->errstr)-1);
+        memcpy(c->errstr,str,len);
+        c->errstr[len] = '\0';
     } else {
-		/* Only REDIS_ERR_IO may lack a description! */
-		assert(type == REDIS_ERR_IO);
-		__redis_strerror_r(errno, c->errstr, sizeof(c->errstr));
-	}
+        /* Only REDIS_ERR_IO may lack a description! */
+        assert(type == REDIS_ERR_IO);
+        strerror_r(errno, c->errstr, sizeof(c->errstr));
+    }
 }
 
 redisReader *redisReaderCreate(void) {
-	return redisReaderCreateWithFunctions(&defaultFunctions);
+    return redisReaderCreateWithFunctions(&defaultFunctions);
+}
+
+static void redisPushAutoFree(void *privdata, void *reply) {
+    (void)privdata;
+    freeReplyObject(reply);
 }
 
 static redisContext *redisContextInit(void) {
-	redisContext *c;
+    redisContext *c;
 
-	c = calloc(1, sizeof(redisContext));
-	if (c == NULL)
-		return NULL;
+    c = hi_calloc(1, sizeof(*c));
+    if (c == NULL)
+        return NULL;
 
-	c->err = 0;
-	c->errstr[0] = '\0';
-	c->obuf = sdsempty();
-	c->reader = redisReaderCreate();
-	c->tcp.host = NULL;
-	c->tcp.source_addr = NULL;
-	c->unix_sock.path = NULL;
-	c->timeout = NULL;
+    c->funcs = &redisContextDefaultFuncs;
 
-	if (c->obuf == NULL || c->reader == NULL) {
-		redisFree(c);
-		return NULL;
-	}
+    c->obuf = sdsempty();
+    c->reader = redisReaderCreate();
+    c->fd = REDIS_INVALID_FD;
 
-	return c;
+    if (c->obuf == NULL || c->reader == NULL) {
+        redisFree(c);
+        return NULL;
+    }
+
+    return c;
 }
 
 void redisFree(redisContext *c) {
-	if (c == NULL)
-		return;
-	if (c->fd > 0)
-		close(c->fd);
-	if (c->obuf != NULL)
-		sdsfree(c->obuf);
-	if (c->reader != NULL)
-		redisReaderFree(c->reader);
-	if (c->tcp.host)
-		free(c->tcp.host);
-	if (c->tcp.source_addr)
-		free(c->tcp.source_addr);
-	if (c->unix_sock.path)
-		free(c->unix_sock.path);
-	if (c->timeout)
-		free(c->timeout);
-	free(c);
+    if (c == NULL)
+        return;
+    redisNetClose(c);
+
+    sdsfree(c->obuf);
+    redisReaderFree(c->reader);
+    hi_free(c->tcp.host);
+    hi_free(c->tcp.source_addr);
+    hi_free(c->unix_sock.path);
+    hi_free(c->connect_timeout);
+    hi_free(c->command_timeout);
+    hi_free(c->saddr);
+
+    if (c->privdata && c->free_privdata)
+        c->free_privdata(c->privdata);
+
+    if (c->funcs->free_privctx)
+        c->funcs->free_privctx(c->privctx);
+
+    memset(c, 0xff, sizeof(*c));
+    hi_free(c);
 }
 
-int redisFreeKeepFd(redisContext *c) {
-	int fd = c->fd;
-	c->fd = -1;
-	redisFree(c);
-	return fd;
+redisFD redisFreeKeepFd(redisContext *c) {
+    redisFD fd = c->fd;
+    c->fd = REDIS_INVALID_FD;
+    redisFree(c);
+    return fd;
 }
 
 int redisReconnect(redisContext *c) {
-	c->err = 0;
-	memset(c->errstr, '\0', strlen(c->errstr));
+    c->err = 0;
+    memset(c->errstr, '\0', strlen(c->errstr));
 
-	if (c->fd > 0) {
-		close(c->fd);
-	}
+    if (c->privctx && c->funcs->free_privctx) {
+        c->funcs->free_privctx(c->privctx);
+        c->privctx = NULL;
+    }
 
-	sdsfree(c->obuf);
-	redisReaderFree(c->reader);
+    redisNetClose(c);
 
-	c->obuf = sdsempty();
-	c->reader = redisReaderCreate();
+    sdsfree(c->obuf);
+    redisReaderFree(c->reader);
 
-	if (c->connection_type == REDIS_CONN_TCP) {
-		return redisContextConnectBindTcp(c, c->tcp.host, c->tcp.port,
-			c->timeout, c->tcp.source_addr);
+    c->obuf = sdsempty();
+    c->reader = redisReaderCreate();
+
+    if (c->obuf == NULL || c->reader == NULL) {
+        __redisSetError(c, REDIS_ERR_OOM, "Out of memory");
+        return REDIS_ERR;
+    }
+
+    int ret = REDIS_ERR;
+    if (c->connection_type == REDIS_CONN_TCP) {
+        ret = redisContextConnectBindTcp(c, c->tcp.host, c->tcp.port,
+               c->connect_timeout, c->tcp.source_addr);
     } else if (c->connection_type == REDIS_CONN_UNIX) {
-		return redisContextConnectUnix(c, c->unix_sock.path, c->timeout);
+        ret = redisContextConnectUnix(c, c->unix_sock.path, c->connect_timeout);
     } else {
-		/* Something bad happened here and shouldn't have. There isn't
-		   enough information in the context to reconnect. */
-		__redisSetError(c, REDIS_ERR_OTHER, "Not enough information to reconnect");
-	}
+        /* Something bad happened here and shouldn't have. There isn't
+           enough information in the context to reconnect. */
+        __redisSetError(c,REDIS_ERR_OTHER,"Not enough information to reconnect");
+        ret = REDIS_ERR;
+    }
 
-	return REDIS_ERR;
+    if (c->command_timeout != NULL && (c->flags & REDIS_BLOCK) && c->fd != REDIS_INVALID_FD) {
+        redisContextSetTimeout(c, *c->command_timeout);
+    }
+
+    return ret;
+}
+
+redisContext *redisConnectWithOptions(const redisOptions *options) {
+    redisContext *c = redisContextInit();
+    if (c == NULL) {
+        return NULL;
+    }
+    if (!(options->options & REDIS_OPT_NONBLOCK)) {
+        c->flags |= REDIS_BLOCK;
+    }
+    if (options->options & REDIS_OPT_REUSEADDR) {
+        c->flags |= REDIS_REUSEADDR;
+    }
+    if (options->options & REDIS_OPT_NOAUTOFREE) {
+        c->flags |= REDIS_NO_AUTO_FREE;
+    }
+
+    /* Set any user supplied RESP3 PUSH handler or use freeReplyObject
+     * as a default unless specifically flagged that we don't want one. */
+    if (options->push_cb != NULL)
+        redisSetPushCallback(c, options->push_cb);
+    else if (!(options->options & REDIS_OPT_NO_PUSH_AUTOFREE))
+        redisSetPushCallback(c, redisPushAutoFree);
+
+    c->privdata = options->privdata;
+    c->free_privdata = options->free_privdata;
+
+    if (redisContextUpdateConnectTimeout(c, options->connect_timeout) != REDIS_OK ||
+        redisContextUpdateCommandTimeout(c, options->command_timeout) != REDIS_OK) {
+        __redisSetError(c, REDIS_ERR_OOM, "Out of memory");
+        return c;
+    }
+
+    if (options->type == REDIS_CONN_TCP) {
+        redisContextConnectBindTcp(c, options->endpoint.tcp.ip,
+                                   options->endpoint.tcp.port, options->connect_timeout,
+                                   options->endpoint.tcp.source_addr);
+    } else if (options->type == REDIS_CONN_UNIX) {
+        redisContextConnectUnix(c, options->endpoint.unix_socket,
+                                options->connect_timeout);
+    } else if (options->type == REDIS_CONN_USERFD) {
+        c->fd = options->endpoint.fd;
+        c->flags |= REDIS_CONNECTED;
+    } else {
+        // Unknown type - FIXME - FREE
+        return NULL;
+    }
+
+    if (options->command_timeout != NULL && (c->flags & REDIS_BLOCK) && c->fd != REDIS_INVALID_FD) {
+        redisContextSetTimeout(c, *options->command_timeout);
+    }
+
+    return c;
 }
 
 /* Connect to a Redis instance. On error the field error in the returned
  * context will be set to the return value of the error function.
  * When no set of reply functions is given, the default set will be used. */
 redisContext *redisConnect(const char *ip, int port) {
-	redisContext *c;
-
-	c = redisContextInit();
-	if (c == NULL)
-		return NULL;
-
-	c->flags |= REDIS_BLOCK;
-	redisContextConnectTcp(c, ip, port, NULL);
-	return c;
+    redisOptions options = {0};
+    REDIS_OPTIONS_SET_TCP(&options, ip, port);
+    return redisConnectWithOptions(&options);
 }
 
 redisContext *redisConnectWithTimeout(const char *ip, int port, const struct timeval tv) {
-	redisContext *c;
-
-	c = redisContextInit();
-	if (c == NULL)
-		return NULL;
-
-	c->flags |= REDIS_BLOCK;
-	redisContextConnectTcp(c, ip, port, &tv);
-	return c;
+    redisOptions options = {0};
+    REDIS_OPTIONS_SET_TCP(&options, ip, port);
+    options.connect_timeout = &tv;
+    return redisConnectWithOptions(&options);
 }
 
 redisContext *redisConnectNonBlock(const char *ip, int port) {
-	redisContext *c;
-
-	c = redisContextInit();
-	if (c == NULL)
-		return NULL;
-
-	c->flags &= ~REDIS_BLOCK;
-	redisContextConnectTcp(c, ip, port, NULL);
-	return c;
+    redisOptions options = {0};
+    REDIS_OPTIONS_SET_TCP(&options, ip, port);
+    options.options |= REDIS_OPT_NONBLOCK;
+    return redisConnectWithOptions(&options);
 }
 
 redisContext *redisConnectBindNonBlock(const char *ip, int port,
-	const char *source_addr) {
-	redisContext *c = redisContextInit();
-	c->flags &= ~REDIS_BLOCK;
-	redisContextConnectBindTcp(c, ip, port, NULL, source_addr);
-	return c;
+                                       const char *source_addr) {
+    redisOptions options = {0};
+    REDIS_OPTIONS_SET_TCP(&options, ip, port);
+    options.endpoint.tcp.source_addr = source_addr;
+    options.options |= REDIS_OPT_NONBLOCK;
+    return redisConnectWithOptions(&options);
 }
 
 redisContext *redisConnectBindNonBlockWithReuse(const char *ip, int port,
-	const char *source_addr) {
-	redisContext *c = redisContextInit();
-	c->flags &= ~REDIS_BLOCK;
-	c->flags |= REDIS_REUSEADDR;
-	redisContextConnectBindTcp(c, ip, port, NULL, source_addr);
-	return c;
+                                                const char *source_addr) {
+    redisOptions options = {0};
+    REDIS_OPTIONS_SET_TCP(&options, ip, port);
+    options.endpoint.tcp.source_addr = source_addr;
+    options.options |= REDIS_OPT_NONBLOCK|REDIS_OPT_REUSEADDR;
+    return redisConnectWithOptions(&options);
 }
 
 redisContext *redisConnectUnix(const char *path) {
-	redisContext *c;
-
-	c = redisContextInit();
-	if (c == NULL)
-		return NULL;
-
-	c->flags |= REDIS_BLOCK;
-	redisContextConnectUnix(c, path, NULL);
-	return c;
+    redisOptions options = {0};
+    REDIS_OPTIONS_SET_UNIX(&options, path);
+    return redisConnectWithOptions(&options);
 }
 
 redisContext *redisConnectUnixWithTimeout(const char *path, const struct timeval tv) {
-	redisContext *c;
-
-	c = redisContextInit();
-	if (c == NULL)
-		return NULL;
-
-	c->flags |= REDIS_BLOCK;
-	redisContextConnectUnix(c, path, &tv);
-	return c;
+    redisOptions options = {0};
+    REDIS_OPTIONS_SET_UNIX(&options, path);
+    options.connect_timeout = &tv;
+    return redisConnectWithOptions(&options);
 }
 
 redisContext *redisConnectUnixNonBlock(const char *path) {
-	redisContext *c;
-
-	c = redisContextInit();
-	if (c == NULL)
-		return NULL;
-
-	c->flags &= ~REDIS_BLOCK;
-	redisContextConnectUnix(c, path, NULL);
-	return c;
+    redisOptions options = {0};
+    REDIS_OPTIONS_SET_UNIX(&options, path);
+    options.options |= REDIS_OPT_NONBLOCK;
+    return redisConnectWithOptions(&options);
 }
 
-redisContext *redisConnectFd(int fd) {
-	redisContext *c;
-
-	c = redisContextInit();
-	if (c == NULL)
-		return NULL;
-
-	c->fd = fd;
-	c->flags |= REDIS_BLOCK | REDIS_CONNECTED;
-	return c;
+redisContext *redisConnectFd(redisFD fd) {
+    redisOptions options = {0};
+    options.type = REDIS_CONN_USERFD;
+    options.endpoint.fd = fd;
+    return redisConnectWithOptions(&options);
 }
-
-#ifdef _WIN32
-redisContext *redisPreConnectNonBlock(const char *ip, int port, SOCKADDR_STORAGE *ss) {
-	redisContext *c = redisContextInit();
-	c->fd = -1;
-	c->flags &= ~REDIS_BLOCK;
-	redisContextPreConnectTcp(c, ip, port, NULL, ss);
-	return c;
-}
-#endif
 
 /* Set read/write timeout on a blocking socket. */
 int redisSetTimeout(redisContext *c, const struct timeval tv) {
-	if (c->flags & REDIS_BLOCK)
-		return redisContextSetTimeout(c, tv);
-	return REDIS_ERR;
+    if (c->flags & REDIS_BLOCK)
+        return redisContextSetTimeout(c,tv);
+    return REDIS_ERR;
 }
 
 /* Enable connection KeepAlive. */
 int redisEnableKeepAlive(redisContext *c) {
-	if (redisKeepAlive(c, REDIS_KEEPALIVE_INTERVAL) != REDIS_OK)
-		return REDIS_ERR;
-	return REDIS_OK;
+    if (redisKeepAlive(c, REDIS_KEEPALIVE_INTERVAL) != REDIS_OK)
+        return REDIS_ERR;
+    return REDIS_OK;
+}
+
+/* Set a user provided RESP3 PUSH handler and return any old one set. */
+redisPushFn *redisSetPushCallback(redisContext *c, redisPushFn *fn) {
+    redisPushFn *old = c->push_cb;
+    c->push_cb = fn;
+    return old;
 }
 
 /* Use this function to handle a read event on the descriptor. It will try
  * and read some bytes from the socket and feed them to the reply parser.
  *
- * After this function is called, you may use redisContextReadReply to
+ * After this function is called, you may use redisGetReplyFromReader to
  * see if there is a reply available. */
 int redisBufferRead(redisContext *c) {
-	char buf[1024 * 16];
-	int nread;
+    char buf[1024*16];
+    int nread;
 
-	/* Return early when the context has seen an error. */
-	if (c->err)
-		return REDIS_ERR;
+    /* Return early when the context has seen an error. */
+    if (c->err)
+        return REDIS_ERR;
 
-	nread = (int)read(c->fd, buf, sizeof(buf));                                   WIN_PORT_FIX /* cast (int) */
-		if (nread == -1) {
-			if ((errno == EAGAIN && !(c->flags & REDIS_BLOCK)) || (errno == EINTR)) {
-				/* Try again later */
-			}
-			else {
-				__redisSetError(c, REDIS_ERR_IO, NULL);
-				return REDIS_ERR;
-			}
-		}
-		else if (nread == 0) {
-			__redisSetError(c, REDIS_ERR_EOF, "Server closed the connection");
-			return REDIS_ERR;
-		}
-		else {
-			if (redisReaderFeed(c->reader, buf, nread) != REDIS_OK) {
-				__redisSetError(c, c->reader->err, c->reader->errstr);
-				return REDIS_ERR;
-			}
-		}
-		return REDIS_OK;
+    nread = c->funcs->read(c, buf, sizeof(buf));
+    if (nread > 0) {
+        if (redisReaderFeed(c->reader, buf, nread) != REDIS_OK) {
+            __redisSetError(c, c->reader->err, c->reader->errstr);
+            return REDIS_ERR;
+        } else {
+        }
+    } else if (nread < 0) {
+        return REDIS_ERR;
+    }
+    return REDIS_OK;
 }
-
-#ifdef _WIN32
-/* Use this function if the caller has already read the data. It will
- * feed bytes to the reply parser.
- *
- * After this function is called, you may use redisContextReadReply to
- * see if there is a reply available. */
-int redisBufferReadDone(redisContext *c, char *buf, ssize_t nread) {
-	if (nread == -1) {
-		if (errno == EAGAIN && !(c->flags & REDIS_BLOCK)) {
-			/* Try again later */
-		}
-		else {
-			__redisSetError(c, REDIS_ERR_IO, NULL);
-			return REDIS_ERR;
-		}
-	}
-	else if (nread == 0) {
-		__redisSetError(c, REDIS_ERR_EOF, sdsnew("Server closed the connection"));
-		return REDIS_ERR;
-	}
-	else {
-		if (redisReaderFeed(c->reader, buf, nread) != REDIS_OK) {
-			__redisSetError(c, c->reader->err, c->reader->errstr);
-			return REDIS_ERR;
-		}
-	}
-	return REDIS_OK;
-}
-#endif
 
 /* Write the output buffer to the socket.
  *
@@ -880,94 +960,96 @@ int redisBufferReadDone(redisContext *c, char *buf, ssize_t nread) {
  * c->errstr to hold the appropriate error string.
  */
 int redisBufferWrite(redisContext *c, int *done) {
-	int nwritten;
 
-	/* Return early when the context has seen an error. */
-	if (c->err)
-		return REDIS_ERR;
+    /* Return early when the context has seen an error. */
+    if (c->err)
+        return REDIS_ERR;
 
-	if (sdslen(c->obuf) > 0) {
-		nwritten = (int)write(c->fd, c->obuf, sdslen(c->obuf));                   WIN_PORT_FIX /* cast (int) */
-			if (nwritten == -1) {
-				if ((errno == EAGAIN && !(c->flags & REDIS_BLOCK)) || (errno == EINTR)) {
-					/* Try again later */
-				}
-				else {
-					__redisSetError(c, REDIS_ERR_IO, NULL);
-					return REDIS_ERR;
-				}
-			}
-			else if (nwritten > 0) {
-				if (nwritten == (signed)sdslen(c->obuf)) {
-					sdsfree(c->obuf);
-					c->obuf = sdsempty();
-				}
-				else {
-					sdsrange(c->obuf, nwritten, -1);
-				}
-			}
-	}
-	if (done != NULL) *done = (sdslen(c->obuf) == 0);
-	return REDIS_OK;
+    if (sdslen(c->obuf) > 0) {
+        ssize_t nwritten = c->funcs->write(c);
+        if (nwritten < 0) {
+            return REDIS_ERR;
+        } else if (nwritten > 0) {
+            if (nwritten == (ssize_t)sdslen(c->obuf)) {
+                sdsfree(c->obuf);
+                c->obuf = sdsempty();
+                if (c->obuf == NULL)
+                    goto oom;
+            } else {
+                if (sdsrange(c->obuf,nwritten,-1) < 0) goto oom;
+            }
+        }
+    }
+    if (done != NULL) *done = (sdslen(c->obuf) == 0);
+    return REDIS_OK;
+
+oom:
+    __redisSetError(c, REDIS_ERR_OOM, "Out of memory");
+    return REDIS_ERR;
 }
-
-#ifdef _WIN32
-/* Use this function if the caller has already written the data.
- */
-int redisBufferWriteDone(redisContext *c, int nwritten, int *done) {
-	if (nwritten > 0) {
-		if (nwritten == (signed)sdslen(c->obuf)) {
-			sdsfree(c->obuf);
-			c->obuf = sdsempty();
-		}
-		else {
-			sdsrange(c->obuf, nwritten, -1);
-		}
-	}
-	if (done != NULL) *done = (sdslen(c->obuf) == 0);
-	return REDIS_OK;
-}
-#endif
 
 /* Internal helper function to try and get a reply from the reader,
  * or set an error in the context otherwise. */
 int redisGetReplyFromReader(redisContext *c, void **reply) {
-	if (redisReaderGetReply(c->reader, reply) == REDIS_ERR) {
-		__redisSetError(c, c->reader->err, c->reader->errstr);
-		return REDIS_ERR;
-	}
-	return REDIS_OK;
+    if (redisReaderGetReply(c->reader,reply) == REDIS_ERR) {
+        __redisSetError(c,c->reader->err,c->reader->errstr);
+        return REDIS_ERR;
+    }
+
+    return REDIS_OK;
+}
+
+/* Internal helper that returns 1 if the reply was a RESP3 PUSH
+ * message and we handled it with a user-provided callback. */
+static int redisHandledPushReply(redisContext *c, void *reply) {
+    if (reply && c->push_cb && redisIsPushReply(reply)) {
+        c->push_cb(c->privdata, reply);
+        return 1;
+    }
+
+    return 0;
 }
 
 int redisGetReply(redisContext *c, void **reply) {
-	int wdone = 0;
-	void *aux = NULL;
+    int wdone = 0;
+    void *aux = NULL;
 
-	/* Try to read pending replies */
-	if (redisGetReplyFromReader(c, &aux) == REDIS_ERR)
-		return REDIS_ERR;
+    /* Try to read pending replies */
+    if (redisGetReplyFromReader(c,&aux) == REDIS_ERR)
+        return REDIS_ERR;
 
-	/* For the blocking context, flush output buffer and read reply */
-	if (aux == NULL && c->flags & REDIS_BLOCK) {
-		/* Write until done */
-		do {
-			if (redisBufferWrite(c, &wdone) == REDIS_ERR)
-				return REDIS_ERR;
-		} while (!wdone);
+    /* For the blocking context, flush output buffer and read reply */
+    if (aux == NULL && c->flags & REDIS_BLOCK) {
+        /* Write until done */
+        do {
+            if (redisBufferWrite(c,&wdone) == REDIS_ERR)
+                return REDIS_ERR;
+        } while (!wdone);
 
-		/* Read until there is a reply */
-		do {
-			if (redisBufferRead(c) == REDIS_ERR)
-				return REDIS_ERR;
-			if (redisGetReplyFromReader(c, &aux) == REDIS_ERR)
-				return REDIS_ERR;
-		} while (aux == NULL);
-	}
+        /* Read until there is a reply */
+        do {
+            if (redisBufferRead(c) == REDIS_ERR)
+                return REDIS_ERR;
 
-	/* Set reply object */
-	if (reply != NULL) *reply = aux;
-	return REDIS_OK;
+            /* We loop here in case the user has specified a RESP3
+             * PUSH handler (e.g. for client tracking). */
+            do {
+                if (redisGetReplyFromReader(c,&aux) == REDIS_ERR)
+                    return REDIS_ERR;
+            } while (redisHandledPushReply(c, aux));
+        } while (aux == NULL);
+    }
+
+    /* Set reply or free it if we were passed NULL */
+    if (reply != NULL) {
+        *reply = aux;
+    } else {
+        freeReplyObject(aux);
+    }
+
+    return REDIS_OK;
 }
+
 
 /* Helper function for the redisAppendCommand* family of functions.
  *
@@ -976,76 +1058,76 @@ int redisGetReply(redisContext *c, void **reply) {
  * the reply (or replies in pub/sub).
  */
 int __redisAppendCommand(redisContext *c, const char *cmd, size_t len) {
-	sds newbuf;
+    sds newbuf;
 
-	newbuf = sdscatlen(c->obuf, cmd, len);
-	if (newbuf == NULL) {
-		__redisSetError(c, REDIS_ERR_OOM, "Out of memory");
-		return REDIS_ERR;
-	}
+    newbuf = sdscatlen(c->obuf,cmd,len);
+    if (newbuf == NULL) {
+        __redisSetError(c,REDIS_ERR_OOM,"Out of memory");
+        return REDIS_ERR;
+    }
 
-	c->obuf = newbuf;
-	return REDIS_OK;
+    c->obuf = newbuf;
+    return REDIS_OK;
 }
 
 int redisAppendFormattedCommand(redisContext *c, const char *cmd, size_t len) {
-	if (__redisAppendCommand(c, cmd, len) != REDIS_OK) {
-		return REDIS_ERR;
-	}
 
-	return REDIS_OK;
+    if (__redisAppendCommand(c, cmd, len) != REDIS_OK) {
+        return REDIS_ERR;
+    }
+
+    return REDIS_OK;
 }
 
 int redisvAppendCommand(redisContext *c, const char *format, va_list ap) {
-	char *cmd;
-	int len;
+    char *cmd;
+    int len;
 
-	len = redisvFormatCommand(&cmd, format, ap);
-	if (len == -1) {
-		__redisSetError(c, REDIS_ERR_OOM, "Out of memory");
-		return REDIS_ERR;
-	}
-	else if (len == -2) {
-		__redisSetError(c, REDIS_ERR_OTHER, "Invalid format string");
-		return REDIS_ERR;
-	}
+    len = redisvFormatCommand(&cmd,format,ap);
+    if (len == -1) {
+        __redisSetError(c,REDIS_ERR_OOM,"Out of memory");
+        return REDIS_ERR;
+    } else if (len == -2) {
+        __redisSetError(c,REDIS_ERR_OTHER,"Invalid format string");
+        return REDIS_ERR;
+    }
 
-	if (__redisAppendCommand(c, cmd, len) != REDIS_OK) {
-		free(cmd);
-		return REDIS_ERR;
-	}
+    if (__redisAppendCommand(c,cmd,len) != REDIS_OK) {
+        hi_free(cmd);
+        return REDIS_ERR;
+    }
 
-	free(cmd);
-	return REDIS_OK;
+    hi_free(cmd);
+    return REDIS_OK;
 }
 
 int redisAppendCommand(redisContext *c, const char *format, ...) {
-	va_list ap;
-	int ret;
+    va_list ap;
+    int ret;
 
-	va_start(ap, format);
-	ret = redisvAppendCommand(c, format, ap);
-	va_end(ap);
-	return ret;
+    va_start(ap,format);
+    ret = redisvAppendCommand(c,format,ap);
+    va_end(ap);
+    return ret;
 }
 
 int redisAppendCommandArgv(redisContext *c, int argc, const char **argv, const size_t *argvlen) {
-	sds cmd;
-	int len;
+    sds cmd;
+    int len;
 
-	len = redisFormatSdsCommandArgv(&cmd, argc, argv, argvlen);
-	if (len == -1) {
-		__redisSetError(c, REDIS_ERR_OOM, "Out of memory");
-		return REDIS_ERR;
-	}
+    len = redisFormatSdsCommandArgv(&cmd,argc,argv,argvlen);
+    if (len == -1) {
+        __redisSetError(c,REDIS_ERR_OOM,"Out of memory");
+        return REDIS_ERR;
+    }
 
-	if (__redisAppendCommand(c, cmd, len) != REDIS_OK) {
-		sdsfree(cmd);
-		return REDIS_ERR;
-	}
+    if (__redisAppendCommand(c,cmd,len) != REDIS_OK) {
+        sdsfree(cmd);
+        return REDIS_ERR;
+    }
 
-	sdsfree(cmd);
-	return REDIS_OK;
+    sdsfree(cmd);
+    return REDIS_OK;
 }
 
 /* Helper function for the redisCommand* family of functions.
@@ -1060,33 +1142,32 @@ int redisAppendCommandArgv(redisContext *c, int argc, const char **argv, const s
  * in the context will be set.
  */
 static void *__redisBlockForReply(redisContext *c) {
-	void *reply;
+    void *reply;
 
-	if (c->flags & REDIS_BLOCK) {
-		if (redisGetReply(c, &reply) != REDIS_OK)
-			return NULL;
-		return reply;
-	}
-	return NULL;
+    if (c->flags & REDIS_BLOCK) {
+        if (redisGetReply(c,&reply) != REDIS_OK)
+            return NULL;
+        return reply;
+    }
+    return NULL;
 }
 
 void *redisvCommand(redisContext *c, const char *format, va_list ap) {
-	if (redisvAppendCommand(c, format, ap) != REDIS_OK)
-		return NULL;
-	return __redisBlockForReply(c);
+    if (redisvAppendCommand(c,format,ap) != REDIS_OK)
+        return NULL;
+    return __redisBlockForReply(c);
 }
 
 void *redisCommand(redisContext *c, const char *format, ...) {
-	va_list ap;
-	void *reply = NULL;
-	va_start(ap, format);
-	reply = redisvCommand(c, format, ap);
-	va_end(ap);
-	return reply;
+    va_list ap;
+    va_start(ap,format);
+    void *reply = redisvCommand(c,format,ap);
+    va_end(ap);
+    return reply;
 }
 
 void *redisCommandArgv(redisContext *c, int argc, const char **argv, const size_t *argvlen) {
-	if (redisAppendCommandArgv(c, argc, argv, argvlen) != REDIS_OK)
-		return NULL;
-	return __redisBlockForReply(c);
+    if (redisAppendCommandArgv(c,argc,argv,argvlen) != REDIS_OK)
+        return NULL;
+    return __redisBlockForReply(c);
 }

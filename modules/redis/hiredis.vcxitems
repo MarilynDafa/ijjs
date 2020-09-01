@@ -14,22 +14,29 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hiasync.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hidict.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hinet.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hiread.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\alloc.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\async.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\dict.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hiredis.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\ijredis.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\net.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\read.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\sds.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\sockcompat.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hiasync.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hidict.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hifmacros.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hinet.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hiread.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\adapters\libuv.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\alloc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\async.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\async_private.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\dict.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\fmacros.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hiredis.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hisdsalloc.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\win32_hiredis.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\zmalloc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\net.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\read.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\sds.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\sdsalloc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\sockcompat.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\win32.h" />
   </ItemGroup>
 </Project>

@@ -69,11 +69,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)redis\zipmap.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)redis\zmalloc.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)redis\sds.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hiasync.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hidict.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hinet.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hiread.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)hiredis\hiredis.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)redis\hiredis.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)redis\hidict.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)redis\hinet.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)redis\hiread.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)redis\localtime.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)redis\hiasync.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)redis\adlist.h" />
@@ -121,16 +122,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)redis\version.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)redis\ziplist.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)redis\zipmap.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)redis\zmalloc.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)redis\sds.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hiasync.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hidict.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hifmacros.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hinet.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hiread.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hiredis.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\hisdsalloc.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\win32_hiredis.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)hiredis\zmalloc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)redis\hidict.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)redis\hifmacros.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)redis\hinet.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)redis\hiread.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)redis\hiredis.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)redis\hisdsalloc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)redis\win32_hiredis.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)redis\zmalloc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)redis\hiasync.h" />
   </ItemGroup>
 </Project>

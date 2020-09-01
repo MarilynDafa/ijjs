@@ -179,7 +179,7 @@
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/redis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
     </ClCompile>
@@ -196,7 +196,7 @@ del $(TargetDir)redis.out</Command>
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/redis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -213,7 +213,7 @@ del $(TargetDir)redis.out</Command>
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/redis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
     </ClCompile>
@@ -230,7 +230,7 @@ del $(TargetDir)redis.out</Command>
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/redis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -247,7 +247,7 @@ del $(TargetDir)redis.out</Command>
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/redis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
     </ClCompile>
@@ -264,7 +264,7 @@ del $(TargetDir)redis.out</Command>
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/redis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -281,7 +281,7 @@ del $(TargetDir)redis.out</Command>
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/redis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;</PreprocessorDefinitions>
     </ClCompile>
@@ -298,7 +298,7 @@ del $(TargetDir)redis.out</Command>
     <ClCompile>
       <CLanguageStandard>gnu11</CLanguageStandard>
       <ForcedIncludeFiles>/root/projects/redis-linux/Linux_Interop/portmacro.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/hiredis-linux/hiredis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/redis;/root/projects/redis-linux/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>

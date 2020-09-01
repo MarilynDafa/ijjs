@@ -18,45 +18,6 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="redis\adlist.c" />
-    <ClCompile Include="redis\ae.c" />
-    <ClCompile Include="redis\sds.c" />
-    <ClCompile Include="redis\zmalloc.c" />
-    <ClCompile Include="Win32_Interop\Win32_ANSI.c" />
-    <ClCompile Include="Win32_Interop\Win32_CommandLine.cpp" />
-    <ClCompile Include="Win32_Interop\Win32_Common.cpp" />
-    <ClCompile Include="Win32_Interop\Win32_Error.c" />
-    <ClCompile Include="Win32_Interop\Win32_EventLog.cpp" />
-    <ClCompile Include="Win32_Interop\Win32_FDAPI.cpp" />
-    <ClCompile Include="Win32_Interop\Win32_fdapi_crt.cpp" />
-    <ClCompile Include="Win32_Interop\Win32_RedisLog.c" />
-    <ClCompile Include="Win32_Interop\win32_rfdmap.cpp" />
-    <ClCompile Include="Win32_Interop\Win32_service.cpp" />
-    <ClCompile Include="Win32_Interop\Win32_ThreadControl.c" />
-    <ClCompile Include="Win32_Interop\Win32_Time.c" />
-    <ClCompile Include="Win32_Interop\Win32_variadicFunctor.cpp" />
-    <ClCompile Include="Win32_Interop\win32_wsiocp.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Win32_Interop\Win32_ANSI.h" />
-    <ClInclude Include="Win32_Interop\Win32_CommandLine.h" />
-    <ClInclude Include="Win32_Interop\Win32_Common.h" />
-    <ClInclude Include="Win32_Interop\Win32_Error.h" />
-    <ClInclude Include="Win32_Interop\Win32_EventLog.h" />
-    <ClInclude Include="Win32_Interop\Win32_FDAPI.h" />
-    <ClInclude Include="Win32_Interop\Win32_fdapi_crt.h" />
-    <ClInclude Include="Win32_Interop\Win32_PThread.h" />
-    <ClInclude Include="Win32_Interop\Win32_RedisLog.h" />
-    <ClInclude Include="Win32_Interop\win32_rfdmap.h" />
-    <ClInclude Include="Win32_Interop\Win32_Service.h" />
-    <ClInclude Include="Win32_Interop\Win32_ThreadControl.h" />
-    <ClInclude Include="Win32_Interop\Win32_Time.h" />
-    <ClInclude Include="Win32_Interop\win32_types_hiredis.h" />
-    <ClInclude Include="Win32_Interop\Win32_variadicFunctor.h" />
-    <ClInclude Include="Win32_Interop\win32_wsiocp.h" />
-    <ClInclude Include="Win32_Interop\win32_wsiocp2.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -134,7 +95,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;WIN32;_DEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;WIN32;_DEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -146,7 +107,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libijjs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libijjs.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -155,7 +116,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;WIN32;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;WIN32;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -169,14 +130,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libijjs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libijjs.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_OFF_T_DEFINED;_off_t=long;_DEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;_OFF_T_DEFINED;_off_t=long;_DEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -188,7 +149,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libijjs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libijjs.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -197,7 +158,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;LACKS_STDLIB_H;NO_QFORKIMPL;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -211,7 +172,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libijjs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libijjs.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
