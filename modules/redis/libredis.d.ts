@@ -6,6 +6,10 @@ interface REDIS {
     /**
      * start redis server
      */
-    startService(): ijjs.Error;
+    startService(): Promise<ijjs.Error>;
+    /**
+     * stop redis server
+     */
+    stopService(): Promise<ijjs.Error>;
 }
 export var redis: REDIS;

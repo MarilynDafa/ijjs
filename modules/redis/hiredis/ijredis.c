@@ -28,18 +28,19 @@
 int main(int argc, char** argv) {}
 #endif
 typedef struct {
+    redisAsyncContext* acontext;
+    uv_process_t process;
+    void* conn;
+    void* disconn;
+}IJJSRedisProc;
+typedef struct {
     JSContext* ctx;
     IJJSPromise result;
 }IJJSRDConnReq;
-int gPid = 0xDEAD;
+static IJJSRedisProc gProc;
 static JSClassID ijjs_redis_class_id;
 static JSClassID ijjs_rdresult_class_id;
-static IJVoid ijRedisFinalizer(JSRuntime* rt, JSValue val) {
-    redisContext* c = JS_GetOpaque(val, ijjs_redis_class_id);
-   if (c) {
-       redisFree(c);
-   }
-}
+static IJVoid ijRedisFinalizer(JSRuntime* rt, JSValue val) {}
 static IJVoid ijRDResultFinalizer(JSRuntime* rt, JSValue val) {
 
 }
@@ -48,28 +49,47 @@ static JSClassDef ijjs_rdresult_class = { "RDResult", .finalizer = ijRDResultFin
 
 void connectCallback(const redisAsyncContext* c, int status) {
     JSValue arg;
-    IJJSRDConnReq* dr = c->data;
+    IJJSRDConnReq* dr = gProc.conn;
     IJBool is_reject = false;
     if (status != REDIS_OK) {
         arg = JS_NewError(dr->ctx);
         JS_DefinePropertyValueStr(dr->ctx, arg, "message", JS_NewString(dr->ctx, "redis error"), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
         JS_DefinePropertyValueStr(dr->ctx, arg, "errno", JS_NewInt32(dr->ctx, status), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
         is_reject = true;
-        return;
     }
     else {
         arg = JS_UNDEFINED;
     }
-    ijSettlePromise(dr, &dr->result, is_reject, 1, (JSValueConst*)&arg);
+    ijSettlePromise(dr->ctx, &dr->result, is_reject, 1, (JSValueConst*)&arg);
     js_free(dr->ctx, dr);
 }
 void disconnectCallback(const redisAsyncContext* c, int status) {
+    JSValue arg;
+    IJJSRDConnReq* dr = gProc.disconn;
+    IJBool is_reject = false;
+    IJS32 r = uv_process_kill(&gProc.process, SIGTERM);
     if (status != REDIS_OK) {
-        return;
+        arg = JS_NewError(dr->ctx);
+        JS_DefinePropertyValueStr(dr->ctx, arg, "message", JS_NewString(dr->ctx, "redis error"), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        JS_DefinePropertyValueStr(dr->ctx, arg, "errno", JS_NewInt32(dr->ctx, status), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        is_reject = true;
     }
+    else if (r) {
+        arg = JS_NewError(dr->ctx);
+        JS_DefinePropertyValueStr(dr->ctx, arg, "message", JS_NewString(dr->ctx, "redis error"), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        JS_DefinePropertyValueStr(dr->ctx, arg, "errno", JS_NewInt32(dr->ctx, r), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        is_reject = true;
+    }
+    else {
+        arg = JS_UNDEFINED;
+    }
+    ijSettlePromise(dr->ctx, &dr->result, is_reject, 1, (JSValueConst*)&arg);
+    js_free(dr->ctx, dr);
 }
 static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
-    uv_process_t process;
+    IJJSRDConnReq* dr = js_malloc(ctx, sizeof(*dr));
+    if (!dr)
+        return JS_EXCEPTION;
     uv_process_options_t options;
     memset(&options, 0, sizeof(uv_process_options_t));
     uv_stdio_container_t stdio[3];
@@ -93,21 +113,25 @@ static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 arg
     options.args = js_mallocz(ctx, sizeof(*options.args) * 2);
     options.args[0] = js_strdup(ctx, buffer);
     options.file = options.args[0];
-    IJS32 r = uv_spawn(ijGetLoop(ctx), &process, &options);
+    IJS32 r = uv_spawn(ijGetLoop(ctx), &gProc.process, &options);
     if (r != 0)
         return JS_ThrowInternalError(ctx, "couldn't start redis");
-    gPid = process.pid;
-    redisAsyncContext* actx = redisAsyncConnect("127.0.0.1", 6379);
-    redisLibuvAttach(actx, ijGetLoop(ctx));  
-    redisAsyncSetConnectCallback(actx, connectCallback);
-    redisAsyncSetDisconnectCallback(actx, disconnectCallback);
-    IJJSRDConnReq* dr = js_malloc(ctx, sizeof(*dr));
+    gProc.acontext = redisAsyncConnect("127.0.0.1", 6379);
+    redisLibuvAttach(gProc.acontext, ijGetLoop(ctx));
+    redisAsyncSetConnectCallback(gProc.acontext, connectCallback);
+    redisAsyncSetDisconnectCallback(gProc.acontext, disconnectCallback);
     dr->ctx = ctx;
-    actx->data = dr;
+    gProc.conn = dr;
     return ijInitPromise(ctx, &dr->result);
 }
 static JSValue js_stop_service(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
-    return JS_UNDEFINED;
+    IJJSRDConnReq* dr = js_malloc(ctx, sizeof(*dr));
+    if (!dr)
+        return JS_EXCEPTION;
+    dr->ctx = ctx;
+    gProc.disconn = dr;
+    redisAsyncDisconnect(gProc.acontext);
+    return ijInitPromise(ctx, &dr->result);
 }
 static JSValue js_exec_command(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     return JS_UNDEFINED;
