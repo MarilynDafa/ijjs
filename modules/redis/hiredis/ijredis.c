@@ -35,8 +35,9 @@ typedef struct {
 }IJJSRedisProc;
 typedef struct {
     JSContext* ctx;
+    redisReply* reply;
     IJJSPromise result;
-}IJJSRDConnReq;
+} IJJSRDResult;
 static IJJSRedisProc gProc;
 static JSClassID ijjs_redis_class_id;
 static JSClassID ijjs_rdresult_class_id;
@@ -103,13 +104,29 @@ static JSValue js_stop_service(JSContext* ctx, JSValueConst this_val, IJS32 argc
     uv_process_kill(&gProc.process, SIGTERM);
     return JS_UNDEFINED;
 }
+static void execCallback(struct redisAsyncContext* c, void* reply, void* privdata)
+{
+    IJJSRDResult* dr = js_malloc(gProc.ctx, sizeof(*dr));
+    JSValue obj;
+    obj = JS_NewObjectClass(gProc.ctx, ijjs_rdresult_class_id);
+    dr->reply = (redisReply*)reply;
+    ijSettlePromise(gProc.ctx, &gProc.result, false, 1, (JSValueConst*)&obj);
+    JS_SetOpaque(obj, dr);
+}
 static JSValue js_exec_command(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
-    return JS_UNDEFINED;
+    const IJAnsi* arg = JS_ToCString(ctx, argv[0]);
+    IJS32 r = redisAsyncCommand(gProc.acontext, execCallback, NULL, "%s", arg);
+    if (r == REDIS_ERR) {
+        js_free(ctx, arg);
+        return ijThrowErrno(ctx, r);
+    }
+    js_free(ctx, arg);
+    return ijInitPromise(ctx, &gProc.result);
 }
 static const JSCFunctionListEntry module_funcs[] = {
     JS_CFUNC_DEF("startService", 0, js_start_service),
     JS_CFUNC_DEF("stopService", 0, js_stop_service),
-    JS_CFUNC_DEF("execCommand", 2, js_exec_command)
+    JS_CFUNC_DEF("execCommand", 1, js_exec_command)
 };
 static const JSCFunctionListEntry rdresult_proto_funcs[] = {
 };
