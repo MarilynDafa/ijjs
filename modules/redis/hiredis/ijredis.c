@@ -110,34 +110,34 @@ static JSValue js_stop_service(JSContext* ctx, JSValueConst this_val, IJS32 argc
     uv_process_kill(&gProc.process, SIGTERM);
     return JS_UNDEFINED;
 }
-static JSValue createJSValue(redisReply* r)
+static JSValue createJSValue(JSContext* ctx, redisReply* r)
 {
     JSValue obj;
-    obj = JS_NewObjectClass(gProc.ctx, ijjs_rdresult_class_id);
-    JS_DefinePropertyValueStr(gProc.ctx, obj, "type", JS_NewInt32(gProc.ctx, r->type), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+    obj = JS_NewObjectClass(ctx, ijjs_rdresult_class_id);
+    JS_DefinePropertyValueStr(ctx, obj, "type", JS_NewInt32(ctx, r->type), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
     switch (r->type)
     {
     case REDIS_REPLY_ERROR:
     case REDIS_REPLY_STRING:
     case REDIS_REPLY_STATUS:
-        JS_DefinePropertyValueStr(gProc.ctx, obj, "value", JS_NewString(gProc.ctx, r->str), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        JS_DefinePropertyValueStr(ctx, obj, "value", JS_NewString(ctx, r->str), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
         break;
     case REDIS_REPLY_INTEGER:
-        JS_DefinePropertyValueStr(gProc.ctx, obj, "value", JS_NewBigInt64(gProc.ctx, r->integer), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        JS_DefinePropertyValueStr(ctx, obj, "value", JS_NewBigInt64(ctx, r->integer), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
         break;
     case REDIS_REPLY_DOUBLE:
-        JS_DefinePropertyValueStr(gProc.ctx, obj, "value", JS_NewFloat64(gProc.ctx, r->dval), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        JS_DefinePropertyValueStr(ctx, obj, "value", JS_NewFloat64(ctx, r->dval), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
         break;
     case REDIS_REPLY_BOOL:
-        JS_DefinePropertyValueStr(gProc.ctx, obj, "value", JS_NewBool(gProc.ctx, (IJS32)(r->integer)), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        JS_DefinePropertyValueStr(ctx, obj, "value", JS_NewBool(ctx, (IJS32)(r->integer)), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
         break;
     case REDIS_REPLY_ARRAY:
     {
-        JSValue arr = JS_NewArray(gProc.ctx);
+        JSValue arr = JS_NewArray(ctx);
         for (size_t i = 0; i < r->elements; ++i) {
-            JS_DefinePropertyValueUint32(gProc.ctx, arr, i, createJSValue(r->element[i]), JS_PROP_C_W_E);
+            JS_DefinePropertyValueUint32(ctx, arr, i, createJSValue(ctx, r->element[i]), JS_PROP_C_W_E);
         }
-        JS_DefinePropertyValueStr(gProc.ctx, obj, "value", arr, JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
+        JS_DefinePropertyValueStr(ctx, obj, "value", arr, JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
     }
         break;
     default:
@@ -148,20 +148,21 @@ static JSValue createJSValue(redisReply* r)
 static void execCallback(struct redisAsyncContext* c, void* reply, void* privdata)
 {
     IJJSRDResult* dr = privdata;
-    JSValue obj = createJSValue(reply);
-    ijSettlePromise(gProc.ctx, &dr->result, false, 1, (JSValueConst*)&obj);
+    JSValue obj = createJSValue(dr->ctx, reply);
+    ijSettlePromise(dr->ctx, &dr->result, false, 1, (JSValueConst*)&obj);
     JS_SetOpaque(obj, dr);
 }
 static JSValue js_exec_command(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     IJJSRDResult* dr = js_malloc(ctx, sizeof(*dr));
+    if (!dr)
+        return JS_EXCEPTION;
     dr->ctx = ctx;
     const IJAnsi* arg = JS_ToCString(ctx, argv[0]);
     IJS32 r = redisAsyncCommand(gProc.acontext, execCallback, dr, "%s", arg);
     if (r == REDIS_ERR) {
         js_free(ctx, arg);
-        return ijThrowErrno(ctx, r);
+        return JS_UNDEFINED;
     }
-    js_free(ctx, arg);
     return ijInitPromise(ctx, &dr->result);
 }
 static const JSCFunctionListEntry module_funcs[] = {

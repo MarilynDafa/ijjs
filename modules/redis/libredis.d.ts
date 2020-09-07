@@ -23,6 +23,6 @@ interface REDIS {
     /**
      * exec query command
      */
-    execCommand(cmd:string): Promise<RDResult|ijjs.Error>;
+    execCommand(cmd:string): Promise<RDResult>;
 }
 export var redis: REDIS;
