@@ -12,28 +12,5 @@
     <ClInclude Include="Linux_Interop\portmacro.h">
       <Filter>Linux_Interop</Filter>
     </ClInclude>
-    <ClInclude Include="redis\sds.h">
-      <Filter>dummy</Filter>
-    </ClInclude>
-    <ClInclude Include="redis\sdsalloc.h">
-      <Filter>dummy</Filter>
-    </ClInclude>
-    <ClInclude Include="redis\zmalloc.h">
-      <Filter>dummy</Filter>
-    </ClInclude>
-    <ClInclude Include="redis\config.h">
-      <Filter>dummy</Filter>
-    </ClInclude>
-    <ClInclude Include="redis\atomicvar.h">
-      <Filter>dummy</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="redis\sds.c">
-      <Filter>dummy</Filter>
-    </ClCompile>
-    <ClCompile Include="redis\zmalloc.c">
-      <Filter>dummy</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

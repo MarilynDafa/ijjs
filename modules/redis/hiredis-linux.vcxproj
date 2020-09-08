@@ -118,19 +118,10 @@
   </PropertyGroup>
   <ItemGroup>
     <ClInclude Include="Linux_Interop\portmacro.h" />
-    <ClInclude Include="redis\atomicvar.h" />
-    <ClInclude Include="redis\config.h" />
-    <ClInclude Include="redis\sds.h" />
-    <ClInclude Include="redis\sdsalloc.h" />
-    <ClInclude Include="redis\zmalloc.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="redis\sds.c" />
-    <ClCompile Include="redis\zmalloc.c" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>USE_JEMALLOC;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
@@ -138,11 +129,12 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>USE_JEMALLOC;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
@@ -150,11 +142,12 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>USE_JEMALLOC;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
@@ -162,11 +155,12 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>USE_JEMALLOC;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
@@ -174,11 +168,12 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>USE_JEMALLOC;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
@@ -186,11 +181,12 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>USE_JEMALLOC;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
@@ -198,11 +194,12 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>USE_JEMALLOC;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
@@ -210,11 +207,12 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/headers;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/wasm;/root/projects/libijjs-linux/code/externals/curl;/root/projects/libijjs-linux/code/externals/quickjs;/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/redis-linux/modules/redis/redis;/root/projects/libijjs-linux/code/externals/jemalloc/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>USE_JEMALLOC;IJ_EXPORT;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
       <CLanguageStandard>gnu11</CLanguageStandard>
@@ -222,6 +220,7 @@
     <Link>
       <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>ijjs</LibraryDependencies>
+      <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

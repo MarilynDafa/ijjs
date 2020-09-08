@@ -57,8 +57,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cli-linux", "cli-linux.vcxp
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sigar-linux", "..\modules\sigar\sigar-linux.vcxproj", "{7C631899-2877-4562-B554-BF029FC9D73F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{75C95D74-279D-4117-A2F8-F3B9DC77B20D} = {75C95D74-279D-4117-A2F8-F3B9DC77B20D}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "redis-linux", "..\modules\redis\redis-linux.vcxproj", "{0B124F56-D72C-47DD-8317-1CE028E4DE60}"
+	ProjectSection(ProjectDependencies) = postProject
+		{75C95D74-279D-4117-A2F8-F3B9DC77B20D} = {75C95D74-279D-4117-A2F8-F3B9DC77B20D}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Android", "Android", "{E3C1DC79-9C43-4FA0-BB0E-29A8F58F41D5}"
 EndProject
@@ -67,12 +73,21 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libijjs-android", "libijjs-android.vcxproj", "{124013D9-3522-420D-87BD-01BE579FE7CE}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "postgre-linux", "..\modules\postgresql\postgre-linux.vcxproj", "{7B004287-2688-4AA8-AA1F-3D4293142E88}"
+	ProjectSection(ProjectDependencies) = postProject
+		{75C95D74-279D-4117-A2F8-F3B9DC77B20D} = {75C95D74-279D-4117-A2F8-F3B9DC77B20D}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hiredis-win32", "..\modules\redis\hiredis-win32.vcxproj", "{7329DC39-26DA-4659-8975-D160642DFA2D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{449EFAEF-2AA2-4A97-AEB5-D812EC64DECC} = {449EFAEF-2AA2-4A97-AEB5-D812EC64DECC}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hiredis", "..\modules\redis\hiredis.vcxitems", "{F1917859-C4E0-4706-B87F-3B0C1ADF6C55}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hiredis-linux", "..\modules\redis\hiredis-linux.vcxproj", "{6D9ED1B6-82BB-4F45-87B3-844263CFA99D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{75C95D74-279D-4117-A2F8-F3B9DC77B20D} = {75C95D74-279D-4117-A2F8-F3B9DC77B20D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

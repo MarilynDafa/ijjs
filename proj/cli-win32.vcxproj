@@ -113,13 +113,16 @@
       <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
 copy $(OutDir)libsigar.dll ..\install\packages\org.ifw.ijjs\data\libsigar.dll
 copy $(OutDir)libpostgre.dll ..\install\packages\org.ifw.ijjs\data\libpostgre.dll
+copy $(OutDir)libredis.dll ..\install\packages\org.ifw.ijjs\data\libredis.dll
 copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
+copy $(OutDir)redis.exe ..\install\packages\org.ifw.ijjs\data\redis.exe
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
 copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
 copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
-copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts
+copy ..\modules\redis\libredis.d.ts ..\install\packages\org.ifw.ijjs\data\libredis.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -144,13 +147,16 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
       <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
 copy $(OutDir)libsigar.dll ..\install\packages\org.ifw.ijjs\data\libsigar.dll
 copy $(OutDir)libpostgre.dll ..\install\packages\org.ifw.ijjs\data\libpostgre.dll
+copy $(OutDir)libredis.dll ..\install\packages\org.ifw.ijjs\data\libredis.dll
 copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
+copy $(OutDir)redis.exe ..\install\packages\org.ifw.ijjs\data\redis.exe
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
 copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
 copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
-copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts
+copy ..\modules\redis\libredis.d.ts ..\install\packages\org.ifw.ijjs\data\libredis.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -179,13 +185,16 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
       <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
 copy $(OutDir)libsigar.dll ..\install\packages\org.ifw.ijjs\data\libsigar.dll
 copy $(OutDir)libpostgre.dll ..\install\packages\org.ifw.ijjs\data\libpostgre.dll
+copy $(OutDir)libredis.dll ..\install\packages\org.ifw.ijjs\data\libredis.dll
 copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
+copy $(OutDir)redis.exe ..\install\packages\org.ifw.ijjs\data\redis.exe
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
 copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
 copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
-copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts
+copy ..\modules\redis\libredis.d.ts ..\install\packages\org.ifw.ijjs\data\libredis.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -214,13 +223,16 @@ copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</
       <Command>copy $(OutDir)libijjs.dll ..\install\packages\org.ifw.ijjs\data\libijjs.dll
 copy $(OutDir)libsigar.dll ..\install\packages\org.ifw.ijjs\data\libsigar.dll
 copy $(OutDir)libpostgre.dll ..\install\packages\org.ifw.ijjs\data\libpostgre.dll
+copy $(OutDir)libredis.dll ..\install\packages\org.ifw.ijjs\data\libredis.dll
 copy $(OutDir)ijjs-cli.exe ..\install\packages\org.ifw.ijjs\data\ijjs-cli.exe
+copy $(OutDir)redis.exe ..\install\packages\org.ifw.ijjs\data\redis.exe
 copy ..\lib.ijdom.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijdom.d.ts
 copy ..\lib.ijjs.d.ts ..\install\packages\org.ifw.ijjs\data\lib.ijjs.d.ts
 copy ..\modules\postgresql\libpostgre.d.ts ..\install\packages\org.ifw.ijjs\data\libpostgre.d.ts
 copy ..\modules\sigar\libsigar.d.ts ..\install\packages\org.ifw.ijjs\data\libsigar.d.ts
 copy ..\modules\cron\cron.js ..\install\packages\org.ifw.ijjs\data\cron.js
-copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts</Command>
+copy ..\modules\cron\cron.d.ts ..\install\packages\org.ifw.ijjs\data\cron.d.ts
+copy ..\modules\redis\libredis.d.ts ..\install\packages\org.ifw.ijjs\data\libredis.d.ts</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

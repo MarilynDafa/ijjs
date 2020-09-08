@@ -200,6 +200,9 @@ static void init_project() {
     char postgre[256] = { 0 };
     strcpy(postgre, path);
     strcat(postgre, "/libpostgre.d.ts");
+    char redists[256] = { 0 };
+    strcpy(redists, path);
+    strcat(redists, "/libredis.d.ts");
     fp = fopen(dom, "rb");
     fseek(fp, 0, SEEK_END);
     int sz = ftell(fp);
@@ -242,6 +245,17 @@ static void init_project() {
     fread(buf, 1, sz, fp);
     fclose(fp);
     fp = fopen("ij_modules/postgresql/libpostgre.d.ts", "wb");
+    fwrite(buf, 1, sz, fp);
+    fclose(fp);
+    free(buf);
+    fp = fopen(redists, "rb");
+    fseek(fp, 0, SEEK_END);
+    sz = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    buf = malloc(sz);
+    fread(buf, 1, sz, fp);
+    fclose(fp);
+    fp = fopen("ij_modules/redis/libredis.d.ts", "wb");
     fwrite(buf, 1, sz, fp);
     fclose(fp);
     free(buf);
@@ -329,6 +343,60 @@ static void init_project() {
     fp = fopen("ij_modules/postgresql/libpostgre.dylib", "wb");
 #elif defined(linux) || defined(__linux) || defined(__linux__)
     fp = fopen("ij_modules/postgresql/libpostgre.so", "wb");
+#endif
+    fwrite(buf, 1, sz, fp);
+    fclose(fp);
+    free(buf);
+    //11.copy redis module
+    char redisdl[256] = { 0 };
+    strcpy(redisdl, path);
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+    strcat(redisdl, "/libredis.dll");
+#elif defined(__APPLE_CC__)
+    strcat(redisdl, "/libredis.dylib");
+#elif defined(linux) || defined(__linux) || defined(__linux__)
+    strcat(redisdl, "/libredis.so");
+#endif
+    fp = fopen(redisdl, "rb");
+    fseek(fp, 0, SEEK_END);
+    sz = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    buf = malloc(sz);
+    fread(buf, 1, sz, fp);
+    fclose(fp);
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+    fp = fopen("ij_modules/redis/libredis.dll", "wb");
+#elif defined(__APPLE_CC__)
+    fp = fopen("ij_modules/redis/libredis.dylib", "wb");
+#elif defined(linux) || defined(__linux) || defined(__linux__)
+    fp = fopen("ij_modules/redis/libredis.so", "wb");
+#endif
+    fwrite(buf, 1, sz, fp);
+    fclose(fp);
+    free(buf);
+    //11.copy redis exe
+    char redisexe[256] = { 0 };
+    strcpy(redisexe, path);
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+    strcat(redisexe, "/redis.exe");
+#elif defined(__APPLE_CC__)
+    strcat(redisexe, "/redis");
+#elif defined(linux) || defined(__linux) || defined(__linux__)
+    strcat(redisexe, "/redis");
+#endif
+    fp = fopen(redisexe, "rb");
+    fseek(fp, 0, SEEK_END);
+    sz = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    buf = malloc(sz);
+    fread(buf, 1, sz, fp);
+    fclose(fp);
+#if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
+    fp = fopen("ij_modules/redis/redis.exe", "wb");
+#elif defined(__APPLE_CC__)
+    fp = fopen("ij_modules/redis/redis", "wb");
+#elif defined(linux) || defined(__linux) || defined(__linux__)
+    fp = fopen("ij_modules/redis/redis", "wb");
 #endif
     fwrite(buf, 1, sz, fp);
     fclose(fp);
