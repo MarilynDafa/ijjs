@@ -76,13 +76,13 @@
 		C725C3F624F7F57B00CA6B7B /* db.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C3AF24F7F57B00CA6B7B /* db.c */; };
 		C725C3F724F7F57B00CA6B7B /* evict.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C3B024F7F57B00CA6B7B /* evict.c */; };
 		C725C3F824F7F57B00CA6B7B /* rand.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C3B224F7F57B00CA6B7B /* rand.c */; };
-		C725C40724F7F57D00CA6B7B /* hidict.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C3FF24F7F57C00CA6B7B /* hidict.c */; };
-		C725C40824F7F57D00CA6B7B /* hiredis.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C40024F7F57C00CA6B7B /* hiredis.c */; };
-		C725C40924F7F57D00CA6B7B /* hiread.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C40224F7F57D00CA6B7B /* hiread.c */; };
-		C725C40A24F7F57D00CA6B7B /* hinet.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C40324F7F57D00CA6B7B /* hinet.c */; };
-		C725C40B24F7F57D00CA6B7B /* hiasync.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C40624F7F57D00CA6B7B /* hiasync.c */; };
 		C725C41024F7F58D00CA6B7B /* lua.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C40F24F7F58D00CA6B7B /* lua.c */; };
 		C725C41524F7F65300CA6B7B /* libijjs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C725C41424F7F65300CA6B7B /* libijjs.dylib */; };
+		C725C42325090ABB00CA6B7B /* hidict.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C41A25090ABA00CA6B7B /* hidict.c */; };
+		C725C42425090ABB00CA6B7B /* hiread.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C41B25090ABA00CA6B7B /* hiread.c */; };
+		C725C42525090ABB00CA6B7B /* hiasync.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C41C25090ABA00CA6B7B /* hiasync.c */; };
+		C725C42725090ABB00CA6B7B /* hinet.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C42125090ABB00CA6B7B /* hinet.c */; };
+		C725C42A25090C7900CA6B7B /* hiredis.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C42925090C7900CA6B7B /* hiredis.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -215,25 +215,24 @@
 		C725C3B124F7F57B00CA6B7B /* geo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geo.h; sourceTree = "<group>"; };
 		C725C3B224F7F57B00CA6B7B /* rand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rand.c; sourceTree = "<group>"; };
 		C725C3B324F7F57B00CA6B7B /* crc64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc64.h; sourceTree = "<group>"; };
-		C725C3F924F7F57C00CA6B7B /* hiasync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hiasync.h; path = hiredis/hiasync.h; sourceTree = SOURCE_ROOT; };
-		C725C3FA24F7F57C00CA6B7B /* hinet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hinet.h; path = hiredis/hinet.h; sourceTree = SOURCE_ROOT; };
-		C725C3FB24F7F57C00CA6B7B /* win32_hiredis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = win32_hiredis.h; path = hiredis/win32_hiredis.h; sourceTree = SOURCE_ROOT; };
-		C725C3FC24F7F57C00CA6B7B /* hiread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hiread.h; path = hiredis/hiread.h; sourceTree = SOURCE_ROOT; };
-		C725C3FD24F7F57C00CA6B7B /* hifmacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hifmacros.h; path = hiredis/hifmacros.h; sourceTree = SOURCE_ROOT; };
-		C725C3FE24F7F57C00CA6B7B /* zmalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zmalloc.h; path = hiredis/zmalloc.h; sourceTree = SOURCE_ROOT; };
-		C725C3FF24F7F57C00CA6B7B /* hidict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hidict.c; path = hiredis/hidict.c; sourceTree = SOURCE_ROOT; };
-		C725C40024F7F57C00CA6B7B /* hiredis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hiredis.c; path = hiredis/hiredis.c; sourceTree = SOURCE_ROOT; };
-		C725C40124F7F57D00CA6B7B /* hiredis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hiredis.h; path = hiredis/hiredis.h; sourceTree = SOURCE_ROOT; };
-		C725C40224F7F57D00CA6B7B /* hiread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hiread.c; path = hiredis/hiread.c; sourceTree = SOURCE_ROOT; };
-		C725C40324F7F57D00CA6B7B /* hinet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hinet.c; path = hiredis/hinet.c; sourceTree = SOURCE_ROOT; };
-		C725C40424F7F57D00CA6B7B /* hisdsalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hisdsalloc.h; path = hiredis/hisdsalloc.h; sourceTree = SOURCE_ROOT; };
-		C725C40524F7F57D00CA6B7B /* hidict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hidict.h; path = hiredis/hidict.h; sourceTree = SOURCE_ROOT; };
-		C725C40624F7F57D00CA6B7B /* hiasync.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hiasync.c; path = hiredis/hiasync.c; sourceTree = SOURCE_ROOT; };
 		C725C40D24F7F58D00CA6B7B /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua.h; path = lua/lua.h; sourceTree = "<group>"; };
 		C725C40E24F7F58D00CA6B7B /* lualib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lualib.h; path = lua/lualib.h; sourceTree = "<group>"; };
 		C725C40F24F7F58D00CA6B7B /* lua.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lua.c; path = lua/lua.c; sourceTree = "<group>"; };
 		C725C41224F7F5A100CA6B7B /* portmacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = portmacro.h; path = OSX_Interop/portmacro.h; sourceTree = "<group>"; };
 		C725C41424F7F65300CA6B7B /* libijjs.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libijjs.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		C725C41625090ABA00CA6B7B /* hisdsalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hisdsalloc.h; sourceTree = "<group>"; };
+		C725C41725090ABA00CA6B7B /* hidict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hidict.h; sourceTree = "<group>"; };
+		C725C41825090ABA00CA6B7B /* hiread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hiread.h; sourceTree = "<group>"; };
+		C725C41925090ABA00CA6B7B /* hiasync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hiasync.h; sourceTree = "<group>"; };
+		C725C41A25090ABA00CA6B7B /* hidict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hidict.c; sourceTree = "<group>"; };
+		C725C41B25090ABA00CA6B7B /* hiread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hiread.c; sourceTree = "<group>"; };
+		C725C41C25090ABA00CA6B7B /* hiasync.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hiasync.c; sourceTree = "<group>"; };
+		C725C41D25090ABB00CA6B7B /* hifmacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hifmacros.h; sourceTree = "<group>"; };
+		C725C41F25090ABB00CA6B7B /* win32_hiredis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = win32_hiredis.h; sourceTree = "<group>"; };
+		C725C42025090ABB00CA6B7B /* hinet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hinet.h; sourceTree = "<group>"; };
+		C725C42125090ABB00CA6B7B /* hinet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hinet.c; sourceTree = "<group>"; };
+		C725C42825090C7900CA6B7B /* hiredis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hiredis.h; sourceTree = "<group>"; };
+		C725C42925090C7900CA6B7B /* hiredis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hiredis.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,20 +270,19 @@
 		C725C33824F7F41E00CA6B7B /* redis */ = {
 			isa = PBXGroup;
 			children = (
-				C725C40624F7F57D00CA6B7B /* hiasync.c */,
-				C725C3F924F7F57C00CA6B7B /* hiasync.h */,
-				C725C3FF24F7F57C00CA6B7B /* hidict.c */,
-				C725C40524F7F57D00CA6B7B /* hidict.h */,
-				C725C3FD24F7F57C00CA6B7B /* hifmacros.h */,
-				C725C40324F7F57D00CA6B7B /* hinet.c */,
-				C725C3FA24F7F57C00CA6B7B /* hinet.h */,
-				C725C40224F7F57D00CA6B7B /* hiread.c */,
-				C725C3FC24F7F57C00CA6B7B /* hiread.h */,
-				C725C40024F7F57C00CA6B7B /* hiredis.c */,
-				C725C40124F7F57D00CA6B7B /* hiredis.h */,
-				C725C40424F7F57D00CA6B7B /* hisdsalloc.h */,
-				C725C3FB24F7F57C00CA6B7B /* win32_hiredis.h */,
-				C725C3FE24F7F57C00CA6B7B /* zmalloc.h */,
+				C725C42925090C7900CA6B7B /* hiredis.c */,
+				C725C42825090C7900CA6B7B /* hiredis.h */,
+				C725C41C25090ABA00CA6B7B /* hiasync.c */,
+				C725C41925090ABA00CA6B7B /* hiasync.h */,
+				C725C41A25090ABA00CA6B7B /* hidict.c */,
+				C725C41725090ABA00CA6B7B /* hidict.h */,
+				C725C41D25090ABB00CA6B7B /* hifmacros.h */,
+				C725C42125090ABB00CA6B7B /* hinet.c */,
+				C725C42025090ABB00CA6B7B /* hinet.h */,
+				C725C41B25090ABA00CA6B7B /* hiread.c */,
+				C725C41825090ABA00CA6B7B /* hiread.h */,
+				C725C41625090ABA00CA6B7B /* hisdsalloc.h */,
+				C725C41F25090ABB00CA6B7B /* win32_hiredis.h */,
 				C725C34624F7F56E00CA6B7B /* adlist.c */,
 				C725C39324F7F57900CA6B7B /* adlist.h */,
 				C725C3AE24F7F57B00CA6B7B /* ae.c */,
@@ -490,11 +488,9 @@
 			files = (
 				C725C3EA24F7F57B00CA6B7B /* notify.c in Sources */,
 				C725C3D124F7F57B00CA6B7B /* lzf_c.c in Sources */,
-				C725C40724F7F57D00CA6B7B /* hidict.c in Sources */,
 				C725C3E424F7F57B00CA6B7B /* replication.c in Sources */,
 				C725C3BC24F7F57B00CA6B7B /* rdb.c in Sources */,
 				C725C3C824F7F57B00CA6B7B /* server.c in Sources */,
-				C725C40824F7F57D00CA6B7B /* hiredis.c in Sources */,
 				C725C3E124F7F57B00CA6B7B /* util.c in Sources */,
 				C725C3CD24F7F57B00CA6B7B /* hyperloglog.c in Sources */,
 				C725C3C724F7F57B00CA6B7B /* networking.c in Sources */,
@@ -519,6 +515,7 @@
 				C725C3F424F7F57B00CA6B7B /* endianconv.c in Sources */,
 				C725C3E624F7F57B00CA6B7B /* lolwut.c in Sources */,
 				C725C3E724F7F57B00CA6B7B /* bitops.c in Sources */,
+				C725C42325090ABB00CA6B7B /* hidict.c in Sources */,
 				C725C3DA24F7F57B00CA6B7B /* geohash_helper.c in Sources */,
 				C725C3CB24F7F57B00CA6B7B /* memtest.c in Sources */,
 				C725C3B524F7F57B00CA6B7B /* adlist.c in Sources */,
@@ -526,24 +523,25 @@
 				C725C3B924F7F57B00CA6B7B /* latency.c in Sources */,
 				C725C3E324F7F57B00CA6B7B /* ziplist.c in Sources */,
 				C725C3F724F7F57B00CA6B7B /* evict.c in Sources */,
-				C725C40924F7F57D00CA6B7B /* hiread.c in Sources */,
 				C725C3CE24F7F57B00CA6B7B /* bio.c in Sources */,
 				C725C3C424F7F57B00CA6B7B /* sds.c in Sources */,
-				C725C40A24F7F57D00CA6B7B /* hinet.c in Sources */,
 				C725C3E224F7F57B00CA6B7B /* dict.c in Sources */,
 				C725C3E024F7F57B00CA6B7B /* redis-check-rdb.c in Sources */,
 				C725C3DE24F7F57B00CA6B7B /* sparkline.c in Sources */,
-				C725C40B24F7F57D00CA6B7B /* hiasync.c in Sources */,
 				C725C3EB24F7F57B00CA6B7B /* multi.c in Sources */,
 				C725C3BD24F7F57B00CA6B7B /* pubsub.c in Sources */,
+				C725C42525090ABB00CA6B7B /* hiasync.c in Sources */,
 				C725C3D024F7F57B00CA6B7B /* crc16.c in Sources */,
 				C725C3C924F7F57B00CA6B7B /* pqsort.c in Sources */,
 				C725C3CF24F7F57B00CA6B7B /* redis-check-aof.c in Sources */,
 				C725C3E524F7F57B00CA6B7B /* defrag.c in Sources */,
 				C725C3E924F7F57B00CA6B7B /* debug.c in Sources */,
 				C725C3C124F7F57B00CA6B7B /* release.c in Sources */,
+				C725C42425090ABB00CA6B7B /* hiread.c in Sources */,
 				C725C41024F7F58D00CA6B7B /* lua.c in Sources */,
+				C725C42A25090C7900CA6B7B /* hiredis.c in Sources */,
 				C725C3C024F7F57B00CA6B7B /* aof.c in Sources */,
+				C725C42725090ABB00CA6B7B /* hinet.c in Sources */,
 				C725C3B624F7F57B00CA6B7B /* t_list.c in Sources */,
 				C725C3F024F7F57B00CA6B7B /* childinfo.c in Sources */,
 				C725C3C524F7F57B00CA6B7B /* lzf_d.c in Sources */,

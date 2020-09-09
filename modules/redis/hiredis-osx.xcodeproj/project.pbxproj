@@ -7,52 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C725C1F924F7EFA400CA6B7B /* zmalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1E924F7EFA300CA6B7B /* zmalloc.h */; };
-		C725C1FA24F7EFA400CA6B7B /* hinet.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1EA24F7EFA400CA6B7B /* hinet.h */; };
-		C725C1FB24F7EFA400CA6B7B /* hiredis.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1EB24F7EFA400CA6B7B /* hiredis.c */; };
-		C725C1FC24F7EFA400CA6B7B /* hisdsalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1EC24F7EFA400CA6B7B /* hisdsalloc.h */; };
-		C725C1FD24F7EFA400CA6B7B /* hiasync.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1ED24F7EFA400CA6B7B /* hiasync.c */; };
-		C725C1FE24F7EFA400CA6B7B /* win32_hiredis.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1EE24F7EFA400CA6B7B /* win32_hiredis.h */; };
-		C725C20024F7EFA400CA6B7B /* hiread.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1F024F7EFA400CA6B7B /* hiread.h */; };
-		C725C20124F7EFA400CA6B7B /* hidict.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1F124F7EFA400CA6B7B /* hidict.h */; };
 		C725C20224F7EFA400CA6B7B /* ijredis.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1F224F7EFA400CA6B7B /* ijredis.c */; };
 		C725C20324F7EFA400CA6B7B /* hiredis.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1F324F7EFA400CA6B7B /* hiredis.h */; };
-		C725C20424F7EFA400CA6B7B /* hinet.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1F424F7EFA400CA6B7B /* hinet.c */; };
-		C725C20524F7EFA400CA6B7B /* hiread.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1F524F7EFA400CA6B7B /* hiread.c */; };
-		C725C20624F7EFA400CA6B7B /* hidict.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C1F624F7EFA400CA6B7B /* hidict.c */; };
-		C725C20724F7EFA400CA6B7B /* hifmacros.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1F724F7EFA400CA6B7B /* hifmacros.h */; };
-		C725C20824F7EFA400CA6B7B /* hiasync.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C1F824F7EFA400CA6B7B /* hiasync.h */; };
-		C725C20C24F7F15B00CA6B7B /* sdsalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C20924F7F15B00CA6B7B /* sdsalloc.h */; };
-		C725C20D24F7F15B00CA6B7B /* sds.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C20A24F7F15B00CA6B7B /* sds.c */; };
-		C725C20E24F7F15B00CA6B7B /* sds.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C20B24F7F15B00CA6B7B /* sds.h */; };
-		C725C21124F7F17F00CA6B7B /* zmalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C20F24F7F17F00CA6B7B /* zmalloc.h */; };
-		C725C21224F7F17F00CA6B7B /* zmalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C21024F7F17F00CA6B7B /* zmalloc.c */; };
 		C725C21524F7F19500CA6B7B /* libijjs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C725C21424F7F19500CA6B7B /* libijjs.dylib */; };
+		C725C43F25090CD700CA6B7B /* sockcompat.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C42B25090CD500CA6B7B /* sockcompat.c */; };
+		C725C44025090CD700CA6B7B /* sdsalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C42C25090CD500CA6B7B /* sdsalloc.h */; };
+		C725C44125090CD700CA6B7B /* fmacros.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C42D25090CD500CA6B7B /* fmacros.h */; };
+		C725C44225090CD700CA6B7B /* dict.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C42E25090CD500CA6B7B /* dict.h */; };
+		C725C44325090CD700CA6B7B /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C42F25090CD500CA6B7B /* dict.c */; };
+		C725C44425090CD700CA6B7B /* alloc.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C43025090CD500CA6B7B /* alloc.h */; };
+		C725C44525090CD700CA6B7B /* async.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C43125090CD500CA6B7B /* async.h */; };
+		C725C44625090CD700CA6B7B /* win32.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C43225090CD500CA6B7B /* win32.h */; };
+		C725C44725090CD700CA6B7B /* hiredis_ssl.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C43325090CD500CA6B7B /* hiredis_ssl.h */; };
+		C725C44825090CD700CA6B7B /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C43425090CD600CA6B7B /* alloc.c */; };
+		C725C44925090CD700CA6B7B /* hiredis.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C43525090CD600CA6B7B /* hiredis.c */; };
+		C725C44A25090CD700CA6B7B /* read.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C43625090CD600CA6B7B /* read.c */; };
+		C725C44B25090CD700CA6B7B /* net.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C43725090CD600CA6B7B /* net.c */; };
+		C725C44C25090CD700CA6B7B /* net.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C43825090CD600CA6B7B /* net.h */; };
+		C725C44D25090CD700CA6B7B /* async_private.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C43925090CD600CA6B7B /* async_private.h */; };
+		C725C44E25090CD700CA6B7B /* sds.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C43A25090CD600CA6B7B /* sds.c */; };
+		C725C44F25090CD700CA6B7B /* async.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C43B25090CD600CA6B7B /* async.c */; };
+		C725C45025090CD700CA6B7B /* sds.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C43C25090CD600CA6B7B /* sds.h */; };
+		C725C45125090CD700CA6B7B /* sockcompat.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C43D25090CD700CA6B7B /* sockcompat.h */; };
+		C725C45225090CD700CA6B7B /* read.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C43E25090CD700CA6B7B /* read.h */; };
+		C725C45425090CDE00CA6B7B /* libuv.h in Headers */ = {isa = PBXBuildFile; fileRef = C725C45325090CDD00CA6B7B /* libuv.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C725C1E224F7EF6400CA6B7B /* libredis.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libredis.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		C725C1E924F7EFA300CA6B7B /* zmalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zmalloc.h; path = hiredis/zmalloc.h; sourceTree = "<group>"; };
-		C725C1EA24F7EFA400CA6B7B /* hinet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hinet.h; path = hiredis/hinet.h; sourceTree = "<group>"; };
-		C725C1EB24F7EFA400CA6B7B /* hiredis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hiredis.c; path = hiredis/hiredis.c; sourceTree = "<group>"; };
-		C725C1EC24F7EFA400CA6B7B /* hisdsalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hisdsalloc.h; path = hiredis/hisdsalloc.h; sourceTree = "<group>"; };
-		C725C1ED24F7EFA400CA6B7B /* hiasync.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hiasync.c; path = hiredis/hiasync.c; sourceTree = "<group>"; };
-		C725C1EE24F7EFA400CA6B7B /* win32_hiredis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = win32_hiredis.h; path = hiredis/win32_hiredis.h; sourceTree = "<group>"; };
-		C725C1F024F7EFA400CA6B7B /* hiread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hiread.h; path = hiredis/hiread.h; sourceTree = "<group>"; };
-		C725C1F124F7EFA400CA6B7B /* hidict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hidict.h; path = hiredis/hidict.h; sourceTree = "<group>"; };
 		C725C1F224F7EFA400CA6B7B /* ijredis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ijredis.c; path = hiredis/ijredis.c; sourceTree = "<group>"; };
 		C725C1F324F7EFA400CA6B7B /* hiredis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hiredis.h; path = hiredis/hiredis.h; sourceTree = "<group>"; };
-		C725C1F424F7EFA400CA6B7B /* hinet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hinet.c; path = hiredis/hinet.c; sourceTree = "<group>"; };
-		C725C1F524F7EFA400CA6B7B /* hiread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hiread.c; path = hiredis/hiread.c; sourceTree = "<group>"; };
-		C725C1F624F7EFA400CA6B7B /* hidict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hidict.c; path = hiredis/hidict.c; sourceTree = "<group>"; };
-		C725C1F724F7EFA400CA6B7B /* hifmacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hifmacros.h; path = hiredis/hifmacros.h; sourceTree = "<group>"; };
-		C725C1F824F7EFA400CA6B7B /* hiasync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hiasync.h; path = hiredis/hiasync.h; sourceTree = "<group>"; };
-		C725C20924F7F15B00CA6B7B /* sdsalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sdsalloc.h; path = redis/sdsalloc.h; sourceTree = "<group>"; };
-		C725C20A24F7F15B00CA6B7B /* sds.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sds.c; path = redis/sds.c; sourceTree = "<group>"; };
-		C725C20B24F7F15B00CA6B7B /* sds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sds.h; path = redis/sds.h; sourceTree = "<group>"; };
-		C725C20F24F7F17F00CA6B7B /* zmalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zmalloc.h; path = redis/zmalloc.h; sourceTree = "<group>"; };
-		C725C21024F7F17F00CA6B7B /* zmalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zmalloc.c; path = redis/zmalloc.c; sourceTree = "<group>"; };
 		C725C21424F7F19500CA6B7B /* libijjs.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libijjs.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		C725C42B25090CD500CA6B7B /* sockcompat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sockcompat.c; path = hiredis/sockcompat.c; sourceTree = "<group>"; };
+		C725C42C25090CD500CA6B7B /* sdsalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sdsalloc.h; path = hiredis/sdsalloc.h; sourceTree = "<group>"; };
+		C725C42D25090CD500CA6B7B /* fmacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmacros.h; path = hiredis/fmacros.h; sourceTree = "<group>"; };
+		C725C42E25090CD500CA6B7B /* dict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dict.h; path = hiredis/dict.h; sourceTree = "<group>"; };
+		C725C42F25090CD500CA6B7B /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dict.c; path = hiredis/dict.c; sourceTree = "<group>"; };
+		C725C43025090CD500CA6B7B /* alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = alloc.h; path = hiredis/alloc.h; sourceTree = "<group>"; };
+		C725C43125090CD500CA6B7B /* async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = async.h; path = hiredis/async.h; sourceTree = "<group>"; };
+		C725C43225090CD500CA6B7B /* win32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = win32.h; path = hiredis/win32.h; sourceTree = "<group>"; };
+		C725C43325090CD500CA6B7B /* hiredis_ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hiredis_ssl.h; path = hiredis/hiredis_ssl.h; sourceTree = "<group>"; };
+		C725C43425090CD600CA6B7B /* alloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = alloc.c; path = hiredis/alloc.c; sourceTree = "<group>"; };
+		C725C43525090CD600CA6B7B /* hiredis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hiredis.c; path = hiredis/hiredis.c; sourceTree = "<group>"; };
+		C725C43625090CD600CA6B7B /* read.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = read.c; path = hiredis/read.c; sourceTree = "<group>"; };
+		C725C43725090CD600CA6B7B /* net.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = net.c; path = hiredis/net.c; sourceTree = "<group>"; };
+		C725C43825090CD600CA6B7B /* net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = net.h; path = hiredis/net.h; sourceTree = "<group>"; };
+		C725C43925090CD600CA6B7B /* async_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = async_private.h; path = hiredis/async_private.h; sourceTree = "<group>"; };
+		C725C43A25090CD600CA6B7B /* sds.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sds.c; path = hiredis/sds.c; sourceTree = "<group>"; };
+		C725C43B25090CD600CA6B7B /* async.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = async.c; path = hiredis/async.c; sourceTree = "<group>"; };
+		C725C43C25090CD600CA6B7B /* sds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sds.h; path = hiredis/sds.h; sourceTree = "<group>"; };
+		C725C43D25090CD700CA6B7B /* sockcompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sockcompat.h; path = hiredis/sockcompat.h; sourceTree = "<group>"; };
+		C725C43E25090CD700CA6B7B /* read.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = read.h; path = hiredis/read.h; sourceTree = "<group>"; };
+		C725C45325090CDD00CA6B7B /* libuv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libuv.h; path = hiredis/adapters/libuv.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,26 +76,29 @@
 		C725C1D924F7EF6400CA6B7B = {
 			isa = PBXGroup;
 			children = (
-				C725C21024F7F17F00CA6B7B /* zmalloc.c */,
-				C725C20F24F7F17F00CA6B7B /* zmalloc.h */,
-				C725C20A24F7F15B00CA6B7B /* sds.c */,
-				C725C20B24F7F15B00CA6B7B /* sds.h */,
-				C725C20924F7F15B00CA6B7B /* sdsalloc.h */,
-				C725C1ED24F7EFA400CA6B7B /* hiasync.c */,
-				C725C1F824F7EFA400CA6B7B /* hiasync.h */,
-				C725C1F624F7EFA400CA6B7B /* hidict.c */,
-				C725C1F124F7EFA400CA6B7B /* hidict.h */,
-				C725C1F724F7EFA400CA6B7B /* hifmacros.h */,
-				C725C1F424F7EFA400CA6B7B /* hinet.c */,
-				C725C1EA24F7EFA400CA6B7B /* hinet.h */,
-				C725C1F524F7EFA400CA6B7B /* hiread.c */,
-				C725C1F024F7EFA400CA6B7B /* hiread.h */,
-				C725C1EB24F7EFA400CA6B7B /* hiredis.c */,
+				C725C45325090CDD00CA6B7B /* libuv.h */,
+				C725C43425090CD600CA6B7B /* alloc.c */,
+				C725C43025090CD500CA6B7B /* alloc.h */,
+				C725C43925090CD600CA6B7B /* async_private.h */,
+				C725C43B25090CD600CA6B7B /* async.c */,
+				C725C43125090CD500CA6B7B /* async.h */,
+				C725C42F25090CD500CA6B7B /* dict.c */,
+				C725C42E25090CD500CA6B7B /* dict.h */,
+				C725C42D25090CD500CA6B7B /* fmacros.h */,
+				C725C43325090CD500CA6B7B /* hiredis_ssl.h */,
+				C725C43525090CD600CA6B7B /* hiredis.c */,
+				C725C43725090CD600CA6B7B /* net.c */,
+				C725C43825090CD600CA6B7B /* net.h */,
+				C725C43625090CD600CA6B7B /* read.c */,
+				C725C43E25090CD700CA6B7B /* read.h */,
+				C725C43A25090CD600CA6B7B /* sds.c */,
+				C725C43C25090CD600CA6B7B /* sds.h */,
+				C725C42C25090CD500CA6B7B /* sdsalloc.h */,
+				C725C42B25090CD500CA6B7B /* sockcompat.c */,
+				C725C43D25090CD700CA6B7B /* sockcompat.h */,
+				C725C43225090CD500CA6B7B /* win32.h */,
 				C725C1F324F7EFA400CA6B7B /* hiredis.h */,
-				C725C1EC24F7EFA400CA6B7B /* hisdsalloc.h */,
 				C725C1F224F7EFA400CA6B7B /* ijredis.c */,
-				C725C1EE24F7EFA400CA6B7B /* win32_hiredis.h */,
-				C725C1E924F7EFA300CA6B7B /* zmalloc.h */,
 				C725C1E324F7EF6400CA6B7B /* Products */,
 				C725C21324F7F19500CA6B7B /* Frameworks */,
 			);
@@ -118,18 +127,20 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C725C20E24F7F15B00CA6B7B /* sds.h in Headers */,
-				C725C21124F7F17F00CA6B7B /* zmalloc.h in Headers */,
-				C725C1F924F7EFA400CA6B7B /* zmalloc.h in Headers */,
-				C725C20824F7EFA400CA6B7B /* hiasync.h in Headers */,
-				C725C20124F7EFA400CA6B7B /* hidict.h in Headers */,
-				C725C1FA24F7EFA400CA6B7B /* hinet.h in Headers */,
+				C725C45225090CD700CA6B7B /* read.h in Headers */,
+				C725C45025090CD700CA6B7B /* sds.h in Headers */,
+				C725C44C25090CD700CA6B7B /* net.h in Headers */,
+				C725C44225090CD700CA6B7B /* dict.h in Headers */,
+				C725C44125090CD700CA6B7B /* fmacros.h in Headers */,
+				C725C44D25090CD700CA6B7B /* async_private.h in Headers */,
+				C725C44625090CD700CA6B7B /* win32.h in Headers */,
 				C725C20324F7EFA400CA6B7B /* hiredis.h in Headers */,
-				C725C20C24F7F15B00CA6B7B /* sdsalloc.h in Headers */,
-				C725C20024F7EFA400CA6B7B /* hiread.h in Headers */,
-				C725C20724F7EFA400CA6B7B /* hifmacros.h in Headers */,
-				C725C1FC24F7EFA400CA6B7B /* hisdsalloc.h in Headers */,
-				C725C1FE24F7EFA400CA6B7B /* win32_hiredis.h in Headers */,
+				C725C44725090CD700CA6B7B /* hiredis_ssl.h in Headers */,
+				C725C44525090CD700CA6B7B /* async.h in Headers */,
+				C725C44425090CD700CA6B7B /* alloc.h in Headers */,
+				C725C45425090CDE00CA6B7B /* libuv.h in Headers */,
+				C725C45125090CD700CA6B7B /* sockcompat.h in Headers */,
+				C725C44025090CD700CA6B7B /* sdsalloc.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,14 +201,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C725C44E25090CD700CA6B7B /* sds.c in Sources */,
+				C725C44925090CD700CA6B7B /* hiredis.c in Sources */,
+				C725C44325090CD700CA6B7B /* dict.c in Sources */,
+				C725C44F25090CD700CA6B7B /* async.c in Sources */,
 				C725C20224F7EFA400CA6B7B /* ijredis.c in Sources */,
-				C725C20424F7EFA400CA6B7B /* hinet.c in Sources */,
-				C725C20624F7EFA400CA6B7B /* hidict.c in Sources */,
-				C725C20524F7EFA400CA6B7B /* hiread.c in Sources */,
-				C725C21224F7F17F00CA6B7B /* zmalloc.c in Sources */,
-				C725C1FB24F7EFA400CA6B7B /* hiredis.c in Sources */,
-				C725C20D24F7F15B00CA6B7B /* sds.c in Sources */,
-				C725C1FD24F7EFA400CA6B7B /* hiasync.c in Sources */,
+				C725C43F25090CD700CA6B7B /* sockcompat.c in Sources */,
+				C725C44825090CD700CA6B7B /* alloc.c in Sources */,
+				C725C44B25090CD700CA6B7B /* net.c in Sources */,
+				C725C44A25090CD700CA6B7B /* read.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +267,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../code/externals/jemalloc/include,
+					.,
+					../../code/externals/quickjs,
+					../../code/headers,
+					../../code/externals/uv/include,
+					../../code/externals/wasm,
+					../../code/externals,
+				);
+				INSTALL_PATH = "@executable_path/";
 				LIBRARY_SEARCH_PATHS = ../../bin/osx;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -310,6 +332,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../code/externals/jemalloc/include,
+					.,
+					../../code/externals/quickjs,
+					../../code/headers,
+					../../code/externals/uv/include,
+					../../code/externals/wasm,
+					../../code/externals,
+				);
+				INSTALL_PATH = "@executable_path/";
 				LIBRARY_SEARCH_PATHS = ../../bin/osx;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -340,6 +372,11 @@
 				HEADER_SEARCH_PATHS = (
 					../../code/externals/jemalloc/include,
 					.,
+					../../code/externals/quickjs,
+					../../code/headers,
+					../../code/externals/uv/include,
+					../../code/externals/wasm,
+					../../code/externals,
 				);
 				INSTALL_PATH = "@executable_path/";
 				LIBRARY_SEARCH_PATHS = ../../bin/osx;
@@ -368,6 +405,11 @@
 				HEADER_SEARCH_PATHS = (
 					../../code/externals/jemalloc/include,
 					.,
+					../../code/externals/quickjs,
+					../../code/headers,
+					../../code/externals/uv/include,
+					../../code/externals/wasm,
+					../../code/externals,
 				);
 				INSTALL_PATH = "@executable_path/";
 				LIBRARY_SEARCH_PATHS = ../../bin/osx;
