@@ -30,3 +30,5 @@ tests/test-ss.js
 *.json
 *.txt
 *.exe
+*.LinkFileList
+*.dat
