@@ -90,17 +90,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;USE_PTHREAD_ID2;WIN32;_SSIZE_T_;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_REENTRANT;DLLEXPORT;JEMALLOC_NO_PRIVATE_NAMESPACE;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;USE_PTHREAD_ID2;PTW32_CONFIG_H;PTW32_STATIC_LIB;WIN32;_SSIZE_T_;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\redis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\externals\jemalloc;..\..\code\externals\pthread;..\..\code\externals\jemalloc\include;.\lua;.\redis;.\Win32_Interop;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
@@ -109,17 +108,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;USE_PTHREAD_ID2;WIN32;_SSIZE_T_;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_REENTRANT;DLLEXPORT;JEMALLOC_NO_PRIVATE_NAMESPACE;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;USE_PTHREAD_ID2;PTW32_CONFIG_H;PTW32_STATIC_LIB;WIN32;_SSIZE_T_;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\redis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\externals\jemalloc;..\..\code\externals\pthread;..\..\code\externals\jemalloc\include;.\lua;.\redis;.\Win32_Interop;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
@@ -130,9 +128,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;USE_PTHREAD_ID2;WIN32;_SSIZE_T_;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_REENTRANT;DLLEXPORT;JEMALLOC_NO_PRIVATE_NAMESPACE;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;USE_PTHREAD_ID2;PTW32_CONFIG_H;PTW32_STATIC_LIB;WIN32;_SSIZE_T_;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\redis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\externals\jemalloc;..\..\code\externals\pthread;..\..\code\externals\jemalloc\include;.\lua;.\redis;.\Win32_Interop;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -141,8 +139,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
@@ -153,9 +150,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;USE_PTHREAD_ID2;WIN32;_SSIZE_T_;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_JEMALLOC;_REENTRANT;DLLEXPORT;JEMALLOC_NO_PRIVATE_NAMESPACE;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;USE_PTHREAD_ID2;PTW32_CONFIG_H;PTW32_STATIC_LIB;WIN32;_SSIZE_T_;_OFF_T_DEFINED;PSAPI_VERSION=1;LACKS_STDLIB_H;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;INCL_WINSOCK_API_PROTOTYPES=0;_WIN32_WINNT=0x0502;_off_t=long;_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\code\externals\cwin;..\..\code\externals\jemalloc;..\..\code\externals\jemalloc\include;..\..\code\externals\cwin\thread;.\lua;.\redis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\externals\jemalloc;..\..\code\externals\pthread;..\..\code\externals\jemalloc\include;.\lua;.\redis;.\Win32_Interop;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -164,13 +161,15 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libijjs.lib;Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Psapi.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc.h" />
+    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc_defs.h" />
+    <ClInclude Include="..\..\code\externals\pthread\pthread.h" />
     <ClInclude Include="lua\lua.h" />
     <ClInclude Include="lua\lualib.h" />
     <ClInclude Include="Win32_Interop\dlfcn.h" />
@@ -205,8 +204,41 @@
     <ClInclude Include="Win32_Interop\WS2tcpip.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\code\externals\cwin\sys\time.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\arena.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\background_thread.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\base.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\bin.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\bitmap.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\ckh.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\ctl.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\div.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\extent.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\extent_dss.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\extent_mmap.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\hash.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\hook.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\jemalloc.c" />
     <ClCompile Include="..\..\code\externals\jemalloc\jemalloc_cpp.cpp" />
+    <ClCompile Include="..\..\code\externals\jemalloc\large.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\log.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\malloc_io.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\mutex.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\mutex_pool.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\nstime.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\pages.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\prng.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\prof.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\rtree.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\safety_check.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\sc.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\stats.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\sz.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\tcache.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\test_hooks.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\ticker.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\tsd.c" />
+    <ClCompile Include="..\..\code\externals\jemalloc\witness.c" />
+    <ClCompile Include="..\..\code\externals\pthread\pthread.c" />
     <ClCompile Include="lua\lua.c" />
     <ClCompile Include="Win32_Interop\dlfcn.c" />
     <ClCompile Include="Win32_Interop\win32fixes.c" />

@@ -7,6 +7,9 @@
     <Filter Include="Win32_Interop">
       <UniqueIdentifier>{f8daf274-4a63-4efc-9dcb-473343139ea6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="jemalloc">
+      <UniqueIdentifier>{d07e901d-ca5b-43ae-812e-b14c52fb8179}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lua\lua.h">
@@ -105,6 +108,15 @@
     <ClInclude Include="Win32_Interop\WS2tcpip.h">
       <Filter>Win32_Interop</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc.h">
+      <Filter>jemalloc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc_defs.h">
+      <Filter>jemalloc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\externals\pthread\pthread.h">
+      <Filter>Win32_Interop</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Win32_Interop\dlfcn.c">
@@ -170,13 +182,112 @@
     <ClCompile Include="Win32_Interop\win32fixes.c">
       <Filter>Win32_Interop</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\code\externals\cwin\sys\time.c">
-      <Filter>Win32_Interop</Filter>
-    </ClCompile>
     <ClCompile Include="lua\lua.c">
       <Filter>lua</Filter>
     </ClCompile>
     <ClCompile Include="..\..\code\externals\jemalloc\jemalloc_cpp.cpp">
+      <Filter>Win32_Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\arena.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\background_thread.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\base.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\bin.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\bitmap.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\ckh.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\ctl.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\div.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\extent.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\extent_dss.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\extent_mmap.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\hash.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\hook.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\jemalloc.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\large.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\log.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\malloc_io.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\mutex.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\mutex_pool.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\nstime.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\pages.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\prng.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\prof.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\rtree.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\safety_check.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\sc.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\stats.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\sz.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\tcache.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\test_hooks.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\ticker.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\tsd.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\jemalloc\witness.c">
+      <Filter>jemalloc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\externals\pthread\pthread.c">
       <Filter>Win32_Interop</Filter>
     </ClCompile>
   </ItemGroup>

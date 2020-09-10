@@ -22,7 +22,7 @@
 
 #ifndef WIN32_INTEROPA_PORTABILITY_H
 #define WIN32_INTEROPA_PORTABILITY_H
-#include "win32_types_hiredis.h"
+
 
 #ifdef __cplusplus
 extern "C"

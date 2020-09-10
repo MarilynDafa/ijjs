@@ -13,9 +13,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\code\externals\cwin\pthread.h">
-      <Filter>cwin</Filter>
-    </ClInclude>
     <ClInclude Include="..\code\externals\cwin\stdatomic.h">
       <Filter>cwin</Filter>
     </ClInclude>
@@ -56,6 +53,9 @@
       <Filter>cwin</Filter>
     </ClInclude>
     <ClInclude Include="..\code\externals\cwin\syslog.h">
+      <Filter>cwin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\externals\pthread\pthread.h">
       <Filter>cwin</Filter>
     </ClInclude>
   </ItemGroup>
@@ -138,9 +138,6 @@
     <ClCompile Include="..\code\externals\cwin\sys\time.c">
       <Filter>cwin\sys</Filter>
     </ClCompile>
-    <ClCompile Include="..\code\externals\cwin\pthread.c">
-      <Filter>cwin</Filter>
-    </ClCompile>
     <ClCompile Include="..\code\externals\cwin\unistd.c">
       <Filter>cwin</Filter>
     </ClCompile>
@@ -157,6 +154,9 @@
       <Filter>cwin</Filter>
     </ClCompile>
     <ClCompile Include="..\code\externals\cwin\setenv.c">
+      <Filter>cwin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\externals\pthread\pthread.c">
       <Filter>cwin</Filter>
     </ClCompile>
   </ItemGroup>

@@ -30,11 +30,15 @@
 #endif
 #include <stdint.h>
 
+struct timezone {
+	int  tz_minuteswest; /* minutes W of Greenwich */
+	int  tz_dsttime;     /* type of dst correction */
+};
+#include <winsock2.h>
 
-#include <sys/time.h>
+#define gettimeofday gettimeofday_highres
 
-//#define gettimeofday gettimeofday_highres
-
+void     InitTimeFunctions();
 uint64_t GetHighResRelativeTime(double scale);
 time_t   gettimeofdaysecs(unsigned int *usec);
 int      gettimeofday_highres(struct timeval *tv, struct timezone *tz);

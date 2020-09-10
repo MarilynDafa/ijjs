@@ -32,14 +32,14 @@
  * This enables us to have merge check script to verify that no new instances of 'long' go unnoticed.
 */
 
-typedef long long           PORT_LONGLONG;
-typedef unsigned long long  PORT_ULONGLONG;
+typedef __int64           PORT_LONGLONG;
+typedef unsigned __int64  PORT_ULONGLONG;
 typedef double            PORT_LONGDOUBLE;
 
 #ifdef _WIN64
-typedef long long           ssize_t;
-typedef long long           PORT_LONG;
-typedef unsigned long long  PORT_ULONG;
+typedef __int64           ssize_t;
+typedef __int64           PORT_LONG;
+typedef unsigned __int64  PORT_ULONG;
 #else
 typedef long              ssize_t;
 typedef long              PORT_LONG;
@@ -58,15 +58,16 @@ typedef unsigned long     PORT_ULONG;
 
 /* The maximum possible size_t value has all bits set */
 #define MAX_SIZE_T        (~(size_t)0)
-typedef int pid_t;
+
+typedef int               pid_t;
 
 #ifndef mode_t
-#define mode_t            unsigned int
+#define mode_t            unsigned __int32
 #endif
 
 /* sha1 */
 #ifndef u_int32_t
-typedef unsigned int  u_int32_t;
+typedef unsigned __int32  u_int32_t;
 #endif
 
 #endif

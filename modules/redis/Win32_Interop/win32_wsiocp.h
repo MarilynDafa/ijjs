@@ -24,7 +24,7 @@
 #define WIN32_INTEROP_WSIOCP_H
 
 #include "win32_wsiocp2.h"
-#include "../redis/ae.h"
+#include "redis/ae.h"
 
  /* structs and functions for using IOCP with windows sockets */
 

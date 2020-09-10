@@ -1052,7 +1052,7 @@ void SetupQForkGlobals(int argc, char* argv[]) {
 
 extern "C"
 {
-#include <pthread.h>
+#include "Win32_PThread.h"
     extern pthread_mutex_t used_memory_mutex;
 
     // The external main() is redefined as redis_main() by Win32_QFork.h.

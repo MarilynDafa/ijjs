@@ -24,6 +24,7 @@
 
 #include "Win32_variadicFunctor.h"
 
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <stdexcept>
 #include <map>
@@ -58,7 +59,7 @@ LPVOID DLLMap::getProcAddress(string dll, string functionName)
 
 DLLMap::~DLLMap()
 {
-	for(map<string, HMODULE>::iterator iter = this->begin(); iter!= this->end(); ++iter)
+	for (map<string, HMODULE>::iterator iter = this->begin(); iter != this->end(); ++iter)
 	{
 		FreeLibrary(iter->second);
 	}

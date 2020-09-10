@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\code\externals\cwin\pthread.c" />
     <ClCompile Include="..\code\externals\cwin\sys\time.c" />
     <ClCompile Include="..\code\externals\cwin\unistd.c" />
+    <ClCompile Include="..\code\externals\pthread\pthread.c" />
     <ClCompile Include="..\code\externals\quickjs\cutils.c" />
     <ClCompile Include="..\code\externals\quickjs\libbf.c" />
     <ClCompile Include="..\code\externals\quickjs\libregexp.c" />
@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;DISQJSD;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_CONFIG_H;CONFIG_BIGNUM;USE_PTHREAD_ID;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;..\code\externals\pthread;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;DISQJSD;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_CONFIG_H;CONFIG_BIGNUM;USE_PTHREAD_ID;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;..\code\externals\pthread;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;DISQJSD;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_CONFIG_H;CONFIG_BIGNUM;USE_PTHREAD_ID;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;..\code\externals\pthread;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,7 +157,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>QJS_VERSION_STR="2020-4-12";USE_STD_ALLOC;DISQJSD;IJ_EXPORT;PTW32_CONFIG_H;PTW32_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_CONFIG_H;CONFIG_BIGNUM;USE_PTHREAD_ID;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\quickjs;..\code\externals\cwin;..\code\externals\pthread;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

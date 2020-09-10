@@ -55,6 +55,7 @@ this should preceed the other arguments passed to redis. For instance:
 */
 
 #include "win32_types.h"
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <windowsx.h>
 #include <shlobj.h>
@@ -67,6 +68,7 @@ this should preceed the other arguments passed to redis. For instance:
 #include <sstream>
 #include <vector>
 #include <iostream>
+#include <shellapi.h>
 #include "Win32_RedisLog.h"
 #include "Win32_CommandLine.h"
 using namespace std;
@@ -454,7 +456,7 @@ DWORD WINAPI ServiceWorkerThread(LPVOID lpParam) {
             throw std::runtime_error("new() failed");
 
         int argIndex = 0;
-        for(vector<string>::iterator iter = serviceRunArguments.begin(); iter!= serviceRunArguments.end(); ++iter)
+        for (vector<string>::iterator iter = serviceRunArguments.begin(); iter != serviceRunArguments.end(); ++iter)
         {
             string arg = *iter;
             argv[argIndex] = new char[arg.length() + 1];

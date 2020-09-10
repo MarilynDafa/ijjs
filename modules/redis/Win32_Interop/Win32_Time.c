@@ -25,6 +25,7 @@
 #include "Win32_Time.h"
 #include <stdlib.h>
 #include <time.h>
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <assert.h>
 
@@ -39,7 +40,8 @@ static VOID(WINAPI *fnGetSystemTimePreciseAsFileTime)(LPFILETIME) = NULL;
 *  -1 : the system doesn't have high-resolution clock support
 */
 static double highResTimeInterval = 0;
-static inline  void _InitHighResRelativeTime() {
+
+void InitHighResRelativeTime() {
     LARGE_INTEGER perfFrequency;
 
     if (highResTimeInterval != 0)
@@ -50,15 +52,14 @@ static inline  void _InitHighResRelativeTime() {
     */
     if (QueryPerformanceFrequency(&perfFrequency)) {
         highResTimeInterval = 1.0 / perfFrequency.QuadPart;
-    }
-    else {
+    } else {
         highResTimeInterval = -1;
     }
 
     assert(highResTimeInterval != 0);
 }
 
-static inline  void _InitHighResAbsoluteTime() {
+void InitHighResAbsoluteTime() {
     FARPROC fp;
     HMODULE module;
 
@@ -78,12 +79,17 @@ static inline  void _InitHighResAbsoluteTime() {
     assert(fnGetSystemTimePreciseAsFileTime != NULL);
 }
 
+void InitTimeFunctions() {
+    InitHighResRelativeTime();
+    InitHighResAbsoluteTime();
+}
+
 uint64_t GetHighResRelativeTime(double scale) {
     LARGE_INTEGER counter;
 
     if (highResTimeInterval <= 0) {
         if (highResTimeInterval == 0) {
-            _InitHighResRelativeTime();
+            InitHighResRelativeTime();
         }
 
         /* If the performance interval is less than zero, there's no support. */
@@ -160,7 +166,7 @@ int gettimeofday_highres(struct timeval *tv, struct timezone *tz) {
     static int tzflag;
 
     if (NULL == fnGetSystemTimePreciseAsFileTime) {
-        _InitHighResAbsoluteTime();
+        InitHighResAbsoluteTime();
     }
 
     if (NULL != tv) {

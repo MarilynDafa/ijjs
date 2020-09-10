@@ -24,7 +24,7 @@
 
 #include <Windows.h>
 #include <stdint.h>
-#include <sched.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif

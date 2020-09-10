@@ -23,7 +23,7 @@
 #ifndef WIN32_INTEROP_APIS_H
 #define WIN32_INTEROP_APIS_H
 
-#include "win32_types.h"
+#include "Win32_types.h"
 #include <Windows.h>
 #include <stdio.h>      // for rename
 

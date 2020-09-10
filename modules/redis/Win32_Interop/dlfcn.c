@@ -24,6 +24,7 @@
 #include <crtdbg.h>
 #endif
 #define PSAPI_VERSION 1
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <psapi.h>
 #include <stdio.h>

@@ -95,7 +95,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;WIN32;_DEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;_OFF_T_DEFINED;_off_t=long;WIN32;_DEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -116,7 +116,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;WIN32;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;_OFF_T_DEFINED;_off_t=long;WIN32;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -158,7 +158,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;_SSIZE_T_;_OFF_T_DEFINED;_off_t=long;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;IJ_EXPORT;_WIN32;USE_JEMALLOC;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;_OFF_T_DEFINED;_off_t=long;NDEBUG;HIREDISWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
