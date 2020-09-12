@@ -26,7 +26,7 @@
 		C7065EA124DAE0F300276B1C /* sigar_format.h in Headers */ = {isa = PBXBuildFile; fileRef = C7065E9024DAE0F300276B1C /* sigar_format.h */; };
 		C7065EA424DAE10200276B1C /* sigar_os.h in Headers */ = {isa = PBXBuildFile; fileRef = C7065EA224DAE10200276B1C /* sigar_os.h */; };
 		C7065EA524DAE10200276B1C /* darwin_sigar.m in Sources */ = {isa = PBXBuildFile; fileRef = C7065EA324DAE10200276B1C /* darwin_sigar.m */; };
-		C7065EA824DAE23400276B1C /* libijjs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C7065EA724DAE23400276B1C /* libijjs.dylib */; };
+		C725C498250D254B00CA6B7B /* libijjs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C7065EA724DAE23400276B1C /* libijjs.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7065EA824DAE23400276B1C /* libijjs.dylib in Frameworks */,
+				C725C498250D254B00CA6B7B /* libijjs.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,12 +347,18 @@
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
 					JEMALLOC_NO_DEMANGLE,
 					JEMALLOC_NO_RENAME,
 					IJ_EXPORT,
 					DARWIN,
+				);
+				HEADER_SEARCH_PATHS = (
+					../../code/externals,
+					../../code/externals/jemalloc/include,
+					../../code/externals/quickjs,
+					../../code/headers,
+					"$(inherited)",
 				);
 				INSTALL_PATH = "@executable_path/";
 				PRODUCT_NAME = sigar;
@@ -368,6 +374,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					../../code/externals,
+					../../code/externals/jemalloc/include,
+					../../code/externals/quickjs,
+					../../code/headers,
+					"$(inherited)",
+				);
 				INSTALL_PATH = "@executable_path/";
 				PRODUCT_NAME = sigar;
 				SKIP_INSTALL = YES;

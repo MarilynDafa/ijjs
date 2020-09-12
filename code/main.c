@@ -395,6 +395,7 @@ static void init_project() {
     fp = fopen("ij_modules/redis/redis.exe", "wb");
 #elif defined(__APPLE_CC__)
     fp = fopen("ij_modules/redis/redis", "wb");
+    chmod("ij_modules/redis/redis", S_IRWXU);
 #elif defined(linux) || defined(__linux) || defined(__linux__)
     fp = fopen("ij_modules/redis/redis", "wb");
 #endif

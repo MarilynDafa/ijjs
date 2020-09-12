@@ -77,12 +77,44 @@
 		C725C3F724F7F57B00CA6B7B /* evict.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C3B024F7F57B00CA6B7B /* evict.c */; };
 		C725C3F824F7F57B00CA6B7B /* rand.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C3B224F7F57B00CA6B7B /* rand.c */; };
 		C725C41024F7F58D00CA6B7B /* lua.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C40F24F7F58D00CA6B7B /* lua.c */; };
-		C725C41524F7F65300CA6B7B /* libijjs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C725C41424F7F65300CA6B7B /* libijjs.dylib */; };
 		C725C42325090ABB00CA6B7B /* hidict.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C41A25090ABA00CA6B7B /* hidict.c */; };
 		C725C42425090ABB00CA6B7B /* hiread.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C41B25090ABA00CA6B7B /* hiread.c */; };
 		C725C42525090ABB00CA6B7B /* hiasync.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C41C25090ABA00CA6B7B /* hiasync.c */; };
 		C725C42725090ABB00CA6B7B /* hinet.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C42125090ABB00CA6B7B /* hinet.c */; };
 		C725C42A25090C7900CA6B7B /* hiredis.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C42925090C7900CA6B7B /* hiredis.c */; };
+		C725C477250D0D3800CA6B7B /* jemalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C456250D0D3500CA6B7B /* jemalloc.c */; };
+		C725C478250D0D3800CA6B7B /* ckh.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C457250D0D3600CA6B7B /* ckh.c */; };
+		C725C479250D0D3800CA6B7B /* hash.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C458250D0D3600CA6B7B /* hash.c */; };
+		C725C47A250D0D3800CA6B7B /* base.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C459250D0D3600CA6B7B /* base.c */; };
+		C725C47B250D0D3800CA6B7B /* stats.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C45A250D0D3600CA6B7B /* stats.c */; };
+		C725C47C250D0D3800CA6B7B /* test_hooks.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C45B250D0D3600CA6B7B /* test_hooks.c */; };
+		C725C47D250D0D3800CA6B7B /* ticker.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C45C250D0D3600CA6B7B /* ticker.c */; };
+		C725C47E250D0D3800CA6B7B /* large.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C45D250D0D3600CA6B7B /* large.c */; };
+		C725C47F250D0D3800CA6B7B /* rtree.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C45E250D0D3600CA6B7B /* rtree.c */; };
+		C725C480250D0D3800CA6B7B /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C45F250D0D3600CA6B7B /* prng.c */; };
+		C725C481250D0D3800CA6B7B /* hook.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C460250D0D3600CA6B7B /* hook.c */; };
+		C725C482250D0D3800CA6B7B /* safety_check.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C461250D0D3700CA6B7B /* safety_check.c */; };
+		C725C483250D0D3800CA6B7B /* nstime.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C462250D0D3700CA6B7B /* nstime.c */; };
+		C725C484250D0D3800CA6B7B /* extent.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C463250D0D3700CA6B7B /* extent.c */; };
+		C725C485250D0D3800CA6B7B /* background_thread.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C464250D0D3700CA6B7B /* background_thread.c */; };
+		C725C486250D0D3800CA6B7B /* extent_mmap.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C465250D0D3700CA6B7B /* extent_mmap.c */; };
+		C725C487250D0D3800CA6B7B /* ctl.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C466250D0D3700CA6B7B /* ctl.c */; };
+		C725C488250D0D3800CA6B7B /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C467250D0D3700CA6B7B /* log.c */; };
+		C725C489250D0D3800CA6B7B /* arena.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C468250D0D3700CA6B7B /* arena.c */; };
+		C725C48A250D0D3800CA6B7B /* sc.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C469250D0D3700CA6B7B /* sc.c */; };
+		C725C48B250D0D3800CA6B7B /* malloc_io.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C46A250D0D3700CA6B7B /* malloc_io.c */; };
+		C725C48C250D0D3800CA6B7B /* tsd.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C46B250D0D3800CA6B7B /* tsd.c */; };
+		C725C48D250D0D3800CA6B7B /* witness.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C46C250D0D3800CA6B7B /* witness.c */; };
+		C725C48E250D0D3800CA6B7B /* pages.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C46D250D0D3800CA6B7B /* pages.c */; };
+		C725C48F250D0D3800CA6B7B /* tcache.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C46E250D0D3800CA6B7B /* tcache.c */; };
+		C725C490250D0D3800CA6B7B /* div.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C46F250D0D3800CA6B7B /* div.c */; };
+		C725C491250D0D3800CA6B7B /* mutex.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C470250D0D3800CA6B7B /* mutex.c */; };
+		C725C492250D0D3800CA6B7B /* prof.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C471250D0D3800CA6B7B /* prof.c */; };
+		C725C493250D0D3800CA6B7B /* mutex_pool.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C472250D0D3800CA6B7B /* mutex_pool.c */; };
+		C725C494250D0D3800CA6B7B /* sz.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C473250D0D3800CA6B7B /* sz.c */; };
+		C725C495250D0D3800CA6B7B /* bitmap.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C474250D0D3800CA6B7B /* bitmap.c */; };
+		C725C496250D0D3800CA6B7B /* extent_dss.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C475250D0D3800CA6B7B /* extent_dss.c */; };
+		C725C497250D0D3800CA6B7B /* bin.c in Sources */ = {isa = PBXBuildFile; fileRef = C725C476250D0D3800CA6B7B /* bin.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -233,6 +265,39 @@
 		C725C42125090ABB00CA6B7B /* hinet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hinet.c; sourceTree = "<group>"; };
 		C725C42825090C7900CA6B7B /* hiredis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hiredis.h; sourceTree = "<group>"; };
 		C725C42925090C7900CA6B7B /* hiredis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hiredis.c; sourceTree = "<group>"; };
+		C725C456250D0D3500CA6B7B /* jemalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = jemalloc.c; path = ../../code/externals/jemalloc/jemalloc.c; sourceTree = "<group>"; };
+		C725C457250D0D3600CA6B7B /* ckh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ckh.c; path = ../../code/externals/jemalloc/ckh.c; sourceTree = "<group>"; };
+		C725C458250D0D3600CA6B7B /* hash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hash.c; path = ../../code/externals/jemalloc/hash.c; sourceTree = "<group>"; };
+		C725C459250D0D3600CA6B7B /* base.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = base.c; path = ../../code/externals/jemalloc/base.c; sourceTree = "<group>"; };
+		C725C45A250D0D3600CA6B7B /* stats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stats.c; path = ../../code/externals/jemalloc/stats.c; sourceTree = "<group>"; };
+		C725C45B250D0D3600CA6B7B /* test_hooks.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = test_hooks.c; path = ../../code/externals/jemalloc/test_hooks.c; sourceTree = "<group>"; };
+		C725C45C250D0D3600CA6B7B /* ticker.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ticker.c; path = ../../code/externals/jemalloc/ticker.c; sourceTree = "<group>"; };
+		C725C45D250D0D3600CA6B7B /* large.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = large.c; path = ../../code/externals/jemalloc/large.c; sourceTree = "<group>"; };
+		C725C45E250D0D3600CA6B7B /* rtree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rtree.c; path = ../../code/externals/jemalloc/rtree.c; sourceTree = "<group>"; };
+		C725C45F250D0D3600CA6B7B /* prng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = prng.c; path = ../../code/externals/jemalloc/prng.c; sourceTree = "<group>"; };
+		C725C460250D0D3600CA6B7B /* hook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hook.c; path = ../../code/externals/jemalloc/hook.c; sourceTree = "<group>"; };
+		C725C461250D0D3700CA6B7B /* safety_check.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = safety_check.c; path = ../../code/externals/jemalloc/safety_check.c; sourceTree = "<group>"; };
+		C725C462250D0D3700CA6B7B /* nstime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = nstime.c; path = ../../code/externals/jemalloc/nstime.c; sourceTree = "<group>"; };
+		C725C463250D0D3700CA6B7B /* extent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = extent.c; path = ../../code/externals/jemalloc/extent.c; sourceTree = "<group>"; };
+		C725C464250D0D3700CA6B7B /* background_thread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = background_thread.c; path = ../../code/externals/jemalloc/background_thread.c; sourceTree = "<group>"; };
+		C725C465250D0D3700CA6B7B /* extent_mmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = extent_mmap.c; path = ../../code/externals/jemalloc/extent_mmap.c; sourceTree = "<group>"; };
+		C725C466250D0D3700CA6B7B /* ctl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ctl.c; path = ../../code/externals/jemalloc/ctl.c; sourceTree = "<group>"; };
+		C725C467250D0D3700CA6B7B /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = log.c; path = ../../code/externals/jemalloc/log.c; sourceTree = "<group>"; };
+		C725C468250D0D3700CA6B7B /* arena.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = arena.c; path = ../../code/externals/jemalloc/arena.c; sourceTree = "<group>"; };
+		C725C469250D0D3700CA6B7B /* sc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sc.c; path = ../../code/externals/jemalloc/sc.c; sourceTree = "<group>"; };
+		C725C46A250D0D3700CA6B7B /* malloc_io.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = malloc_io.c; path = ../../code/externals/jemalloc/malloc_io.c; sourceTree = "<group>"; };
+		C725C46B250D0D3800CA6B7B /* tsd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tsd.c; path = ../../code/externals/jemalloc/tsd.c; sourceTree = "<group>"; };
+		C725C46C250D0D3800CA6B7B /* witness.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = witness.c; path = ../../code/externals/jemalloc/witness.c; sourceTree = "<group>"; };
+		C725C46D250D0D3800CA6B7B /* pages.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pages.c; path = ../../code/externals/jemalloc/pages.c; sourceTree = "<group>"; };
+		C725C46E250D0D3800CA6B7B /* tcache.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tcache.c; path = ../../code/externals/jemalloc/tcache.c; sourceTree = "<group>"; };
+		C725C46F250D0D3800CA6B7B /* div.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = div.c; path = ../../code/externals/jemalloc/div.c; sourceTree = "<group>"; };
+		C725C470250D0D3800CA6B7B /* mutex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mutex.c; path = ../../code/externals/jemalloc/mutex.c; sourceTree = "<group>"; };
+		C725C471250D0D3800CA6B7B /* prof.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = prof.c; path = ../../code/externals/jemalloc/prof.c; sourceTree = "<group>"; };
+		C725C472250D0D3800CA6B7B /* mutex_pool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mutex_pool.c; path = ../../code/externals/jemalloc/mutex_pool.c; sourceTree = "<group>"; };
+		C725C473250D0D3800CA6B7B /* sz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sz.c; path = ../../code/externals/jemalloc/sz.c; sourceTree = "<group>"; };
+		C725C474250D0D3800CA6B7B /* bitmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitmap.c; path = ../../code/externals/jemalloc/bitmap.c; sourceTree = "<group>"; };
+		C725C475250D0D3800CA6B7B /* extent_dss.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = extent_dss.c; path = ../../code/externals/jemalloc/extent_dss.c; sourceTree = "<group>"; };
+		C725C476250D0D3800CA6B7B /* bin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bin.c; path = ../../code/externals/jemalloc/bin.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,7 +305,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C725C41524F7F65300CA6B7B /* libijjs.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +314,7 @@
 		C725C32D24F7F41E00CA6B7B = {
 			isa = PBXGroup;
 			children = (
+				C725C455250D0D0900CA6B7B /* jemalloc */,
 				C725C41124F7F59200CA6B7B /* OSX_Interop */,
 				C725C40C24F7F58200CA6B7B /* lua */,
 				C725C33824F7F41E00CA6B7B /* redis */,
@@ -429,6 +494,46 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C725C455250D0D0900CA6B7B /* jemalloc */ = {
+			isa = PBXGroup;
+			children = (
+				C725C468250D0D3700CA6B7B /* arena.c */,
+				C725C464250D0D3700CA6B7B /* background_thread.c */,
+				C725C459250D0D3600CA6B7B /* base.c */,
+				C725C476250D0D3800CA6B7B /* bin.c */,
+				C725C474250D0D3800CA6B7B /* bitmap.c */,
+				C725C457250D0D3600CA6B7B /* ckh.c */,
+				C725C466250D0D3700CA6B7B /* ctl.c */,
+				C725C46F250D0D3800CA6B7B /* div.c */,
+				C725C475250D0D3800CA6B7B /* extent_dss.c */,
+				C725C465250D0D3700CA6B7B /* extent_mmap.c */,
+				C725C463250D0D3700CA6B7B /* extent.c */,
+				C725C458250D0D3600CA6B7B /* hash.c */,
+				C725C460250D0D3600CA6B7B /* hook.c */,
+				C725C456250D0D3500CA6B7B /* jemalloc.c */,
+				C725C45D250D0D3600CA6B7B /* large.c */,
+				C725C467250D0D3700CA6B7B /* log.c */,
+				C725C46A250D0D3700CA6B7B /* malloc_io.c */,
+				C725C472250D0D3800CA6B7B /* mutex_pool.c */,
+				C725C470250D0D3800CA6B7B /* mutex.c */,
+				C725C462250D0D3700CA6B7B /* nstime.c */,
+				C725C46D250D0D3800CA6B7B /* pages.c */,
+				C725C45F250D0D3600CA6B7B /* prng.c */,
+				C725C471250D0D3800CA6B7B /* prof.c */,
+				C725C45E250D0D3600CA6B7B /* rtree.c */,
+				C725C461250D0D3700CA6B7B /* safety_check.c */,
+				C725C469250D0D3700CA6B7B /* sc.c */,
+				C725C45A250D0D3600CA6B7B /* stats.c */,
+				C725C473250D0D3800CA6B7B /* sz.c */,
+				C725C46E250D0D3800CA6B7B /* tcache.c */,
+				C725C45B250D0D3600CA6B7B /* test_hooks.c */,
+				C725C45C250D0D3600CA6B7B /* ticker.c */,
+				C725C46B250D0D3800CA6B7B /* tsd.c */,
+				C725C46C250D0D3800CA6B7B /* witness.c */,
+			);
+			name = jemalloc;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -487,48 +592,75 @@
 			buildActionMask = 2147483647;
 			files = (
 				C725C3EA24F7F57B00CA6B7B /* notify.c in Sources */,
+				C725C487250D0D3800CA6B7B /* ctl.c in Sources */,
+				C725C490250D0D3800CA6B7B /* div.c in Sources */,
+				C725C494250D0D3800CA6B7B /* sz.c in Sources */,
 				C725C3D124F7F57B00CA6B7B /* lzf_c.c in Sources */,
 				C725C3E424F7F57B00CA6B7B /* replication.c in Sources */,
 				C725C3BC24F7F57B00CA6B7B /* rdb.c in Sources */,
 				C725C3C824F7F57B00CA6B7B /* server.c in Sources */,
 				C725C3E124F7F57B00CA6B7B /* util.c in Sources */,
 				C725C3CD24F7F57B00CA6B7B /* hyperloglog.c in Sources */,
+				C725C485250D0D3800CA6B7B /* background_thread.c in Sources */,
+				C725C47B250D0D3800CA6B7B /* stats.c in Sources */,
 				C725C3C724F7F57B00CA6B7B /* networking.c in Sources */,
+				C725C48B250D0D3800CA6B7B /* malloc_io.c in Sources */,
 				C725C3EC24F7F57B00CA6B7B /* setproctitle.c in Sources */,
 				C725C3F524F7F57B00CA6B7B /* ae.c in Sources */,
 				C725C3BF24F7F57B00CA6B7B /* slowlog.c in Sources */,
+				C725C48E250D0D3800CA6B7B /* pages.c in Sources */,
 				C725C3D924F7F57B00CA6B7B /* siphash.c in Sources */,
 				C725C3B724F7F57B00CA6B7B /* intset.c in Sources */,
+				C725C479250D0D3800CA6B7B /* hash.c in Sources */,
 				C725C3C224F7F57B00CA6B7B /* t_set.c in Sources */,
 				C725C3CC24F7F57B00CA6B7B /* localtime.c in Sources */,
+				C725C47D250D0D3800CA6B7B /* ticker.c in Sources */,
+				C725C47F250D0D3800CA6B7B /* rtree.c in Sources */,
 				C725C3EE24F7F57B00CA6B7B /* quicklist.c in Sources */,
+				C725C493250D0D3800CA6B7B /* mutex_pool.c in Sources */,
+				C725C497250D0D3800CA6B7B /* bin.c in Sources */,
 				C725C3BB24F7F57B00CA6B7B /* geohash.c in Sources */,
 				C725C3D424F7F57B00CA6B7B /* listpack.c in Sources */,
 				C725C3C324F7F57B00CA6B7B /* t_string.c in Sources */,
 				C725C3BE24F7F57B00CA6B7B /* zipmap.c in Sources */,
 				C725C3DC24F7F57B00CA6B7B /* cluster.c in Sources */,
+				C725C483250D0D3800CA6B7B /* nstime.c in Sources */,
 				C725C3DB24F7F57B00CA6B7B /* blocked.c in Sources */,
+				C725C481250D0D3800CA6B7B /* hook.c in Sources */,
+				C725C477250D0D3800CA6B7B /* jemalloc.c in Sources */,
 				C725C3D824F7F57B00CA6B7B /* anet.c in Sources */,
 				C725C3D524F7F57B00CA6B7B /* rax.c in Sources */,
+				C725C495250D0D3800CA6B7B /* bitmap.c in Sources */,
 				C725C3ED24F7F57B00CA6B7B /* syncio.c in Sources */,
+				C725C48A250D0D3800CA6B7B /* sc.c in Sources */,
 				C725C3D624F7F57B00CA6B7B /* sentinel.c in Sources */,
 				C725C3F424F7F57B00CA6B7B /* endianconv.c in Sources */,
 				C725C3E624F7F57B00CA6B7B /* lolwut.c in Sources */,
+				C725C496250D0D3800CA6B7B /* extent_dss.c in Sources */,
 				C725C3E724F7F57B00CA6B7B /* bitops.c in Sources */,
 				C725C42325090ABB00CA6B7B /* hidict.c in Sources */,
 				C725C3DA24F7F57B00CA6B7B /* geohash_helper.c in Sources */,
+				C725C47E250D0D3800CA6B7B /* large.c in Sources */,
 				C725C3CB24F7F57B00CA6B7B /* memtest.c in Sources */,
 				C725C3B524F7F57B00CA6B7B /* adlist.c in Sources */,
 				C725C3BA24F7F57B00CA6B7B /* rio.c in Sources */,
+				C725C484250D0D3800CA6B7B /* extent.c in Sources */,
 				C725C3B924F7F57B00CA6B7B /* latency.c in Sources */,
 				C725C3E324F7F57B00CA6B7B /* ziplist.c in Sources */,
 				C725C3F724F7F57B00CA6B7B /* evict.c in Sources */,
 				C725C3CE24F7F57B00CA6B7B /* bio.c in Sources */,
+				C725C486250D0D3800CA6B7B /* extent_mmap.c in Sources */,
 				C725C3C424F7F57B00CA6B7B /* sds.c in Sources */,
 				C725C3E224F7F57B00CA6B7B /* dict.c in Sources */,
+				C725C48C250D0D3800CA6B7B /* tsd.c in Sources */,
 				C725C3E024F7F57B00CA6B7B /* redis-check-rdb.c in Sources */,
+				C725C48F250D0D3800CA6B7B /* tcache.c in Sources */,
 				C725C3DE24F7F57B00CA6B7B /* sparkline.c in Sources */,
+				C725C488250D0D3800CA6B7B /* log.c in Sources */,
 				C725C3EB24F7F57B00CA6B7B /* multi.c in Sources */,
+				C725C492250D0D3800CA6B7B /* prof.c in Sources */,
+				C725C47C250D0D3800CA6B7B /* test_hooks.c in Sources */,
+				C725C47A250D0D3800CA6B7B /* base.c in Sources */,
 				C725C3BD24F7F57B00CA6B7B /* pubsub.c in Sources */,
 				C725C42525090ABB00CA6B7B /* hiasync.c in Sources */,
 				C725C3D024F7F57B00CA6B7B /* crc16.c in Sources */,
@@ -539,11 +671,14 @@
 				C725C3C124F7F57B00CA6B7B /* release.c in Sources */,
 				C725C42425090ABB00CA6B7B /* hiread.c in Sources */,
 				C725C41024F7F58D00CA6B7B /* lua.c in Sources */,
+				C725C48D250D0D3800CA6B7B /* witness.c in Sources */,
 				C725C42A25090C7900CA6B7B /* hiredis.c in Sources */,
 				C725C3C024F7F57B00CA6B7B /* aof.c in Sources */,
 				C725C42725090ABB00CA6B7B /* hinet.c in Sources */,
+				C725C489250D0D3800CA6B7B /* arena.c in Sources */,
 				C725C3B624F7F57B00CA6B7B /* t_list.c in Sources */,
 				C725C3F024F7F57B00CA6B7B /* childinfo.c in Sources */,
+				C725C491250D0D3800CA6B7B /* mutex.c in Sources */,
 				C725C3C524F7F57B00CA6B7B /* lzf_d.c in Sources */,
 				C725C3B424F7F57B00CA6B7B /* module.c in Sources */,
 				C725C3B824F7F57B00CA6B7B /* t_zset.c in Sources */,
@@ -551,8 +686,11 @@
 				C725C3EF24F7F57B00CA6B7B /* t_hash.c in Sources */,
 				C725C3F324F7F57B00CA6B7B /* lolwut5.c in Sources */,
 				C725C3DF24F7F57B00CA6B7B /* crc64.c in Sources */,
+				C725C478250D0D3800CA6B7B /* ckh.c in Sources */,
 				C725C3F624F7F57B00CA6B7B /* db.c in Sources */,
+				C725C480250D0D3800CA6B7B /* prng.c in Sources */,
 				C725C3C624F7F57B00CA6B7B /* t_stream.c in Sources */,
+				C725C482250D0D3800CA6B7B /* safety_check.c in Sources */,
 				C725C3CA24F7F57B00CA6B7B /* expire.c in Sources */,
 				C725C3F124F7F57B00CA6B7B /* lazyfree.c in Sources */,
 				C725C3F224F7F57B00CA6B7B /* config.c in Sources */,
@@ -711,6 +849,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_PREFIX_HEADER = OSX_Interop/portmacro.h;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					USE_JEMALLOC,
+					JEMALLOC_NO_RENAME,
+					JEMALLOC_NO_DEMANGLE,
+					macintosh,
+					JEMALLOC_NO_PRIVATE_NAMESPACE,
+					_REENTRANT,
+					__MRC__,
+				);
 				INSTALL_PATH = "@executable_path/";
 				PRODUCT_NAME = redis;
 			};
@@ -723,6 +871,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_PREFIX_HEADER = OSX_Interop/portmacro.h;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					USE_JEMALLOC,
+					JEMALLOC_NO_RENAME,
+					JEMALLOC_NO_DEMANGLE,
+					macintosh,
+					JEMALLOC_NO_PRIVATE_NAMESPACE,
+					_REENTRANT,
+					__MRC__,
+				);
 				INSTALL_PATH = "@executable_path/";
 				PRODUCT_NAME = redis;
 			};

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C77A6266247A169200051CDF"
-               BuildableName = "ijjs-cli"
-               BlueprintName = "ijjs-cli"
-               ReferencedContainer = "container:ijjs-cli.xcodeproj">
+               BlueprintIdentifier = "C725C33524F7F41E00CA6B7B"
+               BuildableName = "redis"
+               BlueprintName = "redis-osx"
+               ReferencedContainer = "container:redis-osx.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,18 +44,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C77A6266247A169200051CDF"
-            BuildableName = "ijjs-cli"
-            BlueprintName = "ijjs-cli"
-            ReferencedContainer = "container:ijjs-cli.xcodeproj">
+            BlueprintIdentifier = "C725C33524F7F41E00CA6B7B"
+            BuildableName = "redis"
+            BlueprintName = "redis-osx"
+            ReferencedContainer = "container:redis-osx.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "/Users/zhoubo/Documents/test/dist/main.js"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -67,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C77A6266247A169200051CDF"
-            BuildableName = "ijjs-cli"
-            BlueprintName = "ijjs-cli"
-            ReferencedContainer = "container:ijjs-cli.xcodeproj">
+            BlueprintIdentifier = "C725C33524F7F41E00CA6B7B"
+            BuildableName = "redis"
+            BlueprintName = "redis-osx"
+            ReferencedContainer = "container:redis-osx.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

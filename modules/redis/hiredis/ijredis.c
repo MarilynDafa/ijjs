@@ -75,7 +75,7 @@ static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 arg
     uv_process_options_t options;
     memset(&options, 0, sizeof(uv_process_options_t));
     uv_stdio_container_t stdio[3];
-    stdio[0].flags = UV_INHERIT_FD;
+    stdio[0].flags = UV_IGNORE;
     stdio[0].data.fd = STDIN_FILENO;
     stdio[1].flags = UV_INHERIT_FD;
     stdio[1].data.fd = STDOUT_FILENO;
@@ -94,6 +94,7 @@ static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 arg
 #endif
     options.args = js_mallocz(ctx, sizeof(*options.args) * 2);
     options.args[0] = js_strdup(ctx, buffer);
+    options.args[1] = 0;
     options.file = options.args[0];
     IJS32 r = uv_spawn(ijGetLoop(ctx), &gProc.process, &options);
     if (r != 0)

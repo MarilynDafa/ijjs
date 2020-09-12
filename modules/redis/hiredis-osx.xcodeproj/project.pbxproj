@@ -401,6 +401,7 @@
 					JEMALLOC_NO_DEMANGLE,
 					JEMALLOC_NO_RENAME,
 					USE_JEMALLOC,
+					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = (
 					../../code/externals/jemalloc/include,
