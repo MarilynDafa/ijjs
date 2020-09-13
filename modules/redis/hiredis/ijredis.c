@@ -60,7 +60,13 @@ static JSClassDef ijjs_rdresult_class = { "RDResult", .finalizer = ijRDResultFin
 void connectCallback(const redisAsyncContext* c, int status) {
     JSValue arg;
     IJBool is_reject = false;
-    if (status != REDIS_OK) {
+    if (status == -1){
+        gProc.acontext = redisAsyncConnect("127.0.0.1", 6379);
+        redisLibuvAttach(gProc.acontext, ijGetLoop(gProc.ctx));
+        redisAsyncSetConnectCallback(gProc.acontext, connectCallback);
+        return;
+    }
+    else if (status != REDIS_OK) {
         arg = JS_NewError(gProc.ctx);
         JS_DefinePropertyValueStr(gProc.ctx, arg, "message", JS_NewString(gProc.ctx, "redis error"), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
         JS_DefinePropertyValueStr(gProc.ctx, arg, "errno", JS_NewInt32(gProc.ctx, status), JS_PROP_WRITABLE | JS_PROP_CONFIGURABLE);
