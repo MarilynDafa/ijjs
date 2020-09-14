@@ -398,6 +398,7 @@ static void init_project() {
     chmod("ij_modules/redis/redis", S_IRWXU);
 #elif defined(linux) || defined(__linux) || defined(__linux__)
     fp = fopen("ij_modules/redis/redis", "wb");
+    chmod("ij_modules/redis/redis", S_IRWXU);
 #endif
     fwrite(buf, 1, sz, fp);
     fclose(fp);

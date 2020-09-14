@@ -114,7 +114,7 @@
     <ClInclude Include="..\..\code\externals\jemalloc\include\jemalloc\jemalloc_defs.h">
       <Filter>jemalloc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\code\externals\pthread\pthread.h">
+    <ClInclude Include="..\..\code\externals\wpthread\pthread.h">
       <Filter>Win32_Interop</Filter>
     </ClInclude>
   </ItemGroup>
@@ -287,7 +287,7 @@
     <ClCompile Include="..\..\code\externals\jemalloc\witness.c">
       <Filter>jemalloc</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\code\externals\pthread\pthread.c">
+    <ClCompile Include="..\..\code\externals\wpthread\pthread.c">
       <Filter>Win32_Interop</Filter>
     </ClCompile>
   </ItemGroup>

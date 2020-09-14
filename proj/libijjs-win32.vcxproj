@@ -94,7 +94,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>DLLEXPORT;_REENTRANT;JEMALLOC_NO_PRIVATE_NAMESPACE;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;QJS_VERSION_STR="20200705";IJ_EXPORT;d_m3HasWASI;USE_PTHREAD_ID;__CLEANUP_SEH;CONFIG_BIGNUM;CONFIG_QJSDEBUG;HAVE_CONFIG_H;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;CURL_ENABLE_MQTT;CURL_HIDDEN_SYMBOLS;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\code\externals\wasm;..\code\externals\quickjs;..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\pthread;..\code\headers;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\wasm;..\code\externals\quickjs;..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\wpthread;..\code\headers;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningVersion>
       </WarningVersion>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces %(AdditionalOptions)</AdditionalOptions>
@@ -116,7 +116,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>DLLEXPORT;_REENTRANT;JEMALLOC_NO_PRIVATE_NAMESPACE;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;QJS_VERSION_STR="20200705";IJ_EXPORT;d_m3HasWASI;USE_PTHREAD_ID;__CLEANUP_SEH;CONFIG_BIGNUM;CONFIG_QJSDEBUG;HAVE_CONFIG_H;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;CURL_ENABLE_MQTT;USE_WIN32_CRYPTO;CURL_HIDDEN_SYMBOLS;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\code\externals\wasm;..\code\externals\quickjs;..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\pthread;..\code\headers;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\wasm;..\code\externals\quickjs;..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\wpthread;..\code\headers;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningVersion>
       </WarningVersion>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces %(AdditionalOptions)</AdditionalOptions>
@@ -140,7 +140,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>DLLEXPORT;_REENTRANT;JEMALLOC_NO_PRIVATE_NAMESPACE;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;QJS_VERSION_STR="20200705";IJ_EXPORT;d_m3HasWASI;USE_PTHREAD_ID;__CLEANUP_SEH;CONFIG_BIGNUM;CONFIG_QJSDEBUG;HAVE_CONFIG_H;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;CURL_ENABLE_MQTT;CURL_HIDDEN_SYMBOLS;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\code\externals\wasm;..\code\externals\quickjs;..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\pthread;..\code\headers;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\wasm;..\code\externals\quickjs;..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\wpthread;..\code\headers;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningVersion>
       </WarningVersion>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces %(AdditionalOptions)</AdditionalOptions>
@@ -167,7 +167,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>DLLEXPORT;_REENTRANT;JEMALLOC_NO_PRIVATE_NAMESPACE;JEMALLOC_NO_RENAME;JEMALLOC_NO_DEMANGLE;QJS_VERSION_STR="20200705";IJ_EXPORT;d_m3HasWASI;USE_PTHREAD_ID;__CLEANUP_SEH;CONFIG_BIGNUM;CONFIG_QJSDEBUG;HAVE_CONFIG_H;PTW32_CONFIG_H;PTW32_BUILD;BUILDING_LIBCURL;BUILDING_UV_SHARED;CURL_ENABLE_MQTT;CURL_HIDDEN_SYMBOLS;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;CLOCK_REALTIME=0;CLOCK_MONOTONIC=1;CLOCK_PROCESS_CPUTIME_ID=2;CLOCK_THREAD_CPUTIME_ID=3;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\code\externals\wasm;..\code\externals\quickjs;..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\pthread;..\code\headers;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\code\externals\wasm;..\code\externals\quickjs;..\code\externals\curl;..\code\externals;..\code\externals\jemalloc\include;..\code\externals\uv\include;..\code\externals\uv\src;..\code\externals\wpthread;..\code\headers;..\code\externals\cwin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningVersion>
       </WarningVersion>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces %(AdditionalOptions)</AdditionalOptions>
@@ -192,7 +192,6 @@
     <ClInclude Include="..\code\externals\cwin\sys\time.h" />
     <ClInclude Include="..\code\externals\cwin\unistd.h" />
     <ClInclude Include="..\code\externals\cwin\zlib.h" />
-    <ClInclude Include="..\code\externals\pthread\pthread.h" />
     <ClInclude Include="..\code\externals\uv\src\win\atomicops-inl.h" />
     <ClInclude Include="..\code\externals\uv\src\win\fs-fd-hash-inl.h" />
     <ClInclude Include="..\code\externals\uv\src\win\handle-inl.h" />
@@ -201,6 +200,7 @@
     <ClInclude Include="..\code\externals\uv\src\win\stream-inl.h" />
     <ClInclude Include="..\code\externals\uv\src\win\winapi.h" />
     <ClInclude Include="..\code\externals\uv\src\win\winsock.h" />
+    <ClInclude Include="..\code\externals\wpthread\pthread.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\code\externals\cwin\glob.c" />
@@ -208,7 +208,6 @@
     <ClCompile Include="..\code\externals\cwin\syslog-client.c" />
     <ClCompile Include="..\code\externals\cwin\sys\time.c" />
     <ClCompile Include="..\code\externals\cwin\unistd.c" />
-    <ClCompile Include="..\code\externals\pthread\pthread.c" />
     <ClCompile Include="..\code\externals\uv\src\win\async.c" />
     <ClCompile Include="..\code\externals\uv\src\win\core.c" />
     <ClCompile Include="..\code\externals\uv\src\win\detect-wakeup.c" />
@@ -234,6 +233,7 @@
     <ClCompile Include="..\code\externals\uv\src\win\util.c" />
     <ClCompile Include="..\code\externals\uv\src\win\winapi.c" />
     <ClCompile Include="..\code\externals\uv\src\win\winsock.c" />
+    <ClCompile Include="..\code\externals\wpthread\pthread.c" />
     <ClCompile Include="..\code\externals\zlog\win_compat.c" />
     <ClCompile Include="..\code\src\m.c" />
   </ItemGroup>

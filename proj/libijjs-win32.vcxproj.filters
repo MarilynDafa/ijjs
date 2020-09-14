@@ -55,7 +55,7 @@
     <ClInclude Include="..\code\externals\cwin\syslog.h">
       <Filter>cwin</Filter>
     </ClInclude>
-    <ClInclude Include="..\code\externals\pthread\pthread.h">
+    <ClInclude Include="..\code\externals\wpthread\pthread.h">
       <Filter>cwin</Filter>
     </ClInclude>
   </ItemGroup>
@@ -156,7 +156,7 @@
     <ClCompile Include="..\code\externals\cwin\setenv.c">
       <Filter>cwin</Filter>
     </ClCompile>
-    <ClCompile Include="..\code\externals\pthread\pthread.c">
+    <ClCompile Include="..\code\externals\wpthread\pthread.c">
       <Filter>cwin</Filter>
     </ClCompile>
   </ItemGroup>
