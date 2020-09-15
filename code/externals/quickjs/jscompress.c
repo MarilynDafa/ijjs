@@ -832,14 +832,14 @@ void help(void)
            DEFAULT_OUTPUT_FILENAME);
     exit(1);
 }
-#if 0
+
 int main(int argc, char **argv)
 {
     int c, do_strip, keep_header, compress;
     const char *out_filename, *c_var, *fname;
     char tmpfilename[1024];
 
-    do_strip = 0;
+    do_strip = 1;
     keep_header = 0;
     out_filename = DEFAULT_OUTPUT_FILENAME;
     compress = 0;
@@ -916,4 +916,3 @@ int main(int argc, char **argv)
     }
     return 0;
 }
-#endif

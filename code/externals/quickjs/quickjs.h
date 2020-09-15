@@ -413,6 +413,8 @@ IJ_API void JS_ComputeMemoryUsage(JSRuntime *rt, JSMemoryUsage *s);
 IJ_API void JS_DumpMemoryUsage(FILE *fp, const JSMemoryUsage *s, JSRuntime *rt);
 
 /* atom support */
+#define JS_ATOM_NULL 0
+
 IJ_API JSAtom JS_NewAtomLen(JSContext *ctx, const char *str, size_t len);
 IJ_API JSAtom JS_NewAtom(JSContext *ctx, const char *str);
 IJ_API JSAtom JS_NewAtomUInt32(JSContext *ctx, uint32_t n);
@@ -644,7 +646,7 @@ static inline void JS_FreeValue(JSContext *ctx, JSValue v)
         }
     }
 }
-void __JS_FreeValueRT(JSRuntime *rt, JSValue v);
+IJ_API void __JS_FreeValueRT(JSRuntime *rt, JSValue v);
 static inline void JS_FreeValueRT(JSRuntime *rt, JSValue v)
 {
     if (JS_VALUE_HAS_REF_COUNT(v)) {
@@ -836,6 +838,8 @@ typedef int JSInterruptHandler(JSRuntime *rt, void *opaque);
 IJ_API void JS_SetInterruptHandler(JSRuntime *rt, JSInterruptHandler *cb, void *opaque);
 /* if can_block is TRUE, Atomics.wait() can be used */
 IJ_API void JS_SetCanBlock(JSRuntime *rt, JS_BOOL can_block);
+/* set the [IsHTMLDDA] internal slot */
+IJ_API void JS_SetIsHTMLDDA(JSContext *ctx, JSValueConst obj);
 
 typedef struct JSModuleDef JSModuleDef;
 
@@ -886,6 +890,12 @@ IJ_API JSValue JS_ReadObject(JSContext *ctx, const uint8_t *buf, size_t buf_len,
 /* load the dependencies of the module 'obj'. Useful when JS_ReadObject()
    returns a module. */
 IJ_API int JS_ResolveModule(JSContext *ctx, JSValueConst obj);
+
+/* only exported for os.Worker() */
+IJ_API JSAtom JS_GetScriptOrModuleName(JSContext *ctx, int n_stack_levels);
+/* only exported for os.Worker() */
+IJ_API JSModuleDef *JS_RunModule(JSContext *ctx, const char *basename,
+                          const char *filename);
 
 /* C function definition */
 typedef enum JSCFunctionEnum {  /* XXX: should rename for namespace isolation */
