@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="plat\windows\gettimeofday.h" />
+    <ClInclude Include="plat\windows\private-lib-plat-windows.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="plat\windows\windows-fds.c" />
+    <ClCompile Include="plat\windows\windows-file.c" />
+    <ClCompile Include="plat\windows\windows-init.c" />
+    <ClCompile Include="plat\windows\windows-misc.c" />
+    <ClCompile Include="plat\windows\windows-pipe.c" />
+    <ClCompile Include="plat\windows\windows-plugins.c" />
+    <ClCompile Include="plat\windows\windows-resolv.c" />
+    <ClCompile Include="plat\windows\windows-service.c" />
+    <ClCompile Include="plat\windows\windows-sockets.c" />
+    <ClCompile Include="plat\windows\windows-spawn.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{6a9856fe-1560-4db6-b256-bfd737d0bc3c}</ProjectGuid>
+    <RootNamespace>lwswin32</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+    <Import Project="lws.vcxitems" Label="Shared" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>liblws</TargetName>
+    <OutDir>..\..\bin\win32</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>liblws</TargetName>
+    <OutDir>..\..\bin\win32</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>liblws</TargetName>
+    <OutDir>..\..\bin\win32</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>liblws</TargetName>
+    <OutDir>..\..\bin\win32</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>USE_PTHREAD_ID;PTW32_CONFIG_H;PTW32_BUILD;WIN32;_DEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\code\externals;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\uv\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\roles\cgi;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
+      <ForcedIncludeFiles>
+      </ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling />
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>libijjs.lib;ws2_32.lib;Iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>USE_PTHREAD_ID;PTW32_CONFIG_H;PTW32_BUILD;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;LWS_WARN_UNUSED_RESULT;WIN32;NDEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\code\externals;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\uv\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\roles\cgi;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
+      <PrecompiledHeaderOutputFile />
+      <ForcedIncludeFiles>
+      </ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling />
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>libijjs.lib;ws2_32.lib;Iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>USE_PTHREAD_ID;PTW32_CONFIG_H;PTW32_BUILD;_DEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\code\externals;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\uv\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\roles\cgi;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
+      <ForcedIncludeFiles>
+      </ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling />
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>libijjs.lib;ws2_32.lib;Iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>USE_PTHREAD_ID;PTW32_CONFIG_H;PTW32_BUILD;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;LWS_WARN_UNUSED_RESULT;NDEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\code\externals;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\uv\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\roles\cgi;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
+      <PrecompiledHeaderOutputFile />
+      <ForcedIncludeFiles>
+      </ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling />
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>libijjs.lib;ws2_32.lib;Iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

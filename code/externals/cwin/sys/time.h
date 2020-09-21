@@ -1,5 +1,6 @@
 #pragma once
 #include <time.h>
+#include "../../headers/ijpre.h"
 #if !defined(_SSIZE_T_) && !defined(_SSIZE_T_DEFINED)
 
 typedef intptr_t ssize_t;
@@ -16,6 +17,6 @@ struct timezone {
 
 typedef unsigned char clockid_t;
 void     InitTimeFunctions();
-extern int      gettimeofday(struct timeval* tv, struct timezone* tz);
-extern int clock_getres(clockid_t clock_id, struct timespec* res);
-extern int clock_gettime(clockid_t clock_id, struct timespec* tp);
+IJ_API int      gettimeofday(struct timeval* tv, struct timezone* tz);
+IJ_API int clock_getres(clockid_t clock_id, struct timespec* res);
+IJ_API int clock_gettime(clockid_t clock_id, struct timespec* tp);

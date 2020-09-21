@@ -1,0 +1,933 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{f5aac7eb-ae8b-4655-98af-11fc9ed797e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tls">
+      <UniqueIdentifier>{143826ab-2e9e-46b3-a663-f66b5b65d3e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="event">
+      <UniqueIdentifier>{29091520-f875-4248-bc23-9303468d0312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system">
+      <UniqueIdentifier>{dfa6da50-196d-4599-92d0-c7bc27b410b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{a32fe4e1-217f-4670-a9d8-6bda89ac1a0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="jose">
+      <UniqueIdentifier>{8b7ee4be-05c7-4a48-aa87-c66c98172ae9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="roles">
+      <UniqueIdentifier>{5c38c66b-e4f5-4487-ae7c-c301da400330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="secure">
+      <UniqueIdentifier>{717c9835-5406-4548-b864-92b67e31386d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="misc">
+      <UniqueIdentifier>{f132ed29-1959-433c-bef0-70641174a745}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="drivers">
+      <UniqueIdentifier>{9686c54b-bcf7-495f-b76e-3ac14bae91e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mbedtls">
+      <UniqueIdentifier>{1418b794-9772-4db7-a58d-8d11ab02d26f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core\alloc.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core\buflist.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core\context.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core\libwebsockets.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core\logs.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core\lws_dll2.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core\vfs.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)event-libs\libuv\libuv.c">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)system\system.c">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)system\smd\smd.c">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\adopt.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\client.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\close.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\connect.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\detailed-latency.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\dummy-callback.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\lws-dsh.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\network.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\output.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\pollfd.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\sequencer.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\server.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\service.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\socks5-client.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\sorted-usec-list.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\state.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\stats.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\vhost.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\wsi.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\wsi-timeout.c">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\lws-gencrypto-common.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\wrapper\library\ssl_cert.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\wrapper\library\ssl_lib.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\wrapper\library\ssl_methods.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\wrapper\library\ssl_pkey.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\wrapper\library\ssl_stack.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\wrapper\library\ssl_x509.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jose\jwe\enc\aescbc.c">
+      <Filter>jose</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jose\jwe\enc\aesgcm.c">
+      <Filter>jose</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jose\jwe\enc\aeskw.c">
+      <Filter>jose</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jose\jwe\jwe.c">
+      <Filter>jose</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jose\jwe\jwe-ecdh-es-aeskw.c">
+      <Filter>jose</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jose\jwe\jwe-rsa-aescbc.c">
+      <Filter>jose</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jose\jwe\jwe-rsa-aesgcm.c">
+      <Filter>jose</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jose\jwk\jwk.c">
+      <Filter>jose</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jose\jws\jose.c">
+      <Filter>jose</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)jose\jws\jws.c">
+      <Filter>jose</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)system\async-dns\async-dns.c">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)system\async-dns\async-dns-parse.c">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\h1\ops-h1.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\h2\hpack.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\h2\http2.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\h2\ops-h2.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\header.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\parsers.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\client\client-handshake.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\client\client-http.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\access-log.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\lws-spa.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\ranges.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\compression\deflate\deflate.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\listen\ops-listen.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\mqtt\mqtt.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\mqtt\ops-mqtt.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\mqtt\primitives.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\mqtt\client\client-mqtt-handshake.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\pipe\ops-pipe.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\raw-file\ops-raw-file.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\raw-proxy\ops-raw-proxy.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\raw-skt\ops-raw-skt.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\ws\client-parser-ws.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\ws\client-ws.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\ws\ops-ws.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\ws\server-ws.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\policy-common.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\secure-streams.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\secure-streams-client.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\secure-streams-process.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\secure-streams-serialize.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\protocols\ss-h1.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\protocols\ss-h2.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\protocols\ss-mqtt.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\protocols\ss-raw.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\protocols\ss-ws.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\system\auth-api.amazon.com\auth.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)secure-streams\system\captive-portal-detect\captive-portal-detect.c">
+      <Filter>secure</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\base64-decode.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\lws-ring.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\lws-struct-lejp.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\peer-limits.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\lejp.c">
+      <Filter>misc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\sha-1.c">
+      <Filter>misc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\romfs.c">
+      <Filter>misc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\diskcache.c">
+      <Filter>misc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\lwsac\lwsac.c">
+      <Filter>misc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\httpserver.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\tls.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\tls-network.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\tls-server.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\lws-genec-common.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\lws-genaes.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\lws-genec.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\lws-genhash.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\lws-genrsa.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)drivers\netdev\netdev.c">
+      <Filter>drivers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)drivers\netdev\wifi.c">
+      <Filter>drivers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\mbedtls-tls.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\mbedtls-ssl.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\tls-client.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)drivers\settings\settings.c">
+      <Filter>drivers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\aes.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\aesni.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\arc4.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\aria.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\asn1parse.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\asn1write.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\base64.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\bignum.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\blowfish.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\camellia.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ccm.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\certs.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\chacha20.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\chachapoly.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\cipher.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\cipher_wrap.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\cmac.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ctr_drbg.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\debug.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\des.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\dhm.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ecdh.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ecdsa.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ecjpake.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ecp.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ecp_curves.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\entropy.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\entropy_poll.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\gcm.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\havege.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\hkdf.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\hmac_drbg.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\md.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\md2.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\md4.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\md5.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\memory_buffer_alloc.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\merror.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\mversion.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\net_sockets.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\nist_kw.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\oid.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\padlock.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pem.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pk.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pk_wrap.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pkcs5.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pkcs11.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pkcs12.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pkparse.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pkwrite.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\platform.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\platform_util.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\poly1305.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_crypto.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_crypto_se.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_crypto_slot_management.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_crypto_storage.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_its_file.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ripemd160.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\rsa.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\rsa_internal.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\sha1.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\sha256.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\sha512.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_cache.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_ciphersuites.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_cli.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_cookie.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_msg.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_srv.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_ticket.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_tls.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\threading.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\timing.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\version_features.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509_create.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509_crl.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509_crt.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509_csr.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509write_crt.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509write_csr.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\xtea.c">
+      <Filter>mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\mbedtls-server.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\lws-gencrypto.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\mbedtls-x509.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\wrapper\platform\ssl_pm.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\mbedtls-client.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\mqtt\client\client-mqtt.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\compression\stream.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)tls\mbedtls\wrapper\platform\ssl_port.c">
+      <Filter>tls</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\threadpool\threadpool.c">
+      <Filter>misc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)event-libs\poll\poll.c">
+      <Filter>event</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)lws_config.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)lws_config_private.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)tls\private-lib-tls.h">
+      <Filter>tls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)tls\private-network.h">
+      <Filter>tls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)tls\mbedtls\private-lib-tls-mbedtls.h">
+      <Filter>tls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)event-libs\private-lib-event-libs.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)event-libs\libuv\private-lib-event-libs-libuv.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)core-net\private-lib-core-net.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\aes.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\aesni.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\arc4.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\aria.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\asn1.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\asn1write.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\base64.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\bignum.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\blowfish.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\bn_mul.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\camellia.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ccm.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\certs.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\chacha20.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\chachapoly.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\check_config.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\cipher.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\cipher_internal.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\cmac.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\common.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\compat-1.3.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\config.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ctr_drbg.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\debug.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\des.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\dhm.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ecdh.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ecdsa.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ecjpake.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ecp.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ecp_internal.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\entropy.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\entropy_poll.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\error.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\gcm.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\havege.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\hkdf.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\hmac_drbg.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\md.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\md_internal.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\md2.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\md4.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\md5.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\memory_buffer_alloc.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\net.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\net_sockets.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\nist_kw.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\oid.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\padlock.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pem.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pk.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pk_internal.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pkcs5.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pkcs11.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\pkcs12.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\platform.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\platform_time.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\platform_util.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\poly1305.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_crypto_core.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_crypto_invasive.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_crypto_its.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_crypto_se.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_crypto_service_integration.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_crypto_slot_management.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_crypto_storage.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\psa_util.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ripemd160.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\rsa.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\rsa_internal.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\sha1.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\sha256.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\sha512.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_cache.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_ciphersuites.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_cookie.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_internal.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\ssl_ticket.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\threading.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\timing.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\version.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509_crl.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509_crt.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509_csr.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\xtea.h">
+      <Filter>mbedtls</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

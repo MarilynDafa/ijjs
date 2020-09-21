@@ -32,3 +32,4 @@ tests/test-ss.js
 *.exe
 *.LinkFileList
 *.dat
+*.recipe

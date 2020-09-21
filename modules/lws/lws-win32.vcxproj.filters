@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="plat\windows\gettimeofday.h" />
+    <ClInclude Include="plat\windows\private-lib-plat-windows.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="plat\windows\windows-fds.c" />
+    <ClCompile Include="plat\windows\windows-file.c" />
+    <ClCompile Include="plat\windows\windows-init.c" />
+    <ClCompile Include="plat\windows\windows-misc.c" />
+    <ClCompile Include="plat\windows\windows-pipe.c" />
+    <ClCompile Include="plat\windows\windows-plugins.c" />
+    <ClCompile Include="plat\windows\windows-resolv.c" />
+    <ClCompile Include="plat\windows\windows-service.c" />
+    <ClCompile Include="plat\windows\windows-sockets.c" />
+    <ClCompile Include="plat\windows\windows-spawn.c" />
+  </ItemGroup>
+</Project>
