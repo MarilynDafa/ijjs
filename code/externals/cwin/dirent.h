@@ -34,7 +34,8 @@ extern "C" {
 #endif /* __cplusplus */
 
 #include <sys/types.h>
-
+#include <direct.h>
+#define mkdir(p,m) _mkdir(p)
 #include <Windows.h>
 #include <winioctl.h>
 
@@ -119,10 +120,14 @@ struct dirent
 struct __dir
 {
 	struct dirent* entries;
-	int fd;
+	HANDLE fd;
 	long int count;
 	long int index;
 };
+
+int chown(const char* dir, int uid, int gid) {
+	return 0;
+}
 
 static int closedir(DIR* dirp)
 {

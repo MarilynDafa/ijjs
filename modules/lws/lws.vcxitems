@@ -150,6 +150,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\romfs.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\sha-1.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\threadpool\threadpool.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)plat\setget.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\h1\ops-h1.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\h2\hpack.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\h2\http2.c" />
