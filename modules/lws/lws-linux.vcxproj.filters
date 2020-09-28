@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="dummy">
+      <UniqueIdentifier>{56571d4b-b7d0-4696-af13-edeb28249f69}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\libwebsockets.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="core\private-lib-core.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="plat\unix\private-lib-plat-unix.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-adopt.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-async-dns.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-bb-i2c.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-bb-spi.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-button.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-callbacks.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-cgi.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-client.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-context-vhost.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-dbus.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-detailed-latency.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-diskcache.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-display.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-dll2.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-dsh.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-eventlib-exports.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-freertos.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-fts.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-genaes.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-gencrypto.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-genec.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-genhash.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-genrsa.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-gpio.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-http.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-i2c.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-ili9341-spi.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-jose.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-jwe.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-jwk.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-jws.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-led.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-lejp.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-logs.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-lwsac.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-misc.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-mqtt.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-netdev.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-network-helper.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-optee.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-protocols-plugins.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-purify.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-pwm.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-retry.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-ring.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-secure-streams.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-secure-streams-client.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-secure-streams-policy.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-sequencer.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-service.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-settings.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-sha1-base64.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-smd.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-spa.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-spi.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-ssd1306-i2c.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-state.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-stats.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-struct.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-system.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-test-sequencer.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-threadpool.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-timeout-timer.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-tokenize.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-vfs.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-write.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-writeable.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-ws-close.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-ws-ext.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-ws-state.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\lws-x509.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\platform\ssl_pm.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\platform\ssl_port.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\openssl\ssl.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_cert.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_code.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_dbg.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_lib.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_methods.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_pkey.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_stack.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_types.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_x509.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl3.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\tls1.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\x509_vfy.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\abstract\abstract.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\abstract\protocols.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\abstract\transports.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\abstract\protocols\smtp.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\abstract\transports\raw-skt.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libwebsockets\abstract\transports\unit-test.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="secure-streams\private-lib-secure-streams.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="system\smd\private-lib-system-smd.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\private-lib-roles.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\cgi\private-lib-roles-cgi.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\dbus\private-lib-roles-dbus.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\h1\private-lib-roles-h1.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\h2\private-lib-roles-h2.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\h2\huftable.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\http\lextable.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\http\lextable-strings.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\http\private-lib-roles-http.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\http\compression\private-lib-roles-http-compression.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\mqtt\private-lib-roles-mqtt.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\ws\private-lib-roles-ws.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\ws\ext\extension-permessage-deflate.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="roles\raw-proxy\private-lib-roles-raw-proxy.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="system\async-dns\private-lib-async-dns.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="system\dhcpclient\private-lib-system-dhcpclient.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="jose\private-lib-jose.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="jose\jwe\private-lib-jose-jwe.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="jose\jws\private-lib-jose-jws.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="event-libs\poll\private-lib-event-libs-poll.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\getifaddrs.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\romfs.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\fts\private-lib-misc-fts.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\lwsac\private-lib-misc-lwsac.h">
+      <Filter>dummy</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="plat\unix\unix-caps.c" />
+    <ClCompile Include="plat\unix\unix-fds.c" />
+    <ClCompile Include="plat\unix\unix-file.c" />
+    <ClCompile Include="plat\unix\unix-init.c" />
+    <ClCompile Include="plat\unix\unix-misc.c" />
+    <ClCompile Include="plat\unix\unix-pipe.c" />
+    <ClCompile Include="plat\unix\unix-plugins.c" />
+    <ClCompile Include="plat\unix\unix-resolv.c" />
+    <ClCompile Include="plat\unix\unix-service.c" />
+    <ClCompile Include="plat\unix\unix-sockets.c" />
+  </ItemGroup>
+</Project>

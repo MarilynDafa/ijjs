@@ -117,46 +117,259 @@
     <TargetName>liblws</TargetName>
   </PropertyGroup>
   <ItemGroup>
+    <ClInclude Include="core\private-lib-core.h" />
+    <ClInclude Include="event-libs\poll\private-lib-event-libs-poll.h" />
+    <ClInclude Include="include\libwebsockets.h" />
+    <ClInclude Include="include\libwebsockets\abstract\abstract.h" />
+    <ClInclude Include="include\libwebsockets\abstract\protocols.h" />
+    <ClInclude Include="include\libwebsockets\abstract\protocols\smtp.h" />
+    <ClInclude Include="include\libwebsockets\abstract\transports.h" />
+    <ClInclude Include="include\libwebsockets\abstract\transports\raw-skt.h" />
+    <ClInclude Include="include\libwebsockets\abstract\transports\unit-test.h" />
+    <ClInclude Include="include\libwebsockets\lws-adopt.h" />
+    <ClInclude Include="include\libwebsockets\lws-async-dns.h" />
+    <ClInclude Include="include\libwebsockets\lws-bb-i2c.h" />
+    <ClInclude Include="include\libwebsockets\lws-bb-spi.h" />
+    <ClInclude Include="include\libwebsockets\lws-button.h" />
+    <ClInclude Include="include\libwebsockets\lws-callbacks.h" />
+    <ClInclude Include="include\libwebsockets\lws-cgi.h" />
+    <ClInclude Include="include\libwebsockets\lws-client.h" />
+    <ClInclude Include="include\libwebsockets\lws-context-vhost.h" />
+    <ClInclude Include="include\libwebsockets\lws-dbus.h" />
+    <ClInclude Include="include\libwebsockets\lws-detailed-latency.h" />
+    <ClInclude Include="include\libwebsockets\lws-diskcache.h" />
+    <ClInclude Include="include\libwebsockets\lws-display.h" />
+    <ClInclude Include="include\libwebsockets\lws-dll2.h" />
+    <ClInclude Include="include\libwebsockets\lws-dsh.h" />
+    <ClInclude Include="include\libwebsockets\lws-eventlib-exports.h" />
+    <ClInclude Include="include\libwebsockets\lws-freertos.h" />
+    <ClInclude Include="include\libwebsockets\lws-fts.h" />
+    <ClInclude Include="include\libwebsockets\lws-genaes.h" />
+    <ClInclude Include="include\libwebsockets\lws-gencrypto.h" />
+    <ClInclude Include="include\libwebsockets\lws-genec.h" />
+    <ClInclude Include="include\libwebsockets\lws-genhash.h" />
+    <ClInclude Include="include\libwebsockets\lws-genrsa.h" />
+    <ClInclude Include="include\libwebsockets\lws-gpio.h" />
+    <ClInclude Include="include\libwebsockets\lws-http.h" />
+    <ClInclude Include="include\libwebsockets\lws-i2c.h" />
+    <ClInclude Include="include\libwebsockets\lws-ili9341-spi.h" />
+    <ClInclude Include="include\libwebsockets\lws-jose.h" />
+    <ClInclude Include="include\libwebsockets\lws-jwe.h" />
+    <ClInclude Include="include\libwebsockets\lws-jwk.h" />
+    <ClInclude Include="include\libwebsockets\lws-jws.h" />
+    <ClInclude Include="include\libwebsockets\lws-led.h" />
+    <ClInclude Include="include\libwebsockets\lws-lejp.h" />
+    <ClInclude Include="include\libwebsockets\lws-logs.h" />
+    <ClInclude Include="include\libwebsockets\lws-lwsac.h" />
+    <ClInclude Include="include\libwebsockets\lws-misc.h" />
+    <ClInclude Include="include\libwebsockets\lws-mqtt.h" />
+    <ClInclude Include="include\libwebsockets\lws-netdev.h" />
+    <ClInclude Include="include\libwebsockets\lws-network-helper.h" />
+    <ClInclude Include="include\libwebsockets\lws-optee.h" />
+    <ClInclude Include="include\libwebsockets\lws-protocols-plugins.h" />
+    <ClInclude Include="include\libwebsockets\lws-purify.h" />
+    <ClInclude Include="include\libwebsockets\lws-pwm.h" />
+    <ClInclude Include="include\libwebsockets\lws-retry.h" />
+    <ClInclude Include="include\libwebsockets\lws-ring.h" />
+    <ClInclude Include="include\libwebsockets\lws-secure-streams-client.h" />
+    <ClInclude Include="include\libwebsockets\lws-secure-streams-policy.h" />
+    <ClInclude Include="include\libwebsockets\lws-secure-streams.h" />
+    <ClInclude Include="include\libwebsockets\lws-sequencer.h" />
+    <ClInclude Include="include\libwebsockets\lws-service.h" />
+    <ClInclude Include="include\libwebsockets\lws-settings.h" />
+    <ClInclude Include="include\libwebsockets\lws-sha1-base64.h" />
+    <ClInclude Include="include\libwebsockets\lws-smd.h" />
+    <ClInclude Include="include\libwebsockets\lws-spa.h" />
+    <ClInclude Include="include\libwebsockets\lws-spi.h" />
+    <ClInclude Include="include\libwebsockets\lws-ssd1306-i2c.h" />
+    <ClInclude Include="include\libwebsockets\lws-state.h" />
+    <ClInclude Include="include\libwebsockets\lws-stats.h" />
+    <ClInclude Include="include\libwebsockets\lws-struct.h" />
+    <ClInclude Include="include\libwebsockets\lws-system.h" />
+    <ClInclude Include="include\libwebsockets\lws-test-sequencer.h" />
+    <ClInclude Include="include\libwebsockets\lws-threadpool.h" />
+    <ClInclude Include="include\libwebsockets\lws-timeout-timer.h" />
+    <ClInclude Include="include\libwebsockets\lws-tokenize.h" />
+    <ClInclude Include="include\libwebsockets\lws-vfs.h" />
+    <ClInclude Include="include\libwebsockets\lws-write.h" />
+    <ClInclude Include="include\libwebsockets\lws-writeable.h" />
+    <ClInclude Include="include\libwebsockets\lws-ws-close.h" />
+    <ClInclude Include="include\libwebsockets\lws-ws-ext.h" />
+    <ClInclude Include="include\libwebsockets\lws-ws-state.h" />
+    <ClInclude Include="include\libwebsockets\lws-x509.h" />
+    <ClInclude Include="jose\jwe\private-lib-jose-jwe.h" />
+    <ClInclude Include="jose\jws\private-lib-jose-jws.h" />
+    <ClInclude Include="jose\private-lib-jose.h" />
+    <ClInclude Include="misc\fts\private-lib-misc-fts.h" />
+    <ClInclude Include="misc\getifaddrs.h" />
+    <ClInclude Include="misc\lwsac\private-lib-misc-lwsac.h" />
+    <ClInclude Include="misc\romfs.h" />
+    <ClInclude Include="plat\unix\private-lib-plat-unix.h" />
+    <ClInclude Include="roles\cgi\private-lib-roles-cgi.h" />
+    <ClInclude Include="roles\dbus\private-lib-roles-dbus.h" />
+    <ClInclude Include="roles\h1\private-lib-roles-h1.h" />
+    <ClInclude Include="roles\h2\huftable.h" />
+    <ClInclude Include="roles\h2\private-lib-roles-h2.h" />
+    <ClInclude Include="roles\http\compression\private-lib-roles-http-compression.h" />
+    <ClInclude Include="roles\http\lextable-strings.h" />
+    <ClInclude Include="roles\http\lextable.h" />
+    <ClInclude Include="roles\http\private-lib-roles-http.h" />
+    <ClInclude Include="roles\mqtt\private-lib-roles-mqtt.h" />
+    <ClInclude Include="roles\private-lib-roles.h" />
+    <ClInclude Include="roles\raw-proxy\private-lib-roles-raw-proxy.h" />
+    <ClInclude Include="roles\ws\ext\extension-permessage-deflate.h" />
+    <ClInclude Include="roles\ws\private-lib-roles-ws.h" />
+    <ClInclude Include="secure-streams\private-lib-secure-streams.h" />
+    <ClInclude Include="system\async-dns\private-lib-async-dns.h" />
+    <ClInclude Include="system\dhcpclient\private-lib-system-dhcpclient.h" />
+    <ClInclude Include="system\smd\private-lib-system-smd.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl3.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_cert.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_code.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_dbg.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_lib.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_methods.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_pkey.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_stack.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_types.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\ssl_x509.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\tls1.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\internal\x509_vfy.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\openssl\ssl.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\platform\ssl_pm.h" />
+    <ClInclude Include="tls\mbedtls\wrapper\include\platform\ssl_port.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="plat\unix\unix-caps.c" />
+    <ClCompile Include="plat\unix\unix-fds.c" />
+    <ClCompile Include="plat\unix\unix-file.c" />
+    <ClCompile Include="plat\unix\unix-init.c" />
+    <ClCompile Include="plat\unix\unix-misc.c" />
+    <ClCompile Include="plat\unix\unix-pipe.c" />
+    <ClCompile Include="plat\unix\unix-plugins.c" />
+    <ClCompile Include="plat\unix\unix-resolv.c" />
+    <ClCompile Include="plat\unix\unix-service.c" />
+    <ClCompile Include="plat\unix\unix-sockets.c" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
+      <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>LWS_WARN_UNUSED_RESULT;_GNU_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/miniz;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/lws-linux/modules/lws/plat/windows;/root/projects/lws-linux/modules/lws/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/openssl;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/platform;/root/projects/lws-linux/modules/lws/tls/mbedtls/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/internal;/root/projects/lws-linux/modules/lws/tls;/root/projects/lws-linux/modules/lws/core;/root/projects/lws-linux/modules/lws/event-libs;/root/projects/lws-linux/modules/lws/system/smd;/root/projects/lws-linux/modules/lws/jose/jws;/root/projects/lws-linux/modules/lws/jose/jwe;/root/projects/lws-linux/modules/lws/plat/unix;/root/projects/lws-linux/modules/lws/jose;/root/projects/lws-linux/modules/lws/core-net;/root/projects/lws-linux/modules/lws/roles;/root/projects/lws-linux/modules/lws/roles/http/compression;/root/projects/lws-linux/modules/lws/roles/http;/root/projects/lws-linux/modules/lws/roles/cgi;/root/projects/lws-linux/modules/lws/roles/h1;/root/projects/lws-linux/modules/lws/roles/h2;/root/projects/lws-linux/modules/lws/roles/raw-proxy;/root/projects/lws-linux/modules/lws/roles/ws;/root/projects/lws-linux/modules/lws/secure-streams;$(MSBuildThisFileDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/lws-linux/modules/lws/include/libwebsockets.h</ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <CLanguageStandard>gnu11</CLanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <Link>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
+      <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>LWS_WARN_UNUSED_RESULT;_GNU_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/miniz;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/lws-linux/modules/lws/plat/windows;/root/projects/lws-linux/modules/lws/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/openssl;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/platform;/root/projects/lws-linux/modules/lws/tls/mbedtls/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/internal;/root/projects/lws-linux/modules/lws/tls;/root/projects/lws-linux/modules/lws/core;/root/projects/lws-linux/modules/lws/event-libs;/root/projects/lws-linux/modules/lws/system/smd;/root/projects/lws-linux/modules/lws/jose/jws;/root/projects/lws-linux/modules/lws/jose/jwe;/root/projects/lws-linux/modules/lws/plat/unix;/root/projects/lws-linux/modules/lws/jose;/root/projects/lws-linux/modules/lws/core-net;/root/projects/lws-linux/modules/lws/roles;/root/projects/lws-linux/modules/lws/roles/http/compression;/root/projects/lws-linux/modules/lws/roles/http;/root/projects/lws-linux/modules/lws/roles/cgi;/root/projects/lws-linux/modules/lws/roles/h1;/root/projects/lws-linux/modules/lws/roles/h2;/root/projects/lws-linux/modules/lws/roles/raw-proxy;/root/projects/lws-linux/modules/lws/roles/ws;/root/projects/lws-linux/modules/lws/secure-streams;$(MSBuildThisFileDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/lws-linux/modules/lws/include/libwebsockets.h</ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <CLanguageStandard>gnu11</CLanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <Link>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
+      <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>LWS_WARN_UNUSED_RESULT;_GNU_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/miniz;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/lws-linux/modules/lws/plat/windows;/root/projects/lws-linux/modules/lws/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/openssl;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/platform;/root/projects/lws-linux/modules/lws/tls/mbedtls/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/internal;/root/projects/lws-linux/modules/lws/tls;/root/projects/lws-linux/modules/lws/core;/root/projects/lws-linux/modules/lws/event-libs;/root/projects/lws-linux/modules/lws/system/smd;/root/projects/lws-linux/modules/lws/jose/jws;/root/projects/lws-linux/modules/lws/jose/jwe;/root/projects/lws-linux/modules/lws/plat/unix;/root/projects/lws-linux/modules/lws/jose;/root/projects/lws-linux/modules/lws/core-net;/root/projects/lws-linux/modules/lws/roles;/root/projects/lws-linux/modules/lws/roles/http/compression;/root/projects/lws-linux/modules/lws/roles/http;/root/projects/lws-linux/modules/lws/roles/cgi;/root/projects/lws-linux/modules/lws/roles/h1;/root/projects/lws-linux/modules/lws/roles/h2;/root/projects/lws-linux/modules/lws/roles/raw-proxy;/root/projects/lws-linux/modules/lws/roles/ws;/root/projects/lws-linux/modules/lws/secure-streams;$(MSBuildThisFileDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/lws-linux/modules/lws/include/libwebsockets.h</ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <CLanguageStandard>gnu11</CLanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <Link>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
+      <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>LWS_WARN_UNUSED_RESULT;_GNU_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/miniz;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/lws-linux/modules/lws/plat/windows;/root/projects/lws-linux/modules/lws/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/openssl;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/platform;/root/projects/lws-linux/modules/lws/tls/mbedtls/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/internal;/root/projects/lws-linux/modules/lws/tls;/root/projects/lws-linux/modules/lws/core;/root/projects/lws-linux/modules/lws/event-libs;/root/projects/lws-linux/modules/lws/system/smd;/root/projects/lws-linux/modules/lws/jose/jws;/root/projects/lws-linux/modules/lws/jose/jwe;/root/projects/lws-linux/modules/lws/plat/unix;/root/projects/lws-linux/modules/lws/jose;/root/projects/lws-linux/modules/lws/core-net;/root/projects/lws-linux/modules/lws/roles;/root/projects/lws-linux/modules/lws/roles/http/compression;/root/projects/lws-linux/modules/lws/roles/http;/root/projects/lws-linux/modules/lws/roles/cgi;/root/projects/lws-linux/modules/lws/roles/h1;/root/projects/lws-linux/modules/lws/roles/h2;/root/projects/lws-linux/modules/lws/roles/raw-proxy;/root/projects/lws-linux/modules/lws/roles/ws;/root/projects/lws-linux/modules/lws/secure-streams;$(MSBuildThisFileDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/lws-linux/modules/lws/include/libwebsockets.h</ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <CLanguageStandard>gnu11</CLanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
+      <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>LWS_WARN_UNUSED_RESULT;_GNU_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/miniz;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/lws-linux/modules/lws/plat/windows;/root/projects/lws-linux/modules/lws/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/openssl;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/platform;/root/projects/lws-linux/modules/lws/tls/mbedtls/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/internal;/root/projects/lws-linux/modules/lws/tls;/root/projects/lws-linux/modules/lws/core;/root/projects/lws-linux/modules/lws/event-libs;/root/projects/lws-linux/modules/lws/system/smd;/root/projects/lws-linux/modules/lws/jose/jws;/root/projects/lws-linux/modules/lws/jose/jwe;/root/projects/lws-linux/modules/lws/plat/unix;/root/projects/lws-linux/modules/lws/jose;/root/projects/lws-linux/modules/lws/core-net;/root/projects/lws-linux/modules/lws/roles;/root/projects/lws-linux/modules/lws/roles/http/compression;/root/projects/lws-linux/modules/lws/roles/http;/root/projects/lws-linux/modules/lws/roles/cgi;/root/projects/lws-linux/modules/lws/roles/h1;/root/projects/lws-linux/modules/lws/roles/h2;/root/projects/lws-linux/modules/lws/roles/raw-proxy;/root/projects/lws-linux/modules/lws/roles/ws;/root/projects/lws-linux/modules/lws/secure-streams;$(MSBuildThisFileDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/lws-linux/modules/lws/include/libwebsockets.h</ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <CLanguageStandard>gnu11</CLanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
+      <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>LWS_WARN_UNUSED_RESULT;_GNU_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/miniz;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/lws-linux/modules/lws/plat/windows;/root/projects/lws-linux/modules/lws/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/openssl;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/platform;/root/projects/lws-linux/modules/lws/tls/mbedtls/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/internal;/root/projects/lws-linux/modules/lws/tls;/root/projects/lws-linux/modules/lws/core;/root/projects/lws-linux/modules/lws/event-libs;/root/projects/lws-linux/modules/lws/system/smd;/root/projects/lws-linux/modules/lws/jose/jws;/root/projects/lws-linux/modules/lws/jose/jwe;/root/projects/lws-linux/modules/lws/plat/unix;/root/projects/lws-linux/modules/lws/jose;/root/projects/lws-linux/modules/lws/core-net;/root/projects/lws-linux/modules/lws/roles;/root/projects/lws-linux/modules/lws/roles/http/compression;/root/projects/lws-linux/modules/lws/roles/http;/root/projects/lws-linux/modules/lws/roles/cgi;/root/projects/lws-linux/modules/lws/roles/h1;/root/projects/lws-linux/modules/lws/roles/h2;/root/projects/lws-linux/modules/lws/roles/raw-proxy;/root/projects/lws-linux/modules/lws/roles/ws;/root/projects/lws-linux/modules/lws/secure-streams;$(MSBuildThisFileDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/lws-linux/modules/lws/include/libwebsockets.h</ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <CLanguageStandard>gnu11</CLanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <Link>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
+      <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>LWS_WARN_UNUSED_RESULT;_GNU_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/miniz;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/lws-linux/modules/lws/plat/windows;/root/projects/lws-linux/modules/lws/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/openssl;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/platform;/root/projects/lws-linux/modules/lws/tls/mbedtls/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/internal;/root/projects/lws-linux/modules/lws/tls;/root/projects/lws-linux/modules/lws/core;/root/projects/lws-linux/modules/lws/event-libs;/root/projects/lws-linux/modules/lws/system/smd;/root/projects/lws-linux/modules/lws/jose/jws;/root/projects/lws-linux/modules/lws/jose/jwe;/root/projects/lws-linux/modules/lws/plat/unix;/root/projects/lws-linux/modules/lws/jose;/root/projects/lws-linux/modules/lws/core-net;/root/projects/lws-linux/modules/lws/roles;/root/projects/lws-linux/modules/lws/roles/http/compression;/root/projects/lws-linux/modules/lws/roles/http;/root/projects/lws-linux/modules/lws/roles/cgi;/root/projects/lws-linux/modules/lws/roles/h1;/root/projects/lws-linux/modules/lws/roles/h2;/root/projects/lws-linux/modules/lws/roles/raw-proxy;/root/projects/lws-linux/modules/lws/roles/ws;/root/projects/lws-linux/modules/lws/secure-streams;$(MSBuildThisFileDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/lws-linux/modules/lws/include/libwebsockets.h</ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <CLanguageStandard>gnu11</CLanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <Link>
       <AdditionalOptions> -Wl,-rpath='$ORIGIN' %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>ijjs;dl;pthread</LibraryDependencies>
+      <AdditionalLibraryDirectories>/root/projects/libijjs-linux/bin/linux;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalOptions>-fPIC -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-ignored-attributes -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-format -Wno-expansion-to-defined -Wno-sign-conversion -Wno-conversion -Wno-int-to-pointer-cast -Wno-misleading-indentation %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>LWS_WARN_UNUSED_RESULT;_GNU_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/root/projects/libijjs-linux/code/externals/uv/include;/root/projects/libijjs-linux/code/externals;/root/projects/libijjs-linux/code/externals/miniz;/root/projects/libijjs-linux/code/externals/jemalloc/include;/root/projects/libijjs-linux/code/externals/externals/uv/include;/root/projects/libijjs-linux/code/externals/jemalloc;/root/projects/lws-linux/modules/lws/plat/windows;/root/projects/lws-linux/modules/lws/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/openssl;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/platform;/root/projects/lws-linux/modules/lws/tls/mbedtls/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include;/root/projects/lws-linux/modules/lws/tls/mbedtls/wrapper/include/internal;/root/projects/lws-linux/modules/lws/tls;/root/projects/lws-linux/modules/lws/core;/root/projects/lws-linux/modules/lws/event-libs;/root/projects/lws-linux/modules/lws/system/smd;/root/projects/lws-linux/modules/lws/jose/jws;/root/projects/lws-linux/modules/lws/jose/jwe;/root/projects/lws-linux/modules/lws/plat/unix;/root/projects/lws-linux/modules/lws/jose;/root/projects/lws-linux/modules/lws/core-net;/root/projects/lws-linux/modules/lws/roles;/root/projects/lws-linux/modules/lws/roles/http/compression;/root/projects/lws-linux/modules/lws/roles/http;/root/projects/lws-linux/modules/lws/roles/cgi;/root/projects/lws-linux/modules/lws/roles/h1;/root/projects/lws-linux/modules/lws/roles/h2;/root/projects/lws-linux/modules/lws/roles/raw-proxy;/root/projects/lws-linux/modules/lws/roles/ws;/root/projects/lws-linux/modules/lws/secure-streams;$(MSBuildThisFileDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>/root/projects/lws-linux/modules/lws/include/libwebsockets.h</ForcedIncludeFiles>
+      <CompileAs>CompileAsC</CompileAs>
+      <CLanguageStandard>gnu11</CLanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
