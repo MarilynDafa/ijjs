@@ -98,6 +98,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509_crt.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509_csr.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\xtea.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\abstract.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\protocols\smtp\smtp-sequencer.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\protocols\smtp\smtp.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\transports\raw-skt.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)core-net\adopt.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)core-net\client.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)core-net\close.c" />

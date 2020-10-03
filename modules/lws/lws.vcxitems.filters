@@ -34,6 +34,9 @@
     <Filter Include="mbedtls">
       <UniqueIdentifier>{1418b794-9772-4db7-a58d-8d11ab02d26f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="abstract">
+      <UniqueIdentifier>{c583a688-6ee0-4111-a32d-f90749f49c2a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)core\alloc.c">
@@ -647,6 +650,18 @@
       <Filter>event</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)plat\setget.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\abstract.c">
+      <Filter>abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\protocols\smtp\smtp.c">
+      <Filter>abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\protocols\smtp\smtp-sequencer.c">
+      <Filter>abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\transports\raw-skt.c">
+      <Filter>abstract</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)lws_config.h" />

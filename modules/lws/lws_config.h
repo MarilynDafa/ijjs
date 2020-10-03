@@ -6,8 +6,8 @@
 	#endif
 #endif
 
-#define LWS_INSTALL_DATADIR "C:/Program Files (x86)/libwebsockets/share"
-#define LWS_INSTALL_LIBDIR "C:/Program Files (x86)/libwebsockets/lib"
+#define LWS_INSTALL_DATADIR ""
+#define LWS_INSTALL_LIBDIR ""
 #define LWS_LIBRARY_VERSION_MAJOR 4
 #define LWS_LIBRARY_VERSION_MINOR 1
 #define LWS_LIBRARY_VERSION_PATCH_ELABORATED 0-
@@ -25,8 +25,8 @@
 /* #undef LWS_EXT_PTHREAD_LIBRARIES */
 
 #define LWS_AVOID_SIGPIPE_IGN
-/* #undef LWS_BUILD_HASH */
-/* #undef LWS_BUILTIN_GETIFADDRS */
+#define LWS_BUILD_HASH
+//#define LWS_BUILTIN_GETIFADDRS
 #define LWS_CLIENT_HTTP_PROXYING
 /* #undef LWS_DETECTED_PLAT_IOS */
 #define LWS_FALLBACK_GETHOSTBYNAME
@@ -54,21 +54,23 @@
 #define LWS_HAVE_MALLOC_H
 /* #undef LWS_HAVE_MALLOC_TRIM */
 /* #undef LWS_HAVE_MALLOC_USABLE_SIZE */
-/* #undef LWS_HAVE_mbedtls_md_setup */
-/* #undef LWS_HAVE_mbedtls_net_init */
-/* #undef LWS_HAVE_mbedtls_rsa_complete */
-/* #undef LWS_HAVE_mbedtls_internal_aes_encrypt */
-/* #undef LWS_HAVE_mbedtls_ssl_conf_alpn_protocols */
-/* #undef LWS_HAVE_mbedtls_ssl_get_alpn_protocol */
-/* #undef LWS_HAVE_mbedtls_ssl_conf_sni */
-/* #undef LWS_HAVE_mbedtls_ssl_set_hs_ca_chain */
-/* #undef LWS_HAVE_mbedtls_ssl_set_hs_own_cert */
-/* #undef LWS_HAVE_mbedtls_ssl_set_hs_authmode */
-/* #undef LWS_HAVE_MBEDTLS_NET_SOCKETS */
+#define LWS_HAVE_mbedtls_md_setup 
+#define LWS_HAVE_mbedtls_net_init 
+#define LWS_HAVE_mbedtls_rsa_complete 
+#define LWS_HAVE_mbedtls_internal_aes_encrypt 
+#define LWS_HAVE_mbedtls_ssl_conf_alpn_protocols 
+#define LWS_HAVE_mbedtls_ssl_get_alpn_protocol 
+#define LWS_HAVE_mbedtls_ssl_conf_sni 
+#define LWS_HAVE_mbedtls_ssl_set_hs_ca_chain 
+#define LWS_HAVE_mbedtls_ssl_set_hs_own_cert 
+#define LWS_HAVE_mbedtls_ssl_set_hs_authmode 
+#define LWS_HAVE_MBEDTLS_NET_SOCKETS 
 /* #undef LWS_HAVE_NEW_UV_VERSION_H */
 /* #undef LWS_HAVE_OPENSSL_ECDH_H */
-/* #undef LWS_HAVE_PIPE2 */
-/* #undef LWS_HAVE_EVENTFD */
+#define LWS_HAVE_PIPE2
+#if !defined(WIN32) && !defined(_WIN32)
+#define LWS_HAVE_EVENTFD
+#endif
 #define LWS_HAVE_PTHREAD_H
 #define LWS_HAVE_RSA_SET0_KEY
 /* #undef LWS_HAVE_RSA_verify_pss_mgf1 */
@@ -95,7 +97,7 @@
 #define LWS_LOGGING_BITFIELD_CLEAR 0
 #define LWS_LOGGING_BITFIELD_SET 0
 /* #undef LWS_MINGW_SUPPORT */
-/* #undef LWS_NO_CLIENT */
+#define LWS_NO_CLIENT
 #define LWS_NO_DAEMONIZE
 /* #undef LWS_OPENSSL_CLIENT_CERTS */
 #define LWS_OPENSSL_SUPPORT
@@ -105,7 +107,7 @@
 #define LWS_PLAT_UNIX
 #endif
 //#define LWS_ROLE_CGI
-/* #undef LWS_ROLE_DBUS */
+//#define LWS_ROLE_DBUS
 #define LWS_ROLE_H1
 #define LWS_ROLE_H2
 #define LWS_ROLE_RAW
@@ -116,7 +118,7 @@
 /* #undef LWS_SHA1_USE_OPENSSL_NAME */
 /* #undef LWS_SSL_CLIENT_USE_OS_CA_CERTS */
 #define LWS_SSL_SERVER_WITH_ECDH_CERT
-/* #undef LWS_WITH_ABSTRACT */
+#define LWS_WITH_ABSTRACT
 #define LWS_WITH_ACCESS_LOG
 #define LWS_WITH_ACME
 #define LWS_WITH_ALSA
@@ -175,7 +177,7 @@
 #define LWS_WITH_SEQUENCER
 #define LWS_WITH_SERVER_STATUS
 #define LWS_WITH_SYS_SMD
-/* #undef LWS_WITH_SMTP */
+#define LWS_WITH_SMTP
 #define LWS_WITH_SOCKS5
 /* #undef LWS_WITH_STATEFUL_URLDECODE */
 #define LWS_WITH_STATS
