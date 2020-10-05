@@ -29,7 +29,7 @@
  *     BASE64URL(JWE Ciphertext)	     || '.' ||
  *     BASE64URL(JWE Authentication Tag)
  */
-#pragma once
+
 #define LWS_JWE_RFC3394_OVERHEAD_BYTES 8
 #define LWS_JWE_AES_IV_BYTES 16
 
@@ -41,10 +41,7 @@
 /* the largest key element for any cipher */
 #define LWS_JWE_LIMIT_KEY_ELEMENT_BYTES (LWS_JWE_LIMIT_RSA_KEY_BITS / 8)
 
-#include "libwebsockets.h"
-#include "libwebsockets/lws-jose.h"
-#include "libwebsockets/lws-jwk.h"
-#include "libwebsockets/lws-jws.h"
+
 struct lws_jwe {
 	struct lws_jose jose;
 	struct lws_jws jws;

@@ -34,8 +34,7 @@
 ///@{
 
 /* include/libwebsockets/lws-jwk.h must be included before this */
-#pragma once
-#include "mbedtls/rsa.h"
+
 enum enum_genrsa_mode {
 	LGRSAM_PKCS1_1_5,
 	LGRSAM_PKCS1_OAEP_PSS,

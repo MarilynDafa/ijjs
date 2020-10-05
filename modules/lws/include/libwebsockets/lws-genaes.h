@@ -32,7 +32,7 @@
  * for example.
  */
 ///@{
-#pragma once
+
 #if defined(LWS_WITH_MBEDTLS)
 #include <mbedtls/aes.h>
 #include <mbedtls/gcm.h>

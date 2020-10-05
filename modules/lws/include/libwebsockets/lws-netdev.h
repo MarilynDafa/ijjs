@@ -21,8 +21,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
-#pragma once
-#include "libwebsockets/lws-dll2.h"
+
 #define LWS_WIFI_MAX_SCAN_TRACK 16
 #define LWS_ETH_ALEN 6
 

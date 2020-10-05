@@ -21,8 +21,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
-#pragma once
-#include "lws-jwk.h"
+
 enum lws_jws_jose_hdr_indexes {
 	LJJHI_ALG,	/* REQUIRED */
 	LJJHI_JKU,	/* Optional: string */

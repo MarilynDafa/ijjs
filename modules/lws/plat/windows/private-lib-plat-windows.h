@@ -58,8 +58,6 @@
  #include <ws2tcpip.h>
  #include <windows.h>
  #include <tchar.h>
-#include <time.h>
-#include <sys/time.h>
  #ifdef LWS_HAVE_IN6ADDR_H
   #include <in6addr.h>
  #endif

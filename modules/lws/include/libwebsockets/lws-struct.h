@@ -21,8 +21,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
-#pragma once
-#include "lws-dll2.h"
+
 #if defined(LWS_WITH_STRUCT_SQLITE3)
 #include <sqlite3.h>
 #endif

@@ -98,10 +98,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509_crt.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\x509_csr.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\code\externals\mbedtls\xtea.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\abstract.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\protocols\smtp\smtp-sequencer.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\protocols\smtp\smtp.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\transports\raw-skt.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)core-net\adopt.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)core-net\client.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)core-net\close.c" />
@@ -145,10 +141,14 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)jose\jws\jose.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jose\jws\jws.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\base64-decode.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\dir.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\diskcache.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\fts\trie-fd.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\fts\trie.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\lejp.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\lws-ring.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\lws-struct-lejp.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\lwsac\cached-file.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\lwsac\lwsac.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\peer-limits.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\romfs.c" />
@@ -166,6 +166,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\header.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\parsers.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\access-log.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\fops-zip.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\lws-spa.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\ranges.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\httpserver.c">

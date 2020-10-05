@@ -35,8 +35,7 @@
  * lws_genrsa_destroy_elements() when you are finished with it.
  */
 ///@{
-#pragma once
-#include "lws-gencrypto.h"
+
 enum enum_jwk_meta_tok {
 	JWK_META_KTY,
 	JWK_META_KID,

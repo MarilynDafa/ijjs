@@ -21,8 +21,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
-#pragma once
-#include "lws-dll2.h"
+
 struct lws_state_notify_link;
 struct lws_state_manager;
 

@@ -32,8 +32,6 @@
  * NOTE: These public enums are part of the abi.  If you want to add one,
  * add it at where specified so existing users are unaffected.
  */
-#pragma once
-#include "lws-dll2.h"
 enum pending_timeout {
 	NO_PENDING_TIMEOUT					=  0,
 	PENDING_TIMEOUT_AWAITING_PROXY_RESPONSE			=  1,

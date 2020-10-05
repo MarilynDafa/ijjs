@@ -27,7 +27,7 @@
  * gencrypto code.  However while JWK relies on these, using gencrypto apis has
  * no dependency at all on any JOSE type.
  */
-#pragma once
+
 enum lws_gencrypto_kty {
 	LWS_GENCRYPTO_KTY_UNKNOWN,
 

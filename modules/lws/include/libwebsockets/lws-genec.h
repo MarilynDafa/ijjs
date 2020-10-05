@@ -21,9 +21,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
-#pragma once
-#include "mbedtls/ecdh.h"
-#include "mbedtls/ecdsa.h"
+
 enum enum_genec_alg {
 	LEGENEC_UNKNOWN,
 

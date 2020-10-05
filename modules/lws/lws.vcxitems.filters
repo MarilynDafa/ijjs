@@ -34,9 +34,6 @@
     <Filter Include="mbedtls">
       <UniqueIdentifier>{1418b794-9772-4db7-a58d-8d11ab02d26f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="abstract">
-      <UniqueIdentifier>{c583a688-6ee0-4111-a32d-f90749f49c2a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)core\alloc.c">
@@ -124,9 +121,6 @@
       <Filter>net</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)core-net\wsi.c">
-      <Filter>net</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\wsi-timeout.c">
       <Filter>net</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)tls\lws-gencrypto-common.c">
@@ -324,7 +318,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)misc\lwsac\lwsac.c">
       <Filter>misc</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\httpserver.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)tls\tls.c">
       <Filter>tls</Filter>
     </ClCompile>
@@ -649,18 +642,29 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)event-libs\poll\poll.c">
       <Filter>event</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)plat\setget.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\abstract.c">
-      <Filter>abstract</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)core-net\wsi-timeout.c">
+      <Filter>net</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\protocols\smtp\smtp.c">
-      <Filter>abstract</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\dir.c">
+      <Filter>misc</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\protocols\smtp\smtp-sequencer.c">
-      <Filter>abstract</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\fts\trie.c">
+      <Filter>misc</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)abstract\transports\raw-skt.c">
-      <Filter>abstract</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\fts\trie-fd.c">
+      <Filter>misc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)misc\lwsac\cached-file.c">
+      <Filter>misc</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\fops-zip.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\httpserver.c">
+      <Filter>roles</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)plat\setget.c">
+      <Filter>system</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

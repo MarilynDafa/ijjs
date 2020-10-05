@@ -38,8 +38,7 @@
  * The maps are built to work with both JWS (LJWS_) and JWE (LJWE_), and are
  * sized to the slightly larger JWE case.
  */
-#pragma once
-#include "lws-jose.h"
+
 enum enum_jws_sig_elements {
 
 	/* JWS block namespace */

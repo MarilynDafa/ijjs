@@ -28,7 +28,7 @@
 * simple single and doubly-linked lists
 */
 ///@{
-#pragma once
+
 /**
  * lws_start_foreach_ll(): linkedlist iterator helper start
  *
