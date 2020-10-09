@@ -666,6 +666,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)plat\setget.c">
       <Filter>system</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ijlws.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)lws_config.h" />

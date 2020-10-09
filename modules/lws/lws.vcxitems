@@ -130,6 +130,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)drivers\settings\settings.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)event-libs\libuv\libuv.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)event-libs\poll\poll.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ijlws.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jose\jwe\enc\aescbc.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jose\jwe\enc\aesgcm.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)jose\jwe\enc\aeskw.c" />

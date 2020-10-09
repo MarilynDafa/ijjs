@@ -1,4 +1,4 @@
-// Type definitions for libsigar
+// Type definitions for libredis
 // Project: https://github.com/MarilynDafa/ijjs
 
 export const RD_STRING : number;
