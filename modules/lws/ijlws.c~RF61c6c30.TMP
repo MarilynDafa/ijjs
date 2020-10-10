@@ -26,7 +26,6 @@ typedef struct {
     JSContext* ctx;
     uv_signal_t signal_outer[2];
     struct lws_context* context;
-    lws_sorted_usec_list_t sul_lwsws;
 } IJJSLws;
 static JSClassID ijjs_lws_class_id;
 static IJJSLws gLws;
@@ -58,24 +57,15 @@ static void signal_cb(uv_signal_t* watcher, int signum)
     lws_context_destroy(gLws.context);
 }
 static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
-    struct lws_context_creation_info info;
-    memset(&info, 0, sizeof(info));
-    info.gid = -1;
-    info.uid = -1;
-    info.vhost_name = JS_ToCString(ctx, argv[0]);
-    info.options = 0 | LWS_SERVER_OPTION_VALIDATE_UTF8 |
-        LWS_SERVER_OPTION_EXPLICIT_VHOSTS |
-        LWS_SERVER_OPTION_LIBUV;
-    JS_ToInt32(ctx, &info.port, argv[1]);
+    const IJAnsi* host = JS_ToCString(ctx, argv[0]);
+    IJS32 port;
+    JS_ToInt32(ctx, &port, argv[1]);
     JSValue jlen = JS_GetPropertyStr(ctx, argv[2], "length");
     IJS32 mountlen;
     JS_ToInt32(ctx, &mountlen, jlen);
-    struct lws_http_mount** mounts = (struct lws_http_mount**)js_malloc(ctx, mountlen * sizeof(struct lws_http_mount));
     for (IJS32 i = 0; i < mountlen; ++i) {
         JSValue mount = JS_GetPropertyUint32(ctx, argv[2], i);
         JSValue mountpoint = JS_GetPropertyStr(ctx, mount, "mountpoint");
-        mounts[i]->mountpoint = JS_ToCString(ctx, mountpoint);
-        mounts[i]->mountpoint_len = strlen(mounts[i]->mountpoint);
         JSValue origin = JS_GetPropertyStr(ctx, mount, "origin");
         JSValue def = JS_GetPropertyStr(ctx, mount, "default");
         if (!JS_IsUndefined(def)) {
@@ -100,33 +90,15 @@ static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 arg
     }
     if (!JS_IsUndefined(argv[3])) {
         JSValue sts = JS_GetPropertyStr(ctx, argv[3], "sts");
-        if (JS_ToBool(ctx, sts))
-            info.options |= LWS_SERVER_OPTION_STS;
-        JSValue interface = JS_GetPropertyStr(ctx, argv[3], "interface");
-        info.iface = JS_ToCString(ctx, interface);
-        JSValue sslkey = JS_GetPropertyStr(ctx, argv[3], "sslkey");
-        info.ssl_private_key_filepath = JS_ToCString(ctx, sslkey);
-        JSValue sslcert = JS_GetPropertyStr(ctx, argv[3], "sslcert");
-        info.ssl_cert_filepath = JS_ToCString(ctx, sslcert);
-        JSValue sslca = JS_GetPropertyStr(ctx, argv[3], "sslca");
-        info.ssl_ca_filepath = JS_ToCString(ctx, sslca);
+        if (!JS_IsUndefined(cacheIntermediaries)) {
+
+        }
     }
     lws_set_log_level(1031, lwsl_emit_stderr_notimestamp);
     uv_signal_init(ijGetLoop(ctx), &gLws.signal_outer[0]);
     uv_signal_start(&gLws.signal_outer[0], signal_cb, SIGINT);
     uv_signal_init(ijGetLoop(ctx), &gLws.signal_outer[1]);
     uv_signal_start(&gLws.signal_outer[1], signal_cb, SIGHUP);
-    info.pt_serv_buf_size = 8192;
-    info.foreign_loops = foreign_loops;
-    info.pcontext = &context;
-    lws_service(gLws.context, 0);
-    lwsl_err("%s: closing\n", __func__);
-    for (IJS32 n = 0; n < 2; n++) {
-        uv_signal_stop(&gLws.signal_outer[n]);
-        uv_close((uv_handle_t*)&gLws.signal_outer[n], NULL);
-    }
-    lws_sul_cancel(&gLws.sul_lwsws);
-    lws_context_destroy(gLws.context);
     return JS_UNDEFINED;
 }
 static JSValue js_stop_service(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {

@@ -110,11 +110,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_PTHREAD_ID;PTW32_CONFIG_H;PTW32_BUILD;WIN32;_DEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_PTHREAD_ID;IJ_EXPORT;PTW32_CONFIG_H;PTW32_BUILD;WIN32;_DEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\code\externals;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\uv\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\abstract;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\quickjs;..\..\code\externals\uv\include;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\abstract;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
       <ForcedIncludeFiles>
       </ForcedIncludeFiles>
@@ -135,12 +135,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_PTHREAD_ID;PTW32_CONFIG_H;PTW32_BUILD;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;LWS_WARN_UNUSED_RESULT;WIN32;NDEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_PTHREAD_ID;IJ_EXPORT;PTW32_CONFIG_H;PTW32_BUILD;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;LWS_WARN_UNUSED_RESULT;WIN32;NDEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\code\externals;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\uv\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\abstract;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\quickjs;..\..\code\externals\uv\include;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\abstract;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
       <PrecompiledHeaderOutputFile />
       <ForcedIncludeFiles>
@@ -162,11 +162,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_PTHREAD_ID;PTW32_CONFIG_H;PTW32_BUILD;_DEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_PTHREAD_ID;IJ_EXPORT;PTW32_CONFIG_H;PTW32_BUILD;_DEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\code\externals;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\uv\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\abstract;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\quickjs;..\..\code\externals\uv\include;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\abstract;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
       <ForcedIncludeFiles>
       </ForcedIncludeFiles>
@@ -187,12 +187,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_PTHREAD_ID;PTW32_CONFIG_H;PTW32_BUILD;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;LWS_WARN_UNUSED_RESULT;NDEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_PTHREAD_ID;IJ_EXPORT;PTW32_CONFIG_H;PTW32_BUILD;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;LWS_WARN_UNUSED_RESULT;NDEBUG;LWSWIN32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\code\externals;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\uv\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\abstract;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\code\headers;..\..\code\externals;..\..\code\externals\quickjs;..\..\code\externals\uv\include;..\..\code\externals\miniz;..\..\code\externals\cwin;..\..\code\externals\wpthread;..\..\code\externals\jemalloc\include;..\..\code\externals\jemalloc;.\plat\windows;.\include;.\tls\mbedtls\wrapper\include\openssl;.\tls\mbedtls\wrapper\include\platform;.\tls\mbedtls\include;.\tls\mbedtls\wrapper\include;.\tls\mbedtls\wrapper\include\internal;.\tls;.\core;.\event-libs;.\system\smd;.\jose\jws;.\jose\jwe;.\jose;.\core-net;.\roles;.\roles\http\compression;.\roles\http;.\abstract;.\roles\h1;.\roles\h2;.\roles\raw-proxy;.\roles\ws;.\secure-streams;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Wno-unused-parameter -Wno-ignored-pragma-optimize -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-int-conversion -Wno-microsoft-enum-forward-reference -Wno-unused-const-variable -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations -Wno-macro-redefined -Wno-ignored-attributes -Wno-sometimes-uninitialized -Wno-missing-braces -Wno-comment -Wno-unused-value -Wno-nonportable-include-path -Wno-extra-tokens -Wno-format -Wno-absolute-value -Wno-expansion-to-defined -Wno-microsoft-cast %(AdditionalOptions)</AdditionalOptions>
       <PrecompiledHeaderOutputFile />
       <ForcedIncludeFiles>
