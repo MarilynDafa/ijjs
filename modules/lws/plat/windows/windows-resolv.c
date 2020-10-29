@@ -25,9 +25,12 @@
 #include "private-lib-core.h"
 #include <iphlpapi.h>
 
+#define MALLOC(x) HeapAlloc(GetProcessHeap(), 0, (x))
+#define FREE(x) HeapFree(GetProcessHeap(), 0, (x))
 lws_async_dns_server_check_t
 lws_plat_asyncdns_init(struct lws_context *context, lws_sockaddr46 *sa46)
 {
+	/*
 	unsigned long ul;
 	FIXED_INFO fi;
 	int n;
@@ -46,6 +49,38 @@ lws_plat_asyncdns_init(struct lws_context *context, lws_sockaddr46 *sa46)
 
 	return n == 0 ? LADNS_CONF_SERVER_CHANGED :
 			LADNS_CONF_SERVER_UNKNOWN;
+*/
+	FIXED_INFO* pFixedInfo;
+	ULONG ulOutBufLen;
+	DWORD dwRetVal;
+	IP_ADDR_STRING* pIPAddr;
+
+	pFixedInfo = (FIXED_INFO*)MALLOC(sizeof(FIXED_INFO));
+	if (pFixedInfo == NULL) {
+		return LADNS_CONF_SERVER_UNKNOWN;
+	}
+	ulOutBufLen = sizeof(FIXED_INFO);
+	if (GetNetworkParams(pFixedInfo, &ulOutBufLen) == ERROR_BUFFER_OVERFLOW) {
+		FREE(pFixedInfo);
+		pFixedInfo = (FIXED_INFO*)MALLOC(ulOutBufLen);
+		if (pFixedInfo == NULL) {
+			return LADNS_CONF_SERVER_UNKNOWN;
+		}
+	}
+
+
+	if (dwRetVal = GetNetworkParams(pFixedInfo, &ulOutBufLen) == NO_ERROR) {
+
+		int n;
+		n = lws_sa46_parse_numeric_address(
+			pFixedInfo->DnsServerList.IpAddress.String, sa46);
+
+		if (pFixedInfo)
+			FREE(pFixedInfo);
+		return n == 0 ? LADNS_CONF_SERVER_CHANGED :
+			LADNS_CONF_SERVER_UNKNOWN;
+	}
+	return LADNS_CONF_SERVER_UNKNOWN;
 }
 
 int

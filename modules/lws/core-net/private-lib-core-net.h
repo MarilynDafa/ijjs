@@ -174,6 +174,7 @@ enum pmd_return {
 	PMDR_HAS_PENDING,
 	PMDR_EMPTY_NONFINAL,
 	PMDR_EMPTY_FINAL,
+	PMDR_NOTHING_WE_SHOULD_DO,
 
 	PMDR_FAILED = -1
 };
@@ -409,7 +410,7 @@ struct lws_context_per_thread {
 	struct lws_pollfd *fds;
 	volatile struct lws_foreign_thread_pollfd * volatile foreign_pfd_list;
 #ifdef _WIN32
-	WSAEVENT events;
+       WSAEVENT events[WSA_MAXIMUM_WAIT_EVENTS];
 	CRITICAL_SECTION interrupt_lock;
 #endif
 	lws_sockfd_type dummy_pipe_fds[2];
@@ -461,9 +462,6 @@ struct lws_context_per_thread {
 	unsigned char event_loop_destroy_processing_done:1;
 	unsigned char destroy_self:1;
 	unsigned char is_destroyed:1;
-#ifdef _WIN32
-	unsigned char interrupt_requested:1;
-#endif
 };
 
 #if defined(LWS_WITH_SERVER_STATUS)

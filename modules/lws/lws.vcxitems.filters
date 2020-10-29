@@ -660,13 +660,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\fops-zip.c">
       <Filter>roles</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\httpserver.c">
-      <Filter>roles</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)plat\setget.c">
       <Filter>system</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ijlws.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\server.c">
+      <Filter>roles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)lws_config.h" />

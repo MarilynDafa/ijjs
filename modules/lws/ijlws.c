@@ -24,80 +24,74 @@
 #include <uv.h>
 typedef struct {
     JSContext* ctx;
-    uv_signal_t signal_outer[2];
     struct lws_context* context;
     lws_sorted_usec_list_t sul_lwsws;
+    uv_idle_t idle;
 } IJJSLws;
 static JSClassID ijjs_lws_class_id;
 static IJJSLws gLws;
+static IJVoid uvLwsUpdateCb(uv_idle_t* handle) {
+    lws_service(gLws.context, 0);
+}
 static IJVoid ijLWSFinalizer(JSRuntime* rt, JSValue val) {
+    uv_idle_stop(&gLws.idle);
+    uv_close((uv_handle_t*)&gLws.idle, NULL);
 }
 static JSClassDef ijjs_lws_class = { "lws", .finalizer = ijLWSFinalizer };
-static void signal_cb(uv_signal_t* watcher, int signum)
-{
-    switch (watcher->signum) {
-    case SIGTERM:
-    case SIGINT:
-        break;
-
-    case SIGHUP:
-        if (lws_context_is_deprecated(gLws.context))
-            return;
-        lwsl_notice("Dropping listen sockets\n");
-        lws_context_deprecate(gLws.context, NULL);
-        return;
-
-    default:
-        signal(SIGABRT, SIG_DFL);
-        abort();
-        break;
-    }
-    lwsl_err("Signal %d caught\n", watcher->signum);
-    uv_signal_stop(watcher);
-    uv_signal_stop(&gLws.signal_outer[1]);
-    lws_context_destroy(gLws.context);
-}
 static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
     struct lws_context_creation_info info;
     memset(&info, 0, sizeof(info));
+    void* foreign_loops[1];
     info.gid = -1;
     info.uid = -1;
     info.vhost_name = JS_ToCString(ctx, argv[0]);
-    info.options = 0 | LWS_SERVER_OPTION_VALIDATE_UTF8 |
-        LWS_SERVER_OPTION_EXPLICIT_VHOSTS |
-        LWS_SERVER_OPTION_LIBUV;
+    info.options = LWS_SERVER_OPTION_HTTP_HEADERS_SECURITY_BEST_PRACTICES_ENFORCE 
+        | LWS_SERVER_OPTION_LIBUV 
+        | LWS_SERVER_OPTION_H2_PRIOR_KNOWLEDGE;
     JS_ToInt32(ctx, &info.port, argv[1]);
     JSValue jlen = JS_GetPropertyStr(ctx, argv[2], "length");
     IJS32 mountlen;
     JS_ToInt32(ctx, &mountlen, jlen);
-    struct lws_http_mount** mounts = (struct lws_http_mount**)js_malloc(ctx, mountlen * sizeof(struct lws_http_mount));
+    struct lws_http_mount* mounts = (struct lws_http_mount*)js_malloc(ctx, mountlen * sizeof(struct lws_http_mount));
+    memset(mounts, 0, mountlen * sizeof(struct lws_http_mount));
     for (IJS32 i = 0; i < mountlen; ++i) {
+        if (i > 0)
+            mounts[i - 1].mount_next = &(mounts[i]);
         JSValue mount = JS_GetPropertyUint32(ctx, argv[2], i);
         JSValue mountpoint = JS_GetPropertyStr(ctx, mount, "mountpoint");
-        mounts[i]->mountpoint = JS_ToCString(ctx, mountpoint);
-        mounts[i]->mountpoint_len = strlen(mounts[i]->mountpoint);
+        mounts[i].mountpoint = JS_ToCString(ctx, mountpoint);
+        mounts[i].mountpoint_len = strlen(mounts[i].mountpoint);
         JSValue origin = JS_GetPropertyStr(ctx, mount, "origin");
+        mounts[i].origin = JS_ToCString(ctx, origin);
         JSValue def = JS_GetPropertyStr(ctx, mount, "default");
-        if (!JS_IsUndefined(def)) {
-
-        }
+        if (!JS_IsUndefined(def)) 
+            mounts[i].def = JS_ToCString(ctx, def);
         JSValue cacheMaxAge = JS_GetPropertyStr(ctx, mount, "cacheMaxAge");
         if (!JS_IsUndefined(cacheMaxAge)) {
-
+            int32_t tmp;
+            JS_ToInt32(ctx, &tmp, cacheMaxAge);
+            mounts[i].cache_max_age = tmp;
         }
         JSValue cacheReuse = JS_GetPropertyStr(ctx, mount, "cacheReuse");
         if (!JS_IsUndefined(cacheReuse)) {
-
+            uint32_t tmp;
+            JS_ToUint32(ctx, &tmp, cacheReuse);
+            mounts[i].cache_reusable = tmp;
         }
         JSValue cacheRevalidate = JS_GetPropertyStr(ctx, mount, "cacheRevalidate");
         if (!JS_IsUndefined(cacheRevalidate)) {
-
+            uint32_t tmp;
+            JS_ToUint32(ctx, &tmp, cacheRevalidate);
+            mounts[i].cache_revalidate = tmp;
         }
         JSValue cacheIntermediaries = JS_GetPropertyStr(ctx, mount, "cacheIntermediaries");
         if (!JS_IsUndefined(cacheIntermediaries)) {
-
+            uint32_t tmp;
+            JS_ToUint32(ctx, &tmp, cacheIntermediaries);
+            mounts[i].cache_intermediaries = tmp;
         }
     }
+    info.mounts = mounts;
     if (!JS_IsUndefined(argv[3])) {
         JSValue sts = JS_GetPropertyStr(ctx, argv[3], "sts");
         if (JS_ToBool(ctx, sts))
@@ -112,24 +106,18 @@ static JSValue js_start_service(JSContext* ctx, JSValueConst this_val, IJS32 arg
         info.ssl_ca_filepath = JS_ToCString(ctx, sslca);
     }
     lws_set_log_level(1031, lwsl_emit_stderr_notimestamp);
-    uv_signal_init(ijGetLoop(ctx), &gLws.signal_outer[0]);
-    uv_signal_start(&gLws.signal_outer[0], signal_cb, SIGINT);
-    uv_signal_init(ijGetLoop(ctx), &gLws.signal_outer[1]);
-    uv_signal_start(&gLws.signal_outer[1], signal_cb, SIGHUP);
     info.pt_serv_buf_size = 8192;
+    foreign_loops[0] = ijGetLoop(ctx);
     info.foreign_loops = foreign_loops;
-    info.pcontext = &context;
-    lws_service(gLws.context, 0);
-    lwsl_err("%s: closing\n", __func__);
-    for (IJS32 n = 0; n < 2; n++) {
-        uv_signal_stop(&gLws.signal_outer[n]);
-        uv_close((uv_handle_t*)&gLws.signal_outer[n], NULL);
-    }
-    lws_sul_cancel(&gLws.sul_lwsws);
-    lws_context_destroy(gLws.context);
+    gLws.context = lws_create_context(&info);
+    info.pcontext = &gLws.context;
+    uv_idle_init(ijGetLoop(ctx), &gLws.idle);
+    uv_idle_start(&gLws.idle, uvLwsUpdateCb);
     return JS_UNDEFINED;
 }
 static JSValue js_stop_service(JSContext* ctx, JSValueConst this_val, IJS32 argc, JSValueConst* argv) {
+    lws_sul_cancel(&gLws.sul_lwsws);
+    lws_context_destroy(gLws.context);
     return JS_UNDEFINED;
 }
 static const JSCFunctionListEntry module_funcs[] = {
@@ -149,7 +137,6 @@ static int module_init(JSContext* ctx, JSModuleDef* m)
     JS_SetModuleExport(ctx, m, "lws", obj);
     return 0;
 }
-
 IJ_API JSModuleDef* js_init_module(JSContext* ctx, const char* module_name)
 {
     JSModuleDef* m;

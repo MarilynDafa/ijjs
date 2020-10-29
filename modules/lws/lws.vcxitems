@@ -170,9 +170,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\fops-zip.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\lws-spa.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\ranges.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\httpserver.c">
-      <FileType>CppCode</FileType>
-    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)roles\http\server\server.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\listen\ops-listen.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\mqtt\client\client-mqtt-handshake.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)roles\mqtt\client\client-mqtt.c" />
